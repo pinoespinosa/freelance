@@ -1,0 +1,9 @@
+Pre Requsitos:
+---------------
+
+
+1- Tener instalado y configurado Java
+2- Tener instalado y configurado Ant
+
+3- Ubicarse dentro de la carpeta Ant y ejecutar ant run -DocvJarDir=../build/bin -DocvLibDir=../build/lib
+
