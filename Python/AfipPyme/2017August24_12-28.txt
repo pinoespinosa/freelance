@@ -1,0 +1,22 @@
+Reporte del 24 August 2017 12:28
+
+
+Archivos Nuevos
+    GTIE_2012_Enero.xls
+    GTIE_2012_Febrero.xls
+    GTIE_2012_Marzo.xls
+    GTIE_2012_Abril.xls
+    GTIE_2012_Mayo.xls
+    GTIE_2012_Julio.xls
+    GTIE_2012_Agosto.xls
+    GTIE_2012_Diciembre.xls
+
+Archivos Actualizados
+
+Errores
+    Error saving file.GTIE_2012_Junio
+    Error saving file.GTIE_2012_Septiembre
+    Error saving file.GTIE_2012_Octubre
+    Error saving file.GTIE_2012_Noviembre
+    Error trying to filter descargas2/MADALENA ENERGY ARGENTINA SRL /GTIE_2012_Diciembre.xls
+    Error connecting to server ALP 2017

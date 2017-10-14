@@ -1,0 +1,20 @@
+Reporte del 24 August 2017 12:26
+
+
+Archivos Nuevos
+	GTIE_2012_Enero.xls
+	GTIE_2012_Febrero.xls
+	GTIE_2012_Marzo.xls
+	GTIE_2012_Abril.xls
+	GTIE_2012_Mayo.xls
+	GTIE_2012_Junio.xls
+	GTIE_2012_Julio.xls
+	GTIE_2012_Agosto.xls
+	GTIE_2012_Septiembre.xls
+	GTIE_2012_Octubre.xls
+	GTIE_2012_Noviembre.xls
+	GTIE_2012_Diciembre.xls
+
+Archivos Actualizados
+
+Errores

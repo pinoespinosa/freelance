@@ -1,0 +1,20 @@
+Hola Andres,
+
+- De la página https://www.se.gob.ar/datosupstream/consulta_avanzada/listado.php realizar consulta de los archivos nuevos o modificados que se hayan publicado desde la ultima consulta, para todas las empresas y todos los años.  Se espera que solo exista 1 archivo por empresa, año, periodo, la fecha indica la fecha de carga, si esta es diferente a la fecha publicada ultima consulta es porque hay una nueva versión del archivo que se debe descargar.
+
+- Los archivos deben quedar almacenados en una carpeta de un servidor windows server (parametrizable) organizados en carpetas por empresa.
+
+- Debe quedar un archivo con el total de datos consultados y descargados correctamente: Empresa, año, mes, estado, cierre, carga, fecha y nombre del archivo, más la fecha de descarga.
+
+- Debe mostrar y quedar registro del resultado de la ejecución del proceso de descarga: fecha de ejecución, archivos nuevos, archivos modificados y errores en la consulta, descarga o salvado.
+
+- Para cada archivo descargado crear una copia en otra carpeta del servidor (parametrizable) organizados en carpetas por empresa, eliminando las filas 1-15 y la fila con la leyenda "FIN DEL REPORTE".  Adicionalmente, asegurar que todos los valores de encabezados sean iguales a los de un archivo de referencia y que las columnas J a W y AH a AI no tengan valores en blanco (completar con ceros las filas con datos).
+
+- Debe mostrar y quedar registro en caso del resultado del proceso de limpieza:  Errores de formato, datos o de salvado.
+
+- el proceso de limpieza puede ser aparte del proceso de descarga, solo para los archivos nuevos, modificados o que no se le haya hecho la limpieza por algún error.
+La aplicación puede correr desde linea de comandos o un GUI muy básico con un resumen de la ultima consulta (ej.: fecha, total de archivos descargados, archivos limpiados), un botón de ejecutar y muestra de resultados del proceso.  En esto acepto propuestas pero algo simple.
+Esperamos que al final nos entregues: la aplicación, la guía de instalación y uso, y el código.  No tenemos preferencia en el lenguaje pero habiamos pensado en Python para la parte de scrapping.
+Por favor avísame si tienes alguna duda o me haces tu propuesta final.
+Gracias,
+Eliana 

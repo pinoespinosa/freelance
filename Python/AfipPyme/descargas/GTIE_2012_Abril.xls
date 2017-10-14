@@ -1,0 +1,2567 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Capitulo IV - Listado de Pozos</title>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" text="#000000" link="#000000" vlink="#666666" alink="#999999" marginwidth="0" marginheight="0">
+<font>
+<b>Capitulo IV - DDJJ de Producción</b><br><br>
+Empresa: MADALENA ENERGY ARGENTINA SRL <br>
+Período: Abril de 2012<br>
+Fecha: 29-05-2012 09:53<br>
+C&oacute;digo de verificaci&oacute;n DDJJ: 4661 / 3<br>
+Cantidad de registros: 64<br>(Nota: La leyenda 'Mm3' se usa representando 'Miles de m3')
+<br>(Nota: Para visualizar CORRECTAMENTE este documento, debe asegurarse que en la configuraci&oacute;n del excel, est&eacute; definido como separador de decimales el "punto" y como separdor de miles la "coma")
+</font>
+<br><br>
+<DIV STYLE="background-color:#FF0000" >
+<b>Nota: Por favor, verifique que la cantidad de registros de este informe este completa. Al final del archivo, debe figurar una celda con la leyenda "FIN DEL REPORTE".<br>
+De no ser asi, es posible que el archivo que usted descargó esté incompleto, por favor, vuelva a realizar la descarga.
+</div>
+<br><br>
+
+		<table border="1" cellpadding="3" cellspacing="1" bgcolor="#999999">
+			<tr class="negro">
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Cuenca</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Provincia</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Área</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Yacimiento</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>ID Pozo</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Sigla</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Form.Prod.</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>C&oacute;d.Propio</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Nom.Propio</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Prod.Men.Pet.(m3)</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Prod.Men.Gas(Mm3)</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Prod.Men.Agua(m3)</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Prod.Acum.Pet.(m3)</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Prod.Acum.Gas(Mm3)</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Prod.Acum.Agua(m3)</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Iny.Agua(m3)</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Iny.Gas(Mm3)</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Iny.CO2(Mm3)</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Iny.Otros(m3)</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle"><b>RGP</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle"><b>% de Agua</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>TEF</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Vida Útil</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Sist.Extrac.</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Est.Pozo</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Tipo Pozo</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Clasificación</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Sub clasificación</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Tipo de Recurso</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Sub tipo de Recurso</b></td>
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Observaciones</b></td>
+                <td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Latitud</b></td>
+                <td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Longitud</b></td>
+                <td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Cota</b></td>
+                <td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Profundidad</b></td>
+
+
+			</tr>
+		
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Formosa</td>
+				<td bgcolor="#EEEEEE" align="left">EL CHIVIL</td>
+				<td bgcolor="#EEEEEE" align="left">EL CHIVIL</td>
+				<td bgcolor="#EEEEEE" align="left">533</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.Fr.EChi-4</td>
+				<td bgcolor="#EEEEEE" align="left">PLAR</td>
+				<td bgcolor="#EEEEEE" align="left">Fr.EChi-4</td>
+				<td bgcolor="#EEEEEE" align="left">El Chivil-4</td>
+				<td bgcolor="#EEEEEE" align="left">577.0118</td>
+				<td bgcolor="#EEEEEE" align="left">32.79043</td>
+				<td bgcolor="#EEEEEE" align="left">4277.635</td>
+				<td bgcolor="#EEEEEE" align="left">194390.3598</td>
+				<td bgcolor="#EEEEEE" align="left">5859.91543</td>
+				<td bgcolor="#EEEEEE" align="left">498077.388</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0.056828005943726</td>
+				<td bgcolor="#EEEEEE" align="left">0.88114237270567</td>
+				<td bgcolor="#EEEEEE" align="left">29.37500</td>
+				<td bgcolor="#EEEEEE" align="left">6393.04500</td>
+				<td bgcolor="#EEEEEE" align="left">JP</td>
+				<td bgcolor="#EEEEEE" align="left">EEF</td>
+				<td bgcolor="#EEEEEE" align="left">PET</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-23.249852</td>
+                <td bgcolor="#EEEEEE" align="left">-62.207309</td>
+                <td bgcolor="#EEEEEE" align="left">204.4</td>
+                <td bgcolor="#EEEEEE" align="left">3861</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Formosa</td>
+				<td bgcolor="#EEEEEE" align="left">EL CHIVIL</td>
+				<td bgcolor="#EEEEEE" align="left">EL CHIVIL</td>
+				<td bgcolor="#EEEEEE" align="left">532</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.Fr.EChi.e-2</td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">Fr.EChi.e-2</td>
+				<td bgcolor="#EEEEEE" align="left">El Chivil.e-2</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">10148</td>
+				<td bgcolor="#EEEEEE" align="left">462.9</td>
+				<td bgcolor="#EEEEEE" align="left">8813.9</td>
+				<td bgcolor="#EEEEEE" align="left">10602.43</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">27.16667</td>
+				<td bgcolor="#EEEEEE" align="left">526.16667</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">EIE</td>
+				<td bgcolor="#EEEEEE" align="left">SUM</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXTENSION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-23.252694</td>
+                <td bgcolor="#EEEEEE" align="left">-62.220147</td>
+                <td bgcolor="#EEEEEE" align="left">204</td>
+                <td bgcolor="#EEEEEE" align="left">3887</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Formosa</td>
+				<td bgcolor="#EEEEEE" align="left">EL CHIVIL</td>
+				<td bgcolor="#EEEEEE" align="left">EL CHIVIL</td>
+				<td bgcolor="#EEEEEE" align="left">530</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.Fr.EChi.x-1(bis)</td>
+				<td bgcolor="#EEEEEE" align="left">PLAR</td>
+				<td bgcolor="#EEEEEE" align="left">Fr.EChi.x-1(bis)</td>
+				<td bgcolor="#EEEEEE" align="left">El Chivil.x-1(bis)</td>
+				<td bgcolor="#EEEEEE" align="left">686.7166</td>
+				<td bgcolor="#EEEEEE" align="left">39.14350</td>
+				<td bgcolor="#EEEEEE" align="left">5016.800</td>
+				<td bgcolor="#EEEEEE" align="left">83122.8186</td>
+				<td bgcolor="#EEEEEE" align="left">3439.85350</td>
+				<td bgcolor="#EEEEEE" align="left">200273.769</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0.05700095206669</td>
+				<td bgcolor="#EEEEEE" align="left">0.87959768539992</td>
+				<td bgcolor="#EEEEEE" align="left">29.33333</td>
+				<td bgcolor="#EEEEEE" align="left">3821.99333</td>
+				<td bgcolor="#EEEEEE" align="left">JP</td>
+				<td bgcolor="#EEEEEE" align="left">EEF</td>
+				<td bgcolor="#EEEEEE" align="left">PET</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-23.248716</td>
+                <td bgcolor="#EEEEEE" align="left">-62.202953</td>
+                <td bgcolor="#EEEEEE" align="left">205.29</td>
+                <td bgcolor="#EEEEEE" align="left">3956</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Formosa</td>
+				<td bgcolor="#EEEEEE" align="left">SURUBI</td>
+				<td bgcolor="#EEEEEE" align="left">PROA</td>
+				<td bgcolor="#EEEEEE" align="left">137309</td>
+				<td bgcolor="#EEEEEE" align="left">GTE.FR.Proa-2</td>
+				<td bgcolor="#EEEEEE" align="left">PLAR</td>
+				<td bgcolor="#EEEEEE" align="left">FR.Proa-2</td>
+				<td bgcolor="#EEEEEE" align="left">Proa-2</td>
+				<td bgcolor="#EEEEEE" align="left">8630.983</td>
+				<td bgcolor="#EEEEEE" align="left">816.90</td>
+				<td bgcolor="#EEEEEE" align="left">87.86785</td>
+				<td bgcolor="#EEEEEE" align="left">9094.143</td>
+				<td bgcolor="#EEEEEE" align="left">868.6200</td>
+				<td bgcolor="#EEEEEE" align="left">120.60785</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0.094647388368162</td>
+				<td bgcolor="#EEEEEE" align="left">0.010077916403399</td>
+				<td bgcolor="#EEEEEE" align="left">26.79167</td>
+				<td bgcolor="#EEEEEE" align="left">27.99167</td>
+				<td bgcolor="#EEEEEE" align="left">SN</td>
+				<td bgcolor="#EEEEEE" align="left">EEF</td>
+				<td bgcolor="#EEEEEE" align="left">PET</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-23.2027052</td>
+                <td bgcolor="#EEEEEE" align="left">-62.0633232</td>
+                <td bgcolor="#EEEEEE" align="left">190.93</td>
+                <td bgcolor="#EEEEEE" align="left">3930</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Formosa</td>
+				<td bgcolor="#EEEEEE" align="left">SURUBI</td>
+				<td bgcolor="#EEEEEE" align="left">PROA</td>
+				<td bgcolor="#EEEEEE" align="left">130789</td>
+				<td bgcolor="#EEEEEE" align="left">GTE.FR.Proa.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">PLAR</td>
+				<td bgcolor="#EEEEEE" align="left">FR.Proa.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">Proa.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">415.9963</td>
+				<td bgcolor="#EEEEEE" align="left">42.85050</td>
+				<td bgcolor="#EEEEEE" align="left">1332.359</td>
+				<td bgcolor="#EEEEEE" align="left">89203.2063</td>
+				<td bgcolor="#EEEEEE" align="left">9430.99050</td>
+				<td bgcolor="#EEEEEE" align="left">98522.743</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0.10300692578275</td>
+				<td bgcolor="#EEEEEE" align="left">0.76206420971756</td>
+				<td bgcolor="#EEEEEE" align="left">9.250000</td>
+				<td bgcolor="#EEEEEE" align="left">1195.500000</td>
+				<td bgcolor="#EEEEEE" align="left">JP</td>
+				<td bgcolor="#EEEEEE" align="left">EEF</td>
+				<td bgcolor="#EEEEEE" align="left">PET</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-23.203495</td>
+                <td bgcolor="#EEEEEE" align="left">-62.067088</td>
+                <td bgcolor="#EEEEEE" align="left">190.4</td>
+                <td bgcolor="#EEEEEE" align="left">3938</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Formosa</td>
+				<td bgcolor="#EEEEEE" align="left">SURUBI</td>
+				<td bgcolor="#EEEEEE" align="left">SURUBI</td>
+				<td bgcolor="#EEEEEE" align="left">8267</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.Fr.ECa.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">Fr.ECa.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">El Cantor x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">AA</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-23.297778</td>
+                <td bgcolor="#EEEEEE" align="left">-62.062345</td>
+                <td bgcolor="#EEEEEE" align="left">198</td>
+                <td bgcolor="#EEEEEE" align="left">3812</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Formosa</td>
+				<td bgcolor="#EEEEEE" align="left">SURUBI</td>
+				<td bgcolor="#EEEEEE" align="left">SURUBI</td>
+				<td bgcolor="#EEEEEE" align="left">8268</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.Fr.LIg.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">Fr.LIg.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">La Iguana x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">AA</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-23.24299</td>
+                <td bgcolor="#EEEEEE" align="left">-62.071346</td>
+                <td bgcolor="#EEEEEE" align="left">199.65</td>
+                <td bgcolor="#EEEEEE" align="left">3959</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Formosa</td>
+				<td bgcolor="#EEEEEE" align="left">SURUBI</td>
+				<td bgcolor="#EEEEEE" align="left">SURUBI</td>
+				<td bgcolor="#EEEEEE" align="left">562</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.Fr.Sbi.x-1(I)</td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">Fr.Sbi.x-1(I)</td>
+				<td bgcolor="#EEEEEE" align="left">Surubi.x-1(I)</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">ES</td>
+				<td bgcolor="#EEEEEE" align="left">PET</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-23.219175</td>
+                <td bgcolor="#EEEEEE" align="left">-62.08168</td>
+                <td bgcolor="#EEEEEE" align="left">200</td>
+                <td bgcolor="#EEEEEE" align="left">3905</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">LA REINA</td>
+				<td bgcolor="#EEEEEE" align="left">79212</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.LR x-1  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.LR.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">La Reina.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">4106.3</td>
+				<td bgcolor="#EEEEEE" align="left">1600</td>
+				<td bgcolor="#EEEEEE" align="left">11.7</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">4</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">ARGP</td>
+				<td bgcolor="#EEEEEE" align="left">PET</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.7760675</td>
+                <td bgcolor="#EEEEEE" align="left">-63.6380953</td>
+                <td bgcolor="#EEEEEE" align="left">257</td>
+                <td bgcolor="#EEEEEE" align="left">4676</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">PUESTO CLIMACO</td>
+				<td bgcolor="#EEEEEE" align="left">79217</td>
+				<td bgcolor="#EEEEEE" align="left">DW.St.PCI-5(D)</td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.PCl-5(D)</td>
+				<td bgcolor="#EEEEEE" align="left">Puesto Climaco-5(D)</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">3000</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">30000</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">OCI</td>
+				<td bgcolor="#EEEEEE" align="left">SUM</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.919779</td>
+                <td bgcolor="#EEEEEE" align="left">-63.426119</td>
+                <td bgcolor="#EEEEEE" align="left">227</td>
+                <td bgcolor="#EEEEEE" align="left">3647</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">PUESTO CLIMACO</td>
+				<td bgcolor="#EEEEEE" align="left">79219</td>
+				<td bgcolor="#EEEEEE" align="left">DW.St.PCI.x-1(H)  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.PCl.x-1(H)</td>
+				<td bgcolor="#EEEEEE" align="left">Puesto Climaco.x-1(H)</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">143718.89</td>
+				<td bgcolor="#EEEEEE" align="left">29425</td>
+				<td bgcolor="#EEEEEE" align="left">472704.03</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">4206.3</td>
+				<td bgcolor="#EEEEEE" align="left">SN</td>
+				<td bgcolor="#EEEEEE" align="left">PT</td>
+				<td bgcolor="#EEEEEE" align="left">PET</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-23.919846</td>
+                <td bgcolor="#EEEEEE" align="left">-63.430981</td>
+                <td bgcolor="#EEEEEE" align="left">227</td>
+                <td bgcolor="#EEEEEE" align="left">3643</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">PUESTO CLIMACO</td>
+				<td bgcolor="#EEEEEE" align="left">125627</td>
+				<td bgcolor="#EEEEEE" align="left">GTIE.St.PCl-2 (D2)</td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.PCl-2(D-2)</td>
+				<td bgcolor="#EEEEEE" align="left">Puesto Climaco-2(D2)</td>
+				<td bgcolor="#EEEEEE" align="left">620.1956</td>
+				<td bgcolor="#EEEEEE" align="left">340</td>
+				<td bgcolor="#EEEEEE" align="left">14069.50</td>
+				<td bgcolor="#EEEEEE" align="left">89223.5356</td>
+				<td bgcolor="#EEEEEE" align="left">9180</td>
+				<td bgcolor="#EEEEEE" align="left">520309.39</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0.54821414405391</td>
+				<td bgcolor="#EEEEEE" align="left">0.95778022793066</td>
+				<td bgcolor="#EEEEEE" align="left">30</td>
+				<td bgcolor="#EEEEEE" align="left">1828.55</td>
+				<td bgcolor="#EEEEEE" align="left">SN</td>
+				<td bgcolor="#EEEEEE" align="left">EEF</td>
+				<td bgcolor="#EEEEEE" align="left">PET</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-23.922898</td>
+                <td bgcolor="#EEEEEE" align="left">-63.434497</td>
+                <td bgcolor="#EEEEEE" align="left">228.23</td>
+                <td bgcolor="#EEEEEE" align="left">3612</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">PUESTO CLIMACO</td>
+				<td bgcolor="#EEEEEE" align="left">79213</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.PCI-2  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.PCl-2</td>
+				<td bgcolor="#EEEEEE" align="left">Puesto Climaco-2</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">26660.85</td>
+				<td bgcolor="#EEEEEE" align="left">2440</td>
+				<td bgcolor="#EEEEEE" align="left">27971.34</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">92.9</td>
+				<td bgcolor="#EEEEEE" align="left">SN</td>
+				<td bgcolor="#EEEEEE" align="left">EEF</td>
+				<td bgcolor="#EEEEEE" align="left">PET</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.922898</td>
+                <td bgcolor="#EEEEEE" align="left">-63.434497</td>
+                <td bgcolor="#EEEEEE" align="left">228.23</td>
+                <td bgcolor="#EEEEEE" align="left">3637</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">PUESTO CLIMACO</td>
+				<td bgcolor="#EEEEEE" align="left">79214</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.PCI-3  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.PCl-3</td>
+				<td bgcolor="#EEEEEE" align="left">Puesto Climaco-3</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">227.57</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">4736.3</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">100.0</td>
+				<td bgcolor="#EEEEEE" align="left">BM</td>
+				<td bgcolor="#EEEEEE" align="left">ES</td>
+				<td bgcolor="#EEEEEE" align="left">PET</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-23.935918</td>
+                <td bgcolor="#EEEEEE" align="left">-63.44343</td>
+                <td bgcolor="#EEEEEE" align="left">229.14</td>
+                <td bgcolor="#EEEEEE" align="left">3665</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">PUESTO CLIMACO</td>
+				<td bgcolor="#EEEEEE" align="left">79215</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.PCI-4  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.PCl-4</td>
+				<td bgcolor="#EEEEEE" align="left">Puesto Climaco-4</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">7000</td>
+				<td bgcolor="#EEEEEE" align="left">400</td>
+				<td bgcolor="#EEEEEE" align="left">6000</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">PET</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-23.915989</td>
+                <td bgcolor="#EEEEEE" align="left">-63.428562</td>
+                <td bgcolor="#EEEEEE" align="left">226.77</td>
+                <td bgcolor="#EEEEEE" align="left">3650</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">PUESTO CLIMACO</td>
+				<td bgcolor="#EEEEEE" align="left">79216</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.PCI-5  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.PCl-5</td>
+				<td bgcolor="#EEEEEE" align="left">Puesto Climaco-5</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">14047.92</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">30</td>
+				<td bgcolor="#EEEEEE" align="left">30</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">EIE</td>
+				<td bgcolor="#EEEEEE" align="left">SUM</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-23.9197812</td>
+                <td bgcolor="#EEEEEE" align="left">-63.4261635</td>
+                <td bgcolor="#EEEEEE" align="left">227</td>
+                <td bgcolor="#EEEEEE" align="left">3647</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">PUESTO CLIMACO</td>
+				<td bgcolor="#EEEEEE" align="left">79218</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.PCI-7  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.PCl-7</td>
+				<td bgcolor="#EEEEEE" align="left">Puesto Climaco-7</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.9567629</td>
+                <td bgcolor="#EEEEEE" align="left">-63.4750228</td>
+                <td bgcolor="#EEEEEE" align="left">230</td>
+                <td bgcolor="#EEEEEE" align="left">3659</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79222</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.Cor x-1  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.Cor.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">Corzuela.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-24.015484</td>
+                <td bgcolor="#EEEEEE" align="left">-63.5316687</td>
+                <td bgcolor="#EEEEEE" align="left">234.42</td>
+                <td bgcolor="#EEEEEE" align="left">3615</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79195</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.ECh.x-1   </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.ECh.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">El Chango.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.796025</td>
+                <td bgcolor="#EEEEEE" align="left">-63.615677</td>
+                <td bgcolor="#EEEEEE" align="left">250</td>
+                <td bgcolor="#EEEEEE" align="left">4683</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79196</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.EV.es-1  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.EV.es-1</td>
+				<td bgcolor="#EEEEEE" align="left">El Vinalar.es-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">ESTUDIO</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.9619936</td>
+                <td bgcolor="#EEEEEE" align="left">-63.6298971</td>
+                <td bgcolor="#EEEEEE" align="left">253.51</td>
+                <td bgcolor="#EEEEEE" align="left">4443</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79203</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.EVN-5  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.EVN-5</td>
+				<td bgcolor="#EEEEEE" align="left">El Vinalar Norte-5</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">2995.543</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">30</td>
+				<td bgcolor="#EEEEEE" align="left">30</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">EIE</td>
+				<td bgcolor="#EEEEEE" align="left">SUM</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-23.939664</td>
+                <td bgcolor="#EEEEEE" align="left">-63.618753</td>
+                <td bgcolor="#EEEEEE" align="left">248.31</td>
+                <td bgcolor="#EEEEEE" align="left">4087</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79205</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.EVN-7  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.EVN-7</td>
+				<td bgcolor="#EEEEEE" align="left">El Vinalar Norte-7</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.936362</td>
+                <td bgcolor="#EEEEEE" align="left">-63.653126</td>
+                <td bgcolor="#EEEEEE" align="left">262.2</td>
+                <td bgcolor="#EEEEEE" align="left">4163</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79197</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.EVN.a-2  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.EVN.a-2</td>
+				<td bgcolor="#EEEEEE" align="left">El Vinalar Norte.a-2</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">88000</td>
+				<td bgcolor="#EEEEEE" align="left">12000</td>
+				<td bgcolor="#EEEEEE" align="left">55000</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">PET</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLOTACION</td>
+				<td bgcolor="#EEEEEE" align="left">AVANZADA</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-23.939889</td>
+                <td bgcolor="#EEEEEE" align="left">-63.623341</td>
+                <td bgcolor="#EEEEEE" align="left">250</td>
+                <td bgcolor="#EEEEEE" align="left">4064</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79204</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.EVN.a-6  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.EVN.a-6</td>
+				<td bgcolor="#EEEEEE" align="left">El Vinalar Norte.a-6</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLOTACION</td>
+				<td bgcolor="#EEEEEE" align="left">AVANZADA</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.944014</td>
+                <td bgcolor="#EEEEEE" align="left">-63.614658</td>
+                <td bgcolor="#EEEEEE" align="left">245.68</td>
+                <td bgcolor="#EEEEEE" align="left">4045</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79207</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.EVN.a-9  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.EVN.a-9</td>
+				<td bgcolor="#EEEEEE" align="left">El Vinalar Norte.a-9</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">5000</td>
+				<td bgcolor="#EEEEEE" align="left">400</td>
+				<td bgcolor="#EEEEEE" align="left">3000</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLOTACION</td>
+				<td bgcolor="#EEEEEE" align="left">AVANZADA</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.928785</td>
+                <td bgcolor="#EEEEEE" align="left">-63.645113</td>
+                <td bgcolor="#EEEEEE" align="left">259.77</td>
+                <td bgcolor="#EEEEEE" align="left">4172</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79198</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.EVN.e-3(H2)  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.EVN.e-3(H2)</td>
+				<td bgcolor="#EEEEEE" align="left">El Vinalar Norte.e-3(H2)</td>
+				<td bgcolor="#EEEEEE" align="left">157.0881</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">2996.350</td>
+				<td bgcolor="#EEEEEE" align="left">248926.0881</td>
+				<td bgcolor="#EEEEEE" align="left">14100</td>
+				<td bgcolor="#EEEEEE" align="left">341884.458</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0.95018513285547</td>
+				<td bgcolor="#EEEEEE" align="left">29.87500</td>
+				<td bgcolor="#EEEEEE" align="left">259339.26500</td>
+				<td bgcolor="#EEEEEE" align="left">JP</td>
+				<td bgcolor="#EEEEEE" align="left">EIE</td>
+				<td bgcolor="#EEEEEE" align="left">PET</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXTENSION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-23.931053</td>
+                <td bgcolor="#EEEEEE" align="left">-63.648984</td>
+                <td bgcolor="#EEEEEE" align="left">261</td>
+                <td bgcolor="#EEEEEE" align="left">4185</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79200</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.EVN.e-4  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.EVN.e-4</td>
+				<td bgcolor="#EEEEEE" align="left">El Vinalar Norte.e-4</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXTENSION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.949156</td>
+                <td bgcolor="#EEEEEE" align="left">-63.604367</td>
+                <td bgcolor="#EEEEEE" align="left">244</td>
+                <td bgcolor="#EEEEEE" align="left">4063</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79201</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.EVN.x-1  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.EVN.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">El Vinalar Norte.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">17000</td>
+				<td bgcolor="#EEEEEE" align="left">1200</td>
+				<td bgcolor="#EEEEEE" align="left">66000</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.93614</td>
+                <td bgcolor="#EEEEEE" align="left">-63.626074</td>
+                <td bgcolor="#EEEEEE" align="left">251.4</td>
+                <td bgcolor="#EEEEEE" align="left">4140</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79206</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.EVN.x-8  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.EVN.x-8</td>
+				<td bgcolor="#EEEEEE" align="left">El Vinalar Norte.x-8</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.943717</td>
+                <td bgcolor="#EEEEEE" align="left">-63.658055</td>
+                <td bgcolor="#EEEEEE" align="left">261.33</td>
+                <td bgcolor="#EEEEEE" align="left">3969</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79208</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.EVO.x-1  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.EVO.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">El Vinalar Oeste.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.9678258</td>
+                <td bgcolor="#EEEEEE" align="left">-63.7145275</td>
+                <td bgcolor="#EEEEEE" align="left">276</td>
+                <td bgcolor="#EEEEEE" align="left">4054</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79209</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.EV.x-2  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.EV.x-2</td>
+				<td bgcolor="#EEEEEE" align="left">El Vinalar.x-2</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">PET</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+                <td bgcolor="#EEEEEE" align="left">-24.0331216</td>
+                <td bgcolor="#EEEEEE" align="left">-63.6462454</td>
+                <td bgcolor="#EEEEEE" align="left">257.2</td>
+                <td bgcolor="#EEEEEE" align="left">3732</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79210</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.Jac.x-1  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.Jac.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">Jacaranda.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-24.0138387</td>
+                <td bgcolor="#EEEEEE" align="left">-63.621932</td>
+                <td bgcolor="#EEEEEE" align="left">249</td>
+                <td bgcolor="#EEEEEE" align="left">3707</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79211</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.LCol.x-1  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.LCol.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">Las Colmenas.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.777736</td>
+                <td bgcolor="#EEEEEE" align="left">-63.572796</td>
+                <td bgcolor="#EEEEEE" align="left">243</td>
+                <td bgcolor="#EEEEEE" align="left">4617</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79220</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.PS.x-1  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.PS.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">Palo Santo.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.945894</td>
+                <td bgcolor="#EEEEEE" align="left">-63.678616</td>
+                <td bgcolor="#EEEEEE" align="left">268</td>
+                <td bgcolor="#EEEEEE" align="left">4019</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">EL VINALAR</td>
+				<td bgcolor="#EEEEEE" align="left">VINALAR NORTE</td>
+				<td bgcolor="#EEEEEE" align="left">79221</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.Tot. x-1  </td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.Tot.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">Totoral.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.9862938</td>
+                <td bgcolor="#EEEEEE" align="left">-63.5408108</td>
+                <td bgcolor="#EEEEEE" align="left">232.53</td>
+                <td bgcolor="#EEEEEE" align="left">3767</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">IPAGUAZU</td>
+				<td bgcolor="#EEEEEE" align="left">IPAGUAZU</td>
+				<td bgcolor="#EEEEEE" align="left">8269</td>
+				<td bgcolor="#EEEEEE" align="left">CGC.St.Gua.x-1001</td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.Gua.x-1001</td>
+				<td bgcolor="#EEEEEE" align="left">Guadalupe x-1001</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">ES</td>
+				<td bgcolor="#EEEEEE" align="left">PET</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.079996</td>
+                <td bgcolor="#EEEEEE" align="left">-63.580353</td>
+                <td bgcolor="#EEEEEE" align="left">590</td>
+                <td bgcolor="#EEEEEE" align="left">4455</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">IPAGUAZU</td>
+				<td bgcolor="#EEEEEE" align="left">IPAGUAZU</td>
+				<td bgcolor="#EEEEEE" align="left">537</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.Ip-2</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.Ip-2</td>
+				<td bgcolor="#EEEEEE" align="left">Ipaguazu-2</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.012582</td>
+                <td bgcolor="#EEEEEE" align="left">-63.515895</td>
+                <td bgcolor="#EEEEEE" align="left">547.94</td>
+                <td bgcolor="#EEEEEE" align="left">3845</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">IPAGUAZU</td>
+				<td bgcolor="#EEEEEE" align="left">IPAGUAZU</td>
+				<td bgcolor="#EEEEEE" align="left">539</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.Ip.e-4</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.Ip.e-4</td>
+				<td bgcolor="#EEEEEE" align="left">Ipaguazu.e-4</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXTENSION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.012186</td>
+                <td bgcolor="#EEEEEE" align="left">-63.529107</td>
+                <td bgcolor="#EEEEEE" align="left">535.6</td>
+                <td bgcolor="#EEEEEE" align="left">4064</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">IPAGUAZU</td>
+				<td bgcolor="#EEEEEE" align="left">IPAGUAZU</td>
+				<td bgcolor="#EEEEEE" align="left">534</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.Ip.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.Ip.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">Ipaguazu.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">19035.82</td>
+				<td bgcolor="#EEEEEE" align="left">11683.0</td>
+				<td bgcolor="#EEEEEE" align="left">21275.4</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">1743.6</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">PET</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.030549</td>
+                <td bgcolor="#EEEEEE" align="left">-63.533538</td>
+                <td bgcolor="#EEEEEE" align="left">652.65</td>
+                <td bgcolor="#EEEEEE" align="left">4154</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">IPAGUAZU</td>
+				<td bgcolor="#EEEEEE" align="left">IPAGUAZU</td>
+				<td bgcolor="#EEEEEE" align="left">538</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.Ip.x-3</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.Ip.x-3</td>
+				<td bgcolor="#EEEEEE" align="left">Ipaguazu.x-3</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.013017</td>
+                <td bgcolor="#EEEEEE" align="left">-63.523083</td>
+                <td bgcolor="#EEEEEE" align="left">540.32</td>
+                <td bgcolor="#EEEEEE" align="left">4285</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">ÑACATIMBAY</td>
+				<td bgcolor="#EEEEEE" align="left">ÑACATIMBAY</td>
+				<td bgcolor="#EEEEEE" align="left">2755</td>
+				<td bgcolor="#EEEEEE" align="left">CGC.St.Ñac.x-1003</td>
+				<td bgcolor="#EEEEEE" align="left">LAPE</td>
+				<td bgcolor="#EEEEEE" align="left">St.Ñac.x-1003</td>
+				<td bgcolor="#EEEEEE" align="left">Ñacatimbay.x-1003</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">37844.55</td>
+				<td bgcolor="#EEEEEE" align="left">369579.754</td>
+				<td bgcolor="#EEEEEE" align="left">962.59</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">2853.71</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">AT</td>
+				<td bgcolor="#EEEEEE" align="left">GAS</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.293347</td>
+                <td bgcolor="#EEEEEE" align="left">-63.69382</td>
+                <td bgcolor="#EEEEEE" align="left">556.74</td>
+                <td bgcolor="#EEEEEE" align="left">3200</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">ÑACATIMBAY</td>
+				<td bgcolor="#EEEEEE" align="left">ÑACATIMBAY</td>
+				<td bgcolor="#EEEEEE" align="left">2754</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.Ñac.a-1002</td>
+				<td bgcolor="#EEEEEE" align="left">LAPE</td>
+				<td bgcolor="#EEEEEE" align="left">St.Ñac.a-1002</td>
+				<td bgcolor="#EEEEEE" align="left">Ñacatimbay.a-1002</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLOTACION</td>
+				<td bgcolor="#EEEEEE" align="left">AVANZADA</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.304768</td>
+                <td bgcolor="#EEEEEE" align="left">-63.69533</td>
+                <td bgcolor="#EEEEEE" align="left">561.35</td>
+                <td bgcolor="#EEEEEE" align="left">3200</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">ÑACATIMBAY</td>
+				<td bgcolor="#EEEEEE" align="left">ÑACATIMBAY</td>
+				<td bgcolor="#EEEEEE" align="left">2753</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.Ñac.x-1001</td>
+				<td bgcolor="#EEEEEE" align="left">LAPE</td>
+				<td bgcolor="#EEEEEE" align="left">St.Ñac.x-1001</td>
+				<td bgcolor="#EEEEEE" align="left">Ñacatimbay.x-1001</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">40039.2</td>
+				<td bgcolor="#EEEEEE" align="left">145635.8</td>
+				<td bgcolor="#EEEEEE" align="left">31801.9</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">851</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">AT</td>
+				<td bgcolor="#EEEEEE" align="left">GAS</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.296799</td>
+                <td bgcolor="#EEEEEE" align="left">-63.690588</td>
+                <td bgcolor="#EEEEEE" align="left">548</td>
+                <td bgcolor="#EEEEEE" align="left">4092</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8266</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.A-1</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.A-1</td>
+				<td bgcolor="#EEEEEE" align="left">Aibal-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.158791</td>
+                <td bgcolor="#EEEEEE" align="left">-63.482366</td>
+                <td bgcolor="#EEEEEE" align="left">417.47</td>
+                <td bgcolor="#EEEEEE" align="left">4255</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8265</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.CLM.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.CLM.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">Campo Las Maravillas x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.075582</td>
+                <td bgcolor="#EEEEEE" align="left">-63.218736</td>
+                <td bgcolor="#EEEEEE" align="left">352.5</td>
+                <td bgcolor="#EEEEEE" align="left">3205</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8264</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.CM-1</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.CM-1</td>
+				<td bgcolor="#EEEEEE" align="left">Campo Megle-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.1402336</td>
+                <td bgcolor="#EEEEEE" align="left">-62.8454329</td>
+                <td bgcolor="#EEEEEE" align="left">277</td>
+                <td bgcolor="#EEEEEE" align="left">2546</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8263</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.EP-1</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.EP-1</td>
+				<td bgcolor="#EEEEEE" align="left">El Palmar-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.279075</td>
+                <td bgcolor="#EEEEEE" align="left">-63.138613</td>
+                <td bgcolor="#EEEEEE" align="left">312</td>
+                <td bgcolor="#EEEEEE" align="left">2537</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8262</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.H8-1</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.H8-1</td>
+				<td bgcolor="#EEEEEE" align="left">Hito 8-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.017363</td>
+                <td bgcolor="#EEEEEE" align="left">-63.216196</td>
+                <td bgcolor="#EEEEEE" align="left">363</td>
+                <td bgcolor="#EEEEEE" align="left">3282</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8260</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.J-05</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.J-5</td>
+				<td bgcolor="#EEEEEE" align="left">Jollin-5</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.063102</td>
+                <td bgcolor="#EEEEEE" align="left">-63.233345</td>
+                <td bgcolor="#EEEEEE" align="left">358</td>
+                <td bgcolor="#EEEEEE" align="left">3108</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8259</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.J-1</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.J-1</td>
+				<td bgcolor="#EEEEEE" align="left">Jollin-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.129211</td>
+                <td bgcolor="#EEEEEE" align="left">-63.237645</td>
+                <td bgcolor="#EEEEEE" align="left">354</td>
+                <td bgcolor="#EEEEEE" align="left">4209</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8278</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.J-2</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.J-2</td>
+				<td bgcolor="#EEEEEE" align="left">Jollin-2</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.090009</td>
+                <td bgcolor="#EEEEEE" align="left">-63.2600097</td>
+                <td bgcolor="#EEEEEE" align="left">367.48</td>
+                <td bgcolor="#EEEEEE" align="left">2796</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8261</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.J-3</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.J-3</td>
+				<td bgcolor="#EEEEEE" align="left">Jollin-3</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.167047</td>
+                <td bgcolor="#EEEEEE" align="left">-63.302335</td>
+                <td bgcolor="#EEEEEE" align="left">363</td>
+                <td bgcolor="#EEEEEE" align="left">3334</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8258</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.LCu.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.LCu.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">La Curva x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.270656</td>
+                <td bgcolor="#EEEEEE" align="left">-63.171753</td>
+                <td bgcolor="#EEEEEE" align="left">318.7</td>
+                <td bgcolor="#EEEEEE" align="left">2643</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8257</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.ML.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.ML.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">Media Luna x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.123629</td>
+                <td bgcolor="#EEEEEE" align="left">-62.970506</td>
+                <td bgcolor="#EEEEEE" align="left">286.5</td>
+                <td bgcolor="#EEEEEE" align="left">2717</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8256</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.PB-1</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.PB-1</td>
+				<td bgcolor="#EEEEEE" align="left">Palo Blanqueal-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.306266</td>
+                <td bgcolor="#EEEEEE" align="left">-63.214103</td>
+                <td bgcolor="#EEEEEE" align="left">329</td>
+                <td bgcolor="#EEEEEE" align="left">2760</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8255</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.PBa-1</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.PBa-1</td>
+				<td bgcolor="#EEEEEE" align="left">Puesto Barroso-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.378563</td>
+                <td bgcolor="#EEEEEE" align="left">-63.545223</td>
+                <td bgcolor="#EEEEEE" align="left">400</td>
+                <td bgcolor="#EEEEEE" align="left">3971</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8254</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.P.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.P.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">Puma x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.378666</td>
+                <td bgcolor="#EEEEEE" align="left">-63.256895</td>
+                <td bgcolor="#EEEEEE" align="left">330</td>
+                <td bgcolor="#EEEEEE" align="left">2630</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8251</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.SFr.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.SFr.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">San Francisco x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.379523</td>
+                <td bgcolor="#EEEEEE" align="left">-63.361751</td>
+                <td bgcolor="#EEEEEE" align="left">354</td>
+                <td bgcolor="#EEEEEE" align="left">2870</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8250</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.SFr.x-2</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.SFr.x-2</td>
+				<td bgcolor="#EEEEEE" align="left">San Francisco x-2</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.380533</td>
+                <td bgcolor="#EEEEEE" align="left">-63.353986</td>
+                <td bgcolor="#EEEEEE" align="left">352.46</td>
+                <td bgcolor="#EEEEEE" align="left">3059</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8253</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.SV-1</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.SV-1</td>
+				<td bgcolor="#EEEEEE" align="left">Santa Victoria-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.264880792249</td>
+                <td bgcolor="#EEEEEE" align="left">-62.8605809687646</td>
+                <td bgcolor="#EEEEEE" align="left">270</td>
+                <td bgcolor="#EEEEEE" align="left">3895</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">SANTA VICTORIA</td>
+				<td bgcolor="#EEEEEE" align="left">8252</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.SV-2</td>
+				<td bgcolor="#EEEEEE" align="left">TUPA</td>
+				<td bgcolor="#EEEEEE" align="left">St.SV-2</td>
+				<td bgcolor="#EEEEEE" align="left">Santa Victoria-2</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-22.3171100931346</td>
+                <td bgcolor="#EEEEEE" align="left">-62.8668476316598</td>
+                <td bgcolor="#EEEEEE" align="left">262</td>
+                <td bgcolor="#EEEEEE" align="left">4097</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">VALLE MORADO</td>
+				<td bgcolor="#EEEEEE" align="left">VALLE MORADO</td>
+				<td bgcolor="#EEEEEE" align="left">564</td>
+				<td bgcolor="#EEEEEE" align="left">BHP.St.VMo.x-1001</td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.VMo.x-1001</td>
+				<td bgcolor="#EEEEEE" align="left">Valle Morado.x-1001</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">30955.689</td>
+				<td bgcolor="#EEEEEE" align="left">4346261.2255</td>
+				<td bgcolor="#EEEEEE" align="left">64816.3</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">816</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">ERG</td>
+				<td bgcolor="#EEEEEE" align="left">GAS</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.436507</td>
+                <td bgcolor="#EEEEEE" align="left">-64.665315</td>
+                <td bgcolor="#EEEEEE" align="left">904.08</td>
+                <td bgcolor="#EEEEEE" align="left">5796</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">VALLE MORADO</td>
+				<td bgcolor="#EEEEEE" align="left">VALLE MORADO</td>
+				<td bgcolor="#EEEEEE" align="left">130910</td>
+				<td bgcolor="#EEEEEE" align="left">CGC.St.VMo.x-1001(I)</td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.VMo.x-1001(I)</td>
+				<td bgcolor="#EEEEEE" align="left">Valle Morado.x-1001(I)</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">30900.3</td>
+				<td bgcolor="#EEEEEE" align="left">434626.1225</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">755</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">ES</td>
+				<td bgcolor="#EEEEEE" align="left">GAS</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.436507</td>
+                <td bgcolor="#EEEEEE" align="left">-64.665315</td>
+                <td bgcolor="#EEEEEE" align="left">904.08</td>
+                <td bgcolor="#EEEEEE" align="left">6129</td>
+                
+				</tr>
+				
+				<tr class="negro">
+				<td bgcolor="#EEEEEE" align="left">NOROESTE</td>
+				<td bgcolor="#EEEEEE" align="left">Salta</td>
+				<td bgcolor="#EEEEEE" align="left">VALLE MORADO</td>
+				<td bgcolor="#EEEEEE" align="left">VALLE MORADO</td>
+				<td bgcolor="#EEEEEE" align="left">125683</td>
+				<td bgcolor="#EEEEEE" align="left">YPF.St.RC.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">YACO</td>
+				<td bgcolor="#EEEEEE" align="left">St.RC.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">Rio Colorado.x-1</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">0</td>
+				<td bgcolor="#EEEEEE" align="left">SSE</td>
+				<td bgcolor="#EEEEEE" align="left">A</td>
+				<td bgcolor="#EEEEEE" align="left">OT</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left">EXPLORACION</td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left"></td>
+				<td bgcolor="#EEEEEE" align="left">Cargado automáticamente como [Sin movimientos]</td>
+                <td bgcolor="#EEEEEE" align="left">-23.406147</td>
+                <td bgcolor="#EEEEEE" align="left">-64.645502</td>
+                <td bgcolor="#EEEEEE" align="left">721.29</td>
+                <td bgcolor="#EEEEEE" align="left">4509</td>
+                
+				</tr>
+				</table><br>		
+		
+			<table border="1" cellpadding="3" cellspacing="1" bgcolor="#999999">
+				<td align="center" bgcolor="#FFAF0F" valign="middle" nowrap="nowrap"><b>Fin del reporte</b></td>
+			</tr>
+			
+			
+			</body>
+</html>
