@@ -1,0 +1,2 @@
+Tomar el sql del paso 7, insertarlo en categorias y ejecutar de nuevo la union del paso 5.
+Exportar el resultado a csv y no deberia haber ningun precio vacio.
