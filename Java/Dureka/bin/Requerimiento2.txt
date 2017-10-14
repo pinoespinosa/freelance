@@ -1,0 +1,26 @@
+INSERT INTO `dureka`.`tipoproductos`(`codigo`,`nombre`,`texto_meli`,`slug`,`subtitulo`,`imagen`,`marca`,`categoria`,`subcategoria`,`subsubcategoria`,`caracteristica_tipo_1`,`caracteristica1`,`caracteristica_tipo_2`,`caracteristica2`,`caracteristica_tipo_3`,`caracteristica3`,`caracteristica_tipo_4`,`caracteristica4`,`caracteristica_tipo_5`,`caracteristica5`,`descripcion`,`title`,`description`,`keywords`,`fecha`,`estado`,`orden`) VALUES 
+
+('1003',
+'Nebulizador Ultrasónico San Up Compacto 3060',
+'',
+'nebulizador-ultrasonico-san-up-compacto-3060',
+'Nebulizador con sistema Ultrasónico sumamente silencioso.',
+'https://www.durekashop.com/file/im/prod/7793647611410.jpg',
+'52',
+'17', // Categoria
+'-1',
+'-1', // Sub Sub Categoria
+
+'-1','',
+'-1','',
+'-1','',	// Caract
+'-1','',
+'-1','',
+
+'', 	// Descr
+'Nebulizador Ultrasónico San Up Compacto 3060', // tit
+'',		// Descr
+'Nebulizador Ultrasónico San Up Compacto 3060,San Up,Cuidado Personal y Salud,Cuidados de la Salud,Nebulizadores',	// Key
+'02017-36-11 09:36:06',
+'-1',
+'-1');

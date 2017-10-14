@@ -1,0 +1,70 @@
+Explicación del funcionamiento de la web:
+La web es un comparador de precios de productos (www.durekashop.com) donde tenemos:     - Una base de datos de tipos de productos (por ejemplo Samsung Smart TV 32”) donde se aloja toda la información del producto en si (ID_Tipo_Producto, titulo, subtitulo, descripción, marca, categoría, subcategoría, subsubcategoria, imágenes, el código MELI, etc)
+- Por otro lado tenemos otra base de datos llamada productos que contiene todos los productos que mostramos, serian todos los productos que venden las tiendas. Siguiendo con el ejemplo anterior, para el Tipo de producto ‘Samsung Smart TV 32”’ pueden existir varias tiendas que vendan el mismo producto, entonces en esta base de datos se alojaría estos productos, mostrando su precio, la url a la tienda que vende dicho producto, titulo, subtitulo y lo mas importante: el ID_Tipo_Producto que seria el numero que corresponde al Tipo de Producto en cuestión.
+Actualmente para realizar modificaciones o actualizar ambas bases de datos, se trabaja en Excel y mediante macros se genera un archivo .xls (para cada base de datos) que se sube por el back-end de la web. 
+Lo que hace la macro es abrir individualmente las bases de datos de cada una de las tiendas, y mediante operaciones se van agregando, quitando productos o actualizando precios de las bases de datos de productos. Además de crear Tipo de Productos en el caso de que se encuentren productos nuevos.
+Ahora me encuentro con el problema de que al ser tantos productos, ya no puedo seguir haciéndolo en Excel, por eso busco la forma de realizar todo lo mismo que hace el Excel para generar las bases de datos pero directamente desde el servidor.
+La idea seria, que automáticamente de forma diaria se ejecuten los scripts (webscraping) que me generan las bases de datos de cada una de las tiendas. Y luego con esos datos se actualicen los productos y los tipos de productos de mi web. 
+
+Lógica del funcionamiento de la carga/actualización de productos en la web:
+Se le asigna a cada tienda creada una dirección url en donde se encuentra su base de datos (ubicación del archivo output)
+Se programa, primero para que se ejecuten todos los scripts (que generaran las bases de datos de las tiendas) en un determinado horario y luego para que se ejecute todo el proceso de carga/actualización de forma diaria y automatica, en otro horario donde ya se calcula que se generaron todos los archivos outputs de cada tienda.
+El proceso trabaja con cuatro bases de datos: Una es la base de datos del archivo output para cada tienda, otra es la base de datos de Productos, otra es la base de datos de Tipo Productos y por ultimo una base de datos ‘comodín’ que utilizaremos para el proceso, la cual una vez terminada el mismo se vacía.
+ Y con cinco archivos de texto *: uno que contiene las palabras que indican que productos hay que borrar, otro que indica que palabras se asocian a determinadas categorías, subcategorías y subsubcategorias, otro para indicar las condiciones de productos que se quieren eliminar, otro para indicar que características le corresponde a cada subsubcategoria y por último el archivo donde se generara la lista de imágenes a descargar (leer mas adelante).
+Lo mejor yo creo seria que al arrancar el proceso, al momento de interactuar con la base de datos de productos solo lo hagamos con aquellos productos que sean de dicha tienda para hacerlo mucho más rápido y no andar recorriendo todos los productos ** (esto en el Excel lo hago aplicándole un filtro a la columna ‘tienda’, escogiendo la tienda a la cual voy a realizar la carga/actualización.).
+Vamos a tener en cuenta que se actualiza de a un archivo a la vez (de a una tienda a la vez). Comparando la base de datos del archivo output (tienda origen) con los productos de esa misma tienda, pero de nuestra base de datos Productos.
+El paso a paso de las acciones sería más o menos asi:
+
+1) Dentro de nuestra base de datos Productos, cambiamos el estado de ‘activo’ a ‘no activo’ para TODOS los productos de esta tienda.
+
+2) Abrimos el archivo de la tienda. Y como aquí hay muchos productos que no interesan, lo primero que hay que hacer es eliminarlos. Una forma (que es la mejor que se me ocurrió) es buscar en cada uno de los títulos de todos los productos si contiene alguna de las palabras que se encuentran en un archivo de texto y a posterior se elimina la fila. Por ejemplo: Buscar en la columna ‘Titulo’ para cada fila (producto) la palabra ‘mesa’. Cada vez que encuentre en el título de un producto dicha palabra, se elimina ese producto. También tenemos productos que en su columna numero 17 (Condicion_Del_Producto), se encuentra el dato ‘Agotado’ o ‘Sin stock’ o ‘Consultar’. Todos aquellos productos que contengan alguna de esas frases que también se indican en otro archivo de texto deben de ser eliminados.
+
+3) Una vez que ya tenemos la lista ‘filtrada’ de la tienda, pasamos a actualizar los productos (si es que existieran productos para esta tienda). Para esto, vamos producto por producto, tomamos el campo de ‘ID_Tienda’ y lo buscamos en la base de datos de productos ***. Si existe ese ‘ID_Tienda’, se actualiza el ‘precio’ y el campo ‘URL_Redireccion’ y se elimina dicho producto de la base de datos origen (archivo output). Si no existe se pasa al siguiente hasta finalizar. Al actualizarse el precio de un producto, se entiende que el estado en la web para dicho producto pasa a ser ‘activo’. En el caso que el campo ‘ID_Tienda’ este vacio se procede a comparar utilizando el campo ‘URL_Redireccion’. Aclaracion: se entiende por actualizar a reemplazar el dato de la base de datos productos por el de la base de datos tienda.
+
+4) Llegado a este punto deberíamos tener por un lado la base de datos productos con los productos ya actualizados y ‘activos’ y los que no se hayan actualizado en ‘no activo’ (que no se muestran en la web). Y por el otro lado la base de datos del archivo de la tienda (output) con solamente los productos que no se encontraron (se entiende que son nuevos productos), cabe aclarar que hasta aquí no hemos realizado ningún tipo de acción con la base de datos de Tipo Producto. Procedemos a verificar si existe algún tipo de producto que coincida con alguno de estos productos nuevos que se encuentran en la base de datos de la tienda. Para realizar esto no se me ocurre otra forma que recorrer la columna ‘MELI’ de la base de datos de Tipo de Producto, tomando el valor del campo ‘MELI’ de cada tipo de producto y buscando si ese valor se encuentra en el ‘titulo’ de algún producto de la base de datos de la tienda (algo parecido a lo que hicimos en el punto 2 para eliminar los que no interesaban). En caso de encontrar algún producto que contenga ese valor (por ejemplo HR502), se creara un producto en la base de datos productos tomando los datos de la base de datos de la tienda asignándole a dicho producto creado el ID del tipo de producto que corresponda. Y posteriormente se eliminará el producto en cuestión de la base de datos de la tienda. Si no encuentra nada no hace nada.
+
+5) Luego, copiamos todos los productos que quedaron en la base de datos de la tienda (archivo output) y los pegamos en la base de datos auxiliar. Y pasamos a repetir todo el proceso (desde el punto 1) hasta el 5) incluido) pero para la siguiente tienda, hasta llegar a la última.
+
+6) Ya con el proceso de cargado de todas las tiendas finalizado, pasamos a trabajar sobre el remanente de productos (que quedo en la base de datos auxiliar). Dado que las categorías, subcategorías, y subsubcategorias que se encuentran en los archivos de tienda pueden no coincidir, para mi lo mejor, ahora situados en la base de datos auxiliar, es eliminar las tres columnas directamente (en algún momento pensé que iba a ser útil scrapear estos datos). Aquí hago una aclaración: yo desde el Excel lleno esos 3 campos (cat, sub y subsub) utilizando una matriz (aquí puede estar cargada previamente en un archivo de texto), donde si el título de dicho producto contiene determinada palabra, el sistema asigna automáticamente la categoría, la subcategoría y la subsubcategoria, pero quizás haya alguna mejor manera de hacerlo. Y en caso de no encontrarla las completo a mano. Luego, si el producto tiene el campo ‘Subtitulo’ vacio, se copia el dato del campo ‘Marca’ y se lo pega en el campo ‘Subtitulo’. Si el producto no tiene descripción, pero SI tiene ‘subtitulo’: se copia el dato almacenado en ‘subtitulo’ y se lo pega en el campo ‘descripción’.
+
+7) Una vez finalizado lo anterior me debería de permitir agregar o modificar la base de datos auxiliar, permitiendome borrar manualmente aquellos que no me interesen (quizás alguno que paso el filtro de borrado, o que es un producto muy poco conocido) o verificando que todo se haya asignado correctamente ya que algunas subsubcategorias quizás tenga que agregarlas a mano.
+
+8) Aquí, ya con los campos de las categorías, subcategorías y subsubcategorias ya completos, pasamos a llenar las características. Lee del archivo de texto de las características  y busca, según la subsubcategoria que tiene el tipo de producto, las características que le corresponde a dicho tipo de producto y las coloca.
+
+9) Ahora pasamos a llenar los campos ‘Title’, ‘Keywords’ y ‘Desc’. Para el campo ‘Title’ copiamos los datos del campo ‘Titulo’ y los pegamos ahi. Para el campo ‘Keywords’ copiamos los datos del campo ‘Titulo’, ‘Marca’ ‘Categoria’, ‘Subcategoria’ y ‘Subsubcateogoria’ y los pegamos ahí. Quedando como resultado el campo ‘Keywords’ algo asi: ‘Televisor Samsung 42” Samsung Imagen Televisores Smart Tv’. Luego reemplazamos los espacios “ “ por comas “,” quedando como resultado final algo asi: Televisor,Samsung,42”,Samsung,Imagen,Televisores,Smart,Tv’. Para el campo ‘Desc’ copiamos los datos del campo ‘Descripcion’ y los pegamos ahi.
+
+10) En este punto debemos copiar en forma de lista (una dirección url por cada imagen una debajo de otra), todos los datos de los cinco campos de imágenes en un archivo de texto alojado en /file/im/prod/
+
+11) Ahora pasamos a modificar el url de las imagenes, ya que las imágenes las descargamos al servidor para evitar perder el certificado SSL. Para esto, hay que modificar los cinco campos de las imágenes (puede solo tener una imagen), quitando la url de la tienda y añadiendo la url directorio donde nosotros alojamos las imágenes de los tipos de producto. Lo que yo por lo menos hago desde el Excel es:
+	A)    Buscar de derecha a izquierda una barra “/” y eliminar todo lo que se encuentre a la izquierda de la misma (incluyendo la barra “/”)
+	B)    Buscar de izquierda a derecha un signo de pregunta “?” y elimina todo lo que se encuentre a la derecha del mismo (incluyendo el signo de pregunta “?”)
+	C)    Buscar de derecha a izquierda un punto “.”, si lo encuentra no hace nada. Y si no lo encuentra, agrega al final del resultado “.jpg”
+	D)    Pegar al inicio del resultado la url a la carpeta nuestra de imágenes ‘https://www.durekashop.com/file/im/prod/’
+
+Por ejemplo tengo en el campo ‘Imagen_Principal’ lo siguiente:
+http://falabella.scene7.com/is/image/FalabellaAR/2687773?$producto310$
+
+A) Realizado este paso queda asi: 2687773?$producto310$
+B) Realizado este paso queda asi: 2687773
+C) Realizado este paso queda asi: 2687773.jpg
+D) Realizado este paso queda asi: https://www.durekashop.com/file/im/prod/2687773.jpg
+
+12) Ahora SI y SOLO SI todos los datos están completos (salvo las imágenes que puede tener como minino una, que es la ‘Imagen_Principal’) el sistema debería de crear automáticamente los tipos de productos y los productos (en cada base de datos correspondiente) utilizando los datos de los productos que quedaron de la base de datos de auxiliar y asignándole a cada producto nuevo que se cree el ID del tipo de producto que corresponda. Terminado esto, me debería mostrar la base de datos de tipo de producto con los últimos tipos de producto que se crearon, permitiéndome llenar el campo ‘MELI’ para cada tipo de producto.
+
+13) Si no hubo errores, que me muestre un resumen de la cantidad de productos que quedaron ‘no activos’. De la cantidad de productos que se eliminaron, que se actualizaron, que se crearon, y la cantidad de tipos de productos nuevos.
+Y al final, vaciar la base de datos auxiliar.
+
+14) Por último, debería de ejecutarme cinco comandos por consola ****:
+Wget –i /home/c0410390/public_html/file/im/prod/lista.txt
+(Donde ‘lista.txt’ es el archivo de texto donde se encuentra el listado de todas las urls de imagines de las tiendas a descargar)
+	
+cd /home/c0410390/public_html/file/im/prod/
+jpegoptim *.jpg
+jpegoptim *.jpeg
+optipng *.png
+
+Tambien creo que habria que agregar en algun lado un boton para eliminar manualmente los productos que quedaron ‘no activo’ luego de un determinado tiempo.
+* Puse archivos de texto porque es lo primero que se me ocurre que sea fácil de editar y de hacer.
+** No conozco si realmente existe la posibilidad de hacer esto, o quizás convenga cortar todos los productos de la base de datos de productos que correspondan a dicha tienda que se esté actualizando y pegarlos en otra nueva base de datos auxiliar y trabajar directamente ahí. Aunque luego deberíamos de pegar esos datos nuevamente en la base de datos productos.
+*** Aquí lo mejor seria comparar solo por ‘ID_Tienda’ pero el problema es que no todas las tiendas muestran ese dato. Luego también pasa que las url van cambiando para el mismo producto. Pero creo que es lo mejor que se puede hacer. 
+**** Deberia de ejecutarse cada comando una vez finalizado el anterior.
