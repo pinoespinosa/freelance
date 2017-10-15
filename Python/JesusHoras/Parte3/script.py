@@ -4,30 +4,25 @@ import tkinter as tk
 from tkinter import filedialog
 
 
-
-#######################################################
-
-CANT_FILAS_A_LEER = 15;
-
-
-#######################################################
-
-
-
-
-# Reading the 15th lines of CSV
 LISTA = []
+
+# Read the file until the date starts to repeat
+ListaFechasLeidas = []
+
 try:
 	# Open select dialog windows
 	root = tk.Tk()
 	root.withdraw()
 	file_path = filedialog.askopenfilename()
 	file = open(file_path, "r")
-	cant=0;
+
+	cant =0;
+	
 	for line in file:
-		if cant<CANT_FILAS_A_LEER and cant>0:
+		if ( cant>0 and not line.split(",")[1] in ListaFechasLeidas):
 			LISTA.append(line)
-		cant=cant+1
+			ListaFechasLeidas.append(line.split(",")[1])
+		cant=cant+1;
 	file.close();
 except (FileNotFoundError):
 	print("File not found")
