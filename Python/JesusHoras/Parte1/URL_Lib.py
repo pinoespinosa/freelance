@@ -29,7 +29,7 @@ def descargarResultadoData(URL, TIMEOUT, INTENTS, DATA, HEADERS):
 			html = response.read().decode('utf-8')
 
 
-			pagina = BeautifulSoup(html, 'html.parser');
+		#	pagina = BeautifulSoup(html, 'html.parser');
 			tries = 12;
 		except KeyboardInterrupt:
 			print('The user abort the script.')
@@ -39,4 +39,4 @@ def descargarResultadoData(URL, TIMEOUT, INTENTS, DATA, HEADERS):
 			tries = 12;
 
 	
-	return pagina
+	return html

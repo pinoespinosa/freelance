@@ -6,7 +6,7 @@ def saveFile(FILENAME, LISTA):
 	file.close();
 	return
 
-def loadFile(FILENAME, LISTA):
+def loadCreateFile(FILENAME, LISTA):
 	try:
 		file = open(FILENAME, "r")
 		for line in file:
@@ -20,7 +20,15 @@ def loadFile(FILENAME, LISTA):
 	return
 
 
-
+def loadFile(FILENAME, LISTA):
+	try:
+		file = open(FILENAME, "r")
+		for line in file:
+			LISTA.append(line.strip())
+		file.close();
+	except (FileNotFoundError):
+		print('')
+	return
 
 
 

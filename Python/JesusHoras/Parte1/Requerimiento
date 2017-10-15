@@ -1,0 +1,2 @@
+A partir de un fichero CSV que contiene codigos de acciones, hay que programar una tarea que se ejecute cada dia. En la primera de las ejecuciones trae toda la informacion historica disponible para 3 años, luego actualiza la informacion preexistente una vez por dia
+
