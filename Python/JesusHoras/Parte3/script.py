@@ -1,14 +1,31 @@
 import matplotlib.pyplot as plt; plt.rcdefaults()
 import numpy as np
+import tkinter as tk
+from tkinter import filedialog
+
+
+
+#######################################################
+
+CANT_FILAS_A_LEER = 15;
+
+
+#######################################################
+
+
 
 
 # Reading the 15th lines of CSV
 LISTA = []
 try:
-	file = open("UnderlyingOptionsIntervalsQuotes_3600sec_2016-09-01.csv", "r")
+	# Open select dialog windows
+	root = tk.Tk()
+	root.withdraw()
+	file_path = filedialog.askopenfilename()
+	file = open(file_path, "r")
 	cant=0;
 	for line in file:
-		if cant<15 and cant>0:
+		if cant<CANT_FILAS_A_LEER and cant>0:
 			LISTA.append(line)
 		cant=cant+1
 	file.close();
@@ -35,8 +52,8 @@ for valor in LISTA:
 y_pos = np.arange(len(objects))
 plt.bar(y_pos, performance, align='center', alpha=0.5)
 plt.xticks(y_pos, objects, ha='right', rotation=45 )
-plt.ylabel('Usage')
-plt.title('Programming language usage')
+#plt.ylabel(file_path)
+#plt.title('Valores de las acciones')
 
 # Defining the ranges
 dif = (maxim - minim) / 4;
@@ -44,5 +61,6 @@ plt.ylim(ymin=minim - dif)
 plt.ylim(ymax=maxim + dif)
 plt.subplots_adjust(bottom=0.2)
 
-plt.show()
+plt.show(block=False)
 
+input("Press ENTER to exist") 

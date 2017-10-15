@@ -25,13 +25,17 @@ toCompress.sort();
 
 # Adding files
 avance = 0;
+
 for fileName in toCompress:
+	lista2 = [];
 	lista = [];
 	loadFile(file_path + '/' + 'unziped' + '/' + fileName, lista);
 	print('Processing ' + fileName + ' ' + str( avance / len(toCompress) * 100 ) + '%')
 	tam = 1;
 	while (tam < len(lista)):
-		df2 = pd.DataFrame(lista[tam].split(","))
+		lista2.append(lista[tam].split(","))
 		tam = tam + 1;
+	
+	df2 = pd.DataFrame(lista2)
+	df2.to_hdf('compressData.h5', 'data', append=True)
 	avance = avance + 1
-df2.to_hdf('compressData.h5', 'data', append=True)
