@@ -17,29 +17,29 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @EnableAsync
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-    public WebConfig() {
-        super();
-    }
+	public WebConfig() {
+		super();
+	}
 
-    @Override
-    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
+	@Override
+	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
 
-        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
-    }
+		registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+	}
 
-    @Bean
-    public ViewResolver viewResolver() {
-        final InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/WEB-INF/view/");
-        viewResolver.setSuffix(".jsp");
-        return viewResolver;
-    }
+	@Bean
+	public ViewResolver viewResolver() {
+		final InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+		viewResolver.setPrefix("/WEB-INF/view/");
+		viewResolver.setSuffix(".jsp");
+		return viewResolver;
+	}
 
-    @Override
-    public void addViewControllers(final ViewControllerRegistry registry) {
-        super.addViewControllers(registry);
-        registry.addViewController("/csrfAttacker.html");
-    }
+	@Override
+	public void addViewControllers(final ViewControllerRegistry registry) {
+		super.addViewControllers(registry);
+		registry.addViewController("/csrfAttacker.html");
+	}
 
 }
