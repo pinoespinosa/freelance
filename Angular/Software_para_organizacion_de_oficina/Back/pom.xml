@@ -245,7 +245,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>spring-security-rest</finalName>
+		<finalName>officemanager</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -271,70 +271,11 @@
 				<version>${maven-war-plugin.version}</version>
 			</plugin>
 
-			<plugin>
-				<groupId>org.codehaus.cargo</groupId>
-				<artifactId>cargo-maven2-plugin</artifactId>
-				<version>${cargo-maven2-plugin.version}</version>
-				<configuration>
-					<container>
-						<containerId>jetty8x</containerId>
-						<type>embedded</type>
-						<systemProperties>
-							<!-- <provPersistenceTarget>cargo</provPersistenceTarget> -->
-						</systemProperties>
-					</container>
-					<configuration>
-						<properties>
-							<cargo.servlet.port>8082</cargo.servlet.port>
-						</properties>
-					</configuration>
-				</configuration>
-			</plugin>
 
 		</plugins>
 
 	</build>
 
-	<profiles>
-		<profile>
-			<id>live</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.codehaus.cargo</groupId>
-						<artifactId>cargo-maven2-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>start-server</id>
-								<phase>pre-integration-test</phase>
-								<goals>
-									<goal>start</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>stop-server</id>
-								<phase>post-integration-test</phase>
-								<goals>
-									<goal>stop</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-compiler-plugin</artifactId>
-						<version>${maven-compiler-plugin.version}</version>
-						<configuration>
-							<source>1.8</source>
-							<target>1.8</target>
-						</configuration>
-					</plugin>
-
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 
 
 	<properties>
