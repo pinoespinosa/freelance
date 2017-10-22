@@ -1,11 +1,10 @@
-package org.baeldung.web.controller;
+package web.controller;
 
-import org.baeldung.persistence.model.Customer;
-import org.baeldung.persistence.model.Order;
-import org.baeldung.web.service.CustomerService;
-import org.baeldung.web.service.OrderService;
+
+import web.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,14 +21,13 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-    @Autowired
-    private OrderService orderService;
 
-    @RequestMapping(value = "/{customerId}", method = RequestMethod.GET)
-    public Customer getCustomerById(@PathVariable final String customerId) {
-        return customerService.getCustomerDetail(customerId);
+
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public String getCustomerById(@PathVariable final String customerId) {
+        return "Hello";
     }
-
+/*
     @RequestMapping(value = "/{customerId}/{orderId}", method = RequestMethod.GET)
     public Order getOrderById(@PathVariable final String customerId, @PathVariable final String orderId) {
         return orderService.getOrderByIdForCustomer(customerId, orderId);
@@ -61,5 +59,5 @@ public class CustomerController {
         }
         return allCustomers;
     }
-
+*/
 }

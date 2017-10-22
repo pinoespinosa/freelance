@@ -1,10 +1,10 @@
-package org.baeldung.spring;
+package spring;
 
 import org.springframework.context.annotation.ComponentScan;
 
 // @Configuration
 // @ImportResource({ "classpath:webSecurityConfig.xml" })
-@ComponentScan("org.baeldung.security")
+@ComponentScan("security")
 public class SecurityXmlConfig {
 
     public SecurityXmlConfig() {

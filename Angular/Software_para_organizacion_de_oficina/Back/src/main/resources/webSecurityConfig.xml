@@ -12,8 +12,6 @@
 	<http use-expressions="true" entry-point-ref="restAuthenticationEntryPoint">
         <intercept-url pattern="/admin/*" access="hasAnyRole('ROLE_ADMIN')"/>
     
-		<intercept-url pattern="/api/**" access="isAuthenticated()" />
-
 		<csrf disabled="true" />
 
 		<form-login authentication-success-handler-ref="mySuccessHandler"
