@@ -1,0 +1,7 @@
+Desarrollar un software para la organización y registro de clientes, asignación de trabajos, pagos y abonos realizados. Ordenar información, hacer reportes de trabajos por realizar, indicadores, establecer el estado de los trabajos realizados, emisión de facturas. La base de datos es sencilla, y tiene algunas características para buscar, ordenar, asignar trabajos, etc.
+Es un software de oficina, actualmente se está trabajando con una base de datos en excel, pero se lo quiere automatizar y colocar varios controles, que se lo pueda manejar con 3 tipos de usuarios desde varias computadoras. La idea completa está estructurada, no necesita un diseño elaborado, sino que sea funcional. Se puede desarrollar en cualquier lenguaje de uso común, pero que se pueda acceder por web y sea modificable a futuro.
+
+ Andrés te envío bastante explicado el programa, los requerimientos, las pantallas, algunas ideas de la base de datos. Ahí está la mayor parte de lo que se requiere, algunos puntos aún falta incluir y claro otros temas tendremos que ir conversando, pero creo está bastante explicado para que lo inicies y podamos seguir conversando. En el archivo en excel la primera hoja te envío el "registro general" que actualmente es un ejemplo de la base de datos que actualmente utilizamos y de ahí se opera la mayor parte de cosas y en word toda la explicación. Revísalo y me avisas cualquier duda y para hacernos una programación de entregas.
+
+    Archivos adjuntos: Software.docx (597.9 KB) Respaldo registro y otros.xlsx (257.9 KB) 
+
