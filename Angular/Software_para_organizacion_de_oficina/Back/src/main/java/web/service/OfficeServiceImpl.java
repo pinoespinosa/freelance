@@ -7,7 +7,12 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerServiceImpl implements CustomerService {
+public class OfficeServiceImpl implements OfficeService {
+
+	@Override
+	public String getHelloWorld() {
+		return "Holaa";
+	}
 
 
 }
