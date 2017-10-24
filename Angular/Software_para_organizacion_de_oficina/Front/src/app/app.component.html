@@ -1,0 +1,23 @@
+<h2 style="text-align: center;">Registro General</h2>
+
+                <table class="table table-new table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>   
+                        </tr>
+                    </thead>
+                    <tbody class="centro" >
+
+                        <tr *ngFor="let orderEl of clientes">
+
+                            <td>{{orderEl.nombre}}</td>
+                            <td>{{orderEl.apellido}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+
