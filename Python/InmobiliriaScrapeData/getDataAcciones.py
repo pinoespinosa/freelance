@@ -1,8 +1,9 @@
-from URL_Lib import descargarResultadoData
+from URL_Lib import descargarResultadoData, descargarResultadoData2, descargarResultadoData3
 from File_Lib import saveFile, loadFile
 import time
 import json
 from datetime import datetime
+from bs4 import BeautifulSoup 	# pip install beautifulsoup4
 
 
 
@@ -43,6 +44,15 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 	tipo.append('locales');
 	tipo.append('oficinas');
 	tipo.append('casas-campestres');
+
+	tipo_metro=[];
+	tipo_metro.append('apartamento');
+	tipo_metro.append('casa');
+	tipo_metro.append('lote');
+	tipo_metro.append('finca');
+	tipo_metro.append('local');
+	tipo_metro.append('oficina');
+	tipo_metro.append('casas-campestres');
 
 	tipo2=[];
 	tipo2.append('8');
@@ -88,25 +98,116 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 	ciudad['Magdalena']='72';
 	ciudad['Guajira']='71';
 
-
 	acumulaodo = []
+	acumulaodo.append('Nombre,Link,Ubicacion,Precio,Cant Habitaciones,Cant Baños,Antigüedad,Parqueadero');
 	cant = 1;
 	pos = 1;
 	while (cant>0):
 
-		labbel.set("Escaneando pagina " +str(pos)+ " ...");
+		labbel.set("Escaneando pagina " +str(pos)+ " ..." + str(valor_web));
 		app.update_idletasks()
 
 		if (valor_web>0):
-			valor = descargarInfoAccion(web[valor_web],'/'+tipo[valor_tipo]+'/'+inmueble[valor_inmueble]+'/?ad=30|'+str(pos)+'||||'+inmueble2[valor_inmueble]+'||'+tipo2[valor_tipo]+'|||'+str(ciudad[valor_ciudad])+'|||||||||||||||||1|||1||||||-1', acumulaodo, labbel, d, pos, tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+valor_ciudad.replace(' ','_'));
+			valor = descargarInfoAccion(web[valor_web],'/'+tipo[valor_tipo]+'/'+inmueble[valor_inmueble]+'/?ad=30|'+str(pos)+'||||'+inmueble2[valor_inmueble]+'||'+tipo2[valor_tipo]+'|||'+str(ciudad[valor_ciudad])+'|||||||||||||||||1|||1||||||-1', acumulaodo, labbel, d, pos, 'fincaraiz_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+valor_ciudad.replace(' ','_')+'.csv');
 		else:
-			valor = descargarInfoAccion2(web[valor_web],'/'+tipo[valor_tipo]+'/'+inmueble[valor_inmueble]+'/?ad=30|'+str(pos)+'||||'+inmueble2[valor_inmueble]+'||'+tipo2[valor_tipo]+'|||'+str(ciudad[valor_ciudad])+'|||||||||||||||||1|||1||||||-1', acumulaodo, labbel, d, pos, tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+valor_ciudad.replace(' ','_'));
+			valor = descargarInfoAccion2(web[valor_web],'/' + tipo_metro[valor_tipo] +'/'  +inmueble[valor_inmueble]+'/' + ubicacion2, acumulaodo, labbel, d, pos, 'metrocuadrado_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+valor_ciudad.replace(' ','_')+'.csv',   tipo_metro[valor_tipo], inmueble[valor_inmueble], ubicacion2);
 
 
 		cant = len(valor)
 		pos = pos + 1;
 
 	labbel.set("Escanea completo");
+
+
+
+
+def descargarInfoAccion2(url1, url2, acumulaodo, labbel, d, pos, nombrefile, tip_imn, tip_op, ciudad):
+	file = [];
+
+	querystring = {"mtiponegocio":tip_op,"mtipoinmueble":tip_imn,"mciudad":ciudad,"selectedLocationCategory":"1","selectedLocationFilter":"mciudad","currentPage":pos,"totalPropertiesCount":"1184","totalUsedPropertiesCount":"1184","totalNewPropertiesCount":"0","sfh":"1"}
+
+	elem = [];
+
+	print(querystring)
+
+
+	orig = descargarResultadoData2(url1 + url2,querystring, 360, 10, '', '')
+	data8 = orig.prettify().split('<div class="m_rs_list_item ">');
+
+	#print(orig.prettify())
+
+	data = []
+	cant=0;
+	for mm in data8:
+		if (cant==0):
+			cant=1
+		else:
+			elem.append(mm.split('href="')[1].split('"')[0]);
+
+	for aa in elem:
+		orig2 = descargarResultadoData3(aa,'', 360, 10, '', '')
+
+		try:
+			dato_nombre = orig2.find_all(class_="m_property_info_title")[0].find_all("h1")[0].text.replace(',',';').strip()
+		except:
+			dato_nombre = ''
+
+		try:
+			dato_link = aa
+		except:
+			dato_link = ''
+
+		try:
+			dato_area = ''
+		except:
+			dato_area = ''
+
+		try:
+			dato_precio = orig2.find_all(class_="m_property_info_table")[0].find_all("dd")[0].text.replace(',',';').strip()
+		except:
+			dato_precio = ''
+
+		try:
+			dato_habit = orig2.find_all(class_="m_property_info_table")[0].prettify().split("Habitaciones")[1].split("<dd>")[1].split("</dd>")[0].strip()
+		except:
+			dato_habit = ''
+
+		try:
+			dato_banio = orig2.find_all(class_="m_property_info_table")[0].prettify().split("Ba")[1].split("<dd>")[1].split("</dd>")[0].strip()
+		except:
+			dato_banio = ''
+
+		try:
+			dato_edad = ''
+		except:
+			dato_edad = ''
+
+		try:
+			dato_parq = orig2.find_all(class_="m_property_info_table")[0].prettify().split("Parqueadero")[1].split("<dd>")[1].split("</dd>")[0].strip()
+		except:
+			dato_parq = ''
+
+
+#		print('Nombre:' + dato_nombre + '\ndato_link ' + dato_link + '\ndato_area ' + dato_area + '\ndato_precio ' + dato_precio + '\ndato_habit ' + dato_habit + '\ndato_banio ' + dato_banio + '\ndato_edad ' + dato_edad + '\ndato_parq ' + dato_parq + '\n'  )
+
+		d.append('www.fincaraiz.com.co' + aa);
+
+		labbel.set("Escaneando pagina " +str(pos)+ "...\n" );
+		app.update_idletasks()
+		app.update()
+
+		acumulaodo.append(dato_nombre + ',' + dato_link + ',' + dato_area + ',' + dato_precio + ',' + dato_habit + ',' + dato_banio + ',' + dato_edad + ',' + dato_parq);
+
+		saveFile(nombrefile, acumulaodo)
+
+	return elem;
+
+
+
+
+
+
+
 
 
 def descargarInfoAccion(url1, url2, acumulaodo, labbel, d, pos, nombrefile):
@@ -126,12 +227,52 @@ def descargarInfoAccion(url1, url2, acumulaodo, labbel, d, pos, nombrefile):
 
 	for aa in elem:
 
-
 		ooo = descargarResultadoData(url1, aa, 360, 10, '', '')
-		dato_titulo = ooo.find_all(class_="title")[0].text.replace(',',';').strip()
-		dato_precio = ooo.find_all(class_="price")[0].find_all("h2")[0].text.replace(',',';').strip()
-		dato_url='www.fincaraiz.com.co' + aa.replace(',',';');
+		dato_nombre2 = ooo.find_all(class_="title")[0].text.replace(',',';').strip().rstrip('\r\n');
+		dato_nombre = ' '.join(line.strip() for line in dato_nombre2.splitlines())
 
+		dato_link='www.fincaraiz.com.co' + aa.replace(',',';');
+		
+		prov_area = '<div class="breadcrumb left">' + ooo.prettify().split('<div class="breadcrumb left">')[1].split('<div class="breadcrumb right">')[0];
+		prov_area = BeautifulSoup(prov_area, 'html.parser');
+		prov_area = prov_area.text;
+		prov_area = prov_area.split('/');
+		dato_area='';
+		for aa in prov_area:
+			if (not 'Inicio' in aa) and (not ' - ' in aa): 
+				dato_area = dato_area + '/' + aa.strip()
+
+		try:
+			dato_precio = ooo.find_all(class_="price")[0].find_all("h2")[0].text.replace(',',';').strip()
+		except:
+			dato_precio = ''
+		try:
+			dato_habit = str(int(ooo.prettify().split('src="/App_Theme/css/img/ico_bed.png"')[1].split(':')[1].split('<')[0].strip()));
+		except:
+			dato_habit = ''
+
+		try:
+			dato_banio = str(int(ooo.prettify().split('src="/App_Theme/css/img/ico_bath.png"')[1].split(':')[1].split('<')[0].strip()));
+		except:
+			dato_banio = ''
+
+		try:
+			dato_parq = str(int(ooo.prettify().split('src="/App_Theme/css/img/ico_garaje.png"')[1].split(':')[1].split('<')[0].strip()));
+		except:
+			dato_parq = ''
+
+
+		try:
+			dato_edad = ooo.prettify().split('edad:')[1].split(',')[0].strip();
+		except:
+			dato_edad= ''
+
+
+
+
+
+
+#		print('Nombre:' + dato_nombre + '\ndato_link ' + dato_link + '\ndato_area ' + dato_area + '\ndato_precio ' + dato_precio + '\ndato_habit ' + dato_habit + '\ndato_banio ' + dato_banio + '\ndato_edad ' + dato_edad + '\ndato_parq ' + dato_parq + '\n'  )
 
 
 		d.append('www.fincaraiz.com.co' + aa);
@@ -140,8 +281,7 @@ def descargarInfoAccion(url1, url2, acumulaodo, labbel, d, pos, nombrefile):
 		app.update_idletasks()
 		app.update()
 
-		print()
-		acumulaodo.append(dato_titulo + ',' + dato_precio + ',' + dato_url);
+		acumulaodo.append(dato_nombre + ',' + dato_link + ',' + dato_area + ',' + dato_precio + ',' + dato_habit + ',' + dato_banio + ',' + dato_edad + ',' + dato_parq);
 
 		saveFile(nombrefile, acumulaodo)
 
@@ -164,7 +304,7 @@ def close_window():
 	print('pino')
 
 def callback():
-	webb= combo1.current()
+	webb= combo0.current()
 	tipoOper= combo1.current()
 	tipoProp= combo2.current()
 	ubicacion= combo3.get()
@@ -173,7 +313,7 @@ def callback():
 	if (webb>-1 and tipoOper>-1 and tipoProp>-1 and ( ubicacion!='' or ubicacion2!='') ):
 		descargarTodo(webb, tipoOper, tipoProp, ubicacion, v, app, d, ubicacion2);
 
-app.geometry('640x480')
+app.geometry('640x300')
 
 
 v1 = StringVar()
@@ -215,10 +355,9 @@ combo3.grid(row=4, column=2, sticky='E', padx=10)
 v5 = StringVar()
 e5 = Label(app, textvariable=v5)
 e5.grid(row=5, column=1, sticky='E', padx=10, pady=10)
-v5.set('Ubicacion [Solo para el sitio fincaraiz.com.co]')
+v5.set('Ubicacion [Solo para el sitio metrocuadrado.com]')
 ciudad2 = StringVar(app)
-combo4 = tkinter.ttk.Combobox(app, textvariable=ciudad)
-combo4.config(values =('Amazonas','Antioquia','Arauca','Atlántico', 'Bogotá D.C.','Bolívar','Boyacá','Caldas','Caquetá','Casanare','Cauca', 'Cesar','Chocó','Cundinamarca','Córdoba','Guajira','Guanía','Guaviare','Huila','Magdalena','Meta','Nariño','Norte de Santander','Putumayo','Quindío','Risaralda y Eje Cafetero','San Andres y Providencia', 'Santander','Sucre','Tolima','Valle del Cauca y Pacífico','Vaupés','Vichada'))
+combo4 = tkinter.ttk.Entry(app, textvariable=ciudad2)
 combo4.grid(row=5, column=2, sticky='E', padx=10)
 
 boton = Button(app, text="OK", command=callback)

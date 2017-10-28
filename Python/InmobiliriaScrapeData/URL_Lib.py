@@ -43,3 +43,34 @@ def descargarResultadoData(URLBASE, AA,  TIMEOUT, INTENTS, DATA, HEADERS):
 
 	
 	return pagina
+
+
+def descargarResultadoData2(URLBASE, AA,  TIMEOUT, INTENTS, DATA, HEADERS):
+
+
+	url = "http://www.metrocuadrado.com/search/list/ajax"
+
+
+	headers = {
+	    'cache-control': "no-cache",
+    	'postman-token': "73225db5-3e89-e5f2-1cc6-a99ac7626bd6"
+    	}
+
+	response = requests.request("POST", url, headers=headers, params=AA)
+
+
+	pagina = BeautifulSoup(response.text, 'html.parser');
+	return pagina
+
+def descargarResultadoData3(URLBASE, AA,  TIMEOUT, INTENTS, DATA, HEADERS):
+
+	url = URLBASE.strip()
+
+	payload = "identific=849"
+	headers = {
+	    }
+
+	response = requests.request("GET", url, data=payload, headers=headers)
+
+	pagina = BeautifulSoup(response.text, 'html.parser');
+	return pagina
