@@ -51,11 +51,9 @@
             </tr>
         </thead>
         <tbody class="centro" >
-            <!-- <tr *ngFor="let orderEl of clientes"> -->
-            <tr>
+            <tr *ngFor="let orderEl of clientes">
                 <td>23/10/07</td>
-                <!-- <td>{{orderEl.nombre}}{{orderEl.apellido}}</td> -->
-                <td>Juan Perez</td>
+                <td>{{orderEl.nombre}} {{orderEl.apellido}}</td>
                 <td>UBA</td>
                 <td>
                    <div class="dropdown">
@@ -76,79 +74,7 @@
                 <td>2000</td>
                 <td>500</td>
                 <td><button type="button" class="btn btn-info button-plus-info">+</button></td>
-            </tr>
-            <tr>
-                <td>23/10/07</td>
-                <td>Juan Gonzalez</td>
-                <td>UBA</td>
-                <td>
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle dropdown-recomendation" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Pag web
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Amigo</a>
-                        <a class="dropdown-item" href="#">Universidad</a>
-                        <a class="dropdown-item" href="#">Otros</a>
-                      </div>
-                    </div>
-                </td>
-                <td>23/10/07</td>
-                <td>NN</td>
-                <td><span class="badge badge-danger">Detenido</span></td>
-                <td>2500</td>
-                <td>2000</td>
-                <td>500</td>
-                <td><button type="button" class="btn btn-info button-plus-info">+</button></td>
-            </tr>
-            <tr>
-                <td>23/10/07</td>
-                <td>Maria Garcia</td>
-                <td>UBA</td>
-                <td>
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle dropdown-recomendation" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Pag web
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Amigo</a>
-                        <a class="dropdown-item" href="#">Universidad</a>
-                        <a class="dropdown-item" href="#">Otros</a>
-                      </div>
-                    </div>
-                </td>
-                <td>23/10/07</td>
-                <td>NN</td>
-                <td><span class="badge badge-warning">En progreso</span></td>
-                <td>2500</td>
-                <td>2000</td>
-                <td>500</td>
-                <td><button type="button" class="btn btn-info button-plus-info">+</button></td>
-            </tr>
-            <tr>
-                <td>23/10/07</td>
-                <td>Jose Lopez</td>
-                <td>UBA</td>
-                <td>
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle dropdown-recomendation" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Pag web
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Amigo</a>
-                        <a class="dropdown-item" href="#">Universidad</a>
-                        <a class="dropdown-item" href="#">Otros</a>
-                      </div>
-                    </div>
-                </td>
-                <td>23/10/07</td>
-                <td>NN</td>
-                <td><span class="badge badge-primary">Por empezar</span></td>
-                <td>2500</td>
-                <td>2000</td>
-                <td>500</td>
-                <td><button type="button" class="btn btn-info button-plus-info">+</button></td>
-            </tr>
+            </tr> 
         </tbody>
     </table>
 
