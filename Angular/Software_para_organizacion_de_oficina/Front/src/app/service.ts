@@ -6,7 +6,7 @@ import { Observable }               from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { Client }               from 'app/DataObjects/cliente';
+import { Client }               from 'app/data-objects/cliente';
 
 
 @Injectable()
