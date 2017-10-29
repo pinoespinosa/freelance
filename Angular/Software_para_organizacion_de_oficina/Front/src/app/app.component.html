@@ -1,23 +1,174 @@
-<h2 style="text-align: center;">Registro General</h2>
+   <nav class="navbar navbar-expand-lg navbar-light bg-light rounded navbar-registro-total">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-                <table class="table table-new table-striped">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Apellido</th>   
-                        </tr>
-                    </thead>
-                    <tbody class="centro" >
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Oficina Software <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Dropdown</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown10">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+    </nav>
 
-                        <tr *ngFor="let orderEl of clientes">
 
-                            <td>{{orderEl.nombre}}</td>
-                            <td>{{orderEl.apellido}}</td>
-
-                        </tr>
-                    </tbody>
-                </table>
+    <button type="button" class="btn btn-secondary agregar-cliente">
+        <a href="#modal"></a>
+        Agregar Cliente</button>
 
 
+    <table class="table table-new table-striped">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Nombre</th>
+                <th>Universidad</th>
+                <th>Donde entero</th>
+                <th>Proxima entrega</th>
+                <th>Asesor</th>
+                <th>Estado</th>
+                <th>Total ($)</th>
+                <th>Suma de abono</th>
+                <th>Saldo</th>
+                <th>Detalles</th>
+            </tr>
+        </thead>
+        <tbody class="centro" >
+            <!-- <tr *ngFor="let orderEl of clientes"> -->
+            <tr>
+                <td>23/10/07</td>
+                <!-- <td>{{orderEl.nombre}}{{orderEl.apellido}}</td> -->
+                <td>Juan Perez</td>
+                <td>UBA</td>
+                <td>
+                   <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle dropdown-recomendation" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Pag web
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Universidad</a>
+                        <a class="dropdown-item" href="#">Conocido</a>
+                        <a class="dropdown-item" href="#">Otros</a>
+                      </div>
+                    </div>
+                </td>
+                <td>23/10/07</td>
+                <td>NN</td>
+                <td><span class="badge badge-success">Hecho</span></td>
+                <td>2500</td>
+                <td>2000</td>
+                <td>500</td>
+                <td><button type="button" class="btn btn-info button-plus-info">+</button></td>
+            </tr>
+            <tr>
+                <td>23/10/07</td>
+                <td>Juan Gonzalez</td>
+                <td>UBA</td>
+                <td>
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle dropdown-recomendation" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pag web
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Amigo</a>
+                        <a class="dropdown-item" href="#">Universidad</a>
+                        <a class="dropdown-item" href="#">Otros</a>
+                      </div>
+                    </div>
+                </td>
+                <td>23/10/07</td>
+                <td>NN</td>
+                <td><span class="badge badge-danger">Detenido</span></td>
+                <td>2500</td>
+                <td>2000</td>
+                <td>500</td>
+                <td><button type="button" class="btn btn-info button-plus-info">+</button></td>
+            </tr>
+            <tr>
+                <td>23/10/07</td>
+                <td>Maria Garcia</td>
+                <td>UBA</td>
+                <td>
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle dropdown-recomendation" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pag web
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Amigo</a>
+                        <a class="dropdown-item" href="#">Universidad</a>
+                        <a class="dropdown-item" href="#">Otros</a>
+                      </div>
+                    </div>
+                </td>
+                <td>23/10/07</td>
+                <td>NN</td>
+                <td><span class="badge badge-warning">En progreso</span></td>
+                <td>2500</td>
+                <td>2000</td>
+                <td>500</td>
+                <td><button type="button" class="btn btn-info button-plus-info">+</button></td>
+            </tr>
+            <tr>
+                <td>23/10/07</td>
+                <td>Jose Lopez</td>
+                <td>UBA</td>
+                <td>
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle dropdown-recomendation" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pag web
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Amigo</a>
+                        <a class="dropdown-item" href="#">Universidad</a>
+                        <a class="dropdown-item" href="#">Otros</a>
+                      </div>
+                    </div>
+                </td>
+                <td>23/10/07</td>
+                <td>NN</td>
+                <td><span class="badge badge-primary">Por empezar</span></td>
+                <td>2500</td>
+                <td>2000</td>
+                <td>500</td>
+                <td><button type="button" class="btn btn-info button-plus-info">+</button></td>
+            </tr>
+        </tbody>
+    </table>
 
 
+
+
+<div class="modal" id="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
