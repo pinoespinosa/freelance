@@ -27,7 +27,24 @@ console.log(this.clientes)
     }
 
 
+  myFunction(valor){
+       
+    let loading = this.service.getProducts().subscribe(
+    response => {
+      this.clientes = [];
+        for (var aa of response){
+          if ( (aa.nombre.toLowerCase().includes(valor.toLowerCase())) || (aa.apellido.toLowerCase().includes(valor.toLowerCase()) )){
+            this.clientes.push(aa);
+            console.log(aa.nombre)
 
+          }
+        }
+    }        
+  );
+
+
+
+  }
 
     getWorks(): void {
 

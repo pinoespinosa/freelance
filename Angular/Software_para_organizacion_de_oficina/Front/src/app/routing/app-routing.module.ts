@@ -3,11 +3,15 @@ import { RouterModule, Routes } 							from '@angular/router';
 
 import { HomeComponent }                   		from '../pages/home/home.component';
 import { RegisterComponent }                   	from '../pages/register/register.component';
+import { RegisterWorkComponent }               	from '../pages/register-work/register-work.component';
+import { RegisterPaymentComponent }             from '../pages/register-payment/register-payment.component';
 
 
 const routes: Routes = [
-	{ path: 'register',  		component: RegisterComponent, 		data: {title: 'Home'} },
-	{ path: 'home',  			component: HomeComponent, 			data: {title: 'Home'} },
+	{ path: 'register',  		component: RegisterComponent, 			data: {title: 'Home'} },
+	{ path: 'register-work',  	component: RegisterWorkComponent, 		data: {title: 'Home'} },
+	{ path: 'register-payment',	component: RegisterPaymentComponent, 	data: {title: 'Home'} },
+	{ path: 'home',  			component: HomeComponent, 				data: {title: 'Home'} },
 	{ path: '**',  				redirectTo: '/home'}
 
 

@@ -1,0 +1,80 @@
+
+
+<form class="form-horizontal" action='' method="POST">
+   <div class="row" style="padding-top: 30px;" >
+      <div class="col-12" style="padding-left: 40px;" >
+         <h2>Registro de nuevo trabajo</h2>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tema">
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+         <select style="width: 100%;" >
+            <option disabled hidden [value]="selectUndefinedOptionValue">-- Carrera --</option>
+            <option *ngFor="let carrera of carreras" >{{carrera}}</option>
+         </select>
+      </div>
+      <div class="col-1" style="align-self: center;" >
+         <a class="btn" >   
+            <img style="width: 30px;margin: -30px;" src="https://maxcdn.icons8.com/Share/icon/color/Files//add_list1600.png" alt="Flowers in Chania">
+         </a>
+      </div>
+   </div>
+   
+   <div class="row">
+      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+         <select style="width: 100%;" >
+            <option disabled hidden [value]="selectUndefinedOptionValue">-- Universidad --</option>
+            <option *ngFor="let universidad of universidades" >{{universidad}}</option>
+         </select>
+      </div>
+      <div class="col-1" style="align-self: center;" >
+         <a class="btn" >   
+            <img style="width: 30px;margin: -30px;" src="https://maxcdn.icons8.com/Share/icon/color/Files//add_list1600.png" alt="Flowers in Chania">
+         </a>
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+         <select style="width: 100%;" >
+            <option disabled hidden [value]="selectUndefinedOptionValue">-- Donde se entero --</option>
+            <option *ngFor="let entero of lugarEntero" >{{entero}}</option>
+         </select>
+      </div>
+      <div class="col-1" style="align-self: center;" >
+         <a class="btn" >   
+            <img style="width: 30px;margin: -30px;" src="https://maxcdn.icons8.com/Share/icon/color/Files//add_list1600.png" alt="Flowers in Chania">
+         </a>
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+    <label for="exampleFormControlTextarea1">Requerimientos</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+      </div>
+   </div>
+
+
+
+   <div class="row">
+      <div class="col-3" style="text-align: center;">
+      </div>
+      <div class="col-3" style="text-align: center;">
+         <a  (click)="do()" [routerLink]="['/home']" class="btn btn-secondary agregar-cliente" style="width: 100%;" >Crear Tarea y Finalizar</a>
+      </div>
+      <div class="col-3" style="text-align: center;">
+         <a [routerLink]="['/register-payment']" class="btn btn-secondary agregar-cliente" style="width: 100%;">Crear Tarea y Cargar Pago</a>
+      </div>
+      <div class="col-3" style="text-align: center;">
+      </div>
+   </div>
+</form>
+

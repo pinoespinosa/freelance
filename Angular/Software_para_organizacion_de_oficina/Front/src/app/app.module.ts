@@ -2,8 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { HeaderComponent } from   './pages/header/header.component';
-import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { RegisterWorkComponent } from './pages/register-work/register-work.component';
+import { RegisterPaymentComponent } from './pages/register-payment/register-payment.component';
 
 
 
@@ -22,6 +24,8 @@ import { Service }     from './service';
     HeaderComponent,
     AppComponent,
     RegisterComponent,
+    RegisterWorkComponent,
+    RegisterPaymentComponent,
     HomeComponent
 
   ],

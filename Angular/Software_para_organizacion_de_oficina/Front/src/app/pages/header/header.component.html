@@ -4,10 +4,30 @@
       <img style="padding: 20px;" src="http://www.capcenterasesores.com/images/logo.png" alt="Flowers in Chania">
    </div>
    <div class="col-1">
-      <h2 style="color: gray;padding: 15px;padding-top: 40px;font-style: italic;font-weight: bold;padding-left: 0px;text-align: center;" >/</h2>
+      <h2 style="color: gray;padding: 15px;padding-top: 40px;font-style: italic;font-weight: bold;padding-left: 0px;text-align: center;" ></h2>
    </div>
    <div class="col-7">
-      <h2 style="color: gray;padding: 15px;padding-top: 40px;font-style: italic;font-weight: bold;padding-left: 0px;" >System Control</h2>
+      <h2 style="color: gray;padding: 15px;padding-top: 40px;font-style: italic;font-weight: bold;padding-left: 0px;" ></h2>
    </div>
 </div>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background: #496784 !important;">
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active" class="rounded" style="padding-right: 25px;">
+        <a [routerLink]="['/home']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Inicio <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" class="rounded" style="padding-right: 25px;">
+        <a [routerLink]="['/register']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Agregar Cliente <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" class="rounded" style="padding-right: 25px;">
+        <a [routerLink]="['/register-work']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Agregar Trabajo <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" class="rounded" >
+        <a [routerLink]="['/register-payment']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Agregar Pago <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
