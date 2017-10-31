@@ -64,39 +64,39 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 	tipo2.append('21');
 
 	ciudad={};
-	ciudad['San Andres y Providencia']='79';
-	ciudad['Bogotá D.C.']='67';
-	ciudad['Cundinamarca']='67';
-	ciudad['Cesar']='64';
-	ciudad['Norte de Santander']='85';
-	ciudad['Santander']='75';
-	ciudad['Boyacá']='59';
-	ciudad['Arauca']='56';
-	ciudad['Casanare']='62';
-	ciudad['Vichada']='84';
-	ciudad['Guanía']='68';
-	ciudad['Meta']='73';
-	ciudad['Guaviare']='69';
-	ciudad['Vaupés']='83';
-	ciudad['Amazonas']='54';
-	ciudad['Huila']='70';
-	ciudad['Caquetá']='61';
-	ciudad['Putumayo']='76';
-	ciudad['Nariño']='74';
-	ciudad['Cauca']='63';
-	ciudad['Tolima']='81';
-	ciudad['Valle del Cauca y Pacífico']='82';
-	ciudad['Quindío']='77';
-	ciudad['Caldas']='60';
-	ciudad['Risaralda y Eje Cafetero']='78';
-	ciudad['Chocó']='65';
-	ciudad['Antioquia']='55';
-	ciudad['Córdoba']='66';
-	ciudad['Sucre']='80';
-	ciudad['Bolívar']='58';
-	ciudad['Atlántico']='57';
-	ciudad['Magdalena']='72';
-	ciudad['Guajira']='71';
+	ciudad['San Andres y Providencia']='79|';
+	ciudad['bogota']='67|3630001';
+	ciudad['Cundinamarca']='67|';
+	ciudad['Cesar']='64|';
+	ciudad['Norte de Santander']='85|';
+	ciudad['Santander']='75|';
+	ciudad['Boyacá']='59|';
+	ciudad['Arauca']='56|';
+	ciudad['Casanare']='62|';
+	ciudad['Vichada']='84|';
+	ciudad['Guanía']='68|';
+	ciudad['Meta']='73|';
+	ciudad['Guaviare']='69|';
+	ciudad['Vaupés']='83|';
+	ciudad['Amazonas']='54|';
+	ciudad['Huila']='70|';
+	ciudad['Caquetá']='61|';
+	ciudad['Putumayo']='76|';
+	ciudad['Nariño']='74|';
+	ciudad['Cauca']='63|';
+	ciudad['Tolima']='81|';
+	ciudad['Valle del Cauca y Pacífico']='82|';
+	ciudad['Quindío']='77|';
+	ciudad['Caldas']='60|';
+	ciudad['Risaralda y Eje Cafetero']='78|';
+	ciudad['Chocó']='65|';
+	ciudad['Antioquia']='55|';
+	ciudad['Córdoba']='66|';
+	ciudad['Sucre']='80|';
+	ciudad['Bolívar']='58|';
+	ciudad['Atlántico']='57|';
+	ciudad['Magdalena']='72|';
+	ciudad['Guajira']='71|';
 
 	acumulaodo = []
 	acumulaodo.append('Nombre,Link,Ubicacion,Precio,Cant Habitaciones,Cant Baños,Antigüedad,Parqueadero');
@@ -108,9 +108,9 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 		app.update_idletasks()
 
 		if (valor_web>0):
-			valor = descargarInfoAccion(web[valor_web],'/'+tipo[valor_tipo]+'/'+inmueble[valor_inmueble]+'/?ad=30|'+str(pos)+'||||'+inmueble2[valor_inmueble]+'||'+tipo2[valor_tipo]+'|||'+str(ciudad[valor_ciudad])+'|||||||||||||||||1|||1||||||-1', acumulaodo, labbel, d, pos, 'fincaraiz_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+valor_ciudad.replace(' ','_')+'.csv');
+			valor = descargarInfoAccion(web[valor_web],'/'+tipo[valor_tipo]+'/'+inmueble[valor_inmueble]+'/?ad=30|'+str(pos)+'||||'+inmueble2[valor_inmueble]+'||'+tipo2[valor_tipo]+'|||'+str(ciudad[valor_ciudad])+'||||||||||||||||1|||1||||||-1', acumulaodo, labbel, d, pos, 'fincaraiz_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+valor_ciudad.replace(' ','_')+'.csv');
 		else:
-			valor = descargarInfoAccion2(web[valor_web],'/' + tipo_metro[valor_tipo] +'/'  +inmueble[valor_inmueble]+'/' + ubicacion2, acumulaodo, labbel, d, pos, 'metrocuadrado_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+valor_ciudad.replace(' ','_')+'.csv',   tipo_metro[valor_tipo], inmueble[valor_inmueble], ubicacion2);
+			valor = descargarInfoAccion2(web[valor_web],'/' + tipo_metro[valor_tipo] +'/'  +inmueble[valor_inmueble]+'/' + ubicacion2, acumulaodo, labbel, d, pos, 'metrocuadrado_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+ubicacion2+'.csv',   tipo_metro[valor_tipo], inmueble[valor_inmueble], ubicacion2);
 
 
 		cant = len(valor)
@@ -127,9 +127,6 @@ def descargarInfoAccion2(url1, url2, acumulaodo, labbel, d, pos, nombrefile, tip
 	querystring = {"mtiponegocio":tip_op,"mtipoinmueble":tip_imn,"mciudad":ciudad,"selectedLocationCategory":"1","selectedLocationFilter":"mciudad","currentPage":pos,"totalPropertiesCount":"1184","totalUsedPropertiesCount":"1184","totalNewPropertiesCount":"0","sfh":"1"}
 
 	elem = [];
-
-	print(querystring)
-
 
 	orig = descargarResultadoData2(url1 + url2,querystring, 360, 10, '', '')
 	data8 = orig.prettify().split('<div class="m_rs_list_item ">');
@@ -311,9 +308,6 @@ def callback():
 	ubicacion2= combo4.get()
 
 	if (webb>-1 and tipoOper>-1 and tipoProp>-1 ):
-		print(webb)
-		print(ubicacion)
-		print(ubicacion2)
 		if (( webb==1 and ubicacion!='') or ( webb==0 and ubicacion2!='')):
 			descargarTodo(webb, tipoOper, tipoProp, ubicacion, v, app, d, ubicacion2);
 
@@ -353,7 +347,7 @@ e4.grid(row=4, column=1, sticky='E', padx=10, pady=10)
 v4.set('Ubicacion [Solo para el sitio fincaraiz.com.co]')
 ciudad = StringVar(app)
 combo3 = tkinter.ttk.Combobox(app, textvariable=ciudad)
-combo3.config(values =('Amazonas','Antioquia','Arauca','Atlántico', 'Bogotá D.C.','Bolívar','Boyacá','Caldas','Caquetá','Casanare','Cauca', 'Cesar','Chocó','Cundinamarca','Córdoba','Guajira','Guanía','Guaviare','Huila','Magdalena','Meta','Nariño','Norte de Santander','Putumayo','Quindío','Risaralda y Eje Cafetero','San Andres y Providencia', 'Santander','Sucre','Tolima','Valle del Cauca y Pacífico','Vaupés','Vichada'))
+combo3.config(values =('Amazonas','Antioquia','Arauca','Atlántico', 'bogota','Bolívar','Boyacá','Caldas','Caquetá','Casanare','Cauca', 'Cesar','Chocó','Cundinamarca','Córdoba','Guajira','Guanía','Guaviare','Huila','Magdalena','Meta','Nariño','Norte de Santander','Putumayo','Quindío','Risaralda y Eje Cafetero','San Andres y Providencia', 'Santander','Sucre','Tolima','Valle del Cauca y Pacífico','Vaupés','Vichada'))
 combo3.grid(row=4, column=2, sticky='E', padx=10)
 
 v5 = StringVar()
