@@ -1,0 +1,6 @@
+https://www.linuxtotal.com.mx/?cont=info_admon_006
+
+1- Ver si el servicio esta corriendo, sino levantarlo
+2- Crear el script en la carpeta de crons daily
+3- Cambiarle los permisos con chmod 700
+4- Testearlo mirando la crontable
