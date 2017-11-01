@@ -97,7 +97,9 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 	ciudad['Guajira']='71|';
 
 	acumulaodo = []
-	acumulaodo.append('Nombre,Link,Ubicacion,Precio,Cant Habitaciones,Cant Baños,Antigüedad,Parqueadero');
+
+	acumulaodo.append('Nombre,Link,Ubicacion,Precio,Cant Habitaciones,Cant Baños,Antigüedad,Parqueadero,Codigo Web,Direccion,Descripcion,Nombre Barrio,Nombre Barrio Cat, Valor Venta, Valor Arriendo, Area construida, Tiempo de Construida, Estudio o Biblioteca, Terraza/Balcon, Instalacio de Gas, Tpo de calentador, Vista, Cuarto de Servicio, Tipo de Cortinas, Tipo de Acabado de Piso, Tipo de Piso en Alcobas, Numero de Piso');
+
 	cant = 1;
 	pos = 1;
 	while (cant>0):
@@ -106,10 +108,9 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 		app.update_idletasks()
 
 		if (valor_web>0):
-			valor = descargarFincaRaiz(web[valor_web],'/'+tipo[valor_tipo]+'/'+inmueble[valor_inmueble]+'/?ad=30|'+str(pos)+'||||'+inmueble2[valor_inmueble]+'||'+tipo2[valor_tipo]+'|||'+str(ciudad[valor_ciudad])+'||||||||||||||||1|||1||||||-1', acumulaodo, labbel, d, pos, 'fincaraiz_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+valor_ciudad.replace(' ','_')+'.csv');
+			valor = descargarFincaRaizPage(web[valor_web],'/'+tipo[valor_tipo]+'/'+inmueble[valor_inmueble]+'/?ad=30|'+str(pos)+'||||'+inmueble2[valor_inmueble]+'||'+tipo2[valor_tipo]+'|||'+str(ciudad[valor_ciudad])+'||||||||||||||||1|||1||||||-1', acumulaodo, labbel, d, pos, 'fincaraiz_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+valor_ciudad.replace(' ','_')+'.csv');
 		else:
-			valor = descargarMetroCuadrado(web[valor_web],'/' + tipo_metro[valor_tipo] +'/'  +inmueble[valor_inmueble]+'/' + ubicacion2, acumulaodo, labbel, d, pos, 'metrocuadrado_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+ubicacion2+'.csv',   tipo_metro[valor_tipo], inmueble[valor_inmueble], ubicacion2);
-
+			valor = descargarMetroCuadradoPage(web[valor_web],'/' + tipo_metro[valor_tipo] +'/'  +inmueble[valor_inmueble]+'/' + ubicacion2, acumulaodo, labbel, d, pos, 'metrocuadrado_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+ubicacion2+'.csv',   tipo_metro[valor_tipo], inmueble[valor_inmueble], ubicacion2);
 
 		cant = len(valor)
 		pos = pos + 1;
@@ -119,25 +120,19 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 
 
 
-def descargarMetroCuadrado(url1, url2, acumulaodo, labbel, d, pos, nombrefile, tip_imn, tip_op, ciudad):
-	file = [];
-
+def descargarMetroCuadradoPage(url1, url2, acumulaodo, labbel, d, pos, nombrefile, tip_imn, tip_op, ciudad):
+	
 	querystring = {"mtiponegocio":tip_op,"mtipoinmueble":tip_imn,"mciudad":ciudad,"selectedLocationCategory":"1","selectedLocationFilter":"mciudad","currentPage":pos,"totalPropertiesCount":"1184","totalUsedPropertiesCount":"1184","totalNewPropertiesCount":"0","sfh":"1"}
+	pageResponse = descargarResultadoData2(url1 + url2,querystring, 360, 10, '', '')
+	pubList = pageResponse.prettify().split('<div class="m_rs_list_item ">');
 
 	elem = [];
-
-	orig = descargarResultadoData2(url1 + url2,querystring, 360, 10, '', '')
-	data8 = orig.prettify().split('<div class="m_rs_list_item ">');
-
-	#print(orig.prettify())
-
-	data = []
 	cant=0;
-	for mm in data8:
+	for pub in pubList:
 		if (cant==0):
 			cant=1
 		else:
-			elem.append(mm.split('href="')[1].split('"')[0]);
+			elem.append(pub.split('href="')[1].split('"')[0]);
 
 	for aa in elem:
 		orig2 = descargarResultadoData3(aa,'', 360, 10, '', '')
@@ -182,30 +177,114 @@ def descargarMetroCuadrado(url1, url2, acumulaodo, labbel, d, pos, nombrefile, t
 		except:
 			dato_parq = ''
 
+		try:
+			dato_codweb = orig2.find_all(class_="ref")[0].text.strip()
+		except:
+			dato_codweb = ''
 
-#		print('Nombre:' + dato_nombre + '\ndato_link ' + dato_link + '\ndato_area ' + dato_area + '\ndato_precio ' + dato_precio + '\ndato_habit ' + dato_habit + '\ndato_banio ' + dato_banio + '\ndato_edad ' + dato_edad + '\ndato_parq ' + dato_parq + '\n'  )
+		try:
+			dato_inmobiliaria = orig2.find_all(class_="datos_inmobiliaria")[0].text.strip()
+		except:
+			dato_inmobiliaria = ''
 
-		d.append('www.fincaraiz.com.co' + aa);
+		try:
+			dato_inmobiliaria = orig2.find_all(class_="datos_inmobiliaria")[0].text.strip()
+		except:
+			dato_inmobiliaria = ''
 
-		labbel.set("Escaneando pagina " +str(pos)+ "...\n" );
+		try:
+			dato_descrip = '"' + orig2.find_all(id="pDescription")[0].text.replace('"','').strip() + '"';
+		except:
+			dato_descrip = ''
+
+
+		try:
+			dato_nombreBarrio = orig2.prettify().split("Nombre común del barrio")[1].split("<h4>")[1].split("</h4>")[0].strip()
+		except:
+			dato_nombreBarrio = ''
+
+		try:
+			dato_nombreBarrioCat = orig2.prettify().split("Nombre del barrio catastral")[1].split("<h4>")[1].split("</h4>")[0].strip()
+		except:
+			dato_nombreBarrioCat = ''
+
+		try:
+			dato_valorVenta = orig2.prettify().split("Valor de venta")[1].split("<h4>")[1].split("<")[0].strip()
+		except:
+			dato_valorVenta = ''
+		
+		try:
+			dato_valorArriendo = orig2.prettify().split("Valor de arriendo")[1].split("<h4>")[1].split("<")[0].strip()
+		except:
+			dato_valorArriendo = ''
+
+		try:
+			dato_areaConst = orig2.find_all(class_="m_property_info_details")[0].prettify().split("Área construida")[1].split("<h4>")[1].split("<")[0].strip() + '2'
+		except:
+			dato_areaConst = ''
+
+		try:
+			dato_tiempoCost = orig2.prettify().split("Tiempo de construido")[1].split("<h4>")[1].split("<")[0].strip()
+		except:
+			dato_tiempoCost = ''
+		try:
+			dato_biblio = orig2.prettify().split("Estudio o biblioteca")[1].split("<h4>")[1].split("<")[0].strip()
+		except:
+			dato_biblio = ''
+		try:
+			dato_terraza = orig2.prettify().split("Terraza/Balcón")[1].split("<h4>")[1].split("<")[0].strip()
+		except:
+			dato_terraza = ''
+
+		try:
+			dato_instalacioGas = orig2.prettify().split("Tipo instalación de gas")[1].split("<h4>")[1].split("<")[0].strip()
+		except:
+			dato_instalacioGas = ''
+		try:
+			dato_instalacioCalef = orig2.prettify().split("Tipo de calentador")[1].split("<h4>")[1].split("<")[0].strip()
+		except:
+			dato_instalacioCalef = ''
+		try:
+			dato_vista = orig2.prettify().split("Vista")[1].split("<h4>")[1].split("<")[0].strip()
+		except:
+			dato_vista = ''
+		try:
+			dato_habServ = orig2.prettify().split("Cuarto de servicio")[1].split("<h4>")[1].split("<")[0].strip()
+		except:
+			dato_habServ = ''
+		try:
+			dato_tipCortina = orig2.prettify().split("Tipo de Cortinas")[1].split("<h4>")[1].split("<")[0].strip()
+		except:
+			dato_tipCortina = ''
+		try:
+			dato_tipPiso = orig2.prettify().split("Tipo de acabado piso")[1].split("<h4>")[1].split("<")[0].strip()
+		except:
+			dato_tipPiso = ''
+		try:
+			dato_tipPisoAlcoba = orig2.prettify().split("Tipo de piso en alcobas")[1].split("<h4>")[1].split("<")[0].strip()
+		except:
+			dato_tipPisoAlcoba = ''
+		try:
+			dato_numPiso = orig2.prettify().split("Número de piso")[1].split("<h4>")[1].split("<")[0].strip()
+		except:
+			dato_numPiso = ''
+		
+
+		d.append(aa);
+		
+		labbel.set("Escaneando pagina " +str(pos)+ "...\n" + "\n".join(d));
+		
 		app.update_idletasks()
 		app.update()
 
-		acumulaodo.append(dato_nombre + ',' + dato_link + ',' + dato_area + ',' + dato_precio + ',' + dato_habit + ',' + dato_banio + ',' + dato_edad + ',' + dato_parq);
-
+		acumulaodo.append(dato_nombre + ',' + dato_link + ',' + dato_area + ',' + dato_precio + ',' + dato_habit + ',' + dato_banio + ',' + dato_edad + ',' + dato_parq + ',' + dato_codweb + ',' + dato_inmobiliaria + ',' + dato_descrip + ',' + dato_nombreBarrio + ',' + dato_nombreBarrioCat + ',' + dato_valorVenta + ',' + dato_valorArriendo + ',' + dato_areaConst  + ',' + dato_tiempoCost+ ',' + dato_biblio+ ',' + dato_terraza+ ',' + dato_instalacioGas + ',' + dato_instalacioCalef + ',' + dato_vista + ',' + dato_habServ + ',' + dato_tipCortina + ',' + dato_tipPiso + ',' + dato_tipPisoAlcoba + ',' + dato_numPiso);
 		saveFile(nombrefile, acumulaodo)
 
 	return elem;
 
 
 
-
-
-
-
-
-
-def descargarFincaRaiz(url1, url2, acumulaodo, labbel, d, pos, nombrefile):
+def descargarFincaRaizPage(url1, url2, acumulaodo, labbel, d, pos, nombrefile):
 	file = [];
 	orig = descargarResultadoData(url1, url2, 360, 10, '', '')
 	data = orig.find_all(id="divAdverts")[0]
@@ -261,14 +340,6 @@ def descargarFincaRaiz(url1, url2, acumulaodo, labbel, d, pos, nombrefile):
 			dato_edad = ooo.prettify().split('edad:')[1].split(',')[0].strip();
 		except:
 			dato_edad= ''
-
-
-
-
-
-
-#		print('Nombre:' + dato_nombre + '\ndato_link ' + dato_link + '\ndato_area ' + dato_area + '\ndato_precio ' + dato_precio + '\ndato_habit ' + dato_habit + '\ndato_banio ' + dato_banio + '\ndato_edad ' + dato_edad + '\ndato_parq ' + dato_parq + '\n'  )
-
 
 		d.append('www.fincaraiz.com.co' + aa);
 
