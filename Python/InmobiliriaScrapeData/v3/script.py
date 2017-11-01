@@ -106,9 +106,9 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 		app.update_idletasks()
 
 		if (valor_web>0):
-			valor = descargarInfoAccion(web[valor_web],'/'+tipo[valor_tipo]+'/'+inmueble[valor_inmueble]+'/?ad=30|'+str(pos)+'||||'+inmueble2[valor_inmueble]+'||'+tipo2[valor_tipo]+'|||'+str(ciudad[valor_ciudad])+'||||||||||||||||1|||1||||||-1', acumulaodo, labbel, d, pos, 'fincaraiz_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+valor_ciudad.replace(' ','_')+'.csv');
+			valor = descargarFincaRaiz(web[valor_web],'/'+tipo[valor_tipo]+'/'+inmueble[valor_inmueble]+'/?ad=30|'+str(pos)+'||||'+inmueble2[valor_inmueble]+'||'+tipo2[valor_tipo]+'|||'+str(ciudad[valor_ciudad])+'||||||||||||||||1|||1||||||-1', acumulaodo, labbel, d, pos, 'fincaraiz_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+valor_ciudad.replace(' ','_')+'.csv');
 		else:
-			valor = descargarInfoAccion2(web[valor_web],'/' + tipo_metro[valor_tipo] +'/'  +inmueble[valor_inmueble]+'/' + ubicacion2, acumulaodo, labbel, d, pos, 'metrocuadrado_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+ubicacion2+'.csv',   tipo_metro[valor_tipo], inmueble[valor_inmueble], ubicacion2);
+			valor = descargarMetroCuadrado(web[valor_web],'/' + tipo_metro[valor_tipo] +'/'  +inmueble[valor_inmueble]+'/' + ubicacion2, acumulaodo, labbel, d, pos, 'metrocuadrado_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+ubicacion2+'.csv',   tipo_metro[valor_tipo], inmueble[valor_inmueble], ubicacion2);
 
 
 		cant = len(valor)
@@ -119,7 +119,7 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 
 
 
-def descargarInfoAccion2(url1, url2, acumulaodo, labbel, d, pos, nombrefile, tip_imn, tip_op, ciudad):
+def descargarMetroCuadrado(url1, url2, acumulaodo, labbel, d, pos, nombrefile, tip_imn, tip_op, ciudad):
 	file = [];
 
 	querystring = {"mtiponegocio":tip_op,"mtipoinmueble":tip_imn,"mciudad":ciudad,"selectedLocationCategory":"1","selectedLocationFilter":"mciudad","currentPage":pos,"totalPropertiesCount":"1184","totalUsedPropertiesCount":"1184","totalNewPropertiesCount":"0","sfh":"1"}
@@ -205,7 +205,7 @@ def descargarInfoAccion2(url1, url2, acumulaodo, labbel, d, pos, nombrefile, tip
 
 
 
-def descargarInfoAccion(url1, url2, acumulaodo, labbel, d, pos, nombrefile):
+def descargarFincaRaiz(url1, url2, acumulaodo, labbel, d, pos, nombrefile):
 	file = [];
 	orig = descargarResultadoData(url1, url2, 360, 10, '', '')
 	data = orig.find_all(id="divAdverts")[0]
