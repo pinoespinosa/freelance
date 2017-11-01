@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chemisette</title>
+    <meta charset="utf-8">
+    <meta property="og:title" content="Chemisette" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Somos una empresa de venta por catálogo, únete al equipo" />
+<meta property="og:url" content="http://chemisette.com.mx/comercio/aromaterapia/productos-naturales" />
+<meta property="og:image" content="http://chemisette.com.mx/assets/og_chemisette-f4eb7373dbe0c7f46fb854df2fe20426c89d9f845a7315634f92e39b66db70fc.jpg" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="IfR03ftMBNZSpjARv+1ulILThk3RKjetkw9drjkoSBcYKzgOPPXTMUkh7vRDpsKh7uOnSXjUxTktGNiYTCOe4A==" />
+    <link rel="stylesheet" media="all" href="/assets/application-f67c0a6318f8a878ea01f6a05c7afe46f7a8717f142f5c16755d5955fe8b03e0.css" />
+    <link rel="stylesheet" media="all" href="/assets/comercio-1e14eda48256121949371222921debcb5810dd82ea8aeacc2f9d74128c63fe81.css" />
+    <script src="/assets/comercio-af65a0eaf328d8e0a405c7f837f17cf54a29b37a46574067b98742ef5fa4abc2.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-92411344-1', 'auto');
+        ga('send', 'pageview');
+      </script>
+  </head>
+
+  <body class="comercio">
+    <div class="loading"><div class="animation"><div class='uil-default-css' style='transform:scale(0.6);'><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(0deg) translate(0,-60px);transform:rotate(0deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(30deg) translate(0,-60px);transform:rotate(30deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(60deg) translate(0,-60px);transform:rotate(60deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(90deg) translate(0,-60px);transform:rotate(90deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(120deg) translate(0,-60px);transform:rotate(120deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(150deg) translate(0,-60px);transform:rotate(150deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(180deg) translate(0,-60px);transform:rotate(180deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(210deg) translate(0,-60px);transform:rotate(210deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(240deg) translate(0,-60px);transform:rotate(240deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(270deg) translate(0,-60px);transform:rotate(270deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(300deg) translate(0,-60px);transform:rotate(300deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(330deg) translate(0,-60px);transform:rotate(330deg) translate(0,-60px);border-radius:10px;position:absolute;'></div></div></div>
+</div>
+    <div id="main">
+      <div class="search">
+  <div class="full-container">
+    <div class="close-btn close-search"></div>
+    <img src="/assets/white_triangle-7c5fdf1168f79454774999c680f2704bac9fcde0d5aa20de263cdb306f07df66.png" alt="White triangle" />
+    <div class="grid-container">
+      <h2>¿Qué estás buscando?</h2>
+      <form action="/comercio/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+        <input type="text" name="q" id="q" class="input-search" required="required" oninvalid="this.setCustomValidity(&#39;Por favor, llena este campo&#39;)" />
+</form>    </div>
+  </div>
+</div>
+
+      <header class="navbar-fixed-top">
+  <div class="top-options">
+    <a class="catalogs" href="/comercio/catalogs">
+        <img src="/assets/catalogs-73ef5902310f88f562bd58459e767bc1e584224e38b83e88c8aa9717e80b0d81.png" alt="Catalogs" />
+        <p>Catálogos</p>
+</a>    <a class="shop-group" href="/comercio/items">
+      <img class="bag" src="/assets/bag-46f47682643f07bb77744b0e5e1cbc1f6c5ad9530c1242048d6ad28875cd17df.png" alt="Bag" />
+      <p>( 0 )</p>
+</a>    <img class="search-btn" src="/assets/search-897a39dac6243c74e0c64552332da7f66c7009bfc409405b2326aebd38969edd.png" alt="Search" />
+    <div class="user-group">
+      <img class="user" src="/assets/comercio/user-icon-a6364a6f579dcef13094246f5341fb20970cd014a7b0c8d46077de7f266e9ad1.png" alt="User icon" />
+      <p class="user-name">198827 - ELVA ORTIZ</p>
+      <div class="user-data-container">
+  <div class="info">
+    <p class="mobile-user"><span>Usuario:</span> 198827 - ELVA ORTIZ</p>
+    <p><span>Categoría:</span> Distribuidora</p>
+    <p><span>E-mail:</span> liz.ortiz@toushtek.com.mx</p>
+    <p><span>Teléfono:</span> </p>
+    <p><span>Status:</span> Vigente</p>
+  </div>
+  <a class="trigger-profile-url" href="/comercio/profile">
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <p>Mi perfil</p>
+</a>  <a rel="nofollow" data-method="delete" href="/comercio/logout">
+    <i class="fa fa-sign-out" aria-hidden="true"></i>
+    <p>Cerrar sesión</p>
+</a></div>
+
+    </div>
+  </div>
+  <div class="menu-btn">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <a href="/comercio/products">
+    <img class="logo" src="/assets/comercio/logo-fd475fdfe9daa18b9bf135413a6751c7e9452c240dc7bc70291998c801661053.png" alt="Logo" />
+</a>  <div class="navbar_container">
+    <div class="nav-items">
+        <a class="navbar-category sub c0" href="/comercio/modelante">MODELANTE</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/modelante/fajas">FAJAS</a>
+              <a class="sub" href="/comercio/modelante/fajas-hombre">FAJAS HOMBRE</a>
+          </ul>
+        <a class="navbar-category sub c1" href="/comercio/termico">TÉRMICO</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/termico/camiseta-termica">CAMISETA TÉRMICA</a>
+              <a class="sub" href="/comercio/termico/capris-y-leggings">CAPRIS Y LEGGINGS</a>
+              <a class="sub" href="/comercio/termico/medias">MEDIAS</a>
+              <a class="sub" href="/comercio/termico/medias-terapeuticas">MEDIAS TERAPÉUTICAS</a>
+              <a class="sub" href="/comercio/termico/termicos-hombre">TÉRMICOS HOMBRE</a>
+              <a class="sub" href="/comercio/termico/termicos-ninos">TÉRMICOS NIÑOS</a>
+          </ul>
+        <a class="navbar-category sub c2" href="/comercio/moda">MODA</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/moda/re_evolucion">RE-EVOLUCIÓN</a>
+              <a class="sub" href="/comercio/moda/transparencias">TRANSPARENCIAS</a>
+              <a class="sub" href="/comercio/moda/medias-diseno">MEDIAS DISEÑO</a>
+              <a class="sub" href="/comercio/moda/trajes-de-bano">TRAJES DE BAÑO</a>
+              <a class="sub" href="/comercio/moda/otras-colecciones">OTRAS COLECCIONES</a>
+          </ul>
+        <a class="navbar-category sub c3" href="/comercio/aromaterapia">AROMATERAPIA</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/aromaterapia/aceites-esenciales">ACEITES ESENCIALES</a>
+              <a class="sub" href="/comercio/aromaterapia/formulas">FÓRMULAS</a>
+              <a class="sub" href="/comercio/aromaterapia/productos-naturales">PRODUCTOS NATURALES</a>
+              <a class="sub" href="/comercio/aromaterapia/accesorios">ACCESORIOS</a>
+          </ul>
+        <a class="navbar-category sub c4" href="/comercio/intima">ÍNTIMA</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/intima/pantys">PANTYS</a>
+              <a class="sub" href="/comercio/intima/bras">BRAS</a>
+              <a class="sub" href="/comercio/intima/pijamas">PIJAMAS</a>
+              <a class="sub" href="/comercio/intima/fluffies">FLUFFIES</a>
+              <a class="sub" href="/comercio/intima/cuidado-de-pies">CUIDADO DE PIES</a>
+          </ul>
+        <a class="navbar-category sub c5" href="/comercio/cuidado-de-la-piel">CUIDADO DE LA PIEL</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/cuidado-de-la-piel/cuidado-personal">CUIDADO PERSONAL</a>
+              <a class="sub" href="/comercio/cuidado-de-la-piel/crema-d-luz">CREMA D´ LUZ</a>
+              <a class="sub" href="/comercio/cuidado-de-la-piel/tratamiento-para-cabello">TRATAMIENTO PARA CABELLO</a>
+          </ul>
+        <a class="navbar-category sub c6" href="/comercio/salud">SALUD</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/salud/alkaline-pure">ALKALINE PURE</a>
+              <a class="sub" href="/comercio/salud/dieta-del-quantum">DIETA DEL QUANTUM</a>
+          </ul>
+        <a class="navbar-category sub c7" href="/comercio/mas-lineas">MÁS LÍNEAS</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/mas-lineas/hombre">HOMBRE</a>
+              <a class="sub" href="/comercio/mas-lineas/pies-sin-dolor">PIES SIN DOLOR</a>
+              <a class="sub" href="/comercio/mas-lineas/varices-y-diabetes">VÁRICES Y DIABETES</a>
+              <a class="sub" href="/comercio/mas-lineas/ninos">NIÑOS</a>
+          </ul>
+        <a class="navbar-category nosub" href="/comercio/paquetes">PAQUETES</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/paquetes/paquetes">PAQUETES</a>
+              <a class="sub" href="/comercio/paquetes/productos-individuales">PRODUCTOS INDIVIDUALES</a>
+          </ul>
+        <a class="navbar-category nosub" href="/comercio/herramientas-de-venta">HERRAMIENTAS DE VENTA</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/herramientas-de-venta/herramientas-de-venta">HERRAMIENTAS DE VENTA</a>
+          </ul>
+      <a class="mobile-link" href="/comercio/profile">Perfil</a>
+      <a class="mobile-link" href="/comercio/network">Mi red</a>
+      <a class="mobile-link" href="/comercio/services">Servicios</a>
+      <a class="mobile-link" href="/comercio/promotions">Promociones y eventos</a>
+      <a class="mobile-link" href="/comercio/fast_order">Pedido rápido</a>
+      <a class="mobile-link" href="/comercio/catalogs">Catálogos</a>
+    </div>
+  </div>
+  <div class="navbar_subcategories">
+      <ul class="c0">
+          <a href="/comercio/modelante/fajas">
+          <li>FAJAS</li>
+</a>          <a href="/comercio/modelante/fajas-hombre">
+          <li>FAJAS HOMBRE</li>
+</a>      </ul>
+      <ul class="c1">
+          <a href="/comercio/termico/camiseta-termica">
+          <li>CAMISETA TÉRMICA</li>
+</a>          <a href="/comercio/termico/capris-y-leggings">
+          <li>CAPRIS Y LEGGINGS</li>
+</a>          <a href="/comercio/termico/medias">
+          <li>MEDIAS</li>
+</a>          <a href="/comercio/termico/medias-terapeuticas">
+          <li>MEDIAS TERAPÉUTICAS</li>
+</a>          <a href="/comercio/termico/termicos-hombre">
+          <li>TÉRMICOS HOMBRE</li>
+</a>          <a href="/comercio/termico/termicos-ninos">
+          <li>TÉRMICOS NIÑOS</li>
+</a>      </ul>
+      <ul class="c2">
+          <a href="/comercio/moda/re_evolucion">
+          <li>RE-EVOLUCIÓN</li>
+</a>          <a href="/comercio/moda/transparencias">
+          <li>TRANSPARENCIAS</li>
+</a>          <a href="/comercio/moda/medias-diseno">
+          <li>MEDIAS DISEÑO</li>
+</a>          <a href="/comercio/moda/trajes-de-bano">
+          <li>TRAJES DE BAÑO</li>
+</a>          <a href="/comercio/moda/otras-colecciones">
+          <li>OTRAS COLECCIONES</li>
+</a>      </ul>
+      <ul class="c3">
+          <a href="/comercio/aromaterapia/aceites-esenciales">
+          <li>ACEITES ESENCIALES</li>
+</a>          <a href="/comercio/aromaterapia/formulas">
+          <li>FÓRMULAS</li>
+</a>          <a href="/comercio/aromaterapia/productos-naturales">
+          <li>PRODUCTOS NATURALES</li>
+</a>          <a href="/comercio/aromaterapia/accesorios">
+          <li>ACCESORIOS</li>
+</a>      </ul>
+      <ul class="c4">
+          <a href="/comercio/intima/pantys">
+          <li>PANTYS</li>
+</a>          <a href="/comercio/intima/bras">
+          <li>BRAS</li>
+</a>          <a href="/comercio/intima/pijamas">
+          <li>PIJAMAS</li>
+</a>          <a href="/comercio/intima/fluffies">
+          <li>FLUFFIES</li>
+</a>          <a href="/comercio/intima/cuidado-de-pies">
+          <li>CUIDADO DE PIES</li>
+</a>      </ul>
+      <ul class="c5">
+          <a href="/comercio/cuidado-de-la-piel/cuidado-personal">
+          <li>CUIDADO PERSONAL</li>
+</a>          <a href="/comercio/cuidado-de-la-piel/crema-d-luz">
+          <li>CREMA D´ LUZ</li>
+</a>          <a href="/comercio/cuidado-de-la-piel/tratamiento-para-cabello">
+          <li>TRATAMIENTO PARA CABELLO</li>
+</a>      </ul>
+      <ul class="c6">
+          <a href="/comercio/salud/alkaline-pure">
+          <li>ALKALINE PURE</li>
+</a>          <a href="/comercio/salud/dieta-del-quantum">
+          <li>DIETA DEL QUANTUM</li>
+</a>      </ul>
+      <ul class="c7">
+          <a href="/comercio/mas-lineas/hombre">
+          <li>HOMBRE</li>
+</a>          <a href="/comercio/mas-lineas/pies-sin-dolor">
+          <li>PIES SIN DOLOR</li>
+</a>          <a href="/comercio/mas-lineas/varices-y-diabetes">
+          <li>VÁRICES Y DIABETES</li>
+</a>          <a href="/comercio/mas-lineas/ninos">
+          <li>NIÑOS</li>
+</a>      </ul>
+      <ul class="c8">
+          <a href="/comercio/paquetes/paquetes">
+          <li>PAQUETES</li>
+</a>          <a href="/comercio/paquetes/productos-individuales">
+          <li>PRODUCTOS INDIVIDUALES</li>
+</a>      </ul>
+      <ul class="c9">
+          <a href="/comercio/herramientas-de-venta/herramientas-de-venta">
+          <li>HERRAMIENTAS DE VENTA</li>
+</a>      </ul>
+      <ul class="c10">
+          <a href="/comercio/promociones/premios">
+          <li>PREMIOS</li>
+</a>      </ul>
+      <div class="images c0">
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_1/1/FAJAS_01.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_2/1/FAJAS_02.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_3/1/FAJAS_03.jpg')"></div>
+      </div>
+      <div class="images c1">
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_1/2/TERMICOS_WEB01.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_2/2/TERMICOS_WEB02.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_3/2/TERMICOS_WEB03.jpg')"></div>
+      </div>
+      <div class="images c2">
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_1/3/MODA_01.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_2/3/MODA_02.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_3/3/MODA_03.jpg')"></div>
+      </div>
+      <div class="images c3">
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_1/4/AROMATERAPIA_WEB01.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_2/4/AROMATERAPIA_WEB02.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_3/4/AROMATERAPIA_WEB03.jpg')"></div>
+      </div>
+      <div class="images c4">
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_1/6/INTIMA_01.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_2/6/INTIMA_02.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_3/6/INTIMA_03.jpg')"></div>
+      </div>
+      <div class="images c5">
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_1/5/CUIDADO_01.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_2/5/CUIDADO_02.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_3/5/CUIDADO_03.jpg')"></div>
+      </div>
+      <div class="images c6">
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_1/7/SALUD_01.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_2/7/SALUD_02.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_3/7/SALUD_03.jpg')"></div>
+      </div>
+      <div class="images c7">
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_1/8/MAS-LINEAS_01.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_2/8/MAS-LINEAS_02.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_3/8/MAS-LINEAS_03.jpg')"></div>
+      </div>
+      <div class="images c8">
+      </div>
+      <div class="images c9">
+      </div>
+      <div class="images c10">
+      </div>
+  </div>
+</header>
+
+      <ul class="subnavbar">
+  <li class="no-label"><a href="/comercio/profile"><span class="fa fa-user"></span><span class="sidebar-title ">Perfil</span><span class="sidebar-title-tray"><span class="label label-xs bg-primary"></span></span></a></li>
+  <li class="network-map-trigger"><a href="/comercio/network"><span class="fa fa-globe"></span><span class="sidebar-title ">Mi red</span><span class="sidebar-title-tray"><span class="label label-xs bg-primary"></span></span></a></li>
+  <li class="no-label"><a href="/comercio/services"><span class="fa fa-file"></span><span class="sidebar-title ">Servicios</span><span class="sidebar-title-tray"><span class="label label-xs bg-primary"></span></span></a></li>
+  <li class="no-label"><a href="/comercio/promotions"><span class="fa fa-calendar-check-o"></span><span class="sidebar-title ">Promociones y eventos</span><span class="sidebar-title-tray"><span class="label label-xs bg-primary"></span></span></a></li>
+  <li class="no-label"><a href="/comercio/fast_order"><span class="fa fa-list"></span><span class="sidebar-title ">Pedido rápido</span><span class="sidebar-title-tray"><span class="label label-xs bg-primary"></span></span></a></li>
+</ul>
+
+      <div class="front-end">
+        <div class="products">
+          <div class="categories-navbar">
+  <form action="/comercio/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+    <input type="text" name="q" id="q" class="categories-search input-search" required="required" oninvalid="this.setCustomValidity(&#39;Por favor, llena este campo&#39;)" />
+</form>
+  <ul>
+    <li><a href="/comercio/modelante">MODELANTE</a></li>
+      <li><a href="/comercio/modelante/fajas">FAJAS</a></li>
+      <li><a href="/comercio/modelante/fajas-hombre">FAJAS HOMBRE</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/termico">TÉRMICO</a></li>
+      <li><a href="/comercio/termico/camiseta-termica">CAMISETA TÉRMICA</a></li>
+      <li><a href="/comercio/termico/capris-y-leggings">CAPRIS Y LEGGINGS</a></li>
+      <li><a href="/comercio/termico/medias">MEDIAS</a></li>
+      <li><a href="/comercio/termico/medias-terapeuticas">MEDIAS TERAPÉUTICAS</a></li>
+      <li><a href="/comercio/termico/termicos-hombre">TÉRMICOS HOMBRE</a></li>
+      <li><a href="/comercio/termico/termicos-ninos">TÉRMICOS NIÑOS</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/moda">MODA</a></li>
+      <li><a href="/comercio/moda/re_evolucion">RE-EVOLUCIÓN</a></li>
+      <li><a href="/comercio/moda/transparencias">TRANSPARENCIAS</a></li>
+      <li><a href="/comercio/moda/medias-diseno">MEDIAS DISEÑO</a></li>
+      <li><a href="/comercio/moda/trajes-de-bano">TRAJES DE BAÑO</a></li>
+      <li><a href="/comercio/moda/otras-colecciones">OTRAS COLECCIONES</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/aromaterapia">AROMATERAPIA</a></li>
+      <li><a href="/comercio/aromaterapia/aceites-esenciales">ACEITES ESENCIALES</a></li>
+      <li><a href="/comercio/aromaterapia/formulas">FÓRMULAS</a></li>
+      <li><a href="/comercio/aromaterapia/productos-naturales">PRODUCTOS NATURALES</a></li>
+      <li><a href="/comercio/aromaterapia/accesorios">ACCESORIOS</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/intima">ÍNTIMA</a></li>
+      <li><a href="/comercio/intima/pantys">PANTYS</a></li>
+      <li><a href="/comercio/intima/bras">BRAS</a></li>
+      <li><a href="/comercio/intima/pijamas">PIJAMAS</a></li>
+      <li><a href="/comercio/intima/fluffies">FLUFFIES</a></li>
+      <li><a href="/comercio/intima/cuidado-de-pies">CUIDADO DE PIES</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/cuidado-de-la-piel">CUIDADO DE LA PIEL</a></li>
+      <li><a href="/comercio/cuidado-de-la-piel/cuidado-personal">CUIDADO PERSONAL</a></li>
+      <li><a href="/comercio/cuidado-de-la-piel/crema-d-luz">CREMA D´ LUZ</a></li>
+      <li><a href="/comercio/cuidado-de-la-piel/tratamiento-para-cabello">TRATAMIENTO PARA CABELLO</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/salud">SALUD</a></li>
+      <li><a href="/comercio/salud/alkaline-pure">ALKALINE PURE</a></li>
+      <li><a href="/comercio/salud/dieta-del-quantum">DIETA DEL QUANTUM</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/mas-lineas">MÁS LÍNEAS</a></li>
+      <li><a href="/comercio/mas-lineas/hombre">HOMBRE</a></li>
+      <li><a href="/comercio/mas-lineas/pies-sin-dolor">PIES SIN DOLOR</a></li>
+      <li><a href="/comercio/mas-lineas/varices-y-diabetes">VÁRICES Y DIABETES</a></li>
+      <li><a href="/comercio/mas-lineas/ninos">NIÑOS</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/paquetes">PAQUETES</a></li>
+      <li><a href="/comercio/paquetes/paquetes">PAQUETES</a></li>
+      <li><a href="/comercio/paquetes/productos-individuales">PRODUCTOS INDIVIDUALES</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/herramientas-de-venta">HERRAMIENTAS DE VENTA</a></li>
+      <li><a href="/comercio/herramientas-de-venta/herramientas-de-venta">HERRAMIENTAS DE VENTA</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/promotions">Promociones</a></li>
+  </ul>
+</div>
+
+          <div class="comercio-container">
+            
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/rose-blush">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1325/LT1022_1.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="line-height: 40px;">Rosé Blush</h1>
+        <div class="separator"></div>
+        <p class="accent key">LT1022</p>
+        <p>Mejillas y Labios Sonrojados Naturalmente. Combinación de pétalos de rosa y betabel orgánico que le darán un tono son...</p>
+        <p class="accent points">Puntos: 0.75</p>
+        <p class="price btn">$94.50</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/gel-vitalite-piernas-cansadas">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/373/LP6001_02.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Gel Vitalité Piernas Cansadas</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6001</p>
+        <p>Alivia las molestias de piernas cansadas. Sinergia única de Aceites Esenciales de Menta Piperita, Mejorana, Romero, C...</p>
+        <p class="accent points">Puntos: 1.5</p>
+        <p class="price btn">$168.00</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/toallitas-humedas-desmaquillantes-faciales">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/369/LP5029_03.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 24px;">Toallitas Húmedas Desmaquillantes Faciales</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP5029</p>
+        <p>Toallitas húmedas desmaquillantes con extractos de Jazmín y Aloe Vera. Remueve el maquillaje y limpia suavemente en u...</p>
+        <p class="accent points">Puntos: 1.0</p>
+        <p class="price btn">$104.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/biodefense">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1322/LP6003.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="line-height: 40px;">Biodefense</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6003</p>
+        <p>Repelente natural en Spray contra los insectos elaborada con Aceites Esenciales de Menta, Alfalfa, Citronela, Geranio...</p>
+        <p class="accent points">Puntos: 1.25</p>
+        <p class="price btn">$146.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/d&#39;-mujer-juvenil">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1324/LP6006.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">D&#39; Mujer Juvenil</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6006</p>
+        <p>Ungüento analgésico. Disminuye la inflamación y dolor abdominal. Recomendado para la edad fértil de la mujer. </p>
+        <p class="accent points">Puntos: 1.25</p>
+        <p class="price btn">$146.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/d&#39;-mujer-madura">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1323/LP6007.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="line-height: 40px;">D&#39; Mujer Madura</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6007</p>
+        <p>Ungüento analgésico. Para los síntomas de la menopausia y pre-menopausia. Recomendado para mujeres de 40 o más.</p>
+        <p class="accent points">Puntos: 1.25</p>
+        <p class="price btn">$146.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/shaving-cream">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1250/LP6008.jpg')">
+        <div class="related-packages">
+          <div class="shape">
+            <p>Paquetes relacionados</p>
+          </div>
+          <div class="list" data-obj="[{&quot;id&quot;:33783,&quot;Productkey&quot;:&quot;PX1713&quot;,&quot;description&quot;:&quot;SET DE AFEITADO (SHAVING CREAM - BROCHA - AFTERSHAVE)&quot;,&quot;public_price&quot;:570.0,&quot;distributor_price&quot;:399.0,&quot;points&quot;:4.0,&quot;order&quot;:1,&quot;product_type&quot;:3,&quot;productforced&quot;:false}]"></div>
+        </div>
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="line-height: 40px;">Shaving Cream</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6008</p>
+        <p>Crema para afeitar en pasta para lucir una afeitada perfecta con Aceites Esenciales de Tea Tree, Menta y Áloe Vera qu...</p>
+        <p class="accent points">Puntos: 3.25</p>
+        <p class="price btn">$349.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/spray-aftershave">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/399/LP6012_2.jpg')">
+        <div class="related-packages">
+          <div class="shape">
+            <p>Paquetes relacionados</p>
+          </div>
+          <div class="list" data-obj="[{&quot;id&quot;:33783,&quot;Productkey&quot;:&quot;PX1713&quot;,&quot;description&quot;:&quot;SET DE AFEITADO (SHAVING CREAM - BROCHA - AFTERSHAVE)&quot;,&quot;public_price&quot;:570.0,&quot;distributor_price&quot;:399.0,&quot;points&quot;:4.0,&quot;order&quot;:1,&quot;product_type&quot;:3,&quot;productforced&quot;:false}]"></div>
+        </div>
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Spray Aftershave</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6012</p>
+        <p>Bálsamo hidratante y calmante para después del afeitado con Aceites Esenciales de Ciprés, Tabaco, Orégano y Canela qu...</p>
+        <p class="accent points">Puntos: 0.75</p>
+        <p class="price btn">$94.50</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/set-de-citrus">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/401/LP6013.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="line-height: 40px;">Set de Citrus </h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6013</p>
+        <p>Set elaborado a base de Aceite Esencial de Lemongrass que revitaliza el letargo físico, estimula la concentración y e...</p>
+        <p class="accent points">Puntos: 3.25</p>
+        <p class="price btn">$343.00</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/set-de-lavanda">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/406/LP6014.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="line-height: 40px;">Set de Lavanda</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6014</p>
+        <p>Set elaborado a base de Aceite Esencial de Lavanda que genera un estado emocional de paz, eliminando estrés, ansiedad...</p>
+        <p class="accent points">Puntos: 3.25</p>
+        <p class="price btn">$343.00</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/set-de-ylang-ylang">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/411/LP6015_1.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Set de Ylang Ylang </h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6015</p>
+        <p>Set elaborado a base de Aceite Esencial de Ylang Ylang que estimula sensaciones anímicas positivas, mejorando el entu...</p>
+        <p class="accent points">Puntos: 3.25</p>
+        <p class="price btn">$343.00</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/douche-intime">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/416/P_LP6016_01.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="line-height: 40px;">Douche Intime</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6016</p>
+        <p>Jabón líquido con Aceites Esenciales de Tea Tree, Lavanda y Manzanilla para el cuidado de la mujer. Elimina y previen...</p>
+        <p class="accent points">Puntos: 2.0</p>
+        <p class="price btn">$209.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/body-mist-citrus-200ml">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1451/lp6013_3.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Body Mist Citrus 200ml</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6013-1</p>
+        <p></p>
+        <p class="accent points">Puntos: 1.0</p>
+        <p class="price btn">$104.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/concentrado-citrus-60ml">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1452/LP6013_2.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Concentrado Citrus 60ml</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6013-2</p>
+        <p></p>
+        <p class="accent points">Puntos: 1.0</p>
+        <p class="price btn">$104.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/crema-citrus-35-ml">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1453/LP6013_1.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Crema citrus 35 ml </h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6013-3</p>
+        <p></p>
+        <p class="accent points">Puntos: 1.0</p>
+        <p class="price btn">$104.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/concentrado-lavanda-60ml">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1455/LP6014_2.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Concentrado Lavanda 60ml</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6014-2</p>
+        <p></p>
+        <p class="accent points">Puntos: 1.0</p>
+        <p class="price btn">$104.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/body-mist-lavanda-200-ml">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1454/LP6014_1.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Body Mist Lavanda 200 ml</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6014-1</p>
+        <p></p>
+        <p class="accent points">Puntos: 1.0</p>
+        <p class="price btn">$104.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/crema-lavanda-35ml">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1456/LP6014.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Crema Lavanda 35ml</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6014-3</p>
+        <p></p>
+        <p class="accent points">Puntos: 1.0</p>
+        <p class="price btn">$104.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/crema-ylang-ylang-35ml">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1458/LP6015_1.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Crema Ylang Ylang 35ml</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6015-3</p>
+        <p></p>
+        <p class="accent points">Puntos: 1.0</p>
+        <p class="price btn">$104.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/concentrado-ylang-ylang-60-ml">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1459/LP6015_2.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Concentrado Ylang Ylang 60 ml</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6015-2</p>
+        <p></p>
+        <p class="accent points">Puntos: 1.0</p>
+        <p class="price btn">$104.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/body-mist-ylang-ylang-200ml">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1457/LP6015_3.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Body mist Ylang Ylang 200ml</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP6015-1</p>
+        <p></p>
+        <p class="accent points">Puntos: 1.0</p>
+        <p class="price btn">$104.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/unguento-de-tea-tree">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/489/LT1019.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Ungüento de Tea Tree</h1>
+        <div class="separator"></div>
+        <p class="accent key">LT1019</p>
+        <p>Antibiótico y cicatrizante</p>
+        <p class="accent points">Puntos: 1.75</p>
+        <p class="price btn">$203.00</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/unguento-de-oleo-fortte">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/491/LT1020.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Ungüento de Óleo Fortte </h1>
+        <div class="separator"></div>
+        <p class="accent key">LT1020</p>
+        <p>Bienestar Total</p>
+        <p class="accent points">Puntos: 1.75</p>
+        <p class="price btn">$203.00</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/unguento-de-enebro">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/493/LT1021.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Ungüento de Enebro</h1>
+        <div class="separator"></div>
+        <p class="accent key">LT1021</p>
+        <p>Alivio Muscular</p>
+        <p class="accent points">Puntos: 1.75</p>
+        <p class="price btn">$203.00</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/crema-corporal-hidratante-de-romero">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/495/LT1023_01.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 30px;">Crema Corporal Hidratante de Romero</h1>
+        <div class="separator"></div>
+        <p class="accent key">LT1023</p>
+        <p>Crema con Aceite Esencial de Romero que nutren e hidratan la piel recuperando su elasticidad. Auxiliar para pieles co...</p>
+        <p class="accent points">Puntos: 1.5</p>
+        <p class="price btn">$154.00</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/shampoo-revitalizante-de-romero">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/497/LT1024_01.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 30px;">Shampoo Revitalizante de Romero</h1>
+        <div class="separator"></div>
+        <p class="accent key">LT1024</p>
+        <p>Shampoo con Aceite Esencial de Romero con propiedades que fortalecen y nutren la raíz del folículo capilar estimuland...</p>
+        <p class="accent points">Puntos: 1.5</p>
+        <p class="price btn">$154.00</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/gel-jabon-de-romero">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/829/LT1025_01.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Gel Jabón de Romero</h1>
+        <div class="separator"></div>
+        <p class="accent key">LT1025</p>
+        <p>Gel de Baño con propiedades antioxidantes y regenerantes que desinflama y tonifica la piel por su Aceite Esencial de ...</p>
+        <p class="accent points">Puntos: 1.25</p>
+        <p class="price btn">$115.50</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/jabon-natural-de-ruda-y-aloe-vera">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1039/LP801A1_JAB_NRUDA.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 30px;">Jabón Natural de Ruda y Aloe Vera</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP801A1</p>
+        <p>Jabón Natural a base de glicerina con Aceite Esencial de Ruda y Aloe Vera. </p>
+        <p class="accent points">Puntos: 0.75</p>
+        <p class="price btn">$97.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/gel-de-salvia-jazmin">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1329/PV1709_1.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Gel de Salvia Jazmín</h1>
+        <div class="separator"></div>
+        <p class="accent key">LT1029</p>
+        <p>Gel Jabón Corporal con propiedades regenerativas para una piel sana y firme. Limpia y suaviza sin retirar los aceites...</p>
+        <p class="accent points">Puntos: 1.25</p>
+        <p class="price btn">$115.50</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/pure-garden-eau-de-parfum">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1252/0947.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Pure Garden Eau de Parfum</h1>
+        <div class="separator"></div>
+        <p class="accent key">0947</p>
+        <p>Perfume eleaborado con Gardenia fina, pétalos de rosas blancas y suaves notas de Patchouli, en una fragancia fresca y...</p>
+        <p class="accent points">Puntos: 4.5</p>
+        <p class="price btn">$336.00</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/fragance-d&#39;-ambiance-jazmin-en-flor-y-te-de-magnolias">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/805/0948.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 24px;">Fragance D&#39; Ambiance Jazmín en Flor y Té de Magnolias</h1>
+        <div class="separator"></div>
+        <p class="accent key">0948</p>
+        <p>Fragancias para el ambiente con Aceites Esenciales de alta concentración y larga duración que envuelven tu casa con e...</p>
+        <p class="accent points">Puntos: 4.0</p>
+        <p class="price btn">$294.00</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/fragance-d&#39;-ambiance-neroli-fresca-y-orquidea-dulce">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/804/0949.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 24px;">Fragance D&#39; Ambiance Neroli Fresca y Orquídea Dulce</h1>
+        <div class="separator"></div>
+        <p class="accent key">0949</p>
+        <p>Fragancias para el ambiente con Aceites Esenciales de alta concentración y larga duración que envuelven tu casa con e...</p>
+        <p class="accent points">Puntos: 4.0</p>
+        <p class="price btn">$294.00</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/oleo-desmaquillante-facial">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1056/LT1030_DesmaquillanteOleo.jpg')">
+        <div class="related-packages">
+          <div class="shape">
+            <p>Paquetes relacionados</p>
+          </div>
+          <div class="list" data-obj="[{&quot;id&quot;:33779,&quot;Productkey&quot;:&quot;PX1708&quot;,&quot;description&quot;:&quot;TÓNICO FACIAL MAS DESMAQUILLANTE ÓLEO Y DE REGALO 20 PETALOS DE ALGODÓN&quot;,&quot;public_price&quot;:399.0,&quot;distributor_price&quot;:279.3,&quot;points&quot;:2.75,&quot;order&quot;:1,&quot;product_type&quot;:3,&quot;productforced&quot;:false},{&quot;id&quot;:33832,&quot;Productkey&quot;:&quot;R1993&quot;,&quot;description&quot;:&quot;COORDINADO PARA DORMIR LUNA ENCAJE MAS DESMAQUILLANTE FACIAL&quot;,&quot;public_price&quot;:580.0,&quot;distributor_price&quot;:348.0,&quot;points&quot;:4.75,&quot;order&quot;:1,&quot;product_type&quot;:3,&quot;productforced&quot;:false},{&quot;id&quot;:33833,&quot;Productkey&quot;:&quot;R1996&quot;,&quot;description&quot;:&quot;COORDINADO PARA DORMIR ALMA MAS DESMAQUILLANTE FACIAL&quot;,&quot;public_price&quot;:580.0,&quot;distributor_price&quot;:348.0,&quot;points&quot;:4.75,&quot;order&quot;:1,&quot;product_type&quot;:3,&quot;productforced&quot;:false},{&quot;id&quot;:33834,&quot;Productkey&quot;:&quot;R1997&quot;,&quot;description&quot;:&quot;COORDINADO PARA DORMIR LUZ MAS DESMAQUILLANTE FACIAL&quot;,&quot;public_price&quot;:580.0,&quot;distributor_price&quot;:348.0,&quot;points&quot;:4.75,&quot;order&quot;:1,&quot;product_type&quot;:3,&quot;productforced&quot;:false},{&quot;id&quot;:33835,&quot;Productkey&quot;:&quot;R1998&quot;,&quot;description&quot;:&quot;COORDINADO PARA DORMIR MAS DESMAQUILLANTE FACIAL&quot;,&quot;public_price&quot;:580.0,&quot;distributor_price&quot;:348.0,&quot;points&quot;:4.75,&quot;order&quot;:1,&quot;product_type&quot;:3,&quot;productforced&quot;:false}]"></div>
+        </div>
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Óleo Desmaquillante Facial</h1>
+        <div class="separator"></div>
+        <p class="accent key">LT1030</p>
+        <p>Óleo Desmaquillante que elimina con suavidad todo maquillaje. Enriquecido con esenciales anti-edad. Acondiciona las p...</p>
+        <p class="accent points">Puntos: 1.5</p>
+        <p class="price btn">$174.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/aromaterapia/productos-naturales/producto/tonico-facial">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/1055/LT1031_T_NICOFACIAL.jpg')">
+        <div class="related-packages">
+          <div class="shape">
+            <p>Paquetes relacionados</p>
+          </div>
+          <div class="list" data-obj="[{&quot;id&quot;:33779,&quot;Productkey&quot;:&quot;PX1708&quot;,&quot;description&quot;:&quot;TÓNICO FACIAL MAS DESMAQUILLANTE ÓLEO Y DE REGALO 20 PETALOS DE ALGODÓN&quot;,&quot;public_price&quot;:399.0,&quot;distributor_price&quot;:279.3,&quot;points&quot;:2.75,&quot;order&quot;:1,&quot;product_type&quot;:3,&quot;productforced&quot;:false}]"></div>
+        </div>
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="line-height: 40px;">Tónico Facial</h1>
+        <div class="separator"></div>
+        <p class="accent key">LT1031</p>
+        <p>Tónico Facial astringente que logra el balance que necesitas. Elimina el exceso de grasa, bacterias y poros abiertos. </p>
+        <p class="accent points">Puntos: 1.25</p>
+        <p class="price btn">$139.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+
+          </div>
+        </div>
+        <div id="footer" class="footer">
+  <div class="grid-container">
+    <ul>
+      <h2>Contacto</h2>
+      <li><a href="/affiliates/new">Quiero vender</a></li>
+      <li><a href="/contact">Quiero comprar</a></li>
+      <li><a href="/offices">Oficinas</a></li>
+      <li><a href="/site_policies">Políticas del sitio</a></li>
+    </ul>
+    <ul class="social-links">
+      <h2>Síguenos</h2>
+      <li><a href="https://www.facebook.com/chemisette" target="_blank">Facebook</a></li>
+      <li><a href="https://www.youtube.com/user/ChemisetteMex" target="_blank">Youtube</a></li>
+      <li><a href="https://es.pinterest.com/chemisettemex/" target="_blank">Pinterest</a></li>
+      <li><a href="https://www.instagram.com/chemisette/" target="_blank">Instagram Chemisette</a></li>
+      <li><a href="https://www.instagram.com/chemisette_aromaterapia/" target="_blank">Instagram Aromaterapia</a></li>
+      <li>
+      <i class="fa fa-twitter" aria-hidden="true"></i>
+      <a href="https://twitter.com/chemisettemex" target="_blank">Twitter</a></li>
+    </ul>
+    <div class="v-separator"></div>
+    <div class="subscribe">
+      <form novalidate="novalidate" class="simple_form new_subscribed_email" id="new_subscribed_email" action="/subscribed_emails" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="ILhlxIs0BWTEAHIVzadeta1gOLuLfzqmaf58pVvU6c8ZZykXTI3Sg9+HrPAx7PKAwVAZvyKByDLX6fmTLt8/OA==" />
+        <h2>Recibe novedades, promociones e invitaciones exclusivas</h2>
+        <div class="input email required subscribed_email_email"><label class="email required" for="subscribed_email_email"><abbr title="required">*</abbr></label><input class="string email required" placeholder="correo@mail.com" type="email" name="subscribed_email[email]" id="subscribed_email_email" /></div>
+        <p class='flash-alert'></p>
+        <div class="double">
+        <input type="submit" name="commit" value="enviar" class="btn" data-disable-with="enviar" />
+        </div>
+</form>    </div>
+  </div>
+  <p class="telephone">0181 8130 8100</p>
+  <p class="copyright">© Copyright Chemisette 2016 Derechos Reservados</p>
+</div>
+
+
+
+
+      </div>
+    </div>
+    <div class='popup'></div>
+    <div class="index_popup" id="popup" style="text-align:center;"><img width="100%" src="/assets/5_help_days/popup_earthquake-fe8c9ac421780c17a90e64be5e671f021c7e56d095a4d9bab463d55abd501aec.jpg" alt="Popup earthquake" /></div>
+  </body>
+</html>

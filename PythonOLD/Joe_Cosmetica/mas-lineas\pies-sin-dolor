@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chemisette</title>
+    <meta charset="utf-8">
+    <meta property="og:title" content="Chemisette" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Somos una empresa de venta por catálogo, únete al equipo" />
+<meta property="og:url" content="http://chemisette.com.mx/comercio/mas-lineas/pies-sin-dolor" />
+<meta property="og:image" content="http://chemisette.com.mx/assets/og_chemisette-f4eb7373dbe0c7f46fb854df2fe20426c89d9f845a7315634f92e39b66db70fc.jpg" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="Uyq+MjxJCZ8uPWoT80G8X+AikjoFDVH5LN9KnXumsy5q9fLh+/DeeDW6tPYPChBqjBKzPqzzo22SyM+rDq1l2Q==" />
+    <link rel="stylesheet" media="all" href="/assets/application-f67c0a6318f8a878ea01f6a05c7afe46f7a8717f142f5c16755d5955fe8b03e0.css" />
+    <link rel="stylesheet" media="all" href="/assets/comercio-1e14eda48256121949371222921debcb5810dd82ea8aeacc2f9d74128c63fe81.css" />
+    <script src="/assets/comercio-af65a0eaf328d8e0a405c7f837f17cf54a29b37a46574067b98742ef5fa4abc2.js"></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-92411344-1', 'auto');
+        ga('send', 'pageview');
+      </script>
+  </head>
+
+  <body class="comercio">
+    <div class="loading"><div class="animation"><div class='uil-default-css' style='transform:scale(0.6);'><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(0deg) translate(0,-60px);transform:rotate(0deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(30deg) translate(0,-60px);transform:rotate(30deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(60deg) translate(0,-60px);transform:rotate(60deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(90deg) translate(0,-60px);transform:rotate(90deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(120deg) translate(0,-60px);transform:rotate(120deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(150deg) translate(0,-60px);transform:rotate(150deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(180deg) translate(0,-60px);transform:rotate(180deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(210deg) translate(0,-60px);transform:rotate(210deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(240deg) translate(0,-60px);transform:rotate(240deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(270deg) translate(0,-60px);transform:rotate(270deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(300deg) translate(0,-60px);transform:rotate(300deg) translate(0,-60px);border-radius:10px;position:absolute;'></div><div style='top:80px;left:93px;width:14px;height:40px;background:#7a2953;-webkit-transform:rotate(330deg) translate(0,-60px);transform:rotate(330deg) translate(0,-60px);border-radius:10px;position:absolute;'></div></div></div>
+</div>
+    <div id="main">
+      <div class="search">
+  <div class="full-container">
+    <div class="close-btn close-search"></div>
+    <img src="/assets/white_triangle-7c5fdf1168f79454774999c680f2704bac9fcde0d5aa20de263cdb306f07df66.png" alt="White triangle" />
+    <div class="grid-container">
+      <h2>¿Qué estás buscando?</h2>
+      <form action="/comercio/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+        <input type="text" name="q" id="q" class="input-search" required="required" oninvalid="this.setCustomValidity(&#39;Por favor, llena este campo&#39;)" />
+</form>    </div>
+  </div>
+</div>
+
+      <header class="navbar-fixed-top">
+  <div class="top-options">
+    <a class="catalogs" href="/comercio/catalogs">
+        <img src="/assets/catalogs-73ef5902310f88f562bd58459e767bc1e584224e38b83e88c8aa9717e80b0d81.png" alt="Catalogs" />
+        <p>Catálogos</p>
+</a>    <a class="shop-group" href="/comercio/items">
+      <img class="bag" src="/assets/bag-46f47682643f07bb77744b0e5e1cbc1f6c5ad9530c1242048d6ad28875cd17df.png" alt="Bag" />
+      <p>( 0 )</p>
+</a>    <img class="search-btn" src="/assets/search-897a39dac6243c74e0c64552332da7f66c7009bfc409405b2326aebd38969edd.png" alt="Search" />
+    <div class="user-group">
+      <img class="user" src="/assets/comercio/user-icon-a6364a6f579dcef13094246f5341fb20970cd014a7b0c8d46077de7f266e9ad1.png" alt="User icon" />
+      <p class="user-name">198827 - ELVA ORTIZ</p>
+      <div class="user-data-container">
+  <div class="info">
+    <p class="mobile-user"><span>Usuario:</span> 198827 - ELVA ORTIZ</p>
+    <p><span>Categoría:</span> Distribuidora</p>
+    <p><span>E-mail:</span> liz.ortiz@toushtek.com.mx</p>
+    <p><span>Teléfono:</span> </p>
+    <p><span>Status:</span> Vigente</p>
+  </div>
+  <a class="trigger-profile-url" href="/comercio/profile">
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <p>Mi perfil</p>
+</a>  <a rel="nofollow" data-method="delete" href="/comercio/logout">
+    <i class="fa fa-sign-out" aria-hidden="true"></i>
+    <p>Cerrar sesión</p>
+</a></div>
+
+    </div>
+  </div>
+  <div class="menu-btn">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <a href="/comercio/products">
+    <img class="logo" src="/assets/comercio/logo-fd475fdfe9daa18b9bf135413a6751c7e9452c240dc7bc70291998c801661053.png" alt="Logo" />
+</a>  <div class="navbar_container">
+    <div class="nav-items">
+        <a class="navbar-category sub c0" href="/comercio/modelante">MODELANTE</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/modelante/fajas">FAJAS</a>
+              <a class="sub" href="/comercio/modelante/fajas-hombre">FAJAS HOMBRE</a>
+          </ul>
+        <a class="navbar-category sub c1" href="/comercio/termico">TÉRMICO</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/termico/camiseta-termica">CAMISETA TÉRMICA</a>
+              <a class="sub" href="/comercio/termico/capris-y-leggings">CAPRIS Y LEGGINGS</a>
+              <a class="sub" href="/comercio/termico/medias">MEDIAS</a>
+              <a class="sub" href="/comercio/termico/medias-terapeuticas">MEDIAS TERAPÉUTICAS</a>
+              <a class="sub" href="/comercio/termico/termicos-hombre">TÉRMICOS HOMBRE</a>
+              <a class="sub" href="/comercio/termico/termicos-ninos">TÉRMICOS NIÑOS</a>
+          </ul>
+        <a class="navbar-category sub c2" href="/comercio/moda">MODA</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/moda/re_evolucion">RE-EVOLUCIÓN</a>
+              <a class="sub" href="/comercio/moda/transparencias">TRANSPARENCIAS</a>
+              <a class="sub" href="/comercio/moda/medias-diseno">MEDIAS DISEÑO</a>
+              <a class="sub" href="/comercio/moda/trajes-de-bano">TRAJES DE BAÑO</a>
+              <a class="sub" href="/comercio/moda/otras-colecciones">OTRAS COLECCIONES</a>
+          </ul>
+        <a class="navbar-category sub c3" href="/comercio/aromaterapia">AROMATERAPIA</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/aromaterapia/aceites-esenciales">ACEITES ESENCIALES</a>
+              <a class="sub" href="/comercio/aromaterapia/formulas">FÓRMULAS</a>
+              <a class="sub" href="/comercio/aromaterapia/productos-naturales">PRODUCTOS NATURALES</a>
+              <a class="sub" href="/comercio/aromaterapia/accesorios">ACCESORIOS</a>
+          </ul>
+        <a class="navbar-category sub c4" href="/comercio/intima">ÍNTIMA</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/intima/pantys">PANTYS</a>
+              <a class="sub" href="/comercio/intima/bras">BRAS</a>
+              <a class="sub" href="/comercio/intima/pijamas">PIJAMAS</a>
+              <a class="sub" href="/comercio/intima/fluffies">FLUFFIES</a>
+              <a class="sub" href="/comercio/intima/cuidado-de-pies">CUIDADO DE PIES</a>
+          </ul>
+        <a class="navbar-category sub c5" href="/comercio/cuidado-de-la-piel">CUIDADO DE LA PIEL</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/cuidado-de-la-piel/cuidado-personal">CUIDADO PERSONAL</a>
+              <a class="sub" href="/comercio/cuidado-de-la-piel/crema-d-luz">CREMA D´ LUZ</a>
+              <a class="sub" href="/comercio/cuidado-de-la-piel/tratamiento-para-cabello">TRATAMIENTO PARA CABELLO</a>
+          </ul>
+        <a class="navbar-category sub c6" href="/comercio/salud">SALUD</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/salud/alkaline-pure">ALKALINE PURE</a>
+              <a class="sub" href="/comercio/salud/dieta-del-quantum">DIETA DEL QUANTUM</a>
+          </ul>
+        <a class="navbar-category sub c7" href="/comercio/mas-lineas">MÁS LÍNEAS</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/mas-lineas/hombre">HOMBRE</a>
+              <a class="sub" href="/comercio/mas-lineas/pies-sin-dolor">PIES SIN DOLOR</a>
+              <a class="sub" href="/comercio/mas-lineas/varices-y-diabetes">VÁRICES Y DIABETES</a>
+              <a class="sub" href="/comercio/mas-lineas/ninos">NIÑOS</a>
+          </ul>
+        <a class="navbar-category nosub" href="/comercio/paquetes">PAQUETES</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/paquetes/paquetes">PAQUETES</a>
+              <a class="sub" href="/comercio/paquetes/productos-individuales">PRODUCTOS INDIVIDUALES</a>
+          </ul>
+        <a class="navbar-category nosub" href="/comercio/herramientas-de-venta">HERRAMIENTAS DE VENTA</a>
+          <ul class="mobile-subcategories">
+              <a class="sub" href="/comercio/herramientas-de-venta/herramientas-de-venta">HERRAMIENTAS DE VENTA</a>
+          </ul>
+      <a class="mobile-link" href="/comercio/profile">Perfil</a>
+      <a class="mobile-link" href="/comercio/network">Mi red</a>
+      <a class="mobile-link" href="/comercio/services">Servicios</a>
+      <a class="mobile-link" href="/comercio/promotions">Promociones y eventos</a>
+      <a class="mobile-link" href="/comercio/fast_order">Pedido rápido</a>
+      <a class="mobile-link" href="/comercio/catalogs">Catálogos</a>
+    </div>
+  </div>
+  <div class="navbar_subcategories">
+      <ul class="c0">
+          <a href="/comercio/modelante/fajas">
+          <li>FAJAS</li>
+</a>          <a href="/comercio/modelante/fajas-hombre">
+          <li>FAJAS HOMBRE</li>
+</a>      </ul>
+      <ul class="c1">
+          <a href="/comercio/termico/camiseta-termica">
+          <li>CAMISETA TÉRMICA</li>
+</a>          <a href="/comercio/termico/capris-y-leggings">
+          <li>CAPRIS Y LEGGINGS</li>
+</a>          <a href="/comercio/termico/medias">
+          <li>MEDIAS</li>
+</a>          <a href="/comercio/termico/medias-terapeuticas">
+          <li>MEDIAS TERAPÉUTICAS</li>
+</a>          <a href="/comercio/termico/termicos-hombre">
+          <li>TÉRMICOS HOMBRE</li>
+</a>          <a href="/comercio/termico/termicos-ninos">
+          <li>TÉRMICOS NIÑOS</li>
+</a>      </ul>
+      <ul class="c2">
+          <a href="/comercio/moda/re_evolucion">
+          <li>RE-EVOLUCIÓN</li>
+</a>          <a href="/comercio/moda/transparencias">
+          <li>TRANSPARENCIAS</li>
+</a>          <a href="/comercio/moda/medias-diseno">
+          <li>MEDIAS DISEÑO</li>
+</a>          <a href="/comercio/moda/trajes-de-bano">
+          <li>TRAJES DE BAÑO</li>
+</a>          <a href="/comercio/moda/otras-colecciones">
+          <li>OTRAS COLECCIONES</li>
+</a>      </ul>
+      <ul class="c3">
+          <a href="/comercio/aromaterapia/aceites-esenciales">
+          <li>ACEITES ESENCIALES</li>
+</a>          <a href="/comercio/aromaterapia/formulas">
+          <li>FÓRMULAS</li>
+</a>          <a href="/comercio/aromaterapia/productos-naturales">
+          <li>PRODUCTOS NATURALES</li>
+</a>          <a href="/comercio/aromaterapia/accesorios">
+          <li>ACCESORIOS</li>
+</a>      </ul>
+      <ul class="c4">
+          <a href="/comercio/intima/pantys">
+          <li>PANTYS</li>
+</a>          <a href="/comercio/intima/bras">
+          <li>BRAS</li>
+</a>          <a href="/comercio/intima/pijamas">
+          <li>PIJAMAS</li>
+</a>          <a href="/comercio/intima/fluffies">
+          <li>FLUFFIES</li>
+</a>          <a href="/comercio/intima/cuidado-de-pies">
+          <li>CUIDADO DE PIES</li>
+</a>      </ul>
+      <ul class="c5">
+          <a href="/comercio/cuidado-de-la-piel/cuidado-personal">
+          <li>CUIDADO PERSONAL</li>
+</a>          <a href="/comercio/cuidado-de-la-piel/crema-d-luz">
+          <li>CREMA D´ LUZ</li>
+</a>          <a href="/comercio/cuidado-de-la-piel/tratamiento-para-cabello">
+          <li>TRATAMIENTO PARA CABELLO</li>
+</a>      </ul>
+      <ul class="c6">
+          <a href="/comercio/salud/alkaline-pure">
+          <li>ALKALINE PURE</li>
+</a>          <a href="/comercio/salud/dieta-del-quantum">
+          <li>DIETA DEL QUANTUM</li>
+</a>      </ul>
+      <ul class="c7">
+          <a href="/comercio/mas-lineas/hombre">
+          <li>HOMBRE</li>
+</a>          <a href="/comercio/mas-lineas/pies-sin-dolor">
+          <li>PIES SIN DOLOR</li>
+</a>          <a href="/comercio/mas-lineas/varices-y-diabetes">
+          <li>VÁRICES Y DIABETES</li>
+</a>          <a href="/comercio/mas-lineas/ninos">
+          <li>NIÑOS</li>
+</a>      </ul>
+      <ul class="c8">
+          <a href="/comercio/paquetes/paquetes">
+          <li>PAQUETES</li>
+</a>          <a href="/comercio/paquetes/productos-individuales">
+          <li>PRODUCTOS INDIVIDUALES</li>
+</a>      </ul>
+      <ul class="c9">
+          <a href="/comercio/herramientas-de-venta/herramientas-de-venta">
+          <li>HERRAMIENTAS DE VENTA</li>
+</a>      </ul>
+      <ul class="c10">
+          <a href="/comercio/promociones/premios">
+          <li>PREMIOS</li>
+</a>      </ul>
+      <div class="images c0">
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_1/1/FAJAS_01.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_2/1/FAJAS_02.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_3/1/FAJAS_03.jpg')"></div>
+      </div>
+      <div class="images c1">
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_1/2/TERMICOS_WEB01.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_2/2/TERMICOS_WEB02.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_3/2/TERMICOS_WEB03.jpg')"></div>
+      </div>
+      <div class="images c2">
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_1/3/MODA_01.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_2/3/MODA_02.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_3/3/MODA_03.jpg')"></div>
+      </div>
+      <div class="images c3">
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_1/4/AROMATERAPIA_WEB01.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_2/4/AROMATERAPIA_WEB02.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_3/4/AROMATERAPIA_WEB03.jpg')"></div>
+      </div>
+      <div class="images c4">
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_1/6/INTIMA_01.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_2/6/INTIMA_02.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_3/6/INTIMA_03.jpg')"></div>
+      </div>
+      <div class="images c5">
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_1/5/CUIDADO_01.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_2/5/CUIDADO_02.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_3/5/CUIDADO_03.jpg')"></div>
+      </div>
+      <div class="images c6">
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_1/7/SALUD_01.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_2/7/SALUD_02.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_3/7/SALUD_03.jpg')"></div>
+      </div>
+      <div class="images c7">
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_1/8/MAS-LINEAS_01.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_2/8/MAS-LINEAS_02.jpg')"></div>
+            <div class="image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/menu_image/image_3/8/MAS-LINEAS_03.jpg')"></div>
+      </div>
+      <div class="images c8">
+      </div>
+      <div class="images c9">
+      </div>
+      <div class="images c10">
+      </div>
+  </div>
+</header>
+
+      <ul class="subnavbar">
+  <li class="no-label"><a href="/comercio/profile"><span class="fa fa-user"></span><span class="sidebar-title ">Perfil</span><span class="sidebar-title-tray"><span class="label label-xs bg-primary"></span></span></a></li>
+  <li class="network-map-trigger"><a href="/comercio/network"><span class="fa fa-globe"></span><span class="sidebar-title ">Mi red</span><span class="sidebar-title-tray"><span class="label label-xs bg-primary"></span></span></a></li>
+  <li class="no-label"><a href="/comercio/services"><span class="fa fa-file"></span><span class="sidebar-title ">Servicios</span><span class="sidebar-title-tray"><span class="label label-xs bg-primary"></span></span></a></li>
+  <li class="no-label"><a href="/comercio/promotions"><span class="fa fa-calendar-check-o"></span><span class="sidebar-title ">Promociones y eventos</span><span class="sidebar-title-tray"><span class="label label-xs bg-primary"></span></span></a></li>
+  <li class="no-label"><a href="/comercio/fast_order"><span class="fa fa-list"></span><span class="sidebar-title ">Pedido rápido</span><span class="sidebar-title-tray"><span class="label label-xs bg-primary"></span></span></a></li>
+</ul>
+
+      <div class="front-end">
+        <div class="products">
+          <div class="categories-navbar">
+  <form action="/comercio/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+    <input type="text" name="q" id="q" class="categories-search input-search" required="required" oninvalid="this.setCustomValidity(&#39;Por favor, llena este campo&#39;)" />
+</form>
+  <ul>
+    <li><a href="/comercio/modelante">MODELANTE</a></li>
+      <li><a href="/comercio/modelante/fajas">FAJAS</a></li>
+      <li><a href="/comercio/modelante/fajas-hombre">FAJAS HOMBRE</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/termico">TÉRMICO</a></li>
+      <li><a href="/comercio/termico/camiseta-termica">CAMISETA TÉRMICA</a></li>
+      <li><a href="/comercio/termico/capris-y-leggings">CAPRIS Y LEGGINGS</a></li>
+      <li><a href="/comercio/termico/medias">MEDIAS</a></li>
+      <li><a href="/comercio/termico/medias-terapeuticas">MEDIAS TERAPÉUTICAS</a></li>
+      <li><a href="/comercio/termico/termicos-hombre">TÉRMICOS HOMBRE</a></li>
+      <li><a href="/comercio/termico/termicos-ninos">TÉRMICOS NIÑOS</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/moda">MODA</a></li>
+      <li><a href="/comercio/moda/re_evolucion">RE-EVOLUCIÓN</a></li>
+      <li><a href="/comercio/moda/transparencias">TRANSPARENCIAS</a></li>
+      <li><a href="/comercio/moda/medias-diseno">MEDIAS DISEÑO</a></li>
+      <li><a href="/comercio/moda/trajes-de-bano">TRAJES DE BAÑO</a></li>
+      <li><a href="/comercio/moda/otras-colecciones">OTRAS COLECCIONES</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/aromaterapia">AROMATERAPIA</a></li>
+      <li><a href="/comercio/aromaterapia/aceites-esenciales">ACEITES ESENCIALES</a></li>
+      <li><a href="/comercio/aromaterapia/formulas">FÓRMULAS</a></li>
+      <li><a href="/comercio/aromaterapia/productos-naturales">PRODUCTOS NATURALES</a></li>
+      <li><a href="/comercio/aromaterapia/accesorios">ACCESORIOS</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/intima">ÍNTIMA</a></li>
+      <li><a href="/comercio/intima/pantys">PANTYS</a></li>
+      <li><a href="/comercio/intima/bras">BRAS</a></li>
+      <li><a href="/comercio/intima/pijamas">PIJAMAS</a></li>
+      <li><a href="/comercio/intima/fluffies">FLUFFIES</a></li>
+      <li><a href="/comercio/intima/cuidado-de-pies">CUIDADO DE PIES</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/cuidado-de-la-piel">CUIDADO DE LA PIEL</a></li>
+      <li><a href="/comercio/cuidado-de-la-piel/cuidado-personal">CUIDADO PERSONAL</a></li>
+      <li><a href="/comercio/cuidado-de-la-piel/crema-d-luz">CREMA D´ LUZ</a></li>
+      <li><a href="/comercio/cuidado-de-la-piel/tratamiento-para-cabello">TRATAMIENTO PARA CABELLO</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/salud">SALUD</a></li>
+      <li><a href="/comercio/salud/alkaline-pure">ALKALINE PURE</a></li>
+      <li><a href="/comercio/salud/dieta-del-quantum">DIETA DEL QUANTUM</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/mas-lineas">MÁS LÍNEAS</a></li>
+      <li><a href="/comercio/mas-lineas/hombre">HOMBRE</a></li>
+      <li><a href="/comercio/mas-lineas/pies-sin-dolor">PIES SIN DOLOR</a></li>
+      <li><a href="/comercio/mas-lineas/varices-y-diabetes">VÁRICES Y DIABETES</a></li>
+      <li><a href="/comercio/mas-lineas/ninos">NIÑOS</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/paquetes">PAQUETES</a></li>
+      <li><a href="/comercio/paquetes/paquetes">PAQUETES</a></li>
+      <li><a href="/comercio/paquetes/productos-individuales">PRODUCTOS INDIVIDUALES</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/herramientas-de-venta">HERRAMIENTAS DE VENTA</a></li>
+      <li><a href="/comercio/herramientas-de-venta/herramientas-de-venta">HERRAMIENTAS DE VENTA</a></li>
+  </ul>
+  <ul>
+    <li><a href="/comercio/promotions">Promociones</a></li>
+  </ul>
+</div>
+
+          <div class="comercio-container">
+            
+    <a class="link" href="/comercio/mas-lineas/pies-sin-dolor/producto/guante-anti_juanetes">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/295/LP5035_93_2.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Guante Anti-juanetes</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP5035</p>
+        <p>Guante que separa el dedo para evitar el dolor corrigiendo la postura con gel interior que amortigua la presión y evi...</p>
+        <p class="accent points">Puntos: 2.5</p>
+        <p class="price btn">$266.00</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/mas-lineas/pies-sin-dolor/producto/tobillera-terapeutica-completa">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/306/LP5048_93.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Tobillera Terapéutica Completa</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP5048</p>
+        <p>Compresión efectiva. Ayuda a mejorar las torceduras y esguinces, ligamentos lesionados, dolor de articulaciones y alt...</p>
+        <p class="accent points">Puntos: 2.25</p>
+        <p class="price btn">$237.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/mas-lineas/pies-sin-dolor/producto/pasos-suaves-tactel">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/302/LP5044_33.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Pasos Suaves Tactel</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP5044</p>
+        <p>Suave como la seda. Previene ampollas, heridas y callos. Escote pronunciado imperceptible en el calzado.</p>
+        <p class="accent points">Puntos: 1.25</p>
+        <p class="price btn">$125.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/mas-lineas/pies-sin-dolor/producto/pasos-suaves-algodon">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/304/LP5045_36_2.jpg')">
+        <div class="related-packages">
+          <div class="shape">
+            <p>Paquetes relacionados</p>
+          </div>
+          <div class="list" data-obj="[{&quot;id&quot;:33790,&quot;Productkey&quot;:&quot;PX1720&quot;,&quot;description&quot;:&quot;ALMOHADILLA ACOLCHONADA CON ENCAJE (2 PARES)&quot;,&quot;public_price&quot;:339.0,&quot;distributor_price&quot;:237.3,&quot;points&quot;:2.5,&quot;order&quot;:1,&quot;product_type&quot;:3,&quot;productforced&quot;:false}]"></div>
+        </div>
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Pasos Suaves Algodón</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP5045</p>
+        <p>Almohadilla acolchonada con discreto encaje en algodón suave. Reduce el cansancio, absorbe la sudoración y evita ampo...</p>
+        <p class="accent points">Puntos: 1.25</p>
+        <p class="price btn">$125.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/mas-lineas/pies-sin-dolor/producto/cover-5-dedos">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/297/LP5038_93_2.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="line-height: 40px;">Cover 5 Dedos</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP5038</p>
+        <p>Guante protector de cada dedo del pie. Protege del roce entre los dedos absorbiendo la sudoración y devuelve la comod...</p>
+        <p class="accent points">Puntos: 1.5</p>
+        <p class="price btn">$160.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/mas-lineas/pies-sin-dolor/producto/protector-de-talones">
+  <div class="product item ">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/371/LP5033_01.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Protector de Talones</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP5033</p>
+        <p>Almohadilla de silicón con extracto de rosas para sanar talones y humectar la piel diariamente. Útiles para tacones o...</p>
+        <p class="accent points">Puntos: 0.75</p>
+        <p class="price btn">$59.40</p>
+      </div>
+    </div>
+  </div>
+</a>
+    <a class="link" href="/comercio/mas-lineas/pies-sin-dolor/producto/protector-con-gel-suavizante">
+  <div class="product item reverse">
+    <div class="item-image" style="background: url('https://chemisette-web.s3.amazonaws.com/uploads/color/image/298/LP5043_04.jpg')">
+    </div>
+    <div class="item-description">
+      <div class="flex">
+        <h1 style="font-size: 33px;">Protector con Gel Suavizante</h1>
+        <div class="separator"></div>
+        <p class="accent key">LP5043</p>
+        <p>Talones suaves como piel de bebé. Repara grietas y resequedad. Doble efectividad para el tratamiento y mantenimiento ...</p>
+        <p class="accent points">Puntos: 1.5</p>
+        <p class="price btn">$174.30</p>
+      </div>
+    </div>
+  </div>
+</a>
+
+          </div>
+        </div>
+        <div id="footer" class="footer">
+  <div class="grid-container">
+    <ul>
+      <h2>Contacto</h2>
+      <li><a href="/affiliates/new">Quiero vender</a></li>
+      <li><a href="/contact">Quiero comprar</a></li>
+      <li><a href="/offices">Oficinas</a></li>
+      <li><a href="/site_policies">Políticas del sitio</a></li>
+    </ul>
+    <ul class="social-links">
+      <h2>Síguenos</h2>
+      <li><a href="https://www.facebook.com/chemisette" target="_blank">Facebook</a></li>
+      <li><a href="https://www.youtube.com/user/ChemisetteMex" target="_blank">Youtube</a></li>
+      <li><a href="https://es.pinterest.com/chemisettemex/" target="_blank">Pinterest</a></li>
+      <li><a href="https://www.instagram.com/chemisette/" target="_blank">Instagram Chemisette</a></li>
+      <li><a href="https://www.instagram.com/chemisette_aromaterapia/" target="_blank">Instagram Aromaterapia</a></li>
+      <li>
+      <i class="fa fa-twitter" aria-hidden="true"></i>
+      <a href="https://twitter.com/chemisettemex" target="_blank">Twitter</a></li>
+    </ul>
+    <div class="v-separator"></div>
+    <div class="subscribe">
+      <form novalidate="novalidate" class="simple_form new_subscribed_email" id="new_subscribed_email" action="/subscribed_emails" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="vEdH6OJGdSspkVxxDN1Gjd21kom12XgfWhvQ6PlT7BiFmAs7Jf+izDIWgpTwluq4sYWzjRwniovkDFXejFg67w==" />
+        <h2>Recibe novedades, promociones e invitaciones exclusivas</h2>
+        <div class="input email required subscribed_email_email"><label class="email required" for="subscribed_email_email"><abbr title="required">*</abbr></label><input class="string email required" placeholder="correo@mail.com" type="email" name="subscribed_email[email]" id="subscribed_email_email" /></div>
+        <p class='flash-alert'></p>
+        <div class="double">
+        <input type="submit" name="commit" value="enviar" class="btn" data-disable-with="enviar" />
+        </div>
+</form>    </div>
+  </div>
+  <p class="telephone">0181 8130 8100</p>
+  <p class="copyright">© Copyright Chemisette 2016 Derechos Reservados</p>
+</div>
+
+
+
+
+      </div>
+    </div>
+    <div class='popup'></div>
+    <div class="index_popup" id="popup" style="text-align:center;"><img width="100%" src="/assets/5_help_days/popup_earthquake-fe8c9ac421780c17a90e64be5e671f021c7e56d095a4d9bab463d55abd501aec.jpg" alt="Popup earthquake" /></div>
+  </body>
+</html>
