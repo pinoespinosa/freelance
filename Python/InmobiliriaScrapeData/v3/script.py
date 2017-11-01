@@ -12,7 +12,7 @@ import tkinter.ttk
 from tkinter.ttk import *
 
 import collections
-
+import re
 
 #
 # ********************************** Programa principal **********************************
@@ -97,8 +97,11 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 	ciudad['Guajira']='71|';
 
 	acumulaodo = []
-
-	acumulaodo.append('Nombre,Link,Ubicacion,Precio,Cant Habitaciones,Cant Baños,Antigüedad,Parqueadero,Codigo Web,Direccion,Descripcion,Nombre Barrio,Nombre Barrio Cat, Valor Venta, Valor Arriendo, Area construida, Tiempo de Construida, Estudio o Biblioteca, Terraza/Balcon, Instalacio de Gas, Tpo de calentador, Vista, Cuarto de Servicio, Tipo de Cortinas, Tipo de Acabado de Piso, Tipo de Piso en Alcobas, Numero de Piso');
+	
+	if (valor_web>0):
+		acumulaodo.append('Nombre,Link,Ubicacion,Precio,Cant Habitaciones,Cant Baños,Antigüedad,Parqueadero,Area Privada, Area Construida, Estrato, Estado, Piso, Descripcion, Balcon, Calentador, Cocina Integral, Instalacion de gas, Actualizado, Visitas, Codigo Web');
+	else:
+ 		acumulaodo.append('Nombre,Link,Ubicacion,Precio,Cant Habitaciones,Cant Baños,Antigüedad,Parqueadero,Codigo Web,Direccion,Descripcion,Nombre Barrio,Nombre Barrio Cat, Valor Venta, Valor Arriendo, Area construida, Tiempo de Construida, Estudio o Biblioteca, Terraza/Balcon, Instalacio de Gas, Tpo de calentador, Vista, Cuarto de Servicio, Tipo de Cortinas, Tipo de Acabado de Piso, Tipo de Piso en Alcobas, Numero de Piso');
 
 	cant = 1;
 	pos = 1;
@@ -335,11 +338,71 @@ def descargarFincaRaizPage(url1, url2, acumulaodo, labbel, d, pos, nombrefile):
 		except:
 			dato_parq = ''
 
-
 		try:
 			dato_edad = ooo.prettify().split('edad:')[1].split(',')[0].strip();
 		except:
 			dato_edad= ''
+
+
+		try:
+			dato_areaPriv = '"' + ooo.find('b', text=re.compile(r'Área privada')).parent.text.split(':')[1].strip() + '"';
+		except:
+			dato_areaPriv = ''
+
+		try:
+			dato_areaConst = '"' +  ooo.find('b', text=re.compile(r'Área Const')).parent.text.split(':')[1].strip() + '"';
+		except:
+			dato_areaConst = ''
+
+		try:
+			dato_estrato ='"' + ooo.find('b', text=re.compile(r'Estrato')).parent.text.split(':')[1].text.replace('"','').strip() + '"';
+		except:
+			dato_estrato = ''
+
+		try:
+			dato_estado = ooo.find('b', text=re.compile(r'Estado')).parent.text.split(':')[1].strip();
+		except:
+			dato_estado = ''
+
+		try:
+			dato_piso = ooo.find('b', text=re.compile(r'Piso No')).parent.text.split(':')[1].strip();
+		except:
+			dato_piso = ''
+		try:
+			dato_descrip = '"' + ooo.find_all('div', class_='description')[0].find('p').text.replace('"','').strip() + '"';
+		except:
+			dato_descrip = ''
+
+
+		try:
+			dato_balcon = str(ooo.find('li', text=re.compile(r'Balcón')).text == 'Balcón');
+		except:
+			dato_balcon = ''
+		try:
+			dato_calentador = str(ooo.find('li', text=re.compile(r'Calentador')).text.strip() == 'Calentador');
+		except:
+			dato_calentador = ''
+		try:
+			dato_cocinaInt = str(ooo.find('li', text=re.compile(r'Cocina Integral')).text == 'Cocina Integral');
+		except:
+			dato_cocinaInt = ''
+		try:
+			dato_instalacioGas = str(ooo.find('li', text=re.compile(r'Instalación de gas')).text.strip() == 'Instalación de gas');
+		except:
+			dato_instalacioGas = ''
+		
+		try:
+			dato_actualizado = ooo.find('li', style='display:inline;margin-right:30px;').text.replace("Actualizado:","").strip();
+		except:
+			dato_actualizado = ''
+		try:
+			dato_visitas = '';
+		except:
+			dato_visitas = ''
+		try:
+			dato_codweb = ooo.find_all('li', style='display:inline; margin-right:30px')[1].text;
+		except:
+			dato_codweb = ''
 
 		d.append('www.fincaraiz.com.co' + aa);
 
@@ -347,7 +410,7 @@ def descargarFincaRaizPage(url1, url2, acumulaodo, labbel, d, pos, nombrefile):
 		app.update_idletasks()
 		app.update()
 
-		acumulaodo.append(dato_nombre + ',' + dato_link + ',' + dato_area + ',' + dato_precio + ',' + dato_habit + ',' + dato_banio + ',' + dato_edad + ',' + dato_parq);
+		acumulaodo.append(dato_nombre + ',' + dato_link + ',' + dato_area + ',' + dato_precio + ',' + dato_habit + ',' + dato_banio + ',' + dato_edad + ',' + dato_parq + ',' + dato_areaPriv + ',' + dato_areaConst + ',' + dato_estrato + ',' +dato_estado + ',' + dato_descrip + ',' + dato_piso + ',' + dato_balcon + ',' + dato_calentador + ',' + dato_cocinaInt + ',' + dato_instalacioGas + ',' +dato_actualizado + ',' + dato_visitas + ',' + dato_codweb	);
 
 		saveFile(nombrefile, acumulaodo)
 
