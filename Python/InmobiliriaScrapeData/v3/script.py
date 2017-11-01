@@ -42,6 +42,9 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 	tipo.append('locales');
 	tipo.append('oficinas');
 	tipo.append('casas-campestres');
+	tipo.append('bodegas');
+	tipo.append('consultorios');
+
 
 	tipo_metro=[];
 	tipo_metro.append('apartamento');
@@ -51,6 +54,8 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 	tipo_metro.append('local');
 	tipo_metro.append('oficina');
 	tipo_metro.append('casas-campestres');
+	tipo_metro.append('bodega');
+	tipo_metro.append('consultorio');
 
 	tipo2=[];
 	tipo2.append('8');
@@ -60,6 +65,8 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 	tipo2.append('3');
 	tipo2.append('4');
 	tipo2.append('21');
+	tipo2.append('5');
+	tipo2.append('18');
 
 	ciudad={};
 	ciudad['San Andres y Providencia']='79|';
@@ -470,7 +477,7 @@ e3.grid(row=3, column=1, sticky='E', padx=10, pady=10)
 v3.set('Tipo de inmueble')
 inmueble = StringVar(app)
 combo2 = tkinter.ttk.Combobox(app, textvariable=inmueble)
-combo2.config(values =('Apartamento', 'Casa','Lote', 'Finca','Local', 'Oficina','Casa Campestre'))
+combo2.config(values =('Apartamento', 'Casa','Lote', 'Finca','Local', 'Oficina','Casa Campestre', 'Bodega', 'Consultorio'))
 combo2.grid(row=3, column=2, sticky='E', padx=10)
 
 v4 = StringVar()
