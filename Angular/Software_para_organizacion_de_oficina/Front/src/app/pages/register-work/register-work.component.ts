@@ -16,6 +16,8 @@ export class RegisterWorkComponent implements OnInit  {
 	universidades = [ 'UNICEN', 'FASTA', 'CAECE', 'Siglo XXI'];
 	lugarEntero = [ 'Diario', 'Television', 'Amigo'];
 
+	selectUndefinedOptionValue = '';
+
   constructor(    private router: Router
 ){
 	
