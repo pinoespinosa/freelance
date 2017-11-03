@@ -14,3 +14,9 @@
 .nav-link {
 	padding: 0;
 }
+
+.button-plus-info {
+	font-weight: bold;
+	padding: 0 5px;
+	background-color: red;
+}
