@@ -26,7 +26,6 @@
          <th>Fecha</th>
          <th>Nombre</th>
          <th>Universidad</th>
-         <th>Donde entero</th>
          <th>Proxima entrega</th>
          <th>Asesor</th>
          <th>Estado</th>
@@ -41,25 +40,13 @@
          <td>23/10/07</td>
          <td>{{orderEl.nombre}} {{orderEl.apellido}}</td>
          <td>UBA</td>
-         <td>
-            <div class="dropdown">
-               <button class="btn btn-secondary dropdown-toggle dropdown-recomendation" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-               Pag web
-               </button>
-               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Universidad</a>
-                  <a class="dropdown-item" href="#">Conocido</a>
-                  <a class="dropdown-item" href="#">Otros</a>
-               </div>
-            </div>
-         </td>
          <td>23/10/07</td>
          <td>NN</td>
          <td><span class="badge badge-success">Hecho</span></td>
          <td>2500</td>
          <td>2000</td>
          <td>500</td>
-         <td><button type="button" class="btn btn-info button-plus-info">+</button></td>
+         <td class="plus-info-column"><button type="button" id="button-plus-info" class="btn btn-info button-plus-info"><a [routerLink]="['/info']" class="nav-link plus-info" href="#">+</a></button></td>
       </tr>
    </tbody>
 </table>
