@@ -18,6 +18,8 @@ export class HomeComponent   {
   title = 'app';
   clientes : Client[];
 
+  tipo_orden = 1;
+
 
     constructor(private service: Service) {
     this.getWorks();
@@ -25,6 +27,30 @@ export class HomeComponent   {
 console.log(this.clientes)
 
     }
+
+  sortNombre(){
+
+  this.clientes.sort((a, b) => {
+    if ( (a.nombre +a.apellido) < (b.nombre + b.apellido) ) return -1 * this.tipo_orden;
+    else if ((a.nombre +a.apellido) > (b.nombre + b.apellido) ) return 1 * this.tipo_orden;
+    else return 0;
+  });
+
+  this.tipo_orden = this.tipo_orden * -1
+  
+  }
+
+  sortFecha(){
+
+  this.clientes.sort((a, b) => {
+    if ( (a.nombre +a.apellido) < (b.nombre + b.apellido) ) return -1 * this.tipo_orden;
+    else if ((a.nombre +a.apellido) > (b.nombre + b.apellido) ) return 1 * this.tipo_orden;
+    else return 0;
+  });
+
+  this.tipo_orden = this.tipo_orden * -1
+  
+  }
 
 
   myFunction(valor){

@@ -25,17 +25,18 @@
       <tr class="client-columns">
          <th>
           Nombre
-          <a class="btn clients-sort">
+          <a (click)="sortNombre()" class="btn clients-sort">
               <img class="sort-img" src="./assets/sort.png" alt="">
           </a>
         </th>
          <th>
             Universidad
-            <a class="btn clients-sort">
-                <img class="sort-img" src="./assets/sort.png" alt="">
-            </a>
         </th>
-         <th>Proxima entrega</th>
+         <th>Proxima entrega
+          <a (click)="sortFecha()" class="btn clients-sort">
+              <img class="sort-img" src="./assets/sort.png" alt="">
+          </a>
+         </th>
          <th>Estado</th>
          <th>Trabajo</th>
          <th>Total ($)</th>
