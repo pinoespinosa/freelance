@@ -20,12 +20,23 @@ export class RegisterWorkComponent implements OnInit  {
 	lugarEntero = [ 'Diario', 'Television', 'Amigo'];
   	clientes : Client[];
 
+  	id='Sin nada'
+
 	selectUndefinedOptionValue = '';
 
-  constructor(    private router: Router, private service: Service
+  constructor(    private router: Router, private route : ActivatedRoute, private service: Service
 ){
 	    this.getWorks();
 
+	let page = '0'
+    let sub = this.route
+      .queryParams
+      .subscribe(params => {
+        // Defaults to 0 if no query param provided.
+        page = params['page'];
+      });
+
+	console.log(page)
 
 }
 
