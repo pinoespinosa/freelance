@@ -1,0 +1,41 @@
+[
+  {
+    "id": "1",
+    "nombre": "Andres",
+    "apellido": "Espinosa",
+    "email1": "pino@test.com",
+    "email2": null,
+    "email3": null,
+    "email4": null,
+    "telefono1": null,
+    "telefono2": null,
+    "telefono3": null,
+    "telefono4": null
+  },
+  {
+    "id": "2",
+    "nombre": "Valentina",
+    "apellido": "Alfonso",
+    "email1": "valen@test.com",
+    "email2": null,
+    "email3": null,
+    "email4": null,
+    "telefono1": null,
+    "telefono2": null,
+    "telefono3": null,
+    "telefono4": null
+  },
+  {
+    "id": "3",
+    "nombre": "Pepe",
+    "apellido": "Gomez",
+    "email1": "test@test.com",
+    "email2": null,
+    "email3": null,
+    "email4": null,
+    "telefono1": null,
+    "telefono2": null,
+    "telefono3": null,
+    "telefono4": null
+  }
+]

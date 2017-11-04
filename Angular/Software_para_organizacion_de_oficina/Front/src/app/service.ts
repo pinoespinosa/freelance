@@ -17,7 +17,7 @@ export class Service {
   }
 
   getProducts(): Observable<Client[]> {
-    return this.http.get("https://api.myjson.com/bins/vevjv").map(this.extractData);
+    return this.http.get("/assets/mock/response1.json").map(this.extractData);
   }
 
 

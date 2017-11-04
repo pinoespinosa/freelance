@@ -3,7 +3,7 @@ import { Router, NavigationEnd, ActivatedRoute }                                
 import { trigger, state, style, animate, transition }                           from '@angular/animations';
 
 import { Client }               from 'app/data-objects/cliente';
-import { Service }   			from 'app/service';
+import { Service }   			      from 'app/service';
 
 
 @Component({
