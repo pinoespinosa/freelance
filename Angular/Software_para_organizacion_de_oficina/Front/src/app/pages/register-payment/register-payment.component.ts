@@ -16,9 +16,16 @@ export class RegisterPaymentComponent implements OnInit  {
 	universidades = [ 'UNICEN', 'FASTA', 'CAECE', 'Siglo XXI'];
 	lugarEntero = [ 'Diario', 'Television', 'Amigo'];
 
-  constructor(    private router: Router
+	cliente = ''
+	trabajo = ''
+
+
+
+  constructor(    private router: Router, private route : ActivatedRoute
 ){
 	
+
+
 
 }
 
@@ -29,6 +36,17 @@ export class RegisterPaymentComponent implements OnInit  {
 
 	ngOnInit(): void {
   
+    this.route
+      .queryParams
+      .subscribe(params => {
+        this.cliente = params['cliente'];
+        this.trabajo = params['trabajo'];
+      });
+
+      if (!this.cliente)
+      	this.cliente = ''
+	console.log("Cliente:" + this.cliente);
+	console.log(this.trabajo);
 
 
 	};

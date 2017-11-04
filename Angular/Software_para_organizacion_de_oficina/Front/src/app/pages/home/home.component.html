@@ -74,8 +74,8 @@
               <img class="clients-img" src="./assets/mas.png" alt="">
             </a>
           </td>
-         <td class="plus-info-column">
-            <a class="btn clients-actions"  [routerLink]="['/register-payment']" >
+         <td class="plus-info-column">   
+            <a class="btn clients-actions" [routerLink]="['/register-payment']" [queryParams]="{ cliente: item.nombre }"  >
               <img class="clients-img" src="./assets/pago.png" alt="">
             </a>
           </td>
