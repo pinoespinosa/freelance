@@ -7,6 +7,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { RegisterWorkComponent } from './pages/register-work/register-work.component';
 import { RegisterPaymentComponent } from './pages/register-payment/register-payment.component';
 
+import { MoreDetailsComponent } from './pages/more-details/more-details.component';
+
 
 
 import { AppComponent } from './app.component';
@@ -26,6 +28,7 @@ import { Service }     from './service';
     RegisterComponent,
     RegisterWorkComponent,
     RegisterPaymentComponent,
+    MoreDetailsComponent,
     HomeComponent
 
   ],
