@@ -16,27 +16,15 @@
 	text-align: center;
 }
 
-.button-plus-info {
-	font-weight: bold;
-	padding: 0 5px;
-}
-.plus-info {
-	padding: 0;
-	font-weight: bold;
-	color: #fff;
-}
-.plus-info:hover {
-	padding: 0;
-	font-weight: bold;
-	color: #fff;
-}
-
 .client-columns {
 	text-align: center;
 }
 
 tr td {
    line-height: 0;
+}
+.client-columns > th {
+   padding: 0;
 }
 .client-columns > td {
 	vertical-align: baseline;
@@ -48,4 +36,19 @@ tr td {
 	margin: -30px;
 }
 
+.clients-actions {
+	padding: 0;	
+}
+
+.clients-sort {
+	height: 10px;
+	margin-bottom: 3px;
+	padding: 0;
+}
+
+.sort-img {
+	height: 10px;
+	width: 10px;
+	display: block;
+}
 
