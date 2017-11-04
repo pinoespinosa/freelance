@@ -7,16 +7,45 @@
 	width: 100%;
 }
 
-.dropdown-recomendation {
-	padding: 0 5px;
+.dropdown-custom {
+	width: 100%
 }
 
-.nav-link {
-	padding: 0;
+.dropdown-menu-custom{
+	width: 100%;
+	text-align: center;
 }
 
 .button-plus-info {
 	font-weight: bold;
 	padding: 0 5px;
-	background-color: red;
 }
+.plus-info {
+	padding: 0;
+	font-weight: bold;
+	color: #fff;
+}
+.plus-info:hover {
+	padding: 0;
+	font-weight: bold;
+	color: #fff;
+}
+
+.client-columns {
+	text-align: center;
+}
+
+tr td {
+   line-height: 0;
+}
+.client-columns > td {
+	vertical-align: baseline;
+	padding: 1px;
+}
+
+.clients-img {
+	width: 20px;
+	margin: -30px;
+}
+
+

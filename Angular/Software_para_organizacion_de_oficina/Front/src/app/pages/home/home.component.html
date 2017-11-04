@@ -22,34 +22,54 @@
 
 <table class="table table-new table-striped">
    <thead>
-      <tr>
-         <th>Fecha</th>
+      <tr class="client-columns">
          <th>Nombre</th>
          <th>Universidad</th>
          <th>Proxima entrega</th>
-         <th>Asesor</th>
          <th>Estado</th>
+         <th>Trabajo</th>
          <th>Total ($)</th>
-         <th>Suma de abono</th>
          <th>Saldo</th>
          <th>Detalles</th>
+         <th>Pago</th>
+         <th>Req</th>
+         <th>Fecha</th>
       </tr>
    </thead>
    <tbody class="centro" >
-      <tr *ngFor="let orderEl of clientes">
-         <td>23/10/07</td>
+      <tr *ngFor="let orderEl of clientes" class="client-columns">
          <td>{{orderEl.nombre}} {{orderEl.apellido}}</td>
          <td>UBA</td>
          <td>23/10/07</td>
-         <td>NN</td>
          <td><span class="badge badge-success">Hecho</span></td>
+         <td>Tesis de ...</td>
          <td>2500</td>
-         <td>2000</td>
          <td>500</td>
-         <td class="plus-info-column"><button type="button" id="button-plus-info" class="btn btn-info button-plus-info"><a [routerLink]="['/info']" class="nav-link plus-info" href="#">+</a></button></td>
+         <td class="plus-info-column">
+            <a class="btn clients-actions"  [routerLink]="['/more-details']" >
+              <img class="clients-img" src="./assets/mas.png" alt="">
+            </a>
+          </td>
+         <td class="plus-info-column">
+            <a class="btn clients-actions"  [routerLink]="['/register-payment']" >
+              <img class="clients-img" src="./assets/pago.png" alt="">
+            </a>
+          </td>
+         <td class="plus-info-column">
+            <a class="btn clients-actions"  [routerLink]="['/add-requirements']" >
+              <img class="clients-img" src="./assets/reque.png" alt="">
+            </a>
+          </td>
+         <td class="plus-info-column">
+            <a class="btn clients-actions"  [routerLink]="['/add-next-date']" >
+              <img class="clients-img" src="./assets/fecha.png" alt="">
+            </a>
+          </td>
       </tr>
    </tbody>
 </table>
+
+
 <div class="modal" id="modal" tabindex="-1" role="dialog">
    <div class="modal-dialog" role="document">
       <div class="modal-content">
