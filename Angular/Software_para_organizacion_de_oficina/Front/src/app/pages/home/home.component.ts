@@ -69,7 +69,8 @@ console.log(this.clientes)
   );
 
 
-
+  this.service.saveFile();
+  
   }
 
     getWorks(): void {
