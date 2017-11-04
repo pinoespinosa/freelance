@@ -1,3 +1,5 @@
+import { Trabajo }                    from 'app/data-objects/trabajo';
+
 export class Client {
   constructor(
 
@@ -14,6 +16,7 @@ export class Client {
     public telefono3: string,
     public telefono4: string,
 
+    public trabajos: Trabajo[],
 
   ) { }
 }

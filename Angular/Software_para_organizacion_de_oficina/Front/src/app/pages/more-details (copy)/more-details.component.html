@@ -1,0 +1,60 @@
+
+<form class="form-horizontal" action='' method="POST">
+   <div class="row" style="padding-top: 30px;" >
+      <div class="col-12" style="padding-left: 40px;" >
+         <h2>Mas detalles</h2>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nombre">
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Apellido">
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="col-12" style="padding-left: 40px;padding-top: 10px;">Telefonos</div>
+
+      <div class="col-4" style="padding: 10px;padding-left: 40px;">
+         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Telefono 1">
+      </div>
+      <div class="col-4" style="padding: 10px;" >
+         <input   type="text" class="form-control" id="exampleInputPassword1" placeholder="Telefono 2">
+      </div>
+      <div class="col-4" style="padding: 10px; padding-right: 40px;" >
+         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Telefono 3">
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="col-12" style="padding-left: 40px;padding-top: 10px;">Email</div>
+      <div class="col-4" style="padding: 10px;padding-left: 40px;">
+         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Email 1">
+      </div>
+      <div class="col-4" style="padding: 10px;" >
+         <input   type="text" class="form-control" id="exampleInputPassword1" placeholder="Email 2">
+      </div>
+      <div class="col-4" style="padding: 10px; padding-right: 40px;" >
+         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Email 3">
+      </div>
+   </div>
+
+<div class="row">
+   <div class="col-3" style="text-align: center;">
+   </div>
+   <div class="col-3" style="text-align: center;">
+      <a [routerLink]="['/register-work']" class="btn btn-secondary agregar-cliente" style="width: 100%;">Agregar Trabajo</a>
+   </div>
+   <div class="col-3" style="text-align: center;">
+      <a  (click)="do()" [routerLink]="['/home']" class="btn btn-secondary agregar-cliente" style="width: 100%;" > Finalizar</a>
+   </div>
+      <div class="col-3" style="text-align: center;">
+   </div>
+</div>
+
+</form>
+
