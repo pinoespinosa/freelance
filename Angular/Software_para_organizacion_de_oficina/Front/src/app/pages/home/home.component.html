@@ -31,30 +31,43 @@
         </th>
          <th>
             Universidad
+           <a (click)="sortUniversidad()" class="btn clients-sort">
+              <img class="sort-img" src="./assets/sort.png" alt="">
+          </a>
         </th>
          <th>Proxima entrega
           <a (click)="sortFecha()" class="btn clients-sort">
               <img class="sort-img" src="./assets/sort.png" alt="">
           </a>
          </th>
-         <th>Estado</th>
-         <th>Trabajo</th>
+         <th>Estado
+         <a (click)="sortEstado()" class="btn clients-sort">
+              <img class="sort-img" src="./assets/sort.png" alt="">
+          </a>
+ 
+
+         </th>
+         <th>Tema</th>
          <th>Total ($)</th>
          <th>Saldo</th>
-         <th>Detalles</th>
-         <th>Pago</th>
-         <th>Req</th>
-         <th>Fecha</th>
+         <th style="min-width: 20px;"></th>
+         <th style="min-width: 20px;"></th>
+         <th style="min-width: 20px;"></th>
+         <th style="min-width: 20px;"></th>
       </tr>
    </thead>
    <tbody class="centro" >
-      <tr *ngFor="let orderEl of clientes" class="client-columns">
-         <td>{{orderEl.nombre}} {{orderEl.apellido}}</td>
-         <td>UBA</td>
-         <td>23/10/07</td>
-         <td><span class="badge badge-success">Hecho</span></td>
-         <td>Tesis de ...</td>
-         <td>2500</td>
+      <tr *ngFor="let item of items" class="client-columns">
+
+         <td>{{item.nombre}} {{item.apellido}}</td>
+         <td>{{item.universidad}}</td>
+         <td>{{item.entrega}}</td>
+         <td>
+            <span  *ngIf="item.estado == 'Hecho'" class="badge badge-success">{{item.estado}}</span>
+            <span  *ngIf="item.estado == 'Trabajando'" class="badge badge-warning">{{item.estado}}</span>
+         </td>
+         <td>{{item.tema}}</td>
+         <td>{{item.monto}}</td>
          <td>500</td>
          <td class="plus-info-column">
             <a class="btn clients-actions"  [routerLink]="['/more-details']" >

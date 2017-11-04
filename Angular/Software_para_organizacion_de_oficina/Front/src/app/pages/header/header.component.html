@@ -22,11 +22,18 @@
         <a [routerLink]="['/register']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Agregar Cliente <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active" class="rounded" style="padding-right: 25px;">
-        <a [routerLink]="['/register-work']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Agregar Trabajo <span class="sr-only">(current)</span></a>
+        <a [routerLink]="['/register-work']" [queryParams]="{ page: 99 }" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Agregar Trabajo <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active" class="rounded" >
+      <li class="nav-item active" class="rounded" style="padding-right: 25px;">
         <a [routerLink]="['/register-payment']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Agregar Pago <span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item active" class="rounded" style="padding-right: 25px;">
+        <a [routerLink]="['/register-payment']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Importar Excel<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" class="rounded" style="padding-right: 25px;">
+        <a [routerLink]="['/register-payment']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Exportar Excel<span class="sr-only">(current)</span></a>
+      </li>
+
     </ul>
 
   </div>

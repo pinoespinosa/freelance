@@ -6,6 +6,25 @@
          <h2>Registro de nuevo trabajo</h2>
       </div>
    </div>
+
+   <div class="row">
+      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+         <div class="dropdown">
+            <button class="btn dropdown-toggle dropdown-custom" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="selectUndefinedOptionValue">
+               -- Cliente --
+               </button>
+            <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMenuButton">
+               <a class="dropdown-item" href="#" *ngFor="let cliente of clientes" >{{cliente.nombre}} {{cliente.apellido}}</a>
+            </div>
+         </div>
+      </div>
+      <div class="col-1" style="align-self: center;" >
+         <a class="btn" >   
+            <img style="width: 30px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
+         </a>
+      </div>
+   </div>
+
    <div class="row">
       <div class="col-4" style="padding: 10px;padding-left: 40px;" >
          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tema">

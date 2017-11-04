@@ -3,7 +3,9 @@ import { Router, NavigationEnd, ActivatedRoute }                                
 import { trigger, state, style, animate, transition }                           from '@angular/animations';
 
 import { Client }               from 'app/data-objects/cliente';
-import { Service }   			from 'app/service';
+import { ClientFull }               from 'app/data-objects/clienteFull';
+
+import { Service }   			      from 'app/service';
 
 
 @Component({
@@ -17,40 +19,68 @@ export class HomeComponent   {
 
   title = 'app';
   clientes : Client[];
-
   tipo_orden = 1;
 
+  items : ClientFull[];
 
-    constructor(private service: Service) {
+
+  constructor(private service: Service) {
     this.getWorks();
-
-console.log(this.clientes)
-
-    }
+    this.items=[];
+  }
 
   sortNombre(){
-
-  this.clientes.sort((a, b) => {
-    if ( (a.nombre +a.apellido) < (b.nombre + b.apellido) ) return -1 * this.tipo_orden;
-    else if ((a.nombre +a.apellido) > (b.nombre + b.apellido) ) return 1 * this.tipo_orden;
-    else return 0;
-  });
-
-  this.tipo_orden = this.tipo_orden * -1
-  
+    this.items.sort((a, b) => {
+      if ( (a.nombre +a.apellido) < (b.nombre + b.apellido) ) 
+        return -1 * this.tipo_orden;
+      else 
+        if ((a.nombre +a.apellido) > (b.nombre + b.apellido) ) 
+          return 1 * this.tipo_orden;
+        else 
+          return 0;
+    });
+    this.tipo_orden = this.tipo_orden * -1
   }
 
   sortFecha(){
-
-  this.clientes.sort((a, b) => {
-    if ( (a.nombre +a.apellido) < (b.nombre + b.apellido) ) return -1 * this.tipo_orden;
-    else if ((a.nombre +a.apellido) > (b.nombre + b.apellido) ) return 1 * this.tipo_orden;
-    else return 0;
-  });
-
-  this.tipo_orden = this.tipo_orden * -1
-  
+    this.items.sort((a, b) => {
+      if ( (a.entrega) < (b.entrega) )
+        return -1 * this.tipo_orden;
+      else 
+        if ((a.entrega) > (b.entrega) ) 
+          return 1 * this.tipo_orden;
+        else 
+          return 0;
+    });
+    this.tipo_orden = this.tipo_orden * -1 
   }
+
+  sortEstado(){
+    this.items.sort((a, b) => {
+      if ( (a.estado) < (b.estado) )
+        return -1 * this.tipo_orden;
+      else 
+        if ((a.estado) > (b.estado) ) 
+          return 1 * this.tipo_orden;
+        else 
+          return 0;
+    });
+    this.tipo_orden = this.tipo_orden * -1 
+  }
+
+  sortUniversidad(){
+    this.items.sort((a, b) => {
+      if ( (a.universidad) < (b.universidad) )
+        return -1 * this.tipo_orden;
+      else 
+        if ((a.universidad) > (b.universidad) ) 
+          return 1 * this.tipo_orden;
+        else 
+          return 0;
+    });
+    this.tipo_orden = this.tipo_orden * -1 
+  }
+
 
 
   myFunction(valor){
@@ -68,7 +98,9 @@ console.log(this.clientes)
     }        
   );
 
-
+ console.log(this.clientes)
+   
+  this.service.saveFile();
 
   }
 
@@ -77,7 +109,17 @@ console.log(this.clientes)
         let loading = this.service.getProducts().subscribe(
             response => {
                 this.clientes = response;
-            }        );
+
+                for (var aa of response){
+                  for (var bb of aa.trabajos){
+                    let fu = new ClientFull(aa.nombre,aa.apellido,bb.id,bb.tema,bb.titulo,bb.monto,bb.universidad,bb.entrega,bb.estado);
+                    this.items.push(fu);
+                  }
+                }
+
+            }        
+        );
+
 
 
     }
