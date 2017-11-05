@@ -5,56 +5,79 @@
          <h2>Registro de nuevo usuario</h2>
       </div>
    </div>
-   <div class="row">
-      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+   <div class="row new-client-row">
+      <div class="col-6">
+         <div class="new-client-title">Nombre</div>
          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nombre">
       </div>
-   </div>
-   <div class="row">
-      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+      <div class="col-6">
+         <div class="new-client-title">Apellido</div>
          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Apellido">
       </div>
    </div>
 
-   <div class="row">
-      <div class="col-12" style="padding-left: 40px;padding-top: 10px;">Telefonos</div>
+   <div class="row new-client-row">
+      <div class="col-12 new-client-title">Telefonos</div>
 
-      <div class="col-4" style="padding: 10px;padding-left: 40px;">
-         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Telefono 1">
+      <div class="col-6">
+         <input  type="number" class="form-control" id="exampleInputPassword1" placeholder="Telefono 1">
       </div>
-      <div class="col-4" style="padding: 10px;" >
-         <input   type="text" class="form-control" id="exampleInputPassword1" placeholder="Telefono 2">
-      </div>
-      <div class="col-4" style="padding: 10px; padding-right: 40px;" >
-         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Telefono 3">
+      <div class="col-6">
+         <input   type="number" class="form-control" id="exampleInputPassword1" placeholder="Telefono 2">
       </div>
    </div>
 
-   <div class="row">
-      <div class="col-12" style="padding-left: 40px;padding-top: 10px;">Email</div>
-      <div class="col-4" style="padding: 10px;padding-left: 40px;">
+   <div class="row new-client-row">
+      <div class="col-4">
+         <div class="new-client-title">Email</div>
          <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Email 1">
       </div>
-      <div class="col-4" style="padding: 10px;" >
-         <input   type="text" class="form-control" id="exampleInputPassword1" placeholder="Email 2">
+   </div>
+
+   <div class="row new-client-row">
+      <div class="col-4">
+         <div class="new-client-title">Trabajo</div>
+         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Trabajo">
       </div>
-      <div class="col-4" style="padding: 10px; padding-right: 40px;" >
-         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Email 3">
+      <div class="col-4">
+         <div class="new-client-title">Carrera</div>
+         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Carrera">
+      </div>
+      <div class="col-4">
+         <div class="new-client-title">Universidad</div>
+         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Universidad">
       </div>
    </div>
 
-<div class="row">
-   <div class="col-3" style="text-align: center;">
+   <div class="row new-client-row">
+      <div class="col-6">
+         <div class="new-client-title">Fecha de entrega (provisional)</div>
+         <input  type="date" class="form-control" id="exampleInputPassword1">
+      </div>
+      <div class="col-6">
+         <div class="new-client-title">Total</div>
+         <input  type="date" class="form-control" id="exampleInputPassword1" placeholder="Trabajo total">
+      </div>
    </div>
-   <div class="col-3" style="text-align: center;">
-      <a [routerLink]="['/register-work']" class="btn btn-secondary agregar-cliente" style="width: 100%;">Agregar Trabajo</a>
+   <div class="row new-client-row">
+      <div class="col-12">
+         <label for="exampleFormControlTextarea1" class="new-client-title">Requerimientos</label>
+         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
    </div>
-   <div class="col-3" style="text-align: center;">
-      <a  (click)="do()" [routerLink]="['/home']" class="btn btn-secondary agregar-cliente" style="width: 100%;" > Finalizar</a>
+
+   <div class="row">
+      <div class="col-3">
+      </div>
+      <div class="col-3">
+         <a [routerLink]="['/register-work']" class="btn btn-secondary agregar-cliente">Agregar Trabajo</a>
+      </div>
+      <div class="col-3">
+         <a  (click)="do()" [routerLink]="['/home']" class="btn btn-secondary agregar-cliente"> Finalizar</a>
+      </div>
+         <div class="col-3">
+      </div>
    </div>
-      <div class="col-3" style="text-align: center;">
-   </div>
-</div>
 
 </form>
 
