@@ -11,7 +11,7 @@ import { trigger, state, style, animate, transition }                           
 })
 
 export class MoreDetailsComponent implements OnInit  {
-
+  deshabilitado : boolean = true;
   constructor(    private router: Router
 ){}
 
@@ -20,7 +20,11 @@ export class MoreDetailsComponent implements OnInit  {
 
 
 	do(){
-		 alert("Se ha registrado los datos correctamente.");
+		this.deshabilitado = !this.deshabilitado;
+	}
+
+	buttonState(){
+		return this.deshabilitado;
 	}
 }
  
