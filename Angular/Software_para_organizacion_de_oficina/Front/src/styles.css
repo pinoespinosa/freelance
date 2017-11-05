@@ -52,3 +52,16 @@ tr td {
 	display: block;
 }
 
+.details-data-row{
+	margin-bottom: 20px;
+}
+
+.detail-title {
+	font-weight: bold;
+	text-align: center;
+}
+
+.detail-data {
+	text-align: center;
+}
+
