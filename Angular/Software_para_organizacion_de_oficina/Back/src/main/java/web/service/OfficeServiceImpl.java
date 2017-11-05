@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -53,7 +54,7 @@ public class OfficeServiceImpl implements OfficeService {
 	}
 
 	@Override
-	public void importCSV(String filename) {
+	public void importCSV(MultipartFile filename) {
 		datasource.importCSV(filename);
 	}
 

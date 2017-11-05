@@ -1,10 +1,8 @@
 package web.service;
 
-import java.io.IOException;
 import java.util.List;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
+import org.springframework.web.multipart.MultipartFile;
 
 import data.Cliente;
 import data.Trabajo;
@@ -24,5 +22,5 @@ public interface OfficeService {
 
 	void createTrabajo(String idCliente, Trabajo trabajo);
 
-	void importCSV(String filename);
+	void importCSV(MultipartFile file);
 }

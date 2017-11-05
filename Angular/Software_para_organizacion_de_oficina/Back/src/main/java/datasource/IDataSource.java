@@ -2,6 +2,8 @@ package datasource;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import data.Cliente;
 import data.Trabajo;
 
@@ -17,6 +19,6 @@ public interface IDataSource {
 
 	void createTrabajo(String idCliente, Trabajo trabajo);
 
-	void importCSV(String filename);
+	void importCSV(MultipartFile filename);
 
 }

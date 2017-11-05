@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -53,8 +55,9 @@ public class OfficeController {
 
 	@RequestMapping(value = "/importCSV", method = RequestMethod.POST)
 	@ResponseBody
-	public String importCSV(@RequestBody final String filename, final HttpServletResponse response) {
-		officeService.importCSV(filename);
+	public String importCSV(@RequestParam(required = false) final MultipartFile file,
+			final HttpServletResponse response) {
+		officeService.importCSV(file);
 		return "OK";
 	}
 	
