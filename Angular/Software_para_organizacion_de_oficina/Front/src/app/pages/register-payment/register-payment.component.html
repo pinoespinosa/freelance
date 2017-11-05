@@ -7,8 +7,8 @@
       </div>
    </div>
 
-   <div class="row">
-      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+   <div class="row register-row">
+      <div class="col-4">
          <div *ngIf="cliente==''"  class="dropdown">
             <button class="btn dropdown-toggle dropdown-custom" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="selectUndefinedOptionValue">
                -- Cliente --
@@ -24,8 +24,8 @@
       </div>
    </div>
 
-   <div class="row">
-      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+   <div class="row register-row">
+      <div class="col-4">
          <div class="dropdown">
             <button class="btn dropdown-toggle dropdown-custom" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="selectUndefinedOptionValue">
                -- Trabajo --
@@ -38,26 +38,24 @@
    </div>
 
 
-   <div class="row">
-      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
-         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Total">
+   <div class="row register-row">
+      <div class="col-4">
+         <div class="register-title">Valor</div>
+         <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Valor">
       </div>
    </div>
 
-   <div class="row">
-      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
-         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Abono">
+   <div class="row register-row">
+      <div class="col-6">
+         <div class="register-remaining">Sin IVA $$$$</div>
       </div>
-   </div>
-   
-   <div class="row">
-      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
-         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Saldo">
+      <div class="col-6">
+         <div class="register-remaining">IVA $$$$</div>
       </div>
    </div>
 
-   <div class="row">
-      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+   <div class="row register-row">
+      <div class="col-4">
          <div class="dropdown">
             <button class="btn dropdown-toggle dropdown-custom" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                Seleccione medio de pago
@@ -72,22 +70,40 @@
       </div>
    </div>
 
-   <div class="row">
-      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+   <div class="row register-row">
+      <div class="col-4">
     <label for="exampleFormControlTextarea1">Observaciones</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 
       </div>
    </div>
 
-
-   <div class="row">
-      <div class="col-4" style="text-align: center;">
+   <div class="row register-row">
+      <div class="col-4">
+         <div class="register-remaining">Total</div>
+         <div class="register-remaining">$$$$$</div>
       </div>
-      <div class="col-4" style="text-align: center;">
+   </div>
+   <div class="row register-row">
+      <div class="col-4">
+         <div class="register-remaining">Abonos</div>
+         <div class="register-remaining">$$$$$</div>
+      </div>
+   </div>
+   <div class="row register-row">
+      <div class="col-4">
+         <div class="register-remaining">Saldo</div>
+         <div class="register-remaining">$$$$$</div>
+      </div>
+   </div>
+
+   <div class="row register-row">
+      <div class="col-4">
+      </div>
+      <div class="col-4">
          <a  (click)="do()" [routerLink]="['/home']" class="btn btn-secondary agregar-cliente" style="width: 100%;" >Finalizar</a>
       </div>
-      <div class="col-4" style="text-align: center;">
+      <div class="col-4">
       </div>
    </div>
 </form>
