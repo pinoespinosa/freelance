@@ -18,7 +18,8 @@ export class Service {
   }
 
   getProducts(): Observable<Client[]> {
-    return this.http.get("/assets/mock/response1.json").map(this.extractData);
+//    return this.http.get("/assets/mock/response1.json").map(this.extractData);
+      return this.http.get("http://localhost:8080/officemanager/api/client").map(this.extractData);
   }
 
 

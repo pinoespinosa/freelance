@@ -2,9 +2,12 @@ package data;
 
 public class Pago {
 
+	private String id;
 	private String total;
 	private String abono;
 	private String saldo;
+	private String forma_pago;
+
 	private String observaciones;
 
 	public String getTotal() {
@@ -37,6 +40,22 @@ public class Pago {
 
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getForma_pago() {
+		return forma_pago;
+	}
+
+	public void setForma_pago(String forma_pago) {
+		this.forma_pago = forma_pago;
 	}
 
 }

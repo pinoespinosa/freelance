@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import data.Cliente;
+import data.Trabajo;
 
 public class DataSourceMocked implements IDataSource {
 
@@ -38,6 +39,12 @@ public class DataSourceMocked implements IDataSource {
 
 	@Override
 	public void createUniversidad(String universidad) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void createTrabajo(String idCliente, Trabajo trabajo) {
 		// TODO Auto-generated method stub
 		
 	}

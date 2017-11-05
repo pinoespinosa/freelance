@@ -1,10 +1,14 @@
 package data;
 
+import java.util.List;
+
 public class Cliente {
+
+	private String id;
 
 	private String nombre;
 	private String apellido;
-	
+
 	private String email1;
 	private String email2;
 	private String email3;
@@ -14,6 +18,16 @@ public class Cliente {
 	private String telefono2;
 	private String telefono3;
 	private String telefono4;
+
+	private List<Trabajo> trabajos;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 	public String getNombre() {
 		return nombre;
@@ -30,7 +44,6 @@ public class Cliente {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-
 
 	public String getEmail1() {
 		return email1;
@@ -94,6 +107,23 @@ public class Cliente {
 
 	public void setTelefono4(String telefono4) {
 		this.telefono4 = telefono4;
+	}
+
+	public List<Trabajo> getTrabajos() {
+		return trabajos;
+	}
+
+	public void setTrabajos(List<Trabajo> trabajos) {
+		this.trabajos = trabajos;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj.getClass().equals(Cliente.class)) {
+			Cliente t = (Cliente) obj;
+			return t.getId().equals(getId());
+		}
+		return false;
 	}
 
 }

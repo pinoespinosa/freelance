@@ -1,14 +1,23 @@
 package data;
 
+import java.util.List;
+
 public class Trabajo {
 
+	private String id;
+	private String titulo;
 	private String tema;
+	private String estado;
+
+	private String monto;
 	private String carrera;
 	private String universidad;
 	private String dondeSeEntero;
-	private String fechaEntrega;
+	private String entrega;
 	private String requerimientos;
 
+	private List<Pago> pagos;
+	
 	public String getTema() {
 		return tema;
 	}
@@ -41,13 +50,6 @@ public class Trabajo {
 		this.dondeSeEntero = dondeSeEntero;
 	}
 
-	public String getFechaEntrega() {
-		return fechaEntrega;
-	}
-
-	public void setFechaEntrega(String fechaEntrega) {
-		this.fechaEntrega = fechaEntrega;
-	}
 
 	public String getRequerimientos() {
 		return requerimientos;
@@ -55,6 +57,54 @@ public class Trabajo {
 
 	public void setRequerimientos(String requerimientos) {
 		this.requerimientos = requerimientos;
+	}
+
+	public List<Pago> getPagos() {
+		return pagos;
+	}
+
+	public void setPagos(List<Pago> pagos) {
+		this.pagos = pagos;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getMonto() {
+		return monto;
+	}
+
+	public void setMonto(String monto) {
+		this.monto = monto;
+	}
+
+	public String getEntrega() {
+		return entrega;
+	}
+
+	public void setEntrega(String entrega) {
+		this.entrega = entrega;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 }
