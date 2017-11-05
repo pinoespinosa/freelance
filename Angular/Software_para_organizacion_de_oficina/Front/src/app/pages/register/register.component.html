@@ -2,9 +2,16 @@
 <form class="form-horizontal" action='' method="POST">
    <div class="row" style="padding-top: 30px;" >
       <div class="col-12" style="padding-left: 40px;" >
-         <h2>Registro de nuevo usuario</h2>
+         <h2 class="row new-client-row">Registro de nuevo usuario</h2>
       </div>
    </div>
+
+   <div class="row new-client-row">
+      <div class="col-6">
+         <h3 class="new-client-title">Datos cliente</h3>
+      </div>
+   </div>
+
    <div class="row new-client-row">
       <div class="col-6">
          <div class="new-client-title">Nombre</div>
@@ -35,9 +42,15 @@
    </div>
 
    <div class="row new-client-row">
+      <div class="col-6">
+         <h3 class="new-client-title">Datos trabajo</h3>
+      </div>
+   </div>
+
+   <div class="row new-client-row">
       <div class="col-4">
-         <div class="new-client-title">Trabajo</div>
-         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Trabajo">
+         <div class="new-client-title">Tema</div>
+         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Tema">
       </div>
       <div class="col-4">
          <div class="new-client-title">Carrera</div>
@@ -51,12 +64,12 @@
 
    <div class="row new-client-row">
       <div class="col-6">
-         <div class="new-client-title">Fecha de entrega (provisional)</div>
-         <input  type="date" class="form-control" id="exampleInputPassword1">
+         <div class="new-client-title">Donde entero</div>
+         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Donde entero">
       </div>
       <div class="col-6">
-         <div class="new-client-title">Total</div>
-         <input  type="date" class="form-control" id="exampleInputPassword1" placeholder="Trabajo total">
+         <div class="new-client-title">Fecha de entrega (provisional)</div>
+         <input  type="date" class="form-control" id="exampleInputPassword1">
       </div>
    </div>
    <div class="row new-client-row">
@@ -65,6 +78,34 @@
          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
       </div>
    </div>
+
+   <div class="row new-client-row">
+      <div class="col-6">
+         <h3 class="new-client-title">Pago</h3>
+      </div>
+   </div>
+
+   <div class="row new-client-row">
+      <div class="col-6">
+         <div class="new-client-title">Total</div>
+         <input  type="number" class="form-control" id="exampleInputPassword1" placeholder="Total">
+      </div>
+      <div class="col-3">
+         <button type="button" class="btn btn-success new-client-button">Abono</button>
+      </div>
+   </div>
+   <div class="row new-client-row">
+      <div class="col-6">
+         <div  class="new-client-remaining">Saldo: $$$$$$$</div>
+      </div>
+   </div>
+   <div class="row new-client-row">
+      <div class="col-12">
+         <label for="exampleFormControlTextarea1" class="new-client-title">Observaciones</label>
+         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+   </div>
+      
 
    <div class="row">
       <div class="col-3">

@@ -74,3 +74,12 @@ tr td {
 	margin-bottom: 10px;
 	margin-left: 5px;
 }
+
+.new-client-button {
+	margin-top: 33px;
+}
+
+.new-client-remaining {
+	color: grey;
+	font-weight: bold;
+}
