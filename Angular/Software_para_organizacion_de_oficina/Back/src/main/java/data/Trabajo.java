@@ -16,6 +16,8 @@ public class Trabajo {
 	private String entrega;
 	private String requerimientos;
 
+	private String asesor;
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj.getClass().equals(Trabajo.class)) {
@@ -114,6 +116,14 @@ public class Trabajo {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	public String getAsesor() {
+		return asesor;
+	}
+
+	public void setAsesor(String asesor) {
+		this.asesor = asesor;
 	}
 
 }
