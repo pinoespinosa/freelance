@@ -123,6 +123,12 @@ public class DataSourceReal implements IDataSource {
 					t.setMonto(valores[13].trim());
 					t.setDondeSeEntero(valores[7].trim());
 					t.setAsesor(valores[10].trim());
+					t.setFecha(valores[0].trim());
+					t.setFecha_entrega(valores[8].trim());
+					
+					try {	t.setObservaciones(valores[12].trim());			} catch (Exception e) {	}
+					try {	t.setObservaciones_next(valores[24].trim());	} catch (Exception e) {	}
+		
 					c.getTrabajos().add(t);
 
 				} catch (Exception e) {

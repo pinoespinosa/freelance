@@ -27,7 +27,7 @@ export class MoreDetailsComponent implements OnInit  {
 ){
 	
 	this.cliente=new Client("","","","","","","","","","","",null)
-	this.trabajo=new Trabajo("","","","","","","",null)
+	this.trabajo=null
 
 
 }
