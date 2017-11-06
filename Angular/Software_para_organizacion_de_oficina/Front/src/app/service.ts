@@ -8,6 +8,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 import { Client }               from 'app/data-objects/cliente';
+import { Trabajo }               from 'app/data-objects/trabajo';
 
 
 @Injectable()
@@ -18,8 +19,16 @@ export class Service {
   }
 
   getProducts(): Observable<Client[]> {
-    return this.http.get("/assets/mock/fileFromExcel.json").map(this.extractData);
-//      return this.http.get("http://192.168.1.4:8080/officemanager/api/client").map(this.extractData);
+//    return this.http.get("/assets/mock/fileFromExcel.json").map(this.extractData);
+      return this.http.get("http://192.168.1.4:8080/officemanager/api/client").map(this.extractData);
+  }
+
+  getClient(id): Observable<Client> {
+      return this.http.get("http://192.168.1.4:8080/officemanager/api/client/" + id).map(this.extractData);
+  }
+
+  getTrabajo(idCliente, idTrabajo): Observable<Trabajo> {
+      return this.http.get("http://192.168.1.4:8080/officemanager/api/" + idCliente + '/' + idTrabajo).map(this.extractData);
   }
 
 

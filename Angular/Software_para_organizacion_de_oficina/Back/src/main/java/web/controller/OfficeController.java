@@ -1,6 +1,5 @@
 package web.controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -15,9 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-
 import data.Cliente;
 import data.Trabajo;
 import web.service.OfficeService;
@@ -28,10 +24,15 @@ public class OfficeController {
 	private OfficeService officeService;
 
 	@RequestMapping(value = "/client", method = RequestMethod.GET)
-	public List<Cliente> getClientList(HttpServletResponse response)
-			throws JsonParseException, JsonMappingException, IOException {
+	public List<Cliente> getClientList(HttpServletResponse response) {
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		return officeService.getClientList();
+	}
+
+	@RequestMapping(value = "/client/{id}", method = RequestMethod.GET)
+	public Cliente getClient(@PathVariable final String id, HttpServletResponse response) {
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		return officeService.getClient(id);
 	}
 
 	@RequestMapping(value = "/client", method = RequestMethod.POST)
@@ -60,11 +61,19 @@ public class OfficeController {
 		officeService.importCSV(file);
 		return "OK";
 	}
-	
+
 	@RequestMapping(value = "/trabajo", method = RequestMethod.GET)
 	public List<Cliente> getTrabajo(HttpServletResponse response) {
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		return officeService.getClientList();
+	}
+
+	@RequestMapping(value = "{idCliente}/{idTrabajo}", method = RequestMethod.GET)
+	public Trabajo getTrabajo(@PathVariable final String idCliente, @PathVariable final String idTrabajo,
+			final HttpServletResponse response) {
+		response.addHeader("Access-Control-Allow-Origin", "*");
+
+		return officeService.getTrabajo(idCliente, idTrabajo);
 	}
 
 	@RequestMapping(value = "{idCliente}/trabajo", method = RequestMethod.POST)

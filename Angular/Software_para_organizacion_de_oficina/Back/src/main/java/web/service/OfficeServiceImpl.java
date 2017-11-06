@@ -1,14 +1,10 @@
 package web.service;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 
 import data.Cliente;
 import data.Trabajo;
@@ -56,6 +52,17 @@ public class OfficeServiceImpl implements OfficeService {
 	@Override
 	public void importCSV(MultipartFile filename) {
 		datasource.importCSV(filename);
+	}
+
+	@Override
+	public Cliente getClient(String idCliente) {
+		return datasource.getCliente(idCliente);
+	}
+
+	@Override
+	public Trabajo getTrabajo(String idCliente, String idTrabajo) {
+		return datasource.getTrabajo(idCliente,idTrabajo);
+		
 	}
 
 

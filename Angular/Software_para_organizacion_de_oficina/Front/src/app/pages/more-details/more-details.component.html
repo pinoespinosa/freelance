@@ -30,7 +30,7 @@
       <div class="col-3">
          <div class="detail-title">Nombre cliente</div>
          <!--<div>{{item.nombre}} {{item.apellido}}</div>-->
-         <input type="text" class="form-control" placeholder="Nombre y apellido" [disabled]="buttonState()">
+         <input type="text" class="form-control" value="{{cliente.nombre}} {{cliente.apellido}}" [disabled]="buttonState()">
       </div>
    
       <div class="col-3">
@@ -64,7 +64,7 @@
       <div class="col-3">
          <div class="detail-title">Trabajo</div>
          <!--<div>{{item.trabajo}}</div>-->
-         <input type="text" class="form-control" placeholder="Trabajo" [disabled]="buttonState()">
+         <input type="text" class="form-control" value="{{trabajo.tema}}" [disabled]="buttonState()">
       </div> 
 
       <div class="col-3">

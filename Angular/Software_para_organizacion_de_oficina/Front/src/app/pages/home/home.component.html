@@ -70,7 +70,7 @@
          <td>{{item.monto}}</td>
          <td>500</td>
          <td class="plus-info-column">
-            <a class="btn clients-actions"  [routerLink]="['/more-details']" >
+            <a class="btn clients-actions"  [routerLink]="['/more-details']" [queryParams]="{ cliente: item.clienteID, trabajo: item.id_trabajo }" >
               <img class="clients-img" src="./assets/mas.png" alt="">
             </a>
           </td>

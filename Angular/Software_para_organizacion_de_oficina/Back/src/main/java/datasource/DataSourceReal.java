@@ -82,13 +82,15 @@ public class DataSourceReal implements IDataSource {
 		base.setClientes(new ArrayList<>());
 		Hashtable<String, Cliente> clientes = new Hashtable<>();
 
+		int cant = -1;
+		
 		try {
 			List<String> archivo = CSVUtils.readCsvFile(filename);
 
 			for (String fila : archivo) {
 
 				try {
-
+					cant++;
 					String[] valores = fila.split(CSVUtils.sep_column);
 
 					String dato_nombre = valores[1].trim();
@@ -96,6 +98,7 @@ public class DataSourceReal implements IDataSource {
 					Cliente c = null;
 					if (!clientes.containsKey(dato_nombre)) {
 						c = new Cliente();
+						c.setId(cant+"");
 						c.setNombre(dato_nombre);
 						c.setTrabajos(new ArrayList<>());
 						base.getClientes().add(c);
@@ -105,6 +108,7 @@ public class DataSourceReal implements IDataSource {
 					}
 
 					Trabajo t = new Trabajo();
+					t.setId(c.getId() + "-" + c.getTrabajos().size());
 					t.setCarrera(valores[5].trim());
 					t.setTema(valores[4].trim());
 					t.setUniversidad(valores[6].trim());
@@ -124,6 +128,30 @@ public class DataSourceReal implements IDataSource {
 		}
 
 		infoToFile(base, "fileFromExcel.json");
+	}
+
+	@Override
+	public Cliente getCliente(String idCliente) {
+		
+		Cliente c = new Cliente();
+		c.setId(idCliente);
+		
+		return obj.getClientes().get((obj.getClientes().indexOf(c)));
+	}
+
+	@Override
+	public Trabajo getTrabajo(String idCliente, String idTrabajo) {
+		
+		Cliente c = new Cliente();
+		c.setId(idCliente);
+		Cliente clie = obj.getClientes().get((obj.getClientes().indexOf(c)));
+		
+		Trabajo t = new Trabajo();
+		t.setId(idTrabajo);
+		Trabajo trab = clie.getTrabajos().get((clie.getTrabajos().indexOf(t)));
+		
+		// TODO Auto-generated method stub
+		return trab;
 	}
 
 }

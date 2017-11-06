@@ -23,4 +23,8 @@ public interface OfficeService {
 	void createTrabajo(String idCliente, Trabajo trabajo);
 
 	void importCSV(MultipartFile file);
+
+	Cliente getClient(String idCliente);
+
+	Trabajo getTrabajo(String idCliente, String idTrabajo);
 }

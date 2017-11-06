@@ -3,6 +3,8 @@ import { Trabajo }                    from 'app/data-objects/trabajo';
 export class Client {
   constructor(
 
+    public id: string,
+
     public nombre: string,
     public apellido: string,
 

@@ -16,6 +16,15 @@ public class Trabajo {
 	private String entrega;
 	private String requerimientos;
 
+	@Override
+	public boolean equals(Object obj) {
+		if (obj.getClass().equals(Trabajo.class)) {
+			Trabajo t = (Trabajo) obj;
+			return t.getId().equals(getId());
+		}
+		return false;
+	}
+
 	private List<Pago> pagos;
 	
 	public String getTema() {

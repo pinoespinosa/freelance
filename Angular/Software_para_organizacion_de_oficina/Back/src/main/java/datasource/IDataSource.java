@@ -21,4 +21,8 @@ public interface IDataSource {
 
 	void importCSV(MultipartFile filename);
 
+	Cliente getCliente(String idCliente);
+
+	Trabajo getTrabajo(String idCliente, String idTrabajo);
+
 }
