@@ -27,37 +27,69 @@
    </div>
 
    <div class="row details-data-row">
-      <div class="col-3">
+      <div class="col-6">
          <div class="detail-title">Nombre cliente</div>
          <!--<div>{{item.nombre}} {{item.apellido}}</div>-->
          <input type="text" class="form-control" value="{{cliente.nombre}} {{cliente.apellido}}" [disabled]="buttonState()">
       </div>
    
-      <div class="col-3">
+      <div class="col-6">
          <div class="detail-title">Fecha</div>
          <!--<div>{{item.fecha}}</div>-->
          <input type="date" class="form-control" [disabled]="buttonState()">
       </div>
-   
-      <div class="col-3">
-         <div class="detail-title">Telefonos</div>
-         <!--<div>{{item.telefono}}</div>-->
-         <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Telefonos" [disabled]="buttonState()">
-      </div>
-
-      <div class="col-3">
-         <div class="detail-title">Email</div>
-         <!--<div>{{item.email}}</div>-->
-         <input type="text" class="form-control" placeholder="ejemplo@gmail.com" [disabled]="buttonState()">
-      </div> 
+      
    </div>     
    
+   <div class="row details-data-row">
+      
+      <div class="col-4">
+         <div class="detail-title">Telefono 1</div>
+         <!--<div>{{item.telefono}}</div>-->
+         <input type="number" class="form-control" placeholder="Telefono 1" [disabled]="buttonState()">
+      </div>
+
+      <div class="col-4">
+         <div class="detail-title">Telefono 2</div>
+         <!--<div>{{item.telefono}}</div>-->
+         <input type="number" class="form-control" placeholder="Telefono 2" [disabled]="buttonState()">
+      </div>
+
+      <div class="col-4">
+         <div class="detail-title">Telefono 3</div>
+         <!--<div>{{item.telefono}}</div>-->
+         <input type="number" class="form-control" placeholder="Telefono 3" [disabled]="buttonState()">
+      </div>
+      
+   </div>     
+
+   <div class="row details-data-row">
+      
+      <div class="col-4">
+         <div class="detail-title">Email 1</div>
+         <!--<div>{{item.email}}</div>-->
+         <input type="text" class="form-control" placeholder="ejemplo1@gmail.com" [disabled]="buttonState()">
+      </div> 
+
+      <div class="col-4">
+         <div class="detail-title">Email 2</div>
+         <!--<div>{{item.email}}</div>-->
+         <input type="text" class="form-control" placeholder="ejemplo2@gmail.com" [disabled]="buttonState()">
+      </div>
+
+      <div class="col-4">
+         <div class="detail-title">Email 3</div>
+         <!--<div>{{item.email}}</div>-->
+         <input type="text" class="form-control" placeholder="ejemplo3@gmail.com" [disabled]="buttonState()">
+      </div>
+      
+   </div>     
+
    <div class="row more-details-row">
       <div class="col-6">
          <h4 class="more-details-title">Datos trabajo</h4>
       </div>
    </div>
-
 
    <div class="row details-data-row">
       
@@ -84,7 +116,7 @@
       <div class="col-12">
          <div class="detail-title">Observaciones proxima entrega</div>
          <!--<div>{{item.observaciones}}</div>-->
-         <input type="text" class="form-control" placeholder="Observaciones" [disabled]="buttonState()">
+         <textarea class="form-control" rows="3" placeholder="Observaciones" [disabled]="buttonState()"></textarea>
       </div>
    </div> 
 
