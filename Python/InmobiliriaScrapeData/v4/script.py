@@ -21,7 +21,7 @@ import re
 
 
 
-def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, app, d, ubicacion2):
+def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, app, d, ubicacion2, ubicacion3, checkbox):
 
 	web=[];
 	web.append('www.metrocuadrado.com');
@@ -103,6 +103,42 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 	ciudad['Magdalena']='72|';
 	ciudad['Guajira']='71|';
 
+
+	ciudad2={};
+	ciudad2['']= '';
+	ciudad2['San Andres y Providencia']= 'san-andres';
+	ciudad2['Bogota']= 'bogota';
+	ciudad2['Cundinamarca']= 'cundinamarca';
+	ciudad2['Cesar']= 'valledupar';
+	ciudad2['Boyacá']='bocaya';
+	ciudad2['Arauca']='arauca';
+	ciudad2['Guaviare']='san-jose-del-guaviare';
+	ciudad2['Mocoa']='mocoa'; #Putumayo
+	ciudad2['Popayan']='popayan'; #Cauca
+	ciudad2['Ibague']='ibague'; #Cauca
+	ciudad2['Valle del Cauca y Pacífico']='cali';
+	ciudad2['Armenia']='armenia';
+	ciudad2['Manizales']='manizales';
+	ciudad2['Pereira']='pereira';
+	ciudad2['Quibdo']='quibdo';
+	ciudad2['Medellin']='medellin';
+	ciudad2['Monteria']='monteria';
+	ciudad2['Cucutilla']='cucutilla';
+	ciudad2['Bucaramanga']='bucaramanga';
+	ciudad2['Yopal']='yopal';
+	ciudad2['Puerto Carreno']='puerto-carreno';
+	ciudad2['Villavicencio']='villavicencio';
+	ciudad2['Neiva']='neiva';
+	ciudad2['Sincelejo']='sincelejo';
+	ciudad2['Cartagena de Indias']='cartagena-de-indias';
+	ciudad2['Barranquilla']='barranquilla';
+	ciudad2['Santa Marta']='santa-marta';
+	ciudad2['Riohacha']='riohacha';
+	ciudad2['Florencia']='florencia';
+	ciudad2['Pasto']='pasto';
+
+	print('Check es: ' + str(checkbox.get()));
+
 	acumulaodo = []
 	
 	if (valor_web>0):
@@ -120,7 +156,7 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 		if (valor_web>0):
 			valor = descargarFincaRaizPage(web[valor_web],'/'+tipo[valor_tipo]+'/'+inmueble[valor_inmueble]+'/?ad=30|'+str(pos)+'||||'+inmueble2[valor_inmueble]+'||'+tipo2[valor_tipo]+'|||'+str(ciudad[valor_ciudad])+'||||||||||||||||1|||1||||||-1', acumulaodo, labbel, d, pos, 'fincaraiz_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+valor_ciudad.replace(' ','_')+'.csv');
 		else:
-			valor = descargarMetroCuadradoPage(web[valor_web],'/' + tipo_metro[valor_tipo] +'/'  +inmueble[valor_inmueble]+'/' + ubicacion2, acumulaodo, labbel, d, pos, 'metrocuadrado_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_'+ubicacion2+'.csv',   tipo_metro[valor_tipo], inmueble[valor_inmueble], ubicacion2);
+			valor = descargarMetroCuadradoPage(web[valor_web],'/' + tipo_metro[valor_tipo] +'/'  +inmueble[valor_inmueble]+'/' + ubicacion2, acumulaodo, labbel, d, pos, 'metrocuadrado_'+tipo[valor_tipo]+'_'+inmueble[valor_inmueble]+'_',   tipo_metro[valor_tipo], inmueble[valor_inmueble], ubicacion2, ciudad2[ubicacion3], checkbox, ubicacion3);
 
 		cant = len(valor)
 		pos = pos + 1;
@@ -130,17 +166,33 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 
 
 
-def descargarMetroCuadradoPage(url1, url2, acumulaodo, labbel, d, pos, nombrefile, tip_imn, tip_op, ciudad):
-	
-	querystring = {"mtiponegocio":tip_op,"mtipoinmueble":tip_imn,"mciudad":ciudad,"selectedLocationCategory":"1","selectedLocationFilter":"mciudad","currentPage":pos,"totalPropertiesCount":"1184","totalUsedPropertiesCount":"1184","totalNewPropertiesCount":"0","sfh":"1"}
+def descargarMetroCuadradoPage(url1, url2, acumulaodo, labbel, d, pos, nombrefil, tip_imn, tip_op, ciudad, ciudad2, checkbox, ciudad3):
+
+	nombrefile = ''
+
+	if (checkbox.get()<2):
+		nombrefile = nombrefil+ciudad3+'.csv'
+		querystring = {"mtiponegocio":tip_op,"mtipoinmueble":tip_imn,"mciudad":ciudad2,"selectedLocationCategory":"1","selectedLocationFilter":"mciudad","currentPage":pos,"totalPropertiesCount":"1184","totalUsedPropertiesCount":"1184","totalNewPropertiesCount":"0","sfh":"1"}
+	else:
+		nombrefile = nombrefil+ciudad.replace(" ","_")+'.csv'
+		querystring = {"mtiponegocio":tip_op,"mtipoinmueble":tip_imn,"mciudad":ciudad,"selectedLocationCategory":"1","selectedLocationFilter":"mciudad","currentPage":pos,"totalPropertiesCount":"1184","totalUsedPropertiesCount":"1184","totalNewPropertiesCount":"0","sfh":"1"}
+
 	pageResponse = descargarResultadoData2(url1 + url2,querystring, 360, 10, '', '')
 	pubList = pageResponse.prettify().split('<div class="m_rs_list_item ">');
+
+	print(querystring)
 
 	elem = [];
 	cant=0;
 
-#	if 'No tenemos inmuebles que coincidan con su' in pageResponse.prettify():
-#		return elem;
+	if 'No tenemos inmuebles que coincidan con su' in pageResponse.prettify():
+		labbel.set('No tenemos inmuebles que coincidan con su busqueda');
+		app.update_idletasks()
+		app.update()
+		acumulaodo.append('No tenemos mas inmuebles que coincidan con su busqueda')
+		saveFile(nombrefile.replace("/","_"), acumulaodo)
+
+		return elem;
 
 	for pub in pubList:
 		if (cant==0):
@@ -450,9 +502,13 @@ def callback():
 	ubicacion= combo3.get()
 	ubicacion2= combo4.get()
 
+	ubicacion3= combo6.get()
+
+
 	if (webb>-1 and tipoOper>-1 and tipoProp>-1 ):
-		if (( webb==1 and ubicacion!='') or ( webb==0 and ubicacion2!='')):
-			descargarTodo(webb, tipoOper, tipoProp, ubicacion, v, app, d, ubicacion2);
+		if (( webb==1 and ubicacion!='') or ( webb==0 and (checkbox.get() > 0) and ( ubicacion2!='' or ubicacion3!='') )):
+				descargarTodo(webb, tipoOper, tipoProp, ubicacion, v, app, d, ubicacion2, ubicacion3, checkbox);
+
 
 app.geometry('640x300')
 
@@ -493,20 +549,38 @@ combo3 = tkinter.ttk.Combobox(app, textvariable=ciudad)
 combo3.config(values =('Amazonas','Antioquia','Arauca','Atlántico', 'bogota','Bolívar','Boyacá','Caldas','Caquetá','Casanare','Cauca', 'Cesar','Chocó','Cundinamarca','Córdoba','Guajira','Guanía','Guaviare','Huila','Magdalena','Meta','Nariño','Norte de Santander','Putumayo','Quindío','Risaralda y Eje Cafetero','San Andres y Providencia', 'Santander','Sucre','Tolima','Valle del Cauca y Pacífico','Vaupés','Vichada'))
 combo3.grid(row=4, column=2, sticky='E', padx=10)
 
-v5 = StringVar()
-e5 = Label(app, textvariable=v5)
-e5.grid(row=5, column=1, sticky='E', padx=10, pady=10)
-v5.set('Ubicacion [Solo para el sitio metrocuadrado.com]')
+
+checkbox = IntVar()
+
+
+
+ciudad6 = StringVar(app)
+combo6 = tkinter.ttk.Combobox(app, textvariable=ciudad6)
+combo6.config(values =('Arauca','Armenia','Barranquilla','Bogota','Boyacá','Bucaramanga','Cartagena de Indias','Cesar','Cucutilla','Cundinamarca','Florencia','Guaviare','Ibague','Manizales','Medellin','Mocoa','Monteria','Neiva','Pasto','Pereira','Popayan','Puerto Carreno','Quibdo','Riohacha','San Andres y Providencia','Santa Marta','Sincelejo','Valle del Cauca y Pacífico','Villavicencio','Yopal'))
+combo6.grid(row=5, column=2, sticky='E', padx=10, pady=10)
+r1 = Radiobutton(app, text="Ubicacion [Combo metrocuadrado.com]", variable=checkbox, value=1)
+r1.grid(row=5, column=1, sticky='E', padx=10)
+
+
 ciudad2 = StringVar(app)
 combo4 = tkinter.ttk.Entry(app, textvariable=ciudad2)
-combo4.grid(row=5, column=2, sticky='E', padx=10)
+combo4.grid(row=6, column=2, sticky='E', padx=10, pady=10)
+r2 = Radiobutton(app, text="Ubicacion [Texto metrocuadrado.com]", variable=checkbox, value=2)
+r2.grid(row=6, column=1, sticky='E', padx=10)
+
 
 boton = Button(app, text="OK", command=callback)
-boton.grid(row=6, column=1, sticky='E', padx=10, pady=10)
+boton.grid(row=8, column=1, sticky='E', padx=10, pady=10)
 
 v = StringVar()
 e = Label(app, textvariable=v)
-e.grid(row=7, column=3, sticky='E')
+e.grid(row=9, column=3, sticky='E')
+
+
+
+
+
+
 
 app.update_idletasks()
 app.mainloop();
