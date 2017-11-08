@@ -142,9 +142,9 @@ def descargarTodo(valor_web, valor_inmueble, valor_tipo, valor_ciudad, labbel, a
 	acumulaodo = []
 	
 	if (valor_web>0):
-		acumulaodo.append('Nombre,Link,Ubicacion,Precio,Cant Habitaciones,Cant Baños,Antigüedad,Parqueadero,Area Privada, Area Construida, Estrato, Estado, Piso, Descripcion, Balcon, Calentador, Cocina Integral, Instalacion de gas, Actualizado, Visitas, Codigo Web');
+		acumulaodo.append('Nombre,Link,Ubicacion,Precio,Cant Habitaciones,Cant Baños,Antigüedad,Parqueadero,Area Privada, Area Construida, Estrato, Estado, Piso, Descripcion, Balcon, Calentador, Cocina Integral, Instalacion de gas, Actualizado, Visitas, Codigo Web, Precio/Area');
 	else:
- 		acumulaodo.append('Nombre,Link,Ubicacion,Precio,Cant Habitaciones,Cant Baños,Antigüedad,Parqueadero,Codigo Web,Direccion,Descripcion,Nombre Barrio,Nombre Barrio Cat, Valor Venta, Valor Arriendo, Area construida, Tiempo de Construida, Estudio o Biblioteca, Terraza/Balcon, Instalacio de Gas, Tpo de calentador, Vista, Cuarto de Servicio, Tipo de Cortinas, Tipo de Acabado de Piso, Tipo de Piso en Alcobas, Numero de Piso');
+ 		acumulaodo.append('Nombre,Link,Area,Precio,Cant Habitaciones,Cant Baños,Antigüedad,Parqueadero,Codigo Web,Direccion,Descripcion,Nombre Barrio,Nombre Barrio Cat, Valor Venta, Valor Arriendo, Area construida, Tiempo de Construida, Estudio o Biblioteca, Terraza/Balcon, Instalacio de Gas, Tpo de calentador, Vista, Cuarto de Servicio, Tipo de Cortinas, Tipo de Acabado de Piso, Tipo de Piso en Alcobas, Numero de Piso, Precio/Area');
 
 	cant = 1;
 	pos = 1;
@@ -214,14 +214,20 @@ def descargarMetroCuadradoPage(url1, url2, acumulaodo, labbel, d, pos, nombrefil
 			dato_link = ''
 
 		try:
-			dato_area = ''
+			dato_area = orig2.find_all(class_="m_property_info_table")[0].prettify().split("construida")[1].split("<dd>")[1].split("<")[0].strip().replace("de","").replace("m","")
 		except:
 			dato_area = ''
 
 		try:
-			dato_precio = orig2.find_all(class_="m_property_info_table")[0].find_all("dd")[0].text.replace(',',';').strip()
+			dato_precio = orig2.find_all(class_="m_property_info_table")[0].find_all("dd")[0].text.replace(',','').replace('.','').replace('$','').strip()
 		except:
 			dato_precio = ''
+
+
+		flo_area = 	float(dato_area);
+		flo_pre = 	float(dato_precio);
+		dato_nuevo =  flo_pre / flo_area;
+
 
 		try:
 			dato_habit = orig2.find_all(class_="m_property_info_table")[0].prettify().split("Habitaciones")[1].split("<dd>")[1].split("</dd>")[0].strip()
@@ -275,17 +281,18 @@ def descargarMetroCuadradoPage(url1, url2, acumulaodo, labbel, d, pos, nombrefil
 			dato_nombreBarrioCat = ''
 
 		try:
-			dato_valorVenta = orig2.prettify().split("Valor de venta")[1].split("<h4>")[1].split("<")[0].strip()
+			dato_valorVenta = orig2.prettify().split("Valor de venta")[1].split("<h4>")[1].split("<")[0].strip().replace(".","").replace("$","")
 		except:
 			dato_valorVenta = ''
 		
 		try:
-			dato_valorArriendo = orig2.prettify().split("Valor de arriendo")[1].split("<h4>")[1].split("<")[0].strip()
+			dato_valorArriendo = orig2.prettify().split("Valor de arriendo")[1].split("<h4>")[1].split("<")[0].strip().replace(".","").replace("$","")
 		except:
 			dato_valorArriendo = ''
 
 		try:
-			dato_areaConst = orig2.find_all(class_="m_property_info_details")[0].prettify().split("Área construida")[1].split("<h4>")[1].split("<")[0].strip() + '2'
+			dato_areaConst = orig2.find_all(class_="m_property_info_details")[0].prettify().split("Área construida")[1].split("<h4>")[1].split("<")[0].strip()
+			dato_areaConst = dato_areaConst.replace("m","")
 		except:
 			dato_areaConst = ''
 
@@ -343,7 +350,7 @@ def descargarMetroCuadradoPage(url1, url2, acumulaodo, labbel, d, pos, nombrefil
 		app.update_idletasks()
 		app.update()
 
-		acumulaodo.append(dato_nombre + ',' + dato_link + ',' + dato_area + ',' + dato_precio + ',' + dato_habit + ',' + dato_banio + ',' + dato_edad + ',' + dato_parq + ',' + dato_codweb + ',' + dato_inmobiliaria + ',' + dato_descrip + ',' + dato_nombreBarrio + ',' + dato_nombreBarrioCat + ',' + dato_valorVenta + ',' + dato_valorArriendo + ',' + dato_areaConst  + ',' + dato_tiempoCost+ ',' + dato_biblio+ ',' + dato_terraza+ ',' + dato_instalacioGas + ',' + dato_instalacioCalef + ',' + dato_vista + ',' + dato_habServ + ',' + dato_tipCortina + ',' + dato_tipPiso + ',' + dato_tipPisoAlcoba + ',' + dato_numPiso);
+		acumulaodo.append(dato_nombre + ',' + dato_link + ',' + dato_area + ',' + dato_precio + ',' + dato_habit + ',' + dato_banio + ',' + dato_edad + ',' + dato_parq + ',' + dato_codweb + ',' + dato_inmobiliaria + ',' + dato_descrip + ',' + dato_nombreBarrio + ',' + dato_nombreBarrioCat + ',' + dato_valorVenta + ',' + dato_valorArriendo + ',' + dato_areaConst  + ',' + dato_tiempoCost+ ',' + dato_biblio+ ',' + dato_terraza+ ',' + dato_instalacioGas + ',' + dato_instalacioCalef + ',' + dato_vista + ',' + dato_habServ + ',' + dato_tipCortina + ',' + dato_tipPiso + ',' + dato_tipPisoAlcoba + ',' + dato_numPiso + ',' + str(dato_nuevo) );
 		saveFile(nombrefile.replace("/","_"), acumulaodo)
 
 	return elem;
@@ -383,9 +390,10 @@ def descargarFincaRaizPage(url1, url2, acumulaodo, labbel, d, pos, nombrefile):
 				dato_area = dato_area + '/' + aa.strip()
 
 		try:
-			dato_precio = ooo.find_all(class_="price")[0].find_all("h2")[0].text.replace(',',';').strip()
+			dato_precio = ooo.find_all(class_="price")[0].find_all("h2")[0].text.replace(',',';').strip().replace(".","").replace("$","")
 		except:
 			dato_precio = ''
+
 		try:
 			dato_habit = str(int(ooo.prettify().split('src="/App_Theme/css/img/ico_bed.png"')[1].split(':')[1].split('<')[0].strip()));
 		except:
@@ -407,15 +415,22 @@ def descargarFincaRaizPage(url1, url2, acumulaodo, labbel, d, pos, nombrefile):
 			dato_edad= ''
 
 
+
+
 		try:
 			dato_areaPriv = '"' + ooo.find('b', text=re.compile(r'Área privada')).parent.text.split(':')[1].strip() + '"';
 		except:
 			dato_areaPriv = ''
 
 		try:
-			dato_areaConst = '"' +  ooo.find('b', text=re.compile(r'Área Const')).parent.text.split(':')[1].strip() + '"';
+			dato_areaConst = '"' +  ooo.find('b', text=re.compile(r'Área Const')).parent.text.split(':')[1].strip().split("m")[0].replace(",",".") + '"';
 		except:
 			dato_areaConst = ''
+
+		try:
+			dato_nuevo = float(dato_precio.replace('"','')) / float(dato_areaConst.replace('"',''));
+		except:
+			dato_nuevo = ''
 
 		try:
 			dato_estrato ='"' + ooo.find('b', text=re.compile(r'Estrato')).parent.text.split(':')[1].text.replace('"','').strip() + '"';
@@ -473,7 +488,7 @@ def descargarFincaRaizPage(url1, url2, acumulaodo, labbel, d, pos, nombrefile):
 		app.update_idletasks()
 		app.update()
 
-		acumulaodo.append(dato_nombre + ',' + dato_link + ',' + dato_area + ',' + dato_precio + ',' + dato_habit + ',' + dato_banio + ',' + dato_edad + ',' + dato_parq + ',' + dato_areaPriv + ',' + dato_areaConst + ',' + dato_estrato + ',' +dato_estado + ',' + dato_descrip + ',' + dato_piso + ',' + dato_balcon + ',' + dato_calentador + ',' + dato_cocinaInt + ',' + dato_instalacioGas + ',' +dato_actualizado + ',' + dato_visitas + ',' + dato_codweb	);
+		acumulaodo.append(dato_nombre + ',' + dato_link + ',' + dato_area + ',' + dato_precio + ',' + dato_habit + ',' + dato_banio + ',' + dato_edad + ',' + dato_parq + ',' + dato_areaPriv + ',' + dato_areaConst + ',' + dato_estrato + ',' +dato_estado + ',' + dato_descrip + ',' + dato_piso + ',' + dato_balcon + ',' + dato_calentador + ',' + dato_cocinaInt + ',' + dato_instalacioGas + ',' +dato_actualizado + ',' + dato_visitas + ',' + dato_codweb+ ',' +	str(dato_nuevo) );
 
 		saveFile(nombrefile, acumulaodo)
 
