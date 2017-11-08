@@ -1,0 +1,184 @@
+<form class="form-horizontal" action='' method="POST">
+   <div class="row page-title-row">
+      <div class="col-3 page-title-div">
+         <h2>Mas detalles</h2>
+      </div>
+      <div class="col-2">
+         <button (click)="do()" type="button" class="btn btn-primary edit-client-button client-button"> 
+            Editar
+         </button>
+      </div>
+      <div class="col-2">
+         <button (click)="do()" type="button" class="btn btn-success save-client-button client-button" [disabled]="buttonState()"> 
+            Guardar
+         </button>
+      </div>
+      <div class="col-2">
+         <button (click)="do()" type="button" class="btn btn-danger cancel-client-button client-button" [disabled]="buttonState()"> 
+            Cancelar
+         </button>
+      </div>
+   </div>
+
+   <div class="row more-details-row">
+      <div class="col-6">
+         <h4 class="more-details-title">Datos cliente</h4>
+      </div>
+   </div>
+
+   <div class="row details-data-row">
+      <div class="col-6">
+         <div class="detail-title">Nombre cliente</div>
+         <!--<div>{{item.nombre}} {{item.apellido}}</div>-->
+         <input type="text" class="form-control" value="{{cliente.nombre}} {{cliente.apellido}}" [disabled]="buttonState()">
+      </div>
+   
+      <div class="col-6">
+         <div class="detail-title">Fecha</div>
+         <!--<div>{{item.fecha}}</div>-->
+         <input type="date" class="form-control" value="{{trabajo.fecha}}" [disabled]="buttonState()">
+      </div>
+      
+   </div>     
+   
+   <div class="row details-data-row">
+      
+      <div class="col-4">
+         <div class="detail-title">Telefono 1</div>
+         <!--<div>{{item.telefono}}</div>-->
+         <input type="number" class="form-control" placeholder="Telefono 1" value="{{cliente.telefono1}}" [disabled]="buttonState()">
+      </div>
+
+      <div class="col-4">
+         <div class="detail-title">Telefono 2</div>
+         <!--<div>{{item.telefono}}</div>-->
+         <input type="number" class="form-control" placeholder="Telefono 2" value="{{cliente.telefono2}}" [disabled]="buttonState()">
+      </div>
+
+      <div class="col-4">
+         <div class="detail-title">Telefono 3</div>
+         <!--<div>{{item.telefono}}</div>-->
+         <input type="number" class="form-control" placeholder="Telefono 3" value="{{cliente.telefono3}}" [disabled]="buttonState()">
+      </div>
+      
+   </div>     
+
+   <div class="row details-data-row">
+      
+      <div class="col-4">
+         <div class="detail-title">Email 1</div>
+         <!--<div>{{item.email}}</div>-->
+         <input type="text" class="form-control" placeholder="Email 1" value="{{cliente.email1}}" [disabled]="buttonState()">
+      </div> 
+
+      <div class="col-4">
+         <div class="detail-title">Email 2</div>
+         <!--<div>{{item.email}}</div>-->
+         <input type="text" class="form-control" placeholder="Email 2" value="{{cliente.email2}}" [disabled]="buttonState()">
+      </div>
+
+      <div class="col-4">
+         <div class="detail-title">Email 3</div>
+         <!--<div>{{item.email}}</div>-->
+         <input type="text" class="form-control" placeholder="Email 3" value="{{cliente.email3}}" [disabled]="buttonState()">
+      </div>
+      
+   </div>     
+
+   <div class="row more-details-row">
+      <div class="col-6">
+         <h4 class="more-details-title">Datos trabajo</h4>
+      </div>
+   </div>
+
+   <div class="row details-data-row">
+      
+      <div class="col-3">
+         <div class="detail-title">Trabajo</div>
+         <!--<div>{{item.trabajo}}</div>-->
+         <input type="text" class="form-control" value="{{trabajo.tema}}" [disabled]="buttonState()">
+      </div> 
+
+      <div class="col-3">
+         <div class="detail-title">Carrera</div>
+         <!--<div>{{item.carrera}}</div>-->
+         <input type="text" class="form-control" value="{{trabajo.carrera}}" [disabled]="buttonState()">
+      </div>
+
+      <div class="col-3">
+         <div class="detail-title">Universidad</div>
+         <!--<div>{{item.universidad}}</div>-->
+         <input type="text" class="form-control" value="{{trabajo.universidad}}" [disabled]="buttonState()">
+      </div> 
+   </div>  
+
+   <div class="row details-data-row">
+      <div class="col-12">
+         <div class="detail-title">Observaciones proxima entrega</div>
+         <!--<div>{{item.observaciones}}</div>-->
+         <textarea class="form-control" rows="3" value="{{trabajo.observaciones_next}}" placeholder="Observaciones" [disabled]="buttonState()"></textarea>
+      </div>
+   </div> 
+
+   <div class="row details-data-row">
+      <div class="col-3">
+         <div class="detail-title">Donde entero</div>
+         <!--<div>{{item.dondeEntero}}</div>-->
+         <input type="text" class="form-control" placeholder="Donde entero" value="{{trabajo.dondeSeEntero}}" [disabled]="buttonState()">
+      </div>
+
+      <div class="col-3">
+         <div class="detail-title">Proxima entrega</div>
+         <!--<div>{{item.proximaEntrega}}</div>-->
+         <input type="date" class="form-control" value="{{trabajo.fecha_entrega}}" [disabled]="buttonState()">
+      </div>   
+
+      <div class="col-3">
+         <div class="detail-title">Asesor</div>
+         <!--<div>{{item.asesor}}</div>-->
+         <input type="text" class="form-control" value="{{trabajo.asesor}}" [disabled]="buttonState()">
+      </div> 
+   </div>  
+
+   <div class="row details-data-row">
+      <div class="col-12">
+         <div class="detail-title">Observaciones entregas</div>
+         <!--<div>{{item.observaciones}}</div>-->
+         <textarea class="form-control" rows="3" value="{{trabajo.observaciones}}" placeholder="Observaciones" [disabled]="buttonState()"></textarea>
+      </div>   
+   </div>  
+
+   <div class="row more-details-row">
+      <div class="col-6">
+         <h4 class="more-details-title">Pago</h4>
+      </div>
+   </div>
+
+   <div class="row details-data-row">
+      <div class="col-3">
+         <div class="detail-title">Total</div>
+         <!--<div>{{item.total}}</div>-->
+         <input type="number" class="form-control" [disabled]="buttonState()">
+      </div> 
+
+      <div class="col-3">
+         <div class="detail-title">Abono</div>
+         <!--<div>{{item.abono}}</div>-->
+         <input type="number" class="form-control" [disabled]="buttonState()">
+      </div>  
+
+      <div class="col-3">
+         <div class="detail-title">Saldo</div>
+         <!--<div>{{item.saldo}}</div>-->
+         <input type="number" class="form-control" [disabled]="buttonState()">
+      </div> 
+
+      <div class="col-3">
+         <div class="detail-title">Por cobrar</div>
+         <!--<div>{{item.porCobrar}}</div>-->
+         <input type="number" class="form-control" [disabled]="buttonState()">
+      </div>  
+   </div> 
+
+</form>
+

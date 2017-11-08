@@ -1,0 +1,118 @@
+/* You can add global styles to this file, and also import other style files */
+.page-title-row {
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+.page-title-div {
+	margin-left: 40px;
+}
+
+.agregar-cliente {
+	margin: 20px;
+}
+
+.navbar-registro-total {
+	width: 100%;
+}
+
+.dropdown-custom {
+	width: 100%
+}
+
+.dropdown-menu-custom{
+	width: 100%;
+	text-align: center;
+}
+
+.client-columns {
+	text-align: center;
+	font-size: 11px;
+}
+
+.save-client-button {
+	display: block;
+}
+
+.cancel-client-button {
+	display: block;
+}
+
+tr td {
+   line-height: 0;
+}
+.client-columns > th {
+   padding: 0;
+}
+.client-columns > td {
+	vertical-align: baseline;
+	padding: 1px;
+}
+
+.clients-img {
+	width: 20px;
+	margin: -30px;
+}
+
+.clients-actions {
+	padding: 0;	
+}
+
+.clients-sort {
+	height: 10px;
+	margin-bottom: 3px;
+	padding: 0;
+}
+
+.client-button {
+	width: 100%;
+}
+
+.sort-img {
+	height: 10px;
+	width: 10px;
+	display: block;
+}
+
+.details-data-row{
+	margin-bottom: 20px;
+}
+
+.detail-title {
+	font-weight: bold;
+}
+
+.detail-data {
+	text-align: center;
+}
+
+.register-row {
+	margin-bottom: 20px;
+}
+
+.register-title {
+	font-weight: bold;
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+
+.register-button {
+	margin-top: 33px;
+	padding: 0;
+}
+
+.register-remaining {
+	color: grey;
+	font-weight: bold;
+}
+
+.abono-cliente{
+	color: #fff;
+}
+
+.register-row {
+	margin-bottom: 20px;
+}
+
+.register-title {
+	margin-left: 5px;
+}

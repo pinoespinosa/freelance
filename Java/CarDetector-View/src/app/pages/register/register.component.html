@@ -1,0 +1,125 @@
+
+<form class="form-horizontal" action='' method="POST">
+   <div class="row" style="padding-top: 30px;" >
+      <div class="col-12" style="padding-left: 40px;" >
+         <h2 class="row register-row">Registro de nuevo usuario</h2>
+      </div>
+   </div>
+
+   <div class="row register-row">
+      <div class="col-6">
+         <h3 class="register-title">Datos cliente</h3>
+      </div>
+   </div>
+
+   <div class="row register-row">
+      <div class="col-6">
+         <div class="register-title">Nombre</div>
+         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nombre">
+      </div>
+      <div class="col-6">
+         <div class="register-title">Apellido</div>
+         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Apellido">
+      </div>
+   </div>
+
+   <div class="row register-row">
+      <div class="col-12 register-title">Telefonos</div>
+
+      <div class="col-6">
+         <input  type="number" class="form-control" id="exampleInputPassword1" placeholder="Telefono 1">
+      </div>
+      <div class="col-6">
+         <input   type="number" class="form-control" id="exampleInputPassword1" placeholder="Telefono 2">
+      </div>
+   </div>
+
+   <div class="row register-row">
+      <div class="col-4">
+         <div class="register-title">Email</div>
+         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Email 1">
+      </div>
+   </div>
+
+   <div class="row register-row">
+      <div class="col-6">
+         <h3 class="register-title">Datos trabajo</h3>
+      </div>
+   </div>
+
+   <div class="row register-row">
+      <div class="col-4">
+         <div class="register-title">Tema</div>
+         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Tema">
+      </div>
+      <div class="col-4">
+         <div class="register-title">Carrera</div>
+         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Carrera">
+      </div>
+      <div class="col-4">
+         <div class="register-title">Universidad</div>
+         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Universidad">
+      </div>
+   </div>
+
+   <div class="row register-row">
+      <div class="col-6">
+         <div class="register-title">Donde entero</div>
+         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Donde entero">
+      </div>
+      <div class="col-6">
+         <div class="register-title">Fecha de entrega (provisional)</div>
+         <input  type="date" class="form-control" id="exampleInputPassword1">
+      </div>
+   </div>
+   <div class="row register-row">
+      <div class="col-12">
+         <label for="exampleFormControlTextarea1" class="register-title">Requerimientos</label>
+         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+   </div>
+
+   <div class="row register-row">
+      <div class="col-6">
+         <h3 class="register-title">Pago</h3>
+      </div>
+   </div>
+
+   <div class="row register-row">
+      <div class="col-6">
+         <div class="register-title">Total</div>
+         <input  type="number" class="form-control" id="exampleInputPassword1" placeholder="Total">
+      </div>
+      <div class="col-3">
+         <button type="button" class="btn btn-success register-button"> 
+            <a [routerLink]="['/register-payment']" class="btn btn-success abono-cliente"> Abono</a>
+         </button>
+      </div>
+   </div>
+   <div class="row register-row">
+      <div class="col-6">
+         <div  class="register-remaining">Saldo: $$$$$$$</div>
+      </div>
+   </div>
+   <div class="row register-row">
+      <div class="col-12">
+         <label for="exampleFormControlTextarea1" class="register-title">Observaciones</label>
+         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+   </div>
+      
+
+   <div class="row">
+      <div class="col-3">
+      </div>
+      
+      <div class="col-3">
+         <a  (click)="do()" [routerLink]="['/home']" class="btn btn-success agregar-cliente"> Finalizar</a>
+      </div>
+      <div class="col-3">
+         <a (click)="do()" [routerLink]="['/home']" class="btn btn-danger agregar-cliente">Cancelar</a>
+      </div>
+   </div>
+
+</form>
+
