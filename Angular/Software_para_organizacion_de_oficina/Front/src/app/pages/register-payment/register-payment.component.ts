@@ -16,8 +16,12 @@ export class RegisterPaymentComponent implements OnInit  {
 	universidades = [ 'UNICEN', 'FASTA', 'CAECE', 'Siglo XXI'];
 	lugarEntero = [ 'Diario', 'Television', 'Amigo'];
 
-	cliente = ''
-	trabajo = ''
+	cliente = '';
+	trabajo = '';
+
+	valorValue: number = 0;
+	valorSinIva: number = 0;
+	valorIVA: number = 0;
 
 
 
@@ -45,10 +49,23 @@ export class RegisterPaymentComponent implements OnInit  {
 
       if (!this.cliente)
       	this.cliente = ''
-	console.log("Cliente:" + this.cliente);
+	console.log(this.cliente);
 	console.log(this.trabajo);
 
-
 	};
+
+	onKey(event: KeyboardEvent) { // with type info
+	    this.valorValue = Number((<HTMLInputElement>event.target).value);
+	    this.valorSinIva = Number(this.valorValue/1.12);
+	    this.valorIVA = this.valorValue*0.12;
+	    console.log(this.valorIVA); 
+	  }
+
+	getValorSinIVA(){
+		return this.valorSinIva.toFixed(2);
+	}
+	getValorIVA(){
+		return this.valorIVA.toFixed(2);
+	}
 }
  

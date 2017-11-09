@@ -14,7 +14,7 @@
                -- Cliente --
                </button>
             <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMenuButton">
-               <a class="dropdown-item" href="#" *ngFor="let cliente of clientes" >{{cliente.nombre}} {{cliente.apellido}}</a>
+               <a class="dropdown-item" *ngFor="let cliente of clientes" >{{cliente.nombre}} {{cliente.apellido}}</a>
             </div>
          </div>
          <div *ngIf="cliente!=''">Cliente: {{cliente}}
@@ -31,7 +31,7 @@
                -- Trabajo --
                </button>
             <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMenuButton">
-               <a class="dropdown-item" href="#" *ngFor="let cliente of clientes" >{{cliente.nombre}} {{cliente.apellido}}</a>
+               <a class="dropdown-item" *ngFor="let cliente of clientes" >{{cliente.nombre}} {{cliente.apellido}}</a>
             </div>
          </div>
       </div>
@@ -41,16 +41,16 @@
    <div class="row register-row">
       <div class="col-4">
          <div class="register-title">Valor</div>
-         <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Valor">
+         <input type="number" class="form-control" placeholder="Valor" (keyup)="onKey($event)">
       </div>
    </div>
 
    <div class="row register-row">
       <div class="col-6">
-         <div class="register-remaining">Sin IVA $$$$</div>
+         <div class="register-remaining">Sin IVA {{getValorSinIVA()}}</div>
       </div>
       <div class="col-6">
-         <div class="register-remaining">IVA $$$$</div>
+         <div class="register-remaining">IVA {{getValorIVA()}}</div>
       </div>
    </div>
 
@@ -61,10 +61,10 @@
                Seleccione medio de pago
                </button>
             <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMenuButton">
-               <a class="dropdown-item" href="#">Tarjeta debito</a>
-               <a class="dropdown-item" href="#">Tarjeta de credito</a>
-               <a class="dropdown-item" href="#">Efectivo</a>
-               <a class="dropdown-item" href="#">Otros</a>
+               <a class="dropdown-item">Tarjeta debito</a>
+               <a class="dropdown-item">Tarjeta de credito</a>
+               <a class="dropdown-item">Efectivo</a>
+               <a class="dropdown-item">Otros</a>
             </div>
          </div>
       </div>
