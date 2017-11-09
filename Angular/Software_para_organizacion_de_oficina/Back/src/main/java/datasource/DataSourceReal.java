@@ -100,6 +100,14 @@ public class DataSourceReal implements IDataSource {
 						c = new Cliente();
 						c.setId(cant+"");
 						c.setNombre(dato_nombre);
+						try {	c.setTelefono1(valores[2].split("/")[0].trim());	} catch (Exception e) {	}
+						try {	c.setTelefono2(valores[2].split("/")[1].trim());	} catch (Exception e) {	}
+						try {	c.setTelefono3(valores[2].split("/")[2].trim());	} catch (Exception e) {	}
+
+						try {	c.setEmail1(valores[3].split(",")[0].trim());	} catch (Exception e) {	}
+						try {	c.setEmail2(valores[3].split(",")[1].trim());	} catch (Exception e) {	}
+						try {	c.setEmail3(valores[3].split(",")[2].trim());	} catch (Exception e) {	}
+
 						c.setTrabajos(new ArrayList<>());
 						base.getClientes().add(c);
 						clientes.put(dato_nombre, c);
@@ -113,6 +121,14 @@ public class DataSourceReal implements IDataSource {
 					t.setTema(valores[4].trim());
 					t.setUniversidad(valores[6].trim());
 					t.setMonto(valores[13].trim());
+					t.setDondeSeEntero(valores[7].trim());
+					t.setAsesor(valores[10].trim());
+					t.setFecha(valores[0].trim());
+					t.setFecha_entrega(valores[8].trim());
+					
+					try {	t.setObservaciones(valores[12].trim());			} catch (Exception e) {	}
+					try {	t.setObservaciones_next(valores[24].trim());	} catch (Exception e) {	}
+		
 					c.getTrabajos().add(t);
 
 				} catch (Exception e) {
@@ -127,7 +143,7 @@ public class DataSourceReal implements IDataSource {
 			e.printStackTrace();
 		}
 
-		infoToFile(base, "fileFromExcel.json");
+		infoToFile(base, "file.json");
 	}
 
 	@Override

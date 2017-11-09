@@ -57,4 +57,16 @@ public class DataSourceMocked implements IDataSource {
 		
 	}
 
+	@Override
+	public Cliente getCliente(String idCliente) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Trabajo getTrabajo(String idCliente, String idTrabajo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

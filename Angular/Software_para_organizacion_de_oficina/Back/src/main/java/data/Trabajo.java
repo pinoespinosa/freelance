@@ -16,6 +16,15 @@ public class Trabajo {
 	private String entrega;
 	private String requerimientos;
 
+	private String fecha;
+	private String fecha_entrega;
+
+	private String observaciones;
+	private String observaciones_next;
+
+	
+	private String asesor;
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj.getClass().equals(Trabajo.class)) {
@@ -114,6 +123,46 @@ public class Trabajo {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	public String getAsesor() {
+		return asesor;
+	}
+
+	public void setAsesor(String asesor) {
+		this.asesor = asesor;
+	}
+
+	public String getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(String fecha) {
+		this.fecha = fecha;
+	}
+
+	public String getFecha_entrega() {
+		return fecha_entrega;
+	}
+
+	public void setFecha_entrega(String fecha_entrega) {
+		this.fecha_entrega = fecha_entrega;
+	}
+
+	public String getObservaciones() {
+		return observaciones;
+	}
+
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
+	}
+
+	public String getObservaciones_next() {
+		return observaciones_next;
+	}
+
+	public void setObservaciones_next(String observaciones_next) {
+		this.observaciones_next = observaciones_next;
 	}
 
 }
