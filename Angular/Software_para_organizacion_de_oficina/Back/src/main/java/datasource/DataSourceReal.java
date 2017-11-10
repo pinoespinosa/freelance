@@ -44,6 +44,11 @@ public class DataSourceReal implements IDataSource {
 
 	@Override
 	public List<Cliente> getClientes() {
+		
+		if (obj==null){
+			throw new RuntimeException("Current relative path is: " + Paths.get("").toAbsolutePath().toString());
+		}
+		
 		return obj.getClientes();
 	}
 

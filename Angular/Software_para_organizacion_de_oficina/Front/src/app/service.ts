@@ -15,20 +15,22 @@ import { Trabajo }               from 'app/data-objects/trabajo';
 export class Service {
 
 
+  private server = 'http://18.216.175.95:8080/spring-security-rest/'
+
   constructor(private http: Http, private http2: HttpClient ) {
   }
 
   getProducts(): Observable<Client[]> {
 //    return this.http.get("/assets/mock/fileFromExcel.json").map(this.extractData);
-      return this.http.get("http://192.168.1.4:8080/officemanager/api/client").map(this.extractData);
+      return this.http.get(this.server+"/api/client/").map(this.extractData);
   }
 
   getClient(id): Observable<Client> {
-      return this.http.get("http://192.168.1.4:8080/officemanager/api/client/" + id).map(this.extractData);
+      return this.http.get(this.server+"/api/client/" + id).map(this.extractData);
   }
 
   getTrabajo(idCliente, idTrabajo): Observable<Trabajo> {
-      return this.http.get("http://192.168.1.4:8080/officemanager/api/" + idCliente + '/' + idTrabajo).map(this.extractData);
+      return this.http.get(this.server+"/api/" + idCliente + '/' + idTrabajo).map(this.extractData);
   }
 
 
