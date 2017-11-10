@@ -9,6 +9,8 @@ import { RegisterPaymentComponent } from './pages/register-payment/register-paym
 
 import { MoreDetailsComponent } from './pages/more-details/more-details.component';
 
+import { ChangeDateComponent } from './pages/change-date/change-date.component';
+
 import { ReportsToDoComponent } from './pages/reports/to-do/to-do.component';
 import { ReportsIncomesComponent } from './pages/reports/incomes/incomes.component';
 import { ReportsNewClientsComponent } from './pages/reports/new-clients/new-clients.component';
@@ -35,6 +37,7 @@ import { Service }     from './service';
     RegisterWorkComponent,
     RegisterPaymentComponent,
     MoreDetailsComponent,
+    ChangeDateComponent,
     HomeComponent,
     ReportsToDoComponent,
     ReportsIncomesComponent, 

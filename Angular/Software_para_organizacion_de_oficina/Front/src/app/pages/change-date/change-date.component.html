@@ -1,0 +1,37 @@
+<form class="form-horizontal" action='' method="POST">
+   <div class="row" style="padding-top: 30px;" >
+      <div class="col-12" style="padding-left: 40px;" >
+         <h2>Nueva fecha de entrega</h2>
+      </div>
+       <div class="col-2">
+         <button (click)="do()" type="button" class="btn btn-primary edit-client-button client-button"> 
+            Editar
+         </button>
+      </div>
+      <div class="col-2">
+         <button (click)="do()" type="button" class="btn btn-success save-client-button client-button" [disabled]="buttonState()"> 
+            Guardar
+         </button>
+      </div>
+      <div class="col-2">
+         <button (click)="do()" type="button" class="btn btn-danger cancel-client-button client-button" [disabled]="buttonState()"> 
+            Cancelar
+         </button>
+      </div>
+   </div>
+
+   
+   <div class="row">
+      <div class="col-4">
+         <div class="detail-title">Fecha entrega</div>
+         <!--<span  class="detail-data">{{fecha.fecha}}</span>-->
+         <span  class="detail-data">10/11/2017</span>
+      </div>
+   </div>
+   <div class="col-6">
+         <div class="detail-title">Nueva fecha</div>
+         <!--<div>{{item.fecha}}</div>-->
+         <input type="date" class="form-control" value="10/11/2017" [disabled]="buttonState()">
+      </div>
+</form>
+

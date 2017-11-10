@@ -19,8 +19,8 @@ export class Service {
   }
 
   getProducts(): Observable<Client[]> {
-//    return this.http.get("/assets/mock/fileFromExcel.json").map(this.extractData);
-      return this.http.get("http://192.168.1.4:8080/officemanager/api/client").map(this.extractData);
+    return this.http.get("/assets/mock/fileFromExcel.json").map(this.extractData);
+//      return this.http.get("http://192.168.1.4:8080/officemanager/api/client").map(this.extractData);
   }
 
   getClient(id): Observable<Client> {
