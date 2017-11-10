@@ -13,21 +13,17 @@
       });
    </script>>
 
+
    <div class="row">
       <div class="col-4" style="padding: 10px;padding-left: 40px;" >
-         <div class="dropdown">
-            <button class="btn dropdown-toggle dropdown-custom" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="selectUndefinedOptionValue"  uib-dropdown-toggle ng-disabled="disabled">
-               -- Cliente --
-               </button>
-            <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMenuButton">
-
-               <a class="dropdown-item" *ngFor="let cliente of clientes"  ng-click="change(action)" ng-repeat="action in actions">{{cliente.nombre}} {{cliente.apellido}}</a>
-            </div>
-         </div>
+         <select style="width: 100%;" >
+            <option disabled hidden [value]="selectUndefinedOptionValue">-- Carrera --</option>
+            <option *ngFor="let carrera of carreras" >{{carrera}}</option>
+         </select>
       </div>
       <div class="col-1" style="align-self: center;" >
          <a class="btn" >   
-            <img style="width: 30px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
+            <img style="width: 30px;margin: -30px;" src="https://maxcdn.icons8.com/Share/icon/color/Files//add_list1600.png" alt="Flowers in Chania">
          </a>
       </div>
    </div>

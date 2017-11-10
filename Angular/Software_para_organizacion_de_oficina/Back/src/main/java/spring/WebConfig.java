@@ -39,7 +39,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addViewControllers(final ViewControllerRegistry registry) {
 		super.addViewControllers(registry);
-		registry.addViewController("/csrfAttacker.html");
+		//registry.addViewController("/csrfAttacker.html");
 	}
 
 }

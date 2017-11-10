@@ -1,6 +1,7 @@
 // Observable Version
 import { Injectable }               from '@angular/core';
 import { Http, Headers, Response, RequestOptions, ResponseContentType }        from '@angular/http';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable }               from 'rxjs/Observable';
@@ -15,7 +16,8 @@ import { Trabajo }               from 'app/data-objects/trabajo';
 export class Service {
 
 
-  private server = 'http://18.216.175.95:8080/spring-security-rest/'
+//  private server = 'http://18.216.175.95:8080/spring-security-rest/'
+  private server = 'http://127.0.0.1:8080/officemanager/'
 
   constructor(private http: Http, private http2: HttpClient ) {
   }
@@ -28,6 +30,21 @@ export class Service {
   getClient(id): Observable<Client> {
       return this.http.get(this.server+"/api/client/" + id).map(this.extractData);
   }
+
+  createCliente(client): Observable<Response> {
+
+      var headers = new Headers();
+      headers.append('acces-control-allow-origin','*')      
+      
+
+
+      return this.http.post('http://127.0.0.1:8080/officemanager/api/client/create',client, { headers: headers }).map(this.extractData);
+
+
+  }
+
+
+
 
   getTrabajo(idCliente, idTrabajo): Observable<Trabajo> {
       return this.http.get(this.server+"/api/" + idCliente + '/' + idTrabajo).map(this.extractData);

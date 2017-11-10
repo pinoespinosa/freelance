@@ -6,120 +6,74 @@
       </div>
    </div>
 
-   <div class="row register-row">
+   <div class="row details-data-row">
       <div class="col-6">
-         <h3 class="register-title">Datos cliente</h3>
+         <div class="detail-title">Nombre y Apellido</div>
+         <input (input)="update_field_nombre($event.target.value)" class="form-control" type="text" placeholder="Nombre y Apellido" >
       </div>
-   </div>
-
-   <div class="row register-row">
+   
       <div class="col-6">
-         <div class="register-title">Nombre</div>
-         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Nombre">
+         <div class="detail-title">Fecha de registro</div>
+         <input type="text" class="form-control" value ="{{ date | date:'dd-MM-yyyy'}}" [disabled]="true"> 
       </div>
-      <div class="col-6">
-         <div class="register-title">Apellido</div>
-         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Apellido">
-      </div>
-   </div>
-
-   <div class="row register-row">
-      <div class="col-12 register-title">Telefonos</div>
-
-      <div class="col-6">
-         <input  type="number" class="form-control" id="exampleInputPassword1" placeholder="Telefono 1">
-      </div>
-      <div class="col-6">
-         <input   type="number" class="form-control" id="exampleInputPassword1" placeholder="Telefono 2">
-      </div>
-   </div>
-
-   <div class="row register-row">
-      <div class="col-4">
-         <div class="register-title">Email</div>
-         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Email 1">
-      </div>
-   </div>
-
-   <div class="row register-row">
-      <div class="col-6">
-         <h3 class="register-title">Datos trabajo</h3>
-      </div>
-   </div>
-
-   <div class="row register-row">
-      <div class="col-4">
-         <div class="register-title">Tema</div>
-         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Tema">
-      </div>
-      <div class="col-4">
-         <div class="register-title">Carrera</div>
-         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Carrera">
-      </div>
-      <div class="col-4">
-         <div class="register-title">Universidad</div>
-         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Universidad">
-      </div>
-   </div>
-
-   <div class="row register-row">
-      <div class="col-6">
-         <div class="register-title">Donde entero</div>
-         <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Donde entero">
-      </div>
-      <div class="col-6">
-         <div class="register-title">Fecha de entrega (provisional)</div>
-         <input  type="date" class="form-control" id="exampleInputPassword1">
-      </div>
-   </div>
-   <div class="row register-row">
-      <div class="col-12">
-         <label for="exampleFormControlTextarea1" class="register-title">Requerimientos</label>
-         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-      </div>
-   </div>
-
-   <div class="row register-row">
-      <div class="col-6">
-         <h3 class="register-title">Pago</h3>
-      </div>
-   </div>
-
-   <div class="row register-row">
-      <div class="col-6">
-         <div class="register-title">Total</div>
-         <input  type="number" class="form-control" id="exampleInputPassword1" placeholder="Total">
-      </div>
-      <div class="col-3">
-         <button type="button" class="btn btn-success register-button"> 
-            <a [routerLink]="['/register-payment']" class="btn btn-success abono-cliente"> Abono</a>
-         </button>
-      </div>
-   </div>
-   <div class="row register-row">
-      <div class="col-6">
-         <div  class="register-remaining">Saldo: $$$$$$$</div>
-      </div>
-   </div>
-   <div class="row register-row">
-      <div class="col-12">
-         <label for="exampleFormControlTextarea1" class="register-title">Observaciones</label>
-         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-      </div>
-   </div>
       
+   </div>     
+   
+   <div class="row details-data-row">
+      
+      <div class="col-4">
+         <div class="detail-title">Telefono 1</div>
+         <input (input)="update_field_telef1($event.target.value)" type="number" class="form-control" placeholder="Telefono 1"  >
+      </div>
+
+      <div class="col-4">
+         <div class="detail-title">Telefono 2</div>
+         <input (input)="update_field_telef2($event.target.value)" type="number" class="form-control" placeholder="Telefono 2"  >
+      </div>
+
+      <div class="col-4">
+         <div class="detail-title">Telefono 3</div>
+         <!--<div>{{item.telefono}}</div>-->
+         <input (input)="update_field_telef3($event.target.value)" type="number" class="form-control" placeholder="Telefono 3"  >
+      </div>
+      
+   </div>     
+
+   <div class="row details-data-row">
+      
+      <div class="col-4">
+         <div class="detail-title">Email 1</div>
+         <!--<div>{{item.email}}</div>-->
+         <input type="text" class="form-control" placeholder="Email 1" >
+      </div> 
+
+      <div class="col-4">
+         <div class="detail-title">Email 2</div>
+         <!--<div>{{item.email}}</div>-->
+         <input type="text" class="form-control" placeholder="Email 2"  >
+      </div>
+
+      <div class="col-4">
+         <div class="detail-title">Email 3</div>
+         <!--<div>{{item.email}}</div>-->
+         <input type="text" class="form-control" placeholder="Email 3"  >
+      </div>
+      
+   </div>    
+
+       
 
    <div class="row">
       <div class="col-3">
       </div>
       
       <div class="col-3">
-         <a  (click)="do()" [routerLink]="['/home']" class="btn btn-success agregar-cliente"> Finalizar</a>
+         <a  (click)="do()" class="btn btn-success agregar-cliente" style="width: 100%;color: white;" >Guardar y Cargar Trabajo</a>
       </div>
       <div class="col-3">
-         <a (click)="do()" [routerLink]="['/home']" class="btn btn-danger agregar-cliente">Cancelar</a>
+         <a (click)="do()" [routerLink]="['/home']" class="btn btn-danger agregar-cliente" style="width: 100%;color: white;" >Finalizar</a>
       </div>
    </div>
 
 </form>
-
+ 
