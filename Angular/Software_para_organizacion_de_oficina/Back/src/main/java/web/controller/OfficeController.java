@@ -5,6 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,13 +38,28 @@ public class OfficeController {
 		return officeService.getClient(id);
 	}
 
-	@RequestMapping(value = "/client", method = RequestMethod.POST)
+	@RequestMapping(value = "/client/create", method = RequestMethod.POST)
 	@ResponseBody
-	public String createCliente(@RequestBody final Cliente cliente, final HttpServletResponse response) {
-		officeService.createCliente(cliente);
-		return "OK";
+	public Cliente createCliente(@RequestBody Cliente user, HttpServletResponse response) {
+
+	//	officeService.createCliente((Cliente) cliente);
+		System.out.println("llegue");
+		
+		return user;
+		
 	}
 
+	@RequestMapping(value="/user/create", method=RequestMethod.POST)
+	public ResponseEntity<Void> createUser(@RequestBody Cliente user){
+	    System.out.println("Creating User "+user.getApellido());
+	     
+	    
+	     
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.add("Access-Control-Allow-Origin", "");
+	    return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+	}
+	
 	@RequestMapping(value = "/universidad", method = RequestMethod.GET)
 	public List<String> getUniversidades() {
 		return officeService.getUniversidList();
@@ -50,6 +68,7 @@ public class OfficeController {
 	@RequestMapping(value = "/universidad", method = RequestMethod.POST)
 	@ResponseBody
 	public String createUniversidad(@RequestBody final String universidad, final HttpServletResponse response) {
+		response.addHeader("Access-Control-Allow-Origin", "*");
 		officeService.createUniversidad(universidad);
 		return "OK";
 	}
@@ -58,6 +77,7 @@ public class OfficeController {
 	@ResponseBody
 	public String importCSV(@RequestParam(required = false) final MultipartFile file,
 			final HttpServletResponse response) {
+		response.addHeader("Access-Control-Allow-Origin", "*");
 		officeService.importCSV(file);
 		return "OK";
 	}
@@ -72,7 +92,6 @@ public class OfficeController {
 	public Trabajo getTrabajo(@PathVariable final String idCliente, @PathVariable final String idTrabajo,
 			final HttpServletResponse response) {
 		response.addHeader("Access-Control-Allow-Origin", "*");
-
 		return officeService.getTrabajo(idCliente, idTrabajo);
 	}
 
@@ -80,6 +99,7 @@ public class OfficeController {
 	@ResponseBody
 	public String createTrabajo(@PathVariable final String idCliente, @RequestBody final Trabajo trabajo,
 			final HttpServletResponse response) {
+		response.addHeader("Access-Control-Allow-Origin", "*");
 		officeService.createTrabajo(idCliente, trabajo);
 		return "OK";
 	}

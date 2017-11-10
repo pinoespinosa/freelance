@@ -1,6 +1,7 @@
 // Observable Version
 import { Injectable }               from '@angular/core';
 import { Http, Headers, Response, RequestOptions, ResponseContentType }        from '@angular/http';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable }               from 'rxjs/Observable';
@@ -15,20 +16,38 @@ import { Trabajo }               from 'app/data-objects/trabajo';
 export class Service {
 
 
+//  private server = 'http://18.216.175.95:8080/spring-security-rest/'
+  private server = 'http://127.0.0.1:8080/officemanager/'
+
   constructor(private http: Http, private http2: HttpClient ) {
   }
 
   getProducts(): Observable<Client[]> {
-    return this.http.get("/assets/mock/fileFromExcel.json").map(this.extractData);
-//      return this.http.get("http://192.168.1.4:8080/officemanager/api/client").map(this.extractData);
+//    return this.http.get("/assets/mock/fileFromExcel.json").map(this.extractData);
+      return this.http.get(this.server+"/api/client/").map(this.extractData);
   }
 
   getClient(id): Observable<Client> {
-      return this.http.get("http://192.168.1.4:8080/officemanager/api/client/" + id).map(this.extractData);
+      return this.http.get(this.server+"/api/client/" + id).map(this.extractData);
   }
 
+  createCliente(client): Observable<Response> {
+
+      var headers = new Headers();
+      headers.append('acces-control-allow-origin','*')      
+      
+
+
+      return this.http.post('http://127.0.0.1:8080/officemanager/api/client/create',client, { headers: headers }).map(this.extractData);
+
+
+  }
+
+
+
+
   getTrabajo(idCliente, idTrabajo): Observable<Trabajo> {
-      return this.http.get("http://192.168.1.4:8080/officemanager/api/" + idCliente + '/' + idTrabajo).map(this.extractData);
+      return this.http.get(this.server+"/api/" + idCliente + '/' + idTrabajo).map(this.extractData);
   }
 
 
