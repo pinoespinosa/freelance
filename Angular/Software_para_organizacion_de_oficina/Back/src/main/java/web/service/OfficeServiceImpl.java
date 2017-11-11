@@ -65,5 +65,10 @@ public class OfficeServiceImpl implements OfficeService {
 		
 	}
 
+	@Override
+	public Trabajo getChangeTrabajoStatus(String clienteID, String trabajoID, String estado) {
+		return datasource.getChangeTrabajoStatus(clienteID, trabajoID, estado);
+	}
+
 
 }

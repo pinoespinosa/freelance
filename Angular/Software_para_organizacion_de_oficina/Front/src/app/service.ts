@@ -45,6 +45,17 @@ export class Service {
   }
 
 
+  getChangeStateTrabajo(idCliente, idTrabajo, estado): Observable<Trabajo> {
+
+
+      var headers = new Headers();
+      headers.append('acces-control-allow-origin','*')      
+      return this.http.post(this.server+"/api/" + idCliente + '/' + idTrabajo +'/status?estado='+estado , '', { headers: headers }).map(this.extractData);
+
+
+  }
+
+
   saveFile2(): Observable<Response> {
     return this.http.post("localhost:4000/saveFile","{}");
   }

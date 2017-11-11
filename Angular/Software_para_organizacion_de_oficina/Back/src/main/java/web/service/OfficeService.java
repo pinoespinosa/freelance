@@ -27,4 +27,6 @@ public interface OfficeService {
 	Cliente getClient(String idCliente);
 
 	Trabajo getTrabajo(String idCliente, String idTrabajo);
+
+	Trabajo getChangeTrabajoStatus(String clienteID, String trabajoID, String estado);
 }

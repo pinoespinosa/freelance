@@ -1,21 +1,33 @@
+
 <change-state [(visible)]="showDialog">
-  <h1 style="margin: 10px;margin-bottom: 20px;" >Hello World</h1>
-  
-  <div class="row">
-    <div class="col-4"> Estado: </div>
-    <div class="col-4"> 
+<h2 style="margin: 10px;margin-bottom: 20px;" >Cambio de estado</h2>
 
-<select [(ngModel)]="selectedValue">
-  <option *ngFor="let c of estados" [value]="c">{{c}}</option>
-</select>
+<div class="row">
+   <div class="col-6" style="font-size: 15px;" > <b>Cliente: </b>{{cliente2.nombre}}</div>
+   <div class="col-6" style="font-size: 15px;" > <b>Trabajo: </b>{{cliente2.tema}}</div>
+</div>
 
-    </div>
+<div class="row">
+   <div class="col-6" >
+      <select style="width: 100%;margin-top: 20px;margin-bottom: 20px;" >
+         <option disabled hidden [value]="selectUndefinedOptionValue">{{cliente2.estado}}</option>
+         <option *ngFor="let carrera of estados" >{{carrera}}</option>
+      </select>
+   </div>
+</div>
 
+<div class="row">
+  <div class="col-6"> 
+    <button (click)="showDialog = !showDialog" (click)="changeState(cliente2.clienteID, cliente2.id_trabajo, 'done')" class="btn" style="width: 100%;" >Guardar</button>
   </div>
-  <button (click)="showDialog = !showDialog" class="btn">Close</button>
+  <div class="col-6"> 
+    <button (click)="showDialog = !showDialog" class="btn" style="width: 100%;" >Finalizar</button>
+  </div>
+</div>
+
 </change-state>
 
-<button (click)="showDialog = !showDialog" class="btn">Open</button>
+
 
 
 <div class="row">
@@ -41,7 +53,7 @@
 
 <table class="table table-new table-striped">
    <thead>
-      <tr class="client-columns">
+      <tr class="client-columns" >
          <th>
           Nombre
           <a (click)="sortNombre()" class="btn clients-sort">
@@ -66,7 +78,7 @@
  
 
          </th>
-         <th>Tema</th>
+         <th style="text-align: left;width: 325px;">Tema</th>
          <th>Total ($)</th>
          <th>Saldo</th>
          <th style="min-width: 20px;"></th>
@@ -76,16 +88,16 @@
       </tr>
    </thead>
    <tbody class="centro" >
-      <tr *ngFor="let item of items" class="client-columns">
+      <tr *ngFor="let item of items" class="client-columns" (dblclick)="showDialog = !showDialog" (dblclick)="cliente2 = item" >
 
          <td>{{item.nombre}} {{item.apellido}}</td>
          <td>{{item.universidad | slice:0:40}}</td>
          <td>{{item.entrega}}</td>
-         <td>
-            <span  *ngIf="item.estado == 'Hecho'" class="badge badge-success">{{item.estado}}</span>
+         <td style="min-width: 110px;">
+            <span  *ngIf="item.estado == 'done'" class="badge badge-success">{{item.estado}}</span>
             <span  *ngIf="item.estado == 'Trabajando'" class="badge badge-warning">{{item.estado}}</span>
          </td>
-         <td>{{ item.tema  | slice:0:70}}</td>
+         <td style="text-align: left;text-transform: capitalize;" >{{ item.tema.toLowerCase()  | slice:0:60}}</td>
          <td>{{item.monto}}</td>
          <td>500</td>
          <td class="plus-info-column">

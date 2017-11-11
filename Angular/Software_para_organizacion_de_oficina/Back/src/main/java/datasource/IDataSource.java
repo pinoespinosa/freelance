@@ -25,4 +25,6 @@ public interface IDataSource {
 
 	Trabajo getTrabajo(String idCliente, String idTrabajo);
 
+	Trabajo getChangeTrabajoStatus(String clienteID, String trabajoID, String estado);
+
 }

@@ -25,10 +25,14 @@ export class HomeComponent   {
 
   tipo_orden = 1;
 
+  cliente: Client;
+  cliente2 = ''
+
+
   items : ClientFull[];
   items_orig : ClientFull[];
 
-  estados: string[] = ['Listo', 'Pendiente'];
+  estados: string[] = ['Urgente', 'Asignado','Trajando','Listo por revisar','Avance Asesor Listo, Falta Hacer', 'Listo por pagar/enviar', 'Pendiente para trabajar'];
 
   showDialog = false;
 
@@ -37,6 +41,7 @@ export class HomeComponent   {
     this.getWorks();
     this.items=[];
     this.items_orig = [];
+    this.cliente = new Client("","","", "","","", "","","",null);
   }
 
 
@@ -90,6 +95,22 @@ export class HomeComponent   {
           return 0;
     });
     this.tipo_orden = this.tipo_orden * -1 
+  }
+
+
+  changeState(cliente, trabajo, estado){
+    
+
+        let loading = this.service.getChangeStateTrabajo(cliente, trabajo, estado).subscribe(
+            response => {
+
+                }
+
+                    
+        );
+
+
+
   }
 
 

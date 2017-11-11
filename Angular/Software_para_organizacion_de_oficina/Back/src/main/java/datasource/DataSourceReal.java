@@ -175,8 +175,15 @@ public class DataSourceReal implements IDataSource {
 		t.setId(idTrabajo);
 		Trabajo trab = clie.getTrabajos().get((clie.getTrabajos().indexOf(t)));
 		
-		// TODO Auto-generated method stub
 		return trab;
+	}
+
+	@Override
+	public Trabajo getChangeTrabajoStatus(String clienteID, String trabajoID, String estado) {
+
+		Trabajo trabajo = getTrabajo(clienteID, trabajoID);
+		trabajo.setEstado(estado);
+		return trabajo;
 	}
 
 }
