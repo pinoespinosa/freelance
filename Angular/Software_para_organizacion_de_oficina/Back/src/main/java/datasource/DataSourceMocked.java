@@ -22,7 +22,8 @@ public class DataSourceMocked implements IDataSource {
 	}
 
 	@Override
-	public void createCliente(Cliente c) {
+	public Cliente createCliente(Cliente c) {
+		return c;
 		// TODO Auto-generated method stub
 
 	}

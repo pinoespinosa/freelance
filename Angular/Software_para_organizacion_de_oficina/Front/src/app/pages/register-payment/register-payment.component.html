@@ -2,33 +2,31 @@
 
 <form class="form-horizontal" action='' method="POST">
    <div class="row" style="padding-top: 30px;" >
-      <div class="col-12" style="padding-left: 40px;" >
+      <div class="col-12" >
          <h2>Registro de nuevo pago</h2>
       </div>
    </div>
 
    <div class="row register-row">
       <div class="col-4">
-         <div *ngIf="cliente==''"  class="dropdown">
-            <button class="btn dropdown-toggle dropdown-custom" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="selectUndefinedOptionValue">
-               -- Cliente --
+         <div class="register-title">Cliente</div>
+         <div class="dropdown">
+            <button class="btn dropdown-toggle dropdown-custom" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="selectUndefinedOptionValue" disabled="true">
+               {{cliente.nombre}}
                </button>
             <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMenuButton">
                <a class="dropdown-item" *ngFor="let cliente of clientes" >{{cliente.nombre}} {{cliente.apellido}}</a>
             </div>
          </div>
-         <div *ngIf="cliente!=''">Cliente: {{cliente}}
-         </div>
-
-
       </div>
    </div>
 
    <div class="row register-row">
       <div class="col-4">
+         <div class="register-title">Trabajo</div>      
          <div class="dropdown">
-            <button class="btn dropdown-toggle dropdown-custom" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="selectUndefinedOptionValue">
-               -- Trabajo --
+            <button class="btn dropdown-toggle dropdown-custom" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="selectUndefinedOptionValue" disabled="true">
+               {{trabajo.tema}}
                </button>
             <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMenuButton">
                <a class="dropdown-item" *ngFor="let cliente of clientes" >{{cliente.nombre}} {{cliente.apellido}}</a>

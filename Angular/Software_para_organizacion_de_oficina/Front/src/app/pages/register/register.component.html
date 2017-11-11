@@ -8,8 +8,8 @@
 
    <div class="row details-data-row">
       <div class="col-6">
-         <div class="detail-title">Nombre y Apellido</div>
-         <input (input)="update_field_nombre($event.target.value)" class="form-control" type="text" placeholder="Nombre y Apellido" >
+         <div class="detail-title">Nombre y Apellido*</div>
+         <input (input)="update_field_nombre($event.target.value)" class="form-control" type="text" placeholder="Nombre y Apellido" minlength="1">
       </div>
    
       <div class="col-6">

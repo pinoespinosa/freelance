@@ -41,6 +41,11 @@ export class RegisterComponent implements OnInit  {
 
 
 	do(){
+
+		if (!this.field_nombre){
+		    alert("Complete los campos obligatorios para continuar")
+			return;
+		}
 		 let test = new Client("", this.field_nombre, "" , this.field_telef1, this.field_telef2, this.field_telef3, this.field_email1, this.field_email2, this.field_email3, null);
 		 
 

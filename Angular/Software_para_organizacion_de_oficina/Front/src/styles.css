@@ -139,6 +139,7 @@ tr td {
     position: relative;
     display: inline-block;
     opacity: 100;
+    
 
 }
 
@@ -148,6 +149,7 @@ tr td {
     width: 120px;
     background-color: #555;
     color: #fff;
+    font-size: 11px;
     text-align: center;
     padding: 5px 0;
     border-radius: 6px;
@@ -157,7 +159,7 @@ tr td {
     z-index: 1;
     bottom: 125%;
     left: 50%;
-    margin-left: -60px;
+    margin-left: -70px;
 
     /* Fade in tooltip */
     opacity: 0;

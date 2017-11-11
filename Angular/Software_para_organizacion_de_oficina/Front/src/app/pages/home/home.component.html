@@ -81,7 +81,7 @@
           </a>
          </td>
          <td class="plus-info-column">   
-            <a class="btn clients-actions" [routerLink]="['/register-payment']" [queryParams]="{ cliente: item.nombre }"  >
+            <a class="btn clients-actions" [routerLink]="['/register-payment']" [queryParams]="{ cliente: item.clienteID, trabajo: item.id_trabajo }"  >
             <div class="tooltip">              
               <img class="clients-img" src="./assets/pago.png" alt="">
               <span class="tooltiptext">Agregar Pago</span>
@@ -93,7 +93,7 @@
             <a class="btn clients-actions"  [routerLink]="['/add-requirements']" >
               <div class="tooltip">              
                 <img class="clients-img" src="./assets/reque.png" alt="">
-                <span class="tooltiptext">Cargar nuevo req</span>
+                <span class="tooltiptext">Agregar Req</span>
               </div>
             </a>
           </td>
@@ -101,7 +101,7 @@
             <a class="btn clients-actions"  [routerLink]="['/change-date']" >
               <div class="tooltip">              
                 <img class="clients-img" src="./assets/fecha.png" alt="">
-                <span class="tooltiptext">Agregar fecha entr</span>
+                <span class="tooltiptext">Agregar Fecha</span>
               </div>
             </a>
           </td>

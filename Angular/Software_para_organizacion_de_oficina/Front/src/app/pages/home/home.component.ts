@@ -19,14 +19,17 @@ export class HomeComponent   {
 
   title = 'app';
   clientes : Client[];
+
   tipo_orden = 1;
 
   items : ClientFull[];
+  items_orig : ClientFull[];
 
 
   constructor(private service: Service) {
     this.getWorks();
     this.items=[];
+    this.items_orig = [];
   }
 
   sortNombre(){
@@ -84,24 +87,15 @@ export class HomeComponent   {
 
 
   myFunction(valor){
-       
-    let loading = this.service.getProducts().subscribe(
-    response => {
-      this.clientes = [];
-        for (var aa of response){
-          if ( aa.nombre.toLowerCase().includes(valor.toLowerCase()) ){
-            this.clientes.push(aa);
-            console.log(aa.nombre)
+    
+    this.items = [];
+    console.log(valor)
+    for (var aa of this.items_orig){
 
-          }
-        }
-    }        
-  );
-
- console.log(this.clientes)
-   
-  this.service.saveFile();
-
+      if ( aa.nombre.toLowerCase().includes(valor.toLowerCase()) ||  aa.tema.toLowerCase().includes(valor.toLowerCase()) ){
+        this.items.push(aa);
+      }
+    } 
   }
 
     getWorks(): void {
@@ -112,8 +106,9 @@ export class HomeComponent   {
 
                 for (var aa of response){
                   for (var bb of aa.trabajos){
-                    let fu = new ClientFull(aa.id,aa.nombre,"",bb.id,bb.tema,bb.titulo,bb.monto,bb.universidad,bb.entrega,bb.estado);
+                    let fu = new ClientFull(aa.id,aa.nombre,"",bb.id,bb.tema,bb.titulo,bb.monto,bb.universidad,bb.fecha_entrega,bb.estado);
                     this.items.push(fu);
+                    this.items_orig.push(fu);
                   }
                 }
 

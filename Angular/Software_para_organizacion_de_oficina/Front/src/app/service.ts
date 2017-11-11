@@ -23,19 +23,18 @@ export class Service {
   }
 
   getProducts(): Observable<Client[]> {
-//    return this.http.get("/assets/mock/fileFromExcel.json").map(this.extractData);
-      return this.http.get(this.server+"/api/client/").map(this.extractData);
+      return this.http.get(this.server+"api/client/").map(this.extractData);
   }
 
   getClient(id): Observable<Client> {
-      return this.http.get(this.server+"/api/client/" + id).map(this.extractData);
+      return this.http.get(this.server+"api/client/" + id).map(this.extractData);
   }
 
   createCliente(client): Observable<Client> {
 
       var headers = new Headers();
       headers.append('acces-control-allow-origin','*')      
-      return this.http.post('http://127.0.0.1:8080/officemanager/api/client/create',client, { headers: headers }).map(this.extractData);
+      return this.http.post(this.server + 'api/client/create',client, { headers: headers }).map(this.extractData);
   }
 
 
@@ -50,16 +49,6 @@ export class Service {
     return this.http.post("localhost:4000/saveFile","{}");
   }
 
-
-  saveFile() {
-    const headers = new HttpHeaders();
-    this.http2.post('http://127.0.0.1:3000/saveFile', JSON.stringify(''), {
-      headers: headers
-    })
-    .subscribe(data => {
-      console.log(data);
-    });
-  }
 
   private extractData(res: Response) {
 
