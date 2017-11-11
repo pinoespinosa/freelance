@@ -31,16 +31,11 @@ export class Service {
       return this.http.get(this.server+"/api/client/" + id).map(this.extractData);
   }
 
-  createCliente(client): Observable<Response> {
+  createCliente(client): Observable<Client> {
 
       var headers = new Headers();
       headers.append('acces-control-allow-origin','*')      
-      
-
-
       return this.http.post('http://127.0.0.1:8080/officemanager/api/client/create',client, { headers: headers }).map(this.extractData);
-
-
   }
 
 

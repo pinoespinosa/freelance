@@ -7,17 +7,15 @@ public class Cliente {
 	private String id;
 
 	private String nombre;
-	private String apellido;
+	private String fechaSuscripcion;
 
 	private String email1;
 	private String email2;
 	private String email3;
-	private String email4;
 
 	private String telefono1;
 	private String telefono2;
 	private String telefono3;
-	private String telefono4;
 
 	private List<Trabajo> trabajos;
 
@@ -35,14 +33,6 @@ public class Cliente {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
 	}
 
 	public String getEmail1() {
@@ -69,14 +59,6 @@ public class Cliente {
 		this.email3 = email3;
 	}
 
-	public String getEmail4() {
-		return email4;
-	}
-
-	public void setEmail4(String email4) {
-		this.email4 = email4;
-	}
-
 	public String getTelefono1() {
 		return telefono1;
 	}
@@ -101,14 +83,6 @@ public class Cliente {
 		this.telefono3 = telefono3;
 	}
 
-	public String getTelefono4() {
-		return telefono4;
-	}
-
-	public void setTelefono4(String telefono4) {
-		this.telefono4 = telefono4;
-	}
-
 	public List<Trabajo> getTrabajos() {
 		return trabajos;
 	}
@@ -124,6 +98,14 @@ public class Cliente {
 			return t.getId().equals(getId());
 		}
 		return false;
+	}
+
+	public String getFechaSuscripcion() {
+		return fechaSuscripcion;
+	}
+
+	public void setFechaSuscripcion(String fechaSuscripcion) {
+		this.fechaSuscripcion = fechaSuscripcion;
 	}
 
 }

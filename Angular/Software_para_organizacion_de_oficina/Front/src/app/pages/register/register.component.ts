@@ -14,15 +14,19 @@ import { Client }               from 'app/data-objects/cliente';
 
 export class RegisterComponent implements OnInit  {
 
- 	name: string;
 	field_nombre: string;
   	
 	field_telef1: string;
 	field_telef2: string;
 	field_telef3: string;
 
+	field_email1: string;
+	field_email2: string;
+	field_email3: string;
+
   	date = new Date();
 
+  	cliente:Client;
   
 
   constructor(    
@@ -37,13 +41,13 @@ export class RegisterComponent implements OnInit  {
 
 
 	do(){
-		 let test = new Client("","","","","","","","","","","",null);
+		 let test = new Client("", this.field_nombre, "" , this.field_telef1, this.field_telef2, this.field_telef3, this.field_email1, this.field_email2, this.field_email3, null);
 		 
 
         let loading = this.service.createCliente(test).subscribe(
             response => {
-                let stateInfo = response;
-                console.log(stateInfo)
+                this.cliente = response;
+                alert("Se ha creado el cliente " + this.field_nombre + " exitosamente")
             }
         );
     
@@ -56,7 +60,9 @@ export class RegisterComponent implements OnInit  {
 	update_field_telef1(valor){		this.field_telef1=valor;	}
 	update_field_telef2(valor){		this.field_telef2=valor;	}
 	update_field_telef3(valor){		this.field_telef3=valor;	}
-
+	update_field_email1(valor){		this.field_email1=valor;	}
+	update_field_email2(valor){		this.field_email2=valor;	}
+	update_field_email3(valor){		this.field_email3=valor;	}
 
 }
  

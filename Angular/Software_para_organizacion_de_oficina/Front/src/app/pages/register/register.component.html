@@ -44,19 +44,19 @@
       <div class="col-4">
          <div class="detail-title">Email 1</div>
          <!--<div>{{item.email}}</div>-->
-         <input type="text" class="form-control" placeholder="Email 1" >
+         <input (input)="update_field_email1($event.target.value)" type="text" class="form-control" placeholder="Email 1" >
       </div> 
 
       <div class="col-4">
          <div class="detail-title">Email 2</div>
          <!--<div>{{item.email}}</div>-->
-         <input type="text" class="form-control" placeholder="Email 2"  >
+         <input (input)="update_field_email2($event.target.value)" type="text" class="form-control" placeholder="Email 2"  >
       </div>
 
       <div class="col-4">
          <div class="detail-title">Email 3</div>
          <!--<div>{{item.email}}</div>-->
-         <input type="text" class="form-control" placeholder="Email 3"  >
+         <input (input)="update_field_email3($event.target.value)" type="text" class="form-control" placeholder="Email 3"  >
       </div>
       
    </div>    

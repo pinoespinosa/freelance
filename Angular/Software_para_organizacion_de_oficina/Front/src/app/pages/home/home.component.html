@@ -70,23 +70,39 @@
          <td>{{item.monto}}</td>
          <td>500</td>
          <td class="plus-info-column">
-            <a class="btn clients-actions"  [routerLink]="['/more-details']" [queryParams]="{ cliente: item.clienteID, trabajo: item.id_trabajo }" >
-              <img class="clients-img" src="./assets/mas.png" alt="">
-            </a>
-          </td>
+
+     
+
+          <a class="btn clients-actions"  [routerLink]="['/more-details']" [queryParams]="{ cliente: item.clienteID, trabajo: item.id_trabajo }" >
+            <div class="tooltip">              
+              <img class=" clients-img" src="./assets/mas.png" alt="">
+              <span class="tooltiptext">Ver detalles</span>
+            </div>
+          </a>
+         </td>
          <td class="plus-info-column">   
             <a class="btn clients-actions" [routerLink]="['/register-payment']" [queryParams]="{ cliente: item.nombre }"  >
+            <div class="tooltip">              
               <img class="clients-img" src="./assets/pago.png" alt="">
+              <span class="tooltiptext">Agregar Pago</span>
+            </div>
+
             </a>
           </td>
          <td class="plus-info-column">
             <a class="btn clients-actions"  [routerLink]="['/add-requirements']" >
-              <img class="clients-img" src="./assets/reque.png" alt="">
+              <div class="tooltip">              
+                <img class="clients-img" src="./assets/reque.png" alt="">
+                <span class="tooltiptext">Cargar nuevo req</span>
+              </div>
             </a>
           </td>
          <td class="plus-info-column">
             <a class="btn clients-actions"  [routerLink]="['/change-date']" >
-              <img class="clients-img" src="./assets/fecha.png" alt="">
+              <div class="tooltip">              
+                <img class="clients-img" src="./assets/fecha.png" alt="">
+                <span class="tooltiptext">Agregar fecha entr</span>
+              </div>
             </a>
           </td>
       </tr>

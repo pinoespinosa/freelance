@@ -11,19 +11,18 @@
       $('.dropdown-menu a').click(function(){
          $('#selected').text($(this).text());
       });
-   </script>>
-
+   </script>
 
    <div class="row">
       <div class="col-4" style="padding: 10px;padding-left: 40px;" >
-         <select style="width: 100%;" >
-            <option disabled hidden [value]="selectUndefinedOptionValue">-- Carrera --</option>
-            <option *ngFor="let carrera of carreras" >{{carrera}}</option>
+         <select style="width: 100%;">
+            <option disabled hidden [value]="selectUndefinedOptionValue">-- Cliente --</option>
+            <option *ngFor="let cliente of clientes" >{{cliente.nombre}}</option>
          </select>
       </div>
       <div class="col-1" style="align-self: center;" >
-         <a class="btn" >   
-            <img style="width: 30px;margin: -30px;" src="https://maxcdn.icons8.com/Share/icon/color/Files//add_list1600.png" alt="Flowers in Chania">
+         <a class="btn" [routerLink]="['/register']">   
+            <img style="width: 30px;margin: -30px;" src="https://icon-icons.com/icons2/37/PNG/512/adduser_a%C3%B1adir_3553.png" alt="Flowers in Chania">
          </a>
       </div>
    </div>

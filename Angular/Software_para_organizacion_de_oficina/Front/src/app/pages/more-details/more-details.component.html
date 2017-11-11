@@ -1,8 +1,12 @@
 <form class="form-horizontal" action='' method="POST">
    <div class="row page-title-row">
-      <div class="col-3 page-title-div">
-         <h2>Mas detalles</h2>
+      <div class="col-3">
+      <h1>Detalles</h1>
       </div>
+
+      <div class="col-2">
+      </div>
+
       <div class="col-2">
          <button (click)="do()" type="button" class="btn btn-primary edit-client-button client-button"> 
             Editar
@@ -27,17 +31,14 @@
    </div>
 
    <div class="row details-data-row">
-      <div class="col-6">
+   
+
+         <div class="col-3">
          <div class="detail-title">Nombre</div>
          <!--<div>{{item.nombre}} {{item.apellido}}</div>-->
          <input type="text" class="form-control" value="{{cliente.nombre}} {{cliente.apellido}}" [disabled]="buttonState()">
       </div>
-   
-      <div class="col-6">
-         <div class="detail-title">Fecha</div>
-         <!--<div>{{item.fecha}}</div>-->
-         <input type="date" class="form-control" value="{{trabajo.fecha}}" [disabled]="buttonState()">
-      </div>
+
       
    </div>     
    
@@ -93,19 +94,28 @@
 
    <div class="row details-data-row">
       
-      <div class="col-3">
+      <div class="col-4">
+         <div class="detail-title">Fecha inicio del Trabajo</div>
+         <!--<div>{{item.fecha}}</div>-->
+         <input type="date" class="form-control" value="{{trabajo.fecha}}" [disabled]="buttonState()">
+      </div>
+
+      <div class="col-8">
+      </div>
+
+      <div class="col-4">
          <div class="detail-title">Trabajo</div>
          <!--<div>{{item.trabajo}}</div>-->
          <input type="text" class="form-control" value="{{trabajo.tema}}" [disabled]="buttonState()">
       </div> 
 
-      <div class="col-3">
+      <div class="col-4">
          <div class="detail-title">Carrera</div>
          <!--<div>{{item.carrera}}</div>-->
          <input type="text" class="form-control" value="{{trabajo.carrera}}" [disabled]="buttonState()">
       </div>
 
-      <div class="col-3">
+      <div class="col-4">
          <div class="detail-title">Universidad</div>
          <!--<div>{{item.universidad}}</div>-->
          <input type="text" class="form-control" value="{{trabajo.universidad}}" [disabled]="buttonState()">
@@ -121,19 +131,19 @@
    </div> 
 
    <div class="row details-data-row">
-      <div class="col-3">
+      <div class="col-4">
          <div class="detail-title">Donde entero</div>
          <!--<div>{{item.dondeEntero}}</div>-->
          <input type="text" class="form-control" placeholder="Donde entero" value="{{trabajo.dondeSeEntero}}" [disabled]="buttonState()">
       </div>
 
-      <div class="col-3">
+      <div class="col-4">
          <div class="detail-title">Proxima entrega</div>
          <!--<div>{{item.proximaEntrega}}</div>-->
          <input type="date" class="form-control" value="{{trabajo.fecha_entrega}}" [disabled]="buttonState()">
       </div>   
 
-      <div class="col-3">
+      <div class="col-4">
          <div class="detail-title">Asesor</div>
          <!--<div>{{item.asesor}}</div>-->
          <input type="text" class="form-control" value="{{trabajo.asesor}}" [disabled]="buttonState()">

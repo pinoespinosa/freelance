@@ -53,9 +53,11 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
-	public void createCliente(Cliente c) {
-		// TODO Auto-generated method stub
-
+	public Cliente createCliente(Cliente c) {
+		c.setId(System.currentTimeMillis()+"");
+		c.setTrabajos(new ArrayList<>());
+		obj.getClientes().add(c);
+		return c;
 	}
 
 	@Override
@@ -105,6 +107,7 @@ public class DataSourceReal implements IDataSource {
 						c = new Cliente();
 						c.setId(cant+"");
 						c.setNombre(dato_nombre);
+						c.setFechaSuscripcion(valores[0].trim());
 						try {	c.setTelefono1(valores[2].split("/")[0].trim());	} catch (Exception e) {	}
 						try {	c.setTelefono2(valores[2].split("/")[1].trim());	} catch (Exception e) {	}
 						try {	c.setTelefono3(valores[2].split("/")[2].trim());	} catch (Exception e) {	}
@@ -149,6 +152,7 @@ public class DataSourceReal implements IDataSource {
 		}
 
 		infoToFile(base, "file.json");
+		obj=base;
 	}
 
 	@Override

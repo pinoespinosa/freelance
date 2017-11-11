@@ -14,7 +14,7 @@ public interface OfficeService {
 
 	List<Cliente> getClientList();
 	
-	void createCliente(Cliente cliente);
+	Cliente createCliente(Cliente cliente);
 
 	List<String> getUniversidList();
 

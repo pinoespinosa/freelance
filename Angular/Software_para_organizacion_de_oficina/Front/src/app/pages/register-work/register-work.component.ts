@@ -50,7 +50,18 @@ export class RegisterWorkComponent implements OnInit  {
         let loading = this.service.getProducts().subscribe(
             response => {
                 this.clientes = response;
-            }        );
+                this.clientes.sort((a, b) => {
+                  if ( (a.nombre) < (b.nombre) ) 
+                    return -1 ;
+                  else 
+                    if ((a.nombre) > (b.nombre) ) 
+                      return 1;
+                    else 
+                      return 0;
+                });
+            }        
+        );
+
 
 
     }

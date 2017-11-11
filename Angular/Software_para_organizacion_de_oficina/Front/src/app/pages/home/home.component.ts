@@ -89,7 +89,7 @@ export class HomeComponent   {
     response => {
       this.clientes = [];
         for (var aa of response){
-          if ( (aa.nombre.toLowerCase().includes(valor.toLowerCase())) || (aa.apellido.toLowerCase().includes(valor.toLowerCase()) )){
+          if ( aa.nombre.toLowerCase().includes(valor.toLowerCase()) ){
             this.clientes.push(aa);
             console.log(aa.nombre)
 
@@ -112,7 +112,7 @@ export class HomeComponent   {
 
                 for (var aa of response){
                   for (var bb of aa.trabajos){
-                    let fu = new ClientFull(aa.id,aa.nombre,aa.apellido,bb.id,bb.tema,bb.titulo,bb.monto,bb.universidad,bb.entrega,bb.estado);
+                    let fu = new ClientFull(aa.id,aa.nombre,"",bb.id,bb.tema,bb.titulo,bb.monto,bb.universidad,bb.entrega,bb.estado);
                     this.items.push(fu);
                   }
                 }

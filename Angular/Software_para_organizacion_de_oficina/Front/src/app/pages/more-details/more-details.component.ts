@@ -17,18 +17,15 @@ export class MoreDetailsComponent implements OnInit  {
   	deshabilitado : boolean = true;
 
 	clienteID = ''
-	cliente : Client
+	cliente : Client = new Client("", "", "" , "", "", "", "", "", "", null);
 
 	trabajoID = ''
-	trabajo : Trabajo
+	trabajo : Trabajo = new Trabajo("","","","","","","","","","","","",null )
 
 
   constructor(    private router: Router, private route : ActivatedRoute, private service: Service
 ){
 	
-	this.cliente=new Client("","","","","","","","","","","",null)
-	this.trabajo=null
-
 
 }
 
@@ -45,13 +42,9 @@ export class MoreDetailsComponent implements OnInit  {
       if (!this.clienteID)
       	this.clienteID = ''
 	
-
-
+	   this.getWorks(this.clienteID, this.trabajoID);
 	
-	this.getWorks(this.clienteID, this.trabajoID);
-	console.log(this.cliente);
-
-	};
+  };
 
 
 	do(){

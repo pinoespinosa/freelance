@@ -11,7 +11,7 @@ public interface IDataSource {
 
 	List<Cliente> getClientes();
 		
-	void createCliente(Cliente c);
+	Cliente createCliente(Cliente c);
 
 	List<String> getUniversidadesList();
 

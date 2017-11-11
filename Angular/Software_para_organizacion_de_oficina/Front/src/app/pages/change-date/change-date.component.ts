@@ -21,7 +21,6 @@ export class ChangeDateComponent implements OnInit  {
 	trabajo : Trabajo
   constructor(    private router: Router, private route : ActivatedRoute, private service: Service
 ){
-	this.cliente=new Client("","","","","","","","","","","",null)
 	this.trabajo=null
 }
 

@@ -28,8 +28,8 @@ public class OfficeServiceImpl implements OfficeService {
 	}
 
 	@Override
-	public void createCliente(Cliente c) {
-		datasource.createCliente(c);
+	public Cliente createCliente(Cliente c) {
+		return datasource.createCliente(c);
 	}
 
 	@Override
