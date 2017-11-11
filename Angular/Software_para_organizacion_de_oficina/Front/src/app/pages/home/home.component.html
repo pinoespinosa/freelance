@@ -1,3 +1,10 @@
+<app-dialog [(visible)]="showDialog">
+  <h1>Hello World</h1>
+  <button (click)="showDialog = !showDialog" class="btn">Close</button>
+</app-dialog>
+
+<button (click)="showDialog = !showDialog" class="btn">Open</button>
+
 
 <div class="row">
 

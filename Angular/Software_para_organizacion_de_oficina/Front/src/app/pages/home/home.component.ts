@@ -2,10 +2,13 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Renderer2 } 
 import { Router, NavigationEnd, ActivatedRoute }                                from '@angular/router';
 import { trigger, state, style, animate, transition }                           from '@angular/animations';
 
-import { Client }               from 'app/data-objects/cliente';
+import { Client }                   from 'app/data-objects/cliente';
 import { ClientFull }               from 'app/data-objects/clienteFull';
 
-import { Service }   			      from 'app/service';
+import { DialogComponent }               from 'app/pages/dialog.component';
+
+
+import { Service }   			          from 'app/service';
 
 
 @Component({
@@ -25,12 +28,15 @@ export class HomeComponent   {
   items : ClientFull[];
   items_orig : ClientFull[];
 
+  showDialog = false;
+
 
   constructor(private service: Service) {
     this.getWorks();
     this.items=[];
     this.items_orig = [];
   }
+
 
   sortNombre(){
     this.items.sort((a, b) => {

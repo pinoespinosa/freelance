@@ -17,6 +17,7 @@ import { ReportsNewClientsComponent } from './pages/reports/new-clients/new-clie
 import { ReportsOldClientsComponent } from './pages/reports/old-clients/old-clients.component';
 import { ReportsIndicatorsComponent } from './pages/reports/indicators/indicators.component';
 
+import { DialogComponent }               from './pages/dialog.component';
 
 
 import { AppComponent } from './app.component';
@@ -25,12 +26,15 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule }                   from './routing/app-routing.module';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { Service }     from './service';
 
 
 @NgModule({
   declarations: [
+    DialogComponent,
     HeaderComponent,
     AppComponent,
     RegisterComponent,
@@ -50,7 +54,8 @@ import { Service }     from './service';
     BrowserModule,
     HttpModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [ 
 
