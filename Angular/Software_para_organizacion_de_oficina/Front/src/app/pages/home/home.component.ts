@@ -32,7 +32,10 @@ export class HomeComponent   {
   items : ClientFull[];
   items_orig : ClientFull[];
 
-  estados: string[] = ['Urgente', 'Asignado','Trajando','Listo por revisar','Avance Asesor Listo, Falta Hacer', 'Listo por pagar/enviar', 'Pendiente para trabajar'];
+  estados: string[] = ['Urgente', 'Asignado','Trabajando','Listo por revisar','Avance Asesor Listo', 'Listo por pagar/enviar', 'Pendiente para t/ luego'];
+
+  esstado:string;
+
 
   showDialog = false;
 
@@ -42,6 +45,11 @@ export class HomeComponent   {
     this.items=[];
     this.items_orig = [];
     this.cliente = new Client("","","", "","","", "","","",null);
+  }
+
+  callType(est){
+    this.esstado = est;
+
   }
 
 

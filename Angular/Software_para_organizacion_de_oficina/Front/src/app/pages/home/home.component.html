@@ -9,7 +9,7 @@
 
 <div class="row">
    <div class="col-6" >
-      <select style="width: 100%;margin-top: 20px;margin-bottom: 20px;" >
+      <select #t style="width: 100%;margin-top: 20px;margin-bottom: 20px;" (change)="callType(t.value)" >
          <option disabled hidden [value]="selectUndefinedOptionValue">{{cliente2.estado}}</option>
          <option *ngFor="let carrera of estados" >{{carrera}}</option>
       </select>
@@ -18,7 +18,7 @@
 
 <div class="row">
   <div class="col-6"> 
-    <button (click)="showDialog = !showDialog" (click)="changeState(cliente2.clienteID, cliente2.id_trabajo, 'done')" class="btn" style="width: 100%;" >Guardar</button>
+    <button (click)="showDialog = !showDialog" (click)="changeState(cliente2.clienteID, cliente2.id_trabajo, esstado)" class="btn" style="width: 100%;" >Guardar</button>
   </div>
   <div class="col-6"> 
     <button (click)="showDialog = !showDialog" class="btn" style="width: 100%;" >Finalizar</button>
@@ -94,8 +94,14 @@
          <td>{{item.universidad | slice:0:40}}</td>
          <td>{{item.entrega}}</td>
          <td style="min-width: 110px;">
-            <span  *ngIf="item.estado == 'done'" class="badge badge-success">{{item.estado}}</span>
-            <span  *ngIf="item.estado == 'Trabajando'" class="badge badge-warning">{{item.estado}}</span>
+            <span  style="font-size: 100%;background-color: #f95454;" *ngIf="item.estado == 'Urgente'" class="badge">{{item.estado}}</span>
+            <span  style="font-size: 100%;background-color: #f9c854;" *ngIf="item.estado == 'Asignado'" class="badge">{{item.estado}}</span>
+            <span  style="font-size: 100%;background-color: #b6b1b1;" *ngIf="item.estado == 'Trabajando'" class="badge">{{item.estado}}</span>
+            <span  style="font-size: 100%;background-color: #73cb73;" *ngIf="item.estado == 'Listo por revisar'" class="badge">{{item.estado}}</span>
+            <span  style="font-size: 100%;background-color: #96e1d9;" *ngIf="item.estado == 'Avance Asesor Listo'" class="badge">{{item.estado}}</span>
+            <span  style="font-size: 100%;background-color: #f98733b3;" *ngIf="item.estado == 'Listo por pagar/enviar'" class="badge">{{item.estado}}</span>
+            <span  style="font-size: 100%;background-color: #e9cb77b3;" *ngIf="item.estado == 'Pendiente para t/ luego'" class="badge">{{item.estado}}</span>
+
          </td>
          <td style="text-align: left;text-transform: capitalize;" >{{ item.tema.toLowerCase()  | slice:0:60}}</td>
          <td>{{item.monto}}</td>
