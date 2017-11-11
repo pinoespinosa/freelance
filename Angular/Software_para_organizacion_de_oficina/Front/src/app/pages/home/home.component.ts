@@ -28,6 +28,8 @@ export class HomeComponent   {
   items : ClientFull[];
   items_orig : ClientFull[];
 
+  estados: string[] = ['Listo', 'Pendiente'];
+
   showDialog = false;
 
 

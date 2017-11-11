@@ -18,6 +18,7 @@ import { ReportsOldClientsComponent } from './pages/reports/old-clients/old-clie
 import { ReportsIndicatorsComponent } from './pages/reports/indicators/indicators.component';
 
 import { DialogComponent }               from './pages/dialog.component';
+import { ChangeStateDialogComponent }               from './pages/change-state-dialog/change-state-dialog.component';
 
 
 import { AppComponent } from './app.component';
@@ -47,7 +48,8 @@ import { Service }     from './service';
     ReportsIncomesComponent, 
     ReportsNewClientsComponent,
     ReportsOldClientsComponent,
-    ReportsIndicatorsComponent
+    ReportsIndicatorsComponent,
+    ChangeStateDialogComponent
 
   ],
   imports: [

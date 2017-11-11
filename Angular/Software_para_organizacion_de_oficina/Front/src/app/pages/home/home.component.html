@@ -1,7 +1,19 @@
-<app-dialog [(visible)]="showDialog">
-  <h1>Hello World</h1>
+<change-state [(visible)]="showDialog">
+  <h1 style="margin: 10px;margin-bottom: 20px;" >Hello World</h1>
+  
+  <div class="row">
+    <div class="col-4"> Estado: </div>
+    <div class="col-4"> 
+
+<select [(ngModel)]="selectedValue">
+  <option *ngFor="let c of estados" [value]="c">{{c}}</option>
+</select>
+
+    </div>
+
+  </div>
   <button (click)="showDialog = !showDialog" class="btn">Close</button>
-</app-dialog>
+</change-state>
 
 <button (click)="showDialog = !showDialog" class="btn">Open</button>
 
