@@ -12,8 +12,8 @@ export class ClientFull{
     public titulo: string,
     public monto: string,
     public universidad : string,
-	  public entrega : string,
-	  public estado : string
+	public entrega : string,
+	public estado : string
  	 	
 
 

@@ -3,14 +3,21 @@
 <h2 style="margin: 10px;margin-bottom: 20px;" >Cambio de estado</h2>
 
 <div class="row">
-   <div class="col-6" style="font-size: 15px;" > <b>Cliente: </b>{{cliente2.nombre}}</div>
-   <div class="col-6" style="font-size: 15px;" > <b>Trabajo: </b>{{cliente2.tema}}</div>
+   <div class="col-12" style="font-size: 15px;" > <b>Cliente: </b>{{cliente2.nombre}}</div>
+</div>
+<div class="row">
+   <div class="col-12" style="font-size: 15px;" > <b>Trabajo: </b>{{cliente2.tema}}</div>
+</div>
+<div class="row" style="margin-top: 20px;" >
+   <div class="col-4" style="font-size: 15px;" > <b>Estado Actual: </b></div>
+   <div class="col-6" style="font-size: 15px;margin-left:10px;" > {{cliente2.estado}}</div>
 </div>
 
-<div class="row">
-   <div class="col-6" >
-      <select #t style="width: 100%;margin-top: 20px;margin-bottom: 20px;" (change)="callType(t.value)" >
-         <option disabled hidden [value]="selectUndefinedOptionValue">{{cliente2.estado}}</option>
+<div class="row" style="margin-bottom: 20px;" >
+  <div class="col-4"> <b> Cambiar a: </b> </div>
+  <div class="col-6" style="font-size: 15px;" >
+      <select #t style="width: 100%;" (change)="callType(t.value)" >
+         <option disabled hidden [value]="selectUndefinedOptionValue"></option>
          <option *ngFor="let carrera of estados" >{{carrera}}</option>
       </select>
    </div>
@@ -18,10 +25,10 @@
 
 <div class="row">
   <div class="col-6"> 
-    <button (click)="showDialog = !showDialog" (click)="changeState(cliente2.clienteID, cliente2.id_trabajo, esstado)" class="btn" style="width: 100%;" >Guardar</button>
+    <button (click)="showDialog = !showDialog" (click)="t.value=' '" (click)="changeState(cliente2.clienteID, cliente2.id_trabajo, esstado)" class="btn" style="width: 100%;background: #72C585" >Guardar</button>
   </div>
   <div class="col-6"> 
-    <button (click)="showDialog = !showDialog" class="btn" style="width: 100%;" >Finalizar</button>
+    <button (click)="showDialog = !showDialog" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
   </div>
 </div>
 

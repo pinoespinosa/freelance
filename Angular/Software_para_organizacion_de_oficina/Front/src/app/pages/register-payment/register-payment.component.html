@@ -8,32 +8,17 @@
    </div>
 
    <div class="row register-row">
-      <div class="col-4">
-         <div class="register-title">Cliente</div>
-         <div class="dropdown">
-            <button class="btn dropdown-toggle dropdown-custom" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="selectUndefinedOptionValue" disabled="true">
-               {{cliente.nombre}}
-               </button>
-            <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMenuButton">
-               <a class="dropdown-item" *ngFor="let cliente of clientes" >{{cliente.nombre}} {{cliente.apellido}}</a>
-            </div>
-         </div>
+      <div class="col-4" style="margin-top: 30px;" >
+         <div><b>Cliente: </b>{{cliente.nombre}}</div>
       </div>
    </div>
 
    <div class="row register-row">
       <div class="col-4">
-         <div class="register-title">Trabajo</div>      
-         <div class="dropdown">
-            <button class="btn dropdown-toggle dropdown-custom" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="selectUndefinedOptionValue" disabled="true">
-               {{trabajo.tema}}
-               </button>
-            <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMenuButton">
-               <a class="dropdown-item" *ngFor="let cliente of clientes" >{{cliente.nombre}} {{cliente.apellido}}</a>
-            </div>
-         </div>
+         <div><b>Trabajo: </b>{{trabajo.tema}}</div>
       </div>
    </div>
+
 
 
    <div class="row register-row">

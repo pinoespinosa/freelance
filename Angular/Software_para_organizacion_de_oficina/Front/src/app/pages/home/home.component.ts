@@ -5,9 +5,6 @@ import { trigger, state, style, animate, transition }                           
 import { Client }                   from 'app/data-objects/cliente';
 import { ClientFull }               from 'app/data-objects/clienteFull';
 
-import { DialogComponent }               from 'app/pages/dialog.component';
-
-
 import { Service }   			          from 'app/service';
 
 
@@ -80,6 +77,9 @@ export class HomeComponent   {
   }
 
   sortEstado(){
+
+  console.log("Imprimo estado")
+
     this.items.sort((a, b) => {
       if ( (a.estado) < (b.estado) )
         return -1 * this.tipo_orden;
@@ -90,6 +90,7 @@ export class HomeComponent   {
           return 0;
     });
     this.tipo_orden = this.tipo_orden * -1 
+    console.log(this.items)
   }
 
   sortUniversidad(){
@@ -110,13 +111,13 @@ export class HomeComponent   {
     
 
         let loading = this.service.getChangeStateTrabajo(cliente, trabajo, estado).subscribe(
-            response => {
+            response =>{ 
+              let aa = response;
 
-                }
-
-                    
+              this.getWorks();
+            }         
         );
-
+        alert("Se ha actualizado el estado.")
 
 
   }
@@ -136,6 +137,11 @@ export class HomeComponent   {
   }
 
     getWorks(): void {
+
+    console.log("update front")
+    this.items=[];
+    this.items_orig = [];
+    this.cliente2 = '';
 
         let loading = this.service.getProducts().subscribe(
             response => {

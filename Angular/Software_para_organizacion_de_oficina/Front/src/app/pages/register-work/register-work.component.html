@@ -1,4 +1,67 @@
 
+<!-- ###########################   AGREGAR CARRERA   ############################### -->
+<change-state [(visible)]="showDialogAddCarre">
+<h2 style="margin: 10px;margin-bottom: 20px;" >Agregar Carrera</h2>
+<div class="col-12" style="margin-bottom: 20px;">
+   <input type="text" class="form-control" placeholder="Carrera">
+</div>
+<div class="row">
+   <div class="col-6"> 
+      <button (click)="showDialogAddCarre = !showDialogAddCarre"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+   </div>
+   <div class="col-6"> 
+      <button (click)="showDialogAddCarre = !showDialogAddCarre" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
+   </div>
+</div>
+</change-state>
+
+<!-- ###########################   AGREGAR UNIVERSIDAD   ############################### -->
+<change-state [(visible)]="showDialogAddUniv">
+<h2 style="margin: 10px;margin-bottom: 20px;" >Agregar Universidad</h2>
+<div class="col-12" style="margin-bottom: 20px;">
+   <input type="text" class="form-control" placeholder="Universidad">
+</div>
+<div class="row">
+   <div class="col-6"> 
+      <button (click)="showDialogAddUniv = !showDialogAddUniv"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+   </div>
+   <div class="col-6"> 
+      <button (click)="showDialogAddUniv = !showDialogAddUniv" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
+   </div>
+</div>
+</change-state>
+
+
+<!-- ###########################   DONDE SE ENTERO   ############################### -->
+<change-state [(visible)]="showDialogAddLugar">
+<h2 style="margin: 10px;margin-bottom: 20px;" >Agregar lugar donde se entero</h2>
+<div class="col-12" style="margin-bottom: 20px;">
+   <input type="text" class="form-control" placeholder="Lugar donde se entero">
+</div>
+<div class="row">
+   <div class="col-6"> 
+      <button (click)="showDialogAddLugar = !showDialogAddLugar"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+   </div>
+   <div class="col-6"> 
+      <button (click)="showDialogAddLugar = !showDialogAddLugar" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
+   </div>
+</div>
+</change-state>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <form class="form-horizontal" action='' method="POST">
    <div class="row" style="padding-top: 30px;" >
@@ -6,13 +69,11 @@
          <h2>Registro de nuevo trabajo</h2>
       </div>
    </div>
-
    <script type="text/javascript">
       $('.dropdown-menu a').click(function(){
          $('#selected').text($(this).text());
       });
    </script>
-
    <div class="row">
       <div class="col-4" style="padding: 10px;padding-left: 40px;" >
          <select style="width: 100%;">
@@ -21,88 +82,69 @@
          </select>
       </div>
       <div class="col-1" style="align-self: center;" >
-         <a class="btn" [routerLink]="['/register']">   
-            <img style="width: 30px;margin: -30px;" src="https://icon-icons.com/icons2/37/PNG/512/adduser_a%C3%B1adir_3553.png" alt="Agregar Cliente">
+         <a class="btn" [routerLink]="['/register']"  >   
+         <img  style="width: 30px;margin: -30px;" src="https://icon-icons.com/icons2/37/PNG/512/adduser_a%C3%B1adir_3553.png" alt="Agregar Cliente">
          </a>
       </div>
    </div>
-
    <div class="row">
       <div class="col-4" style="padding: 10px;padding-left: 40px;" >
          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tema">
       </div>
    </div>
-
    <div class="row">
       <div class="col-4" style="padding: 10px;padding-left: 40px;" >
          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Asesor">
       </div>
    </div>
 
-   <div class="row">
-      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
-         <div class="dropdown">
-            <button class="btn dropdown-toggle dropdown-custom" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="selectUndefinedOptionValue">
-               -- Carrera --
-               </button>
-            <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMenuButton">
-               <a class="dropdown-item" *ngFor="let carrera of carreras" >{{carrera}}</a>
-            </div>
-         </div>
+   <div class="row" style="margin-left: 10px;">
+      <div class="col-4" style="font-size: 15px;" >
+         <select #t style="width: 100%;" (change)="callType(t.value)" >
+         <option disabled hidden [value]="selectUndefinedOptionValue">-- Carrera --</option>
+         <option *ngFor="let carrera of carreras" >{{carrera}}</option>
+         </select>
       </div>
       <div class="col-1" style="align-self: center;" >
-         <a class="btn" >   
-            <img style="width: 30px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
-         </a>
-      </div>
-   </div>
-   
-   <div class="row">
-      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
-         <div class="dropdown">
-            <button class="btn dropdown-toggle dropdown-custom" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="selectUndefinedOptionValue">
-               -- Universidad --
-               </button>
-            <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMenuButton">
-               <a class="dropdown-item" *ngFor="let universidad of universidades" >{{universidad}}</a>
-            </div>
-         </div>
-      </div>
-      <div class="col-1" style="align-self: center;" >
-         <a class="btn" >   
-            <img style="width: 30px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
+         <a class="btn" (click)="showDialogAddCarre = true" >   
+         <img style="width: 30px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
          </a>
       </div>
    </div>
 
-   <div class="row">
-      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
-         <div class="dropdown">
-            <button class="btn dropdown-toggle dropdown-custom" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="selectUndefinedOptionValue">
-               -- Donde se entero --
-               </button>
-            <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMenuButton">
-               <a class="dropdown-item" *ngFor="let entero of lugarEntero" >{{entero}}</a>
-            </div>
-         </div>
+   <div class="row" style="margin-left: 10px;">
+      <div class="col-4" style="font-size: 15px;" >
+         <select #t style="width: 100%;" (change)="callType(t.value)" >
+         <option disabled hidden [value]="selectUndefinedOptionValue">-- Universidad --</option>
+         <option *ngFor="let universidad of universidades" >{{universidad}}</option>
+         </select>
       </div>
       <div class="col-1" style="align-self: center;" >
-         <a class="btn" >   
-            <img style="width: 30px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
+         <a class="btn" (click)="showDialogAddUniv = true" >   
+         <img style="width: 30px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
          </a>
       </div>
    </div>
 
-   <div class="row">
-      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
-    <label for="exampleFormControlTextarea1">Requerimientos</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-
+   <div class="row" style="margin-left: 10px;">
+      <div class="col-4" style="font-size: 15px;" >
+         <select #t style="width: 100%;" (change)="callType(t.value)" >
+         <option disabled hidden [value]="selectUndefinedOptionValue">-- Lugar de donde se entero --</option>
+         <option *ngFor="let lugar of lugarEntero" >{{lugar}}</option>
+         </select>
+      </div>
+      <div class="col-1" style="align-self: center;" >
+         <a class="btn" (click)="showDialogAddLugar = true" >   
+         <img style="width: 30px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
+         </a>
       </div>
    </div>
-
-
-
+   <div class="row">
+      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+         <label for="exampleFormControlTextarea1">Requerimientos</label>
+         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+   </div>
    <div class="row">
       <div class="col-3" style="text-align: center;">
       </div>

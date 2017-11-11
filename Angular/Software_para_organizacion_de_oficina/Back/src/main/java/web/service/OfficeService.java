@@ -29,4 +29,8 @@ public interface OfficeService {
 	Trabajo getTrabajo(String idCliente, String idTrabajo);
 
 	Trabajo getChangeTrabajoStatus(String clienteID, String trabajoID, String estado);
+
+	List<String> getCarrerasList();
+
+	List<String> getDondeSeEnteroList();
 }

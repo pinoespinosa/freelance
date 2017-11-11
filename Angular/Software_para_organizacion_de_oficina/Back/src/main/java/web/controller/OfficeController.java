@@ -77,6 +77,18 @@ public class OfficeController {
 	}
 
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/carrera", method = RequestMethod.GET)
+	public List<String> getCarreras() {
+		return officeService.getCarrerasList();
+	}	
+	
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/dondeEntero", method = RequestMethod.GET)
+	public List<String> getDondeEntero() {
+		return officeService.getDondeSeEnteroList();
+	}	
+	
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "/universidad", method = RequestMethod.POST)
 	@ResponseBody
 	public String createUniversidad(@RequestBody final String universidad) {

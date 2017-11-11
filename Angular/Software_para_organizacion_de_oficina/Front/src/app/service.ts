@@ -31,14 +31,22 @@ export class Service {
   }
 
   createCliente(client): Observable<Client> {
-
       var headers = new Headers();
       headers.append('acces-control-allow-origin','*')      
       return this.http.post(this.server + 'api/client/create',client, { headers: headers }).map(this.extractData);
   }
 
+  getUniversidades(): Observable<string[]> {
+      return this.http.get(this.server+"api/universidad").map(this.extractData);
+  }
 
+  getCarreras(): Observable<string[]> {
+      return this.http.get(this.server+"api/carrera").map(this.extractData);
+  }
 
+  getDondeSeEntero(): Observable<string[]> {
+      return this.http.get(this.server+"api/dondeEntero").map(this.extractData);
+  }
 
   getTrabajo(idCliente, idTrabajo): Observable<Trabajo> {
       return this.http.get(this.server+"/api/" + idCliente + '/' + idTrabajo).map(this.extractData);
@@ -46,13 +54,9 @@ export class Service {
 
 
   getChangeStateTrabajo(idCliente, idTrabajo, estado): Observable<Trabajo> {
-
-
       var headers = new Headers();
       headers.append('acces-control-allow-origin','*')      
       return this.http.post(this.server+"/api/" + idCliente + '/' + idTrabajo +'/status?estado='+estado , '', { headers: headers }).map(this.extractData);
-
-
   }
 
 

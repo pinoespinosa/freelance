@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import datasource.DataSourceMocked;
 import datasource.DataSourceReal;
 import datasource.IDataSource;
 
@@ -20,11 +19,7 @@ public class ClientWebConfig extends WebMvcConfigurerAdapter {
     
 	@Bean
 	public IDataSource createDataSource() {
-		
-			if(ProjectConstants.PROJECT_MODE_MOCK)
-				return new DataSourceMocked();
-			else
-				return new DataSourceReal();
+		return new DataSourceReal();
 				
 			}
     

@@ -62,15 +62,15 @@ public class DataSourceReal implements IDataSource {
 
 	@Override
 	public List<String> getUniversidadesList() {
-		// TODO Auto-generated method stub
-		return null;
+		return obj.getUniversidades();
 	}
 
 	@Override
 	public void createUniversidad(String universidad) {
-		// TODO Auto-generated method stub
-
+		obj.getUniversidades().add(universidad);
+		infoToFile(obj, "file.json");
 	}
+	
 
 	@Override
 	public void createTrabajo(String idCliente, Trabajo trabajo) {
@@ -125,11 +125,24 @@ public class DataSourceReal implements IDataSource {
 
 					Trabajo t = new Trabajo();
 					t.setId(c.getId() + "-" + c.getTrabajos().size());
-					t.setCarrera(valores[5].trim());
 					t.setTema(valores[4].trim());
-					t.setUniversidad(valores[6].trim());
 					t.setMonto(valores[13].trim());
-					t.setDondeSeEntero(valores[7].trim());
+
+					String carrera = valores[5].trim();
+					if (!base.getCarreras().contains(carrera))
+						base.getCarreras().add(carrera);
+					t.setCarrera(carrera);
+					
+					String univ = valores[6].trim();
+					if (!base.getUniversidades().contains(univ))
+						base.getUniversidades().add(univ);
+					t.setUniversidad(univ);
+									
+					String dondeSeEntero = valores[7].trim();
+					if (!base.getDondeSeEntero().contains(dondeSeEntero))
+						base.getDondeSeEntero().add(dondeSeEntero);
+					t.setDondeSeEntero(dondeSeEntero);
+
 					t.setAsesor(valores[10].trim());
 					t.setFecha(valores[0].trim());
 					t.setFecha_entrega(valores[8].trim());
@@ -184,6 +197,16 @@ public class DataSourceReal implements IDataSource {
 		Trabajo trabajo = getTrabajo(clienteID, trabajoID);
 		trabajo.setEstado(estado);
 		return trabajo;
+	}
+
+	@Override
+	public List<String> getCarrerasList() {
+		return obj.getCarreras();
+	}
+
+	@Override
+	public List<String> getDondeSeEnteroList() {
+		return obj.getDondeSeEntero();
 	}
 
 }
