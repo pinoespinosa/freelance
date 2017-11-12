@@ -4,6 +4,7 @@ import { trigger, state, style, animate, transition }                           
 
 import { Service }   			      from 'app/service';
 import { Client }               from 'app/data-objects/cliente';
+import { Trabajo }              from 'app/data-objects/trabajo';
 
 
 @Component({
@@ -26,6 +27,11 @@ export class RegisterWorkComponent implements OnInit  {
   showDialogAddCarre = false;
   showDialogAddLugar = false;
 
+  select_univ = ''
+  select_carr = ''
+  select_lugar = ''
+  select_cliente = ''
+
   constructor(    private router: Router, private route : ActivatedRoute, private service: Service
 ){
 	    this.getWorks();
@@ -45,8 +51,28 @@ export class RegisterWorkComponent implements OnInit  {
 
 }
 
+  updateUniv(uni){    this.select_univ = uni;   }
+  updateCarr(car){    this.select_carr = car;   }
+  updateLugar(lug){   this.select_lugar = lug;   }
+
+
 	do(){
-		 alert("Se ha registrado los datos correctamente.");
+
+    console.log(this.select_univ)
+    console.log(this.select_carr)
+    console.log(this.select_lugar)
+
+    alert("Se ha registrado los datos correctamente.")
+
+    let trab = new Trabajo("","tema","titulo",this.select_univ,"monto","entrega","dondeSeEntero","estado","fecha", "fecha_entrega", "observaciones", "observaciones_next", null);
+
+
+    let loading = this.service.crearTrabajo("1",trab).subscribe(
+      response => {
+      }        
+    );
+
+
 	}
  
     getUniversidades(): void {

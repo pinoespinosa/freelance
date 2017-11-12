@@ -100,7 +100,7 @@
 
    <div class="row" style="margin-left: 10px;">
       <div class="col-4" style="font-size: 15px;" >
-         <select #t style="width: 100%;" (change)="callType(t.value)" >
+         <select #car style="width: 100%;" (change)="updateCarr(car.value)" >
          <option disabled hidden [value]="selectUndefinedOptionValue">-- Carrera --</option>
          <option *ngFor="let carrera of carreras" >{{carrera}}</option>
          </select>
@@ -114,7 +114,7 @@
 
    <div class="row" style="margin-left: 10px;">
       <div class="col-4" style="font-size: 15px;" >
-         <select #t style="width: 100%;" (change)="callType(t.value)" >
+         <select #uni style="width: 100%;" (change)="updateUniv(uni.value)" >
          <option disabled hidden [value]="selectUndefinedOptionValue">-- Universidad --</option>
          <option *ngFor="let universidad of universidades" >{{universidad}}</option>
          </select>
@@ -128,7 +128,7 @@
 
    <div class="row" style="margin-left: 10px;">
       <div class="col-4" style="font-size: 15px;" >
-         <select #t style="width: 100%;" (change)="callType(t.value)" >
+         <select #lug style="width: 100%;" (change)="updateLugar(lug.value)" >
          <option disabled hidden [value]="selectUndefinedOptionValue">-- Lugar de donde se entero --</option>
          <option *ngFor="let lugar of lugarEntero" >{{lugar}}</option>
          </select>
@@ -148,11 +148,11 @@
    <div class="row">
       <div class="col-3" style="text-align: center;">
       </div>
-      <div class="col-3" style="text-align: center;">
-         <a [routerLink]="['/register-payment']" class="btn btn-secondary agregar-cliente" style="width: 100%;">Agregar Pago</a>
+      <div class="col-3 " style="text-align: center;">
+         <a [routerLink]="['/register-payment']" class="btn btn-success agregar-cliente" style="width: 100%;">Guardar y Cargar Pago</a>
       </div>
       <div class="col-3" style="text-align: center;">
-         <a  (click)="do()" [routerLink]="['/home']" class="btn btn-secondary agregar-cliente" style="width: 100%;" > Finalizar</a>
+         <a  (click)="do()" [routerLink]="['/home']" class="btn btn-danger agregar-cliente" style="width: 100%;" >Finalizar</a>
       </div>
       <div class="col-3" style="text-align: center;">
       </div>
