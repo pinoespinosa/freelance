@@ -24,6 +24,7 @@ export class HomeComponent   {
   requerimientos: string[];
 
   showDialogAddReq = false;
+  showDialogChangeDate = false;
 
   tipo_orden = 1;
 
