@@ -70,7 +70,7 @@ export class RegisterWorkComponent implements OnInit  {
 
     alert("Se ha registrado los datos correctamente.")
 
-    let trab = new Trabajo("","tema","titulo",this.select_univ,"monto","entrega","dondeSeEntero","estado","fecha", "fecha_entrega", "observaciones", "observaciones_next", null, null);
+    let trab = new Trabajo("","tema","titulo",this.select_univ,"monto","saldo","entrega","dondeSeEntero","estado","fecha", "fecha_entrega", "observaciones", "observaciones_next", null, null);
 
 
     let loading = this.service.crearTrabajo("1",trab).subscribe(
