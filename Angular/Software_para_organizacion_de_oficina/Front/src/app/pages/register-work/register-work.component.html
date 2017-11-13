@@ -52,18 +52,17 @@
 <change-state [(visible)]="showDialogAddReq">
 <h2 style="margin: 10px;margin-bottom: 20px;" >Agregar Requerimiento</h2>
 <div class="col-12" style="margin-bottom: 20px;">
-   <input type="text" class="form-control" placeholder="Requerimiento">
+   <input #reqq type="text" class="form-control" placeholder="Requerimiento">
 </div>
 <div class="row">
    <div class="col-6"> 
-      <button (click)="showDialogAddReq = !showDialogAddReq"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+      <button (click)="addReq(reqq.value)" (click)="showDialogAddReq = !showDialogAddReq" class="btn" style="width: 100%;background: #72C585" >Agregar</button>
    </div>
    <div class="col-6"> 
       <button (click)="showDialogAddReq = !showDialogAddReq" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
    </div>
 </div>
 </change-state>
-
 
 
 

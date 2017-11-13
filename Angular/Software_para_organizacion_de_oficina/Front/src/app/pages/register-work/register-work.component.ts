@@ -5,6 +5,7 @@ import { trigger, state, style, animate, transition }                           
 import { Service }   			      from 'app/service';
 import { Client }               from 'app/data-objects/cliente';
 import { Trabajo }              from 'app/data-objects/trabajo';
+import { Requerimiento }               from 'app/data-objects/requerimiento';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class RegisterWorkComponent implements OnInit  {
 	universidades: string[];
 	lugarEntero: string[];
 
-  requerimientos: string[];
+  requerimientos: Requerimiento[];
 
 
   clientes : Client[];
@@ -44,6 +45,7 @@ export class RegisterWorkComponent implements OnInit  {
       this.getUniversidades();
       this.getCarreras();
       this.getDondeSeEntero();
+      this.requerimientos = [];
 
 	let page = '0'
     let sub = this.route
@@ -61,6 +63,11 @@ export class RegisterWorkComponent implements OnInit  {
   updateCarr(car){    this.select_carr = car;   }
   updateLugar(lug){   this.select_lugar = lug;   }
 
+addReq(req){
+
+    this.requerimientos.push(new Requerimiento(req, "", ""))
+    
+  }
 
 	do(){
 
@@ -70,7 +77,7 @@ export class RegisterWorkComponent implements OnInit  {
 
     alert("Se ha registrado los datos correctamente.")
 
-    let trab = new Trabajo("","tema","titulo",this.select_univ,"monto","saldo","entrega","dondeSeEntero","estado","fecha", "fecha_entrega", "observaciones", "observaciones_next", null, null);
+    let trab = new Trabajo("","tema","titulo",this.select_univ,"monto","saldo","entrega","dondeSeEntero","estado","fecha", "fecha_entrega", "observaciones", "observaciones_next", this.requerimientos, null);
 
 
     let loading = this.service.crearTrabajo("1",trab).subscribe(
