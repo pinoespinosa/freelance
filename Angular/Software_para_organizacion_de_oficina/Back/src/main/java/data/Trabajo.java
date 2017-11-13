@@ -171,15 +171,8 @@ public class Trabajo {
 		this.requerimientos = requerimientos;
 	}
 
-	public String getSaldo() {
-
-		float valor = 0;
-
-		for (Pago pago : pagos) {
-			valor += Float.parseFloat(pago.getAbono());
-		}
-
-		return valor + "";
+	public String getSaldo() {	
+		return saldo;
 	}
 
 	public void setSaldo(String saldo) {
