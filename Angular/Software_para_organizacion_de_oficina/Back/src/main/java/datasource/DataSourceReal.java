@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import data.Cliente;
 import data.Info;
+import data.Requerimiento;
 import data.Trabajo;
 
 public class DataSourceReal implements IDataSource {
@@ -208,5 +209,12 @@ public class DataSourceReal implements IDataSource {
 	public List<String> getDondeSeEnteroList() {
 		return obj.getDondeSeEntero();
 	}
+
+	@Override
+	public void addRequerimiento(String idCliente, String idTrabajo, Requerimiento requerimiento) {
+		Trabajo t = getTrabajo(idCliente, idTrabajo);
+		t.getRequerimientos().add(requerimiento);
+	}
+
 
 }

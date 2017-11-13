@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import data.Cliente;
+import data.Requerimiento;
 import data.Trabajo;
 import io.swagger.annotations.ApiOperation;
 import spring.ProjectConstants;
@@ -105,8 +106,8 @@ public class OfficeController {
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "{idCliente}/{idTrabajo}/requerimiento", method = RequestMethod.POST)
 	@ResponseBody
-	public String addRequerimiento(@RequestBody final String universidad) {
-		officeService.createUniversidad(universidad);
+	public String addRequerimiento(@PathVariable final String idCliente, @PathVariable final String idTrabajo, @RequestParam final Requerimiento requerimiento) {
+		officeService.addRequerimiento(idCliente, idTrabajo, requerimiento);
 		return "OK";
 	}
 	

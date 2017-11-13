@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import data.Cliente;
+import data.Requerimiento;
 import data.Trabajo;
 import datasource.IDataSource;
 
@@ -79,6 +80,13 @@ public class OfficeServiceImpl implements OfficeService {
 	public List<String> getDondeSeEnteroList() {
 		return datasource.getDondeSeEnteroList();
 	}
+
+	@Override
+	public void addRequerimiento(String idCliente, String idTrabajo, Requerimiento requerimiento) {
+		datasource.addRequerimiento(idCliente, idTrabajo, requerimiento);
+	
+	}
+
 
 
 }

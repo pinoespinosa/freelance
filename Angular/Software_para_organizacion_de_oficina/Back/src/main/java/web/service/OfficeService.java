@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import data.Cliente;
+import data.Requerimiento;
 import data.Trabajo;
 
 
@@ -33,4 +34,7 @@ public interface OfficeService {
 	List<String> getCarrerasList();
 
 	List<String> getDondeSeEnteroList();
+
+	void addRequerimiento(String idCliente, String idTrabajo, Requerimiento requerimiento);
+
 }
