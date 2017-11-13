@@ -28,7 +28,8 @@ export class HomeComponent   {
   tipo_orden = 1;
 
   cliente: Client;
-  cliente2: ClientFull = null
+  cliente2: ClientFull;
+
 
 
   items : ClientFull[];
@@ -47,6 +48,8 @@ export class HomeComponent   {
     this.items=[];
     this.items_orig = [];
     this.cliente = new Client("","","", "","","", "","","",null);
+    this.cliente2 = new ClientFull("","","","","","","","","","","");
+
   }
 
   callType(est){
