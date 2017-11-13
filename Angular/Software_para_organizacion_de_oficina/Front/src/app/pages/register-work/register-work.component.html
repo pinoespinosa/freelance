@@ -48,7 +48,21 @@
 </div>
 </change-state>
 
-
+<!-- ###########################   AGREGAR REQUERIMIENTO   ############################### -->
+<change-state [(visible)]="showDialogAddReq">
+<h2 style="margin: 10px;margin-bottom: 20px;" >Agregar Requerimiento</h2>
+<div class="col-12" style="margin-bottom: 20px;">
+   <input type="text" class="form-control" placeholder="Requerimiento">
+</div>
+<div class="row">
+   <div class="col-6"> 
+      <button (click)="showDialogAddReq = !showDialogAddReq"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+   </div>
+   <div class="col-6"> 
+      <button (click)="showDialogAddReq = !showDialogAddReq" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
+   </div>
+</div>
+</change-state>
 
 
 
@@ -107,7 +121,7 @@
       </div>
       <div class="col-1" style="align-self: center;" >
          <a class="btn" (click)="showDialogAddCarre = true" >   
-         <img style="width: 30px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
+         <img style="width: 20px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
          </a>
       </div>
    </div>
@@ -121,7 +135,7 @@
       </div>
       <div class="col-1" style="align-self: center;" >
          <a class="btn" (click)="showDialogAddUniv = true" >   
-         <img style="width: 30px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
+         <img style="width: 20px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
          </a>
       </div>
    </div>
@@ -135,16 +149,72 @@
       </div>
       <div class="col-1" style="align-self: center;" >
          <a class="btn" (click)="showDialogAddLugar = true" >   
-         <img style="width: 30px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
+         <img style="width: 20px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
          </a>
       </div>
    </div>
+
+
    <div class="row">
       <div class="col-4" style="padding: 10px;padding-left: 40px;" >
-         <label for="exampleFormControlTextarea1">Requerimientos</label>
-         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Fecha de entrega">
       </div>
    </div>
+
+
+   <div class="row">
+      <div class="col-4" style="padding: 10px;padding-left: 40px;display: flex;" >
+         <b>Requerimientos</b>
+               <div>
+         <a style="padding: 0px;padding-left: 15px;" class="btn" (click)="showDialogAddReq = true" >   
+         <img style="width: 20px" src="./assets/reque.png" alt="Flowers in Chania">
+         </a>
+      </div>
+      </div>
+
+   </div>
+
+   <div class="row" style="margin-left: 10px;">
+      <div class="col-8" style="font-size: 15px;" >
+
+         <table class="table table-new table-striped">
+            <thead>
+               <tr class="client-columns" >
+                  <th>  Fecha de entrega
+                     <a (click)="sortNombre()" class="btn clients-sort">
+                        <img class="sort-img" src="./assets/sort.png" alt="">
+                     </a>
+                  </th>
+                  
+                  <th>
+                     Requerimiento
+                  </th>
+                  <th>
+                     Estado
+                  </th>
+               </tr>
+            </thead>
+            
+            <tbody class="centro" >
+               <tr *ngFor="let item of items" class="client-columns" (dblclick)="showDialogAddReq = !showDialogAddReq">
+                  <td></td>
+                  <td></td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+
+
+
+
+
+
+
+
+
+
+
    <div class="row">
       <div class="col-3" style="text-align: center;">
       </div>

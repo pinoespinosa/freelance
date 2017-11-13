@@ -1,4 +1,5 @@
 import { Pago }                    from 'app/data-objects/pago';
+import { Requerimiento }           from 'app/data-objects/requerimiento';
 
 
 export class Trabajo {
@@ -16,9 +17,11 @@ export class Trabajo {
     public fecha : string,
     public fecha_entrega : string,
 
+
+
     public observaciones : string,
     public observaciones_next : string,
-
+    public requerimientos: Requerimiento[],
     public pagos: Pago[]
 
   ) { }

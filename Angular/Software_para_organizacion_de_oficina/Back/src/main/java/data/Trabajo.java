@@ -1,5 +1,6 @@
 package data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Trabajo {
@@ -14,7 +15,7 @@ public class Trabajo {
 	private String universidad;
 	private String dondeSeEntero;
 	private String entrega;
-	private String requerimientos;
+	private List<Requerimiento> requerimientos;
 
 	private String fecha;
 	private String fecha_entrega;
@@ -22,8 +23,9 @@ public class Trabajo {
 	private String observaciones;
 	private String observaciones_next;
 
-	
 	private String asesor;
+
+	private List<Pago> pagos;
 
 	@Override
 	public boolean equals(Object obj) {
@@ -34,8 +36,6 @@ public class Trabajo {
 		return false;
 	}
 
-	private List<Pago> pagos;
-	
 	public String getTema() {
 		return tema;
 	}
@@ -68,16 +68,10 @@ public class Trabajo {
 		this.dondeSeEntero = dondeSeEntero;
 	}
 
-
-	public String getRequerimientos() {
-		return requerimientos;
-	}
-
-	public void setRequerimientos(String requerimientos) {
-		this.requerimientos = requerimientos;
-	}
-
 	public List<Pago> getPagos() {
+		if (pagos == null)
+			pagos = new ArrayList<>();
+
 		return pagos;
 	}
 
@@ -163,6 +157,17 @@ public class Trabajo {
 
 	public void setObservaciones_next(String observaciones_next) {
 		this.observaciones_next = observaciones_next;
+	}
+
+	public List<Requerimiento> getRequerimientos() {
+		if (requerimientos == null)
+			requerimientos = new ArrayList<>();
+
+		return requerimientos;
+	}
+
+	public void setRequerimientos(List<Requerimiento> requerimientos) {
+		this.requerimientos = requerimientos;
 	}
 
 }

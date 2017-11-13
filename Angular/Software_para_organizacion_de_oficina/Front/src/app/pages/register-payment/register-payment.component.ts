@@ -23,7 +23,7 @@ export class RegisterPaymentComponent implements OnInit  {
 	clientes :Client[];
 
 	trabajoID = ''
-	trabajo : Trabajo = new Trabajo("","","","","","","","","","","","",null )
+	trabajo : Trabajo = new Trabajo("","","","","","","","","","","","",null,null )
 
 	valorValue: number = 0;
 	valorSinIva: number = 0;

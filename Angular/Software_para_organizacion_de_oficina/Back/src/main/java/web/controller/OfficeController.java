@@ -103,11 +103,19 @@ public class OfficeController {
 	}
 
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "{idCliente}/{idTrabajo}/requerimiento", method = RequestMethod.POST)
+	@ResponseBody
+	public String addRequerimiento(@RequestBody final String universidad) {
+		officeService.createUniversidad(universidad);
+		return "OK";
+	}
+	
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "{idCliente}/{idTrabajo}", method = RequestMethod.GET)
 	public Trabajo getTrabajo(@PathVariable final String idCliente, @PathVariable final String idTrabajo) {
 		return officeService.getTrabajo(idCliente, idTrabajo);
 	}
-
+	
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "{idCliente}/trabajo", method = RequestMethod.POST)
 	@ResponseBody
