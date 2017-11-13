@@ -20,6 +20,7 @@ import { ReportsIndicatorsComponent } from './pages/reports/indicators/indicator
 import { DialogComponent }               from './pages/dialog.component';
 import { ChangeStateDialogComponent }               from './pages/change-state-dialog/change-state-dialog.component';
 
+import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -55,6 +56,7 @@ import { Service }     from './service';
   imports: [
     BrowserModule,
     HttpModule,
+    ChartsModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule
