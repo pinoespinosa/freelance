@@ -11,6 +11,7 @@ public class Trabajo {
 	private String estado;
 
 	private String monto;
+	private String saldo;
 	private String carrera;
 	private String universidad;
 	private String dondeSeEntero;
@@ -168,6 +169,21 @@ public class Trabajo {
 
 	public void setRequerimientos(List<Requerimiento> requerimientos) {
 		this.requerimientos = requerimientos;
+	}
+
+	public String getSaldo() {
+
+		float valor = 0;
+
+		for (Pago pago : pagos) {
+			valor += Float.parseFloat(pago.getAbono());
+		}
+
+		return valor + "";
+	}
+
+	public void setSaldo(String saldo) {
+		this.saldo = saldo;
 	}
 
 }

@@ -3,20 +3,10 @@ package data;
 public class Pago {
 
 	private String id;
-	private String total;
 	private String abono;
-	private String saldo;
 	private String forma_pago;
 
 	private String observaciones;
-
-	public String getTotal() {
-		return total;
-	}
-
-	public void setTotal(String total) {
-		this.total = total;
-	}
 
 	public String getAbono() {
 		return abono;
@@ -24,14 +14,6 @@ public class Pago {
 
 	public void setAbono(String abono) {
 		this.abono = abono;
-	}
-
-	public String getSaldo() {
-		return saldo;
-	}
-
-	public void setSaldo(String saldo) {
-		this.saldo = saldo;
 	}
 
 	public String getObservaciones() {

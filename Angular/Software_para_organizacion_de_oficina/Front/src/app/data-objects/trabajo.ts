@@ -10,6 +10,8 @@ export class Trabajo {
     public titulo: string,
     public universidad : string,
     public monto : string,
+    public saldo : string,
+
     public entrega : string,
     public dondeSeEntero : string,
     public estado : string,
