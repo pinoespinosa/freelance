@@ -81,14 +81,14 @@ public class OfficeController {
 	@RequestMapping(value = "/carrera", method = RequestMethod.GET)
 	public List<String> getCarreras() {
 		return officeService.getCarrerasList();
-	}	
-	
+	}
+
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "/dondeEntero", method = RequestMethod.GET)
 	public List<String> getDondeEntero() {
 		return officeService.getDondeSeEnteroList();
-	}	
-	
+	}
+
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "/universidad", method = RequestMethod.POST)
 	@ResponseBody
@@ -106,17 +106,18 @@ public class OfficeController {
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "{idCliente}/{idTrabajo}/requerimiento", method = RequestMethod.POST)
 	@ResponseBody
-	public String addRequerimiento(@PathVariable final String idCliente, @PathVariable final String idTrabajo, @RequestParam final Requerimiento requerimiento) {
+	public Requerimiento addRequerimiento(@PathVariable final String idCliente, @PathVariable final String idTrabajo,
+			@RequestBody final Requerimiento requerimiento) {
 		officeService.addRequerimiento(idCliente, idTrabajo, requerimiento);
-		return "OK";
+		return requerimiento;
 	}
-	
+
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "{idCliente}/{idTrabajo}", method = RequestMethod.GET)
 	public Trabajo getTrabajo(@PathVariable final String idCliente, @PathVariable final String idTrabajo) {
 		return officeService.getTrabajo(idCliente, idTrabajo);
 	}
-	
+
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "{idCliente}/trabajo", method = RequestMethod.POST)
 	@ResponseBody

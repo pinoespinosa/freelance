@@ -4,6 +4,8 @@ import { trigger, state, style, animate, transition }                           
 
 import { Client }                   from 'app/data-objects/cliente';
 import { ClientFull }               from 'app/data-objects/clienteFull';
+import { Requerimiento }               from 'app/data-objects/requerimiento';
+
 
 import { Service }   			          from 'app/service';
 
@@ -26,7 +28,7 @@ export class HomeComponent   {
   tipo_orden = 1;
 
   cliente: Client;
-  cliente2 = ''
+  cliente2: ClientFull = null
 
 
   items : ClientFull[];
@@ -51,6 +53,19 @@ export class HomeComponent   {
     this.esstado = est;
 
   }
+
+
+  addReq(req){
+
+    let re = new Requerimiento(req,"","");
+
+    let loading = this.service.agregarRequerimiento(this.cliente2.clienteID, this.cliente2.id_trabajo, re).subscribe(
+      response =>{ 
+        let aa = response;
+      }         
+    );
+  }
+
 
 
   sortNombre(){
@@ -144,7 +159,7 @@ export class HomeComponent   {
     console.log("update front")
     this.items=[];
     this.items_orig = [];
-    this.cliente2 = '';
+    this.cliente2 = null;
 
         let loading = this.service.getProducts().subscribe(
             response => {
