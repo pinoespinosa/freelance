@@ -134,7 +134,7 @@
             </a>
           </td>
          <td class="plus-info-column">
-            <a class="btn clients-actions"  [routerLink]="['/add-requirements']" >
+            <a class="btn clients-actions"   (click)="showDialogAddReq = true" >
               <div class="tooltip">              
                 <img class="clients-img" src="./assets/reque.png" alt="">
                 <span class="tooltiptext">Agregar Req</span>
@@ -152,3 +152,19 @@
       </tr>
    </tbody>
 </table>
+
+<!-- ###########################   AGREGAR REQUERIMIENTO   ############################### -->
+<change-state [(visible)]="showDialogAddReq">
+<h2 style="margin: 10px;margin-bottom: 20px;" >Agregar Requerimiento</h2>
+<div class="col-12" style="margin-bottom: 20px;">
+   <input type="text" class="form-control" placeholder="Requerimiento">
+</div>
+<div class="row">
+   <div class="col-6"> 
+      <button (click)="showDialogAddReq = !showDialogAddReq"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+   </div>
+   <div class="col-6"> 
+      <button (click)="showDialogAddReq = !showDialogAddReq" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
+   </div>
+</div>
+</change-state>

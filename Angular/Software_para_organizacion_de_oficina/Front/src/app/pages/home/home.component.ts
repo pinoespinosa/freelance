@@ -19,6 +19,9 @@ export class HomeComponent   {
 
   title = 'app';
   clientes : Client[];
+  requerimientos: string[];
+
+  showDialogAddReq = false;
 
   tipo_orden = 1;
 
