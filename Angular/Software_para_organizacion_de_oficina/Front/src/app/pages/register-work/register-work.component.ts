@@ -6,7 +6,7 @@ import { Service }   			      from 'app/service';
 import { Client }               from 'app/data-objects/cliente';
 import { Trabajo }              from 'app/data-objects/trabajo';
 import { Requerimiento }               from 'app/data-objects/requerimiento';
-
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'register-work',
@@ -25,6 +25,7 @@ export class RegisterWorkComponent implements OnInit  {
 
 
   clientes : Client[];
+  cliSelect;
  	id='Sin nada'
 	selectUndefinedOptionValue = '';
 
@@ -32,11 +33,8 @@ export class RegisterWorkComponent implements OnInit  {
   showDialogAddCarre = false;
   showDialogAddLugar = false;
   showDialogAddReq = false;
+  date = Date.now();
 
-
-  select_univ = ''
-  select_carr = ''
-  select_lugar = ''
   select_cliente = ''
 
   constructor(    private router: Router, private route : ActivatedRoute, private service: Service
@@ -59,35 +57,63 @@ export class RegisterWorkComponent implements OnInit  {
 
 }
 
-  updateUniv(uni){    this.select_univ = uni;   }
-  updateCarr(car){    this.select_carr = car;   }
-  updateLugar(lug){   this.select_lugar = lug;   }
-
 addReq(req){
-
     this.requerimientos.push(new Requerimiento(req, "", ""))
-    
   }
 
-	do(){
+	do(fecha, tema, univer, carrera, asesor, lugar, fecha_entrega, monto, conti){
 
-    console.log(this.select_univ)
-    console.log(this.select_carr)
-    console.log(this.select_lugar)
+    if (!this.cliSelect){
+      alert("Debe seleccionar un cliente para crear el trabajo")
+      return;
+    }
 
-    alert("Se ha registrado los datos correctamente.")
+    if (!tema){
+      alert("Debe detallar el tema del trabajo")
+      return;
+    }
 
-    let trab = new Trabajo("","tema","titulo",this.select_univ,"monto","saldo","entrega","dondeSeEntero","estado","fecha", "fecha_entrega", "observaciones", "observaciones_next", this.requerimientos, null);
+    if (fecha_entrega.validity && !fecha_entrega.validity.valid){
+      alert("Verifique el formato de la fecha ingresada")
+      return;
+    }
+
+    let estado = ''
+    if (asesor){
+      estado = 'Asignado'
+    }
+    else{
+      estado = 'Listo por revisar'
+    }
 
 
-    let loading = this.service.crearTrabajo("1",trab).subscribe(
+    let trab = new Trabajo("",  "",tema, univer , carrera,asesor, lugar, estado, fecha_entrega, monto, monto, this.requerimientos, null);
+
+
+    let loading = this.service.crearTrabajo(this.clientes[this.cliSelect.selectedIndex-1].id,trab).subscribe(
       response => {
+
+        let yy = response;
+        alert("Se ha registrado los datos correctamente.")
+
+        if (conti)
+          this.router.navigateByUrl('/register-payment');
+        else
+          this.router.navigateByUrl('/home');
+
+
       }        
+
     );
+
 
 
 	}
  
+    updateClii(valor){
+      this.cliSelect = valor;
+    }
+
     getUniversidades(): void {
 
         let loading = this.service.getUniversidades().subscribe(

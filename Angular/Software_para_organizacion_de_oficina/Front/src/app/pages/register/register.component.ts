@@ -53,6 +53,7 @@ export class RegisterComponent implements OnInit  {
             response => {
                 this.cliente = response;
                 alert("Se ha creado el cliente " + this.field_nombre + " exitosamente")
+                
             }
         );
     

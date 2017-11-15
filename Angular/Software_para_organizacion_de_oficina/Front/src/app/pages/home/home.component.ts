@@ -100,9 +100,8 @@ export class HomeComponent   {
 
   sortEstado(){
 
-  console.log("Imprimo estado")
-
     this.items.sort((a, b) => {
+
       if ( (a.estado) < (b.estado) )
         return -1 * this.tipo_orden;
       else 
@@ -163,7 +162,6 @@ export class HomeComponent   {
     console.log("update front")
     this.items=[];
     this.items_orig = [];
-    this.cliente2 = null;
 
         let loading = this.service.getProducts().subscribe(
             response => {
@@ -171,7 +169,7 @@ export class HomeComponent   {
 
                 for (var aa of response){
                   for (var bb of aa.trabajos){
-                    let fu = new ClientFull(aa.id,aa.nombre,"",bb.id,bb.tema,bb.titulo,bb.monto,bb.saldo,bb.universidad,bb.fecha_entrega,bb.estado);
+                    let fu = new ClientFull(aa.id,aa.nombre,"",bb.id,bb.tema,"",bb.monto,bb.saldo,bb.universidad,bb.fecha_entrega,bb.estado);
                     this.items.push(fu);
                     this.items_orig.push(fu);
                   }

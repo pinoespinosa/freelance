@@ -6,26 +6,21 @@ import java.util.List;
 public class Trabajo {
 
 	private String id;
-	private String titulo;
+
+	private String fecha;
 	private String tema;
+	private String universidad;
+	private String carrera;
+	private String asesor;
+	private String dondeSeEntero;
+
 	private String estado;
+	private String fecha_entrega;
 
 	private String monto;
 	private String saldo;
-	private String carrera;
-	private String universidad;
-	private String dondeSeEntero;
-	private String entrega;
+	
 	private List<Requerimiento> requerimientos;
-
-	private String fecha;
-	private String fecha_entrega;
-
-	private String observaciones;
-	private String observaciones_next;
-
-	private String asesor;
-
 	private List<Pago> pagos;
 
 	@Override
@@ -88,14 +83,6 @@ public class Trabajo {
 		this.id = id;
 	}
 
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
 	public String getMonto() {
 		return monto;
 	}
@@ -104,13 +91,6 @@ public class Trabajo {
 		this.monto = monto;
 	}
 
-	public String getEntrega() {
-		return entrega;
-	}
-
-	public void setEntrega(String entrega) {
-		this.entrega = entrega;
-	}
 
 	public String getEstado() {
 		return estado;
@@ -142,22 +122,6 @@ public class Trabajo {
 
 	public void setFecha_entrega(String fecha_entrega) {
 		this.fecha_entrega = fecha_entrega;
-	}
-
-	public String getObservaciones() {
-		return observaciones;
-	}
-
-	public void setObservaciones(String observaciones) {
-		this.observaciones = observaciones;
-	}
-
-	public String getObservaciones_next() {
-		return observaciones_next;
-	}
-
-	public void setObservaciones_next(String observaciones_next) {
-		this.observaciones_next = observaciones_next;
 	}
 
 	public List<Requerimiento> getRequerimientos() {

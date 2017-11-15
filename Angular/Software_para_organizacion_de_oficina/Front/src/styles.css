@@ -27,6 +27,7 @@
 .client-columns {
 	text-align: center;
 	font-size: 11px;
+	height: 25px;
 }
 
 .save-client-button {
@@ -44,7 +45,7 @@ tr td {
    padding: 0;
 }
 .client-columns > td {
-	vertical-align: baseline;
+	vertical-align: middle;
 	padding: 1px;
 }
 

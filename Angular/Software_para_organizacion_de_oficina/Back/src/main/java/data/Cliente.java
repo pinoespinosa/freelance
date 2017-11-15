@@ -1,5 +1,6 @@
 package data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente {
@@ -84,6 +85,8 @@ public class Cliente {
 	}
 
 	public List<Trabajo> getTrabajos() {
+		if (trabajos==null)
+			trabajos= new ArrayList<>();
 		return trabajos;
 	}
 

@@ -89,8 +89,8 @@
    </script>
    <div class="row">
       <div class="col-4" style="padding: 10px;padding-left: 40px;" >
-         <select style="width: 100%;">
-            <option disabled hidden [value]="selectUndefinedOptionValue">-- Cliente --</option>
+         <select #clii style="width: 100%;" (change)="updateClii(clii)">
+            <option disabled hidden [value]="selectUndefinedOptionValue">-- Cliente --  *</option>
             <option *ngFor="let cliente of clientes" >{{cliente.nombre}}</option>
          </select>
       </div>
@@ -102,18 +102,18 @@
    </div>
    <div class="row">
       <div class="col-4" style="padding: 10px;padding-left: 40px;" >
-         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Tema">
+         <input #tema type="text" class="form-control" id="exampleInputPassword1" placeholder="Tema *">
       </div>
    </div>
    <div class="row">
       <div class="col-4" style="padding: 10px;padding-left: 40px;" >
-         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Asesor">
+         <input #asesor type="text" class="form-control" id="exampleInputPassword1" placeholder="Asesor">
       </div>
    </div>
 
    <div class="row" style="margin-left: 10px;">
       <div class="col-4" style="font-size: 15px;" >
-         <select #car style="width: 100%;" (change)="updateCarr(car.value)" >
+         <select #car style="width: 100%;" >
          <option disabled hidden [value]="selectUndefinedOptionValue">-- Carrera --</option>
          <option *ngFor="let carrera of carreras" >{{carrera}}</option>
          </select>
@@ -127,7 +127,7 @@
 
    <div class="row" style="margin-left: 10px;">
       <div class="col-4" style="font-size: 15px;" >
-         <select #uni style="width: 100%;" (change)="updateUniv(uni.value)" >
+         <select #uni style="width: 100%;" >
          <option disabled hidden [value]="selectUndefinedOptionValue">-- Universidad --</option>
          <option *ngFor="let universidad of universidades" >{{universidad}}</option>
          </select>
@@ -141,7 +141,7 @@
 
    <div class="row" style="margin-left: 10px;">
       <div class="col-4" style="font-size: 15px;" >
-         <select #lug style="width: 100%;" (change)="updateLugar(lug.value)" >
+         <select #lug style="width: 100%;" >
          <option disabled hidden [value]="selectUndefinedOptionValue">-- Lugar de donde se entero --</option>
          <option *ngFor="let lugar of lugarEntero" >{{lugar}}</option>
          </select>
@@ -156,12 +156,17 @@
 
    <div class="row">
       <div class="col-4" style="padding: 10px;padding-left: 40px;" >
-         <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Fecha de entrega">
+         <input #fecha_entrega type="text" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" class="form-control" id="exampleInputPassword1" placeholder="Fecha de entrega Ej. 2018-10-15">
       </div>
    </div>
 
-
    <div class="row">
+      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+         <input #monto type="text" class="form-control" id="exampleInputPassword1" placeholder="Monto">
+      </div>
+   </div>
+
+   <div class="row" style="margin-top: 40px;" > 
       <div class="col-4" style="padding: 10px;padding-left: 40px;display: flex;" >
          <b>Requerimientos</b>
                <div>
@@ -179,7 +184,7 @@
          <table class="table table-new table-striped">
             <thead>
                <tr class="client-columns" >
-                  <th>  Fecha de entrega
+                  <th>  Fecha de carga
                      <a (click)="sortNombre()" class="btn clients-sort">
                         <img class="sort-img" src="./assets/sort.png" alt="">
                      </a>
@@ -188,18 +193,24 @@
                   <th>
                      Requerimiento
                   </th>
-                  <th>
-                     Estado
-                  </th>
                </tr>
             </thead>
             
-            <tbody class="centro" >
-               <tr *ngFor="let item of items" class="client-columns" (dblclick)="showDialogAddReq = !showDialogAddReq">
-                  <td></td>
-                  <td></td>
-               </tr>
-            </tbody>
+               <tbody class="centro" *ngIf="requerimientos?.length > 0" >
+                  <tr *ngFor="let req of requerimientos" class="client-columns" (dblclick)="showDialogAddReq = !showDialogAddReq">
+                     <td>{{ date | date:'dd-MM-yyyy'}}</td>
+                     <td>{{req.texto}}</td>
+                  </tr>
+               </tbody>
+
+               <tbody class="centro" *ngIf="requerimientos?.length == 0" >
+                  <tr>
+                     <td></td>
+                     <td style="color: silver;" >Para agregar requerimientos debes hacer clic en el icono superior ... </td>
+                     <td></td>
+                  </tr>
+               </tbody>
+
          </table>
       </div>
    </div>
@@ -207,21 +218,14 @@
 
 
 
-
-
-
-
-
-
-
-   <div class="row">
+   <div class="row" style="margin-top: 25px;" >
       <div class="col-3" style="text-align: center;">
       </div>
       <div class="col-3 " style="text-align: center;">
-         <a [routerLink]="['/register-payment']" class="btn btn-success agregar-cliente" style="width: 100%;">Guardar y Cargar Pago</a>
+         <a (click)="do( '', tema.value, uni.value, car.value, asesor.value, lug.value, fecha_entrega.value, monto.value, true )" class="btn btn-success agregar-cliente" style="width: 100%;color: white;">Guardar y Cargar Pago</a>
       </div>
       <div class="col-3" style="text-align: center;">
-         <a  (click)="do()" [routerLink]="['/home']" class="btn btn-danger agregar-cliente" style="width: 100%;" >Finalizar</a>
+         <a  (click)="do( '', tema.value, uni.value,  car.value, asesor.value, lug.value, fecha_entrega.value, monto.value, false )" class="btn btn-danger agregar-cliente" style="width: 100%;color: white;" >Finalizar</a>
       </div>
       <div class="col-3" style="text-align: center;">
       </div>

@@ -36,10 +36,10 @@ export class Service {
       return this.http.post(this.server + 'api/client/create',client, { headers: headers }).map(this.extractData);
   }
 
-  crearTrabajo(idCliente, empresa): Observable<Client> {
+  crearTrabajo(idCliente, trabajo): Observable<Client> {
       var headers = new Headers();
       headers.append('acces-control-allow-origin','*')      
-      return this.http.post(this.server + 'api/'+idCliente+'/create',empresa, { headers: headers }).map(this.extractData);
+      return this.http.post(this.server + 'api/'+idCliente+'/trabajo',trabajo, { headers: headers }).map(this.extractData);
   }
 
   agregarRequerimiento(idCliente, idTrabajo, requerimiento){

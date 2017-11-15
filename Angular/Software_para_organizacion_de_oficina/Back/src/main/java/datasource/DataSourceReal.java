@@ -79,6 +79,8 @@ public class DataSourceReal implements IDataSource {
 		c.setId(idCliente);
 
 		Cliente original = obj.getClientes().get(obj.getClientes().indexOf(c));
+		trabajo.setId(c.getId() + "-" + original.getTrabajos().size());
+
 		original.getTrabajos().add(trabajo);
 		infoToFile(obj, "file.json");
 	}
@@ -147,9 +149,10 @@ public class DataSourceReal implements IDataSource {
 					t.setAsesor(valores[10].trim());
 					t.setFecha(valores[0].trim());
 					t.setFecha_entrega(valores[8].trim());
+					t.setEstado("Desconocido");
 					
-					try {	t.setObservaciones(valores[12].trim());			} catch (Exception e) {	}
-					try {	t.setObservaciones_next(valores[24].trim());	} catch (Exception e) {	}
+//					try {	t.setObservaciones(valores[12].trim());			} catch (Exception e) {	}
+//					try {	t.setObservaciones_next(valores[24].trim());	} catch (Exception e) {	}
 		
 					c.getTrabajos().add(t);
 

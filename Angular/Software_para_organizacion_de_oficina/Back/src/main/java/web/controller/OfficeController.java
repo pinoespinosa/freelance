@@ -121,9 +121,9 @@ public class OfficeController {
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "{idCliente}/trabajo", method = RequestMethod.POST)
 	@ResponseBody
-	public String createTrabajo(@PathVariable final String idCliente, @RequestBody final Trabajo trabajo) {
+	public Trabajo createTrabajo(@PathVariable final String idCliente, @RequestBody final Trabajo trabajo) {
 		officeService.createTrabajo(idCliente, trabajo);
-		return "OK";
+		return trabajo;
 	}
 
 }

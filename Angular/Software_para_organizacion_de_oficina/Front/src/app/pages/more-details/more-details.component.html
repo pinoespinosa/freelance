@@ -123,14 +123,6 @@
    </div>  
 
    <div class="row details-data-row">
-      <div class="col-12">
-         <div class="detail-title">Observaciones proxima entrega</div>
-         <!--<div>{{item.observaciones}}</div>-->
-         <textarea class="form-control" rows="3" value="{{trabajo.observaciones_next}}" placeholder="Observaciones" [disabled]="buttonState()"></textarea>
-      </div>
-   </div> 
-
-   <div class="row details-data-row">
       <div class="col-4">
          <div class="detail-title">Donde entero</div>
          <!--<div>{{item.dondeEntero}}</div>-->
@@ -150,13 +142,42 @@
       </div> 
    </div>  
 
-   <div class="row details-data-row">
-      <div class="col-12">
-         <div class="detail-title">Observaciones entregas</div>
-         <!--<div>{{item.observaciones}}</div>-->
-         <textarea class="form-control" rows="3" value="{{trabajo.observaciones}}" placeholder="Observaciones" [disabled]="buttonState()"></textarea>
-      </div>   
-   </div>  
+   <div class="row" style="margin-left: 10px;">
+      <div class="col-8" style="font-size: 18px;" >
+
+         <table class="table table-new table-striped">
+            <thead>
+               <tr class="client-columns" >
+                  <th>  Fecha de carga
+                     <a (click)="sortNombre()" class="btn clients-sort">
+                        <img class="sort-img" src="./assets/sort.png" alt="">
+                     </a>
+                  </th>
+                  
+                  <th>
+                     Requerimiento
+                  </th>
+               </tr>
+            </thead>
+            
+               <tbody class="centro" *ngIf="trabajo.requerimientos?.length > 0" >
+                  <tr *ngFor="let req of trabajo.requerimientos" class="client-columns" (dblclick)="showDialogAddReq = !showDialogAddReq">
+                     <td>{{ date | date:'dd-MM-yyyy'}}</td>
+                     <td>{{req.texto}}</td>
+                  </tr>
+               </tbody>
+
+               <tbody class="centro" *ngIf="trabajo.requerimientos?.length == 0" >
+                  <tr>
+                     <td></td>
+                     <td style="color: silver;" >Para agregar requerimientos debes hacer clic en el icono superior ... </td>
+                     <td></td>
+                  </tr>
+               </tbody>
+
+         </table>
+      </div>
+   </div>
 
 </form>
 

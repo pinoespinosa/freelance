@@ -25,7 +25,7 @@
 
 <div class="row">
   <div class="col-6"> 
-    <button (click)="showDialog = !showDialog" (click)="t.value=' '" (click)="changeState(cliente2.clienteID, cliente2.id_trabajo, esstado)" class="btn" style="width: 100%;background: #72C585" >Guardar</button>
+    <button (click)="showDialog = !showDialog" (click)="changeState(cliente2.clienteID, cliente2.id_trabajo, esstado)" class="btn" style="width: 100%;background: #72C585" >Guardar</button>
   </div>
   <div class="col-6"> 
     <button (click)="showDialog = !showDialog" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
@@ -108,7 +108,7 @@
             <span  style="font-size: 100%;background-color: #96e1d9;" *ngIf="item.estado == 'Avance Asesor Listo'" class="badge">{{item.estado}}</span>
             <span  style="font-size: 100%;background-color: #f98733b3;" *ngIf="item.estado == 'Listo por pagar/enviar'" class="badge">{{item.estado}}</span>
             <span  style="font-size: 100%;background-color: #e9cb77b3;" *ngIf="item.estado == 'Pendiente para t/ luego'" class="badge">{{item.estado}}</span>
-
+            
          </td>
          <td style="text-align: left;text-transform: capitalize;" >{{ item.tema.toLowerCase()  | slice:0:60}}</td>
          <td>{{item.monto}}</td>
