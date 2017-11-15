@@ -33,6 +33,14 @@ public class OfficeController {
 	}
 
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/client/filtredPagos", method = RequestMethod.GET)
+	public List<Cliente> getClientNuevosList(@RequestParam(required = true) final String fechaDesde,
+			@RequestParam(required = true) final String fechaHasta) {
+		return officeService.getClientNuevosList(fechaDesde,fechaHasta);
+	}
+	
+	
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "/client/{id}", method = RequestMethod.GET)
 	public Cliente getClient(@PathVariable final String id) {
 		return officeService.getClient(id);

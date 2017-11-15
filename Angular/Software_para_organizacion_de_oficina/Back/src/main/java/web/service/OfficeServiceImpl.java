@@ -1,5 +1,9 @@
 package web.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,6 +95,42 @@ public class OfficeServiceImpl implements OfficeService {
 	public Trabajo updateFechaEntrega(String clienteID, String trabajoID, String fechaNueva) {
 		return datasource.updateFechaEntrega(clienteID, trabajoID, fechaNueva);
 
+	}
+
+	@Override
+	public List<Cliente> getClientNuevosList(String fechaDesde, String fechaHasta) {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		Date fDesde, fHasta;
+		
+		try {
+			fDesde = sdf.parse(fechaDesde);    
+		} catch (ParseException e) {
+			fDesde = new Date(0);    
+		}
+
+		if (fechaDesde.isEmpty())
+			fDesde = new Date(0);    
+
+		try {
+			fHasta = sdf.parse(fechaHasta);    
+		} catch (ParseException e) {
+			fHasta = new Date();    
+		}
+		
+		if (fechaHasta.isEmpty())
+			fHasta = new Date(); 
+		
+		try {
+			return datasource.getClientNuevosList(fDesde, fHasta);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+				
+				
 	}
 
 

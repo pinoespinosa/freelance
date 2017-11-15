@@ -45,6 +45,9 @@ export class HomeComponent   {
 
 
   constructor(private service: Service) {
+
+    console.log('construct de home')
+
     this.getWorks();
     this.items=[];
     this.items_orig = [];
@@ -150,6 +153,10 @@ export class HomeComponent   {
       return;
     }
 
+    if (!fechaNueva.value){
+      alert("La fecha ingresada no cumple con el formato o es invalida")
+      return;
+    }
         let loading = this.service.updateFechaEntrega(this.cliente2.clienteID, this.cliente2.id_trabajo, fechaNueva.value).subscribe(
             response =>{ 
               let aa = response;

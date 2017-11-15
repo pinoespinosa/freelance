@@ -1,7 +1,11 @@
 package data;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Cliente {
 
@@ -20,6 +24,19 @@ public class Cliente {
 
 	private List<Trabajo> trabajos;
 
+	public Cliente clone() {
+
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			String objeto = mapper.writeValueAsString(this);
+			return mapper.readValue(objeto, Cliente.class);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+	
 	public String getId() {
 		return id;
 	}

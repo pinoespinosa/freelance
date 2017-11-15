@@ -1,27 +1,37 @@
 
+
+<div class="row" style="margin-top: 25px;" >
+   <div class="col-5" style="margin-bottom: 20px;">
+      <a>Fecha Desde</a>
+      <input #fechaDesde type="date" class="form-control" placeholder="yyyy-mm-dd"  pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" >
+   </div>
+   <div class="col-5" style="margin-bottom: 20px;">
+      <a>Fecha Hasta</a>
+      <input #fechaHasta type="date" class="form-control" placeholder="yyyy-mm-dd"  pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" >
+   </div>
+   <div class="col-2">
+      <a style="opacity: 0;">empty</a>
+      <button (click)="filterClientes(fechaDesde, fechaHasta)" class="btn" style="width: 100%;background: #C8CCE3" >Aplicar</button>
+   </div>
+</div>
+
 <div class="row">
-
-<div class="col-4">
+   <div class="col-4"></div>
+   <div class="col-4"></div>
+   <div class="col-4">
+      <div class="input-group" style="padding: 10px;">
+         <input class="form-control" (input)="myFunction($event.target.value)" type="text" placeholder="Search">
+         <span class="input-group-btn" >
+         <button  class="btn btn-secondary" type="button" style="background: lightgray;">
+         <img style="width: 20px;" src="https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-128.png">
+         </button>
+         </span>
+      </div>
+   </div>
 </div>
 
-<div class="col-4">
-</div>
 
-  <div class="col-4">
-    <div class="input-group" style="padding: 10px;">
-      <input class="form-control" (input)="myFunction($event.target.value)" type="text" placeholder="Search">
-      <span class="input-group-btn" >
-        <button  class="btn btn-secondary" type="button" style="background: lightgray;">
-            <img style="width: 20px;" src="https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-128.png">
-        </button>
-      </span>
-    </div>
-  </div>
-
-</div>
-
-<!--falta que el campo asesor sea editable-->
-
+<h4>Clientes Nuevos</h4>
 <table class="table table-new table-striped">
    <thead>
       <tr class="client-columns">
@@ -31,21 +41,69 @@
          <th>
             Nombre
          </th>
-         <th>
+         <th style="text-align: left;width: 375px;" >
             Trabajo
          </th>
          <th>
             Abono realizado 
          </th>
+          <th>
+            fecha pago 
+         </th>
+         <th>
+             pago 
+         </th>
       </tr>
    </thead>
+
    <tbody class="centro" >
-      <tr *ngFor="let item of items" class="client-columns">
-         <td>{{item.fecha}}</td>
-         <td>{{item.nombre}} {{item.apellido}}</td>
-         <td>{{item.trabajo}}</td>
-         <td>{{item.abono}}</td>
-      </tr>
+      <ng-container *ngFor="let item of items"  >
+         <tr  *ngIf="item.nuevo" class="client-columns">
+            <td>{{item.fechasuscripcion}} {{item.pagoID}}</td>
+            <td>{{item.nombre}} </td>
+            <td style="text-align: left;text-transform: capitalize;" >{{ item.tema.toLowerCase()  | slice:0:60}}</td>
+            <td>{{item.abono}}</td>
+            <td>{{item.fecha_pago}}</td>
+            <td>{{item.cantida_abonada}}</td>
+         </tr>
+      </ng-container>
    </tbody>
 </table>
 
+<h4>Clientes Antiguos</h4>
+<table class="table table-new table-striped">
+   <thead>
+      <tr class="client-columns">
+         <th>
+            Fecha
+         </th>
+         <th>
+            Nombre
+         </th>
+         <th style="text-align: left;width: 375px;" >
+            Trabajo
+         </th>
+         <th>
+            Abono realizado 
+         </th>
+         <th>
+            fecha pago 
+         </th>  
+         <th>
+             pago 
+         </th>
+      </tr>
+   </thead>
+   <tbody class="centro" >
+      <ng-container *ngFor="let item of items"  >
+         <tr *ngIf="!item.nuevo" class="client-columns">
+            <td>{{item.fechasuscripcion}} {{item.pagoID}}</td>
+            <td>{{item.nombre}} </td>
+            <td style="text-align: left;text-transform: capitalize;" >{{ item.tema.toLowerCase()  | slice:0:60}}</td>
+            <td>{{item.abono}}</td>
+            <td>{{item.fecha_pago}}</td>
+            <td>{{item.cantida_abonada}}</td>
+         </tr>
+      </ng-container>
+   </tbody>
+</table>

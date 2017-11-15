@@ -3,16 +3,21 @@ package datasource;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.base.Strings;
 
 import data.Cliente;
 import data.Info;
+import data.Pago;
 import data.Requerimiento;
 import data.Trabajo;
 
@@ -92,6 +97,7 @@ public class DataSourceReal implements IDataSource {
 		Info base = new Info();
 		base.setClientes(new ArrayList<>());
 		Hashtable<String, Cliente> clientes = new Hashtable<>();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");		
 
 		int cant = -1;
 		
@@ -130,6 +136,10 @@ public class DataSourceReal implements IDataSource {
 					Trabajo t = new Trabajo();
 					t.setId(c.getId() + "-" + c.getTrabajos().size());
 					t.setTema(valores[4].trim());
+					
+					if (Strings.isNullOrEmpty(t.getTema()))
+						t.setTema("Sin datos");
+					
 					t.setMonto(valores[13].trim());
 
 					String carrera = valores[5].trim();
@@ -152,9 +162,59 @@ public class DataSourceReal implements IDataSource {
 					t.setFecha_entrega(valores[8].trim());
 					t.setEstado("Desconocido");
 					
-//					try {	t.setObservaciones(valores[12].trim());			} catch (Exception e) {	}
-//					try {	t.setObservaciones_next(valores[24].trim());	} catch (Exception e) {	}
-		
+					t.setPagos(new ArrayList<>());
+					
+					try {
+						Pago p = new Pago();
+						p.setFecha_pago(valores[0].trim());
+						p.setAbono(valores[14].trim());
+						p.setId(t.getId() + "-" + t.getPagos().size());
+						if(p.getAbono()!=null && !p.getAbono().isEmpty())
+							t.getPagos().add(p);
+					} catch (Exception e) {
+						System.out.println();
+					}
+
+					try {
+
+						Pago p = new Pago();
+						try {	p.setFecha_pago(sdf.format(sdf.parse(valores[0].trim())));	} catch (Exception e) {}
+						try {	p.setFecha_pago(sdf.format(sdf.parse(valores[16].trim())));	} catch (Exception e) {}
+						p.setAbono(valores[15].trim());
+						p.setId(t.getId() + "-" + t.getPagos().size());
+						if(p.getAbono()!=null && !p.getAbono().isEmpty())
+							t.getPagos().add(p);
+					} catch (Exception e) {
+						System.out.println();
+					}
+					
+					try {
+
+						Pago p = new Pago();
+						try {	p.setFecha_pago(sdf.format(sdf.parse(valores[0].trim())));	} catch (Exception e) {}
+						try {	p.setFecha_pago(sdf.format(sdf.parse(valores[16].trim())));	} catch (Exception e) {}
+						try {	p.setFecha_pago(sdf.format(sdf.parse(valores[18].trim())));	} catch (Exception e) {}
+						p.setAbono(valores[17].trim());
+						p.setId(t.getId() + "-" + t.getPagos().size());
+						if(p.getAbono()!=null && !p.getAbono().isEmpty())
+							t.getPagos().add(p);
+					} catch (Exception e) {
+						System.out.println();
+					}
+					try {
+						
+						float pagado = 0;
+						for (Pago valor : t.getPagos()) {
+							pagado += Float.parseFloat(valor.getAbono());
+						}
+						float saldo = Float.parseFloat(t.getMonto()) - pagado;	
+						t.setSaldo(saldo+"");
+						
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+
+						
 					c.getTrabajos().add(t);
 
 				} catch (Exception e) {
@@ -228,6 +288,60 @@ public class DataSourceReal implements IDataSource {
 		
 		return t;
 	}
+
+	@Override
+	public List<Cliente> getClientNuevosList(Date fechaDesde, Date fechaHasta) throws ParseException {
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		List<Cliente> filtrados = new ArrayList<>();
+
+		for (Cliente c : obj.getClientes()) {
+
+			Cliente m = c.clone();
+						
+			for (Trabajo t : m.getTrabajos()) {
+
+				try {
+
+					List<Pago> fil = new ArrayList<>();
+
+					for (Pago p : t.getPagos()) {
+
+						if (sdf.parse(p.getFecha_pago()).before(fechaHasta)
+								&& sdf.parse(p.getFecha_pago()).after(fechaDesde)) {
+							fil.add(p);
+						}
+
+					}
+
+					t.setPagos(fil);
+
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+
+			}
+
+			List<Trabajo> filTrab = new ArrayList<>();
+			for (Trabajo t : m.getTrabajos()) {
+				if (!t.getPagos().isEmpty())
+				{
+					filTrab.add(t);
+				}
+			}
+			m.setTrabajos(filTrab);
+			
+			if (!m.getTrabajos().isEmpty())
+				filtrados.add(m);
+			
+		}
+		
+		
+		return filtrados;
+
+	}
+
 
 
 }

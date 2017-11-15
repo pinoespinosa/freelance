@@ -39,4 +39,6 @@ public interface OfficeService {
 
 	Trabajo updateFechaEntrega(String clienteID, String trabajoID, String fechaNueva);
 
+	List<Cliente> getClientNuevosList(String fechaDesde, String fechaHasta);
+
 }

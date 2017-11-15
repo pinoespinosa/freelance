@@ -3,9 +3,9 @@ package data;
 public class Pago {
 
 	private String id;
+	private String fecha_pago;
 	private String abono;
 	private String forma_pago;
-
 	private String observaciones;
 
 	public String getAbono() {
@@ -38,6 +38,14 @@ public class Pago {
 
 	public void setForma_pago(String forma_pago) {
 		this.forma_pago = forma_pago;
+	}
+
+	public String getFecha_pago() {
+		return fecha_pago;
+	}
+
+	public void setFecha_pago(String fecha_pago) {
+		this.fecha_pago = fecha_pago;
 	}
 
 }
