@@ -34,4 +34,6 @@ public interface IDataSource {
 
 	void addRequerimiento(String idCliente, String idTrabajo, Requerimiento requerimiento);
 
+	Trabajo updateFechaEntrega(String clienteID, String trabajoID, String fechaNueva);
+
 }

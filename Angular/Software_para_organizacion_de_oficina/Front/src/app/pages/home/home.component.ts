@@ -143,6 +143,24 @@ export class HomeComponent   {
 
   }
 
+  updateFechaEntrega(fechaNueva){
+    
+    if (fechaNueva.validity && !fechaNueva.validity.valid){
+      alert("La fecha ingresada no cumple con el formato o es invalida")
+      return;
+    }
+
+        let loading = this.service.updateFechaEntrega(this.cliente2.clienteID, this.cliente2.id_trabajo, fechaNueva.value).subscribe(
+            response =>{ 
+              let aa = response;
+
+              this.getWorks();
+            }         
+        );
+        alert("Se ha actualizado el estado.")
+
+
+  }
 
 
   myFunction(valor){

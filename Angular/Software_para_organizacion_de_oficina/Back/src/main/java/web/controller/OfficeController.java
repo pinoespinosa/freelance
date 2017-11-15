@@ -53,6 +53,13 @@ public class OfficeController {
 		return officeService.getChangeTrabajoStatus(clienteID, trabajoID, estado);
 	}
 
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/{clienteID}/{trabajoID}/fechaEntrega", method = RequestMethod.POST)
+	public Trabajo updateFechaEntrega(@PathVariable final String clienteID, @PathVariable final String trabajoID,
+			@RequestParam(required = true) final String fechaNueva) {
+		return officeService.updateFechaEntrega(clienteID, trabajoID, fechaNueva);
+	}
+		
 	// ---------------------------------- CSV ----------------------------------
 
 	@ApiOperation(value = "Get specific Student in the System ", tags = "Import CSV")

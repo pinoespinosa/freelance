@@ -37,4 +37,6 @@ public interface OfficeService {
 
 	void addRequerimiento(String idCliente, String idTrabajo, Requerimiento requerimiento);
 
+	Trabajo updateFechaEntrega(String clienteID, String trabajoID, String fechaNueva);
+
 }
