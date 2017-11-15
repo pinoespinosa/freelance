@@ -25,10 +25,10 @@
         <a [routerLink]="['/register-work']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Agregar Trabajo <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active" class="rounded" style="padding-right: 25px;">
-        <a href="http://localhost:8080/officemanager/api/swagger-ui.html#!/Import32CSV/importCSVUsingPOST" class="nav-link" style="color: lightcyan;font-style: italic;" >Importar Excel<span class="sr-only">(current)</span></a>
+        <a href={{getServerImport()}} class="nav-link" style="color: lightcyan;font-style: italic;" >Importar Excel<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active" class="rounded" style="padding-right: 25px;">
-        <a href="http://localhost:8080/officemanager/api/swagger-ui.html#!/Export32CSV/exportCSVUsingPOST" class="nav-link" style="color: lightcyan;font-style: italic;" >Exportar Excel<span class="sr-only">(current)</span></a>
+        <a href={{getServerExport()}} class="nav-link" style="color: lightcyan;font-style: italic;" >Exportar Excel<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: lightcyan;font-style: italic;" >
