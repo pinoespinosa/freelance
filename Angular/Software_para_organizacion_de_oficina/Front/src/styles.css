@@ -33,11 +33,19 @@
 .requirements-columns {
 	text-align: center;
 	font-size: 14px;
-	height: 25px;
+	height: 35px;
 }
 
 .requirements-columns > th {
    padding: 0;
+}
+
+.requirements-columns > th {
+   padding: 0;
+}
+.requirements-columns > td {
+	vertical-align: middle;
+	padding: 1px;
 }
 
 .save-client-button {

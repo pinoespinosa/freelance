@@ -142,6 +142,18 @@
       </div> 
    </div>  
 
+    <div class="row" style="margin-top: 40px;" > 
+      <div class="col-4" style="padding: 10px;padding-left: 40px;display: flex;" >
+         <b>Requerimientos</b>
+               <div>
+         <a style="padding: 0px;padding-left: 15px;" class="btn" (click)="showDialogAddReq = true" >   
+         <img style="width: 20px" src="./assets/reque.png" alt="Flowers in Chania">
+         </a>
+      </div>
+      </div>
+
+   </div>
+
    <div class="row" style="margin-left: 10px;">
       <div class="col-8" style="font-size: 18px;" >
 
@@ -157,20 +169,40 @@
                   <th>
                      Requerimiento
                   </th>
+                  <th></th>
+                  <th></th>
                </tr>
             </thead>
             
-               <tbody class="centro" *ngIf="trabajo.requerimientos?.length > 0" >
+               <tbody class="centro" *ngIf="requerimientos?.length > 0" >
                   <tr *ngFor="let req of trabajo.requerimientos" class="requirements-columns" (dblclick)="showDialogAddReq = !showDialogAddReq">
                      <td>{{ date | date:'dd-MM-yyyy'}}</td>
                      <td>{{req.texto}}</td>
+                     <td>
+                        <a class="btn clients-actions"  (click)="showDialogAddReq = true" >
+                          <div class="tooltip">              
+                            <img class="clients-img" src="./assets/reque.png" alt="">
+                            <span class="tooltiptext">Editar</span>
+                          </div>
+                        </a>
+                     </td>
+                     <td>
+                        <a class="btn clients-actions"  (click)="showDialogDelete = true" >
+                          <div class="tooltip">              
+                            <img class="clients-img" src="./assets/trash.png" alt="">
+                            <span class="tooltiptext">Eliminar</span>
+                          </div>
+                        </a>
+                     </td>
                   </tr>
                </tbody>
 
-               <tbody class="centro" *ngIf="trabajo.requerimientos?.length == 0" >
+               <tbody class="centro" *ngIf="requerimientos?.length == 0" >
                   <tr>
                      <td></td>
                      <td style="color: silver;" >Para agregar requerimientos debes hacer clic en el icono superior ... </td>
+                     <td></td>
+                     <td></td>
                      <td></td>
                   </tr>
                </tbody>
@@ -181,3 +213,37 @@
 
 </form>
 
+
+
+
+<!-- ###########################   AGREGAR REQUERIMIENTO   ############################### -->
+<change-state [(visible)]="showDialogAddReq">
+<h2 style="margin: 10px;margin-bottom: 20px;" >Agregar Requerimiento</h2>
+<div class="col-12" style="margin-bottom: 20px;">
+   <input #reqq type="text" class="form-control" placeholder="Requerimiento">
+</div>
+<div class="row">
+   <div class="col-6"> 
+      <button (click)="addReq(reqq.value)" (click)="showDialogAddReq = !showDialogAddReq" class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+   </div>
+   <div class="col-6"> 
+      <button (click)="showDialogAddReq = !showDialogAddReq" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
+   </div>
+</div>
+</change-state>
+
+<!-- ###########################  ELIMINAR REQUERIMIENTO   ############################### -->
+<change-state [(visible)]="showDialogDelete">
+<h2 style="margin: 10px;margin-bottom: 20px;" >Eliminar Requerimiento</h2>
+<div class="col-12" style="margin-bottom: 20px;">
+   Esta seguro que quiere eliminar este requerimiento?
+</div>
+<div class="row">
+   <div class="col-6"> 
+      <button (click)="delteReq(reqq.value)" (click)="showDialogddDelete = !showDialogDelete" class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+   </div>
+   <div class="col-6"> 
+      <button (click)="showDialogDelete = !showDialogDelete" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
+   </div>
+</div>
+</change-state>

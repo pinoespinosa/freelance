@@ -4,7 +4,7 @@ import { trigger, state, style, animate, transition }                           
 import { Service }   			      											from 'app/service';
 import { Client }               												from 'app/data-objects/cliente';
 import { Trabajo }               												from 'app/data-objects/trabajo';
-
+import { Requerimiento }               from 'app/data-objects/requerimiento';
 
 @Component({
   selector: 'more-details',
@@ -14,8 +14,10 @@ import { Trabajo }               												from 'app/data-objects/trabajo';
 })
 
 export class MoreDetailsComponent implements OnInit  {
-  	deshabilitado : boolean = true;
+  deshabilitado : boolean = true;
 
+  requerimientos: Requerimiento[];
+    
 	clienteID = ''
 	cliente : Client = new Client("", "", "" , "", "", "", "", "", "", null);
 
@@ -25,8 +27,7 @@ export class MoreDetailsComponent implements OnInit  {
 
   constructor(    private router: Router, private route : ActivatedRoute, private service: Service
 ){
-	
-
+    this.requerimientos = [];
 }
 
 	ngOnInit(): void {
@@ -43,9 +44,18 @@ export class MoreDetailsComponent implements OnInit  {
       	this.clienteID = ''
 	
 	   this.getWorks(this.clienteID, this.trabajoID);
-	
+
+
+     
+    
   };
 
+  addReq(req){
+    this.requerimientos.push(new Requerimiento(req, "", ""))
+  }
+
+  delteReq(req){
+  }
 
 	do(){
 		this.deshabilitado = !this.deshabilitado;
@@ -68,6 +78,12 @@ export class MoreDetailsComponent implements OnInit  {
         this.service.getTrabajo(idCliente, idTrabajo).subscribe(
             response => {
                 this.trabajo = response;
+
+                if (this.trabajo.requerimientos) {
+                  this.requerimientos = this.trabajo.requerimientos
+                 }
+
+
           }        
         );
 
