@@ -147,7 +147,7 @@
 
          <table class="table table-new table-striped">
             <thead>
-               <tr class="client-columns" >
+               <tr class="requirements-columns" >
                   <th>  Fecha de carga
                      <a (click)="sortNombre()" class="btn clients-sort">
                         <img class="sort-img" src="./assets/sort.png" alt="">
@@ -161,7 +161,7 @@
             </thead>
             
                <tbody class="centro" *ngIf="trabajo.requerimientos?.length > 0" >
-                  <tr *ngFor="let req of trabajo.requerimientos" class="client-columns" (dblclick)="showDialogAddReq = !showDialogAddReq">
+                  <tr *ngFor="let req of trabajo.requerimientos" class="requirements-columns" (dblclick)="showDialogAddReq = !showDialogAddReq">
                      <td>{{ date | date:'dd-MM-yyyy'}}</td>
                      <td>{{req.texto}}</td>
                   </tr>

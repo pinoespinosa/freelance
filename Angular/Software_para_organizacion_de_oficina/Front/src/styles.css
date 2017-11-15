@@ -30,6 +30,16 @@
 	height: 25px;
 }
 
+.requirements-columns {
+	text-align: center;
+	font-size: 14px;
+	height: 25px;
+}
+
+.requirements-columns > th {
+   padding: 0;
+}
+
 .save-client-button {
 	display: block;
 }
