@@ -80,7 +80,8 @@ public class DataSourceReal implements IDataSource {
 
 		Cliente original = obj.getClientes().get(obj.getClientes().indexOf(c));
 		trabajo.setId(c.getId() + "-" + original.getTrabajos().size());
-
+		
+		
 		original.getTrabajos().add(trabajo);
 		infoToFile(obj, "file.json");
 	}
@@ -217,6 +218,15 @@ public class DataSourceReal implements IDataSource {
 	public void addRequerimiento(String idCliente, String idTrabajo, Requerimiento requerimiento) {
 		Trabajo t = getTrabajo(idCliente, idTrabajo);
 		t.getRequerimientos().add(requerimiento);
+	}
+
+	@Override
+	public Trabajo updateFechaEntrega(String clienteID, String trabajoID, String fechaNueva) {
+		Trabajo t = getTrabajo(clienteID, trabajoID);
+		t.setFecha_entrega(fechaNueva);
+		infoToFile(obj, "file.json");
+		
+		return t;
 	}
 
 

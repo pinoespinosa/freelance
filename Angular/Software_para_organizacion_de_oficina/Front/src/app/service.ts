@@ -49,7 +49,7 @@ export class Service {
   agregarRequerimiento(idCliente, idTrabajo, requerimiento){
       var headers = new Headers();
       headers.append('acces-control-allow-origin','*')      
-      return this.http.post(this.server+"/api/" + idCliente + '/' + idTrabajo + '/requerimiento' ,requerimiento, { headers: headers }).map(this.extractData);
+      return this.http.post(this.server+"api/" + idCliente + '/' + idTrabajo + '/requerimiento' ,requerimiento, { headers: headers }).map(this.extractData);
   }
 
   getUniversidades(): Observable<string[]> {
@@ -68,13 +68,17 @@ export class Service {
       return this.http.get(this.server+"/api/" + idCliente + '/' + idTrabajo).map(this.extractData);
   }
 
-
   getChangeStateTrabajo(idCliente, idTrabajo, estado): Observable<Trabajo> {
       var headers = new Headers();
       headers.append('acces-control-allow-origin','*')      
       return this.http.post(this.server+"/api/" + idCliente + '/' + idTrabajo +'/status?estado='+estado , '', { headers: headers }).map(this.extractData);
   }
 
+  updateFechaEntrega(idCliente, idTrabajo, fechaNueva): Observable<Trabajo> {
+      var headers = new Headers();
+      headers.append('acces-control-allow-origin','*')      
+      return this.http.post(this.server+"api/" + idCliente + '/' + idTrabajo +'/fechaEntrega?fechaNueva='+fechaNueva , '', { headers: headers }).map(this.extractData);
+  }
 
   saveFile2(): Observable<Response> {
     return this.http.post("localhost:4000/saveFile","{}");

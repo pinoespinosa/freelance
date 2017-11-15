@@ -87,6 +87,12 @@ public class OfficeServiceImpl implements OfficeService {
 	
 	}
 
+	@Override
+	public Trabajo updateFechaEntrega(String clienteID, String trabajoID, String fechaNueva) {
+		return datasource.updateFechaEntrega(clienteID, trabajoID, fechaNueva);
+
+	}
+
 
 
 }
