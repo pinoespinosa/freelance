@@ -1,5 +1,6 @@
 package web.controller;
 
+import java.util.Hashtable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,22 @@ public class OfficeController {
 			@RequestParam(required = true) final String fechaHasta) {
 		return officeService.getClientNuevosList(fechaDesde,fechaHasta);
 	}
+
 	
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/client/sells/period", method = RequestMethod.GET)
+	public Hashtable<String, List<String>> getLastSellByTime(@RequestParam(required = true) final int cantidadDias) {
+		return officeService.getLastSellByTime(cantidadDias);
+	}
+
+	
+	
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/client/sells/period/chash", method = RequestMethod.GET)
+	public Hashtable<String, Float> getLastSellByTimeCash(@RequestParam(required = true) final int cantidadDias) {
+		return officeService.getLastSellByTimeCash(cantidadDias);
+	}
+
 	
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "/client/{id}", method = RequestMethod.GET)

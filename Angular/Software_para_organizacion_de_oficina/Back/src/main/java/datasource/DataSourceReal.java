@@ -6,14 +6,20 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
 
 import data.Cliente;
 import data.Info;
@@ -342,6 +348,121 @@ public class DataSourceReal implements IDataSource {
 
 	}
 
+	@Override
+	public Hashtable<String, List<String>> getLastSellByTime(int cantidadDias) {
 
+		Hashtable<String, List<String>> hast = new Hashtable<>();
+				
+		int diaHoy = getDiasDesde70(new Date());
+
+		for (Cliente c : obj.getClientes()) {
+			for (Trabajo aa : c.getTrabajos()) {
+				try {
+
+					int diaTrabajo = getDiasDesde70(aa.getFecha());
+					long valorr = diaHoy - diaTrabajo;
+
+					int bloque = (int) (valorr / cantidadDias);
+
+					if (!hast.containsKey(bloque+""))
+						hast.put(bloque+"", new ArrayList<>());
+					hast.get(bloque+"").add(aa.getFecha());
+					
+				} catch (Exception e) {
+				}
+			}
+		}
+
+		String andres="";
+		
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			andres = mapper.writeValueAsString(hast);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		List<String> v = new ArrayList<>();
+		v.addAll(hast.keySet());
+		
+		Collections.sort(v);
+		
+		Hashtable<String, List<String>> hast2 = new Hashtable<>();
+		for (String string : v) {
+			hast2.put(string, hast.get(string));
+			
+		}
+		
+		
+		
+		System.out.println(andres);
+		
+		return hast2;
+	}
+
+	private int getDiasDesde70(String fecha) throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return getDiasDesde70(sdf.parse(fecha));
+
+	}
+
+	private int getDiasDesde70(Date fecha) {
+		long fechaa = fecha.getTime();
+		return new Long(fechaa / (1000 * 3600 * 24)).intValue();
+
+	}
+
+	@Override
+	public Hashtable<String, Float> getLastSellByTimeCash(int cantidadDias) {
+		
+		Hashtable<String, Float> hast = new Hashtable<>();
+		
+		int diaHoy = getDiasDesde70(new Date());
+
+		for (Cliente c : obj.getClientes()) {
+			for (Trabajo aa : c.getTrabajos()) {
+				try {
+
+					int diaTrabajo = getDiasDesde70(aa.getFecha());
+					long valorr = diaHoy - diaTrabajo;
+
+					int bloque = (int) (valorr / cantidadDias);
+
+					if (!hast.containsKey(bloque+""))
+						hast.put(bloque+"", new Float(0));
+					
+					hast.put(bloque+"", hast.get(bloque+"")+Float.parseFloat(aa.getMonto()));
+					
+				} catch (Exception e) {
+				}
+			}
+		}
+
+		String andres="";
+		
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			andres = mapper.writeValueAsString(hast);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		List<String> v = new ArrayList<>();
+		v.addAll(hast.keySet());
+		
+		Collections.sort(v);
+		
+		Hashtable<String, Float> hast2 = new Hashtable<>();
+		for (String string : v) {
+			hast2.put(string, hast.get(string));
+			
+		}
+		
+		
+		
+		System.out.println(andres);
+		
+		return hast2;
+	}
 
 }
