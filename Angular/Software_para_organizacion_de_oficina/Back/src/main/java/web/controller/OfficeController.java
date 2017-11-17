@@ -50,12 +50,25 @@ public class OfficeController {
 	
 	
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
-	@RequestMapping(value = "/client/sells/period/chash", method = RequestMethod.GET)
-	public List<Float> getLastSellByTimeCash(@RequestParam(required = true) final int cantidadDias,
+	@RequestMapping(value = "/client/sells/period/chash/newClients", method = RequestMethod.GET)
+	public synchronized List<Float> getSellsCashByTimeNewClients(@RequestParam(required = true) final int cantidadDias,
 			@RequestParam(required = true) final int cantidadValores) {
-		return officeService.getLastSellByTimeCash(cantidadDias,cantidadValores);
+		return officeService.getSellsCashByTimeNewClients(cantidadDias,cantidadValores);
+	}
+
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/client/sells/period/chash/oldClients", method = RequestMethod.GET)
+	public synchronized List<Float> getSellsCashByTimeOldClients(@RequestParam(required = true) final int cantidadDias,
+			@RequestParam(required = true) final int cantidadValores) {
+		return officeService.getSellsCashByTimeOldClients(cantidadDias,cantidadValores);
 	}
 	
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/client/sells/period/amount/newClients", method = RequestMethod.GET)
+	public synchronized List<Float> getSellsAmmountByTimeNewClients(@RequestParam(required = true) final int cantidadDias,
+			@RequestParam(required = true) final int cantidadValores) {
+		return officeService.getSellsAmmountByTimeNewClients(cantidadDias,cantidadValores);
+	}
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "/client/{id}", method = RequestMethod.GET)
 	public Cliente getClient(@PathVariable final String id) {

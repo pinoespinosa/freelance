@@ -45,4 +45,10 @@ public interface IDataSource {
 
 	List<Float> getLastSellByTimeCash(int cantidadDias, int cantidadValores);
 
+	List<Float>  getSellsCashByTimeNewClients(int cantidadDias, int cantidadValores);
+
+	List<Float>  getSellsCashByTimeOldClients(int cantidadDias, int cantidadValores);
+
+	List<Float>  getSellsAmmountByTimeNewClients(int cantidadDias, int cantidadValores);
+
 }

@@ -11,19 +11,57 @@ import { Service }                                    from 'app/service';
   ],
 })
 
-export class ReportsIndicatorsComponent  {
+export class ReportsIndicatorsComponent  implements OnInit  {
+
+
   arrayDias: Number[];
+  public lineChartData:Array<any> = [ {data: [], label: 'Series A'} ];
+  public lineChartLabels:Array<any> = ['1', '2', '3', '4', '5', '6', '7'];
+  public lineChartOptions:any = {  responsive: true  };
+
+  public lineChartData2:Array<any> = [ {data: [], label: 'Series A'} ];
+  public lineChartData3:Array<any> = [ {data: [], label: 'Series A'} ];
+
+
+
+  ngOnInit(): void {
+
+
+
+    this.service.getSalesGraphNewClientsCash(30, 7).subscribe(
+      response => {
+        this.arrayDias = response;
+        this.lineChartData = [ {data: this.arrayDias, label: 'Series D'} ];
+
+      }        
+    );
+     
+    this.service.getSalesGraphOldClientsCash(30, 7).subscribe(
+      response => {
+        this.arrayDias = response;
+        this.lineChartData2 = [ {data: this.arrayDias, label: 'Series D'} ];
+
+      }        
+    );
+
+    this.service.getSalesGraphNewClientsAmmount(30, 7).subscribe(
+      response => {
+        this.arrayDias = response;
+        this.lineChartData3 = [ {data: this.arrayDias, label: 'Series D'} ];
+
+      }        
+    );
+
+
+  };
+
+
+
+
   constructor( private router: Router, private route : ActivatedRoute, private service: Service ) {
       this.arrayDias = [];
-      this.getData(30, 7);
   }
-  public lineChartData:Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'}
-  ];
-  public lineChartLabels:Array<any> = ['1', '2', '3', '4', '5', '6', '7'];
-  public lineChartOptions:any = {
-    responsive: true
-  };
+
   public lineChartColors:Array<any> = [
     { // grey
       backgroundColor: 'rgba(148,159,177,0.2)',
@@ -68,12 +106,7 @@ export class ReportsIndicatorsComponent  {
   }
 
   getData(cantDias, cantVal): void {
-    this.service.getSalesGraph(cantDias, cantVal).subscribe(
-      response => {
-        console.log(response);
-        this.arrayDias = response;
-      }        
-    );
+
 
   }
 }

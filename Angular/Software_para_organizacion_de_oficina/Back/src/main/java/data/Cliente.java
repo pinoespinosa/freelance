@@ -2,7 +2,12 @@ package data;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -127,5 +132,41 @@ public class Cliente {
 	public void setFechaSuscripcion(String fechaSuscripcion) {
 		this.fechaSuscripcion = fechaSuscripcion;
 	}
+	
+	public  Trabajo getFistWork(){
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		Comparator<Trabajo> comp = new Comparator<Trabajo>() {
+			
+			@Override
+			public int compare(Trabajo o1, Trabajo o2) {
+
+				Date d1=new Date(0);
+				try {
+					d1 = sdf.parse(o1.getFecha());
+				} catch (ParseException e) {
+				}
+				Date d2=new Date(0);
+				try {
+					d2 = sdf.parse(o2.getFecha());
+				} catch (ParseException e) {
+				}
+				
+				return d1.compareTo(d2);
+			}
+		};
+		
+		
+		List<Trabajo> ord =this.getTrabajos();
+		Collections.sort(ord,comp);
+		
+		if (!ord.isEmpty())
+			return ord.get(0);
+		else
+			return null;
+		
+	}
+	
 
 }

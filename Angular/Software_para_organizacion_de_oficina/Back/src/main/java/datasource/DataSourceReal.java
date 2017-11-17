@@ -462,4 +462,180 @@ public class DataSourceReal implements IDataSource {
 		return lista;
 	}
 
+	@Override
+	public synchronized List<Float> getSellsCashByTimeNewClients(int cantidadDias, int cantidadValores) {
+
+		synchronized (obj) {
+			
+			Hashtable<String, Float> hast = new Hashtable<>();
+			
+			int diaHoy = getDiasDesde70(new Date());
+
+			for (Cliente c : obj.getClientes()) {
+				
+				Trabajo t = c.getFistWork();
+				
+				for (Trabajo aa : c.getTrabajos()) {
+					try {
+
+						int diaTrabajo = getDiasDesde70(aa.getFecha());
+						int perAtrasTrabajo = (int) ((diaHoy - diaTrabajo) / cantidadDias);				
+						
+						if (!hast.containsKey(perAtrasTrabajo+""))
+							hast.put(perAtrasTrabajo+"", new Float(0));
+						
+						if(aa.equals(t))
+							hast.put(perAtrasTrabajo+"", hast.get(perAtrasTrabajo+"")+Float.parseFloat(aa.getMonto()));
+						
+					} catch (Exception e) {
+					}
+				}
+			}
+
+			String andres="";
+			
+			ObjectMapper mapper = new ObjectMapper();
+			try {
+				andres = mapper.writeValueAsString(hast);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			List<Float> lista = new ArrayList<>();
+				
+			for (int i = 0; i<cantidadValores; i++){
+				if (hast.containsKey(i+""))
+					lista.add(hast.get(i+""));
+				else
+					lista.add(new Float(0));
+			}
+			
+			
+			System.out.println(andres);
+			
+			return lista;
+			
+			
+		}
+		
+
+		
+		
+	}
+
+	@Override
+	public synchronized List<Float> getSellsCashByTimeOldClients(int cantidadDias, int cantidadValores) {
+		
+		Hashtable<String, Float> hast = new Hashtable<>();
+		
+		int diaHoy = getDiasDesde70(new Date());
+
+		for (Cliente c : obj.getClientes()) {
+			
+			Trabajo tt =  c.getFistWork();
+			
+			for (Trabajo aa : c.getTrabajos()) {
+				try {
+
+					int diaTrabajo = getDiasDesde70(aa.getFecha());
+
+					System.out.println(aa.getFecha());
+					System.out.println(c.getFechaSuscripcion());
+					System.out.println();
+					
+					int perAtrasTrabajo = (int) ((diaHoy - diaTrabajo) / cantidadDias);
+					
+					if (!hast.containsKey(perAtrasTrabajo+""))
+						hast.put(perAtrasTrabajo+"", new Float(0));
+					
+					if(!aa.equals(tt))
+						hast.put(perAtrasTrabajo+"", hast.get(perAtrasTrabajo+"")+Float.parseFloat(aa.getMonto()));
+					
+				} catch (Exception e) {
+				}
+			}
+		}
+
+		String andres="";
+		
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			andres = mapper.writeValueAsString(hast);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		List<Float> lista = new ArrayList<>();
+			
+		for (int i = 0; i<cantidadValores; i++){
+			if (hast.containsKey(i+""))
+				lista.add(hast.get(i+""));
+			else
+				lista.add(new Float(0));
+		}
+		
+		
+		System.out.println(andres);
+		
+		return lista;
+	}
+
+	@Override
+	public synchronized List<Float> getSellsAmmountByTimeNewClients(int cantidadDias, int cantidadValores) {
+
+
+		Hashtable<String, Float> hast = new Hashtable<>();
+		
+		int diaHoy = getDiasDesde70(new Date());
+
+		for (Cliente c : obj.getClientes()) {
+			
+			Trabajo tt =  c.getFistWork();
+
+			
+			for (Trabajo aa : c.getTrabajos()) {
+				try {
+
+					int diaTrabajo = getDiasDesde70(aa.getFecha());
+
+					int perAtrasTrabajo = (int) ((diaHoy - diaTrabajo) / cantidadDias);
+
+					
+					if (!hast.containsKey(perAtrasTrabajo+""))
+						hast.put(perAtrasTrabajo+"", new Float(0));
+					
+					if(aa.equals(tt))
+						hast.put(perAtrasTrabajo+"", hast.get(perAtrasTrabajo+"")+1);
+					
+				} catch (Exception e) {
+				}
+			}
+		}
+
+		String andres="";
+		
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			andres = mapper.writeValueAsString(hast);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		List<Float> lista = new ArrayList<>();
+			
+		for (int i = 0; i<cantidadValores; i++){
+			if (hast.containsKey(i+""))
+				lista.add(hast.get(i+""));
+			else
+				lista.add(new Float(0));
+		}
+		
+		
+		System.out.println(andres);
+		
+		return lista;
+		
+		
+	}
+
 }

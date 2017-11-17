@@ -16,8 +16,8 @@ import { Trabajo }               from 'app/data-objects/trabajo';
 export class Service {
 
 
-  //private server = 'http://18.216.175.95:8080/spring-security-rest/'
-  private server = 'http://192.168.1.4:8080/officemanager/'
+  private server = 'http://18.216.175.95:8080/spring-security-rest/'
+  //private server = 'http://192.168.1.4:8080/officemanager/'
   //private server = 'http://localhost:8080/officemanager/'
 
   getServer(): string{
@@ -27,8 +27,16 @@ export class Service {
   constructor(private http: Http, private http2: HttpClient ) {
   }
 
-  getSalesGraph(cantidadDias, cantidadValores): Observable<Number[]> {
-    return this.http.get(this.server+"api/client/sells/period/chash?cantidadDias="+cantidadDias+"&cantidadValores="+cantidadValores).map(this.extractData);
+  getSalesGraphNewClientsCash(cantidadDias, cantidadValores): Observable<Number[]> {
+    return this.http.get(this.server+"api/client/sells/period/chash/newClients?cantidadDias="+cantidadDias+"&cantidadValores="+cantidadValores).map(this.extractData);
+  }  
+
+  getSalesGraphOldClientsCash(cantidadDias, cantidadValores): Observable<Number[]> {
+    return this.http.get(this.server+"api/client/sells/period/chash/oldClients?cantidadDias="+cantidadDias+"&cantidadValores="+cantidadValores).map(this.extractData);
+  }  
+
+  getSalesGraphNewClientsAmmount(cantidadDias, cantidadValores): Observable<Number[]> {
+    return this.http.get(this.server+"api/client/sells/period/amount/newClients?cantidadDias="+cantidadDias+"&cantidadValores="+cantidadValores).map(this.extractData);
   }  
 
   getClientsFiltred(fechaDesde, fechaHasta): Observable<Client[]> {

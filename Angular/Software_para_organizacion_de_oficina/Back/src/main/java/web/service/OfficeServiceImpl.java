@@ -144,6 +144,24 @@ public class OfficeServiceImpl implements OfficeService {
 		return datasource.getLastSellByTimeCash(cantidadDias, cantidadValores);
 	}
 
+	@Override
+	public List<Float> getSellsCashByTimeNewClients(int cantidadDias, int cantidadValores) {
+		return datasource.getSellsCashByTimeNewClients(cantidadDias, cantidadValores);
+
+	}
+
+	@Override
+	public List<Float> getSellsCashByTimeOldClients(int cantidadDias, int cantidadValores) {
+		return datasource.getSellsCashByTimeOldClients(cantidadDias, cantidadValores);
+
+	}
+
+	@Override
+	public List<Float> getSellsAmmountByTimeNewClients(int cantidadDias, int cantidadValores) {
+		return datasource.getSellsAmmountByTimeNewClients(cantidadDias, cantidadValores);
+
+	}
+
 
 
 }

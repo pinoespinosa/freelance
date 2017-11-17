@@ -48,10 +48,10 @@
             Abono realizado 
          </th>
           <th>
-            fecha pago 
+            Fecha pago 
          </th>
          <th>
-             pago 
+             Pago 
          </th>
       </tr>
    </thead>
@@ -59,7 +59,7 @@
    <tbody class="centro" >
       <ng-container *ngFor="let item of items"  >
          <tr  *ngIf="item.nuevo" class="client-columns">
-            <td>{{item.fechasuscripcion}} {{item.pagoID}}</td>
+            <td>{{item.fechasuscripcion}}</td>
             <td>{{item.nombre}} </td>
             <td style="text-align: left;text-transform: capitalize;" >{{ item.tema.toLowerCase()  | slice:0:60}}</td>
             <td>{{item.abono}}</td>
