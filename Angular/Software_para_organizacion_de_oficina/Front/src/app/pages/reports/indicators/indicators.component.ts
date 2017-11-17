@@ -28,7 +28,8 @@ export class ReportsIndicatorsComponent  implements OnInit  {
 
 
 
-    this.service.getSalesGraphNewClientsCash(30, 7).subscribe(
+
+    this.service.getSalesGraphNewClientsCash(7, 7).subscribe(
       response => {
         this.arrayDias = response;
         this.lineChartData = [ {data: this.arrayDias, label: 'Monto de Venta'} ];
@@ -36,7 +37,7 @@ export class ReportsIndicatorsComponent  implements OnInit  {
       }        
     );
      
-    this.service.getSalesGraphOldClientsCash(30, 7).subscribe(
+    this.service.getSalesGraphOldClientsCash(7, 7).subscribe(
       response => {
         this.arrayDias = response;
         this.lineChartData2 = [ {data: this.arrayDias, label: 'Monto de Venta'} ];
@@ -44,7 +45,7 @@ export class ReportsIndicatorsComponent  implements OnInit  {
       }        
     );
 
-    this.service.getSalesGraphNewClientsAmmount(30, 7).subscribe(
+    this.service.getSalesGraphNewClientsAmmount(7, 7).subscribe(
       response => {
         this.arrayDias = response;
         this.lineChartData3 = [ {data: this.arrayDias, label: 'Cantidad de clientes'} ];
