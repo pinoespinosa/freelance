@@ -17,8 +17,8 @@ export class Service {
 
 
   //private server = 'http://18.216.175.95:8080/spring-security-rest/'
-  //private server = 'http://192.168.1.4:8080/officemanager/'
-  private server = 'http://localhost:8080/officemanager/'
+  private server = 'http://192.168.1.4:8080/officemanager/'
+  //private server = 'http://localhost:8080/officemanager/'
 
   getServer(): string{
     return this.server;
@@ -26,6 +26,10 @@ export class Service {
 
   constructor(private http: Http, private http2: HttpClient ) {
   }
+
+  getSalesGraph(cantidadDias, cantidadValores): Observable<Number[]> {
+    return this.http.get(this.server+"api/client/sells/period/chash?cantidadDias="+cantidadDias+"&cantidadValores="+cantidadValores).map(this.extractData);
+  }  
 
   getClientsFiltred(fechaDesde, fechaHasta): Observable<Client[]> {
       return this.http.get(this.server+"api/client/filtredPagos?fechaDesde="+fechaDesde+"&fechaHasta="+fechaHasta).map(this.extractData);

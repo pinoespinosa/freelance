@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Renderer2 } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute }                                from '@angular/router';
 import { trigger, state, style, animate, transition }                           from '@angular/animations';
+import { Service }                                    from 'app/service';
 
 
 @Component({
@@ -11,13 +12,15 @@ import { trigger, state, style, animate, transition }                           
 })
 
 export class ReportsIndicatorsComponent  {
-
+  arrayDias: Number[];
+  constructor( private router: Router, private route : ActivatedRoute, private service: Service ) {
+      this.arrayDias = [];
+      this.getData(30, 7);
+  }
   public lineChartData:Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
-    {data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C'}
+    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'}
   ];
-  public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartLabels:Array<any> = ['1', '2', '3', '4', '5', '6', '7'];
   public lineChartOptions:any = {
     responsive: true
   };
@@ -50,15 +53,9 @@ export class ReportsIndicatorsComponent  {
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
  
-  public randomize():void {
-    let _lineChartData:Array<any> = new Array(this.lineChartData.length);
-    for (let i = 0; i < this.lineChartData.length; i++) {
-      _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
-      for (let j = 0; j < this.lineChartData[i].data.length; j++) {
-        _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
-      }
-    }
-    this.lineChartData = _lineChartData;
+  public showChart():void {
+    
+    this.lineChartData = [ {data: this.arrayDias, label: 'Series D'} ];
   }
  
   // events
@@ -68,6 +65,16 @@ export class ReportsIndicatorsComponent  {
  
   public chartHovered(e:any):void {
     console.log(e);
+  }
+
+  getData(cantDias, cantVal): void {
+    this.service.getSalesGraph(cantDias, cantVal).subscribe(
+      response => {
+        console.log(response);
+        this.arrayDias = response;
+      }        
+    );
+
   }
 }
  
