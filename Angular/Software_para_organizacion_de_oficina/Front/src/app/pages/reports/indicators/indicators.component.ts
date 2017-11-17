@@ -16,7 +16,7 @@ export class ReportsIndicatorsComponent  implements OnInit  {
 
   arrayDias: Number[];
   public lineChartData:Array<any> = [ {data: [], label: 'Series A'} ];
-  public lineChartLabels:Array<any> = ['1', '2', '3', '4', '5', '6', '7'];
+  public lineChartLabels:Array<any> = ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4', 'Semana 5', 'Semana 6', 'Semana 7'];
   public lineChartOptions:any = {  responsive: true  };
 
   public lineChartData2:Array<any> = [ {data: [], label: 'Series A'} ];
@@ -31,7 +31,7 @@ export class ReportsIndicatorsComponent  implements OnInit  {
     this.service.getSalesGraphNewClientsCash(30, 7).subscribe(
       response => {
         this.arrayDias = response;
-        this.lineChartData = [ {data: this.arrayDias, label: 'Series D'} ];
+        this.lineChartData = [ {data: this.arrayDias, label: 'Monto de Venta'} ];
 
       }        
     );
@@ -39,7 +39,7 @@ export class ReportsIndicatorsComponent  implements OnInit  {
     this.service.getSalesGraphOldClientsCash(30, 7).subscribe(
       response => {
         this.arrayDias = response;
-        this.lineChartData2 = [ {data: this.arrayDias, label: 'Series D'} ];
+        this.lineChartData2 = [ {data: this.arrayDias, label: 'Monto de Venta'} ];
 
       }        
     );
@@ -47,7 +47,7 @@ export class ReportsIndicatorsComponent  implements OnInit  {
     this.service.getSalesGraphNewClientsAmmount(30, 7).subscribe(
       response => {
         this.arrayDias = response;
-        this.lineChartData3 = [ {data: this.arrayDias, label: 'Series D'} ];
+        this.lineChartData3 = [ {data: this.arrayDias, label: 'Cantidad de clientes'} ];
 
       }        
     );
