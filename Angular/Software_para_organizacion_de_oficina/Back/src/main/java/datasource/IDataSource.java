@@ -2,6 +2,7 @@ package datasource;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -39,5 +40,9 @@ public interface IDataSource {
 	Trabajo updateFechaEntrega(String clienteID, String trabajoID, String fechaNueva);
 
 	List<Cliente> getClientNuevosList(Date date, Date date2) throws ParseException;
+
+	Hashtable<String, List<String>> getLastSellByTime(int cantidadDias);
+
+	Hashtable<String, Float> getLastSellByTimeCash(int cantidadDias);
 
 }

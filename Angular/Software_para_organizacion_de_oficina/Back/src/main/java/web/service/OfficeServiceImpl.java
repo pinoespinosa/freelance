@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -131,6 +132,17 @@ public class OfficeServiceImpl implements OfficeService {
 		return null;
 				
 				
+	}
+
+	@Override
+	public Hashtable<String, List<String>> getLastSellByTime(int cantidadDias) {
+		return datasource.getLastSellByTime(cantidadDias);
+	}
+
+	@Override
+	public Hashtable<String, Float> getLastSellByTimeCash(int cantidadDias) {
+		// TODO Auto-generated method stub
+		return datasource.getLastSellByTimeCash(cantidadDias);
 	}
 
 

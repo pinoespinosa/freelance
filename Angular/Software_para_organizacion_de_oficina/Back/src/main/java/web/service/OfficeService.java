@@ -1,5 +1,6 @@
 package web.service;
 
+import java.util.Hashtable;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -40,5 +41,9 @@ public interface OfficeService {
 	Trabajo updateFechaEntrega(String clienteID, String trabajoID, String fechaNueva);
 
 	List<Cliente> getClientNuevosList(String fechaDesde, String fechaHasta);
+
+	Hashtable<String, List<String>> getLastSellByTime(int cantidadDias);
+
+	Hashtable<String, Float> getLastSellByTimeCash(int cantidadDias);
 
 }
