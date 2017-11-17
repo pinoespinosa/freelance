@@ -413,7 +413,7 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
-	public Hashtable<String, Float> getLastSellByTimeCash(int cantidadDias) {
+	public List<Float> getLastSellByTimeCash(int cantidadDias, int cantidadValores) {
 		
 		Hashtable<String, Float> hast = new Hashtable<>();
 		
@@ -447,22 +447,19 @@ public class DataSourceReal implements IDataSource {
 			e.printStackTrace();
 		}
 		
-		List<String> v = new ArrayList<>();
-		v.addAll(hast.keySet());
-		
-		Collections.sort(v);
-		
-		Hashtable<String, Float> hast2 = new Hashtable<>();
-		for (String string : v) {
-			hast2.put(string, hast.get(string));
+		List<Float> lista = new ArrayList<>();
 			
+		for (int i = 0; i<cantidadValores; i++){
+			if (hast.containsKey(i+""))
+				lista.add(hast.get(i+""));
+			else
+				lista.add(new Float(0));
 		}
-		
 		
 		
 		System.out.println(andres);
 		
-		return hast2;
+		return lista;
 	}
 
 }

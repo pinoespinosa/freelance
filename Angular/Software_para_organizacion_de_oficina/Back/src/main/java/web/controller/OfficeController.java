@@ -51,10 +51,10 @@ public class OfficeController {
 	
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "/client/sells/period/chash", method = RequestMethod.GET)
-	public Hashtable<String, Float> getLastSellByTimeCash(@RequestParam(required = true) final int cantidadDias) {
-		return officeService.getLastSellByTimeCash(cantidadDias);
+	public List<Float> getLastSellByTimeCash(@RequestParam(required = true) final int cantidadDias,
+			@RequestParam(required = true) final int cantidadValores) {
+		return officeService.getLastSellByTimeCash(cantidadDias,cantidadValores);
 	}
-
 	
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "/client/{id}", method = RequestMethod.GET)

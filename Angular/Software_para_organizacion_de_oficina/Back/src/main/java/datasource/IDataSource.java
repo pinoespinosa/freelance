@@ -43,6 +43,6 @@ public interface IDataSource {
 
 	Hashtable<String, List<String>> getLastSellByTime(int cantidadDias);
 
-	Hashtable<String, Float> getLastSellByTimeCash(int cantidadDias);
+	List<Float> getLastSellByTimeCash(int cantidadDias, int cantidadValores);
 
 }

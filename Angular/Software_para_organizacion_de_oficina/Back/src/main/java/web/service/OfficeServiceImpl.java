@@ -140,9 +140,8 @@ public class OfficeServiceImpl implements OfficeService {
 	}
 
 	@Override
-	public Hashtable<String, Float> getLastSellByTimeCash(int cantidadDias) {
-		// TODO Auto-generated method stub
-		return datasource.getLastSellByTimeCash(cantidadDias);
+	public List<Float> getLastSellByTimeCash(int cantidadDias, int cantidadValores) {
+		return datasource.getLastSellByTimeCash(cantidadDias, cantidadValores);
 	}
 
 
