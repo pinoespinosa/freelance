@@ -109,21 +109,21 @@ addReq(req){
 
 
 	}
- 
+  
     updateClii(valor){
       this.cliSelect = valor;
     }
-
+    
     getUniversidades(): void {
 
         let loading = this.service.getUniversidades().subscribe(
             response => {
                 this.universidades = response;
                 this.universidades.sort((a, b) => {
-                  if ( a < b ) 
+                  if ( a.toUpperCase() < b.toUpperCase() ) 
                     return -1 ;
                   else 
-                    if (a > b ) 
+                    if (a.toUpperCase() > b.toUpperCase() ) 
                       return 1;
                     else 
                       return 0;
@@ -132,16 +132,69 @@ addReq(req){
         );
     }
 
+    addUniv(nuevaUniv) {
+      this.service.crearUniversidad(nuevaUniv).subscribe(
+        response => {
+          let univ = response;
+          this.universidades.push(nuevaUniv);
+          this.universidades.sort((a, b) => {
+          if ( a.toUpperCase() < b.toUpperCase() ) 
+            return -1 ;
+          else 
+            if (a.toUpperCase() > b.toUpperCase() ) 
+              return 1;
+            else 
+              return 0;
+          });
+        }        
+      );
+    }
+
+    addCarrera(nuevaCarrera) {
+      this.service.crearCarrera(nuevaCarrera).subscribe(
+        response => {
+          let carr = response;
+          this.carreras.push(nuevaCarrera);
+          this.carreras.sort((a, b) => {
+          if ( a.toUpperCase() < b.toUpperCase() ) 
+            return -1 ;
+          else 
+            if (a.toUpperCase() > b.toUpperCase() ) 
+              return 1;
+            else 
+              return 0;
+          });
+        }        
+      );
+    }
+
+    addDondeEntero(nuevaDE) {
+      this.service.crearUniversidad(nuevaDE).subscribe(
+        response => {
+          let lE = response;
+          this.lugarEntero.push(nuevaDE);
+          this.lugarEntero.sort((a, b) => {
+          if ( a.toUpperCase() < b.toUpperCase() ) 
+            return -1 ;
+          else 
+            if (a.toUpperCase() > b.toUpperCase() ) 
+              return 1;
+            else 
+              return 0;
+          });
+        }        
+      );
+    }
     getCarreras(): void {
 
         let loading = this.service.getCarreras().subscribe(
             response => {
                 this.carreras = response;
                 this.carreras.sort((a, b) => {
-                  if ( a < b ) 
+                  if ( a.toUpperCase() < b.toUpperCase() ) 
                     return -1 ;
                   else 
-                    if (a > b ) 
+                    if (a.toUpperCase() > b.toUpperCase() ) 
                       return 1;
                     else 
                       return 0;
@@ -156,10 +209,10 @@ addReq(req){
             response => {
                 this.lugarEntero = response;
                 this.lugarEntero.sort((a, b) => {
-                  if ( a < b ) 
+                  if ( a.toUpperCase() < b.toUpperCase() ) 
                     return -1 ;
                   else 
-                    if (a > b ) 
+                    if (a.toUpperCase() > b.toUpperCase() ) 
                       return 1;
                     else 
                       return 0;
@@ -176,10 +229,10 @@ addReq(req){
             response => {
                 this.clientes = response;
                 this.clientes.sort((a, b) => {
-                  if ( (a.nombre) < (b.nombre) ) 
+                  if ( (a.nombre.toUpperCase()) < (b.nombre.toUpperCase()) ) 
                     return -1 ;
                   else 
-                    if ((a.nombre) > (b.nombre) ) 
+                    if ((a.nombre.toUpperCase()) > (b.nombre.toUpperCase()) ) 
                       return 1;
                     else 
                       return 0;

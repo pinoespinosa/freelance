@@ -3,11 +3,11 @@
 <change-state [(visible)]="showDialogAddCarre">
 <h2 style="margin: 10px;margin-bottom: 20px;" >Agregar Carrera</h2>
 <div class="col-12" style="margin-bottom: 20px;">
-   <input type="text" class="form-control" placeholder="Carrera">
+   <input #nuevaCarr type="text" class="form-control" placeholder="Carrera">
 </div>
 <div class="row">
    <div class="col-6"> 
-      <button (click)="showDialogAddCarre = !showDialogAddCarre"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+      <button (click)="showDialogAddCarre = !showDialogAddCarre" (click)="addCarrera(nuevaCarr.value)"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
    </div>
    <div class="col-6"> 
       <button (click)="showDialogAddCarre = !showDialogAddCarre" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
@@ -19,11 +19,11 @@
 <change-state [(visible)]="showDialogAddUniv">
 <h2 style="margin: 10px;margin-bottom: 20px;" >Agregar Universidad</h2>
 <div class="col-12" style="margin-bottom: 20px;">
-   <input type="text" class="form-control" placeholder="Universidad">
+   <input #nuevaUniv type="text" id="agregar-universidad-texto" class="form-control" placeholder="Universidad" >
 </div>
 <div class="row">
    <div class="col-6"> 
-      <button (click)="showDialogAddUniv = !showDialogAddUniv"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+      <button (click)="showDialogAddUniv = !showDialogAddUniv" (click)="addUniv(nuevaUniv.value)"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
    </div>
    <div class="col-6"> 
       <button (click)="showDialogAddUniv = !showDialogAddUniv" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
@@ -36,11 +36,11 @@
 <change-state [(visible)]="showDialogAddLugar">
 <h2 style="margin: 10px;margin-bottom: 20px;" >Agregar lugar donde se entero</h2>
 <div class="col-12" style="margin-bottom: 20px;">
-   <input type="text" class="form-control" placeholder="Lugar donde se entero">
+   <input #nuevoLugar type="text" class="form-control" placeholder="Lugar donde se entero">
 </div>
 <div class="row">
    <div class="col-6"> 
-      <button (click)="showDialogAddLugar = !showDialogAddLugar"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+      <button (click)="showDialogAddLugar = !showDialogAddLugar" (click)="addDondeEntero(nuevoLugar.value)" class="btn" style="width: 100%;background: #72C585" >Agregar</button>
    </div>
    <div class="col-6"> 
       <button (click)="showDialogAddLugar = !showDialogAddLugar" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
@@ -52,7 +52,7 @@
 <change-state [(visible)]="showDialogAddReq">
 <h2 style="margin: 10px;margin-bottom: 20px;" >Agregar Requerimiento</h2>
 <div class="col-12" style="margin-bottom: 20px;">
-   <input #reqq type="text" class="form-control" placeholder="Requerimiento">
+   <input type="text" class="form-control" placeholder="Requerimiento">
 </div>
 <div class="row">
    <div class="col-6"> 
@@ -93,6 +93,7 @@
             <option disabled hidden [value]="selectUndefinedOptionValue">-- Cliente --  *</option>
             <option *ngFor="let cliente of clientes" >{{cliente.nombre}}</option>
          </select>
+         
       </div>
       <div class="col-1" style="align-self: center;" >
          <a class="btn" [routerLink]="['/register']"  >   

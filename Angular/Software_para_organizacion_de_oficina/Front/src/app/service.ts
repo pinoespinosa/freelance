@@ -63,6 +63,24 @@ export class Service {
       return this.http.post(this.server + 'api/'+idCliente+'/trabajo',trabajo, { headers: headers }).map(this.extractData);
   }
 
+  crearUniversidad(universidad): Observable<String> {
+      var headers = new Headers();
+      headers.append('acces-control-allow-origin','*')      
+      return this.http.post(this.server + 'api/universidad',universidad, { headers: headers }).map(this.extractData);
+  }
+
+  crearCarrera(carrera): Observable<String> {
+      var headers = new Headers();
+      headers.append('acces-control-allow-origin','*')      
+      return this.http.post(this.server + 'api/carrera',carrera, { headers: headers }).map(this.extractData);
+  }
+
+  crearDondeEntero(dondeEntero): Observable<String> {
+      var headers = new Headers();
+      headers.append('acces-control-allow-origin','*')      
+      return this.http.post(this.server + 'api/dondeEntero',dondeEntero, { headers: headers }).map(this.extractData);
+  }
+
   agregarRequerimiento(idCliente, idTrabajo, requerimiento){
       var headers = new Headers();
       headers.append('acces-control-allow-origin','*')      
