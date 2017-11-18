@@ -17,7 +17,7 @@ export class RegisterPaymentComponent implements OnInit  {
 	carreras = [ 'Ing. Sistemas', 'Ing. Ambiental', 'Ing. Alimentos', 'Ing. Industrial'];
 	universidades = [ 'UNICEN', 'FASTA', 'CAECE', 'Siglo XXI'];
 	lugarEntero = [ 'Diario', 'Television', 'Amigo'];
-
+	metodosPago = ['Deposito', 'Tarjeta de Credito','Tarjeta de Debito', 'Efectivo', 'Cheque']
 	clienteID = ''
 	cliente : Client = new Client("", "", "" , "", "", "", "", "", "", null);
 	clientes :Client[];
@@ -28,7 +28,7 @@ export class RegisterPaymentComponent implements OnInit  {
 	valorValue: number = 0;
 	valorSinIva: number = 0;
 	valorIVA: number = 0;
-
+	metodoPagoSelec: string = 'Deposito'
 
 
   constructor(    private router: Router, private route : ActivatedRoute, private service: Service
@@ -90,6 +90,9 @@ export class RegisterPaymentComponent implements OnInit  {
 	}
 	getValorIVA(){
 		return this.valorIVA.toFixed(2);
+	}
+	saveMetodoPago() {
+		this.metodoPagoSelec = (<HTMLInputElement>event.target).innerHTML;
 	}
 }
  

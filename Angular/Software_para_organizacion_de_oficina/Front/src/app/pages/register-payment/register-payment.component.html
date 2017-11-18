@@ -40,14 +40,18 @@
    <div class="row register-row">
       <div class="col-4">
          <div class="dropdown">
-            <button class="btn dropdown-toggle dropdown-custom" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               Seleccione medio de pago
+            <button 
+                
+               class="btn dropdown-toggle dropdown-custom" 
+               type="button" 
+               id="dropdownMenuButton" 
+               data-toggle="dropdown" 
+               aria-haspopup="true" 
+               aria-expanded="false" >
+               {{metodoPagoSelec}}
                </button>
             <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMenuButton">
-               <a class="dropdown-item">Tarjeta debito</a>
-               <a class="dropdown-item">Tarjeta de credito</a>
-               <a class="dropdown-item">Efectivo</a>
-               <a class="dropdown-item">Otros</a>
+               <a  (click)="saveMetodoPago()" class="dropdown-item" *ngFor="let metodo of metodosPago">{{metodo}}</a>
             </div>
          </div>
       </div>
