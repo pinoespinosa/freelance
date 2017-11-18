@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import data.Cliente;
+import data.Pago;
 import data.Requerimiento;
 import data.Trabajo;
 import datasource.IDataSource;
@@ -29,7 +30,6 @@ public class OfficeServiceImpl implements OfficeService {
 
 	@Override
 	public List<Cliente> getClientList() {
-
 		return datasource.getClientes();
 	}
 
@@ -60,6 +60,12 @@ public class OfficeServiceImpl implements OfficeService {
 		datasource.importCSV(filename);
 	}
 
+	@Override
+	public void exportCSV() {
+		datasource.exportCSV();
+
+	}
+	
 	@Override
 	public Cliente getClient(String idCliente) {
 		return datasource.getCliente(idCliente);
@@ -161,6 +167,30 @@ public class OfficeServiceImpl implements OfficeService {
 		return datasource.getSellsAmmountByTimeNewClients(cantidadDias, cantidadValores);
 
 	}
+
+	@Override
+	public void createCarrera(String carrera) {
+		datasource.createCarrera(carrera);
+		
+	}
+
+	@Override
+	public void createDondeEntero(String dondeEntero) {
+		datasource.createDondeEntero(dondeEntero);
+		
+	}
+
+	@Override
+	public Cliente editCliente(Cliente user) {
+		return datasource.editCliente(user);
+	}
+
+	@Override
+	public Pago addPago(String clienteID, String trabajoID, Pago pago) {
+		return datasource.addPago(clienteID,trabajoID,pago);
+	}
+
+
 
 
 

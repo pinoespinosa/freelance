@@ -1,6 +1,7 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Trabajo {
@@ -141,6 +142,22 @@ public class Trabajo {
 
 	public void setSaldo(String saldo) {
 		this.saldo = saldo;
+	}
+	
+	public String toCSV(){
+		
+		List<String> list = Arrays.asList(
+				getTema(), 
+				getCarrera(),
+				getUniversidad(),
+				getDondeSeEntero(),
+				getFecha_entrega(),
+				"vacio",
+				getAsesor(),
+				"vacio");
+
+		return String.join("\",\"", list);
+				
 	}
 
 }
