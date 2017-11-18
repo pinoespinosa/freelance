@@ -14,8 +14,10 @@ export class ClientFull{
     public saldo: string,
     public universidad : string,
 	public entrega : string,
-	public estado : string
+	public estado : string,
  	 	
+    public ordenEstado : string
+
 
 
   ) { }

@@ -10,9 +10,12 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Cliente {
+	@JsonIgnoreProperties({"fistWork"})
 
 	private String id;
 
@@ -27,6 +30,8 @@ public class Cliente {
 	private String telefono2;
 	private String telefono3;
 
+	private Trabajo fistWork;
+	
 	private List<Trabajo> trabajos;
 
 	public Cliente clone() {
@@ -133,7 +138,7 @@ public class Cliente {
 		this.fechaSuscripcion = fechaSuscripcion;
 	}
 	
-	public  Trabajo getFistWork(){
+	public Trabajo getFistWork(){
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -166,6 +171,10 @@ public class Cliente {
 		else
 			return null;
 		
+	}
+
+	public void setFistWork(Trabajo fistWork) {
+		this.fistWork = fistWork;
 	}
 	
 
