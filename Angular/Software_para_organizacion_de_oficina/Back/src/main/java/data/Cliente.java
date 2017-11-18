@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -56,6 +57,8 @@ public class Cliente {
 	}
 
 	public String getNombre() {
+		if (nombre==null)
+			nombre = "";
 		return nombre;
 	}
 
@@ -64,6 +67,8 @@ public class Cliente {
 	}
 
 	public String getEmail1() {
+		if (email1==null)
+			email1 = "";
 		return email1;
 	}
 
@@ -72,6 +77,8 @@ public class Cliente {
 	}
 
 	public String getEmail2() {
+		if (email2==null)
+			email2 = "";
 		return email2;
 	}
 
@@ -80,6 +87,8 @@ public class Cliente {
 	}
 
 	public String getEmail3() {
+		if (email3==null)
+			email3 = "";
 		return email3;
 	}
 
@@ -88,6 +97,8 @@ public class Cliente {
 	}
 
 	public String getTelefono1() {
+		if (telefono1==null)
+			telefono1 = "";
 		return telefono1;
 	}
 
@@ -96,6 +107,8 @@ public class Cliente {
 	}
 
 	public String getTelefono2() {
+		if (telefono2==null)
+			telefono2 = "";
 		return telefono2;
 	}
 
@@ -104,6 +117,8 @@ public class Cliente {
 	}
 
 	public String getTelefono3() {
+		if (telefono3==null)
+			telefono3 = "";
 		return telefono3;
 	}
 
@@ -131,6 +146,8 @@ public class Cliente {
 	}
 
 	public String getFechaSuscripcion() {
+		if (fechaSuscripcion==null)
+			fechaSuscripcion = "";
 		return fechaSuscripcion;
 	}
 
@@ -177,5 +194,14 @@ public class Cliente {
 		this.fistWork = fistWork;
 	}
 	
+	public String toCSV() {
+
+		List<String> list = Arrays.asList(getFechaSuscripcion(), getNombre(),
+				getTelefono1() + "/" + getTelefono2() + "/" + getTelefono3(),
+				getEmail1() + "/" + getEmail2() + "/" + getEmail3());
+
+		return String.join("\",\"", list);
+
+	}
 
 }

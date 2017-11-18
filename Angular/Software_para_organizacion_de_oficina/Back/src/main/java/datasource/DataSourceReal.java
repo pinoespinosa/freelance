@@ -6,20 +6,15 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
 
 import data.Cliente;
 import data.Info;
@@ -630,12 +625,59 @@ public class DataSourceReal implements IDataSource {
 				lista.add(new Float(0));
 		}
 		
-		
 		System.out.println(andres);
-		
 		return lista;
+	}
+
+	@Override
+	public void exportCSV() {
+
+		List<String> filas = new ArrayList<>();
+
+		for (Cliente c : obj.getClientes()) {
+			for (Trabajo t : c.getTrabajos()) {
+				filas.add('"'+ c.toCSV() +'"'+','+'"'+ t.toCSV() + '"');
+			}
+		}
+
+		CSVUtils.write(filas, "BaseDatos.csv");
+
+	}
+
+	@Override
+	public void createCarrera(String carrera) {
+		obj.getCarreras().add(carrera);
+		infoToFile(obj, "file.json");
+
+	}
+
+	@Override
+	public void createDondeEntero(String dondeEntero) {
+		obj.getDondeSeEntero().add(dondeEntero);
+		infoToFile(obj, "file.json");
+
+	}
+
+	@Override
+	public Cliente editCliente(Cliente user) {
+		Cliente c = new Cliente();
+		c.setId(user.getId());
 		
-		
+		obj.getClientes().remove((obj.getClientes().indexOf(c)));
+		obj.getClientes().add(user);
+		infoToFile(obj, "file.json");
+		return user;
+	}
+
+	@Override
+	public Pago addPago(String clienteID, String trabajoID, Pago pago) {
+
+	
+		Trabajo trabajo = getTrabajo(clienteID, trabajoID);
+		trabajo.getPagos().add(pago);
+		return pago;
+	
+	
 	}
 
 }

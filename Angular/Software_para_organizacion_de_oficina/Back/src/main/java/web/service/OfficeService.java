@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import data.Cliente;
+import data.Pago;
 import data.Requerimiento;
 import data.Trabajo;
 
@@ -51,5 +52,15 @@ public interface OfficeService {
 	List<Float> getSellsCashByTimeOldClients(int cantidadDias, int cantidadValores);
 
 	List<Float> getSellsAmmountByTimeNewClients(int cantidadDias, int cantidadValores);
+
+	void exportCSV();
+
+	void createCarrera(String carrera);
+
+	void createDondeEntero(String dondeEntero);
+
+	Cliente editCliente(Cliente user);
+
+	Pago addPago(String clienteID, String trabajoID, Pago pago);
 
 }
