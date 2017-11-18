@@ -31,11 +31,8 @@ export class RegisterPaymentComponent implements OnInit  {
 	metodoPagoSelec: string = 'Deposito'
 
 
-  constructor(    private router: Router, private route : ActivatedRoute, private service: Service
-){
+  constructor(    private router: Router, private route : ActivatedRoute, private service: Service){
 	
-
-
 
 }
 
@@ -82,17 +79,25 @@ export class RegisterPaymentComponent implements OnInit  {
 	    this.valorValue = Number((<HTMLInputElement>event.target).value);
 	    this.valorSinIva = Number(this.valorValue/1.12);
 	    this.valorIVA = this.valorValue*0.12;
-	    console.log(this.valorIVA); 
 	  }
 
 	getValorSinIVA(){
 		return this.valorSinIva.toFixed(2);
 	}
+
+	getValor(){
+		return +this.valorValue + (+this.trabajo.monto - +this.trabajo.saldo);
+	}
+
 	getValorIVA(){
 		return this.valorIVA.toFixed(2);
 	}
-	saveMetodoPago() {
+	saveMetodoPago(e) {
+	
 		this.metodoPagoSelec = (<HTMLInputElement>event.target).innerHTML;
 	}
+
+
+	
 }
  

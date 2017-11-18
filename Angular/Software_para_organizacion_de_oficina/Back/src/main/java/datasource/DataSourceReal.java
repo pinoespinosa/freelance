@@ -659,25 +659,48 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
-	public Cliente editCliente(Cliente user) {
-		Cliente c = new Cliente();
-		c.setId(user.getId());
+	public Cliente editCliente(Cliente editedUser) {
+		Cliente dbUser = obj.getClientes().get((obj.getClientes().indexOf(editedUser)));
+
+		dbUser.setNombre(editedUser.getNombre());
+
+		dbUser.setEmail1(editedUser.getEmail1());
+		dbUser.setEmail2(editedUser.getEmail2());
+		dbUser.setEmail3(editedUser.getEmail3());
+	
+		dbUser.setTelefono1(editedUser.getTelefono1());
+		dbUser.setTelefono2(editedUser.getTelefono2());
+		dbUser.setTelefono3(editedUser.getTelefono3());
 		
-		obj.getClientes().remove((obj.getClientes().indexOf(c)));
-		obj.getClientes().add(user);
 		infoToFile(obj, "file.json");
-		return user;
+		return editedUser;
 	}
 
 	@Override
 	public Pago addPago(String clienteID, String trabajoID, Pago pago) {
-
-	
 		Trabajo trabajo = getTrabajo(clienteID, trabajoID);
 		trabajo.getPagos().add(pago);
 		return pago;
-	
-	
+	}
+
+	@Override
+	public Trabajo editTrabajo(String idCliente, Trabajo trab) {
+		
+		Trabajo dbTrab = getTrabajo(idCliente, trab.getId());
+		
+		dbTrab.setAsesor(trab.getAsesor());	
+		dbTrab.setCarrera(trab.getCarrera());	
+		dbTrab.setDondeSeEntero(trab.getDondeSeEntero());	
+		dbTrab.setFecha_entrega(trab.getFecha_entrega());
+		
+		dbTrab.setMonto(trab.getMonto());	
+
+		dbTrab.setTema(trab.getTema());	
+		dbTrab.setUniversidad(trab.getUniversidad());	
+				
+				
+		infoToFile(obj, "file.json");
+		return dbTrab;
 	}
 
 }

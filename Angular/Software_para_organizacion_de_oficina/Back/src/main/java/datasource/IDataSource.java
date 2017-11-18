@@ -62,4 +62,6 @@ public interface IDataSource {
 
 	Pago addPago(String clienteID, String trabajoID, Pago pago);
 
+	Trabajo editTrabajo(String idCliente, Trabajo user);
+
 }

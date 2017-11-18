@@ -6,28 +6,56 @@
          <h2>Registro de nuevo pago</h2>
       </div>
    </div>
-
+   <hr />
    <div class="row register-row">
-      <div class="col-4" style="margin-top: 30px;" >
+      <div class="col-6" >
          <div><b>Cliente: </b>{{cliente.nombre}}</div>
       </div>
    </div>
-
    <div class="row register-row">
-      <div class="col-4">
+      <div class="col-6">
          <div><b>Trabajo: </b>{{trabajo.tema}}</div>
       </div>
    </div>
-
-
-
    <div class="row register-row">
       <div class="col-4">
-         <div class="register-title">Valor</div>
-         <input type="number" class="form-control" placeholder="Valor" (keyup)="onKey($event)">
+         <div><b>Monto del trabajo: </b>{{trabajo.monto}}</div>
       </div>
    </div>
-
+   <div class="row register-row">
+      <div class="col-4">
+         <div><b>Monto pagado: </b>{{+trabajo.monto - +trabajo.saldo}}</div>
+      </div>
+   </div>
+   <div class="row register-row">
+      <div class="col-4">
+         <b>Pagos efectuados: </b>
+         <table class="table table-new table-striped">
+            <thead>
+               <tr class="client-columns" >
+                  <th>  Fecha de carga
+                  </th>
+                  <th>
+                     Monto
+                  </th>
+               </tr>
+            </thead>
+            <tbody class="centro" >
+               <tr *ngFor="let req of trabajo.pagos" class="client-columns" (dblclick)="showDialogAddReq = !showDialogAddReq">
+               <td>{{req.fecha_pago}}</td>
+               <td>{{req.abono}}</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+   <hr />
+   <div class="row register-row">
+      <div class="col-4">
+         <div class="register-title">Valor del Nuevo Abono</div>
+         <input type="number" class="form-control" placeholder="Valor" (keyup)="onKey($event)" (change)="onKey($event)">
+      </div>
+   </div>
    <div class="row register-row">
       <div class="col-6">
          <div class="register-remaining">Sin IVA {{getValorSinIVA()}}</div>
@@ -36,54 +64,33 @@
          <div class="register-remaining">IVA {{getValorIVA()}}</div>
       </div>
    </div>
-
    <div class="row register-row">
-      <div class="col-4">
-         <div class="dropdown">
-            <button 
-                
-               class="btn dropdown-toggle dropdown-custom" 
-               type="button" 
-               id="dropdownMenuButton" 
-               data-toggle="dropdown" 
-               aria-haspopup="true" 
-               aria-expanded="false" >
-               {{metodoPagoSelec}}
-               </button>
-            <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="dropdownMenuButton">
-               <a  (click)="saveMetodoPago()" class="dropdown-item" *ngFor="let metodo of metodosPago">{{metodo}}</a>
-            </div>
-         </div>
-      </div>
-   </div>
-
-   <div class="row register-row">
-      <div class="col-4">
-    <label for="exampleFormControlTextarea1">Observaciones</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-
-      </div>
-   </div>
-
-   <div class="row register-row">
-      <div class="col-4">
-         <div class="register-remaining">Total</div>
-         <div class="register-remaining">$$$$$</div>
+      <div class="col-4" style="font-size: 15px;" >
+         <select #lug style="width: 100%;" >
+            <option disabled hidden [value]="selectUndefinedOptionValue">-- Forma de pago --</option>
+            <option *ngFor="let metodo of metodosPago">{{metodo}}</option>
+         </select>
       </div>
    </div>
    <div class="row register-row">
       <div class="col-4">
-         <div class="register-remaining">Abonos</div>
-         <div class="register-remaining">$$$$$</div>
+         <label for="exampleFormControlTextarea1">Observaciones</label>
+         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+   </div>
+   <hr />
+   <div class="row register-row">
+      <div class="col-4">
+         <div class="register-remaining">Total Pagado</div>
+         <div class="register-remaining">{{ getValor() }}</div>
       </div>
    </div>
    <div class="row register-row">
       <div class="col-4">
-         <div class="register-remaining">Saldo</div>
-         <div class="register-remaining">$$$$$</div>
+         <div class="register-remaining">Saldo Pendiente</div>
+         <div class="register-remaining">{{ +trabajo.monto - getValor() }}</div>
       </div>
    </div>
-
    <div class="row register-row">
       <div class="col-4">
       </div>

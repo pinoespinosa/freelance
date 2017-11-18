@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import data.Cliente;
 import data.Pago;
 import data.Trabajo;
 import io.swagger.annotations.ApiOperation;
@@ -34,6 +35,16 @@ public class TrabajoController {
 		return officeService.getTrabajo(idCliente, idTrabajo);
 	}
 
+	/**
+	 * Edita in cliente
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "{idCliente}/trabajo/edit", method = RequestMethod.POST)
+	@ResponseBody
+	public Trabajo editTrabajo(@PathVariable final String idCliente, @RequestBody Trabajo trabajo) {
+		return officeService.editTrabajo(idCliente, trabajo);
+	}
+	
 	/**
 	 * Retorna una lista de trabajos para un cliente
 	 */

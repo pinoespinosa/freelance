@@ -50,7 +50,7 @@ public class ClientController {
 	}
 
 	/**
-	 * Edita in cliente
+	 * Edita un cliente
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "/client/edit", method = RequestMethod.POST)

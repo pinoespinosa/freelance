@@ -2,7 +2,6 @@ package web.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
@@ -188,6 +187,11 @@ public class OfficeServiceImpl implements OfficeService {
 	@Override
 	public Pago addPago(String clienteID, String trabajoID, Pago pago) {
 		return datasource.addPago(clienteID,trabajoID,pago);
+	}
+
+	@Override
+	public Trabajo editTrabajo(String idCliente, Trabajo trabajo) {
+		return datasource.editTrabajo(idCliente, trabajo);
 	}
 
 
