@@ -37,15 +37,14 @@ export class RegisterWorkComponent implements OnInit  {
 
   select_cliente = ''
 
-  constructor(    private router: Router, private route : ActivatedRoute, private service: Service
-){
-	    this.getWorks();
-      this.getUniversidades();
-      this.getCarreras();
-      this.getDondeSeEntero();
-      this.requerimientos = [];
+  constructor(private router: Router, private route : ActivatedRoute, private service: Service) {
+    this.getWorks();
+    this.getUniversidades();
+    this.getCarreras();
+    this.getDondeSeEntero();
+    this.requerimientos = [];
 
-	let page = '0'
+  	let page = '0'
     let sub = this.route
       .queryParams
       .subscribe(params => {
@@ -53,16 +52,15 @@ export class RegisterWorkComponent implements OnInit  {
         page = params['page'];
       });
 
-	console.log(page)
+  	console.log(page)
 
-}
+  }
 
-addReq(req){
+  addReq(req){
     this.requerimientos.push(new Requerimiento(req, "", ""))
   }
 
-	do(fecha, tema, univer, carrera, asesor, lugar, fecha_entrega, monto, conti){
-
+  do(fecha, tema, univer, carrera, asesor, lugar, fecha_entrega, monto, conti){
     if (!this.cliSelect){
       alert("Debe seleccionar un cliente para crear el trabajo")
       return;
@@ -86,13 +84,10 @@ addReq(req){
       estado = 'Listo por revisar'
     }
 
-
     let trab = new Trabajo("",  "",tema, univer , carrera,asesor, lugar, estado, fecha_entrega, monto, monto, this.requerimientos, null);
-
 
     let loading = this.service.crearTrabajo(this.clientes[this.cliSelect.selectedIndex-1].id,trab).subscribe(
       response => {
-
         let yy = response;
         alert("Se ha registrado los datos correctamente.")
 
@@ -100,44 +95,19 @@ addReq(req){
           this.router.navigateByUrl('/register-payment');
         else
           this.router.navigateByUrl('/home');
-
-
       }        
-
     );
-
-
-
-	}
-  
-    updateClii(valor){
-      this.cliSelect = valor;
-    }
+  }
     
-    getUniversidades(): void {
-
-        let loading = this.service.getUniversidades().subscribe(
-            response => {
-                this.universidades = response;
-                this.universidades.sort((a, b) => {
-                  if ( a.toUpperCase() < b.toUpperCase() ) 
-                    return -1 ;
-                  else 
-                    if (a.toUpperCase() > b.toUpperCase() ) 
-                      return 1;
-                    else 
-                      return 0;
-                });
-            }        
-        );
-    }
-
-    addUniv(nuevaUniv) {
-      this.service.crearUniversidad(nuevaUniv).subscribe(
-        response => {
-          let univ = response;
-          this.universidades.push(nuevaUniv);
-          this.universidades.sort((a, b) => {
+  updateClii(valor){
+    this.cliSelect = valor;
+  }
+      
+  getUniversidades(): void {
+    let loading = this.service.getUniversidades().subscribe(
+      response => {
+        this.universidades = response;
+        this.universidades.sort((a, b) => {
           if ( a.toUpperCase() < b.toUpperCase() ) 
             return -1 ;
           else 
@@ -145,17 +115,70 @@ addReq(req){
               return 1;
             else 
               return 0;
-          });
-        }        
-      );
-    }
+        });
+      }        
+    );
+  }
 
-    addCarrera(nuevaCarrera) {
-      this.service.crearCarrera(nuevaCarrera).subscribe(
-        response => {
-          let carr = response;
-          this.carreras.push(nuevaCarrera);
-          this.carreras.sort((a, b) => {
+  addUniv(nuevaUniv) {
+    this.service.crearUniversidad(nuevaUniv).subscribe(
+      response => {
+        let univ = response;
+        this.universidades.push(nuevaUniv);
+        this.universidades.sort((a, b) => {
+        if ( a.toUpperCase() < b.toUpperCase() ) 
+          return -1 ;
+        else 
+          if (a.toUpperCase() > b.toUpperCase() ) 
+            return 1;
+          else 
+            return 0;
+        });
+      }        
+    );
+  }
+
+  addCarrera(nuevaCarrera) {
+    this.service.crearCarrera(nuevaCarrera).subscribe(
+      response => {
+        let carr = response;
+        this.carreras.push(nuevaCarrera);
+        this.carreras.sort((a, b) => {
+        if ( a.toUpperCase() < b.toUpperCase() ) 
+          return -1 ;
+        else 
+          if (a.toUpperCase() > b.toUpperCase() ) 
+            return 1;
+          else 
+            return 0;
+        });
+      }        
+    );
+  }
+
+  addDondeEntero(nuevaDE) {
+    this.service.crearUniversidad(nuevaDE).subscribe(
+      response => {
+        let lE = response;
+        this.lugarEntero.push(nuevaDE);
+        this.lugarEntero.sort((a, b) => {
+        if ( a.toUpperCase() < b.toUpperCase() ) 
+          return -1 ;
+        else 
+          if (a.toUpperCase() > b.toUpperCase() ) 
+            return 1;
+          else 
+            return 0;
+        });
+      }        
+    );
+  }
+
+  getCarreras(): void {
+    let loading = this.service.getCarreras().subscribe(
+      response => {
+        this.carreras = response;
+        this.carreras.sort((a, b) => {
           if ( a.toUpperCase() < b.toUpperCase() ) 
             return -1 ;
           else 
@@ -163,17 +186,16 @@ addReq(req){
               return 1;
             else 
               return 0;
-          });
-        }        
-      );
-    }
+        });
+      }        
+    );
+  }
 
-    addDondeEntero(nuevaDE) {
-      this.service.crearUniversidad(nuevaDE).subscribe(
-        response => {
-          let lE = response;
-          this.lugarEntero.push(nuevaDE);
-          this.lugarEntero.sort((a, b) => {
+  getDondeSeEntero(): void {
+    let loading = this.service.getDondeSeEntero().subscribe(
+      response => {
+        this.lugarEntero = response;
+        this.lugarEntero.sort((a, b) => {
           if ( a.toUpperCase() < b.toUpperCase() ) 
             return -1 ;
           else 
@@ -181,73 +203,29 @@ addReq(req){
               return 1;
             else 
               return 0;
-          });
-        }        
-      );
-    }
-    getCarreras(): void {
+        });
+      }        
+    );
+  }
 
-        let loading = this.service.getCarreras().subscribe(
-            response => {
-                this.carreras = response;
-                this.carreras.sort((a, b) => {
-                  if ( a.toUpperCase() < b.toUpperCase() ) 
-                    return -1 ;
-                  else 
-                    if (a.toUpperCase() > b.toUpperCase() ) 
-                      return 1;
-                    else 
-                      return 0;
-                });
-            }        
-        );
-    }
+  getWorks(): void {
+    let loading = this.service.getProducts().subscribe(
+      response => {
+        this.clientes = response;
+        this.clientes.sort((a, b) => {
+          if ( (a.nombre.toUpperCase()) < (b.nombre.toUpperCase()) ) 
+            return -1 ;
+          else 
+            if ((a.nombre.toUpperCase()) > (b.nombre.toUpperCase()) ) 
+              return 1;
+            else 
+              return 0;
+        });
+      }        
+    );
+  }
 
-    getDondeSeEntero(): void {
+  ngOnInit(): void {};
 
-        let loading = this.service.getDondeSeEntero().subscribe(
-            response => {
-                this.lugarEntero = response;
-                this.lugarEntero.sort((a, b) => {
-                  if ( a.toUpperCase() < b.toUpperCase() ) 
-                    return -1 ;
-                  else 
-                    if (a.toUpperCase() > b.toUpperCase() ) 
-                      return 1;
-                    else 
-                      return 0;
-                });
-            }        
-        );
-    }
-
-
-
-    getWorks(): void {
-
-        let loading = this.service.getProducts().subscribe(
-            response => {
-                this.clientes = response;
-                this.clientes.sort((a, b) => {
-                  if ( (a.nombre.toUpperCase()) < (b.nombre.toUpperCase()) ) 
-                    return -1 ;
-                  else 
-                    if ((a.nombre.toUpperCase()) > (b.nombre.toUpperCase()) ) 
-                      return 1;
-                    else 
-                      return 0;
-                });
-            }        
-        );
-
-
-
-    }
-
-	ngOnInit(): void {
-  
-
-
-	};
 }
  

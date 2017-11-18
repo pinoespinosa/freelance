@@ -7,18 +7,18 @@ export class Trabajo {
 
     public id: string,
 
-    public fecha : string,
+    public fecha: string,
     public tema: string,
     public universidad : string,
-    public carrera:string,
+    public carrera: string,
     public asesor: string,
-    public dondeSeEntero : string,
+    public dondeSeEntero: string,
 
-    public estado : string,
-    public fecha_entrega : string,
+    public estado: string,
+    public fecha_entrega: string,
 
-    public monto : string,
-    public saldo : string,
+    public monto: string,
+    public saldo: string,
     
     public requerimientos: Requerimiento[],
     public pagos: Pago[]

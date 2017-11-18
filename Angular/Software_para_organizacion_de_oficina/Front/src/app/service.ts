@@ -57,6 +57,18 @@ export class Service {
       return this.http.post(this.server + 'api/client/create',client, { headers: headers }).map(this.extractData);
   }
 
+  editCliente(client): Observable<Client> {
+      var headers = new Headers();
+      headers.append('acces-control-allow-origin','*')      
+      return this.http.post(this.server + 'api/client/edit',client, { headers: headers }).map(this.extractData);
+  }
+
+  editTrabajo(idCliente, trabajo): Observable<Client> {
+      var headers = new Headers();
+      headers.append('acces-control-allow-origin','*')      
+      return this.http.post(this.server + 'api/'+idCliente+'/trabajo/edit',trabajo, { headers: headers }).map(this.extractData);
+  }
+
   crearTrabajo(idCliente, trabajo): Observable<Client> {
       var headers = new Headers();
       headers.append('acces-control-allow-origin','*')      

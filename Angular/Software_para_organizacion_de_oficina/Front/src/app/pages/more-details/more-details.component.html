@@ -13,7 +13,7 @@
          </button>
       </div>
       <div class="col-2">
-         <button (click)="do()" type="button" class="btn btn-success save-client-button client-button" [disabled]="buttonState()"> 
+         <button (click)="do()" (click)="saveMasDetalles()" type="button" class="btn btn-success save-client-button client-button" [disabled]="buttonState()"> 
             Guardar
          </button>
       </div>
@@ -31,35 +31,54 @@
    </div>
 
    <div class="row details-data-row">
-   
-
-         <div class="col-4">
+      <div class="col-4">
          <div class="detail-title">Nombre</div>
-         <!--<div>{{item.nombre}} {{item.apellido}}</div>-->
-         <input type="text" class="form-control" value="{{cliente.nombre}} {{cliente.apellido}}" [disabled]="buttonState()">
+         <input 
+            #nombre 
+            type="text" 
+            class="form-control" 
+            value="{{cliente.nombre}}" 
+            [disabled]="buttonState()" 
+            (change)="addMasDetalleCliente('nombre', nombre.value)">
       </div>
-
-      
    </div>     
    
    <div class="row details-data-row">
       
       <div class="col-4">
          <div class="detail-title">Telefono 1</div>
-         <!--<div>{{item.telefono}}</div>-->
-         <input type="number" class="form-control" placeholder="Telefono 1" value="{{cliente.telefono1}}" [disabled]="buttonState()">
+         <input
+            #telefono1 
+            type="number" 
+            class="form-control" 
+            placeholder="Telefono 1" 
+            value="{{cliente.telefono1}}" 
+            [disabled]="buttonState()" 
+            (change)="addMasDetalleCliente('telefono1', telefono1.value)">
       </div>
 
       <div class="col-4">
          <div class="detail-title">Telefono 2</div>
-         <!--<div>{{item.telefono}}</div>-->
-         <input type="number" class="form-control" placeholder="Telefono 2" value="{{cliente.telefono2}}" [disabled]="buttonState()">
+         <input
+            #telefono2 
+            type="number" 
+            class="form-control" 
+            placeholder="Telefono 2" 
+            value="{{cliente.telefono2}}" 
+            [disabled]="buttonState()" 
+            (change)="addMasDetalleCliente('telefono2', telefono2.value)">
       </div>
 
       <div class="col-4">
          <div class="detail-title">Telefono 3</div>
-         <!--<div>{{item.telefono}}</div>-->
-         <input type="number" class="form-control" placeholder="Telefono 3" value="{{cliente.telefono3}}" [disabled]="buttonState()">
+         <input
+            #telefono3 
+            type="number" 
+            class="form-control" 
+            placeholder="Telefono 3" 
+            value="{{cliente.telefono3}}" 
+            [disabled]="buttonState()" 
+            (change)="addMasDetalleCliente('telefono3', telefono3.value)">
       </div>
       
    </div>     
@@ -68,20 +87,38 @@
       
       <div class="col-4">
          <div class="detail-title">Email 1</div>
-         <!--<div>{{item.email}}</div>-->
-         <input type="text" class="form-control" placeholder="Email 1" value="{{cliente.email1}}" [disabled]="buttonState()">
+         <input
+            #email1 
+            type="number" 
+            class="form-control" 
+            placeholder="Email 1"
+            value="{{cliente.email1}}"
+            [disabled]="buttonState()" 
+            (change)="addMasDetalleCliente('email1', email1.value)">
       </div> 
 
       <div class="col-4">
          <div class="detail-title">Email 2</div>
-         <!--<div>{{item.email}}</div>-->
-         <input type="text" class="form-control" placeholder="Email 2" value="{{cliente.email2}}" [disabled]="buttonState()">
+         <input
+            #email2 
+            type="number" 
+            class="form-control" 
+            placeholder="Email 2"
+            value="{{cliente.email2}}"
+            [disabled]="buttonState()" 
+            (change)="addMasDetalleCliente('email2', email2.value)">
       </div>
 
       <div class="col-4">
          <div class="detail-title">Email 3</div>
-         <!--<div>{{item.email}}</div>-->
-         <input type="text" class="form-control" placeholder="Email 3" value="{{cliente.email3}}" [disabled]="buttonState()">
+         <input
+            #email2 
+            type="number" 
+            class="form-control" 
+            placeholder="Email 2"
+            value="{{cliente.email2}}"
+            [disabled]="buttonState()" 
+            (change)="addMasDetalleCliente('email2', email2.value)">
       </div>
       
    </div>     
@@ -96,8 +133,11 @@
       
       <div class="col-4">
          <div class="detail-title">Fecha inicio del Trabajo</div>
-         <!--<div>{{item.fecha}}</div>-->
-         <input type="date" class="form-control" value="{{trabajo.fecha}}" [disabled]="buttonState()">
+         <input 
+            type="date" 
+            class="form-control" 
+            value="{{trabajo.fecha}}" 
+            disabled>
       </div>
 
       <div class="col-8">
@@ -105,40 +145,71 @@
 
       <div class="col-4">
          <div class="detail-title">Trabajo</div>
-         <!--<div>{{item.trabajo}}</div>-->
-         <input type="text" class="form-control" value="{{trabajo.tema}}" [disabled]="buttonState()">
+         <input 
+            #tema
+            type="text" 
+            class="form-control" 
+            value="{{trabajo.tema}}" 
+            [disabled]="buttonState()" 
+            (change)="addMasDetalleTrabajo('tema', tema.value)">
       </div> 
 
       <div class="col-4">
          <div class="detail-title">Carrera</div>
-         <!--<div>{{item.carrera}}</div>-->
-         <input type="text" class="form-control" value="{{trabajo.carrera}}" [disabled]="buttonState()">
+         <input 
+            #carrera
+            type="text" 
+            class="form-control" 
+            value="{{trabajo.carrera}}" 
+            [disabled]="buttonState()" 
+            (change)="addMasDetalleTrabajo('carrera', carrera.value)">
       </div>
 
       <div class="col-4">
          <div class="detail-title">Universidad</div>
-         <!--<div>{{item.universidad}}</div>-->
-         <input type="text" class="form-control" value="{{trabajo.universidad}}" [disabled]="buttonState()">
+         <input 
+            #universidad
+            type="text" 
+            class="form-control" 
+            value="{{trabajo.universidad}}" 
+            [disabled]="buttonState()" 
+            (change)="addMasDetalleTrabajo('universidad', universidad.value)">
       </div> 
    </div>  
 
    <div class="row details-data-row">
       <div class="col-4">
          <div class="detail-title">Donde entero</div>
-         <!--<div>{{item.dondeEntero}}</div>-->
-         <input type="text" class="form-control" placeholder="Donde entero" value="{{trabajo.dondeSeEntero}}" [disabled]="buttonState()">
+         <input 
+            #lugarEntero
+            type="text" 
+            class="form-control" 
+            placeholder="Donde entero" 
+            value="{{trabajo.dondeSeEntero}}" 
+            [disabled]="buttonState()" 
+            (change)="addMasDetalleTrabajo('dondeSeEntero', lugarEntero.value)">
       </div>
 
       <div class="col-4">
          <div class="detail-title">Proxima entrega</div>
-         <!--<div>{{item.proximaEntrega}}</div>-->
-         <input type="date" class="form-control" value="{{trabajo.fecha_entrega}}" [disabled]="buttonState()">
+         <input 
+            #fechaEntrega
+            type="date" 
+            class="form-control" 
+            value="{{trabajo.fecha_entrega}}" 
+            [disabled]="buttonState()" 
+            (change)="addMasDetalleTrabajo('fecha_entrega', fechaEntrega.value)">
       </div>   
 
       <div class="col-4">
          <div class="detail-title">Asesor</div>
-         <!--<div>{{item.asesor}}</div>-->
-         <input type="text" class="form-control" value="{{trabajo.asesor}}" [disabled]="buttonState()">
+         <input 
+            #asesor
+            type="text" 
+            class="form-control" 
+            value="{{trabajo.asesor}}" 
+            [disabled]="buttonState()" 
+            (change)="addMasDetalleTrabajo('asesor', asesor.value)">
       </div> 
    </div>  
 

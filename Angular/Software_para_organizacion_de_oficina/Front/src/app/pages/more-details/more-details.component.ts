@@ -25,13 +25,11 @@ export class MoreDetailsComponent implements OnInit  {
   trabajo : Trabajo = new Trabajo("","","","", "","","","", "","","",null,null )
 
 
-  constructor(    private router: Router, private route : ActivatedRoute, private service: Service
-){
+  constructor(private router: Router, private route : ActivatedRoute, private service: Service) {
     this.requerimientos = [];
-}
+  }
 
 	ngOnInit(): void {
-
     this.route
       .queryParams
       .subscribe(params => {
@@ -40,14 +38,10 @@ export class MoreDetailsComponent implements OnInit  {
 
       });
 
-      if (!this.clienteID)
-      	this.clienteID = ''
-	
-	   this.getWorks(this.clienteID, this.trabajoID);
+    if (!this.clienteID)
+      this.clienteID = ''
+	 this.getWorks(this.clienteID, this.trabajoID);
 
-
-     
-    
   };
 
   addReq(req){
@@ -61,35 +55,46 @@ export class MoreDetailsComponent implements OnInit  {
 		this.deshabilitado = !this.deshabilitado;
 	}
 
+  addMasDetalleCliente(key, value){
+    this.cliente[key] = value;
+  }
+
+  addMasDetalleTrabajo(key, value){
+    this.trabajo[key] = value;
+  }
+
 	buttonState(){
 		return this.deshabilitado;
 	}
 
+  getWorks(idCliente, idTrabajo): void {
+    this.service.getClient(idCliente).subscribe(
+      response => {
+        this.cliente = response;
+      }        
+    );
 
+    this.service.getTrabajo(idCliente, idTrabajo).subscribe(
+      response => {
+        this.trabajo = response;
 
-    getWorks(idCliente, idTrabajo): void {
-
-        this.service.getClient(idCliente).subscribe(
-            response => {
-                this.cliente = response;
-          }        
-        );
-
-        this.service.getTrabajo(idCliente, idTrabajo).subscribe(
-            response => {
-                this.trabajo = response;
-
-                if (this.trabajo.requerimientos) {
-                  this.requerimientos = this.trabajo.requerimientos
-                 }
-
-
-          }        
-        );
-
-    }
-
-
-
+          if (this.trabajo.requerimientos) {
+            this.requerimientos = this.trabajo.requerimientos
+          }
+      }        
+    );
+  }
+  saveMasDetalles(){
+    this.service.editCliente(this.cliente).subscribe(
+      response => {
+        let cliente = response;
+      }        
+    );
+    this.service.editTrabajo(this.clienteID, this.trabajo).subscribe(
+      response => {
+        let trabajo = response;
+      }        
+    );
+  }
 }
  
