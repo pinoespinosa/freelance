@@ -17,6 +17,8 @@ public class Pago {
 	}
 
 	public String getObservaciones() {
+		if (observaciones==null)
+			return "-";
 		return observaciones;
 	}
 
@@ -33,6 +35,9 @@ public class Pago {
 	}
 
 	public String getForma_pago() {
+		if (forma_pago==null)
+			return "-";
+		
 		return forma_pago;
 	}
 

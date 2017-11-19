@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Hashtable;
@@ -159,9 +160,12 @@ public class DataSourceReal implements IDataSource {
 					t.setDondeSeEntero(dondeSeEntero);
 
 					t.setAsesor(valores[10].trim());
+					
+					String estado = Strings.isNullOrEmpty(valores[11].trim())?"Desconocido":valores[11].trim();
+					t.setEstado(estado);
+
 					t.setFecha(valores[0].trim());
 					t.setFecha_entrega(valores[8].trim());
-					t.setEstado("Desconocido");
 					
 					t.setPagos(new ArrayList<>());
 					
@@ -633,7 +637,16 @@ public class DataSourceReal implements IDataSource {
 	public void exportCSV() {
 
 		List<String> filas = new ArrayList<>();
-
+	
+		List<String> list = Arrays.asList("Fecha", "Nombre", "Telefonos", "Emails", "Trabajo", "Carrera", "Universidad",
+				"Donde_Se_Entero", "Fecha_Suscripcion", "", "Asesor", "Estado", "Observ", "Monto", "Ab1", "Fecha1", "Ab2", "Fecha2",
+				"Ab3", "Fecha3", "Ab4", "Fecha4", "Ab5", "Fecha5", "Ab6", "Fecha6", "Ab7", "Fecha7", "Ab8", "Fecha8",
+				"Ab9", "Fecha9", "Ab10", "Fecha10", "FPago1", "Obv1", "FPago2", "Obv2", "FPago3", "Obv3", "FPago4",
+				"Obv4", "FPago5", "Obv5", "FPago6", "Obv6", "FPago7", "Obv7", "FPago8", "Obv8", "FPago9", "Obv9",
+				"FPago10", "Obv10");
+		String aaasda =  String.join(",", list);
+		filas.add(aaasda);
+		
 		for (Cliente c : obj.getClientes()) {
 			for (Trabajo t : c.getTrabajos()) {
 				filas.add('"'+ c.toCSV() +'"'+','+'"'+ t.toCSV());

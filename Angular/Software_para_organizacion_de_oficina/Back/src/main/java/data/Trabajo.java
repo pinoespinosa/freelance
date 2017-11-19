@@ -151,8 +151,17 @@ public class Trabajo {
 			if (i < pagos.size())
 				tex += '"' + pagos.get(i).getAbono() + '"' + ',' + '"' + pagos.get(i).getFecha_pago() + '"' + ',';
 			else
-				tex += '"' + "-" + '"' + ',' + '"' + "-" + '"' + ',';
+				//tex += '"' + "-" + '"' + ',' + '"' + "-" + '"' + ',';
+				tex += "\"-\",\"-\",";
 
+		}
+
+		String tex2 = "";
+		for (int i = 0; i < 10; i++) {
+			if (i < pagos.size())
+				tex2 += '"' + pagos.get(i).getForma_pago() + '"' + ',' + '"' + pagos.get(i).getObservaciones() + '"' + ',';
+			else
+				tex2 += "\"-\",\"-\",";
 		}
 		
 		List<String> list = Arrays.asList(
@@ -163,11 +172,15 @@ public class Trabajo {
 				getFecha_entrega(),
 				"-",
 				getAsesor(),
-				"-",
+				getEstado(),
 				"observ",
 				getMonto());
 
-		return String.join("\",\"", list) + "\"," + tex;
+		System.out.println(tex);	
+		System.out.println(tex2);
+		System.out.println();
+		System.out.println();
+		return String.join("\",\"", list) + "\"," + tex + tex2;
 				
 	}
 
