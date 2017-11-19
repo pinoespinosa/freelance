@@ -636,7 +636,7 @@ public class DataSourceReal implements IDataSource {
 
 		for (Cliente c : obj.getClientes()) {
 			for (Trabajo t : c.getTrabajos()) {
-				filas.add('"'+ c.toCSV() +'"'+','+'"'+ t.toCSV() + '"');
+				filas.add('"'+ c.toCSV() +'"'+','+'"'+ t.toCSV());
 			}
 		}
 

@@ -75,6 +75,12 @@ export class Service {
       return this.http.post(this.server + 'api/'+idCliente+'/trabajo',trabajo, { headers: headers }).map(this.extractData);
   }
 
+  crearPago(idCliente, idTrabajo, pago): Observable<Client> {
+      var headers = new Headers();
+      headers.append('acces-control-allow-origin','*')      
+      return this.http.post(this.server + 'api/'+idCliente+'/'+idTrabajo+'/pago',pago, { headers: headers }).map(this.extractData);
+  }
+
   crearUniversidad(universidad): Observable<String> {
       var headers = new Headers();
       headers.append('acces-control-allow-origin','*')      

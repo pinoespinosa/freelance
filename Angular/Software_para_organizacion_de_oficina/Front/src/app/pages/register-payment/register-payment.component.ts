@@ -3,6 +3,8 @@ import { Router, NavigationEnd, ActivatedRoute }                                
 import { trigger, state, style, animate, transition }                           from '@angular/animations';
 import { Client }               												from 'app/data-objects/cliente';
 import { Trabajo }               												from 'app/data-objects/trabajo';
+import { Pago }               													from 'app/data-objects/pago';
+
 import { Service }   			      											from 'app/service';
 
 @Component({
@@ -53,7 +55,17 @@ export class RegisterPaymentComponent implements OnInit  {
     }
 
 	do(){
-		 alert("Se ha registrado los datos correctamente.");
+
+		let pago = new Pago("","","1234","","")
+
+        this.service.crearPago(this.clienteID, this.trabajoID, pago).subscribe(
+            response => {
+                let trabajosdd = response;
+               	alert("Se ha registrado los datos correctamente.");
+
+          }        
+        );
+
 	}
 
 

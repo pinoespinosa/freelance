@@ -146,17 +146,28 @@ public class Trabajo {
 	
 	public String toCSV(){
 		
+		String tex = "";
+		for (int i = 0; i < 10; i++) {
+			if (i < pagos.size())
+				tex += '"' + pagos.get(i).getAbono() + '"' + ',' + '"' + pagos.get(i).getFecha_pago() + '"' + ',';
+			else
+				tex += '"' + "-" + '"' + ',' + '"' + "-" + '"' + ',';
+
+		}
+		
 		List<String> list = Arrays.asList(
 				getTema(), 
 				getCarrera(),
 				getUniversidad(),
 				getDondeSeEntero(),
 				getFecha_entrega(),
-				"vacio",
+				"-",
 				getAsesor(),
-				"vacio");
+				"-",
+				"observ",
+				getMonto());
 
-		return String.join("\",\"", list);
+		return String.join("\",\"", list) + "\"," + tex;
 				
 	}
 

@@ -47,5 +47,5 @@ public class Pago {
 	public void setFecha_pago(String fecha_pago) {
 		this.fecha_pago = fecha_pago;
 	}
-
+	
 }
