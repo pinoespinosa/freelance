@@ -320,10 +320,17 @@ public class DataSourceReal implements IDataSource {
 		Trabajo t = getTrabajo(clienteID, trabajoID);
 		t.setFecha_entrega(fechaNueva);
 		infoToFile(obj, "file.json");
-		
 		return t;
 	}
 
+	@Override
+	public Trabajo updateAsesor(String clienteID, String trabajoID, String asesor) {
+		Trabajo t = getTrabajo(clienteID, trabajoID);
+		t.setAsesor(asesor);
+		infoToFile(obj, "file.json");
+		return t;
+	}
+	
 	@Override
 	public List<Cliente> getClientNuevosList(Date fechaDesde, Date fechaHasta) throws ParseException {
 
@@ -770,6 +777,21 @@ public class DataSourceReal implements IDataSource {
 		obj.getUsers().put(clave, valor);
 		infoToFile(obj, "file.json");
 		return valor;
+	}
+
+	@Override
+	public Auth editUser(String user, String pass, Rol rol) {
+		String clave = ChipherTool.encrypt(user + pass);
+		/*
+		Auth aaa = obj.getUsers().get(clave);
+		aaa.setRol(rol);
+		aaa.setToken(token);
+		Auth valor = new Auth(rol,clave);
+		obj.getUsers().put(clave, valor);
+		infoToFile(obj, "file.json");
+		return valor;
+		*/
+		return null;
 	}
 
 

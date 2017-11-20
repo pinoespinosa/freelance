@@ -41,5 +41,18 @@ public class AuthController {
 			@RequestParam(required = true) final String pass) {
 		return officeService.create(user, pass,rol);
 	}
+	
+	/**
+	 * Crear User
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/editUser", method = RequestMethod.GET)
+	public Auth editUser(
+			@RequestParam(required = true) final String token,
+			@RequestParam(required = true) final Rol rol, 
+			@RequestParam(required = true) final String user, 
+			@RequestParam(required = true) final String pass) {
+		return officeService.editUser(user, pass,rol);
+	}
 
 }

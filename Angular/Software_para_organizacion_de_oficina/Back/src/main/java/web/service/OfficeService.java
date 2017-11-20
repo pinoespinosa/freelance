@@ -73,4 +73,8 @@ public interface OfficeService {
 
 	List<Cliente> getClientListPendientes();
 
+	Trabajo updateAsesor(String clienteID, String trabajoID, String asesor);
+
+	Auth editUser(String user, String pass, Rol rol);
+
 }
