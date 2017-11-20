@@ -49,7 +49,7 @@ export class HomeComponent   {
     this.items=[];
     this.items_orig = [];
     this.cliente = new Client("","","", "","","", "","","",null);
-    this.cliente2 = new ClientFull("","","","","","","","","","","","");
+    this.cliente2 = new ClientFull("","","","","","","","","","","","","","");
 
   }
 
@@ -179,69 +179,60 @@ export class HomeComponent   {
     } 
   }
 
-    getWorks(): void {
+  getWorks(): void {
 
     console.log("update front")
     this.items=[];
     this.items_orig = [];
-
-        let loading = this.service.getProducts().subscribe(
-            response => {
-                this.clientes = response;
-
-                for (var aa of response){
-                  for (var bb of aa.trabajos){
-
-                  	let result = ""
-                  	switch(bb.estado) { 
-   						case 'Urgente': { 
-					      	result='1'; 
-					      	break; 
-						} 
-   						case 'Asignado': { 
-					      	result='2'; 
-					      	break; 
-						} 
-   						case 'Trabajando': { 
-					      	result='3'; 
-					      	break; 
-						}
-   						case 'Listo por revisar': { 
-					      	result='4'; 
-					      	break; 
-						} 						
-   						case 'Avance Asesor Listo': { 
-					      	result='5'; 
-					      	break; 
-						} 
-   						case 'Listo por pagar/enviar': { 
-					      	result='6'; 
-					      	break; 
-						} 	
-   						case 'Pendiente para t/ luego': { 
-					      	result='7'; 
-					      	break; 
-						} 
-
-						default: { 
-					      	result='8'; 
-     					 	break; 
-						   } 
-					} 
-
-                    let fu = new ClientFull(aa.id,aa.nombre,"",bb.id,bb.tema,"",bb.monto,bb.saldo,bb.universidad,bb.fecha_entrega,bb.estado, result + '_' + bb.fecha_entrega);
-                    this.items.push(fu);
-                    this.items_orig.push(fu);
-                  }
-                }
-	                this.tipo_orden = 1;
-                    this.sortEstado();
-
-            }        
-        );
-
-
-
-    }
+    let loading = this.service.getProducts().subscribe(
+      response => {
+        this.clientes = response;
+        for (var aa of response){
+          for (var bb of aa.trabajos){
+            let result = ""
+            switch(bb.estado) { 
+     					case 'Urgente': { 
+  					    result='1'; 
+  					    break; 
+  						} 
+     					case 'Asignado': { 
+  					    result='2'; 
+  					    break; 
+  						} 
+     					case 'Trabajando': { 
+  					    result='3'; 
+  					    break; 
+  						}
+     					case 'Listo por revisar': { 
+  					    result='4'; 
+  					    break; 
+  						} 						
+     					case 'Avance Asesor Listo': { 
+  					    result='5'; 
+  					    break; 
+  						} 
+     					case 'Listo por pagar/enviar': { 
+  					    result='6'; 
+  					    break; 
+  						} 	
+     					case 'Pendiente para t/ luego': { 
+  					    result='7'; 
+  					    break; 
+  						} 
+  						default: { 
+  					    result='8'; 
+       					break; 
+  						} 
+  					} 
+            let fu = new ClientFull(aa.id,aa.nombre,"",bb.id,bb.tema,"",bb.monto,bb.saldo,"",bb.universidad,bb.fecha_entrega,bb.estado, result + '_' + bb.fecha_entrega,"");
+            this.items.push(fu);
+            this.items_orig.push(fu);
+          }
+        }
+	    this.tipo_orden = 1;
+      this.sortEstado();
+      }        
+    );
+  }
 }
  

@@ -2,6 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Renderer2 } 
 import { Router, NavigationEnd, ActivatedRoute }                                from '@angular/router';
 import { trigger, state, style, animate, transition }                           from '@angular/animations';
 
+import { Service }   			      from 'app/service';
+import { Client }               from 'app/data-objects/cliente';
+import { ClientFull }               from 'app/data-objects/clienteFull';
 
 @Component({
   selector: 'to-do',
@@ -12,15 +15,48 @@ import { trigger, state, style, animate, transition }                           
 
 export class ReportsToDoComponent implements OnInit  {
 
-  constructor(    private router: Router
-){}
+	clientes : ClientFull[];
+	trabajo: ClientFull;
 
-	ngOnInit(): void {
+	constructor(private router: Router, private route : ActivatedRoute, private service: Service){
+		this.pendingJobs();
+		this.trabajo = new ClientFull("","","","","","","","","","","","","","");
+		this.clientes=[];
+	}
+	
+	ngOnInit(): void {};
+	
+	do(){};
+
+	pendingJobs(){
+        let loading = this.service.getPendingJobs().subscribe(
+            response => {
+                for (var cliente of response){
+          			for (var trabajo of cliente.trabajos){
+          				let cF = new ClientFull(
+          					cliente.id,
+          					cliente.nombre,
+          					"",
+          					trabajo.id,
+          					trabajo.tema,
+          					"",
+          					"",
+          					"",
+          					trabajo.carrera,
+          					trabajo.universidad,
+          					trabajo.fecha_entrega,
+          					"", 
+          					"",
+          					trabajo.asesor);
+            			this.clientes.push(cF);
+          			}
+          		}
+            }        
+        );
 	};
 
-
-	do(){
-		 alert("Se ha registrado los datos correctamente.");
+	addAsesor(asesor){
+	 	alert('el asesorse asigno correctamente');
 	}
 }
  

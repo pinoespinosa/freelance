@@ -12,13 +12,13 @@ export class ClientFull{
     public titulo: string,
     public monto: string,
     public saldo: string,
+    public carrera : string,
     public universidad : string,
 	public entrega : string,
 	public estado : string,
  	 	
-    public ordenEstado : string
-
-
+    public ordenEstado : string,
+    public asesor: string
 
   ) { }
 }

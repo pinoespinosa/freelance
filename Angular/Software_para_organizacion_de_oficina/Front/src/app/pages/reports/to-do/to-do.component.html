@@ -20,8 +20,6 @@
 
 </div>
 
-<!--falta que el campo asesor sea editable-->
-
 <table class="table table-new table-striped">
    <thead>
       <tr class="client-columns">
@@ -46,14 +44,34 @@
       </tr>
    </thead>
    <tbody class="centro" >
-      <tr *ngFor="let item of items" class="client-columns">
-         <td>{{item.nombre}} {{item.apellido}}</td>
-         <td>{{item.tema}}</td>
-         <td>{{item.carrera}}</td>
-         <td>{{item.universidad}}</td>
-         <td>{{item.entrega}}</td>
-         <td>{{item.asesor}}</td>
+      <tr *ngFor="let client of clientes" class="client-columns" (dblclick)="trabajo = client">
+         <td>{{client.nombre}}</td>
+         <td>{{client.tema}}</td>
+         <td>{{client.carrera}}</td>
+         <td>{{client.universidad}}</td>
+         <td>{{client.entrega}}</td>
+         <td (dblclick)="showDialogChangeAsesor = true">{{client.asesor}}</td>
       </tr>
    </tbody>
 </table>
+
+
+<!-- ###########################   CAMBIAR ASESOR   ############################### -->
+<change-state [(visible)]="showDialogChangeAsesor">
+  <h2 style="margin: 10px;margin-bottom: 20px;" >Cambiar y/o agregar Asesor</h2>
+  <div class="col-12" style="margin-bottom: 20px;">
+     Asesor Actual: {{trabajo.asesor}}
+  </div>
+  <div class="col-12" style="margin-bottom: 20px;">
+     <input #asesor type="text" class="form-control" placeholder="Asesor">
+  </div>
+  <div class="row">
+     <div class="col-6"> 
+        <button (click)="addAsesor(asesor.value)" (click)="showDialogChangeAsesor = !showDialogChangeAsesor" class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+     </div>
+     <div class="col-6"> 
+        <button (click)="showDialogChangeAsesor = !showDialogChangeAsesor" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
+     </div>
+  </div>
+</change-state>
 

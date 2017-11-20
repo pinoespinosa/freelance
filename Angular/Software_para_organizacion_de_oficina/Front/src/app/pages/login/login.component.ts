@@ -27,9 +27,14 @@ export class LoginComponent implements OnInit  {
 	do(){
 		let loginServ = this.service.logIn(this.usuario, this.password).subscribe(
 	      response =>{ 
-            localStorage.setItem('token',  response.token);
-            localStorage.setItem('rol',  response.rol);
-            this.router.navigate(['/home']);
+	      	if (response.token !== 'FAIL'){
+	      		localStorage.setItem('token',  response.token);
+            	localStorage.setItem('rol',  response.rol);
+            	this.router.navigate(['/home']);
+	      	} else {
+	      		alert ('contraseña y/o usuario incorrectos, por favor intente de nuevo');
+	      	}
+            
 	      }         
 	    );
 	};

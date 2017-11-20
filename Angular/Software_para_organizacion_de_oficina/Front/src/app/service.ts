@@ -32,6 +32,10 @@ export class Service {
     return this.http.get(this.server+"api/auth?user="+user+"&pass="+pass).map(this.extractData);
   }
 
+  getPendingJobs(): Observable<Client[]> {
+    return this.http.get(this.server+"api/client/pending").map(this.extractData);
+  }  
+
   getSalesGraphNewClientsCash(cantidadDias, cantidadValores): Observable<Number[]> {
     return this.http.get(this.server+"api/client/sells/period/chash/newClients?cantidadDias="+cantidadDias+"&cantidadValores="+cantidadValores).map(this.extractData);
   }  

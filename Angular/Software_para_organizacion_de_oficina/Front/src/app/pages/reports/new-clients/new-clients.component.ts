@@ -32,8 +32,6 @@ export class ReportsNewClientsComponent  {
   cliente: Client;
   cliente2: RowNewClient;
 
-
-
   items : RowNewClient[];
   items_orig : RowNewClient[];
 
@@ -41,17 +39,12 @@ export class ReportsNewClientsComponent  {
 
   esstado:string;
 
-
   showDialog = false;
-
 
   callType(est){
     this.esstado = est;
 
   }
-
-
-
 
   sortNombre(){
     this.items.sort((a, b) => {
@@ -65,8 +58,6 @@ export class ReportsNewClientsComponent  {
     });
     this.tipo_orden = this.tipo_orden * -1
   }
-
-
 
 	filterClientes(fechaDesde, fechaHasta){
 		console.log("update front")
