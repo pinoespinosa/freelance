@@ -3,6 +3,7 @@ import { Router, NavigationEnd, ActivatedRoute }                                
 import { trigger, state, style, animate, transition }                           from '@angular/animations';
 import { Service }   			      from 'app/service';
 import { Client }               from 'app/data-objects/cliente';
+import { Login }               from 'app/data-objects/login';
 
 
 @Component({
@@ -26,8 +27,8 @@ export class LoginComponent implements OnInit  {
 	do(){
 		let loginServ = this.service.logIn(this.usuario, this.password).subscribe(
 	      response =>{ 
-	        let aa = response;
-	        debugger;
+            localStorage.setItem('token',  response.token);
+            localStorage.setItem('rol',  response.rol);
 	      }         
 	    );
 	};

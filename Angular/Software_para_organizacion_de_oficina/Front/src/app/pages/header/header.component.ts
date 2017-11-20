@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit  {
   loggin:boolean = true;
 
 
-constructor(    private router: Router, private route : ActivatedRoute, private service: Service){
+constructor( private router: Router, private route : ActivatedRoute, private service: Service){
   }
 
 
@@ -46,17 +46,21 @@ getServerImport(){
   return this.service.getServer() + 'api/swagger-ui.html#!/Import32CSV/importCSVUsingPOST'
 }
 
+changeState(){
+  localStorage.clear();
+}
+
 ngOnInit(): void { 
 
-    localStorage.setItem('time', new Date().valueOf().toString() );
-    Observable.interval(1000 * 1).subscribe(x => { 
-console.log('pase' + localStorage.getItem('token'))
+    Observable.interval(500).subscribe(
+      x => { 
+        if(localStorage.getItem('token')){
+          this.loggin = false;
+          this.router.navigateByUrl('/home');
 
-    if(localStorage.getItem('token'))
-      this.loggin = false;
-    else
-        this.loggin = true;
-
+        }
+        else
+          this.loggin = true;
     }); 
 
 };

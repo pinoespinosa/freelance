@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 
 import { Client }               from 'app/data-objects/cliente';
 import { Trabajo }               from 'app/data-objects/trabajo';
+import { Login }               from 'app/data-objects/login';
 
 
 @Injectable()
@@ -27,7 +28,7 @@ export class Service {
   constructor(private http: Http, private http2: HttpClient ) {
   }
 
-  logIn(user, pass): Observable<Number[]> {
+  logIn(user, pass): Observable<Login> {
     return this.http.get(this.server+"api/auth?user="+user+"&pass="+pass).map(this.extractData);
   }
 
