@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AuthGuard }                        from './routing/auth-guard.service';
+import { PaymentAuthGuard }                        from './routing/payment-auth-guard.service';
 
 import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from   './pages/header/header.component';
@@ -67,7 +68,8 @@ import { Service }     from './service';
   ],
   providers: [ 
     Service,
-    AuthGuard
+    AuthGuard,
+    PaymentAuthGuard
   ],
   bootstrap: [AppComponent]
 })

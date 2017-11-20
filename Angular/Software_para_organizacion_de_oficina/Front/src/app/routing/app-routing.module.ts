@@ -2,6 +2,7 @@ import { NgModule }             							from '@angular/core';
 import { RouterModule, Routes } 							from '@angular/router';
 
 import { AuthGuard }                   			from '../routing/auth-guard.service';
+import { PaymentAuthGuard }                   			from '../routing/payment-auth-guard.service';
 
 import { LoginComponent }                   	from '../pages/login/login.component';
 import { HomeComponent }                   		from '../pages/home/home.component';
@@ -20,7 +21,7 @@ const routes: Routes = [
 	{ path: 'login',  				component: LoginComponent, 				data: {title: 'Login'} },
 	{ path: 'register',  			component: RegisterComponent, 			data: {title: 'Home'}, canActivate: [AuthGuard]},
 	{ path: 'register-work',  		component: RegisterWorkComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard]},
-	{ path: 'register-payment',		component: RegisterPaymentComponent, 	data: {title: 'Home'}, canActivate: [AuthGuard]},
+	{ path: 'register-payment',		component: RegisterPaymentComponent, 	data: {title: 'Home'}, canActivate: [PaymentAuthGuard]},
 	{ path: 'more-details',			component: MoreDetailsComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard]},
 	{ path: 'change-date',			component: ChangeDateComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard]},
 	{ path: 'home',  				component: HomeComponent, 				data: {title: 'Home'}, canActivate: [AuthGuard]},

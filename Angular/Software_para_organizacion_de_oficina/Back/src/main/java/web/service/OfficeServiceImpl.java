@@ -35,6 +35,12 @@ public class OfficeServiceImpl implements OfficeService {
 	}
 
 	@Override
+	public List<Cliente> getClientListPendientes() {
+		return datasource.getClientListPendientes();
+
+	}
+	
+	@Override
 	public Cliente createCliente(Cliente c) {
 		return datasource.createCliente(c);
 	}
@@ -207,6 +213,8 @@ public class OfficeServiceImpl implements OfficeService {
 		return datasource.create(user, pass, rol);
 
 	}
+
+
 
 
 

@@ -31,6 +31,15 @@ public class ClientController {
 	}
 
 	/**
+	 * Retorna la lista de clientes SOLO con trabajos pendientes
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/client/pending", method = RequestMethod.GET)
+	public List<Cliente> getClientListPendientes() {
+		return officeService.getClientListPendientes();
+	}
+	
+	/**
 	 * Retorna un cliente en base al ID
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")

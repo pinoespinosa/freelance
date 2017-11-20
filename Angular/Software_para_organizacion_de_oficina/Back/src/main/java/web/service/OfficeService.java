@@ -71,4 +71,6 @@ public interface OfficeService {
 
 	Auth create(String user, String pass, Rol rol);
 
+	List<Cliente> getClientListPendientes();
+
 }

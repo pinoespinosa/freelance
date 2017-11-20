@@ -64,6 +64,28 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
+	public List<Cliente> getClientListPendientes() {
+
+		List<Cliente> filteredClients = new ArrayList<>();
+
+		for (Cliente c : obj.getClientes()) {
+
+			Cliente copyClient = c.clone();
+			copyClient.getTrabajos().clear();
+			for (Trabajo t : c.getTrabajos()) {
+				if (t.getEstado().contains("Pendiente")) {
+					copyClient.getTrabajos().add(t);
+				}
+			}
+
+			if (!copyClient.getTrabajos().isEmpty())
+				filteredClients.add(copyClient);
+		}
+
+		return filteredClients;
+	}
+	
+	@Override
 	public Cliente createCliente(Cliente c) {
 		c.setId(System.currentTimeMillis()+"");
 		
@@ -734,9 +756,7 @@ public class DataSourceReal implements IDataSource {
 		if (obj.getUsers().containsKey(clave))
 		{
 			Auth aa = obj.getUsers().get(clave);
-			
 			return new Auth(aa.getRol(), ChipherTool.encrypt(aa.getRol().name() +"_"+ clave));
-			
 		}
 		
 		return new Auth(null, "FAIL");
@@ -751,5 +771,7 @@ public class DataSourceReal implements IDataSource {
 		infoToFile(obj, "file.json");
 		return valor;
 	}
+
+
 
 }

@@ -3,7 +3,7 @@ import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot }     
 
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class PaymentAuthGuard implements CanActivate {
 
 
   constructor(private router: Router) {}
@@ -14,7 +14,15 @@ export class AuthGuard implements CanActivate {
 
     if(localStorage.getItem('token'))
     {
-      return true;
+
+      if (localStorage.getItem('rol') == 'GERENTE'){
+        return true;
+      }
+      else
+      {
+        this.router.navigate(['/home']);
+        return false;
+      }
     }
     else
     {
