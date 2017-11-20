@@ -6,7 +6,7 @@ import { PaymentAuthGuard }                   			from '../routing/payment-auth-g
 
 import { LoginComponent }                   	from '../pages/login/login.component';
 import { HomeComponent }                   		from '../pages/home/home.component';
-import { RegisterUserComponent }                from '../pages/register/register-user.component';
+import { RegisterUserComponent }                from '../pages/register-user/register-user.component';
 
 import { RegisterComponent }                   	from '../pages/register/register.component';
 import { RegisterWorkComponent }               	from '../pages/register-work/register-work.component';

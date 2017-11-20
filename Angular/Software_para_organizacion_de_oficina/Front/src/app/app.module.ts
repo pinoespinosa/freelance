@@ -1,20 +1,22 @@
+// ######################## Dependencias de Angular ########################
 import { BrowserModule }                    from '@angular/platform-browser';
 import { BrowserAnimationsModule }          from '@angular/platform-browser/animations';
 import { NgModule }                         from '@angular/core';
 import { HttpClientModule }                 from '@angular/common/http';
 import { HttpModule }                       from '@angular/http';
+import { ChartsModule }                     from 'ng2-charts';
 
+// ######################## Manejode permisos y rutas ########################
 import { AuthGuard }                        from './routing/auth-guard.service';
 import { PaymentAuthGuard }                 from './routing/payment-auth-guard.service';
 import { AppRoutingModule }                 from './routing/app-routing.module';
 
-import { ChartsModule }                     from 'ng2-charts';
-
+// ######################## Paginas del sitio ########################
 import { LoginComponent }                   from './pages/login/login.component';
 import { HeaderComponent }                  from './pages/header/header.component';
 import { HomeComponent }                    from './pages/home/home.component';
 import { RegisterComponent }                from './pages/register/register.component';
-import { RegisterUserComponent }            from './pages/register/register-user.component';
+import { RegisterUserComponent }            from './pages/register-user/register-user.component';
 import { RegisterWorkComponent }            from './pages/register-work/register-work.component';
 import { RegisterPaymentComponent }         from './pages/register-payment/register-payment.component';
 import { MoreDetailsComponent }             from './pages/more-details/more-details.component';
@@ -37,17 +39,22 @@ import { Service }                          from './service';
     DialogComponent,
     HeaderComponent,
     AppComponent,
+
     RegisterComponent,
     RegisterWorkComponent,
     RegisterPaymentComponent,
-    MoreDetailsComponent,
-    ChangeDateComponent,
+    RegisterUserComponent,
+
     HomeComponent,
+    MoreDetailsComponent,
+    
     ReportsToDoComponent,
     ReportsIncomesComponent, 
     ReportsNewClientsComponent,
     ReportsOldClientsComponent,
     ReportsIndicatorsComponent,
+    
+    ChangeDateComponent,
     ChangeStateDialogComponent
 
   ],
