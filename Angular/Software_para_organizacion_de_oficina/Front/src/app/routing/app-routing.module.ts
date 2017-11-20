@@ -6,6 +6,8 @@ import { PaymentAuthGuard }                   			from '../routing/payment-auth-g
 
 import { LoginComponent }                   	from '../pages/login/login.component';
 import { HomeComponent }                   		from '../pages/home/home.component';
+import { RegisterUserComponent }                from '../pages/register/register-user.component';
+
 import { RegisterComponent }                   	from '../pages/register/register.component';
 import { RegisterWorkComponent }               	from '../pages/register-work/register-work.component';
 import { RegisterPaymentComponent }             from '../pages/register-payment/register-payment.component';
@@ -21,6 +23,7 @@ const routes: Routes = [
 	{ path: 'login',  				component: LoginComponent, 				data: {title: 'Login'} },
 	{ path: 'register',  			component: RegisterComponent, 			data: {title: 'Home'}, canActivate: [AuthGuard]},
 	{ path: 'register-work',  		component: RegisterWorkComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard]},
+	{ path: 'register-user',  		component: RegisterUserComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard]},
 	{ path: 'register-payment',		component: RegisterPaymentComponent, 	data: {title: 'Home'}, canActivate: [PaymentAuthGuard]},
 	{ path: 'more-details',			component: MoreDetailsComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard]},
 	{ path: 'change-date',			component: ChangeDateComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard]},
