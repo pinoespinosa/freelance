@@ -88,11 +88,10 @@ export class RegisterWorkComponent implements OnInit  {
 
     let loading = this.service.crearTrabajo(this.clientes[this.cliSelect.selectedIndex-1].id,trab).subscribe(
       response => {
-        let yy = response;
+        let nuevoTrabajo = response;
         alert("Se ha registrado los datos correctamente.")
-
         if (conti)
-          this.router.navigateByUrl('/register-payment');
+          this.router.navigateByUrl('/register-payment?cliente='+this.id+'&trabajo='+nuevoTrabajo.id);
         else
           this.router.navigateByUrl('/home');
       }        
@@ -101,6 +100,7 @@ export class RegisterWorkComponent implements OnInit  {
     
   updateClii(valor){
     this.cliSelect = valor;
+    this.id = this.clientes[this.cliSelect.selectedIndex-1].id;
   }
       
   getUniversidades(): void {

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from   './pages/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -36,6 +37,7 @@ import { Service }     from './service';
 
 @NgModule({
   declarations: [
+    LoginComponent,
     DialogComponent,
     HeaderComponent,
     AppComponent,

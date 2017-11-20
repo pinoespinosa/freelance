@@ -33,10 +33,17 @@
          <table class="table table-new table-striped">
             <thead>
                <tr class="client-columns" >
-                  <th>  Fecha de carga
+                  <th>  
+                     Fecha de carga
                   </th>
                   <th>
                      Monto
+                  </th>
+                  <th>
+                     Medio de pago
+                  </th>
+                  <th>
+                     Detalles
                   </th>
                </tr>
             </thead>
@@ -44,6 +51,8 @@
                <tr *ngFor="let req of trabajo.pagos" class="client-columns" (dblclick)="showDialogAddReq = !showDialogAddReq">
                <td>{{req.fecha_pago}}</td>
                <td>{{req.abono}}</td>
+               <td>{{req.forma_pago}}</td>
+               <td>{{req.detalle}}</td>
                </tr>
             </tbody>
          </table>
@@ -53,7 +62,14 @@
    <div class="row register-row">
       <div class="col-4">
          <div class="register-title">Valor del Nuevo Abono</div>
-         <input type="number" class="form-control" placeholder="Valor" (keyup)="onKey($event)" (change)="onKey($event)">
+         <input 
+            #valor
+            type="number" 
+            class="form-control" 
+            placeholder="Valor" 
+            (keyup)="onKey($event)" 
+            (change)="onKey($event)"
+            (change)="addNuevoPago('abono', valor.value)">
       </div>
    </div>
    <div class="row register-row">
@@ -66,7 +82,7 @@
    </div>
    <div class="row register-row">
       <div class="col-4" style="font-size: 15px;" >
-         <select #lug style="width: 100%;" >
+         <select #metodo style="width: 100%;" (change)="addNuevoPago('forma_pago', metodo.value)">
             <option disabled hidden [value]="selectUndefinedOptionValue">-- Forma de pago --</option>
             <option *ngFor="let metodo of metodosPago">{{metodo}}</option>
          </select>
@@ -74,8 +90,13 @@
    </div>
    <div class="row register-row">
       <div class="col-4">
-         <label for="exampleFormControlTextarea1">Observaciones</label>
-         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+         <label for="exampleFormControlTextarea1">Detalles de pago</label>
+         <textarea 
+            #observaciones
+            class="form-control" 
+            id="exampleFormControlTextarea1" 
+            rows="3" 
+            (change)="addNuevoPago('detalle', observaciones.value)"></textarea>
       </div>
    </div>
    <hr />

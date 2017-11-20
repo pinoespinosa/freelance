@@ -27,6 +27,10 @@ export class Service {
   constructor(private http: Http, private http2: HttpClient ) {
   }
 
+  logIn(user, pass): Observable<Number[]> {
+    return this.http.get(this.server+"api/auth?user="+user+"&pass="+pass).map(this.extractData);
+  }
+
   getSalesGraphNewClientsCash(cantidadDias, cantidadValores): Observable<Number[]> {
     return this.http.get(this.server+"api/client/sells/period/chash/newClients?cantidadDias="+cantidadDias+"&cantidadValores="+cantidadValores).map(this.extractData);
   }  

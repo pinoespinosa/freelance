@@ -23,7 +23,7 @@ export class RegisterPaymentComponent implements OnInit  {
 	clienteID = ''
 	cliente : Client = new Client("", "", "" , "", "", "", "", "", "", null);
 	clientes :Client[];
-
+	nuevoPago: Pago = new Pago("","","1234","forma","det")
 	trabajoID = ''
 	trabajo : Trabajo = new Trabajo("","","","", "","","","", "","","",null,null )
 
@@ -56,9 +56,7 @@ export class RegisterPaymentComponent implements OnInit  {
 
 	do(){
 
-		let pago = new Pago("","","1234","","")
-
-        this.service.crearPago(this.clienteID, this.trabajoID, pago).subscribe(
+        this.service.crearPago(this.clienteID, this.trabajoID, this.nuevoPago).subscribe(
             response => {
                 let trabajosdd = response;
                	alert("Se ha registrado los datos correctamente.");
@@ -109,7 +107,9 @@ export class RegisterPaymentComponent implements OnInit  {
 		this.metodoPagoSelec = (<HTMLInputElement>event.target).innerHTML;
 	}
 
-
+	addNuevoPago(key, value) {
+		this.nuevoPago[key] = value;
+	}
 	
 }
  
