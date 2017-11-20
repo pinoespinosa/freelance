@@ -732,7 +732,12 @@ public class DataSourceReal implements IDataSource {
 		String clave = ChipherTool.encrypt(user + pass);
 		
 		if (obj.getUsers().containsKey(clave))
-			return obj.getUsers().get(clave);
+		{
+			Auth aa = obj.getUsers().get(clave);
+			
+			return new Auth(aa.getRol(), ChipherTool.encrypt(aa.getRol().name() +"_"+ clave));
+			
+		}
 		
 		return new Auth(null, "FAIL");
 		
