@@ -102,12 +102,12 @@
          <td>{{item.entrega}}</td>
          <td style="min-width: 110px;">
             <span  style="font-size: 100%;background-color: #f95454;" *ngIf="item.estado == 'Urgente'" class="badge">{{item.estado}}</span>
-            <span  style="font-size: 100%;background-color: #f9c854;" *ngIf="item.estado == 'Asignado'" class="badge">{{item.estado}}</span>
+            <span  style="font-size: 100%;background-color: #2cc9f6;" *ngIf="item.estado == 'Asignado'" class="badge">{{item.estado}}</span>
             <span  style="font-size: 100%;background-color: #b6b1b1;" *ngIf="item.estado == 'Trabajando'" class="badge">{{item.estado}}</span>
             <span  style="font-size: 100%;background-color: #73cb73;" *ngIf="item.estado == 'Listo por revisar'" class="badge">{{item.estado}}</span>
             <span  style="font-size: 100%;background-color: #96e1d9;" *ngIf="item.estado == 'Avance Asesor Listo'" class="badge">{{item.estado}}</span>
-            <span  style="font-size: 100%;background-color: #f98733b3;" *ngIf="item.estado == 'Listo por pagar/enviar'" class="badge">{{item.estado}}</span>
-            <span  style="font-size: 100%;background-color: #e9cb77b3;" *ngIf="item.estado == 'Pendiente para t/ luego'" class="badge">{{item.estado}}</span>
+            <span  style="font-size: 100%;background-color: #f6742c;" *ngIf="item.estado == 'Listo por pagar/enviar'" class="badge">{{item.estado}}</span>
+            <span  style="font-size: 100%;background-color: #f9f267;" *ngIf="item.estado == 'Pendiente para t/ luego'" class="badge">{{item.estado}}</span>
             
          </td>
          <td style="text-align: left;text-transform: capitalize;" >{{ item.tema.toLowerCase()  | slice:0:60}}</td>
