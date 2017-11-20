@@ -6,6 +6,15 @@
 .user-row {
 	margin-bottom: 10px;
 }
+.crear-usuario-row {
+	margin-bottom: 10px;
+}
+.dropdown-select {
+	width: 100%;
+    height: 36px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
 .ingresar-button-row {
 	margin: 10px;
 }

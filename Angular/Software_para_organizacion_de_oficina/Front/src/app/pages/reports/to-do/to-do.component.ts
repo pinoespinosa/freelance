@@ -56,7 +56,10 @@ export class ReportsToDoComponent implements OnInit  {
 	};
 
 	addAsesor(asesor){
-	 	alert('el asesorse asigno correctamente');
+	 	//debugger;
+
+    this.service.editAsesor(this.trabajo.clienteID, this.trabajo.id_trabajo, asesor).subscribe();
+    this.trabajo.asesor = asesor;
 	}
 }
  

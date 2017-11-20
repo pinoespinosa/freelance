@@ -31,6 +31,9 @@ export class Service {
   logIn(user, pass): Observable<Login> {
     return this.http.get(this.server+"api/auth?user="+user+"&pass="+pass).map(this.extractData);
   }
+  createUser(user, pass, rol, token): Observable<Login> {
+    return this.http.get(this.server+"api/createUser?user="+user+"&pass="+pass+"&rol="+rol+"&token="+token).map(this.extractData);
+  }
 
   getPendingJobs(): Observable<Client[]> {
     return this.http.get(this.server+"api/client/pending").map(this.extractData);
@@ -76,6 +79,12 @@ export class Service {
       var headers = new Headers();
       headers.append('acces-control-allow-origin','*')      
       return this.http.post(this.server + 'api/'+idCliente+'/trabajo/edit',trabajo, { headers: headers }).map(this.extractData);
+  }
+
+  editAsesor(idCliente, idTrabajo,asesor): Observable<Client> {
+      var headers = new Headers();
+      headers.append('acces-control-allow-origin','*')      
+      return this.http.post(this.server + 'api/'+idCliente+'/'+idTrabajo+'/asesor?asesor='+asesor, { headers: headers }).map(this.extractData);
   }
 
   crearTrabajo(idCliente, trabajo): Observable<Client> {

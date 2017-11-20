@@ -16,6 +16,7 @@ import { Login }               from 'app/data-objects/login';
 export class RegisterUserComponent implements OnInit  {
 	usuario= '';
 	password= '';
+	rol= '';
 	constructor( private router: Router, private service: Service ) {
 
 	};
@@ -25,11 +26,11 @@ export class RegisterUserComponent implements OnInit  {
 	};
 
 	do(){
-		let loginServ = this.service.logIn(this.usuario, this.password).subscribe(
+		let token = localStorage.getItem('token');
+		this.service.createUser(this.usuario, this.password, this.rol, token).subscribe(
 	      response =>{ 
-            localStorage.setItem('token',  response.token);
-            localStorage.setItem('rol',  response.rol);
-            this.router.navigate(['/home']);
+            const a = response;
+            alert('Usuario creado exitosamente');
 	      }         
 	    );
 	};

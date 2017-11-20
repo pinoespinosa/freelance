@@ -1,7 +1,10 @@
 <div class="login-view">
+	<div class="col-md-4 offset-md-4">
+		<h2>Crear usuario</h2>
+	</div>
   	
-	<div class="row user-row">
-	   <div class="col-md-4 offset-md-4">
+	<div class="row crear-usuario-row">
+	   <div class="col-md-4">
 	   	  <input 
 	   	  	#usuario 
 	   	  	type="text" 
@@ -11,8 +14,8 @@
 	   	  	(change)="guardarUser('usuario', usuario.value)">
 	   </div>
 	</div>
-	<div class="row password-row">
-	   <div class="col-md-4 offset-md-4">
+	<div class="row crear-usuario-row">
+	   <div class="col-md-4">
 	   	  <input 
 	   	  	#password 
 	   	  	type="password" 
@@ -22,8 +25,20 @@
 	   	  	(change)="guardarUser('password', password.value)">
 	   </div>
 	</div>
+	<div class="row crear-usuario-row">
+	   <div class="col-md-4">
+	   	  <select #rol class="dropdown-select" (change)="guardarUser('rol', rol.value)">
+            <option [value]="selectUndefinedOptionValue">-- Roles --</option>
+            <option value="GERENTE" >Gerente</option>
+            <option value="ADMINISTRADOR" >Administrador</option>
+            <option value="JEFE_ADMINIST" >Jefe administrativo</option>
+            <option value="JEFE_OPERATIVO" >Jefe operativo</option>
+            <option value="AUDITOR" >Auditor</option>
+         </select>
+	   </div>
+	</div>
 	<div class="row ingresar-button-row">
-	   <div class="col-md-4 offset-md-7">
+	   <div class="col-md-4 offset-md-4">
 	   	  <button (click)="do()" type="button" class="btn btn-primary">Ingresar</button>
 	   </div>
 	</div> 
