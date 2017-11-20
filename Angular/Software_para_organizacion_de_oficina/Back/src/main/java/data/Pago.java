@@ -6,7 +6,7 @@ public class Pago {
 	private String fecha_pago;
 	private String abono;
 	private String forma_pago;
-	private String observaciones;
+	private String detalle;
 
 	public String getAbono() {
 		return abono;
@@ -14,16 +14,6 @@ public class Pago {
 
 	public void setAbono(String abono) {
 		this.abono = abono;
-	}
-
-	public String getObservaciones() {
-		if (observaciones==null)
-			return "-";
-		return observaciones;
-	}
-
-	public void setObservaciones(String observaciones) {
-		this.observaciones = observaciones;
 	}
 
 	public String getId() {
@@ -51,6 +41,16 @@ public class Pago {
 
 	public void setFecha_pago(String fecha_pago) {
 		this.fecha_pago = fecha_pago;
+	}
+
+	public String getDetalle() {
+		if (detalle==null)
+			return "-";
+		return detalle;
+	}
+
+	public void setDetalle(String detalle) {
+		this.detalle = detalle;
 	}
 	
 }

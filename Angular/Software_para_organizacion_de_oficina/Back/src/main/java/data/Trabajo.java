@@ -159,7 +159,7 @@ public class Trabajo {
 		String tex2 = "";
 		for (int i = 0; i < 10; i++) {
 			if (i < pagos.size())
-				tex2 += '"' + pagos.get(i).getForma_pago() + '"' + ',' + '"' + pagos.get(i).getObservaciones() + '"' + ',';
+				tex2 += '"' + pagos.get(i).getForma_pago() + '"' + ',' + '"' + pagos.get(i).getDetalle() + '"' + ',';
 			else
 				tex2 += "\"-\",\"-\",";
 		}

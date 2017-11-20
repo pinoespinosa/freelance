@@ -41,8 +41,7 @@ public class TrabajoController {
 	@RequestMapping(value = "{idCliente}/trabajo", method = RequestMethod.POST)
 	@ResponseBody
 	public Trabajo createTrabajo(@PathVariable final String idCliente, @RequestBody final Trabajo trabajo) {
-		officeService.createTrabajo(idCliente, trabajo);
-		return trabajo;
+		return officeService.createTrabajo(idCliente, trabajo);
 	}
 	
 	/**

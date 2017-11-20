@@ -1,6 +1,7 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 public class Info {
@@ -11,6 +12,8 @@ public class Info {
 	private List<String> carreras;
 	private List<String> dondeSeEntero;
 
+	private Hashtable<String, Auth> users = new Hashtable<>();
+	
 	public List<Cliente> getClientes() {
 		return clientes;
 	}
@@ -51,6 +54,16 @@ public class Info {
 
 	public void setDondeSeEntero(List<String> dondeSeEntero) {
 		this.dondeSeEntero = dondeSeEntero;
+	}
+
+	public Hashtable<String, Auth> getUsers() {
+		if (users==null)
+			users= new Hashtable<>();
+		return users;
+	}
+
+	public void setUsers(Hashtable<String, Auth> users) {
+		this.users = users;
 	}
 
 }

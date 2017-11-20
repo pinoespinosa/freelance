@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import data.Auth;
+import data.Auth.Rol;
 import data.Cliente;
 import data.Pago;
 import data.Requerimiento;
@@ -23,7 +25,7 @@ public interface OfficeService {
 
 	void createUniversidad(String universidad);
 
-	void createTrabajo(String idCliente, Trabajo trabajo);
+	Trabajo createTrabajo(String idCliente, Trabajo trabajo);
 
 	void importCSV(MultipartFile file);
 
@@ -64,5 +66,9 @@ public interface OfficeService {
 	Pago addPago(String clienteID, String trabajoID, Pago pago);
 
 	Trabajo editTrabajo(String idCliente, Trabajo user);
+
+	Auth auth(String user, String pass);
+
+	Auth create(String user, String pass, Rol rol);
 
 }

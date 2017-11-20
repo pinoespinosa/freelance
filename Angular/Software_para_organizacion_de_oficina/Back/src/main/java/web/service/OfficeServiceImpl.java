@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import data.Auth;
+import data.Auth.Rol;
 import data.Cliente;
 import data.Pago;
 import data.Requerimiento;
@@ -49,8 +51,8 @@ public class OfficeServiceImpl implements OfficeService {
 	}
 
 	@Override
-	public void createTrabajo(String idCliente, Trabajo trabajo) {
-		datasource.createTrabajo(idCliente, trabajo);
+	public Trabajo createTrabajo(String idCliente, Trabajo trabajo) {
+		return datasource.createTrabajo(idCliente, trabajo);
 		
 	}
 
@@ -193,6 +195,20 @@ public class OfficeServiceImpl implements OfficeService {
 	public Trabajo editTrabajo(String idCliente, Trabajo trabajo) {
 		return datasource.editTrabajo(idCliente, trabajo);
 	}
+
+	@Override
+	public Auth auth(String user, String pass) {
+		return datasource.auth(user, pass);
+
+	}
+
+	@Override
+	public Auth create(String user, String pass, Rol rol) {
+		return datasource.create(user, pass, rol);
+
+	}
+
+
 
 
 

@@ -17,11 +17,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Strings;
 
+import data.Auth;
+import data.Auth.Rol;
 import data.Cliente;
 import data.Info;
 import data.Pago;
 import data.Requerimiento;
 import data.Trabajo;
+import spring.ChipherTool;
 
 public class DataSourceReal implements IDataSource {
 
@@ -63,6 +66,10 @@ public class DataSourceReal implements IDataSource {
 	@Override
 	public Cliente createCliente(Cliente c) {
 		c.setId(System.currentTimeMillis()+"");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		c.setFechaSuscripcion(sdf.format(new Date()));
+		
 		c.setTrabajos(new ArrayList<>());
 		obj.getClientes().add(c);
 		return c;
@@ -81,7 +88,7 @@ public class DataSourceReal implements IDataSource {
 	
 
 	@Override
-	public void createTrabajo(String idCliente, Trabajo trabajo) {
+	public Trabajo createTrabajo(String idCliente, Trabajo trabajo) {
 		Cliente c = new Cliente();
 		c.setId(idCliente);
 
@@ -91,6 +98,7 @@ public class DataSourceReal implements IDataSource {
 		
 		original.getTrabajos().add(trabajo);
 		infoToFile(obj, "file.json");
+		return trabajo;
 	}
 
 	@Override
@@ -692,6 +700,8 @@ public class DataSourceReal implements IDataSource {
 	@Override
 	public Pago addPago(String clienteID, String trabajoID, Pago pago) {
 		Trabajo trabajo = getTrabajo(clienteID, trabajoID);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		pago.setFecha_pago(sdf.format(new Date()));
 		trabajo.getPagos().add(pago);
 		return pago;
 	}
@@ -714,6 +724,27 @@ public class DataSourceReal implements IDataSource {
 				
 		infoToFile(obj, "file.json");
 		return dbTrab;
+	}
+
+	@Override
+	public Auth auth(String user, String pass) {
+
+		String clave = ChipherTool.encrypt(user + pass);
+		
+		if (obj.getUsers().containsKey(clave))
+			return obj.getUsers().get(clave);
+		
+		return new Auth(null, "FAIL");
+		
+	}
+
+	@Override
+	public Auth create(String user, String pass, Rol rol) {
+		String clave = ChipherTool.encrypt(user + pass);
+		Auth valor = new Auth(rol,clave);
+		obj.getUsers().put(clave, valor);
+		infoToFile(obj, "file.json");
+		return valor;
 	}
 
 }

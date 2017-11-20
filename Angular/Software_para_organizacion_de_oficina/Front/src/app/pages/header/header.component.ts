@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Renderer2 } 
 import { Router, NavigationEnd, ActivatedRoute }                                from '@angular/router';
 import { trigger, state, style, animate, transition }                           from '@angular/animations';
 import { Service }              from 'app/service';
+import { Observable }                                       from 'rxjs/Rx'; 
 
 
 @Component({
@@ -30,6 +31,9 @@ import { Service }              from 'app/service';
 
 export class HeaderComponent implements OnInit  {
 
+  loggin:boolean = true;
+
+
 constructor(    private router: Router, private route : ActivatedRoute, private service: Service){
   }
 
@@ -43,6 +47,18 @@ getServerImport(){
 }
 
 ngOnInit(): void { 
+
+    localStorage.setItem('time', new Date().valueOf().toString() );
+    Observable.interval(1000 * 1).subscribe(x => { 
+console.log('pase' + localStorage.getItem('token'))
+
+    if(localStorage.getItem('token'))
+      this.loggin = false;
+    else
+        this.loggin = true;
+
+    }); 
+
 };
 
 }
