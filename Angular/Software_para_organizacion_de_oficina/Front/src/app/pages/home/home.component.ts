@@ -45,9 +45,6 @@ export class HomeComponent   {
 
 
   constructor(private service: Service) {
-
-    console.log('construct de home')
-
     this.getWorks();
     this.items=[];
     this.items_orig = [];

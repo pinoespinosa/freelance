@@ -4,25 +4,28 @@ import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot }     
 
 @Injectable()
 export class AuthGuard implements CanActivate {
+
+
   constructor(private router: Router) {}
 
-  private isLoggedIn:boolean = false;
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    
 
-    if(localStorage.getItem('token')){
-      return true
+  canActivate() {
+
+    if(localStorage.getItem('token'))
+    {
+      console.log("No Fui rebotado");
+      return true;
     }
     else
     {
       console.log("Fui rebotado")
       this.router.navigate(['/login']);
       return false;
+    }  
+
     }
 
 
 
-
-  }
 }

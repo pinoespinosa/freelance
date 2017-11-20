@@ -54,10 +54,9 @@ ngOnInit(): void {
 
     Observable.interval(500).subscribe(
       x => { 
+
         if(localStorage.getItem('token')){
           this.loggin = false;
-          this.router.navigateByUrl('/home');
-
         }
         else
           this.loggin = true;

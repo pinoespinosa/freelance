@@ -113,7 +113,7 @@
          <td style="text-align: left;text-transform: capitalize;" >{{ item.tema.toLowerCase()  | slice:0:60}}</td>
          <td>{{item.monto}}</td>
          <td>{{item.saldo}}</td>
-         <td class="plus-info-column">
+        <td class="plus-info-column">
 
      
 
@@ -123,16 +123,16 @@
               <span class="tooltiptext">Ver detalles</span>
             </div>
           </a>
-         </td>
-         <td class="plus-info-column">   
-            <a class="btn clients-actions" [routerLink]="['/register-payment']" [queryParams]="{ cliente: item.clienteID, trabajo: item.id_trabajo }"  >
+        </td>
+        <td class="plus-info-column">   
+            <a class="btn clients-actions" [routerLink]="['/register-payment']" [queryParams]="{ cliente: item.clienteID, trabajo: item.id_trabajo }">
             <div class="tooltip">              
               <img class="clients-img" src="./assets/pago.png" alt="">
               <span class="tooltiptext">Agregar Pago</span>
             </div>
 
             </a>
-          </td>
+        </td>
          <td class="plus-info-column">
             <a class="btn clients-actions" (click)="cliente2 = item" (click)="showDialogAddReq = true" >
               <div class="tooltip">              
