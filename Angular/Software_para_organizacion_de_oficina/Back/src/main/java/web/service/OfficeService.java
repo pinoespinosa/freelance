@@ -3,8 +3,11 @@ package web.service;
 import java.util.Hashtable;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.web.multipart.MultipartFile;
 
+import data.Auditoria;
 import data.Auth;
 import data.Auth.Rol;
 import data.Cliente;
@@ -55,7 +58,7 @@ public interface OfficeService {
 
 	List<Float> getSellsAmmountByTimeNewClients(int cantidadDias, int cantidadValores);
 
-	void exportCSV();
+	void exportCSV(HttpServletResponse servletResponse);
 
 	void createCarrera(String carrera);
 
@@ -76,5 +79,7 @@ public interface OfficeService {
 	Trabajo updateAsesor(String clienteID, String trabajoID, String asesor);
 
 	Auth editUser(String user, String pass, Rol rol);
+
+	List<Auditoria> getAuditoria();
 
 }

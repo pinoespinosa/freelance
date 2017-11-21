@@ -5,8 +5,11 @@ import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.web.multipart.MultipartFile;
 
+import data.Auditoria;
 import data.Auth;
 import data.Auth.Rol;
 import data.Cliente;
@@ -54,7 +57,7 @@ public interface IDataSource {
 
 	List<Float>  getSellsAmmountByTimeNewClients(int cantidadDias, int cantidadValores);
 
-	void exportCSV();
+	void exportCSV(HttpServletResponse servletResponse);
 
 	void createCarrera(String carrera);
 
@@ -76,4 +79,8 @@ public interface IDataSource {
 
 	Auth editUser(String user, String pass, Rol rol);
 
+	String audit(Auditoria audit);
+
+	List<Auditoria> getAuditoria();
+	
 }

@@ -3,7 +3,7 @@ package data;
 public class Auth {
 
 	public enum Rol {
-		ADMINISTRADOR, AUDITOR, JEFE_ADMINIST, JEFE_OPERATIVO,
+		ADMINISTRADOR, JEFE_ADMINIST, JEFE_OPERATIVO,
 		GERENTE
 	}
 	

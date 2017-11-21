@@ -11,6 +11,8 @@ public class Info {
 	private List<String> universidades;
 	private List<String> carreras;
 	private List<String> dondeSeEntero;
+	private List<Auditoria> audit;
+	 
 
 	private Hashtable<String, Auth> users = new Hashtable<>();
 	
@@ -65,5 +67,16 @@ public class Info {
 	public void setUsers(Hashtable<String, Auth> users) {
 		this.users = users;
 	}
+
+	public List<Auditoria> getAudit() {
+		if (audit==null)
+			audit= new ArrayList<Auditoria>();
+		return audit;
+	}
+
+	public void setAudit(List<Auditoria> audit) {
+		this.audit = audit;
+	}
+
 
 }

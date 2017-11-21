@@ -14,6 +14,8 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
+import data.Auth.Rol;
+
 
 public final class ChipherTool
 {
@@ -24,6 +26,15 @@ public final class ChipherTool
 
 	}
 
+	public static Rol getRol(String token) {
+		return Rol.valueOf(ChipherTool.decrypt(token).split("_")[0]);
+	}
+	
+	public static String getUser(String token) {
+		String token2 = ChipherTool.decrypt(token).split("_")[1];
+		return ChipherTool.decrypt(token2).split("_")[0];
+	}
+	
 	public static String encrypt(final String property)
 	{
 		try

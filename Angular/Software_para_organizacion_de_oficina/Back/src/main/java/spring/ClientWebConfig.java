@@ -20,9 +20,13 @@ public class ClientWebConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public IDataSource createDataSource() {
 		return new DataSourceReal();
-				
-			}
+	}
     
+	@Bean
+	public AccesManager accessManager() {
+		return new AccesManager();
+	}
+	
     // API
 
 }

@@ -15,12 +15,13 @@ export class PaymentAuthGuard implements CanActivate {
     if(localStorage.getItem('token'))
     {
 
-      if (localStorage.getItem('rol') == 'GERENTE'){
+      if (localStorage.getItem('rol') == 'GERENTE'){      
         return true;
       }
       else
       {
         this.router.navigate(['/home']);
+        alert("Accion no permitida");
         return false;
       }
     }
