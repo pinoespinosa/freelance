@@ -47,10 +47,14 @@ export class RegisterWorkComponent implements OnInit  {
   	let page = '0'
     let sub = this.route
       .queryParams
-      .subscribe(params => {
-        // Defaults to 0 if no query param provided.
-        page = params['page'];
-      });
+      .subscribe(
+
+        result => {
+          // Defaults to 0 if no query param provided.
+          page = result['page'];
+        }
+
+      );
 
   	console.log(page)
 
@@ -94,7 +98,11 @@ export class RegisterWorkComponent implements OnInit  {
           this.router.navigateByUrl('/register-payment?cliente='+this.id+'&trabajo='+nuevoTrabajo.id);
         else
           this.router.navigateByUrl('/home');
-      }        
+      },
+      error => {
+        // Defaults to 0 if no query param provided.
+        alert('Usted no tiene permisos para realizar la operacion.')
+      }         
     );
   }
     
@@ -134,7 +142,11 @@ export class RegisterWorkComponent implements OnInit  {
           else 
             return 0;
         });
-      }        
+      },
+      error => {
+        // Defaults to 0 if no query param provided.
+        alert('Usted no tiene permisos para realizar la operacion.')
+      } 
     );
   }
 
@@ -152,12 +164,16 @@ export class RegisterWorkComponent implements OnInit  {
           else 
             return 0;
         });
+      },
+      error => {
+        // Defaults to 0 if no query param provided.
+        alert('Usted no tiene permisos para realizar la operacion.')
       }        
     );
   }
 
   addDondeEntero(nuevaDE) {
-    this.service.crearUniversidad(nuevaDE).subscribe(
+    this.service.crearDondeEntero(nuevaDE).subscribe(
       response => {
         let lE = response;
         this.lugarEntero.push(nuevaDE);
@@ -170,6 +186,10 @@ export class RegisterWorkComponent implements OnInit  {
           else 
             return 0;
         });
+      },
+      error => {
+        // Defaults to 0 if no query param provided.
+        alert('Usted no tiene permisos para realizar la operacion.')
       }        
     );
   }

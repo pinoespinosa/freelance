@@ -61,7 +61,11 @@ export class RegisterPaymentComponent implements OnInit  {
                 let trabajosdd = response;
                	alert("Se ha registrado los datos correctamente.");
 
-          }        
+          },
+	      error => {
+	        // Defaults to 0 if no query param provided.
+	        alert('Usted no tiene permisos para realizar la operacion.')
+	      }         
         );
 
 	}

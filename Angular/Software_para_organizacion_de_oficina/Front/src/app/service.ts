@@ -65,61 +65,71 @@ export class Service {
 
   createCliente(client): Observable<Client> {
       var headers = new Headers();
-      headers.append('acces-control-allow-origin','*')      
+      headers.append('acces-control-allow-origin','*');
+      headers.append('acces-token', localStorage.getItem('token'));
       return this.http.post(this.server + 'api/client/create',client, { headers: headers }).map(this.extractData);
   }
 
   editCliente(client): Observable<Client> {
       var headers = new Headers();
-      headers.append('acces-control-allow-origin','*')      
+      headers.append('acces-control-allow-origin','*');
+      headers.append('acces-token', localStorage.getItem('token'));
       return this.http.post(this.server + 'api/client/edit',client, { headers: headers }).map(this.extractData);
   }
 
   editTrabajo(idCliente, trabajo): Observable<Client> {
       var headers = new Headers();
-      headers.append('acces-control-allow-origin','*')      
+      headers.append('acces-control-allow-origin','*');
+      headers.append('acces-token', localStorage.getItem('token'));
       return this.http.post(this.server + 'api/'+idCliente+'/trabajo/edit',trabajo, { headers: headers }).map(this.extractData);
   }
 
   editAsesor(idCliente, idTrabajo,asesor): Observable<Client> {
       var headers = new Headers();
-      headers.append('acces-control-allow-origin','*')      
+      headers.append('acces-control-allow-origin','*');
+      headers.append('acces-token', localStorage.getItem('token'));
       return this.http.post(this.server + 'api/'+idCliente+'/'+idTrabajo+'/asesor?asesor='+asesor, { headers: headers }).map(this.extractData);
   }
 
   crearTrabajo(idCliente, trabajo): Observable<Client> {
       var headers = new Headers();
-      headers.append('acces-control-allow-origin','*')      
+      headers.append('acces-control-allow-origin','*');
+      headers.append('acces-token', localStorage.getItem('token'));
       return this.http.post(this.server + 'api/'+idCliente+'/trabajo',trabajo, { headers: headers }).map(this.extractData);
   }
 
   crearPago(idCliente, idTrabajo, pago): Observable<Client> {
       var headers = new Headers();
-      headers.append('acces-control-allow-origin','*')      
+      headers.append('acces-control-allow-origin','*');
+      headers.append('acces-token', localStorage.getItem('token'));
       return this.http.post(this.server + 'api/'+idCliente+'/'+idTrabajo+'/pago',pago, { headers: headers }).map(this.extractData);
   }
 
   crearUniversidad(universidad): Observable<String> {
       var headers = new Headers();
-      headers.append('acces-control-allow-origin','*')      
+      headers.append('acces-control-allow-origin','*');
+      headers.append('acces-token', localStorage.getItem('token'));
       return this.http.post(this.server + 'api/universidad',universidad, { headers: headers }).map(this.extractData);
   }
 
   crearCarrera(carrera): Observable<String> {
       var headers = new Headers();
-      headers.append('acces-control-allow-origin','*')      
+      headers.append('acces-control-allow-origin','*');
+      headers.append('acces-token', localStorage.getItem('token'));
       return this.http.post(this.server + 'api/carrera',carrera, { headers: headers }).map(this.extractData);
   }
 
   crearDondeEntero(dondeEntero): Observable<String> {
       var headers = new Headers();
-      headers.append('acces-control-allow-origin','*')      
+      headers.append('acces-control-allow-origin','*');
+      headers.append('acces-token', localStorage.getItem('token'));
       return this.http.post(this.server + 'api/dondeEntero',dondeEntero, { headers: headers }).map(this.extractData);
   }
 
   agregarRequerimiento(idCliente, idTrabajo, requerimiento){
       var headers = new Headers();
-      headers.append('acces-control-allow-origin','*')      
+      headers.append('acces-control-allow-origin','*');
+      headers.append('acces-token', localStorage.getItem('token'));
       return this.http.post(this.server+"api/" + idCliente + '/' + idTrabajo + '/requerimiento' ,requerimiento, { headers: headers }).map(this.extractData);
   }
 
@@ -141,13 +151,15 @@ export class Service {
 
   getChangeStateTrabajo(idCliente, idTrabajo, estado): Observable<Trabajo> {
       var headers = new Headers();
-      headers.append('acces-control-allow-origin','*')      
+      headers.append('acces-control-allow-origin','*');
+      headers.append('acces-token', localStorage.getItem('token')); 
       return this.http.post(this.server+"/api/" + idCliente + '/' + idTrabajo +'/status?estado='+estado , '', { headers: headers }).map(this.extractData);
   }
 
   updateFechaEntrega(idCliente, idTrabajo, fechaNueva): Observable<Trabajo> {
       var headers = new Headers();
-      headers.append('acces-control-allow-origin','*')      
+      headers.append('acces-control-allow-origin','*');
+      headers.append('acces-token', localStorage.getItem('token'));
       return this.http.post(this.server+"api/" + idCliente + '/' + idTrabajo +'/fechaEntrega?fechaNueva='+fechaNueva , '', { headers: headers }).map(this.extractData);
   }
 

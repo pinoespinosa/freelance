@@ -1,4 +1,5 @@
 
+
 <!-- ###########################   AGREGAR CARRERA   ############################### -->
 <change-state [(visible)]="showDialogAddCarre">
 <h2 style="margin: 10px;margin-bottom: 20px;" >Agregar Carrera</h2>
@@ -89,7 +90,7 @@
    </script>
    <div class="row">
       <div class="col-4" style="padding: 10px;padding-left: 40px;" >
-         <select #clii style="width: 100%;" (change)="updateClii(clii)">
+         <select #clii class="dropdown-select" (change)="updateClii(clii)">
             <option disabled hidden [value]="selectUndefinedOptionValue">-- Cliente --  *</option>
             <option *ngFor="let cliente of clientes" >{{cliente.nombre}}</option>
          </select>
@@ -114,7 +115,7 @@
 
    <div class="row" style="margin-left: 10px;">
       <div class="col-4" style="font-size: 15px;" >
-         <select #car style="width: 100%;" >
+         <select #car class="dropdown-select" >
             <option disabled hidden [value]="selectUndefinedOptionValue">-- Carrera --</option>
             <option *ngFor="let carrera of carreras" >{{carrera}}</option>
          </select>
@@ -128,7 +129,7 @@
 
    <div class="row" style="margin-left: 10px;">
       <div class="col-4" style="font-size: 15px;" >
-         <select #uni style="width: 100%;" >
+         <select #uni class="dropdown-select" >
             <option disabled hidden [value]="selectUndefinedOptionValue">-- Universidad --</option>
             <option *ngFor="let universidad of universidades" >{{universidad}}</option>
          </select>
@@ -142,7 +143,7 @@
 
    <div class="row" style="margin-left: 10px;">
       <div class="col-4" style="font-size: 15px;" >
-         <select #lug style="width: 100%;" >
+         <select #lug class="dropdown-select" >
             <option disabled hidden [value]="selectUndefinedOptionValue">-- Lugar de donde se entero --</option>
             <option *ngFor="let lugar of lugarEntero" >{{lugar}}</option>
          </select>

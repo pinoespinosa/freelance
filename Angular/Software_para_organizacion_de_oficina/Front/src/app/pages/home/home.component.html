@@ -16,7 +16,7 @@
 <div class="row" style="margin-bottom: 20px;" >
   <div class="col-4"> <b> Cambiar a: </b> </div>
   <div class="col-6" style="font-size: 15px;" >
-      <select #t style="width: 100%;" (change)="callType(t.value)" >
+      <select #t class="dropdown-select" (change)="callType(t.value)" >
          <option disabled hidden [value]="selectUndefinedOptionValue"></option>
          <option *ngFor="let carrera of estados" >{{carrera}}</option>
       </select>

@@ -88,12 +88,20 @@ export class MoreDetailsComponent implements OnInit  {
     this.service.editCliente(this.cliente).subscribe(
       response => {
         let cliente = response;
-      }        
+      },
+      error => {
+        // Defaults to 0 if no query param provided.
+        alert('Usted no tiene permisos para realizar la operacion.')
+      }         
     );
     this.service.editTrabajo(this.clienteID, this.trabajo).subscribe(
       response => {
         let trabajo = response;
-      }        
+      },
+      error => {
+        // Defaults to 0 if no query param provided.
+        alert('Usted no tiene permisos para realizar la operacion.')
+      }         
     );
   }
 }

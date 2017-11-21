@@ -31,7 +31,11 @@ export class RegisterUserComponent implements OnInit  {
 	      response =>{ 
             const a = response;
             alert('Usuario creado exitosamente');
-	      }         
+	      },
+	      error => {
+	        // Defaults to 0 if no query param provided.
+	        alert('Usted no tiene permisos para realizar la operacion.')
+	      }          
 	    );
 	};
 

@@ -54,7 +54,11 @@ export class RegisterComponent implements OnInit  {
                 this.cliente = response;
                 alert("Se ha creado el cliente " + this.field_nombre + " exitosamente")
                 
-            }
+            },
+	        error => {
+	        	// Defaults to 0 if no query param provided.
+	        	alert('Usted no tiene permisos para realizar la operacion.')
+	      	} 
         );
     
 
