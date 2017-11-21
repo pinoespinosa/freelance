@@ -76,6 +76,16 @@ public class TrabajoController {
 	}
 		
 	/**
+	 * Modifica el asesor de un trabajo
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/{clienteID}/{trabajoID}/asesor", method = RequestMethod.POST)
+	public Trabajo updateAsesor(@PathVariable final String clienteID, @PathVariable final String trabajoID,
+			@RequestParam(required = true) final String asesor) {
+		return officeService.updateAsesor(clienteID, trabajoID, asesor);
+	}	
+
+	/**
 	 * Modifica la fecha de entrega de un trabajo
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")

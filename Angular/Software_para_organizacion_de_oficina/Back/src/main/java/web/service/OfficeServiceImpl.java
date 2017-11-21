@@ -112,6 +112,12 @@ public class OfficeServiceImpl implements OfficeService {
 	}
 
 	@Override
+	public Trabajo updateAsesor(String clienteID, String trabajoID, String asesor) {
+		return datasource.updateAsesor(clienteID, trabajoID, asesor);
+
+	}
+	
+	@Override
 	public List<Cliente> getClientNuevosList(String fechaDesde, String fechaHasta) {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -213,6 +219,14 @@ public class OfficeServiceImpl implements OfficeService {
 		return datasource.create(user, pass, rol);
 
 	}
+
+	@Override
+	public Auth editUser(String user, String pass, Rol rol) {
+		return datasource.editUser(user, pass, rol);
+
+	}
+
+
 
 
 
