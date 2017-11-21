@@ -6,10 +6,14 @@ import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import data.Auditoria;
 import data.Auth;
 import data.Auth.Rol;
 import data.Cliente;
@@ -68,8 +72,8 @@ public class OfficeServiceImpl implements OfficeService {
 	}
 
 	@Override
-	public void exportCSV() {
-		datasource.exportCSV();
+	public void exportCSV(HttpServletResponse servletResponse) {
+		datasource.exportCSV(servletResponse);
 
 	}
 	
@@ -223,6 +227,12 @@ public class OfficeServiceImpl implements OfficeService {
 	@Override
 	public Auth editUser(String user, String pass, Rol rol) {
 		return datasource.editUser(user, pass, rol);
+
+	}
+
+	@Override
+	public List<Auditoria> getAuditoria() {
+		return datasource.getAuditoria();
 
 	}
 

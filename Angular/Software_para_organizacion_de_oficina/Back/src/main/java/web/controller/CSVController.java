@@ -1,5 +1,7 @@
 package web.controller;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,8 +31,11 @@ public class CSVController {
 	@ApiOperation(value = "Get specific Student in the System ", tags = "Export CSV")
 	@RequestMapping(value = "/exportCSV", method = RequestMethod.POST)
 	@ResponseBody
-	public String exportCSV() {
-		officeService.exportCSV();
+	public String exportCSV(final HttpServletResponse servletResponse) {
+		
+	    servletResponse.setHeader("Content-Disposition", "attachment; filename=BaseDatosExcel.csv");
+		
+		officeService.exportCSV(servletResponse);
 		return OfficeController.OK;
 	}
 
