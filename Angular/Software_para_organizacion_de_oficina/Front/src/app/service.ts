@@ -11,6 +11,7 @@ import 'rxjs/add/operator/map';
 import { Client }               from 'app/data-objects/cliente';
 import { Trabajo }               from 'app/data-objects/trabajo';
 import { Login }               from 'app/data-objects/login';
+import { Auditoria }               from 'app/data-objects/audit';
 
 
 @Injectable()
@@ -131,6 +132,13 @@ export class Service {
       headers.append('acces-control-allow-origin','*');
       headers.append('acces-token', localStorage.getItem('token'));
       return this.http.post(this.server+"api/" + idCliente + '/' + idTrabajo + '/requerimiento' ,requerimiento, { headers: headers }).map(this.extractData);
+  }
+
+  getAudit(): Observable<Auditoria[]> {
+    var headers = new Headers();
+    headers.append('acces-control-allow-origin','*');
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.get(this.server+"api/auditoria", { headers: headers }).map(this.extractData);
   }
 
   getUniversidades(): Observable<string[]> {

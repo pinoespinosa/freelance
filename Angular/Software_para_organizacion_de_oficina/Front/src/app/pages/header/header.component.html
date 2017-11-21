@@ -22,6 +22,9 @@
         <a [routerLink]="['/register-user']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Crear Usuario<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active" class="rounded" style="padding-right: 25px;">
+        <a [routerLink]="['/audits']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Auditorias<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active" class="rounded" style="padding-right: 25px;">
         <a [routerLink]="['/register']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Agregar Cliente <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active" class="rounded" style="padding-right: 25px;">
@@ -39,7 +42,6 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" [routerLink]="['/reports/to-do']">Trabajos por hacer</a>
-          <a class="dropdown-item" [routerLink]="['/reports/incomes']" hidden>Ingresos</a>
           <a class="dropdown-item" [routerLink]="['/reports/new-clients']">Clientes / Pagos</a>
           <a class="dropdown-item" [routerLink]="['/reports/old-clients']" hidden >Clientes antiguos</a>
           <div class="dropdown-divider"></div>

@@ -6,6 +6,7 @@ import { Client }               from 'app/data-objects/cliente';
 import { Login }               from 'app/data-objects/login';
 
 
+
 @Component({
   selector: 'register-user',
   templateUrl: 'register-user.component.html',
@@ -17,8 +18,8 @@ export class RegisterUserComponent implements OnInit  {
 	usuario= '';
 	password= '';
 	rol= '';
-	constructor( private router: Router, private service: Service ) {
 
+	constructor( private router: Router, private service: Service ) {
 	};
 
 	ngOnInit(): void {
@@ -43,4 +44,4 @@ export class RegisterUserComponent implements OnInit  {
 		this[key] = value;
 	};
 
-}
+}	
