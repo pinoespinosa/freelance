@@ -1,0 +1,45 @@
+
+
+<div class="row">
+   <div class="col-6" style="text-align: center;" >
+      <img src="assets/logo.png" style="width: 75%;" >
+   </div>
+   <div style="align-self: center;" class="col-4">
+      <div class="row" style="align-items: center;">
+         <div  style="text-align: right;" class="col-3">
+            Usuario
+         </div>
+         <div class="col-9">
+            <input 
+            #usuario 
+            type="text" 
+            style="width: 100%;"
+            id="nombreCliente" 
+            (change)="guardarUser('usuario', usuario.value)">
+         </div>
+      </div>
+      <div  class="row" style="align-items: center;" >
+         <div  style="text-align: right;" class="col-3">
+            Contraseña
+         </div>
+         <div class="col-9">
+            <input 
+            #password 
+            type="password" 
+            style="width: 100%;"
+            id="passCliente" 
+            (change)="guardarUser('password', password.value)"> 
+         </div>
+      </div>
+
+      <div  class="row" style="align-items: center;" >
+         <div  style="text-align: right;" class="col-3">
+         </div>
+         <div class="col-9">
+         <button (click)="do()"  style="width: 100%;" type="button" class="btn button-login "><b>Ingresar</b></button>
+         </div>
+      </div>
+
+   </div>
+</div>
+

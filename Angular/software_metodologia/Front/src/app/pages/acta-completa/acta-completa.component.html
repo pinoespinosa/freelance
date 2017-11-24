@@ -1,0 +1,39 @@
+   <div class="row" >
+
+      <div class="col-2" >
+      <img src="assets/logo.png" style="width: 75%;" >
+
+      </div> 
+
+      <div class="col-10" style="text-align: center;" >
+   <h1>Menu de consultas</h1>
+   <h1>Nombre de la compania</h1>
+
+      </div>   
+
+
+</div>
+
+<form class="form-horizontal" action='' method="POST">
+   <div class="row" >
+      <div class="col-4" >
+         <select style="width: 100%;" #clii class="dropdown-select" (change)="updateClii(clii)">
+         <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione un Tipo de Consulta --</option>
+         <option *ngFor="let consulta of tipoConsulta" >{{consulta}}</option>
+         </select>
+      </div>
+      <div class="col-4" >
+         <select style="width: 100%;" #clii class="dropdown-select" (change)="updateClii(clii)">
+         <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione el Cuerpo Colegiado --</option>
+         <option *ngFor="let cuerpoColegiado of cuerposColegiado" >{{cuerpoColegiado}}</option>
+         </select>
+      </div>
+      <div class="col-4" >
+         <select style="width: 100%;" #clii class="dropdown-select" (change)="updateClii(clii)">
+         <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione el Número de Acta --</option>
+         <option *ngFor="let acta of actas" >{{acta}}</option>
+         </select>
+      </div>
+   </div>
+</form>
+
