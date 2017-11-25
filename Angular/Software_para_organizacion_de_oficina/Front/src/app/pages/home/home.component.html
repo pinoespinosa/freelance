@@ -67,6 +67,7 @@
               <img class="sort-img" src="./assets/sort.png" alt="">
           </a>
         </th>
+        <th>Carrera</th>
          <th>
             Universidad
            <a (click)="sortUniversidad()" class="btn clients-sort">
@@ -98,6 +99,7 @@
       <tr *ngFor="let item of items" class="client-columns" (dblclick)="showDialog = !showDialog" (dblclick)="cliente2 = item" >
 
          <td>{{item.nombre}} {{item.apellido}}</td>
+         <td>{{item.carrera | slice:0:30}}</td>
          <td>{{item.universidad | slice:0:40}}</td>
          <td>{{item.entrega}}</td>
          <td style="min-width: 110px;">

@@ -15,29 +15,39 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active" class="rounded" style="padding-right: 25px;">
-        <a [routerLink]="['/home']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Inicio <span class="sr-only">(current)</span></a>
+      <li 
+        class="nav-item active" 
+        class="rounded" 
+        style="padding-right: 25px;">
+        <a 
+          [routerLink]="['/home']" 
+          class="nav-link" 
+          style="color: lightcyan;font-style: italic;">
+            Inicio
+        </a>
       </li>
-      <li class="nav-item active" class="rounded" style="padding-right: 25px;">
-        <a [routerLink]="['/register-user']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Crear Usuario<span class="sr-only">(current)</span></a>
+      <li 
+        class="nav-item active" 
+        class="rounded" 
+        style="padding-right: 25px;">
+        <a 
+          [routerLink]="['/register-work']" 
+          class="nav-link" 
+          style="color: lightcyan;font-style: italic;">
+            Agregar Trabajo
+        </a>
       </li>
-      <li class="nav-item active" class="rounded" style="padding-right: 25px;">
-        <a [routerLink]="['/audits']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Auditorias<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active" class="rounded" style="padding-right: 25px;">
-        <a [routerLink]="['/register']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Agregar Cliente <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active" class="rounded" style="padding-right: 25px;">
-        <a [routerLink]="['/register-work']" class="nav-link" href="#" style="color: lightcyan;font-style: italic;" >Agregar Trabajo <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active" class="rounded" style="padding-right: 25px;">
-        <a href={{getServerImport()}} class="nav-link" style="color: lightcyan;font-style: italic;" >Importar Excel<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item active" class="rounded" style="padding-right: 25px;">
-        <a href={{getServerExport()}} class="nav-link" style="color: lightcyan;font-style: italic;" >Exportar Excel<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item dropdown" style="padding-right: 25px;">
-        <a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: lightcyan;font-style: italic;" >
+      <li 
+        class="nav-item dropdown" 
+        style="padding-right: 25px;">
+        <a 
+          class="nav-link dropdown-toggle" 
+          id="navbarDropdown" 
+          role="button" 
+          data-toggle="dropdown" 
+          aria-haspopup="true" 
+          aria-expanded="false" 
+          style="color: lightcyan;font-style: italic;">
           Reportes
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -46,6 +56,51 @@
           <a class="dropdown-item" [routerLink]="['/reports/old-clients']" hidden >Clientes antiguos</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" [routerLink]="['/reports/indicators']">Indicadores</a>
+        </div>
+      </li>
+      <li 
+        class="nav-item dropdown" 
+        style="padding-right: 25px;">
+        <div class="dropdown">
+            <a 
+              class="nav-link dropdown-toggle admin-menu" 
+              id="dropdownMenu1" 
+              role="button" 
+              data-toggle="dropdown" 
+              aria-haspopup="true" 
+              aria-expanded="false"  
+              style="color: lightcyan;font-style: italic;">
+              Administracion
+            </a>
+            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                <li class="dropdown-item">
+                  <a [routerLink]="['/register-user']">Crear usuario</a>
+                </li>
+                <li class="dropdown-submenu">
+                  <a  class="dropdown-item" tabindex="-1" href="#">Agregar</a>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-item">
+                      <a tabindex="-1" [routerLink]="['/register']">Cliente</a>
+                    </li>
+                    <li class="dropdown-item">
+                      <a [routerLink]="['/register-work']">Trabajo</a>
+                    </li>
+                    <li class="dropdown-item"><a [routerLink]="['/home']">Asesor</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown-item">
+                  <a [routerLink]="['/home']" >Proveedores</a>
+                </li>
+                <li class="dropdown-item">
+                  <a [routerLink]="['/audits']">Auditoria</a>
+                </li>
+                <li class="dropdown-item">
+                  <a href={{getServerImport()}}>Importar Excel</a>
+                </li>
+                <li class="dropdown-item">
+                  <a href={{getServerExport()}}>Exportar Excel</a>
+                </li>
+            </ul>
         </div>
       </li>
       <li class="nav-item active" class="rounded" style="padding-right: 25px;">

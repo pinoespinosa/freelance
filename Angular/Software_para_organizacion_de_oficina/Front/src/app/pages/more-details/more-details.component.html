@@ -5,9 +5,6 @@
       </div>
 
       <div class="col-2">
-      </div>
-
-      <div class="col-2">
          <button (click)="do()" type="button" class="btn btn-primary edit-client-button client-button"> 
             Editar
          </button>
@@ -20,6 +17,11 @@
       <div class="col-2">
          <button (click)="do()" type="button" class="btn btn-danger cancel-client-button client-button" [disabled]="buttonState()"> 
             Cancelar
+         </button>
+      </div>
+      <div class="col-1 offset-md-2">
+         <button [routerLink]="['/home']" type="button" class="btn btn-secondary"> 
+            Volver
          </button>
       </div>
    </div>

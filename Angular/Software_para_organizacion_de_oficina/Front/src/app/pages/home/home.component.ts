@@ -180,7 +180,6 @@ export class HomeComponent   {
   }
 
   getWorks(): void {
-
     console.log("update front")
     this.items=[];
     this.items_orig = [];
@@ -224,7 +223,7 @@ export class HomeComponent   {
        					break; 
   						} 
   					} 
-            let fu = new ClientFull(aa.id,aa.nombre,"",bb.id,bb.tema,"",bb.monto,bb.saldo,"",bb.universidad,bb.fecha_entrega,bb.estado, result + '_' + bb.fecha_entrega,"");
+            let fu = new ClientFull(aa.id,aa.nombre,"",bb.id,bb.tema,"",bb.monto,bb.saldo,bb.carrera,bb.universidad,bb.fecha_entrega,bb.estado, result + '_' + bb.fecha_entrega,"");
             this.items.push(fu);
             this.items_orig.push(fu);
           }

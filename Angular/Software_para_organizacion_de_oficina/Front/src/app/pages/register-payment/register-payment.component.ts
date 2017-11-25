@@ -23,7 +23,7 @@ export class RegisterPaymentComponent implements OnInit  {
 	clienteID = ''
 	cliente : Client = new Client("", "", "" , "", "", "", "", "", "", null);
 	clientes :Client[];
-	nuevoPago: Pago = new Pago("","","1234","forma","det")
+	nuevoPago: Pago = new Pago("","","1234","","")
 	trabajoID = ''
 	trabajo : Trabajo = new Trabajo("","","","", "","","","", "","","",null,null )
 
@@ -54,9 +54,8 @@ export class RegisterPaymentComponent implements OnInit  {
 
     }
 
-	do(){
-
-        this.service.crearPago(this.clienteID, this.trabajoID, this.nuevoPago).subscribe(
+	do(){        
+		this.service.crearPago(this.clienteID, this.trabajoID, this.nuevoPago).subscribe(
             response => {
                 let trabajosdd = response;
                	alert("Se ha registrado los datos correctamente.");
@@ -107,7 +106,7 @@ export class RegisterPaymentComponent implements OnInit  {
 		return this.valorIVA.toFixed(2);
 	}
 	saveMetodoPago(e) {
-	
+		debugger
 		this.metodoPagoSelec = (<HTMLInputElement>event.target).innerHTML;
 	}
 
