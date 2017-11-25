@@ -10,22 +10,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import datasource.IDataSource;
 import io.swagger.annotations.ApiOperation;
-import web.service.OfficeService;
 
 @RestController
 public class CSVController {
 		
+	public static String OK = "{\"STATUS\":\"OK\"}"; 
+
 	
 	@Autowired
-	private OfficeService officeService;
+	private IDataSource officeService;
 
 	@ApiOperation(value = "Get specific Student in the System ", tags = "Import CSV")
 	@RequestMapping(value = "/importCSV", method = RequestMethod.POST)
 	@ResponseBody
 	public String importCSV(@RequestParam(required = true) final MultipartFile file) {
 		officeService.importCSV(file);
-		return OfficeController.OK;
+		return OK;
 	}
 
 	@ApiOperation(value = "Get specific Student in the System ", tags = "Export CSV")
@@ -36,7 +38,7 @@ public class CSVController {
 	    servletResponse.setHeader("Content-Disposition", "attachment; filename=BaseDatosExcel.csv");
 		
 		officeService.exportCSV(servletResponse);
-		return OfficeController.OK;
+		return OK;
 	}
 
 }

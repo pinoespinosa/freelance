@@ -2,39 +2,22 @@ package datasource;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Paths;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.base.Strings;
 
 import data.Auditoria;
 import data.Auth;
 import data.Auth.Rol;
-import data.Cliente;
-import data.Info;
-import data.Pago;
-import data.Requerimiento;
-import data.Trabajo;
-import spring.ChipherTool;
-import web.controller.OfficeController;
 
 public class DataSourceReal implements IDataSource {
 
-	private Info obj;
 
 	public DataSourceReal() {
 		readFromFile();
@@ -43,11 +26,10 @@ public class DataSourceReal implements IDataSource {
 	void readFromFile() {
 		System.out.println("Current relative path is: " + Paths.get("").toAbsolutePath().toString());
 		ObjectMapper mapper = new ObjectMapper();
-		try {
-			obj = mapper.readValue(new File("file.json"), Info.class);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
+			System.out.println();
+	//		obj = mapper.readValue(new File("file.json"), Info.class);
+		
 	}
 
 	void infoToFile(Object data, String filename) {
@@ -59,6 +41,116 @@ public class DataSourceReal implements IDataSource {
 		}
 	}
 
+	@Override
+	public List<String> getUniversidadesList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void createUniversidad(String universidad) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void importCSV(MultipartFile filename) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<String> getCarrerasList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<String> getDondeSeEnteroList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Hashtable<String, List<String>> getLastSellByTime(int cantidadDias) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Float> getLastSellByTimeCash(int cantidadDias, int cantidadValores) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Float> getSellsCashByTimeNewClients(int cantidadDias, int cantidadValores) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Float> getSellsCashByTimeOldClients(int cantidadDias, int cantidadValores) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Float> getSellsAmmountByTimeNewClients(int cantidadDias, int cantidadValores) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void exportCSV(HttpServletResponse servletResponse) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void createCarrera(String carrera) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void createDondeEntero(String dondeEntero) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Auth auth(String user, String pass) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Auth create(String user, String pass, Rol rol) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Auth editUser(String user, String pass, Rol rol) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String audit(Auditoria audit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Auditoria> getAuditoria() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	/*
 	@Override
 	public List<Cliente> getClientes() {
 		
@@ -820,7 +912,7 @@ public class DataSourceReal implements IDataSource {
 		obj.getUsers().put(clave, valor);
 		infoToFile(obj, "file.json");
 		return valor;
-		*/
+		
 		return null;
 	}
 
@@ -829,7 +921,7 @@ public class DataSourceReal implements IDataSource {
 		audit.setId(obj.getAudit().size()+"");
 		obj.getAudit().add(audit);
 		infoToFile(obj, "file.json");
-		return OfficeController.OK;
+		return CSVController.OK;
 	}
 
 	@Override
@@ -837,6 +929,6 @@ public class DataSourceReal implements IDataSource {
 		return obj.getAudit();
 	}
 
-
+*/
 
 }

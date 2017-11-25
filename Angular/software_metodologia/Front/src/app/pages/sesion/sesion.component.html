@@ -1,0 +1,117 @@
+
+
+<div class="row" >
+   <div class="col-2" >
+      <img src="assets/logo.png" style="width: 100px;" >
+   </div>
+   <div class="col-10" style="text-align: center;" >
+      <h1>Menu de consultas</h1>
+      <h1>Nombre de la compania</h1>
+   </div>
+</div>
+<form *ngIf="paso==1" class="form-horizontal" action='' method="POST">
+   <div class="row" >
+      <div class="col-xl-2" >
+      </div>
+      <div class="col-xl-8" >
+         <div class="row" style="align-items: center;">
+               <div class="col-8" >         <h4>Temas Abiertos</h4>
+
+      </div>
+            <div class="col-1" style="padding-left: 5px;padding-right: 5px;">
+               <button style="width: 32px;" type="button" class="btn">
+               <img src="assets/left.png" style="width: 150%;" >
+               </button> 
+            </div>
+            <div class="col-2" style="text-align: center;">  1 de 4 </div>
+            <div class="col-1" style="padding-left: 5px;padding-right: 5px;">
+               <button style="width: 32px;" type="button" class="btn">      
+               <img src="assets/rigth.png" style="width: 150%;" >
+               </button> 
+            </div>
+         </div>
+         <textarea class="form-control" rows="4" id="comment" placeholder="Agregar Comentario"></textarea>
+         <textarea class="form-control" rows="1" id="comment" placeholder="Agregar Comentario"></textarea>
+         <div style="text-align: right;" >         <button type="button" class="btn"><b>Cerrar Tema</b></button>
+         </div>
+         <div class="row" style="align-items: center;">
+                        <div class="col-8" >         <h4>Tareas Abiertas</h4>
+
+      </div>
+            <div class="col-1 " style="padding-left: 5px;padding-right: 5px;">
+               <button style="width: 32px;" type="button" class="btn">
+               <img src="assets/left.png" style="width: 150%;" >
+               </button> 
+            </div>
+            <div class="col-2" style="text-align: center;">  1 de 4 </div>
+            <div class="col-1" style="padding-left: 5px;padding-right: 5px;">
+               <button style="width: 32px;" type="button" class="btn">      
+               <img src="assets/rigth.png" style="width: 150%;" >
+               </button> 
+            </div>
+         </div>
+         <textarea class="form-control" rows="4" id="comment" placeholder="Agregar Comentario"></textarea>
+         <textarea class="form-control" rows="1" id="comment" placeholder="Agregar Comentario"></textarea>
+         <div style="text-align: right;" >         <button type="button" class="btn"><b>Cerrar Tema</b></button>
+         </div>
+         <button (click)="paso=2" type="button" class="btn"><b>Continuar</b></button>
+      </div>
+   </div>
+</form>
+<form *ngIf="paso==2" class="form-horizontal" action='' method="POST">
+   <div class="row" >
+      <div class="col-4" >
+      </div>
+      <div class="col-4" >
+         Fin en Mente de la Reunión
+         <input #reqq type="text" class="form-control" placeholder="Requerimiento">
+         <button (click)="paso=3" type="button" class="btn"><b>Continuar</b></button>
+      </div>
+      <div class="col-4" >
+      </div>
+   </div>
+</form>
+<form *ngIf="paso==3" class="form-horizontal" action='' method="POST">
+   <div class="row" >
+      <div class="col-4" >
+      </div>
+      <div class="col-4" >
+         Ingrese los integrantes de la reunion
+         <div class="row" >
+            <div class="col-6" >
+               <div class="list-group" *ngFor="let asistente of asistentes" >
+                  <button type="button" class="btn"><b>{{asistente}}</b></button>
+               </div>
+            </div>
+            <div class="col-6" >
+               <div class="list-group" *ngFor="let asistente of asistentes" >
+                  <button type="button" class="btn"><b>{{asistente}}</b></button>
+               </div>
+            </div>
+         </div>
+         <button (click)="paso=4" type="button" class="btn"><b>Continuar</b></button>
+      </div>
+      <div class="col-4" >
+      </div>
+   </div>
+</form>
+<form *ngIf="paso==4" class="form-horizontal" action='' method="POST">
+   <div class="row" >
+      <div class="col-4" >
+      </div>
+      <div class="col-4" >
+         <div class="row"  *ngFor="let asistente of asistentes" >
+            <div class="col-6" >
+               {{asistente}}
+            </div>
+            <div class="col-6" >
+               <input #reqq type="text" class="form-control" placeholder="Fin en Mente Individual">
+            </div>
+         </div>
+         <button (click)="paso=4" type="button" class="btn"><b>Continuar</b></button>
+      </div>
+      <div class="col-4" >
+      </div>
+   </div>
+</form>
+

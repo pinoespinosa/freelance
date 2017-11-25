@@ -4,16 +4,22 @@ import { RouterModule, Routes } 							from '@angular/router';
 import { AuthGuard }                   			from '../routing/auth-guard.service';
 import { PaymentAuthGuard }                   	from '../routing/payment-auth-guard.service';
 
-import { ActaCompletaComponent }                   from '../pages/acta-completa/acta-completa.component';
+import { ActaCompletaComponent }                from '../pages/acta-completa/acta-completa.component';
 
 import { ConsultasComponent }                   from '../pages/consultas/consultas.component';
+import { ReunionesComponent }                   from '../pages/reuniones/reuniones.component';
+import { SesionComponent }                   	from '../pages/sesion/sesion.component';
+
 import { LoginComponent }                   	from '../pages/login/login.component';
 import { HomeComponent }                   		from '../pages/home/home.component';
 
 const routes: Routes = [
 	{ path: 'login',  				component: LoginComponent, 				data: {title: 'Login'} },
 	{ path: 'consultas',			component: ConsultasComponent, 			data: {title: 'Home'}, canActivate: [AuthGuard]},
-	{ path: 'acta-completa',			component: ActaCompletaComponent, 			data: {title: 'Home'}, canActivate: [AuthGuard]},
+	{ path: 'reuniones',			component: ReunionesComponent, 			data: {title: 'Home'}, canActivate: [AuthGuard]},
+	{ path: 'sesion',				component: SesionComponent, 			data: {title: 'Home'}, canActivate: [AuthGuard]},
+
+	{ path: 'acta-completa',		component: ActaCompletaComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard]},
 
 	{ path: 'home',  				component: HomeComponent, 				data: {title: 'Home'}, canActivate: [AuthGuard]},
 	{ path: '**',  					redirectTo: '/home'}

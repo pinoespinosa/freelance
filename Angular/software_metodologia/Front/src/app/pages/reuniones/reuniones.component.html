@@ -1,0 +1,85 @@
+
+
+<div class="row" >
+   <div class="col-2" >
+      <img src="assets/logo.png" style="width: 75%;" >
+   </div>
+   <div class="col-10" style="text-align: center;" >
+      <h1>Menu de consultas</h1>
+      <h1>Nombre de la compania</h1>
+   </div>
+</div>
+<form *ngIf="paso==1" class="form-horizontal" action='' method="POST">
+   <div class="row" >
+      <div class="col-4" >
+      </div>
+      <div class="col-4" >
+         <select style="width: 100%;" #clii class="dropdown-select" (change)="updateClii(clii)">
+         <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione el Cuerpo Colegiado --</option>
+         <option *ngFor="let cuerpoColegiado of cuerposColegiado" >{{cuerpoColegiado}}</option>
+         </select>
+         <button (click)="paso=2" type="button" class="btn"><b>Continuar</b></button>
+      </div>
+      <div class="col-4" >
+      </div>
+   </div>
+   <div class="row" >
+   </div>
+</form>
+<form *ngIf="paso==2" class="form-horizontal" action='' method="POST">
+   <div class="row" >
+      <div class="col-4" >
+      </div>
+      <div class="col-4" >
+         Fin en Mente de la Reunión
+         <input #reqq type="text" class="form-control" placeholder="Requerimiento">
+         <button (click)="paso=3" type="button" class="btn"><b>Continuar</b></button>
+      </div>
+      <div class="col-4" >
+      </div>
+   </div>
+</form>
+<form *ngIf="paso==3" class="form-horizontal" action='' method="POST">
+   <div class="row" >
+      <div class="col-4" >
+      </div>
+      <div class="col-4" >
+         Ingrese los integrantes de la reunion
+         <div class="row" >
+            <div class="col-6" >
+               <div class="list-group" *ngFor="let asistente of asistentes" >
+                  <button type="button" class="btn"><b>{{asistente}}</b></button>
+               </div>
+            </div>
+            <div class="col-6" >
+               <div class="list-group" *ngFor="let asistente of asistentes" >
+                  <button type="button" class="btn"><b>{{asistente}}</b></button>
+               </div>
+            </div>
+         </div>
+         <button (click)="paso=4" type="button" class="btn"><b>Continuar</b></button>
+      </div>
+      <div class="col-4" >
+      </div>
+   </div>
+</form>
+<form *ngIf="paso==4" class="form-horizontal" action='' method="POST">
+   <div class="row" >
+      <div class="col-4" >
+      </div>
+      <div class="col-4" >
+         <div class="row"  *ngFor="let asistente of asistentes" >
+            <div class="col-6" >
+               {{asistente}}
+            </div>
+            <div class="col-6" >
+               <input #reqq type="text" class="form-control" placeholder="Fin en Mente Individual">
+            </div>
+         </div>
+         <button [routerLink]="['/sesion']" type="button" class="btn"><b>Continuar</b></button>
+      </div>
+      <div class="col-4" >
+      </div>
+   </div>
+</form>
+

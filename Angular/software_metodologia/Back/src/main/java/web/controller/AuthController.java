@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import data.Auth;
 import data.Auth.Rol;
+import datasource.IDataSource;
 import io.swagger.annotations.ApiOperation;
 import spring.ProjectConstants;
-import web.service.OfficeService;
 
 @RestController
 public class AuthController {
 
 	@Autowired
-	private OfficeService officeService;
+	private IDataSource officeService;
 
 	/**
 	 * Authentication

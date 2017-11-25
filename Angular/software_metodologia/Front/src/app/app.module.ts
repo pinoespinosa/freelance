@@ -14,6 +14,9 @@ import { AppRoutingModule }                 from './routing/app-routing.module';
 // ######################## Paginas del sitio ########################
 import { LoginComponent }                   from './pages/login/login.component';
 import { ConsultasComponent }               from './pages/consultas/consultas.component';
+import { ReunionesComponent }               from './pages/reuniones/reuniones.component';
+import { SesionComponent }               from './pages/sesion/sesion.component';
+
 import { ActaCompletaComponent }            from './pages/acta-completa/acta-completa.component';
 
 
@@ -32,8 +35,9 @@ import { Service }                          from './service';
 
     HomeComponent,
     ConsultasComponent,
-    ActaCompletaComponent
-
+    ActaCompletaComponent,
+    ReunionesComponent,
+    SesionComponent
   ],
   imports: [
     BrowserModule,
