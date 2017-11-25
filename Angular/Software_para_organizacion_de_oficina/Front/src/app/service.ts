@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 import { Client }               from 'app/data-objects/cliente';
 import { Trabajo }               from 'app/data-objects/trabajo';
 import { Login }               from 'app/data-objects/login';
-import { Auditoria }               from 'app/data-objects/audit';
+import { Auditoria }               from 'app/data-objects/auditoria';
 
 
 @Injectable()
