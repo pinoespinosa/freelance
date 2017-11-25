@@ -8,7 +8,7 @@
 	   	  	class="form-control" 
 	   	  	id="nombreCliente" 
 	   	  	placeholder="Usuario"
-	   	  	(change)="guardarUser('usuario', usuario.value)">
+	   	  	(change)="guardarUser('usuario', usuario.value)" (keypress)="eventHandler($event.keyCode)">
 	   </div>
 	</div>
 	<div class="row password-row">
@@ -19,13 +19,15 @@
 	   	  	class="form-control" 
 	   	  	id="nombreCliente" 
 	   	  	placeholder="Contraseña"
-	   	  	(change)="guardarUser('password', password.value)">
+	   	  	(change)="guardarUser('password', password.value)" (keypress)="eventHandler($event.keyCode)">
 	   </div>
 	</div>
 	<div class="row ingresar-button-row">
 	   <div class="col-md-4 offset-md-7">
-	   	  <button (click)="do()" type="button" class="btn btn-primary">Ingresar</button>
+	   	  <button (click)="do()"  type="button" class="btn btn-primary">Ingresar</button>
 	   </div>
 	</div> 
 
 </div>
+
+

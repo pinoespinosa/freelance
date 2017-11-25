@@ -43,4 +43,9 @@ export class LoginComponent implements OnInit  {
 		this[key] = value;
 	};
 
+	eventHandler(event) {
+		if (event === 13) {
+			this.do();
+		};
+	} 
 }

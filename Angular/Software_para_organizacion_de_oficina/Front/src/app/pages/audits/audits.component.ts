@@ -2,8 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Renderer2 } 
 import { Router, NavigationEnd, ActivatedRoute }                                from '@angular/router';
 import { trigger, state, style, animate, transition }                           from '@angular/animations';
 import { Service }   			      											from 'app/service';
-import { Client }               												from 'app/data-objects/cliente';
-import { Trabajo }               												from 'app/data-objects/trabajo';
+import { Auditoria }               												from 'app/data-objects/auditoria';
 
 @Component({
   selector: 'audits',
@@ -13,62 +12,33 @@ import { Trabajo }               												from 'app/data-objects/trabajo';
 })
 
 export class AuditsComponent implements OnInit  {
-	deshabilitado : boolean = true;
-	clienteID = ''
-	cliente : Client
-
-	trabajoID = ''
-	trabajo : Trabajo
-  constructor(    private router: Router, private route : ActivatedRoute, private service: Service
-){
-	this.trabajo=null
-}
+	auditoriaArr: Auditoria[];
+  	items_orig : Auditoria[];
+	
+	constructor(private router: Router, private route : ActivatedRoute, private service: Service) {
+		this.auditoriaArr = null;
+    	this.items_orig = [];
+	}
 
 	ngOnInit(): void {
-
-		this.route
-	      .queryParams
-	      .subscribe(params => {
-	        this.clienteID = params['cliente'];
-	        this.trabajoID = params['trabajo'];
-
-	      });
-
-	      if (!this.clienteID)
-	      	this.clienteID = ''
-		
-
-
-		
-		this.getWorks(this.clienteID, this.trabajoID);
-		console.log(this.cliente);
+        this.service.getAudit().subscribe(
+            response => {
+                this.auditoriaArr = response;
+                this.items_orig = response;
+          }        
+        );
 	};
 
+	do(){}
 
-	do(){
-		this.deshabilitado = !this.deshabilitado;
-	}
+	myFunction(valor){
+    	this.auditoriaArr = [];
+	    for (var aa of this.items_orig){
+	      	if ( aa.usuario.toLowerCase().includes(valor.toLowerCase()) ||  aa.rol.toLowerCase().includes(valor.toLowerCase()) ){
+	        this.auditoriaArr.push(aa);
+	      	}
+	    } 
+	};
 
-	buttonState(){
-		return this.deshabilitado;
-	}
-
-
-
-    getWorks(idCliente, idTrabajo): void {
-
-        this.service.getClient(idCliente).subscribe(
-            response => {
-                this.cliente = response;
-          }        
-        );
-
-        this.service.getTrabajo(idCliente, idTrabajo).subscribe(
-            response => {
-                this.trabajo = response;
-          }        
-        );
-
-    }
 }
  

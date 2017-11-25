@@ -1,37 +1,51 @@
-<form class="form-horizontal" action='' method="POST">
-   <div class="row" style="padding-top: 30px;" >
-      <div class="col-12" style="padding-left: 40px;" >
-         <h2>Nueva fecha de entrega</h2>
-      </div>
-       <div class="col-2">
-         <button (click)="do()" type="button" class="btn btn-primary edit-client-button client-button"> 
-            Editar
-         </button>
-      </div>
-      <div class="col-2">
-         <button (click)="do()" type="button" class="btn btn-success save-client-button client-button" [disabled]="buttonState()"> 
-            Guardar
-         </button>
-      </div>
-      <div class="col-2">
-         <button (click)="do()" type="button" class="btn btn-danger cancel-client-button client-button" [disabled]="buttonState()"> 
-            Cancelar
-         </button>
-      </div>
-   </div>
 
-   
-   <div class="row">
-      <div class="col-4">
-         <div class="detail-title">Fecha entrega</div>
-         <!--<span  class="detail-data">{{fecha.fecha}}</span>-->
-         <span  class="detail-data">10/11/2017</span>
-      </div>
-   </div>
-   <div class="col-6">
-         <div class="detail-title">Nueva fecha</div>
-         <!--<div>{{item.fecha}}</div>-->
-         <input type="date" class="form-control" value="10/11/2017" [disabled]="buttonState()">
-      </div>
-</form>
+<div class="row">
+
+<div class="col-4">
+</div>
+
+<div class="col-4">
+</div>
+
+  <div class="col-4">
+    <div class="input-group" style="padding: 10px;">
+      <input class="form-control" (input)="myFunction($event.target.value)" type="text" placeholder="Search">
+      <span class="input-group-btn" >
+        <button  class="btn btn-secondary" type="button" style="background: lightgray;">
+            <img style="width: 20px;" src="https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-128.png">
+        </button>
+      </span>
+    </div>
+  </div>
+
+</div>
+
+<!--falta que el campo asesor sea editable-->
+
+<table class="table table-new table-striped">
+   <thead>
+      <tr class="client-columns">
+         <th>
+            Fecha
+         </th>
+         <th>
+            Usuario
+         </th>
+         <th>
+            Rol
+         </th>
+         <th>
+            Accion realizada
+         </th>
+      </tr>
+   </thead>
+   <tbody class="centro" >
+      <tr *ngFor="let item of auditoriaArr" class="client-columns">
+         <td>{{item.fecha}}</td>
+         <td>{{item.usuario}}</td>
+         <td>{{item.rol}}</td>
+         <td>{{item.accion}}</td>
+      </tr>
+   </tbody>
+</table>
 
