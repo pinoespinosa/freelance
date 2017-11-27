@@ -8,18 +8,20 @@ import { Observable }               from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { Client }               from 'app/data-objects/cliente';
-import { Trabajo }               from 'app/data-objects/trabajo';
-import { Login }               from 'app/data-objects/login';
+import { Client }                     from 'app/data-objects/cliente';
+import { Trabajo }                    from 'app/data-objects/trabajo';
+import { Login }                      from 'app/data-objects/login';
+import { CuerpoColegiado }            from 'app/data-objects/cuerpoColegiado';
+import { Acta }                       from 'app/data-objects/acta';
 
 
 @Injectable()
 export class Service {
 
 
-  //private server = 'http://18.216.175.95:8080/spring-security-rest/'
-  private server = 'http://192.168.1.4:8080/officemanager/'
-  //private server = 'http://localhost:8080/officemanager/'
+  //private server = 'http://18.216.175.95:8080/metodologiamanager/'
+  //private server = 'http://192.168.1.4:8080/metodologiamanager/'
+  private server = 'http://localhost:8080/metodologiamanager/'
 
   getServer(): string{
     return this.server;
@@ -31,6 +33,54 @@ export class Service {
   logIn(user, pass): Observable<Login> {
     return this.http.get(this.server+"api/auth?user="+user+"&pass="+pass).map(this.extractData);
   }
+
+
+  getCuerpoColegiados(): Observable<CuerpoColegiado[]> {
+      return this.http.get(this.server+"api/cuerpocolegiado").map(this.extractData);
+  }
+
+  createActa(cuerpoColegiadoID, acta): Observable<Acta> {
+
+      var headers = new Headers();
+
+      return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/acta/create',acta, { headers: headers }).map(this.extractData);
+
+  }
+
+
+  editActa(cuerpoColegiadoID, acta): Observable<Acta> {
+
+      var headers = new Headers();
+
+      return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/acta/edit',acta, { headers: headers }).map(this.extractData);
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   createUser(user, pass, rol, token): Observable<Login> {
     return this.http.get(this.server+"api/createUser?user="+user+"&pass="+pass+"&rol="+rol+"&token="+token).map(this.extractData);
   }

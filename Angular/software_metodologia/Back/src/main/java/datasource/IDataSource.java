@@ -1,15 +1,16 @@
 package datasource;
 
-import java.util.Hashtable;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import data.Acta;
 import data.Auditoria;
 import data.Auth;
 import data.Auth.Rol;
+import data.CuerpoColegiado;
 
 public interface IDataSource {
 
@@ -20,36 +21,31 @@ public interface IDataSource {
 
 	void importCSV(MultipartFile filename);
 
-	List<String> getCarrerasList();
 
-	List<String> getDondeSeEnteroList();
+	String audit(Auditoria audit);
 
+	List<Auditoria> getAuditoria();
 
-	Hashtable<String, List<String>> getLastSellByTime(int cantidadDias);
-
-	List<Float> getLastSellByTimeCash(int cantidadDias, int cantidadValores);
-
-	List<Float>  getSellsCashByTimeNewClients(int cantidadDias, int cantidadValores);
-
-	List<Float>  getSellsCashByTimeOldClients(int cantidadDias, int cantidadValores);
-
-	List<Float>  getSellsAmmountByTimeNewClients(int cantidadDias, int cantidadValores);
-
-	void exportCSV(HttpServletResponse servletResponse);
-
-	void createCarrera(String carrera);
-
-	void createDondeEntero(String dondeEntero);
+	List<CuerpoColegiado> getCuerpoColegiadoList();
 
 	Auth auth(String user, String pass);
 
 	Auth create(String user, String pass, Rol rol);
 
-
 	Auth editUser(String user, String pass, Rol rol);
 
-	String audit(Auditoria audit);
+	CuerpoColegiado createCuerpoColegiado(CuerpoColegiado user);
 
-	List<Auditoria> getAuditoria();
+	CuerpoColegiado editCuerpoColegiado(CuerpoColegiado user);
+
+	void exportCSV(HttpServletResponse servletResponse);
+
+	void initBD();
+
+	List<Acta> getActaList(String cuerpoColegiadoID);
+
+	Acta createActa(String cuerpoColegiadoID, Acta user);
+
+	Acta editActa(String cuerpoColegiadoID, Acta user);
 	
 }

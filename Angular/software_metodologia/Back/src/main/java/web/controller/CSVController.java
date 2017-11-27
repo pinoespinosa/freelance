@@ -20,16 +20,25 @@ public class CSVController {
 
 	
 	@Autowired
-	private IDataSource officeService;
+	private IDataSource dataSource;
 
 	@ApiOperation(value = "Get specific Student in the System ", tags = "Import CSV")
 	@RequestMapping(value = "/importCSV", method = RequestMethod.POST)
 	@ResponseBody
 	public String importCSV(@RequestParam(required = true) final MultipartFile file) {
-		officeService.importCSV(file);
+		dataSource.importCSV(file);
 		return OK;
 	}
 
+	
+	@ApiOperation(value = "Get specific Student in the System ", tags = "Import CSV")
+	@RequestMapping(value = "/init", method = RequestMethod.POST)
+	@ResponseBody
+	public String initBD() {
+		dataSource.initBD();
+		return OK;
+	}
+	
 	@ApiOperation(value = "Get specific Student in the System ", tags = "Export CSV")
 	@RequestMapping(value = "/exportCSV", method = RequestMethod.POST)
 	@ResponseBody
@@ -37,7 +46,7 @@ public class CSVController {
 		
 	    servletResponse.setHeader("Content-Disposition", "attachment; filename=BaseDatosExcel.csv");
 		
-		officeService.exportCSV(servletResponse);
+		dataSource.exportCSV(servletResponse);
 		return OK;
 	}
 

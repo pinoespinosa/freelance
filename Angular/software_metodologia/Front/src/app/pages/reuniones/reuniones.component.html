@@ -14,11 +14,11 @@
       <div class="col-4" >
       </div>
       <div class="col-4" >
-         <select style="width: 100%;" #clii class="dropdown-select" (change)="updateClii(clii)">
-         <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione el Cuerpo Colegiado --</option>
-         <option *ngFor="let cuerpoColegiado of cuerposColegiado" >{{cuerpoColegiado}}</option>
+         <select style="width: 100%;" #clii class="dropdown-select" (change)="selectCuerpo(clii)">
+         <option disabled hidden [value]="empty">-- Seleccione el Cuerpo Colegiado --</option>
+         <option *ngFor="let cuerpoColegiado of cuerposColegiado" >{{cuerpoColegiado.nombre}}</option>
          </select>
-         <button (click)="paso=2" type="button" class="btn"><b>Continuar</b></button>
+         <button (click)="createActa(cuerpoColegiado)" [disabled]="cuerpoColegiadoSelect == null" type="button" class="btn"><b>Continuar</b></button>
       </div>
       <div class="col-4" >
       </div>
