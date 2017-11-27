@@ -107,9 +107,18 @@
          <input #tema type="text" class="form-control" id="exampleInputPassword1" placeholder="Tema *">
       </div>
    </div>
-   <div class="row">
-      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
-         <input #asesor type="text" class="form-control" id="exampleInputPassword1" placeholder="Asesor">
+
+   <div class="row" style="margin-left: 10px;">
+      <div class="col-4" style="font-size: 15px;" >
+         <select #asesor class="dropdown-select" >
+            <option disabled hidden [value]="selectUndefinedOptionValue">-- Asesor --</option>
+            <option *ngFor="let asesor of asesores" >{{asesor.nombre}}</option>
+         </select>
+      </div>
+      <div class="col-1" style="align-self: center;" >
+         <a class="btn"  [routerLink]="['/register-asesor']" >   
+            <img style="width: 20px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
+         </a>
       </div>
    </div>
 

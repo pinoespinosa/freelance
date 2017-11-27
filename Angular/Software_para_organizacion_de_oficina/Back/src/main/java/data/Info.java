@@ -10,6 +10,8 @@ public class Info {
 
 	private List<String> universidades;
 	private List<String> carreras;
+	private List<Asesor> asesores;
+
 	private List<String> dondeSeEntero;
 	private List<Auditoria> audit;
 	 
@@ -76,6 +78,16 @@ public class Info {
 
 	public void setAudit(List<Auditoria> audit) {
 		this.audit = audit;
+	}
+
+	public List<Asesor> getAsesores() {
+		if (asesores==null)
+			asesores=new ArrayList<>();
+		return asesores;
+	}
+
+	public void setAsesores(List<Asesor> asesores) {
+		this.asesores = asesores;
 	}
 
 

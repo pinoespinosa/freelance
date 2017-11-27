@@ -17,6 +17,10 @@ import { HeaderComponent }                  from './pages/header/header.componen
 import { HomeComponent }                    from './pages/home/home.component';
 import { RegisterComponent }                from './pages/register/register.component';
 import { RegisterUserComponent }            from './pages/register-user/register-user.component';
+
+import { RegisterAsesorComponent }            from './pages/register-asesor/register-asesor.component';
+
+
 import { RegisterWorkComponent }            from './pages/register-work/register-work.component';
 import { RegisterPaymentComponent }         from './pages/register-payment/register-payment.component';
 import { MoreDetailsComponent }             from './pages/more-details/more-details.component';
@@ -44,7 +48,8 @@ import { Service }                          from './service';
     RegisterWorkComponent,
     RegisterPaymentComponent,
     RegisterUserComponent,
-
+    RegisterAsesorComponent,
+    
     HomeComponent,
     MoreDetailsComponent,
     

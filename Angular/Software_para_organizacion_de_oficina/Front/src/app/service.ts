@@ -8,19 +8,20 @@ import { Observable }               from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
-import { Client }               from 'app/data-objects/cliente';
-import { Trabajo }               from 'app/data-objects/trabajo';
-import { Login }               from 'app/data-objects/login';
-import { Auditoria }               from 'app/data-objects/auditoria';
+import { Client }                 from 'app/data-objects/cliente';
+import { Trabajo }                from 'app/data-objects/trabajo';
+import { Login }                  from 'app/data-objects/login';
+import { Auditoria }              from 'app/data-objects/auditoria';
+import { Asesor }                 from 'app/data-objects/asesor';
 
 
 @Injectable()
 export class Service {
 
 
-  private server = 'http://18.216.175.95:8080/spring-security-rest/'
+  //private server = 'http://18.216.175.95:8080/spring-security-rest/'
   //private server = 'http://192.168.1.4:8080/officemanager/'
-  //private server = 'http://localhost:8080/officemanager/'
+  private server = 'http://localhost:8080/officemanager/'
 
   getServer(): string{
     return this.server;
@@ -63,6 +64,26 @@ export class Service {
   getClient(id): Observable<Client> {
       return this.http.get(this.server+"api/client/" + id).map(this.extractData);
   }
+
+
+// ######################################  ASESORES  ######################################
+
+  createAsesor(asesor): Observable<Asesor> {
+      var headers = new Headers();
+      headers.append('acces-control-allow-origin','*');
+      headers.append('acces-token', localStorage.getItem('token'));
+      return this.http.post(this.server + 'api/asesor/create',asesor, { headers: headers }).map(this.extractData);
+  }
+
+  getAsesor(): Observable<Asesor[]> {
+    var headers = new Headers();
+    headers.append('acces-control-allow-origin','*');
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.get(this.server+"api/asesor", { headers: headers }).map(this.extractData);
+  }
+
+
+// ######################################  CLIENTES  ######################################
 
   createCliente(client): Observable<Client> {
       var headers = new Headers();

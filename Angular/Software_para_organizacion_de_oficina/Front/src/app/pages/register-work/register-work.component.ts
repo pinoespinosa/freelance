@@ -6,6 +6,8 @@ import { Service }   			      from 'app/service';
 import { Client }               from 'app/data-objects/cliente';
 import { Trabajo }              from 'app/data-objects/trabajo';
 import { Requerimiento }               from 'app/data-objects/requerimiento';
+import { Asesor }                 from 'app/data-objects/asesor';
+
 import {DatePipe} from '@angular/common';
 
 @Component({
@@ -20,6 +22,8 @@ export class RegisterWorkComponent implements OnInit  {
 	carreras: string[];
 	universidades: string[];
 	lugarEntero: string[];
+  asesores: Asesor[];
+
 
   requerimientos: Requerimiento[];
 
@@ -41,6 +45,9 @@ export class RegisterWorkComponent implements OnInit  {
     this.getWorks();
     this.getUniversidades();
     this.getCarreras();
+
+    this.getAsesores();
+
     this.getDondeSeEntero();
     this.requerimientos = [];
 
@@ -120,6 +127,23 @@ export class RegisterWorkComponent implements OnInit  {
             return -1 ;
           else 
             if (a.toUpperCase() > b.toUpperCase() ) 
+              return 1;
+            else 
+              return 0;
+        });
+      }        
+    );
+  }
+
+  getAsesores(): void {
+    let loading = this.service.getAsesor().subscribe(
+      response => {
+        this.asesores = response;
+        this.asesores.sort((a, b) => {
+          if ( a.nombre.toUpperCase() < b.nombre.toUpperCase() ) 
+            return -1 ;
+          else 
+            if (a.nombre.toUpperCase() > b.nombre.toUpperCase() ) 
               return 1;
             else 
               return 0;

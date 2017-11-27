@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Strings;
 
+import data.Asesor;
 import data.Auditoria;
 import data.Auth;
 import data.Auth.Rol;
@@ -835,6 +836,21 @@ public class DataSourceReal implements IDataSource {
 	@Override
 	public List<Auditoria> getAuditoria() {
 		return obj.getAudit();
+	}
+
+	@Override
+	public List<Asesor> getAsesorList() {
+		return obj.getAsesores();
+	}
+
+	@Override
+	public Asesor createAsesor(Asesor asesor) {
+		
+		asesor.setId(obj.getAsesores().size()+"");
+		obj.getAsesores().add(asesor);
+		infoToFile(obj, "file.json");
+
+		return asesor;
 	}
 
 

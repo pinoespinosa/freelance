@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import data.Asesor;
 import data.Auditoria;
 import data.Auth;
 import data.Auth.Rol;
@@ -234,6 +235,16 @@ public class OfficeServiceImpl implements OfficeService {
 	public List<Auditoria> getAuditoria() {
 		return datasource.getAuditoria();
 
+	}
+
+	@Override
+	public List<Asesor> getAsesorList() {
+		return datasource.getAsesorList();
+	}
+
+	@Override
+	public Asesor createAsesor(Asesor user) {
+		return datasource.createAsesor(user);
 	}
 
 

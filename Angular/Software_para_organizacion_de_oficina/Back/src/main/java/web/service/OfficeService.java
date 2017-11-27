@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import data.Asesor;
 import data.Auditoria;
 import data.Auth;
 import data.Auth.Rol;
@@ -81,5 +82,9 @@ public interface OfficeService {
 	Auth editUser(String user, String pass, Rol rol);
 
 	List<Auditoria> getAuditoria();
+
+	List<Asesor> getAsesorList();
+
+	Asesor createAsesor(Asesor user);
 
 }
