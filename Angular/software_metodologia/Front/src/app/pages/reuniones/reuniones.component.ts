@@ -1,12 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Renderer2 } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute }                                from '@angular/router';
 import { trigger, state, style, animate, transition }                           from '@angular/animations';
-import { Service }   			      											from 'app/service';
+import { Service }   			      											  from 'app/service';
 import { Client }               												from 'app/data-objects/cliente';
 import { Trabajo }               												from 'app/data-objects/trabajo';
 
-import { CuerpoColegiado }               										from 'app/data-objects/cuerpoColegiado';
+import { CuerpoColegiado }               								from 'app/data-objects/cuerpoColegiado';
 import { Acta }               													from 'app/data-objects/acta';
+import { UsuarioActa }                                  from 'app/data-objects/usuarioActa';
 
 
 @Component({
@@ -20,10 +21,14 @@ export class ReunionesComponent implements OnInit  {
 
 
 	cuerposColegiado: CuerpoColegiado[];
-	asistentes: string[] = [ "Pedrito", "Juan", "Martin" ]
 	cuerpoColegiadoSelect: CuerpoColegiado;
 	
+  asistentes: UsuarioActa[];
+
+  
 	actaCreada: Acta;
+  actaAnterior: Acta;
+
 
 	paso = 1;
 
@@ -49,27 +54,50 @@ export class ReunionesComponent implements OnInit  {
  
 
  selectCuerpo(cuerpo):void{
-
     this.cuerpoColegiadoSelect = this.cuerposColegiado[cuerpo.selectedIndex-1];
     console.log(this.cuerpoColegiadoSelect)
  }
 
 createActa():void{
+  	this.actaCreada = new Acta("0","0","0","lugar","ciudad",null,"finGral","finEsp","temN","temasT");
+		this.paso = 2;
+}
 
-  	let acta:Acta = new Acta("0","0","0","lugar","ciudad",null,"finGral","finEsp","temN","temasT");
 
-  	console.log(this.cuerpoColegiadoSelect.id)
+setPaso2Info(lugar, ciudad, fin):void{
+    this.actaCreada.lugar = lugar;
+    this.actaCreada.ciudad = ciudad;
+    this.actaCreada.finMenteGral = fin;
+    console.log(this.actaCreada)
+    this.getLastActa();
+    this.paso = 3;
+}
 
-  	let loading = this.service.createActa(this.cuerpoColegiadoSelect.id,acta).subscribe(
+getLastActa():void{
+    let loading = this.service.getLastActa(this.cuerpoColegiadoSelect.id).subscribe(
+      response =>{ 
+        this.actaAnterior = response;
+        this.asistentes = response.integrantes;
+        }         
+    );
+
+  }
+
+createActaSend():void{
+
+    let acta:Acta = new Acta("0","0","0","lugar","ciudad",null,"finGral","finEsp","temN","temasT");
+
+    console.log(this.cuerpoColegiadoSelect.id)
+
+    let loading = this.service.createActa(this.cuerpoColegiadoSelect.id,acta).subscribe(
       response =>{ 
         this.actaCreada = response;
-		this.paso = 2;
+    this.paso = 2;
 
       }         
     );
 
   }
-
 
 cargarFinEnMente(fin):void{
 

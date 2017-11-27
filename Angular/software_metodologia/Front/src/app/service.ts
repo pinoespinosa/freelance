@@ -39,6 +39,11 @@ export class Service {
       return this.http.get(this.server+"api/cuerpocolegiado").map(this.extractData);
   }
 
+
+  getLastActa(cuerpoColegiadoID): Observable<Acta> {
+      return this.http.get(this.server + 'api/'+ cuerpoColegiadoID + '/acta/last').map(this.extractData);
+  }
+
   createActa(cuerpoColegiadoID, acta): Observable<Acta> {
 
       var headers = new Headers();

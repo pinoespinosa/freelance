@@ -31,6 +31,15 @@ public class ActaController {
 	}
 
 	/**
+	 * Retorna la lista de clientes
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "{cuerpoColegiadoID}/acta/last", method = RequestMethod.GET)
+	public Acta getLastActa(@PathVariable final String cuerpoColegiadoID) {
+		return dataSource.getLastActa(cuerpoColegiadoID);
+	}
+	
+	/**
 	 * Crea un cliente
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")

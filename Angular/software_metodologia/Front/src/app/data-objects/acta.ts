@@ -1,3 +1,6 @@
+import { UsuarioActa }                    from 'app/data-objects/usuarioActa';
+
+
 export class Acta {
   constructor(
 
@@ -8,7 +11,7 @@ export class Acta {
     public lugar: string,
     public ciudad : string,
 
-    public integrantes:string[],
+    public integrantes:UsuarioActa[],
     public finMenteGral: string,
     public finMenteEsp: string,
     public temasNuevos : string,

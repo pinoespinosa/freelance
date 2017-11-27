@@ -31,36 +31,53 @@
       <div class="col-4" >
       </div>
       <div class="col-4" >
-         Fin en Mente de la Reunión
-         <input #reqq type="text" class="form-control" placeholder="Requerimiento">
-         <button (click)="paso=3" type="button" class="btn"><b>Continuar</b></button>
+         <input #lugar type="text" class="form-control" placeholder="Lugar *">
+         <input #ciudad type="text" class="form-control" placeholder="Ciudad *">
+         <input #reqq type="text" class="form-control" placeholder="Fin en Mente de la Reunión *">
+
+         <button [disabled]="lugar.value == '' || ciudad.value == '' || reqq.value == '' " (click)="setPaso2Info(lugar.value, ciudad.value, reqq.value)" type="button" class="btn"><b>Continuar</b></button>
       </div>
       <div class="col-4" >
       </div>
    </div>
 </form>
 <form *ngIf="paso==3" class="form-horizontal" action='' method="POST">
+   
+
    <div class="row" >
-      <div class="col-4" >
+      <div class="col-2" >
       </div>
+
+
+
       <div class="col-4" >
-         Ingrese los integrantes de la reunion
-         <div class="row" >
-            <div class="col-6" >
-               <div class="list-group" *ngFor="let asistente of asistentes" >
-                  <button type="button" class="btn"><b>{{asistente}}</b></button>
+         Integrantes de la reunion seleccionados
+         <div class="list-group" *ngFor="let asistente of asistentes" >
+            <div class="row" >
+               <div class="col-10" style="padding-right: 0px;" >
+                  <button style="width: 100%;" type="button" class="btn"><b>{{asistente.nombre}}</b></button>
                </div>
-            </div>
-            <div class="col-6" >
-               <div class="list-group" *ngFor="let asistente of asistentes" >
-                  <button type="button" class="btn"><b>{{asistente}}</b></button>
+             <div class="col-1" >
+                  <button style="width: 32px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
+                     <img src="assets/trash.png" style="width: 18px;" >
+                  </button> 
                </div>
             </div>
          </div>
          <button (click)="paso=4" type="button" class="btn"><b>Continuar</b></button>
       </div>
+
       <div class="col-4" >
+          Agregar nuevos integrantes a la reunion
+
+         <select style="width: 100%;" #clii class="dropdown-select" (change)="updateClii(clii)">
+         <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione un Tipo de Consulta --</option>
+         <option *ngFor="let consulta of tipoConsulta" >{{consulta}}</option>
+         </select>
       </div>
+
+
+ 
    </div>
 </form>
 <form *ngIf="paso==4" class="form-horizontal" action='' method="POST">

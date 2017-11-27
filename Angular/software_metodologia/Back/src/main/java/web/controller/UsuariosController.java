@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiOperation;
 import spring.ProjectConstants;
 
 @RestController
-public class ColegiadosController {
+public class UsuariosController {
 
 	@Autowired
 	private IDataSource dataSource;

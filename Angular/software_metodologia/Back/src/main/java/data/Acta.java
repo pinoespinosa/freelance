@@ -12,7 +12,7 @@ public class Acta {
 	private String lugar;
 	private String ciudad;
 
-	private List<String> integrantes;
+	private List<UsuarioActa> integrantes;
 
 	private String finMenteGral;
 	private String finMenteEsp;
@@ -62,13 +62,7 @@ public class Acta {
 		this.ciudad = ciudad;
 	}
 
-	public List<String> getIntegrantes() {
-		return integrantes;
-	}
 
-	public void setIntegrantes(List<String> integrantes) {
-		this.integrantes = integrantes;
-	}
 
 	public String getFinMenteGral() {
 		return finMenteGral;
@@ -108,6 +102,14 @@ public class Acta {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public List<UsuarioActa> getIntegrantes() {
+		return integrantes;
+	}
+
+	public void setIntegrantes(List<UsuarioActa> integrantes) {
+		this.integrantes = integrantes;
 	}
 
 }

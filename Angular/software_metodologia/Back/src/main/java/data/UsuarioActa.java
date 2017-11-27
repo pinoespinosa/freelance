@@ -3,6 +3,7 @@ package data;
 public class UsuarioActa {
 
 	private String userID;
+	private String nombre;
 	private String finEnMente;
 
 	public String getUserID() {
@@ -19,6 +20,14 @@ public class UsuarioActa {
 
 	public void setFinEnMente(String finEnMente) {
 		this.finEnMente = finEnMente;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 }

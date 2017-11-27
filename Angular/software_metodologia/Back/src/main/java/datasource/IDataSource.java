@@ -47,5 +47,7 @@ public interface IDataSource {
 	Acta createActa(String cuerpoColegiadoID, Acta user);
 
 	Acta editActa(String cuerpoColegiadoID, Acta user);
+
+	Acta getLastActa(String cuerpoColegiadoID);
 	
 }

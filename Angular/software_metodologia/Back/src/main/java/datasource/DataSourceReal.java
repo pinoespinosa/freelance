@@ -124,6 +124,14 @@ public class DataSourceReal implements IDataSource {
 		return user;
 	}
 	
+	@Override
+	public Acta getLastActa(String cuerpoColegiadoID) {
+		CuerpoColegiado orig = getCuerpoColegiado(cuerpoColegiadoID);
+		return orig.getActas().get(orig.getActas().size()-1);
+	}
+
+
+	
 		
 	@Override
 	public void initBD() {
