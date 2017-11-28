@@ -4,6 +4,11 @@ import { trigger, state, style, animate, transition }                           
 import { Service }   			      											from 'app/service';
 import { Client }               												from 'app/data-objects/cliente';
 import { Trabajo }               												from 'app/data-objects/trabajo';
+import { CuerpoColegiado }               										from 'app/data-objects/cuerpoColegiado';
+import { Acta }               													from 'app/data-objects/acta';
+import { Tema }                                         from 'app/data-objects/tema';
+
+
 
 @Component({
   selector: 'consultas',
@@ -15,9 +20,16 @@ import { Trabajo }               												from 'app/data-objects/trabajo';
 export class ConsultasComponent implements OnInit  {
 
 	tipoConsulta: string[] = ["Acta Completa", "Por Fin en Mente", "Por Temas", "Por Tareas", "Por Comentarios", "Por Estrategia", "Por indicadores"];
-	cuerposColegiado: string[] = ["Todos"];
-	actas: string[] = ["Todos"];
+	cuerposColegiado: CuerpoColegiado[] = [];
+	cuerpoColegiadoSelect: CuerpoColegiado;
+ 
+	actas: Acta[] = [];
 
+  actaCombo;
+
+  temasDelActa: Tema[] = [];
+  temaActual: Tema = new Tema("","","");
+  indice = 0;
 
 
   constructor(    private router: Router, private route : ActivatedRoute, private service: Service
@@ -25,12 +37,54 @@ export class ConsultasComponent implements OnInit  {
 }
 
 	ngOnInit(): void {
-
+		let loading = this.service.getCuerpoColegiados().subscribe(
+      		response =>{ 
+        		this.cuerposColegiado = response;
+      		});
 	};
 
+  indiceTemaMas(){
+    console.log("ddd")
+      if (this.indice < this.temasDelActa.length -1){
+        this.indice = this.indice +1;
+        this.temaActual = this.temasDelActa[this.indice]
+      }
+  }
 
-	
+  indiceTemaMenos(){
+    if (this.indice > 0 ){
+        this.indice = this.indice -1;
+        this.temaActual = this.temasDelActa[this.indice]
+  }
 
+  }
+
+	selectCuerpo(cuerpo):void{
+    	this.cuerpoColegiadoSelect = this.cuerposColegiado[cuerpo.selectedIndex-1];
+    	this.actas = this.cuerpoColegiadoSelect.actas
+      this.temaActual= new Tema("","","");
+      this.temasDelActa = []
+      this.indice = 0;
+      this.actaCombo.selectedIndex=-1
+ 	}
+
+  selectActa(actaSelect):void{
+      let actaaa = this.actas[actaSelect.selectedIndex-1];
+
+
+      let loading = this.service.getTemas(this.cuerpoColegiadoSelect.id).subscribe(
+          response =>{ 
+            this.temasDelActa = response;
+            if(response.length>=0)
+              this.temaActual = response[0]
+            this.indice=0;
+            console.log(response)
+          });
+
+
+      this.actaCombo = actaSelect;
+
+  }
 	
 }
  

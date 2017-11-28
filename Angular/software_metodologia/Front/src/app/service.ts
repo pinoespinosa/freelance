@@ -13,15 +13,17 @@ import { Trabajo }                    from 'app/data-objects/trabajo';
 import { Login }                      from 'app/data-objects/login';
 import { CuerpoColegiado }            from 'app/data-objects/cuerpoColegiado';
 import { Acta }                       from 'app/data-objects/acta';
+import { Usuario }                    from 'app/data-objects/usuario';
+import { Tema }                                         from 'app/data-objects/tema';
 
 
 @Injectable()
 export class Service {
 
 
-  //private server = 'http://18.216.175.95:8080/metodologiamanager/'
+  private server = 'http://18.216.175.95:8080/metodologia-manager/'
   //private server = 'http://192.168.1.4:8080/metodologiamanager/'
-  private server = 'http://localhost:8080/metodologiamanager/'
+  //private server = 'http://localhost:8080/metodologiamanager/'
 
   getServer(): string{
     return this.server;
@@ -40,14 +42,25 @@ export class Service {
   }
 
 
+  getCuerpoColegiado(cuerpocolegiadoID): Observable<CuerpoColegiado> {
+      return this.http.get(this.server+"api/cuerpocolegiado/"+cuerpocolegiadoID).map(this.extractData);
+  }
+
+  getUsuarios(): Observable<Usuario[]> {
+      return this.http.get(this.server+"api/usuario").map(this.extractData);
+  }
+
   getLastActa(cuerpoColegiadoID): Observable<Acta> {
       return this.http.get(this.server + 'api/'+ cuerpoColegiadoID + '/acta/last').map(this.extractData);
+  }
+
+  getTemas(cuerpoColegiadoID): Observable<Tema[]> {
+      return this.http.get(this.server + 'api/'+ cuerpoColegiadoID + '/tema/abierto').map(this.extractData);
   }
 
   createActa(cuerpoColegiadoID, acta): Observable<Acta> {
 
       var headers = new Headers();
-
       return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/acta/create',acta, { headers: headers }).map(this.extractData);
 
   }
@@ -56,7 +69,6 @@ export class Service {
   editActa(cuerpoColegiadoID, acta): Observable<Acta> {
 
       var headers = new Headers();
-
       return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/acta/edit',acta, { headers: headers }).map(this.extractData);
 
   }

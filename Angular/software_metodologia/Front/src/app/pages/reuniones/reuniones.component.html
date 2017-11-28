@@ -9,6 +9,8 @@
       <h1>Nombre de la compania</h1>
    </div>
 </div>
+
+
 <form *ngIf="paso==1" class="form-horizontal" action='' method="POST">
    <div class="row" >
       <div class="col-4" >
@@ -26,6 +28,8 @@
    <div class="row" >
    </div>
 </form>
+
+
 <form *ngIf="paso==2" class="form-horizontal" action='' method="POST">
    <div class="row" >
       <div class="col-4" >
@@ -41,62 +45,79 @@
       </div>
    </div>
 </form>
-<form *ngIf="paso==3" class="form-horizontal" action='' method="POST">
-   
 
+
+
+
+<form *ngIf="paso==3" class="form-horizontal" action='' method="POST">
    <div class="row" >
       <div class="col-2" >
       </div>
-
-
-
       <div class="col-4" >
          Integrantes de la reunion seleccionados
-         <div class="list-group" *ngFor="let asistente of asistentes" >
-            <div class="row" >
-               <div class="col-10" style="padding-right: 0px;" >
-                  <button style="width: 100%;" type="button" class="btn"><b>{{asistente.nombre}}</b></button>
-               </div>
-             <div class="col-1" >
-                  <button style="width: 32px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
+
+         <div *ngIf="actaCreada.integrantes?.length>0">
+            <div class="list-group" *ngFor="let asistente of actaCreada.integrantes" >
+               <div class="row" >
+                  <div class="col-10" style="padding-right: 0px;" >
+                     <button style="width: 100%;" type="button" class="btn"><b>{{asistente.nombre}}</b></button>
+                  </div>
+                  <div class="col-1" >
+                     <button  (click)="removeUser(asistente)" style="width: 32px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
                      <img src="assets/trash.png" style="width: 18px;" >
-                  </button> 
+                     </button> 
+                  </div>
                </div>
             </div>
          </div>
-         <button (click)="paso=4" type="button" class="btn"><b>Continuar</b></button>
+         <div *ngIf="actaCreada.integrantes?.length==0">
+            <div class="list-group" >
+               <div class="row" >
+                  <div class="col-10" style="padding-right: 0px;" >
+                     <button style="width: 100%;" type="button" class="btn"><b>Sin Asistentes ...</b></button>
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
-
       <div class="col-4" >
-          Agregar nuevos integrantes a la reunion
-
-         <select style="width: 100%;" #clii class="dropdown-select" (change)="updateClii(clii)">
-         <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione un Tipo de Consulta --</option>
-         <option *ngFor="let consulta of tipoConsulta" >{{consulta}}</option>
+         Agregar nuevos integrantes a la reunion
+         <select style="width: 100%;" #us class="dropdown-select" (change)="addUser(us)">
+         <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione un usuario para agregar a la reunion --</option>
+         <option *ngFor="let usuario of usuarios" >{{usuario.nombre}}</option>
          </select>
       </div>
-
-
- 
+   </div>
+   <div style="text-align: center;margin-top: 25px;" >
+      <button (click)="paso=4" type="button" class="btn" [disabled]="asistentes?.length==0" ><b>Continuar</b></button>     
    </div>
 </form>
+
+
+
+
+
 <form *ngIf="paso==4" class="form-horizontal" action='' method="POST">
    <div class="row" >
       <div class="col-4" >
       </div>
       <div class="col-4" >
-         <div class="row"  *ngFor="let asistente of asistentes" >
-            <div class="col-6" >
-               {{asistente}}
+         <div class="row"  *ngFor="let asistente of actaCreada.integrantes" >
+            <div class="col-4" style="align-self: center;" >
+               {{asistente.nombre}}
             </div>
-            <div class="col-6" >
-               <input #reqq type="text" class="form-control" placeholder="Fin en Mente Individual">
+            <div class="col-8">
+               <input #finEsp type="text" (change)="print()" (change)="asistente.finEnMente=finEsp.value" class="form-control" placeholder="Fin en Mente Individual" >
             </div>
          </div>
-         <button [routerLink]="['/sesion']" type="button" class="btn"><b>Continuar</b></button>
       </div>
       <div class="col-4" >
       </div>
    </div>
+   <div style="text-align: center;margin-top: 25px;" >
+      <button (click)="createActaSend()" type="button" class="btn"><b>Continuar</b></button>     
+   </div>
 </form>
+
+
 

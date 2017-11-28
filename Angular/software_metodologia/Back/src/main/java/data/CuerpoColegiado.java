@@ -1,6 +1,7 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 public class CuerpoColegiado {
@@ -8,6 +9,7 @@ public class CuerpoColegiado {
 	private String id;
 	private String nombre;
 	private List<Acta> actas;
+	private Hashtable<String, Tema> temas = new Hashtable<>();
 
 
 	
@@ -45,6 +47,14 @@ public class CuerpoColegiado {
 			return t.getId().equals(getId());
 		}
 		return false;
+	}
+
+	public Hashtable<String, Tema> getTemas() {
+		return temas;
+	}
+
+	public void setTemas(Hashtable<String, Tema> temas) {
+		this.temas = temas;
 	}	
 	
 }

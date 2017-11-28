@@ -3,20 +3,21 @@ package web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import data.CuerpoColegiado;
-import data.Usuario;
+import data.Acta;
+import data.Tema;
 import datasource.IDataSource;
 import io.swagger.annotations.ApiOperation;
 import spring.ProjectConstants;
 
 @RestController
-public class UsuariosController {
+public class TemasController {
 
 	@Autowired
 	private IDataSource dataSource;
@@ -25,29 +26,29 @@ public class UsuariosController {
 	 * Retorna la lista de clientes
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
-	@RequestMapping(value = "/usuario", method = RequestMethod.GET)
-	public List<Usuario> getUsuariosList() {
-		return dataSource.getUsuariosList();
+	@RequestMapping(value = "{cuerpoColegiadoID}/tema/abierto", method = RequestMethod.GET)
+	public List<Tema> getTemaAbiertoList(@PathVariable final String cuerpoColegiadoID) {
+		return dataSource.getTemaAbiertoList(cuerpoColegiadoID);
 	}
 
 	/**
 	 * Crea un cliente
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
-	@RequestMapping(value = "/usuario/create", method = RequestMethod.POST)
+	@RequestMapping(value = "{cuerpoColegiadoID}/tema/create", method = RequestMethod.POST)
 	@ResponseBody
-	public Usuario createUser(@RequestBody Usuario user) {
-		return dataSource.createUser(user);
+	public Tema createActa(@PathVariable final String cuerpoColegiadoID, @RequestBody Tema tema) {
+		return dataSource.createTema(cuerpoColegiadoID, tema);
 	}
 
 	/**
 	 * Edita un cliente
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
-	@RequestMapping(value = "/usuario/edit", method = RequestMethod.POST)
+	@RequestMapping(value = "{cuerpoColegiadoID}/tema/edit", method = RequestMethod.POST)
 	@ResponseBody
-	public CuerpoColegiado editCuerpoColegiado(@RequestBody CuerpoColegiado user) {
-		return dataSource.editCuerpoColegiado(user);
+	public Acta editActa(@PathVariable final String cuerpoColegiadoID, @RequestBody Acta user) {
+		return dataSource.editActa(cuerpoColegiadoID, user);
 	}
 
 	public IDataSource getDataSource() {

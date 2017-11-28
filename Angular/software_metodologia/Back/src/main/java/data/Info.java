@@ -11,6 +11,11 @@ public class Info {
 	
 	private List<CuerpoColegiado> colegiados;
 	
+	
+	
+	
+	private List<Usuario> usuarios;
+
 	private Hashtable<String, Auth> users = new Hashtable<>();
 	
 
@@ -43,6 +48,16 @@ public class Info {
 
 	public void setColegiados(List<CuerpoColegiado> colegiados) {
 		this.colegiados = colegiados;
+	}
+
+	public List<Usuario> getUsuarios() {
+		if (usuarios==null)
+			usuarios = new ArrayList<>();
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 }

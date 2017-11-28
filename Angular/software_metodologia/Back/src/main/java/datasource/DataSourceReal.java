@@ -3,6 +3,7 @@ package datasource;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,8 @@ import data.Auth;
 import data.Auth.Rol;
 import data.CuerpoColegiado;
 import data.Info;
+import data.Tema;
+import data.Usuario;
 
 public class DataSourceReal implements IDataSource {
 
@@ -77,7 +80,8 @@ public class DataSourceReal implements IDataSource {
 		return user;
 	}
 		
-	private CuerpoColegiado getCuerpoColegiado(String cuerpoColegiadoID){
+	@Override
+	public CuerpoColegiado getCuerpoColegiado(String cuerpoColegiadoID){
 		CuerpoColegiado cc = new CuerpoColegiado();
 		cc.setId(cuerpoColegiadoID);
 		return obj.getColegiados().get((obj.getColegiados().indexOf(cc)));
@@ -117,8 +121,7 @@ public class DataSourceReal implements IDataSource {
 		orig.setIntegrantes(user.getIntegrantes());
 		orig.setLugar(user.getLugar());
 		orig.setNumeroActa(user.getNumeroActa());
-		orig.setTemasNuevos(user.getTemasNuevos());
-		orig.setTemasTratados(user.getTemasTratados());
+		orig.setTemas(user.getTemas());
 
 		updateFile();
 		return user;
@@ -127,7 +130,10 @@ public class DataSourceReal implements IDataSource {
 	@Override
 	public Acta getLastActa(String cuerpoColegiadoID) {
 		CuerpoColegiado orig = getCuerpoColegiado(cuerpoColegiadoID);
-		return orig.getActas().get(orig.getActas().size()-1);
+		if (orig.getActas().isEmpty())
+			return new Acta();
+		else
+			return orig.getActas().get(orig.getActas().size()-1);
 	}
 
 
@@ -140,13 +146,54 @@ public class DataSourceReal implements IDataSource {
 	}
 	
 	
+
+	@Override
+	public List<Usuario> getUsuariosList() {
+		return obj.getUsuarios();
+	}
 	
+
+	@Override
+	public Usuario createUser(Usuario user) {
+		user.setUserID(obj.getUsuarios().size()+"");
+		obj.getUsuarios().add(user);
+		updateFile();
+		return user;
+	}
+
+	@Override
+	public List<Tema> getTemaAbiertoList(String cuerpoColegiadoID) {
+		
+		List<Tema> temasAbiertos = new ArrayList<>();
+		
+		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID);
+
+		
+		for (String claves : ccOrig.getTemas().keySet()) {
+			if ( "Abierto".equals(ccOrig.getTemas().get(claves).getEstado()) )
+				temasAbiertos.add(ccOrig.getTemas().get(claves));
+		}
+		
+		return temasAbiertos;
+	}
 	
+	@Override
+	public Tema createTema(String cuerpoColegiadoID, Tema tema) {
+
+		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID);
+
+		tema.setId(ccOrig.getTemas().size()+"");
+		ccOrig.getTemas().put(tema.getId(), tema);
+		updateFile();
+		return tema;	
+	}
+
 	
-	
-	
-	
-	
+
+
+
+
+
 	
 	
 	
@@ -205,6 +252,7 @@ public class DataSourceReal implements IDataSource {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 
 

@@ -3,6 +3,7 @@ package web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +30,15 @@ public class ColegiadoController {
 		return dataSource.getCuerpoColegiadoList();
 	}
 
+	/**
+	 * Retorna la lista de clientes
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/cuerpocolegiado/{cuerpoColegiadoID}", method = RequestMethod.GET)
+	public CuerpoColegiado getCuerpoColegiado(@PathVariable final String cuerpoColegiadoID) {
+		return dataSource.getCuerpoColegiado(cuerpoColegiadoID);
+	}
+	
 	/**
 	 * Crea un cliente
 	 */

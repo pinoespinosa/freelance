@@ -14,8 +14,7 @@ export class Acta {
     public integrantes:UsuarioActa[],
     public finMenteGral: string,
     public finMenteEsp: string,
-    public temasNuevos : string,
-    public temasTratados : string
+    public temas : string[]
 
   ) { }
 }

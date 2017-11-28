@@ -23,17 +23,64 @@
          </select>
       </div>
       <div class="col-4" >
-         <select style="width: 100%;" #clii class="dropdown-select" (change)="updateClii(clii)">
+         <select style="width: 100%;" #cuerpo class="dropdown-select" (change)="selectCuerpo(cuerpo)">
          <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione el Cuerpo Colegiado --</option>
-         <option *ngFor="let cuerpoColegiado of cuerposColegiado" >{{cuerpoColegiado}}</option>
+         <option *ngFor="let cuerpoColegiado of cuerposColegiado" >{{cuerpoColegiado.nombre}}</option>
          </select>
       </div>
       <div class="col-4" >
-         <select style="width: 100%;" #clii class="dropdown-select" (change)="updateClii(clii)">
+         <select style="width: 100%;" #act class="dropdown-select" (change)="selectActa(act)">
          <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione el Número de Acta --</option>
-         <option *ngFor="let acta of actas" >{{acta}}</option>
+         <option *ngFor="let acta of actas" >Acta Nro. {{acta.numeroActa}}</option>
          </select>
       </div>
    </div>
 </form>
+
+
+
+<form class="form-horizontal" action='' method="POST">
+   <div class="row" style="margin-top: 45px;" >
+      <div class="col-xl-1" >
+      </div>
+      <div class="col-xl-10" >
+         <div class="row" style="align-items: center;">
+            <div class="col-8" >
+               <h4>Temas Abiertos</h4>
+            </div>
+            <div class="col-1" style="padding-left: 5px;padding-right: 5px;">
+               <button style="width: 32px;" type="button" class="btn" (click)="indiceTemaMenos()">
+               <img src="assets/left.png" style="width: 150%;" >
+               </button> 
+            </div>
+            <div class="col-2" style="text-align: center;">  {{indice + 1}} de {{temasDelActa?.length}} </div>
+            <div class="col-1" style="padding-left: 5px;padding-right: 5px;">
+               <button style="width: 32px;" type="button" class="btn" (click)="indiceTemaMas()">      
+               <img src="assets/rigth.png" style="width: 150%;" >
+               </button> 
+            </div>
+         </div>
+         <textarea class="form-control" rows="4" id="comment" placeholder="Temas Abiertos" text>{{temaActual.desarrollo}}
+         </textarea>
+         <div class="row" style="align-items: center;">
+            <div class="col-8" >
+               <h4>Tareas Abiertas</h4>
+            </div>
+            <div class="col-1 " style="padding-left: 5px;padding-right: 5px;">
+               <button style="width: 32px;" type="button" class="btn">
+               <img src="assets/left.png" style="width: 150%;" >
+               </button> 
+            </div>
+            <div class="col-2" style="text-align: center;">  1 de 4 </div>
+            <div class="col-1" style="padding-left: 5px;padding-right: 5px;">
+               <button style="width: 32px;" type="button" class="btn">      
+               <img src="assets/rigth.png" style="width: 150%;" >
+               </button> 
+            </div>
+         </div>
+         <textarea class="form-control" rows="4" id="comment" placeholder="Tareas abiertas"></textarea>
+      </div>
+   </div>
+</form>
+
 

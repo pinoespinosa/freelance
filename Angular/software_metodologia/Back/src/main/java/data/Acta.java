@@ -1,5 +1,6 @@
 package data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Acta {
@@ -17,8 +18,7 @@ public class Acta {
 	private String finMenteGral;
 	private String finMenteEsp;
 
-	private String temasNuevos;
-	private String temasTratados;
+	private List<String> temas;
 
 	
 	
@@ -80,21 +80,7 @@ public class Acta {
 		this.finMenteEsp = finMenteEsp;
 	}
 
-	public String getTemasNuevos() {
-		return temasNuevos;
-	}
 
-	public void setTemasNuevos(String temasNuevos) {
-		this.temasNuevos = temasNuevos;
-	}
-
-	public String getTemasTratados() {
-		return temasTratados;
-	}
-
-	public void setTemasTratados(String temasTratados) {
-		this.temasTratados = temasTratados;
-	}
 
 	public String getId() {
 		return id;
@@ -105,11 +91,21 @@ public class Acta {
 	}
 
 	public List<UsuarioActa> getIntegrantes() {
+		if (integrantes==null)
+			integrantes=new ArrayList<>();
 		return integrantes;
 	}
 
 	public void setIntegrantes(List<UsuarioActa> integrantes) {
 		this.integrantes = integrantes;
+	}
+
+	public List<String> getTemas() {
+		return temas;
+	}
+
+	public void setTemas(List<String> temas) {
+		this.temas = temas;
 	}
 
 }

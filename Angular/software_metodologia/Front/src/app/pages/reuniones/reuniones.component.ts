@@ -8,6 +8,7 @@ import { Trabajo }               												from 'app/data-objects/trabajo';
 import { CuerpoColegiado }               								from 'app/data-objects/cuerpoColegiado';
 import { Acta }               													from 'app/data-objects/acta';
 import { UsuarioActa }                                  from 'app/data-objects/usuarioActa';
+import { Usuario }                                      from 'app/data-objects/usuario';
 
 
 @Component({
@@ -22,9 +23,8 @@ export class ReunionesComponent implements OnInit  {
 
 	cuerposColegiado: CuerpoColegiado[];
 	cuerpoColegiadoSelect: CuerpoColegiado;
-	
-  asistentes: UsuarioActa[];
 
+  usuarios : Usuario[];
   
 	actaCreada: Acta;
   actaAnterior: Acta;
@@ -48,21 +48,59 @@ export class ReunionesComponent implements OnInit  {
       }         
     );
 
+    loading = this.service.getUsuarios().subscribe(
+      response =>{ 
+        this.usuarios = response;
+      }         
+    );
+
+
 
 	};
 
  
 
- selectCuerpo(cuerpo):void{
+selectCuerpo(cuerpo):void{
     this.cuerpoColegiadoSelect = this.cuerposColegiado[cuerpo.selectedIndex-1];
     console.log(this.cuerpoColegiadoSelect)
  }
 
 createActa():void{
-  	this.actaCreada = new Acta("0","0","0","lugar","ciudad",null,"finGral","finEsp","temN","temasT");
+  	this.actaCreada = new Acta("0","0","0","lugar","ciudad",null,"finGral","finEsp",[]);
 		this.paso = 2;
 }
 
+addUser(user):void{
+
+  console.log(this.actaCreada.integrantes[user.selectedIndex-1])
+  let asiiii : Usuario =  this.usuarios[user.selectedIndex-1];
+
+  let esta:boolean = false;
+  for (let aa of this.actaCreada.integrantes) {
+    if (aa.userID == asiiii.userID)
+      esta = true;
+  }
+  
+  if (!esta){
+    this.actaCreada.integrantes.push(new UsuarioActa(asiiii.userID, asiiii.nombre, ""));
+  }
+}
+
+
+removeUser(user):void{
+
+  let nuevo: UsuarioActa[]=[];
+  let asiiii : Usuario =  user;
+
+  let esta:boolean = false;
+  for (let aa of this.actaCreada.integrantes) {
+    if (aa.userID != asiiii.userID)
+      nuevo.push(aa);
+  }
+  
+  this.actaCreada.integrantes = nuevo;
+
+}
 
 setPaso2Info(lugar, ciudad, fin):void{
     this.actaCreada.lugar = lugar;
@@ -73,27 +111,26 @@ setPaso2Info(lugar, ciudad, fin):void{
     this.paso = 3;
 }
 
+print():void{
+  console.log(this.actaCreada.integrantes);
+}
+
 getLastActa():void{
     let loading = this.service.getLastActa(this.cuerpoColegiadoSelect.id).subscribe(
       response =>{ 
         this.actaAnterior = response;
-        this.asistentes = response.integrantes;
+        this.actaCreada.integrantes = response.integrantes;
         }         
     );
-
   }
 
 createActaSend():void{
 
-    let acta:Acta = new Acta("0","0","0","lugar","ciudad",null,"finGral","finEsp","temN","temasT");
-
-    console.log(this.cuerpoColegiadoSelect.id)
-
-    let loading = this.service.createActa(this.cuerpoColegiadoSelect.id,acta).subscribe(
+    let loading = this.service.createActa(this.cuerpoColegiadoSelect.id, this.actaCreada).subscribe(
       response =>{ 
         this.actaCreada = response;
-    this.paso = 2;
-
+        alert("Se ha creado la reunion Acta Nro " + response.numeroActa)
+        this.router.navigateByUrl('/sesion?cc='+this.cuerpoColegiadoSelect.id);
       }         
     );
 

@@ -11,6 +11,8 @@ import data.Auditoria;
 import data.Auth;
 import data.Auth.Rol;
 import data.CuerpoColegiado;
+import data.Tema;
+import data.Usuario;
 
 public interface IDataSource {
 
@@ -49,5 +51,15 @@ public interface IDataSource {
 	Acta editActa(String cuerpoColegiadoID, Acta user);
 
 	Acta getLastActa(String cuerpoColegiadoID);
+
+	List<Usuario> getUsuariosList();
+
+	Usuario createUser(Usuario user);
+
+	List<Tema> getTemaAbiertoList(String cuerpoColegiadoID);
+
+	Tema createTema(String cuerpoColegiadoID, Tema tema);
+
+	CuerpoColegiado getCuerpoColegiado(String cuerpoColegiadoID);
 	
 }
