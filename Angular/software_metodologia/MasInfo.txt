@@ -1,0 +1,7 @@
+Que existiera una opción de "Citar a reunión"  esta pregunta cuerpo colegiado, lugar, hora y fecha, participantes y fin en mente.  y le manda un mail a los participantes.
+
+Cuando se entre a la opción de administrar reuniones, se selecciona de las reuniones que están citadas
+
+Cuando se selecciones integrantes, se debe permitir crear nuevos
+
+Mañana hablamos.... gracias
