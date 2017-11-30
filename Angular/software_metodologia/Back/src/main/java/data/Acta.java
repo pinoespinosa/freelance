@@ -1,6 +1,7 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 public class Acta {
@@ -16,18 +17,9 @@ public class Acta {
 	private List<UsuarioActa> integrantes;
 
 	private String finMenteGral;
-	private String finMenteEsp;
 
-	private List<String> temas;
+	private List<Comentario> temas;
 
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 	public String getNumeroActa() {
@@ -62,8 +54,6 @@ public class Acta {
 		this.ciudad = ciudad;
 	}
 
-
-
 	public String getFinMenteGral() {
 		return finMenteGral;
 	}
@@ -71,16 +61,6 @@ public class Acta {
 	public void setFinMenteGral(String finMenteGral) {
 		this.finMenteGral = finMenteGral;
 	}
-
-	public String getFinMenteEsp() {
-		return finMenteEsp;
-	}
-
-	public void setFinMenteEsp(String finMenteEsp) {
-		this.finMenteEsp = finMenteEsp;
-	}
-
-
 
 	public String getId() {
 		return id;
@@ -100,11 +80,11 @@ public class Acta {
 		this.integrantes = integrantes;
 	}
 
-	public List<String> getTemas() {
+	public List<Comentario> getTemas() {
 		return temas;
 	}
 
-	public void setTemas(List<String> temas) {
+	public void setTemas(List<Comentario> temas) {
 		this.temas = temas;
 	}
 

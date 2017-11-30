@@ -6,22 +6,17 @@ import java.util.List;
 
 public class Info {
 
-
 	private List<Auditoria> audit;
-	
-	private List<CuerpoColegiado> colegiados;
-	
-	
-	
-	
+
+	private List<Empresa> empresas;
+
 	private List<Usuario> usuarios;
 
 	private Hashtable<String, Auth> users = new Hashtable<>();
-	
 
 	public Hashtable<String, Auth> getUsers() {
-		if (users==null)
-			users= new Hashtable<>();
+		if (users == null)
+			users = new Hashtable<>();
 		return users;
 	}
 
@@ -30,8 +25,8 @@ public class Info {
 	}
 
 	public List<Auditoria> getAudit() {
-		if (audit==null)
-			audit= new ArrayList<Auditoria>();
+		if (audit == null)
+			audit = new ArrayList<Auditoria>();
 		return audit;
 	}
 
@@ -39,25 +34,24 @@ public class Info {
 		this.audit = audit;
 	}
 
-	public List<CuerpoColegiado> getColegiados() {
-		if (colegiados==null)
-			colegiados=new ArrayList<>();
-		
-		return colegiados;
-	}
-
-	public void setColegiados(List<CuerpoColegiado> colegiados) {
-		this.colegiados = colegiados;
-	}
-
 	public List<Usuario> getUsuarios() {
-		if (usuarios==null)
+		if (usuarios == null)
 			usuarios = new ArrayList<>();
 		return usuarios;
 	}
 
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
+	}
+
+	public List<Empresa> getEmpresas() {
+		if (empresas == null)
+			empresas = new ArrayList<>();
+		return empresas;
+	}
+
+	public void setEmpresas(List<Empresa> empresas) {
+		this.empresas = empresas;
 	}
 
 }

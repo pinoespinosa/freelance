@@ -35,6 +35,36 @@
          </select>
       </div>
    </div>
+   <div class="row" *ngIf="clii.value == 'Por Temas'">
+      <div class="col-4 offset-4" >
+         <select style="width: 100%;margin-top: 10px;" #cuerpo class="dropdown-select" (change)="selectCuerpo(cuerpo)">
+         <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione unas estrategia --</option>
+         <option *ngFor="let estrategia of estrategias" >{{estrategia}}</option>
+         </select>
+      </div>
+   </div>
+
+   <div class="row" *ngIf="clii.value == 'Por Tareas'" >
+      <div class="col-4" >
+         <select style="width: 100%;margin-top: 10px;" #clii class="dropdown-select" (change)="updateClii(clii)">
+         <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione un Responsable --</option>
+         <option *ngFor="let responsable of responsables" >{{responsable}}</option>
+         </select>
+      </div>
+      <div class="col-4" >
+         <select style="width: 100%;margin-top: 10px;" #cuerpo class="dropdown-select" (change)="selectCuerpo(cuerpo)">
+         <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione una estrategia --</option>
+         <option *ngFor="let estrategia of estrategias" >{{estrategia}}</option>
+         </select>
+      </div>
+      <div class="col-4" >
+         <select style="width: 100%;margin-top: 10px;" #act class="dropdown-select" (change)="selectActa(act)">
+         <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione un tema --</option>
+         <option *ngFor="let tema of temas" >Acta Nro. {{tema}}</option>
+         </select>
+      </div>
+   </div>
+
 </form>
 
 

@@ -1,5 +1,8 @@
 package data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Auth {
 
 	public enum Rol {
@@ -32,6 +35,14 @@ public class Auth {
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	public static String getEmpresaID(String token){
+		return "empresa";
+	}
+	
+	public static List<String> getCuerpoColegiadosList(String token){
+		return new ArrayList<>();
 	}
 	
 }

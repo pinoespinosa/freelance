@@ -16,7 +16,7 @@ import spring.ProjectConstants;
 public class AuthController {
 
 	@Autowired
-	private IDataSource officeService;
+	private IDataSource dataSource;
 
 	/**
 	 * Authentication
@@ -26,7 +26,7 @@ public class AuthController {
 	public Auth auth(
 			@RequestParam(required = true) final String user,
 			@RequestParam(required = true) final String pass) {
-		return officeService.auth(user, pass);
+		return dataSource.auth(user, pass);
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class AuthController {
 			@RequestParam(required = true) final Rol rol, 
 			@RequestParam(required = true) final String user, 
 			@RequestParam(required = true) final String pass) {
-		return officeService.create(user, pass,rol);
+		return dataSource.create(user, pass,rol);
 	}
 	
 	/**
@@ -52,7 +52,7 @@ public class AuthController {
 			@RequestParam(required = true) final Rol rol, 
 			@RequestParam(required = true) final String user, 
 			@RequestParam(required = true) final String pass) {
-		return officeService.editUser(user, pass,rol);
+		return dataSource.editUser(user, pass,rol);
 	}
 
 }

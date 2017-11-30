@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import data.Auth;
 import data.CuerpoColegiado;
 import data.Usuario;
 import datasource.IDataSource;
@@ -46,8 +48,10 @@ public class UsuariosController {
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "/usuario/edit", method = RequestMethod.POST)
 	@ResponseBody
-	public CuerpoColegiado editCuerpoColegiado(@RequestBody CuerpoColegiado user) {
-		return dataSource.editCuerpoColegiado(user);
+	public CuerpoColegiado editCuerpoColegiado(
+			@RequestBody CuerpoColegiado user,
+			@RequestHeader("Acces-Token") String token) {
+		return dataSource.editCuerpoColegiado(user,Auth.getEmpresaID(token));
 	}
 
 	public IDataSource getDataSource() {

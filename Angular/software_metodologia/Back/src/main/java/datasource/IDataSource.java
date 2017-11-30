@@ -16,19 +16,15 @@ import data.Usuario;
 
 public interface IDataSource {
 
-
 	List<String> getUniversidadesList();
 
 	void createUniversidad(String universidad);
 
 	void importCSV(MultipartFile filename);
 
-
 	String audit(Auditoria audit);
 
 	List<Auditoria> getAuditoria();
-
-	List<CuerpoColegiado> getCuerpoColegiadoList();
 
 	Auth auth(String user, String pass);
 
@@ -36,30 +32,33 @@ public interface IDataSource {
 
 	Auth editUser(String user, String pass, Rol rol);
 
-	CuerpoColegiado createCuerpoColegiado(CuerpoColegiado user);
-
-	CuerpoColegiado editCuerpoColegiado(CuerpoColegiado user);
-
 	void exportCSV(HttpServletResponse servletResponse);
 
 	void initBD();
-
-	List<Acta> getActaList(String cuerpoColegiadoID);
-
-	Acta createActa(String cuerpoColegiadoID, Acta user);
-
-	Acta editActa(String cuerpoColegiadoID, Acta user);
-
-	Acta getLastActa(String cuerpoColegiadoID);
 
 	List<Usuario> getUsuariosList();
 
 	Usuario createUser(Usuario user);
 
-	List<Tema> getTemaAbiertoList(String cuerpoColegiadoID);
 
-	Tema createTema(String cuerpoColegiadoID, Tema tema);
+	List<CuerpoColegiado> getCuerpoColegiadoList(String empresaID, List<String> list);
 
-	CuerpoColegiado getCuerpoColegiado(String cuerpoColegiadoID);
-	
+	CuerpoColegiado createCuerpoColegiado(String empresaID, CuerpoColegiado user);
+
+	CuerpoColegiado editCuerpoColegiado(CuerpoColegiado user, String empresaID);
+
+	CuerpoColegiado getCuerpoColegiado(String cuerpoColegiadoID, String empresaID);
+
+	List<Acta> getActaList(String cuerpoColegiadoID, String empresaID);
+
+	Acta createActa(String cuerpoColegiadoID, String empresaID, Acta user);
+
+	Acta editActa(String cuerpoColegiadoID, Acta user, String empresaID);
+
+	Acta getLastActa(String cuerpoColegiadoID, String empresaID);
+
+	List<Tema> getTemaAbiertoList(String cuerpoColegiadoID, String empresaID);
+
+	Tema createTema(String cuerpoColegiadoID, Tema tema, String empresaID);
+
 }

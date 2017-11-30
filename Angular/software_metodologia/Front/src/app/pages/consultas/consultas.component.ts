@@ -23,6 +23,11 @@ export class ConsultasComponent implements OnInit  {
 	cuerposColegiado: CuerpoColegiado[] = [];
 	cuerpoColegiadoSelect: CuerpoColegiado;
  
+  estrategias: string[] = ["Estrategia 1","Estrategia 2","Estrategia 3","Estrategia 4","Estrategia 4"];
+  responsables: string[] = ["Responsable 1","Responsable 2","Responsable 3","Responsable 4","Responsable 5"];
+  temas: string[] = ["Tema 1","Tema 2","Tema 3","Tema 4","Tema 5"];
+
+
 	actas: Acta[] = [];
 
   actaCombo;
@@ -31,6 +36,8 @@ export class ConsultasComponent implements OnInit  {
   temaActual: Tema = new Tema("","","");
   indice = 0;
 
+
+  respon
 
   constructor(    private router: Router, private route : ActivatedRoute, private service: Service
 ){
