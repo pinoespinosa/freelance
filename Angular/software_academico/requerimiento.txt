@@ -1,0 +1,5 @@
+Un sistema de gestión de una tienda minorista que está diseñado para la gestión, es decir, para ordenar, organizar y vender productos.
+
+El minorista comprueba la disponibilidad de productos en la tienda. Si el stock de bienes es menor, el minorista realiza el pedido de los bienes. Al ordenar los productos, el área de productos recibidos en la tienda, el minorista los ordena por producto o por precio, luego el minorista realiza el pago. Si el stock de bienes está disponible, entonces organizará los bienes para vender.
+
+El minorista vende las mercancías directamente al cliente. El cliente compra los artículos del minorista. El minorista prepara la factura de los bienes comprados por el cliente, recibe la cantidad por crédito o en efectivo del cliente. El proveedor suministra los productos a la tienda en el sistema. El sistema general se usa para administrar los bienes en la tienda.
