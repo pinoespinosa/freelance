@@ -10,8 +10,6 @@ public class Info {
 
 	private List<Empresa> empresas;
 
-	private List<Usuario> usuarios;
-
 	private Hashtable<String, Auth> users = new Hashtable<>();
 
 	public Hashtable<String, Auth> getUsers() {
@@ -32,16 +30,6 @@ public class Info {
 
 	public void setAudit(List<Auditoria> audit) {
 		this.audit = audit;
-	}
-
-	public List<Usuario> getUsuarios() {
-		if (usuarios == null)
-			usuarios = new ArrayList<>();
-		return usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
 	}
 
 	public List<Empresa> getEmpresas() {

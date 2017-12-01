@@ -30,6 +30,9 @@ export class LoginComponent implements OnInit  {
 	      	if (response.token !== 'FAIL'){
 	      		localStorage.setItem('token',  response.token);
             	localStorage.setItem('rol',  response.rol);
+            	localStorage.setItem('logo',  response.logo);
+            	localStorage.setItem('empresa',  response.nombre);
+
             	this.router.navigate(['/home']);
 	      	} else {
 	      		alert ('contraseña y/o usuario incorrectos, por favor intente de nuevo');

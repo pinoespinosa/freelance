@@ -18,12 +18,13 @@ import { Tema }                                         from 'app/data-objects/t
 
 export class SesionComponent implements OnInit  {
 
-
+  paso = 0 ;
 	cuerpoColegiadoSelect: CuerpoColegiado;
  	cuerpoColegiadoSelectID = -1;
-	actas: Acta[] = [];
 
-  	actaCombo;
+    actasCitadas: Acta[] = [];
+    actaSelect: Acta;
+
 
   	temasDelActa: Tema[] = [];
   	temaActual: Tema = new Tema("","","");
@@ -46,10 +47,9 @@ export class SesionComponent implements OnInit  {
 
       );
 
-		let loading = this.service.getCuerpoColegiado(this.cuerpoColegiadoSelectID).subscribe(
+		let loading = this.service.getActasCitadas(this.cuerpoColegiadoSelectID).subscribe(
       		response =>{ 
-        		this.cuerpoColegiadoSelect = response;
-        		this.actas = response.actas;
+        		this.actasCitadas = response;
       		});
 
 
@@ -86,9 +86,12 @@ export class SesionComponent implements OnInit  {
 
   }
 
+selectActa(actaCombo):void{
+      this.actaSelect = this.actasCitadas[actaCombo.selectedIndex-1];
+}
 
-  selectActa(actaSelect):void{
-      let actaaa = this.actas[actaSelect.selectedIndex-1];
+  selectActa2(actaSelect):void{
+      let actaaa = this.actasCitadas[actaSelect.selectedIndex-1];
 
 
       let loading = this.service.getTemas(this.cuerpoColegiadoSelect.id).subscribe(
@@ -101,7 +104,6 @@ export class SesionComponent implements OnInit  {
           });
 
 
-      this.actaCombo = actaSelect;
 
   }
 

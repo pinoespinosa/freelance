@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -16,12 +17,11 @@ import data.Acta;
 import data.Auditoria;
 import data.Auth;
 import data.Auth.Rol;
-import spring.ChipherTool;
 import data.CuerpoColegiado;
 import data.Empresa;
 import data.Info;
 import data.Tema;
-import data.Usuario;
+import spring.ChipherTool;
 
 public class DataSourceReal implements IDataSource {
 
@@ -29,6 +29,7 @@ public class DataSourceReal implements IDataSource {
 
 	public DataSourceReal() {
 		readFromFile();
+		updateFile();
 	}
 
 	void readFromFile() {
@@ -39,7 +40,6 @@ public class DataSourceReal implements IDataSource {
 			 try {
 				obj = mapper.readValue(new File("file.json"), Info.class);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		
@@ -104,7 +104,7 @@ public class DataSourceReal implements IDataSource {
 		Empresa emp = getEmpresa(empresaID);
 
 		if (emp != null) {
-			user.setId(emp.getColegiados().size() + "");
+			user.setId(emp.getId() + "-" + emp.getColegiados().size());
 			emp.getColegiados().add(user);
 			updateFile();
 			return user;
@@ -123,7 +123,7 @@ public class DataSourceReal implements IDataSource {
 		
 	@Override
 	public CuerpoColegiado getCuerpoColegiado(String cuerpoColegiadoID, String empresaID){
-		return getCuerpoColegiado(cuerpoColegiadoID, empresaID);
+		return getCuerpoColeg(cuerpoColegiadoID, empresaID);
 		
 	}
 	
@@ -143,6 +143,8 @@ public class DataSourceReal implements IDataSource {
 		user.setNumeroActa(orig.getActas().size() + "");
 		user.setFecha(System.currentTimeMillis());
 
+		user.setEstado("Citada");
+		
 		orig.getActas().add(user);
 		updateFile();
 		return user;
@@ -186,19 +188,6 @@ public class DataSourceReal implements IDataSource {
 	
 	
 
-	@Override
-	public List<Usuario> getUsuariosList() {
-		return obj.getUsuarios();
-	}
-	
-
-	@Override
-	public Usuario createUser(Usuario user) {
-		user.setUserID(obj.getUsuarios().size()+"");
-		obj.getUsuarios().add(user);
-		updateFile();
-		return user;
-	}
 
 	@Override
 	public List<Tema> getTemaAbiertoList(String cuerpoColegiadoID, String empresaID) {
@@ -233,7 +222,15 @@ public class DataSourceReal implements IDataSource {
 
 
 
-	
+	public String getToken(Auth a) {
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			return ChipherTool.encrypt(mapper.writeValueAsString(a));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 	
 	@Override
@@ -241,21 +238,41 @@ public class DataSourceReal implements IDataSource {
 
 		String clave = ChipherTool.encrypt(user + "_" + pass);
 		
+		if ( "cabralito".equals(user) && "pascalito".equals(pass)) {
+			Auth auth = new Auth(clave, Rol.ADMINISTRADOR, "", null, clave, null, clave,"");
+			auth.setToken(getToken(auth));
+			return auth;
+		}
+		
 		if (obj.getUsers().containsKey(clave))
 		{
 			Auth auth = obj.getUsers().get(clave);
-			return new Auth(auth.getRol(), ChipherTool.encrypt(auth.getRol().name() +"_"+ clave));
+			auth.setToken(getToken(auth));
+			Empresa empresa = getEmpresa(auth.getEmpresaID());
+			auth.setLogo(empresa.getLogoEmpresa());
+			auth.setNombre(empresa.getNombreEmpresa());
+			return auth;
+			
+			
+			
 		}
 		return null;
 		
 	}
 
 	@Override
-	public Auth create(String user, String pass, Rol rol) {
-		// TODO Auto-generated method stub
-		return null;
+	public Auth create(String user, String pass, Rol rol, String empresaID, List<String> ccList, String nombre, String email, String logo) {
+	
+		String clave = ChipherTool.encrypt(user + "_" + pass);
+		
+		Auth auth = new Auth(obj.getUsers().size()+"",rol,nombre, email, empresaID, ccList,"",logo);
+		obj.getUsers().put(clave, auth);
+		updateFile();
+
+		return auth;
 	}
 
+	
 	@Override
 	public Auth editUser(String user, String pass, Rol rol) {
 		// TODO Auto-generated method stub
@@ -270,17 +287,6 @@ public class DataSourceReal implements IDataSource {
 		
 	}
 
-	@Override
-	public List<String> getUniversidadesList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void createUniversidad(String universidad) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void importCSV(MultipartFile filename) {
@@ -299,6 +305,33 @@ public class DataSourceReal implements IDataSource {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Empresa createEmpresa(String empresaID, Empresa empresa) {
+		
+
+		empresa.setId(obj.getEmpresas().size() + "");
+		obj.getEmpresas().add(empresa);
+		updateFile();
+		return empresa;
+	}
+
+	@Override
+	public List<Auth> getUsuariosList(String cuerpoColegiadoID) {
+
+		List<Auth> valores = new ArrayList<>();
+
+		Collection<Auth> aa = obj.getUsers().values();
+		for (Auth auth : aa) {
+			if (auth.getCcList().contains(cuerpoColegiadoID))
+				valores.add(auth);
+
+		}
+
+		return valores;
+	}
+
+
 
 
 

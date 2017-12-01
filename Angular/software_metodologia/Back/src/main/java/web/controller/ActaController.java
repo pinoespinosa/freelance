@@ -1,5 +1,6 @@
 package web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class ActaController {
 	private IDataSource dataSource;
 	
 	/**
-	 * Retorna la lista de clientes
+	 * Retorna la lista de las actas
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "{cuerpoColegiadoID}/acta", method = RequestMethod.GET)
@@ -36,10 +37,30 @@ public class ActaController {
 	}
 
 	/**
-	 * Retorna la lista de clientes
+	 * Retorna la lista de las actas
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
-	@RequestMapping(value = "{cuerpoColegiadoID}/acta/last", method = RequestMethod.GET)
+	@RequestMapping(value = "{cuerpoColegiadoID}/acta/citada", method = RequestMethod.GET)
+	public List<Acta> getActaCitadaList(
+			@PathVariable final String cuerpoColegiadoID,
+			@RequestHeader("Acces-Token") String token) {
+
+		List<Acta> actas = dataSource.getActaList(cuerpoColegiadoID, Auth.getEmpresaID(token));
+		List<Acta> filtradas = new ArrayList<>();
+		for (Acta acta : actas) {
+			if ("Citada".equals(acta.getEstado()))
+					filtradas.add(acta);
+		}
+		
+		return filtradas;
+	}
+	
+	/**
+	 * Retorna la ultima acta creada
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "{cuerpoColegiadoID}/acta/invite", method = RequestMethod.POST)
+	@ResponseBody
 	public Acta getLastActa(
 			@PathVariable final String cuerpoColegiadoID,
 			@RequestHeader("Acces-Token") String token) {
@@ -47,8 +68,10 @@ public class ActaController {
 		return dataSource.getLastActa(cuerpoColegiadoID, Auth.getEmpresaID(token));
 	}
 	
+
+	
 	/**
-	 * Crea un cliente
+	 * Crea un acta y envia las invitaciones
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "{cuerpoColegiadoID}/acta/create", method = RequestMethod.POST)
@@ -62,7 +85,7 @@ public class ActaController {
 	}
 
 	/**
-	 * Edita un cliente
+	 * Edita un acta
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "{cuerpoColegiadoID}/acta/edit", method = RequestMethod.POST)

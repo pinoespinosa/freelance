@@ -32,9 +32,13 @@ import { Observable }                                       from 'rxjs/Rx';
 export class HeaderComponent implements OnInit  {
 
   loggin:boolean = true;
+  logo:string = "";
+  nombre:string = "";
 
 
 constructor( private router: Router, private route : ActivatedRoute, private service: Service){
+          this.logo = localStorage.getItem('logo');
+          this.nombre = localStorage.getItem('empresa');
   }
 
 

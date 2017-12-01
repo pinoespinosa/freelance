@@ -21,9 +21,9 @@ import { Tema }                                         from 'app/data-objects/t
 export class Service {
 
 
-  private server = 'http://18.216.175.95:8080/metodologia-manager/'
+  //private server = 'http://18.216.175.95:8080/metodologia-manager/'
   //private server = 'http://192.168.1.4:8080/metodologiamanager/'
-  //private server = 'http://localhost:8080/metodologiamanager/'
+  private server = 'http://localhost:8080/metodologiamanager/'
 
   getServer(): string{
     return this.server;
@@ -38,7 +38,9 @@ export class Service {
 
 
   getCuerpoColegiados(): Observable<CuerpoColegiado[]> {
-      return this.http.get(this.server+"api/cuerpocolegiado").map(this.extractData);
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.get(this.server+"api/cuerpocolegiado", { headers: headers }).map(this.extractData);
   }
 
 
@@ -46,12 +48,18 @@ export class Service {
       return this.http.get(this.server+"api/cuerpocolegiado/"+cuerpocolegiadoID).map(this.extractData);
   }
 
-  getUsuarios(): Observable<Usuario[]> {
-      return this.http.get(this.server+"api/usuario").map(this.extractData);
+  getUsuarios(cuerpoColegiado): Observable<Usuario[]> {
+      var headers = new Headers();
+      headers.append('acces-token', localStorage.getItem('token'));
+      return this.http.get(this.server+"api/usuario?cuerpoColegiadoID=" +cuerpoColegiado, { headers: headers }).map(this.extractData);
   }
 
   getLastActa(cuerpoColegiadoID): Observable<Acta> {
       return this.http.get(this.server + 'api/'+ cuerpoColegiadoID + '/acta/last').map(this.extractData);
+  }
+
+  getActasCitadas(cuerpoColegiadoID): Observable<Acta[]> {
+      return this.http.get(this.server + 'api/'+ cuerpoColegiadoID + '/acta/citada').map(this.extractData);
   }
 
   getTemas(cuerpoColegiadoID): Observable<Tema[]> {
@@ -64,7 +72,6 @@ export class Service {
       return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/acta/create',acta, { headers: headers }).map(this.extractData);
 
   }
-
 
   editActa(cuerpoColegiadoID, acta): Observable<Acta> {
 

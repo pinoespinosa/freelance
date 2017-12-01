@@ -1,15 +1,48 @@
 
+<form *ngIf="paso==0" class="form-horizontal" action='' method="POST">
+   <div class="row" >
+      <div class="col-4" >
+      </div>
+      <div class="col-4" >
+         <select style="width: 100%;" #clii class="dropdown-select" (change)="selectActa(clii)">
+         <option disabled hidden [value]="empty">-- Seleccione el Acta --</option>
+         <option *ngFor="let actaCit of actasCitadas" >{{actaCit.numero}}</option>
+         </select>
+         <button (click)="createActa(cuerpoColegiado)" [disabled]="cuerpoColegiadoSelect == null" type="button" class="btn"><b>Continuar</b></button>
+      </div>
+      <div class="col-4" >
+      </div>
+   </div>
+   <div class="row" >
+   </div>
+</form>
 
-<div class="row" >
-   <div class="col-2" >
-      <img src="assets/logo.png" style="width: 100px;" >
+
+<form *ngIf="paso==1" class="form-horizontal" action='' method="POST">
+   <div class="row" >
+      <div class="col-4" >
+      </div>
+      <div class="col-4" >
+         <div class="row"  *ngFor="let asistente of actaCreada.integrantes" >
+            <div class="col-4" style="align-self: center;" >
+               {{asistente.nombre}}
+            </div>
+            <div class="col-8">
+               <input #finEsp type="text" (change)="print()" (change)="asistente.finEnMente=finEsp.value" class="form-control" placeholder="Fin en Mente Individual" >
+            </div>
+         </div>
+      </div>
+      <div class="col-4" >
+      </div>
    </div>
-   <div class="col-10" style="text-align: center;" >
-      <h1>Menu de consultas</h1>
-      <h1>Nombre de la compania</h1>
+   <div style="text-align: center;margin-top: 25px;" >
+      <button (click)="paso=2" type="button" class="btn"><b>Continuar</b></button>     
    </div>
-</div>
-<form class="form-horizontal" action='' method="POST">
+</form>
+
+
+
+<form *ngIf="paso==2" class="form-horizontal" action='' method="POST">
    <div class="row" >
       <div class="col-xl-2" >
       </div>

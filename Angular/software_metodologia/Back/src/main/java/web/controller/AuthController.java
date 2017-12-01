@@ -1,5 +1,7 @@
 package web.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,8 +40,14 @@ public class AuthController {
 			@RequestParam(required = true) final String token,
 			@RequestParam(required = true) final Rol rol, 
 			@RequestParam(required = true) final String user, 
-			@RequestParam(required = true) final String pass) {
-		return dataSource.create(user, pass,rol);
+			@RequestParam(required = true) final String pass,
+			@RequestParam(required = true) final String empresaID,
+			@RequestParam(required = true) final List<String> ccList,
+			@RequestParam(required = true) final String nombre,
+			@RequestParam(required = true) final String email,
+			@RequestParam(required = true) final String logo
+			) {
+		return dataSource.create(user, pass,rol, empresaID, ccList, nombre, email,logo);
 	}
 	
 	/**

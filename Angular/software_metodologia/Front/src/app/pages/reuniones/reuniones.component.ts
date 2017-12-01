@@ -48,25 +48,29 @@ export class ReunionesComponent implements OnInit  {
       }         
     );
 
-    loading = this.service.getUsuarios().subscribe(
-      response =>{ 
-        this.usuarios = response;
-      }         
-    );
+
 
 
 
 	};
 
- 
+
+
+
+
 
 selectCuerpo(cuerpo):void{
     this.cuerpoColegiadoSelect = this.cuerposColegiado[cuerpo.selectedIndex-1];
     console.log(this.cuerpoColegiadoSelect)
+    this.service.getUsuarios(this.cuerpoColegiadoSelect.id).subscribe(
+      response =>{ 
+        this.usuarios = response;
+      }         
+    );
  }
 
 createActa():void{
-  	this.actaCreada = new Acta("0","0","0","lugar","ciudad",null,"finGral","finEsp",[]);
+  	this.actaCreada = new Acta("0","0","0","lugar","ciudad",[],"finGral","finEsp",[]);
 		this.paso = 2;
 }
 
@@ -108,6 +112,9 @@ setPaso2Info(lugar, ciudad, fin):void{
     this.actaCreada.finMenteGral = fin;
     console.log(this.actaCreada)
     this.getLastActa();
+
+    if(!this.actaCreada.integrantes)
+      this.actaCreada.integrantes = []
     this.paso = 3;
 }
 
@@ -126,14 +133,17 @@ getLastActa():void{
 
 createActaSend():void{
 
+if (confirm("Esta a punto de crear una reunion y enviar las invitaciones. ¿Desea continuar?")){
+
+
     let loading = this.service.createActa(this.cuerpoColegiadoSelect.id, this.actaCreada).subscribe(
       response =>{ 
         this.actaCreada = response;
-        alert("Se ha creado la reunion Acta Nro " + response.numeroActa)
-        this.router.navigateByUrl('/sesion?cc='+this.cuerpoColegiadoSelect.id);
+        alert("Se ha creado la reunion Acta Nro " + response.numeroActa + " y se han enviado las invitaciones.")
+        this.router.navigateByUrl('/home');
       }         
     );
-
+}
   }
 
 cargarFinEnMente(fin):void{

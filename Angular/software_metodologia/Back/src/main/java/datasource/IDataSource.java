@@ -11,14 +11,10 @@ import data.Auditoria;
 import data.Auth;
 import data.Auth.Rol;
 import data.CuerpoColegiado;
+import data.Empresa;
 import data.Tema;
-import data.Usuario;
 
 public interface IDataSource {
-
-	List<String> getUniversidadesList();
-
-	void createUniversidad(String universidad);
 
 	void importCSV(MultipartFile filename);
 
@@ -28,18 +24,11 @@ public interface IDataSource {
 
 	Auth auth(String user, String pass);
 
-	Auth create(String user, String pass, Rol rol);
-
 	Auth editUser(String user, String pass, Rol rol);
 
 	void exportCSV(HttpServletResponse servletResponse);
 
 	void initBD();
-
-	List<Usuario> getUsuariosList();
-
-	Usuario createUser(Usuario user);
-
 
 	List<CuerpoColegiado> getCuerpoColegiadoList(String empresaID, List<String> list);
 
@@ -60,5 +49,12 @@ public interface IDataSource {
 	List<Tema> getTemaAbiertoList(String cuerpoColegiadoID, String empresaID);
 
 	Tema createTema(String cuerpoColegiadoID, Tema tema, String empresaID);
+
+	Empresa createEmpresa(String empresaID, Empresa empresa);
+
+	List<Auth> getUsuariosList(String cuerpoColegiadoID);
+
+	Auth create(String user, String pass, Rol rol, String empresaID, List<String> ccList, String nombre, String email,
+			String logo);
 
 }

@@ -14,6 +14,8 @@ public class Acta {
 	private String lugar;
 	private String ciudad;
 
+	private String estado;
+	
 	private List<UsuarioActa> integrantes;
 
 	private String finMenteGral;
@@ -86,6 +88,14 @@ public class Acta {
 
 	public void setTemas(List<Comentario> temas) {
 		this.temas = temas;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 }

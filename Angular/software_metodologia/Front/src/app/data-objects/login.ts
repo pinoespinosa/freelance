@@ -3,6 +3,8 @@ export class Login {
 
     public token: string,
     public rol:string,
+    public logo:string,
+    public nombre:string,
 
   ) { }
 }
