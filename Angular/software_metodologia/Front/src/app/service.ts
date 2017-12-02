@@ -59,7 +59,10 @@ export class Service {
   }
 
   getActasCitadas(cuerpoColegiadoID): Observable<Acta[]> {
-      return this.http.get(this.server + 'api/'+ cuerpoColegiadoID + '/acta/citada').map(this.extractData);
+      var headers = new Headers();
+      headers.append('acces-token', localStorage.getItem('token'));
+      return this.http.get(this.server + 'api/'+ cuerpoColegiadoID + '/acta/citada?cuerpoColegiadoID='+cuerpoColegiadoID, { headers: headers }).map(
+      this.extractData);
   }
 
   getTemas(cuerpoColegiadoID): Observable<Tema[]> {

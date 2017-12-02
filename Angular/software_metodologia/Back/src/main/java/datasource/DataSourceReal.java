@@ -250,7 +250,7 @@ public class DataSourceReal implements IDataSource {
 			auth.setToken(getToken(auth));
 			Empresa empresa = getEmpresa(auth.getEmpresaID());
 			auth.setLogo(empresa.getLogoEmpresa());
-			auth.setNombre(empresa.getNombreEmpresa());
+			auth.setEmpresaNombre(empresa.getNombreEmpresa());
 			return auth;
 			
 			
@@ -325,7 +325,6 @@ public class DataSourceReal implements IDataSource {
 		for (Auth auth : aa) {
 			if (auth.getCcList().contains(cuerpoColegiadoID))
 				valores.add(auth);
-
 		}
 
 		return valores;

@@ -2,17 +2,15 @@ package classes;
 
 public class Articulo {
 
-	private String id;
 	private String nombre;
-	private String cantidad;
-	private String precio;
-
-	public Articulo(String id, String nombre, String cantidad, String precio) {
+	private float precio;
+	
+	
+	
+	public Articulo(String nombre, float precio) {
 		super();
-		this.id = id;
 		this.nombre = nombre;
-		this.cantidad = cantidad;
-		this.precio = precio;
+		this.setPrecio(precio);
 	}
 
 	public String getNombre() {
@@ -23,34 +21,29 @@ public class Articulo {
 		this.nombre = nombre;
 	}
 
-	public String getCantidad() {
-		return cantidad;
-	}
-
-	public void setCantidad(String cantidad) {
-		this.cantidad = cantidad;
-	}
-
-	public String getPrecio() {
+	public float getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(String precio) {
+	public void setPrecio(float precio) {
 		this.precio = precio;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	@Override
 	public String toString() {
-		return "Articulo [nombre=" + nombre + ", precio=" + precio + "]";
+		return nombre + "... $" + precio;
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+
+		if (obj.getClass().equals(Articulo.class)) {
+			Articulo a = (Articulo) obj;
+
+			return nombre.equals(a.getNombre());
+		} else
+			return false;
+	}
+
 	
 }

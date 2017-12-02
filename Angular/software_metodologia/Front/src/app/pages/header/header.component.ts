@@ -31,12 +31,13 @@ import { Observable }                                       from 'rxjs/Rx';
 
 export class HeaderComponent implements OnInit  {
 
+  hide:boolean = true;
   loggin:boolean = true;
   logo:string = "";
   nombre:string = "";
+  show="";
 
-
-constructor( private router: Router, private route : ActivatedRoute, private service: Service){
+  constructor( private router: Router, private route : ActivatedRoute, private service: Service){
           this.logo = localStorage.getItem('logo');
           this.nombre = localStorage.getItem('empresa');
   }
@@ -52,6 +53,8 @@ getServerImport(){
 
 changeState(){
   localStorage.clear();
+  this.router.navigateByUrl('/home');
+
 }
 
 ngOnInit(): void { 
@@ -59,11 +62,20 @@ ngOnInit(): void {
     Observable.interval(500).subscribe(
       x => { 
 
+        
+        if (this.router.url=='/login' || this.router.url=='/home'){
+          this.hide = true
+        }
+        else
+          this.hide = false;
+
+
         if(localStorage.getItem('token')){
           this.loggin = false;
         }
         else
           this.loggin = true;
+
     }); 
 
 };

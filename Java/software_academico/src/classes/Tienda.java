@@ -1,19 +1,16 @@
 package classes;
 
+import java.util.Hashtable;
 import java.util.List;
 
 public class Tienda {
 
-	private List<Articulo> articulos;
+	private Hashtable<Articulo, Integer> articulosEnStock;
+	private Hashtable<Articulo, Integer> articuloOrdenados;
+
+
 	private List<Venta> ventas;
 
-	public List<Articulo> getArticulos() {
-		return articulos;
-	}
-
-	public void setArticulos(List<Articulo> articulos) {
-		this.articulos = articulos;
-	}
 
 	public List<Venta> getVentas() {
 		return ventas;
@@ -22,5 +19,23 @@ public class Tienda {
 	public void setVentas(List<Venta> ventas) {
 		this.ventas = ventas;
 	}
+
+	public Hashtable<Articulo, Integer> getArticulosEnStock() {
+		return articulosEnStock;
+	}
+
+	public void setArticulosEnStock(Hashtable<Articulo, Integer> articulosEnStock) {
+		this.articulosEnStock = articulosEnStock;
+	}
+
+	public Hashtable<Articulo, Integer> getArticuloOrdenados() {
+		return articuloOrdenados;
+	}
+
+	public void setArticuloOrdenados(Hashtable<Articulo, Integer> articuloOrdenados) {
+		this.articuloOrdenados = articuloOrdenados;
+	}
+
+
 
 }

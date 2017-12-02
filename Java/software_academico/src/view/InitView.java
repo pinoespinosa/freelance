@@ -9,6 +9,7 @@ import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 
 import classes.Articulo;
+import classes.ItemVenta;
 import classes.Tienda;
 
 import java.awt.Insets;
@@ -16,6 +17,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.awt.event.ActionEvent;
 
 public class InitView {
@@ -26,14 +28,22 @@ public class InitView {
 	 * Launch the application.
 	 */
 	
-	public static Tienda tienda = new Tienda();
+	private static Tienda tienda = new Tienda();
+
+
+	private MainViewCliente vistaClietes;
+	private MainViewTienda vistaTienda;
+	private MainViewProveedor2 vistaProveedor;
 	
 	public static void main(String[] args) {
 		
 		// Populating elements
-			tienda.setArticulos(new ArrayList<>());
-			tienda.getArticulos().add(new Articulo("1","Pure","50","10"));
-		
+		tienda.setArticuloOrdenados(new Hashtable<>());
+		tienda.getArticuloOrdenados().put(new Articulo("Zapallo", 500), 25);
+
+		tienda.setArticulosEnStock(new Hashtable<>());
+		tienda.getArticulosEnStock().put(new Articulo("Pure", 500), 25);
+			
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -72,8 +82,10 @@ public class InitView {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				frame.setVisible(false);
-				new MainViewCliente(frame);
-
+				if (vistaClietes==null)
+					vistaClietes = new MainViewCliente(frame);
+				else
+					vistaClietes.getFrame().setVisible(true);
 			}
 		});
 		GridBagConstraints gbc_ingresoCliente = new GridBagConstraints();
@@ -86,9 +98,13 @@ public class InitView {
 		JButton ingresoTienda = new JButton("Ingresar como Tienda");
 		ingresoTienda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				frame.setVisible(false);
-				new MainViewTienda(frame);
+				if (vistaTienda==null)
+					vistaTienda= new MainViewTienda(frame);
+				else
+					vistaTienda.getFrame().setVisible(true);
+
 			}
 		});
 		GridBagConstraints gbc_ingresoTienda = new GridBagConstraints();
@@ -102,7 +118,10 @@ public class InitView {
 		ingresoProveedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
-				new MainViewProveedor(frame);
+				if (vistaProveedor==null)
+					vistaProveedor= new MainViewProveedor2(frame);
+				else
+					vistaProveedor.getFrame().setVisible(true);
 				
 			}
 		});
@@ -114,4 +133,13 @@ public class InitView {
 		frame.getContentPane().add(ingresoProveedor, gbc_ingresoProveedor);
 	}
 
+	
+	
+	public static Tienda getTienda() {
+		return tienda;
+	}
+
+	public static void setTienda(Tienda tienda) {
+		InitView.tienda = tienda;
+	}
 }
