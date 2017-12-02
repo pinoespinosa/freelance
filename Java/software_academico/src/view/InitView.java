@@ -7,6 +7,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,6 +15,7 @@ import javax.swing.JFrame;
 import classes.Articulo;
 import classes.ItemVenta;
 import classes.Tienda;
+import classes.Venta;
 
 public class InitView {
 
@@ -38,7 +40,10 @@ public class InitView {
 
 		tienda.setArticulosEnStock(new ArrayList<>());
 		tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("Pure", 500), 20));
-			
+		
+		tienda.setVentas(new ArrayList<>());
+		tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("Salsa", 16), 1)),0));
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

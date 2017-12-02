@@ -21,6 +21,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 
 import classes.ItemVenta;
+import classes.Venta;
+
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
@@ -249,7 +251,7 @@ public class MainViewTienda {
 		gbl_panel_2.rowWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
-		JList<ItemVenta> list_4 = new JList<ItemVenta>(new DefaultListModel<ItemVenta>());
+		JList<Venta> list_4 = new JList<Venta>(new DefaultListModel<Venta>());
 		GridBagConstraints gbc_list_4 = new GridBagConstraints();
 		gbc_list_4.gridheight = 2;
 		gbc_list_4.fill = GridBagConstraints.BOTH;
@@ -287,7 +289,8 @@ public class MainViewTienda {
 		
 		updateView(listStock);
 		updateView(listStock_2);
-
+		updateVenta(list_4);
+		
 		btnAgregarAlCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DefaultListModel<ItemVenta> listVenta = (DefaultListModel<ItemVenta>) listPedido_2.getModel();
@@ -308,6 +311,12 @@ public class MainViewTienda {
 				Enumeration<ItemVenta> listaParaProveer = ((DefaultListModel<ItemVenta>) listPedido_2.getModel()).elements();
 				List<ItemVenta> sTienda = InitView.getTienda().getArticulosEnStock();
 				
+				if (InitView.getTienda().getVentas()==null)
+					InitView.getTienda().setVentas(new ArrayList<>());
+				
+				List<ItemVenta> factura = new ArrayList<>();
+				InitView.getTienda().getVentas().add(new Venta(factura, System.currentTimeMillis()));
+				
 				for (ItemVenta prov : Collections.list(listaParaProveer)) {					
 					if (sTienda.indexOf(prov) < 0) {
 						sTienda.add(new ItemVenta(prov.getArticulo(), 0));
@@ -315,14 +324,20 @@ public class MainViewTienda {
 					ItemVenta artDelStock = sTienda.get(sTienda.indexOf(prov));
 					artDelStock.setCantidad( artDelStock.getCantidad() - prov.getCantidad());
 					
+					factura.add(new ItemVenta(prov.getArticulo(), prov.getCantidad()));
 				}
 
+				
+
+				
 				updateView(listStock);
 				updateView(listStock_2);
-			
+				updateVenta(list_4);
+				
 				listStock.updateUI();
 				listStock_2.updateUI();
-
+				list_4.updateUI();
+				
 				JOptionPane.showMessageDialog(null, "La operación se ha realizado exitosamente");
 				((DefaultListModel<ItemVenta>) listPedido_2.getModel()).clear();
 			}
@@ -346,10 +361,13 @@ public class MainViewTienda {
 
 				updateView(listStock);
 				updateView(listStock_2);
-			
+				updateVenta(list_4);
+				
 				listStock.updateUI();
 				listStock_2.updateUI();
+				list_4.updateUI();
 
+				
 				JOptionPane.showMessageDialog(null, "La operación se ha realizado exitosamente");
 				((DefaultListModel<ItemVenta>) listPedido_2.getModel()).clear();
 			}
@@ -369,6 +387,17 @@ public class MainViewTienda {
 		
 	}
 
+	private void updateVenta(JList<Venta> list){
+		
+		DefaultListModel<Venta> listVenta = (DefaultListModel<Venta>) list.getModel();
+		listVenta.clear();
+		for (Venta venta : InitView.getTienda().getVentas()) {
+			listVenta.addElement(venta);
+		}
+		
+	}
+
+	
 	public JFrame getFrame() {
 		return frame;
 	}
