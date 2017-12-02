@@ -32,4 +32,14 @@ public class ItemVenta {
 		return articulo.getNombre() + "... $" + articulo.getPrecio() + " [ " + cantidad + " unid. ]";
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+
+		if (obj.getClass().equals(ItemVenta.class)) {
+			ItemVenta a = (ItemVenta) obj;
+
+			return articulo.equals(a.getArticulo());
+		} else
+			return false;
+	}
 }

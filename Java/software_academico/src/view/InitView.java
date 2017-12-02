@@ -1,24 +1,19 @@
 package view;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
-import javax.swing.JTextField;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
 
 import classes.Articulo;
 import classes.ItemVenta;
 import classes.Tienda;
-
-import java.awt.Insets;
-import javax.swing.JPasswordField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.awt.event.ActionEvent;
 
 public class InitView {
 
@@ -33,16 +28,16 @@ public class InitView {
 
 	private MainViewCliente vistaClietes;
 	private MainViewTienda vistaTienda;
-	private MainViewProveedor2 vistaProveedor;
+	private MainViewProveedor vistaProveedor;
 	
 	public static void main(String[] args) {
 		
 		// Populating elements
-		tienda.setArticuloOrdenados(new Hashtable<>());
-		tienda.getArticuloOrdenados().put(new Articulo("Zapallo", 500), 25);
+		tienda.setArticuloOrdenados(new ArrayList<>());
+		tienda.getArticuloOrdenados().add(new ItemVenta(new Articulo("Zapallo", 500), 10));
 
-		tienda.setArticulosEnStock(new Hashtable<>());
-		tienda.getArticulosEnStock().put(new Articulo("Pure", 500), 25);
+		tienda.setArticulosEnStock(new ArrayList<>());
+		tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("Pure", 500), 20));
 			
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -119,7 +114,7 @@ public class InitView {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);
 				if (vistaProveedor==null)
-					vistaProveedor= new MainViewProveedor2(frame);
+					vistaProveedor= new MainViewProveedor(frame);
 				else
 					vistaProveedor.getFrame().setVisible(true);
 				
