@@ -12,25 +12,21 @@ import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.border.TitledBorder;
 
 import classes.ItemVenta;
 import classes.Venta;
-
-import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
-import java.awt.Color;
-import javax.swing.border.TitledBorder;
-import javax.swing.ListModel;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-import javax.swing.DefaultComboBoxModel;
 
 public class MainViewTienda {
 
@@ -39,7 +35,12 @@ public class MainViewTienda {
 
 	private java.util.List<ItemVenta> compra = new ArrayList<>();
 	private JTextField textField;
-
+	
+	JList<ItemVenta> listStock;
+	JList<ItemVenta> listStock_2;
+	JList<ItemVenta> listStock7;
+	JList<Venta> list_ventas;
+	
 	/**
 	 * Create the application.
 	 * 
@@ -60,9 +61,9 @@ public class MainViewTienda {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 15, 0, 15, 0 };
-		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0 };
+		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0 };
 		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
 		frame.getContentPane().setLayout(gridBagLayout);
 
 		JButton btnVolver = new JButton("Volver");
@@ -114,7 +115,7 @@ public class MainViewTienda {
 		gbc_lblPedidoParaOrdenar.gridy = 0;
 		panel.add(lblPedidoParaOrdenar, gbc_lblPedidoParaOrdenar);
 
-		JList<ItemVenta> listStock = new JList<ItemVenta>(new DefaultListModel<ItemVenta>());
+		listStock = new JList<ItemVenta>(new DefaultListModel<ItemVenta>());
 		GridBagConstraints gbc_listStock = new GridBagConstraints();
 		gbc_listStock.gridwidth = 2;
 		gbc_listStock.insets = new Insets(0, 0, 5, 5);
@@ -169,6 +170,45 @@ public class MainViewTienda {
 
 			}
 		});
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBorder(new TitledBorder(null, "Administrar Articulos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		GridBagConstraints gbc_panel_3 = new GridBagConstraints();
+		gbc_panel_3.insets = new Insets(0, 0, 5, 5);
+		gbc_panel_3.fill = GridBagConstraints.BOTH;
+		gbc_panel_3.gridx = 1;
+		gbc_panel_3.gridy = 2;
+		frame.getContentPane().add(panel_3, gbc_panel_3);
+		GridBagLayout gbl_panel_3 = new GridBagLayout();
+		gbl_panel_3.columnWidths = new int[]{0, 0, 0, 0, 0, 0};
+		gbl_panel_3.rowHeights = new int[]{0, 0, 0, 0};
+		gbl_panel_3.columnWeights = new double[]{0.0, 1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_3.rowWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
+		panel_3.setLayout(gbl_panel_3);
+		
+		listStock7 = new JList<ItemVenta>(new DefaultListModel<ItemVenta>());
+		GridBagConstraints gbc_listStock7 = new GridBagConstraints();
+		gbc_listStock7.gridheight = 3;
+		gbc_listStock7.fill = GridBagConstraints.BOTH;
+		gbc_listStock7.insets = new Insets(0, 0, 0, 5);
+		gbc_listStock7.gridx = 1;
+		gbc_listStock7.gridy = 0;
+		panel_3.add(listStock7, gbc_listStock7);
+		
+		JList<ItemVenta> list_1 = new JList<ItemVenta>(new DefaultListModel<ItemVenta>());
+		GridBagConstraints gbc_list_18 = new GridBagConstraints();
+		gbc_list_18.fill = GridBagConstraints.BOTH;
+		gbc_list_18.insets = new Insets(0, 0, 5, 5);
+		gbc_list_18.gridx = 3;
+		gbc_list_18.gridy = 1;
+		panel_3.add(list_1, gbc_list_18);
+		
+		JButton button_1 = new JButton("Enviar pedido");
+		GridBagConstraints gbc_button_1 = new GridBagConstraints();
+		gbc_button_1.insets = new Insets(0, 0, 0, 5);
+		gbc_button_1.gridx = 3;
+		gbc_button_1.gridy = 2;
+		panel_3.add(button_1, gbc_button_1);
 	
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "Vender Articulos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -176,7 +216,7 @@ public class MainViewTienda {
 		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 1;
-		gbc_panel_1.gridy = 2;
+		gbc_panel_1.gridy = 3;
 		frame.getContentPane().add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0};
@@ -201,7 +241,7 @@ public class MainViewTienda {
 		gbc_lblArticulosEnEl.gridy = 0;
 		panel_1.add(lblArticulosEnEl, gbc_lblArticulosEnEl);
 		
-		JList<ItemVenta> listStock_2 = new JList<ItemVenta>(new DefaultListModel<ItemVenta>());
+		listStock_2 = new JList<ItemVenta>(new DefaultListModel<ItemVenta>());
 		GridBagConstraints gbc_listStock_2 = new GridBagConstraints();
 		gbc_listStock_2.fill = GridBagConstraints.BOTH;
 		gbc_listStock_2.gridwidth = 2;
@@ -246,7 +286,7 @@ public class MainViewTienda {
 		gbc_panel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_2.fill = GridBagConstraints.BOTH;
 		gbc_panel_2.gridx = 1;
-		gbc_panel_2.gridy = 3;
+		gbc_panel_2.gridy = 4;
 		frame.getContentPane().add(panel_2, gbc_panel_2);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[]{0, 0, 0, 0, 0};
@@ -255,7 +295,7 @@ public class MainViewTienda {
 		gbl_panel_2.rowWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
-		JList<Venta> list_ventas = new JList<Venta>(new DefaultListModel<Venta>());
+		list_ventas = new JList<Venta>(new DefaultListModel<Venta>());
 		GridBagConstraints gbc_list_ventas = new GridBagConstraints();
 		gbc_list_ventas.gridheight = 2;
 		gbc_list_ventas.fill = GridBagConstraints.BOTH;
@@ -292,9 +332,7 @@ public class MainViewTienda {
 		
 		
 		
-		updateView(listStock);
-		updateView(listStock_2);
-		updateVenta(list_ventas);
+		updateScreen();
 
 		btnRegistrarPago.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -305,7 +343,7 @@ public class MainViewTienda {
 						list_ventas.getSelectedValue().setEstado("Paga");
 						list_ventas.getSelectedValue().setFormaPago(comboFormaPago.getSelectedItem().toString());
 						JOptionPane.showMessageDialog(null, "La operación se ha realizado exitosamente");
-						updateVenta(list_ventas);
+						updateScreen();
 					}
 				} else
 					JOptionPane.showMessageDialog(null, "Solo se pueden pagar facturas impagas...");
@@ -356,13 +394,7 @@ public class MainViewTienda {
 				
 
 				
-				updateView(listStock);
-				updateView(listStock_2);
-				updateVenta(list_ventas);
-				
-				listStock.updateUI();
-				listStock_2.updateUI();
-				list_ventas.updateUI();
+				updateScreen();
 				
 				JOptionPane.showMessageDialog(null, "La operación se ha realizado exitosamente");
 				((DefaultListModel<ItemVenta>) listPedido_2.getModel()).clear();
@@ -385,13 +417,7 @@ public class MainViewTienda {
 					artDelProv.setCantidad(artDelProv.getCantidad()+prov.getCantidad());				
 				}
 
-				updateView(listStock);
-				updateView(listStock_2);
-				updateVenta(list_ventas);
-				
-				listStock.updateUI();
-				listStock_2.updateUI();
-				list_ventas.updateUI();
+
 
 				
 				JOptionPane.showMessageDialog(null, "La operación se ha realizado exitosamente");
@@ -413,6 +439,18 @@ public class MainViewTienda {
 		
 	}
 
+	private void updateScreen(){
+		updateView(listStock);
+		updateView(listStock_2);
+		updateView(listStock7);
+		updateVenta(list_ventas);
+		
+		listStock.updateUI();
+		listStock_2.updateUI();
+		listStock7.updateUI();
+		list_ventas.updateUI();	
+	}
+	
 	private void updateVenta(JList<Venta> list){
 		
 		DefaultListModel<Venta> listVenta = (DefaultListModel<Venta>) list.getModel();
