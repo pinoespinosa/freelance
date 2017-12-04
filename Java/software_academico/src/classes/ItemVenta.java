@@ -29,7 +29,7 @@ public class ItemVenta {
 
 	@Override
 	public String toString() {
-		return articulo.getNombre() + "... $" + articulo.getPrecio() + " [ " + cantidad + " unid. ]";
+		return articulo.toString() + " [ " + cantidad + " unid. ]";
 	}
 
 	@Override

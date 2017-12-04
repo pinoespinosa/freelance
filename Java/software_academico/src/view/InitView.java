@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 
 import classes.Articulo;
 import classes.ItemVenta;
+import classes.Proveedor;
 import classes.Tienda;
 import classes.Venta;
 
@@ -28,7 +29,7 @@ public class InitView {
 	private static Tienda tienda = new Tienda();
 
 
-	private MainViewCliente vistaClietes;
+	private MainViewAlmacen vistaAlmacen;
 	private MainViewTienda vistaTienda;
 	private MainViewProveedor vistaProveedor;
 	
@@ -36,18 +37,23 @@ public class InitView {
 		
 		// Populating elements
 		tienda.setArticuloOrdenados(new ArrayList<>());
-		tienda.getArticuloOrdenados().add(new ItemVenta(new Articulo("Zapallo", 500), 10));
+		tienda.getArticuloOrdenados().add(new ItemVenta(new Articulo("11","Zapallo", 500, 600), 10));
 
 		tienda.setArticulosEnStock(new ArrayList<>());
-		tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("Pure", 500), 20));
-		tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("Maicena", 200), 20));
-		tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("Tomate", 400), 20));
+		tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("12","Pure", 500,750), 20));
+		tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("13","Maicena", 200,300), 20));
+		tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("14","Tomate", 400,500), 20));
 		
 		tienda.setVentas(new ArrayList<>());
-		tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("Salsa", 16), 1)),System.currentTimeMillis(),"Creada","Detalle",""));
-		tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("Caramelos", 16), 1)),System.currentTimeMillis(),"Preparada","",""));
-		tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("Caramelos", 16), 1)),System.currentTimeMillis(),"Paga","Cheque Numero 1057423","Cheque"));
+		tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("12","Salsa", 16,25), 1)),System.currentTimeMillis(),"Creada","Detalle",""));
+		tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("12","Caramelos", 16,25), 1)),System.currentTimeMillis(),"Preparada","",""));
+		tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("12","Caramelos", 16,25), 1)),System.currentTimeMillis(),"Paga","Cheque Numero 1057423","Cheque"));
 		
+		
+		tienda.setProveedores(new ArrayList<>());
+		tienda.getProveedores().add(new Proveedor("Manuel Garcia", "Belgrano nro. 123", "0303456", "aa@pino.test", "12345"));
+		tienda.getProveedores().add(new Proveedor("Manuel Gonzales", "San Martin nro. 123", "0303456", "aa@pino.test", "12345"));
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -81,15 +87,15 @@ public class InitView {
 		gridBagLayout.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		frame.getContentPane().setLayout(gridBagLayout);
 		
-		JButton ingresoCliente = new JButton("Ingresar como Cliente");
+		JButton ingresoCliente = new JButton("Almacen");
 		ingresoCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				frame.setVisible(false);
-				if (vistaClietes==null)
-					vistaClietes = new MainViewCliente(frame);
+				if (vistaAlmacen==null)
+					vistaAlmacen = new MainViewAlmacen(frame);
 				else
-					vistaClietes.getFrame().setVisible(true);
+					vistaAlmacen.getFrame().setVisible(true);
 			}
 		});
 		GridBagConstraints gbc_ingresoCliente = new GridBagConstraints();
@@ -99,7 +105,7 @@ public class InitView {
 		gbc_ingresoCliente.gridy = 1;
 		frame.getContentPane().add(ingresoCliente, gbc_ingresoCliente);
 		
-		JButton ingresoTienda = new JButton("Ingresar como Tienda");
+		JButton ingresoTienda = new JButton("Ventas");
 		ingresoTienda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -118,7 +124,7 @@ public class InitView {
 		gbc_ingresoTienda.gridy = 2;
 		frame.getContentPane().add(ingresoTienda, gbc_ingresoTienda);
 		
-		JButton ingresoProveedor = new JButton("Ingresar como Proveedor");
+		JButton ingresoProveedor = new JButton("Proveedores");
 		ingresoProveedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.setVisible(false);

@@ -6,6 +6,7 @@ public class Tienda {
 
 	private List<ItemVenta> articulosEnStock;
 	private List<ItemVenta> articuloOrdenados;
+	private List<Proveedor> proveedores;
 
 
 	private List<Venta> ventas;
@@ -33,6 +34,14 @@ public class Tienda {
 
 	public void setArticulosEnStock(List<ItemVenta> articulosEnStock) {
 		this.articulosEnStock = articulosEnStock;
+	}
+
+	public List<Proveedor> getProveedores() {
+		return proveedores;
+	}
+
+	public void setProveedores(List<Proveedor> proveedores) {
+		this.proveedores = proveedores;
 	}
 
 

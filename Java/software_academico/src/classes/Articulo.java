@@ -3,14 +3,18 @@ package classes;
 public class Articulo {
 
 	private String nombre;
-	private float precio;
-	
-	
-	
-	public Articulo(String nombre, float precio) {
+	private String codigo;
+	private float precioCompra;
+	private float precioVenta;
+	private String proveedor;
+
+	public Articulo(String codigo, String nombre, float precioCompra, float precioVenta) {
 		super();
+		this.codigo = codigo;
 		this.nombre = nombre;
-		this.setPrecio(precio);
+		this.precioCompra = precioCompra;
+		this.precioVenta = precioVenta;
+
 	}
 
 	public String getNombre() {
@@ -21,17 +25,9 @@ public class Articulo {
 		this.nombre = nombre;
 	}
 
-	public float getPrecio() {
-		return precio;
-	}
-
-	public void setPrecio(float precio) {
-		this.precio = precio;
-	}
-
 	@Override
 	public String toString() {
-		return nombre + "... $" + precio;
+		return codigo + " " + nombre + " " + precioCompra + " " + precioVenta;
 	}
 
 	@Override
@@ -45,5 +41,36 @@ public class Articulo {
 			return false;
 	}
 
-	
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(String proveedor) {
+		this.proveedor = proveedor;
+	}
+
+	public float getPrecioVenta() {
+		return precioVenta;
+	}
+
+	public void setPrecioVenta(float precioVenta) {
+		this.precioVenta = precioVenta;
+	}
+
+	public float getPrecioCompra() {
+		return precioCompra;
+	}
+
+	public void setPrecioCompra(float precioCompra) {
+		this.precioCompra = precioCompra;
+	}
+
 }

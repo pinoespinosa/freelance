@@ -37,9 +37,9 @@ public class MainViewCliente {
 
 		@Override
 		public int compare(ItemVenta o1, ItemVenta o2) {
-			if (o1.getArticulo().getPrecio() == o2.getArticulo().getPrecio())
+			if (o1.getArticulo().getPrecioVenta() == o2.getArticulo().getPrecioVenta())
 				return 0;
-			else if (o1.getArticulo().getPrecio() > o2.getArticulo().getPrecio())
+			else if (o1.getArticulo().getPrecioVenta() > o2.getArticulo().getPrecioVenta())
 				return 1;
 			else
 				return -1;

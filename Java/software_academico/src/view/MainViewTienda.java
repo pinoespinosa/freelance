@@ -47,9 +47,9 @@ public class MainViewTienda {
 
 		@Override
 		public int compare(ItemVenta o1, ItemVenta o2) {
-			if (o1.getArticulo().getPrecio() == o2.getArticulo().getPrecio())
+			if (o1.getArticulo().getPrecioVenta() == o2.getArticulo().getPrecioVenta())
 				return 0;
-			else if (o1.getArticulo().getPrecio() > o2.getArticulo().getPrecio())
+			else if (o1.getArticulo().getPrecioVenta() > o2.getArticulo().getPrecioVenta())
 				return 1;
 			else
 				return -1;
@@ -286,7 +286,7 @@ public class MainViewTienda {
 				
 				if (listStock7.getSelectedValue() != null) {
 					nombreProd.setText(listStock7.getSelectedValue().getArticulo().getNombre());
-					precioProd.setValue(listStock7.getSelectedValue().getArticulo().getPrecio());
+					precioProd.setValue(listStock7.getSelectedValue().getArticulo().getPrecioVenta());
 
 				}
 			}
@@ -325,7 +325,7 @@ public class MainViewTienda {
 				if (listStock7.getSelectedValue() != null) {
 					
 					listStock7.getSelectedValue().getArticulo().setNombre(nombreProd.getText());;
-					listStock7.getSelectedValue().getArticulo().setPrecio((float) precioProd.getValue());;
+					listStock7.getSelectedValue().getArticulo().setPrecioVenta((float) precioProd.getValue());;
 					
 					nombreProd.setText("");
 					precioProd.setValue(0);
