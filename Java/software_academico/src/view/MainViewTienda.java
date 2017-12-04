@@ -5,7 +5,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -15,22 +14,20 @@ import java.util.Enumeration;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
 import classes.ItemVenta;
 import classes.Venta;
-import javax.swing.JRadioButton;
 
 public class MainViewTienda {
 
@@ -416,7 +413,7 @@ public class MainViewTienda {
 		panel_1.add(btnEjecutarVenta, gbc_btnEjecutarVenta);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new TitledBorder(null, "Registrar pago de venta", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_2.setBorder(new TitledBorder(null, "Preparar factura", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
 		gbc_panel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_2.fill = GridBagConstraints.BOTH;
@@ -439,15 +436,12 @@ public class MainViewTienda {
 		gbc_list_ventas.gridy = 0;
 		panel_2.add(list_ventas, gbc_list_ventas);
 		
-		JComboBox<String> comboFormaPago = new JComboBox<String>();
-		comboFormaPago.setModel(new DefaultComboBoxModel<String>(new String[] {"Efectivo", "Tarjeta de Credito", "Tarjeta de Debito"}));
-		comboFormaPago.setToolTipText("Forma de pago");
-		GridBagConstraints gbc_comboFormaPago = new GridBagConstraints();
-		gbc_comboFormaPago.insets = new Insets(0, 0, 5, 0);
-		gbc_comboFormaPago.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboFormaPago.gridx = 3;
-		gbc_comboFormaPago.gridy = 0;
-		panel_2.add(comboFormaPago, gbc_comboFormaPago);
+		JLabel lblComentarios = new JLabel("Comentarios");
+		GridBagConstraints gbc_lblComentarios = new GridBagConstraints();
+		gbc_lblComentarios.insets = new Insets(0, 0, 5, 0);
+		gbc_lblComentarios.gridx = 3;
+		gbc_lblComentarios.gridy = 0;
+		panel_2.add(lblComentarios, gbc_lblComentarios);
 		
 		textField = new JTextField();
 		textField.setToolTipText("Detalle");
@@ -459,7 +453,7 @@ public class MainViewTienda {
 		panel_2.add(textField, gbc_textField);
 		textField.setColumns(10);
 		
-		JButton btnRegistrarPago = new JButton("Registrar pago");
+		JButton btnRegistrarPago = new JButton("Preparar factura");
 		GridBagConstraints gbc_btnRegistrarPago = new GridBagConstraints();
 		gbc_btnRegistrarPago.gridx = 3;
 		gbc_btnRegistrarPago.gridy = 2;
@@ -472,17 +466,16 @@ public class MainViewTienda {
 		btnRegistrarPago.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				if (comboFormaPago.getSelectedItem() != null && list_ventas.getSelectedValue() != null) {
+				if ( list_ventas.getSelectedValue() != null) {
 
-					if ("Impaga".equals(list_ventas.getSelectedValue().getEstado())) {
-						list_ventas.getSelectedValue().setEstado("Paga");
-						list_ventas.getSelectedValue().setFormaPago(comboFormaPago.getSelectedItem().toString());
+					if ("Creada".equals(list_ventas.getSelectedValue().getEstado())) {
+						list_ventas.getSelectedValue().setEstado("Preparada");
 						JOptionPane.showMessageDialog(null, "La operación se ha realizado exitosamente");
 						updateScreen();
 					}
-				} else
-					JOptionPane.showMessageDialog(null, "Solo se pueden pagar facturas impagas...");
-
+				 else
+					JOptionPane.showMessageDialog(null, "Solo se pueden preparar facturas \"creadas\"...");
+			}
 			}
 		});
 
