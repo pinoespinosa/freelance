@@ -42,7 +42,8 @@ public class InitView {
 		tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("Pure", 500), 20));
 		
 		tienda.setVentas(new ArrayList<>());
-		tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("Salsa", 16), 1)),0));
+		tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("Salsa", 16), 1)),System.currentTimeMillis(),"Impaga","Detalle",""));
+		tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("Caramelos", 16), 1)),System.currentTimeMillis(),"Paga","Cheque Numero 1057423","Cheque"));
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

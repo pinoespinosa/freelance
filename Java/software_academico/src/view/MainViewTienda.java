@@ -30,6 +30,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.ListModel;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.DefaultComboBoxModel;
 
 public class MainViewTienda {
 
@@ -158,10 +159,13 @@ public class MainViewTienda {
 
 				int cantReq = Integer.parseInt(spinner.getValue().toString());
 
-				if (cantReq > 0 && listStock.getSelectedValue() != null
-						&& cantReq <= listStock.getSelectedValue().getCantidad()) {
+				if (listStock.getSelectedValue() == null) {
+					JOptionPane.showMessageDialog(null, "Seleccione un producto.");
+
+				} else if (cantReq <= 0 || cantReq > listStock.getSelectedValue().getCantidad()) {
+					JOptionPane.showMessageDialog(null, "Verifique la cantidad ingresada.");
+				} else
 					listVenta.addElement(new ItemVenta(listStock.getSelectedValue().getArticulo(), cantReq));
-				}
 
 			}
 		});
@@ -251,23 +255,24 @@ public class MainViewTienda {
 		gbl_panel_2.rowWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
-		JList<Venta> list_4 = new JList<Venta>(new DefaultListModel<Venta>());
-		GridBagConstraints gbc_list_4 = new GridBagConstraints();
-		gbc_list_4.gridheight = 2;
-		gbc_list_4.fill = GridBagConstraints.BOTH;
-		gbc_list_4.insets = new Insets(0, 0, 5, 5);
-		gbc_list_4.gridx = 1;
-		gbc_list_4.gridy = 0;
-		panel_2.add(list_4, gbc_list_4);
+		JList<Venta> list_ventas = new JList<Venta>(new DefaultListModel<Venta>());
+		GridBagConstraints gbc_list_ventas = new GridBagConstraints();
+		gbc_list_ventas.gridheight = 2;
+		gbc_list_ventas.fill = GridBagConstraints.BOTH;
+		gbc_list_ventas.insets = new Insets(0, 0, 5, 5);
+		gbc_list_ventas.gridx = 1;
+		gbc_list_ventas.gridy = 0;
+		panel_2.add(list_ventas, gbc_list_ventas);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setToolTipText("Forma de pago");
-		GridBagConstraints gbc_comboBox = new GridBagConstraints();
-		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
-		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox.gridx = 3;
-		gbc_comboBox.gridy = 0;
-		panel_2.add(comboBox, gbc_comboBox);
+		JComboBox<String> comboFormaPago = new JComboBox<String>();
+		comboFormaPago.setModel(new DefaultComboBoxModel<String>(new String[] {"Efectivo", "Tarjeta de Credito", "Tarjeta de Debito"}));
+		comboFormaPago.setToolTipText("Forma de pago");
+		GridBagConstraints gbc_comboFormaPago = new GridBagConstraints();
+		gbc_comboFormaPago.insets = new Insets(0, 0, 5, 0);
+		gbc_comboFormaPago.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboFormaPago.gridx = 3;
+		gbc_comboFormaPago.gridy = 0;
+		panel_2.add(comboFormaPago, gbc_comboFormaPago);
 		
 		textField = new JTextField();
 		textField.setToolTipText("Detalle");
@@ -279,30 +284,51 @@ public class MainViewTienda {
 		panel_2.add(textField, gbc_textField);
 		textField.setColumns(10);
 		
-		JButton button_1 = new JButton("Ejecutar Venta");
-		GridBagConstraints gbc_button_1 = new GridBagConstraints();
-		gbc_button_1.gridx = 3;
-		gbc_button_1.gridy = 2;
-		panel_2.add(button_1, gbc_button_1);
+		JButton btnRegistrarPago = new JButton("Registrar pago");
+		GridBagConstraints gbc_btnRegistrarPago = new GridBagConstraints();
+		gbc_btnRegistrarPago.gridx = 3;
+		gbc_btnRegistrarPago.gridy = 2;
+		panel_2.add(btnRegistrarPago, gbc_btnRegistrarPago);
 		
 		
 		
 		updateView(listStock);
 		updateView(listStock_2);
-		updateVenta(list_4);
-		
+		updateVenta(list_ventas);
+
+		btnRegistrarPago.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				if (comboFormaPago.getSelectedItem() != null && list_ventas.getSelectedValue() != null) {
+
+					if ("Impaga".equals(list_ventas.getSelectedValue().getEstado())) {
+						list_ventas.getSelectedValue().setEstado("Paga");
+						list_ventas.getSelectedValue().setFormaPago(comboFormaPago.getSelectedItem().toString());
+						JOptionPane.showMessageDialog(null, "La operación se ha realizado exitosamente");
+						updateVenta(list_ventas);
+					}
+				} else
+					JOptionPane.showMessageDialog(null, "Solo se pueden pagar facturas impagas...");
+
+			}
+		});
+
 		btnAgregarAlCarrito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				DefaultListModel<ItemVenta> listVenta = (DefaultListModel<ItemVenta>) listPedido_2.getModel();
 
 				int cantReq = Integer.parseInt(spinner_1.getValue().toString());
 
-				if (cantReq > 0 && listStock_2.getSelectedValue() != null
-						&& cantReq <= listStock_2.getSelectedValue().getCantidad()) {
-					listVenta.addElement(new ItemVenta(listStock_2.getSelectedValue().getArticulo(), cantReq));
-				}
+				if (listStock_2.getSelectedValue() == null) {
+					JOptionPane.showMessageDialog(null, "Seleccione un producto.");
 
+				} else if (cantReq <= 0 || cantReq > listStock_2.getSelectedValue().getCantidad()) {
+					JOptionPane.showMessageDialog(null, "Verifique la cantidad ingresada.");
+				} else
+					listVenta.addElement(new ItemVenta(listStock_2.getSelectedValue().getArticulo(), cantReq));
 			}
+
 		});
 
 		btnEjecutarVenta.addActionListener(new ActionListener() {
@@ -315,7 +341,7 @@ public class MainViewTienda {
 					InitView.getTienda().setVentas(new ArrayList<>());
 				
 				List<ItemVenta> factura = new ArrayList<>();
-				InitView.getTienda().getVentas().add(new Venta(factura, System.currentTimeMillis()));
+				InitView.getTienda().getVentas().add(new Venta(factura, System.currentTimeMillis(),"Impaga","",""));
 				
 				for (ItemVenta prov : Collections.list(listaParaProveer)) {					
 					if (sTienda.indexOf(prov) < 0) {
@@ -332,11 +358,11 @@ public class MainViewTienda {
 				
 				updateView(listStock);
 				updateView(listStock_2);
-				updateVenta(list_4);
+				updateVenta(list_ventas);
 				
 				listStock.updateUI();
 				listStock_2.updateUI();
-				list_4.updateUI();
+				list_ventas.updateUI();
 				
 				JOptionPane.showMessageDialog(null, "La operación se ha realizado exitosamente");
 				((DefaultListModel<ItemVenta>) listPedido_2.getModel()).clear();
@@ -361,11 +387,11 @@ public class MainViewTienda {
 
 				updateView(listStock);
 				updateView(listStock_2);
-				updateVenta(list_4);
+				updateVenta(list_ventas);
 				
 				listStock.updateUI();
 				listStock_2.updateUI();
-				list_4.updateUI();
+				list_ventas.updateUI();
 
 				
 				JOptionPane.showMessageDialog(null, "La operación se ha realizado exitosamente");
