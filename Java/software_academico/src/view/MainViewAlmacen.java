@@ -247,6 +247,8 @@ public class MainViewAlmacen {
 
 				updateViewVenta(list_1);
 				list_1.updateUI();
+				InitView.saveDB();
+
 				JOptionPane.showMessageDialog(null, "La operación se ha realizado exitosamente");
 
 			}
@@ -276,6 +278,8 @@ public class MainViewAlmacen {
 				updateView(list);
 				updateViewVenta(list_1);
 				list.updateUI();
+				InitView.saveDB();
+
 				JOptionPane.showMessageDialog(null, "La operación se ha realizado exitosamente");
 			}
 		});

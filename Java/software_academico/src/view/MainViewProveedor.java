@@ -207,6 +207,8 @@ public class MainViewProveedor {
 
 				updateView(list);
 				list.updateUI();
+				InitView.saveDB();
+
 				JOptionPane.showMessageDialog(null, "La operación se ha realizado exitosamente");
 
 			}
@@ -239,6 +241,7 @@ public class MainViewProveedor {
 
 				updateView(list);
 				list.updateUI();
+				InitView.saveDB();
 				JOptionPane.showMessageDialog(null, "La operación se ha realizado exitosamente");
 			}
 		});

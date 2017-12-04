@@ -1,5 +1,6 @@
 package classes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Tienda {
@@ -21,6 +22,8 @@ public class Tienda {
 	}
 
 	public List<ItemVenta> getArticuloOrdenados() {
+		if (articuloOrdenados==null)
+			articuloOrdenados = new ArrayList<>();
 		return articuloOrdenados;
 	}
 
@@ -29,6 +32,8 @@ public class Tienda {
 	}
 
 	public List<ItemVenta> getArticulosEnStock() {
+		if (articulosEnStock==null)
+			articulosEnStock = new ArrayList<ItemVenta>();
 		return articulosEnStock;
 	}
 
@@ -37,6 +42,8 @@ public class Tienda {
 	}
 
 	public List<Proveedor> getProveedores() {
+		if (proveedores==null)
+			proveedores=new ArrayList<>();
 		return proveedores;
 	}
 

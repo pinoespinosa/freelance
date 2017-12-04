@@ -6,11 +6,18 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import classes.Articulo;
 import classes.ItemVenta;
@@ -36,23 +43,6 @@ public class InitView {
 	public static void main(String[] args) {
 		
 		// Populating elements
-		tienda.setArticuloOrdenados(new ArrayList<>());
-		tienda.getArticuloOrdenados().add(new ItemVenta(new Articulo("11","Zapallo", 500, 600), 10));
-
-		tienda.setArticulosEnStock(new ArrayList<>());
-		tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("12","Pure", 500,750), 20));
-		tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("13","Maicena", 200,300), 20));
-		tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("14","Tomate", 400,500), 20));
-		
-		tienda.setVentas(new ArrayList<>());
-		tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("12","Salsa", 16,25), 1)),System.currentTimeMillis(),"Creada","Detalle",""));
-		tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("12","Caramelos", 16,25), 1)),System.currentTimeMillis(),"Preparada","",""));
-		tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("12","Caramelos", 16,25), 1)),System.currentTimeMillis(),"Paga","Cheque Numero 1057423","Cheque"));
-		
-		
-		tienda.setProveedores(new ArrayList<>());
-		tienda.getProveedores().add(new Proveedor("Manuel Garcia", "Belgrano nro. 123", "0303456", "aa@pino.test", "12345"));
-		tienda.getProveedores().add(new Proveedor("Manuel Gonzales", "San Martin nro. 123", "0303456", "aa@pino.test", "12345"));
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -71,6 +61,7 @@ public class InitView {
 	 */
 	public InitView() {
 		initialize();
+		readDB();
 	}
 
 	/**
@@ -152,4 +143,59 @@ public class InitView {
 	public static void setTienda(Tienda tienda) {
 		InitView.tienda = tienda;
 	}
+	
+	public static void readDB(){
+		try {
+			readFromFile("baseDatos.DAT");
+
+		} catch (Exception e) {
+			
+			tienda.setArticuloOrdenados(new ArrayList<>());
+			tienda.getArticuloOrdenados().add(new ItemVenta(new Articulo("11","Zapallo", 500, 600), 10));
+
+			tienda.setArticulosEnStock(new ArrayList<>());
+			tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("12","Pure", 500,750), 20));
+			tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("13","Maicena", 200,300), 20));
+			tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("14","Tomate", 400,500), 20));
+			
+			tienda.setVentas(new ArrayList<>());
+			tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("12","Salsa", 16,25), 1)),System.currentTimeMillis(),"Creada","Detalle",""));
+			tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("12","Caramelos", 16,25), 1)),System.currentTimeMillis(),"Preparada","",""));
+			tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("12","Caramelos", 16,25), 1)),System.currentTimeMillis(),"Paga","Cheque Numero 1057423","Cheque"));
+			
+			
+			tienda.setProveedores(new ArrayList<>());
+			tienda.getProveedores().add(new Proveedor("Manuel Garcia", "Belgrano nro. 123", "0303456", "aa@pino.test", "12345"));
+			tienda.getProveedores().add(new Proveedor("Manuel Gonzales", "San Martin nro. 123", "0303456", "aa@pino.test", "12345"));
+
+			
+			infoToFile(tienda, "baseDatos.DAT");
+
+		}
+	}
+
+	public static void saveDB(){
+		try {
+			readFromFile("baseDatos.DAT");
+		} catch (Exception e) {
+		}
+	}
+
+	private static void readFromFile(String filename) throws JsonParseException, JsonMappingException, IOException {
+		System.out.println("Current relative path is: " + Paths.get("").toAbsolutePath().toString());
+		ObjectMapper mapper = new ObjectMapper();
+		InitView.setTienda(mapper.readValue(new File(filename), Tienda.class));
+
+	}
+
+	private static void infoToFile(Object data, String filename) {
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			mapper.writeValue(new File(filename), data);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	
 }
