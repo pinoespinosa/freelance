@@ -40,6 +40,8 @@ public class InitView {
 
 		tienda.setArticulosEnStock(new ArrayList<>());
 		tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("Pure", 500), 20));
+		tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("Maicena", 200), 20));
+		tienda.getArticulosEnStock().add(new ItemVenta(new Articulo("Tomate", 400), 20));
 		
 		tienda.setVentas(new ArrayList<>());
 		tienda.getVentas().add(new Venta( Arrays.asList(new ItemVenta(new Articulo("Salsa", 16), 1)),System.currentTimeMillis(),"Impaga","Detalle",""));

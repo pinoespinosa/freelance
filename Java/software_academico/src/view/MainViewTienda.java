@@ -5,13 +5,16 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Enumeration;
 import java.util.List;
 
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -27,6 +30,7 @@ import javax.swing.border.TitledBorder;
 
 import classes.ItemVenta;
 import classes.Venta;
+import javax.swing.JRadioButton;
 
 public class MainViewTienda {
 
@@ -39,7 +43,35 @@ public class MainViewTienda {
 	JList<ItemVenta> listStock;
 	JList<ItemVenta> listStock_2;
 	JList<ItemVenta> listStock7;
+	
+	
+	
+	Comparator<ItemVenta> comparatorPrecio = new Comparator<ItemVenta>() {
+
+		@Override
+		public int compare(ItemVenta o1, ItemVenta o2) {
+			if (o1.getArticulo().getPrecio() == o2.getArticulo().getPrecio())
+				return 0;
+			else if (o1.getArticulo().getPrecio() > o2.getArticulo().getPrecio())
+				return 1;
+			else
+				return -1;
+
+		}
+	};
+
+	Comparator<ItemVenta> comparatorNombre = new Comparator<ItemVenta>() {
+
+		@Override
+		public int compare(ItemVenta o1, ItemVenta o2) {
+			return o1.getArticulo().getNombre().compareTo(o2.getArticulo().getNombre());
+		}
+	};
+
+	
+	Comparator<ItemVenta> comparatorSelected = comparatorNombre;
 	JList<Venta> list_ventas;
+	private JTextField nombreProd;
 	
 	/**
 	 * Create the application.
@@ -180,35 +212,138 @@ public class MainViewTienda {
 		gbc_panel_3.gridy = 2;
 		frame.getContentPane().add(panel_3, gbc_panel_3);
 		GridBagLayout gbl_panel_3 = new GridBagLayout();
-		gbl_panel_3.columnWidths = new int[]{0, 0, 0, 0, 0, 0};
-		gbl_panel_3.rowHeights = new int[]{0, 0, 0, 0};
-		gbl_panel_3.columnWeights = new double[]{0.0, 1.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_3.rowWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_3.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel_3.rowHeights = new int[]{0, 0, 0, 0, 0};
+		gbl_panel_3.columnWeights = new double[]{0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_3.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		panel_3.setLayout(gbl_panel_3);
 		
+		JRadioButton rdnPrecio = new JRadioButton("Por Precio");
+		rdnPrecio.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				if (rdnPrecio.isSelected()) {
+					{
+
+						comparatorSelected = comparatorPrecio;
+						updateScreen();
+					}
+				}
+
+			}
+		});
+		GridBagConstraints gbc_rdnPrecio = new GridBagConstraints();
+		gbc_rdnPrecio.insets = new Insets(0, 0, 5, 5);
+		gbc_rdnPrecio.gridx = 1;
+		gbc_rdnPrecio.gridy = 0;
+		panel_3.add(rdnPrecio, gbc_rdnPrecio);
+		
+		JRadioButton rdnProducto = new JRadioButton("Por Producto");
+		rdnProducto.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+			
+
+				if (rdnProducto.isSelected()) {
+					{
+
+						comparatorSelected = comparatorNombre;
+						updateScreen();
+					}
+				}
+			
+			}
+		});
+		GridBagConstraints gbc_rdnProducto = new GridBagConstraints();
+		gbc_rdnProducto.insets = new Insets(0, 0, 5, 5);
+		gbc_rdnProducto.gridx = 2;
+		gbc_rdnProducto.gridy = 0;
+		panel_3.add(rdnProducto, gbc_rdnProducto);
+		
+		ButtonGroup bg = new ButtonGroup();
+		bg.add(rdnProducto);
+		bg.add(rdnPrecio);
+		
+		JLabel lblPrecio = new JLabel("Precio");
+		GridBagConstraints gbc_lblPrecio = new GridBagConstraints();
+		gbc_lblPrecio.anchor = GridBagConstraints.EAST;
+		gbc_lblPrecio.insets = new Insets(0, 0, 5, 5);
+		gbc_lblPrecio.gridx = 4;
+		gbc_lblPrecio.gridy = 0;
+		panel_3.add(lblPrecio, gbc_lblPrecio);
+		
+		JSpinner precioProd = new JSpinner();
+		GridBagConstraints gbc_precioProd = new GridBagConstraints();
+		gbc_precioProd.fill = GridBagConstraints.HORIZONTAL;
+		gbc_precioProd.insets = new Insets(0, 0, 5, 5);
+		gbc_precioProd.gridx = 5;
+		gbc_precioProd.gridy = 0;
+		panel_3.add(precioProd, gbc_precioProd);
+		
 		listStock7 = new JList<ItemVenta>(new DefaultListModel<ItemVenta>());
+		listStock7.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if (listStock7.getSelectedValue() != null) {
+					nombreProd.setText(listStock7.getSelectedValue().getArticulo().getNombre());
+					precioProd.setValue(listStock7.getSelectedValue().getArticulo().getPrecio());
+
+				}
+			}
+		});
 		GridBagConstraints gbc_listStock7 = new GridBagConstraints();
+		gbc_listStock7.gridwidth = 2;
 		gbc_listStock7.gridheight = 3;
 		gbc_listStock7.fill = GridBagConstraints.BOTH;
 		gbc_listStock7.insets = new Insets(0, 0, 0, 5);
 		gbc_listStock7.gridx = 1;
-		gbc_listStock7.gridy = 0;
+		gbc_listStock7.gridy = 1;
 		panel_3.add(listStock7, gbc_listStock7);
 		
-		JList<ItemVenta> list_1 = new JList<ItemVenta>(new DefaultListModel<ItemVenta>());
-		GridBagConstraints gbc_list_18 = new GridBagConstraints();
-		gbc_list_18.fill = GridBagConstraints.BOTH;
-		gbc_list_18.insets = new Insets(0, 0, 5, 5);
-		gbc_list_18.gridx = 3;
-		gbc_list_18.gridy = 1;
-		panel_3.add(list_1, gbc_list_18);
+		JLabel lblNombre = new JLabel("Nombre");
+		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
+		gbc_lblNombre.anchor = GridBagConstraints.EAST;
+		gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNombre.gridx = 4;
+		gbc_lblNombre.gridy = 1;
+		panel_3.add(lblNombre, gbc_lblNombre);
 		
-		JButton button_1 = new JButton("Enviar pedido");
-		GridBagConstraints gbc_button_1 = new GridBagConstraints();
-		gbc_button_1.insets = new Insets(0, 0, 0, 5);
-		gbc_button_1.gridx = 3;
-		gbc_button_1.gridy = 2;
-		panel_3.add(button_1, gbc_button_1);
+		nombreProd = new JTextField();
+		GridBagConstraints gbc_nombreProd = new GridBagConstraints();
+		gbc_nombreProd.insets = new Insets(0, 0, 5, 5);
+		gbc_nombreProd.fill = GridBagConstraints.HORIZONTAL;
+		gbc_nombreProd.gridx = 5;
+		gbc_nombreProd.gridy = 1;
+		panel_3.add(nombreProd, gbc_nombreProd);
+		nombreProd.setColumns(10);
+		
+		JButton btnActualizarDatos = new JButton("Actualizar datos");
+		btnActualizarDatos.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				if (listStock7.getSelectedValue() != null) {
+					
+					listStock7.getSelectedValue().getArticulo().setNombre(nombreProd.getText());;
+					listStock7.getSelectedValue().getArticulo().setPrecio((float) precioProd.getValue());;
+					
+					nombreProd.setText("");
+					precioProd.setValue(0);
+					
+					updateScreen();
+				}				
+				
+			}
+		});
+		GridBagConstraints gbc_btnActualizarDatos = new GridBagConstraints();
+		gbc_btnActualizarDatos.gridwidth = 2;
+		gbc_btnActualizarDatos.insets = new Insets(0, 0, 0, 5);
+		gbc_btnActualizarDatos.gridx = 4;
+		gbc_btnActualizarDatos.gridy = 3;
+		panel_3.add(btnActualizarDatos, gbc_btnActualizarDatos);
 	
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "Vender Articulos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -429,6 +564,20 @@ public class MainViewTienda {
 		
 	}
 
+	private void updateView(JList<ItemVenta> list, Comparator<ItemVenta> c){
+		
+		DefaultListModel<ItemVenta> listVenta = (DefaultListModel<ItemVenta>) list.getModel();
+		listVenta.clear();
+		
+		List<ItemVenta> listOrdenada = new ArrayList<>();
+		listOrdenada.addAll(InitView.getTienda().getArticulosEnStock());
+		Collections.sort(listOrdenada,c);
+		for (ItemVenta itemVenta : listOrdenada) {
+			listVenta.addElement(itemVenta);
+		}
+	}
+
+	
 	private void updateView(JList<ItemVenta> list){
 		
 		DefaultListModel<ItemVenta> listVenta = (DefaultListModel<ItemVenta>) list.getModel();
@@ -442,7 +591,8 @@ public class MainViewTienda {
 	private void updateScreen(){
 		updateView(listStock);
 		updateView(listStock_2);
-		updateView(listStock7);
+		
+		updateView(listStock7,comparatorSelected);
 		updateVenta(list_ventas);
 		
 		listStock.updateUI();
