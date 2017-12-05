@@ -29,17 +29,23 @@ import javax.swing.border.TitledBorder;
 
 import classes.ItemVenta;
 import classes.Venta;
+import javax.swing.JTextField;
 
 public class MainViewTienda {
 
 	private JFrame frame;
 	private JFrame parent;
+	private ViewHistorialVentas vistaVentas;
 
 	private JList<ItemVenta> listPedido_2;
 	private JLabel lblTotalcarro;
+	private JLabel lblIVA;
+	private JLabel lblSubtotal;
 	private java.util.List<ItemVenta> compra = new ArrayList<>();
 	JList<ItemVenta> listStock_2;
 
+	
+	
 	Comparator<ItemVenta> comparatorPrecio = new Comparator<ItemVenta>() {
 
 		@Override
@@ -84,10 +90,30 @@ public class MainViewTienda {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 15, 0, 15, 0 };
-		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0 };
+		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0 };
 		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		frame.getContentPane().setLayout(gridBagLayout);
+		
+		JButton btnHistorialVentas = new JButton("Ver Historial Ventas");
+		btnHistorialVentas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				frame.setVisible(false);
+				if (vistaVentas==null)
+					vistaVentas= new ViewHistorialVentas(frame);
+				else
+					vistaVentas.getFrame().setVisible(true);
+				
+			}
+		});
+		GridBagConstraints gbc_btnHistorialVentas = new GridBagConstraints();
+		gbc_btnHistorialVentas.anchor = GridBagConstraints.EAST;
+		gbc_btnHistorialVentas.insets = new Insets(0, 0, 5, 5);
+		gbc_btnHistorialVentas.gridx = 1;
+		gbc_btnHistorialVentas.gridy = 1;
+		frame.getContentPane().add(btnHistorialVentas, gbc_btnHistorialVentas);
 
 
 		JPanel panel_1 = new JPanel();
@@ -97,13 +123,13 @@ public class MainViewTienda {
 		gbc_panel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_panel_1.fill = GridBagConstraints.BOTH;
 		gbc_panel_1.gridx = 1;
-		gbc_panel_1.gridy = 1;
+		gbc_panel_1.gridy = 2;
 		frame.getContentPane().add(panel_1, gbc_panel_1);
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[] { 0, 0, 0, 0, 0, 0, 0 };
-		gbl_panel_1.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0 };
+		gbl_panel_1.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		gbl_panel_1.columnWeights = new double[] { 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE };
-		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_1.rowWeights = new double[] { 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		panel_1.setLayout(gbl_panel_1);
 
 		JLabel lblArticulosEnEl = new JLabel("Articulos en el Carrito");
@@ -149,7 +175,10 @@ public class MainViewTienda {
 				for (ItemVenta itemVenta : Collections.list(listVenta.elements())) {
 					total += itemVenta.getArticulo().getPrecioVenta() * itemVenta.getCantidad();
 				}
-				lblTotalcarro.setText(total+"");
+				lblSubtotal.setText(total+"");
+				lblIVA.setText( (total*0.16) + "" );
+				lblTotalcarro.setText( (total + total*0.16) + "" );
+				
 			}
 
 		});
@@ -172,6 +201,36 @@ public class MainViewTienda {
 		gbc_list_3.gridx = 4;
 		gbc_list_3.gridy = 2;
 		panel_1.add(listPedido_2, gbc_list_3);
+		
+		JLabel labelST = new JLabel("Sub Total:");
+		GridBagConstraints gbc_labelST = new GridBagConstraints();
+		gbc_labelST.anchor = GridBagConstraints.EAST;
+		gbc_labelST.insets = new Insets(0, 0, 5, 5);
+		gbc_labelST.gridx = 4;
+		gbc_labelST.gridy = 3;
+		panel_1.add(labelST, gbc_labelST);
+		
+		lblSubtotal = new JLabel("");
+		GridBagConstraints gbc_lblSubtotal = new GridBagConstraints();
+		gbc_lblSubtotal.insets = new Insets(0, 0, 5, 0);
+		gbc_lblSubtotal.gridx = 5;
+		gbc_lblSubtotal.gridy = 3;
+		panel_1.add(lblSubtotal, gbc_lblSubtotal);
+		
+		JLabel labelIVA = new JLabel("IVA:");
+		GridBagConstraints gbc_labelIVA = new GridBagConstraints();
+		gbc_labelIVA.anchor = GridBagConstraints.EAST;
+		gbc_labelIVA.insets = new Insets(0, 0, 5, 5);
+		gbc_labelIVA.gridx = 4;
+		gbc_labelIVA.gridy = 4;
+		panel_1.add(labelIVA, gbc_labelIVA);
+		
+		lblIVA = new JLabel("New label");
+		GridBagConstraints gbc_lblIVA = new GridBagConstraints();
+		gbc_lblIVA.insets = new Insets(0, 0, 5, 0);
+		gbc_lblIVA.gridx = 5;
+		gbc_lblIVA.gridy = 4;
+		panel_1.add(lblIVA, gbc_lblIVA);
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { "Efectivo", "Tarjeta Credito", "Tarjeta Debito" }));
@@ -180,28 +239,29 @@ public class MainViewTienda {
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
 		gbc_comboBox.gridx = 1;
-		gbc_comboBox.gridy = 3;
+		gbc_comboBox.gridy = 5;
 		panel_1.add(comboBox, gbc_comboBox);
 
 		JLabel lblTotalEnCarrito = new JLabel("Total en carrito:");
 		GridBagConstraints gbc_lblTotalEnCarrito = new GridBagConstraints();
+		gbc_lblTotalEnCarrito.anchor = GridBagConstraints.EAST;
 		gbc_lblTotalEnCarrito.insets = new Insets(0, 0, 5, 5);
 		gbc_lblTotalEnCarrito.gridx = 4;
-		gbc_lblTotalEnCarrito.gridy = 3;
+		gbc_lblTotalEnCarrito.gridy = 5;
 		panel_1.add(lblTotalEnCarrito, gbc_lblTotalEnCarrito);
 
 		lblTotalcarro = new JLabel("");
 		GridBagConstraints gbc_lblTotalcarro = new GridBagConstraints();
 		gbc_lblTotalcarro.insets = new Insets(0, 0, 5, 0);
 		gbc_lblTotalcarro.gridx = 5;
-		gbc_lblTotalcarro.gridy = 3;
+		gbc_lblTotalcarro.gridy = 5;
 		panel_1.add(lblTotalcarro, gbc_lblTotalcarro);
 
 		JButton btnEjecutarVenta = new JButton("Ejecutar Venta");
 		GridBagConstraints gbc_btnEjecutarVenta = new GridBagConstraints();
 		gbc_btnEjecutarVenta.insets = new Insets(0, 0, 5, 0);
 		gbc_btnEjecutarVenta.gridx = 5;
-		gbc_btnEjecutarVenta.gridy = 4;
+		gbc_btnEjecutarVenta.gridy = 6;
 		panel_1.add(btnEjecutarVenta, gbc_btnEjecutarVenta);
 
 		JButton btnSalir = new JButton("Salir");
@@ -217,7 +277,7 @@ public class MainViewTienda {
 		GridBagConstraints gbc_btnSalir = new GridBagConstraints();
 		gbc_btnSalir.insets = new Insets(0, 0, 0, 5);
 		gbc_btnSalir.gridx = 4;
-		gbc_btnSalir.gridy = 5;
+		gbc_btnSalir.gridy = 7;
 		panel_1.add(btnSalir, gbc_btnSalir);
 
 		updateScreen();

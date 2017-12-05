@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="/home/pino/freelance/Java/software_academico/jackson-databind-2.8.5.jar" sourcepath="/tmp/decompiler/source/jackson-databind-2.8.5-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="/home/pino/freelance/Java/software_academico/jackson-core-2.8.5.jar"/>
-	<classpathentry exported="true" kind="lib" path="/home/pino/freelance/Java/software_academico/jackson-annotations-2.8.5.jar"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>

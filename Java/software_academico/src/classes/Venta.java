@@ -1,5 +1,6 @@
 package classes;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -43,9 +44,30 @@ public class Venta implements Comparable<Venta> {
 
 	@Override
 	public String toString() {
-		return "Venta - " + new Date(time).toGMTString() + " [" + estado + " " + formaPago +"]";
+		
+		SimpleDateFormat dt1 = new SimpleDateFormat("dd/MM/yyyy");	
+		return "Venta - " + dt1.format(new Date(time));
 	}
 
+	public String toFullString() {
+		String texto = ""
+				+ "Fecha: " + new Date(time).toGMTString() + "\n\n"
+				+ "Articulos:\n";
+		
+		float total = 0;
+		
+		for (ItemVenta itemVenta : items) {
+			texto+="  "+itemVenta.toString() + "\n";
+			total += itemVenta.getArticulo().getPrecioVenta() + itemVenta.getCantidad();
+		}
+		texto+="\nSubtotal: $"+ total + "\n";
+		texto+="IVA: $"+ (total*0.16) + "\n";
+		texto+="Total: $"+ (total*1.16) + "\n";
+
+		return texto;
+	}
+
+	
 	@Override
 	public int compareTo(Venta o) {
 

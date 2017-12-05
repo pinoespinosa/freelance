@@ -17,6 +17,8 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import com.fasterxml.jackson.databind.deser.ValueInstantiator;
+
 import classes.ItemVenta;
 import classes.Proveedor;
 
@@ -31,6 +33,7 @@ public class MainViewProveedor {
 	private JTextField fTelefono;
 	private JTextField fEmail;
 	private JTextField fRFC;
+	private ViewArticulosProveedor vistaArticulos;
 
 	/**
 	 * Create the application.
@@ -51,9 +54,9 @@ public class MainViewProveedor {
 		frame.setBounds(100, 100, 725, 521);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 15, 0, 0, 0, 15, 0 };
+		gridBagLayout.columnWidths = new int[] { 15, 0, 0, 0, 0, 15, 0 };
 		gridBagLayout.rowHeights = new int[] { 15, 0, 0, 0, 0, 0, 0, 15, 0, 15, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		frame.getContentPane().setLayout(gridBagLayout);
 
@@ -67,6 +70,7 @@ public class MainViewProveedor {
 
 		fNombre = new JTextField();
 		GridBagConstraints gbc_fNombre = new GridBagConstraints();
+		gbc_fNombre.gridwidth = 2;
 		gbc_fNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_fNombre.fill = GridBagConstraints.HORIZONTAL;
 		gbc_fNombre.gridx = 2;
@@ -84,6 +88,7 @@ public class MainViewProveedor {
 
 		fDireccion = new JTextField();
 		GridBagConstraints gbc_fDireccion = new GridBagConstraints();
+		gbc_fDireccion.gridwidth = 2;
 		gbc_fDireccion.insets = new Insets(0, 0, 5, 5);
 		gbc_fDireccion.fill = GridBagConstraints.HORIZONTAL;
 		gbc_fDireccion.gridx = 2;
@@ -101,6 +106,7 @@ public class MainViewProveedor {
 
 		fTelefono = new JTextField();
 		GridBagConstraints gbc_fTelefono = new GridBagConstraints();
+		gbc_fTelefono.gridwidth = 2;
 		gbc_fTelefono.insets = new Insets(0, 0, 5, 5);
 		gbc_fTelefono.fill = GridBagConstraints.HORIZONTAL;
 		gbc_fTelefono.gridx = 2;
@@ -118,6 +124,7 @@ public class MainViewProveedor {
 
 		fEmail = new JTextField();
 		GridBagConstraints gbc_fEmail = new GridBagConstraints();
+		gbc_fEmail.gridwidth = 2;
 		gbc_fEmail.insets = new Insets(0, 0, 5, 5);
 		gbc_fEmail.fill = GridBagConstraints.HORIZONTAL;
 		gbc_fEmail.gridx = 2;
@@ -135,6 +142,7 @@ public class MainViewProveedor {
 
 		fRFC = new JTextField();
 		GridBagConstraints gbc_fRFC = new GridBagConstraints();
+		gbc_fRFC.gridwidth = 2;
 		gbc_fRFC.insets = new Insets(0, 0, 5, 5);
 		gbc_fRFC.fill = GridBagConstraints.HORIZONTAL;
 		gbc_fRFC.gridx = 2;
@@ -155,7 +163,7 @@ public class MainViewProveedor {
 		});
 
 		GridBagConstraints gbc_list = new GridBagConstraints();
-		gbc_list.gridwidth = 3;
+		gbc_list.gridwidth = 4;
 		gbc_list.insets = new Insets(0, 0, 5, 5);
 		gbc_list.fill = GridBagConstraints.BOTH;
 		gbc_list.gridx = 1;
@@ -206,11 +214,37 @@ public class MainViewProveedor {
 		gbc_btnBorrar.gridx = 2;
 		gbc_btnBorrar.gridy = 8;
 		frame.getContentPane().add(btnBorrar, gbc_btnBorrar);
+		
+		JButton btnVerArticulos = new JButton("Ver Articulos");
+		btnVerArticulos.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				if (list.getSelectedValue() == null)
+					JOptionPane.showMessageDialog(null, "Seleccione un proveedor.");
+				else {
+					frame.setVisible(false);
+					if (vistaArticulos == null)
+						vistaArticulos = new ViewArticulosProveedor(frame, list.getSelectedValue());
+					else {
+
+						vistaArticulos.getFrame().setVisible(true);
+						vistaArticulos.update(list.getSelectedValue());
+					}
+				}
+			}
+		});
+		GridBagConstraints gbc_btnVerArticulos = new GridBagConstraints();
+		gbc_btnVerArticulos.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnVerArticulos.insets = new Insets(0, 0, 5, 5);
+		gbc_btnVerArticulos.gridx = 3;
+		gbc_btnVerArticulos.gridy = 8;
+		frame.getContentPane().add(btnVerArticulos, gbc_btnVerArticulos);
 		GridBagConstraints gbc_btnVolver = new GridBagConstraints();
 		gbc_btnVolver.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnVolver.insets = new Insets(0, 0, 5, 5);
 		gbc_btnVolver.anchor = GridBagConstraints.NORTH;
-		gbc_btnVolver.gridx = 3;
+		gbc_btnVolver.gridx = 4;
 		gbc_btnVolver.gridy = 8;
 		frame.getContentPane().add(btnVolver, gbc_btnVolver);
 

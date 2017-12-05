@@ -17,6 +17,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import classes.Articulo;
 import classes.ItemVenta;
 import classes.Proveedor;
 
@@ -32,7 +33,10 @@ public class MainViewAlmacen {
 	private JTextField fPrecioVenta;
 	private JTextField fProveedor;
 
-	private boolean editando;
+	
+	private JButton btnBorrar;
+	private JButton btnEditarProveedor;
+	private boolean creando;
 	private JTextField fCodigo;
 
 	/**
@@ -54,9 +58,9 @@ public class MainViewAlmacen {
 		frame.setBounds(100, 100, 725, 521);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 15, 0, 0, 0, 15, 0 };
+		gridBagLayout.columnWidths = new int[] { 15, 0, 0, 0, 0, 15, 0 };
 		gridBagLayout.rowHeights = new int[] { 15, 0, 0, 0, 0, 0, 0, 0, 15, 0, 15, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		frame.getContentPane().setLayout(gridBagLayout);
 		
@@ -110,6 +114,7 @@ public class MainViewAlmacen {
 			}
 		});
 		GridBagConstraints gbc_list_1 = new GridBagConstraints();
+		gbc_list_1.gridwidth = 2;
 		gbc_list_1.gridheight = 6;
 		gbc_list_1.insets = new Insets(0, 0, 5, 5);
 		gbc_list_1.fill = GridBagConstraints.BOTH;
@@ -199,19 +204,57 @@ public class MainViewAlmacen {
 		gbc_list.gridwidth = 3;
 		gbc_list.insets = new Insets(0, 0, 5, 5);
 		gbc_list.fill = GridBagConstraints.BOTH;
-		gbc_list.gridx = 1;
+		gbc_list.gridx = 2;
 		gbc_list.gridy = 7;
 		frame.getContentPane().add(list, gbc_list);
 
 		updateView(list);
 		updateViewVenta(list_1);
+		
+		JButton btnCrear = new JButton("Crear");
+		btnCrear.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
 
-		JButton btnEditarProveedor = new JButton("Editar");
+				list_1.setEnabled(creando);
+				btnBorrar.setEnabled(creando);
+				btnEditarProveedor.setEnabled(creando);
+				
+				if (creando)
+				{
+					InitView.getTienda().getArticulosEnStock().add(new ItemVenta(new Articulo(fCodigo.getText(),fNombre.getText(), Float.parseFloat(fPrecioCompra.getText()),Float.parseFloat(fPrecioVenta.getText()),fProveedor.getText()), 20));
+					InitView.saveDB();
+					JOptionPane.showMessageDialog(null, "Se ha creado el articulo");
+					updateView(list);
+					updateViewVenta(list_1);
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Para crear un nuevo producto, complete los campos y haga clic en crear nuevamente.");
+					fNombre.setText("");
+					fCodigo.setText("");
+					fCantidad.setText("");
+					fPrecioCompra.setText("");
+					fPrecioVenta.setText("");
+					fProveedor.setText("");
+						
+				}
+				creando = !creando;
+				
+				
+			}
+		});
+		GridBagConstraints gbc_btnCrear = new GridBagConstraints();
+		gbc_btnCrear.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCrear.gridx = 1;
+		gbc_btnCrear.gridy = 9;
+		frame.getContentPane().add(btnCrear, gbc_btnCrear);
+
+		btnEditarProveedor = new JButton("Editar");
 
 		GridBagConstraints gbc_btnEditarProveedor = new GridBagConstraints();
-		gbc_btnEditarProveedor.anchor = GridBagConstraints.EAST;
 		gbc_btnEditarProveedor.insets = new Insets(0, 0, 5, 5);
-		gbc_btnEditarProveedor.gridx = 1;
+		gbc_btnEditarProveedor.gridx = 2;
 		gbc_btnEditarProveedor.gridy = 9;
 		frame.getContentPane().add(btnEditarProveedor, gbc_btnEditarProveedor);
 
@@ -220,13 +263,21 @@ public class MainViewAlmacen {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				frame.setVisible(false);
-				parent.setVisible(true);
+				creando = !creando;
+				if (!creando) {
+					list_1.setEnabled(!creando);
+					btnBorrar.setEnabled(!creando);
+					btnEditarProveedor.setEnabled(!creando);
+				} else {
+					frame.setVisible(false);
+					parent.setVisible(true);
+					creando = false;
+				}
 
 			}
 		});
 
-		JButton btnBorrar = new JButton("Borrar");
+		btnBorrar = new JButton("Borrar");
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -244,13 +295,13 @@ public class MainViewAlmacen {
 		});
 		GridBagConstraints gbc_btnBorrar = new GridBagConstraints();
 		gbc_btnBorrar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnBorrar.gridx = 2;
+		gbc_btnBorrar.gridx = 3;
 		gbc_btnBorrar.gridy = 9;
 		frame.getContentPane().add(btnBorrar, gbc_btnBorrar);
 		GridBagConstraints gbc_btnVolver = new GridBagConstraints();
 		gbc_btnVolver.insets = new Insets(0, 0, 5, 5);
 		gbc_btnVolver.anchor = GridBagConstraints.NORTH;
-		gbc_btnVolver.gridx = 3;
+		gbc_btnVolver.gridx = 4;
 		gbc_btnVolver.gridy = 9;
 		frame.getContentPane().add(btnVolver, gbc_btnVolver);
 
