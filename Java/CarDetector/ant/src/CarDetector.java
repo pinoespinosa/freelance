@@ -66,7 +66,7 @@ class CarDetector {
 		System.out.println("pas");
 
 		CascadeClassifier cascadeEyeClassifier = new CascadeClassifier(
-				"/home/pino/Freelance/Java/prueba3/OpenCV/data/haarcascades_cuda/cars.xml");
+				"cars.xml");
 
 		VideoCapture videoDevice = new VideoCapture(source);
 		// videoDevice.open(source);
@@ -78,8 +78,7 @@ class CarDetector {
 
 			videoDevice.read(frInicial);
 
-			Mat base = Imgcodecs.imread("/home/pino/Freelance/Java/miniaturas/fondoORIG5.bmp");
-			Mat fondo = Imgcodecs.imread("/home/pino/Freelance/Java/miniaturas/fondoFOTO.bmp");
+			Mat base = Imgcodecs.imread("fondo.bmp");
 
 			int cantidad = 0;
 			float valores = 0;
