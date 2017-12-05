@@ -1,6 +1,17 @@
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -20,6 +31,17 @@ import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.video.BackgroundSubtractorMOG2;
 import org.opencv.videoio.VideoCapture;
 
+
+
+
+
+
+
+
+
+
+
+
 class CarDetector {
 
 	// static JFrame frame;
@@ -32,7 +54,7 @@ class CarDetector {
 	static ImageIcon icon2;
 
 	// static String source = "http://75.130.56.53:80/mjpg/video.mjpg?COUNTER";
-	static String source = "example2.mp4";
+	static String source = "example4.mp4";
 
 	static BufferedImage imageOtra;
 	static byte[] data;
@@ -58,7 +80,7 @@ class CarDetector {
 		return mask;
 	}
 
-	public static void showCars(JLabel marcoImg, JFrame frame2, JTextPane texto) {
+	public static void showCars(JLabel marcoImg, JFrame frame2, JTextPane texto) throws Exception {
 
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		mask = new Mat();
@@ -164,17 +186,46 @@ class CarDetector {
 
 					double color = Core.sumElems(image_output).val[0] / rect.area();
 
-					if (color > 5) {
-						Imgproc.putText(frameCaptureBorders2, "Auto", new Point(rect.x, rect.y - 5), 1, 2,
+					if (true) {
+						Imgproc.putText(frame_ANTIGUO, "Auto", new Point(rect.x, rect.y - 5), 1, 2,
 								new Scalar(0, 0, 255)); // Kare
-						Imgproc.rectangle(frameCaptureBorders2, new Point(rect.x, rect.y),
+						Imgproc.rectangle(frame_ANTIGUO, new Point(rect.x, rect.y),
 								new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(200, 200, 100), 2);
 
 						if (cantidad > 10) {
 							texto.setText(new Float(valores / 10).intValue() + " vehiculos detectados");
-//							System.out.println("Cantidad de autos hallados:" + new Float(valores / 10).intValue());
 							cantidad = 0;
 							valores = 0;
+
+
+
+							   URL url = new URL("http://localhost:8080/car-counter/api/car/moving");
+						        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+						        con.setRequestMethod("POST");
+						        con.setRequestProperty("Content-Type", "application/json");
+
+						        Map<String, String> parameters = new HashMap<>();
+						        parameters.put("param1", "val");
+						        con.setDoOutput(true);
+						        DataOutputStream out = new DataOutputStream(con.getOutputStream());
+						        out.flush();
+						        out.close();
+
+						        int status = con.getResponseCode();
+						        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+						        String inputLine;
+						        StringBuilder content = new StringBuilder();
+						        while ((inputLine = in.readLine()) != null) {
+						            content.append(inputLine);
+						        }
+						        in.close();
+
+
+
+
+
+
+
 						} else
 							valores += 1;
 
@@ -193,13 +244,13 @@ class CarDetector {
 					tamLocAlto = marcoImg.getSize().height;
 					tamLocAncho = marcoImg.getSize().width;
 
-					System.out.println("cambie" + tamLocAlto + " " + tamLocAncho);
+		//			System.out.println("cambie" + tamLocAlto + " " + tamLocAncho);
 				}
 				else
-					System.out.println("igual" + tamLocAlto + " " + tamLocAncho);
+		//			System.out.println("igual" + tamLocAlto + " " + tamLocAncho);
 					
 
-				PushImage(OpenCvMagic.ConvertMat2Image(frameCaptureBorders2, tamLocAncho, tamLocAlto), marcoImg,
+				PushImage(OpenCvMagic.ConvertMat2Image(frame_ANTIGUO, tamLocAncho, tamLocAlto), marcoImg,
 						frame2);
 
 			}

@@ -17,9 +17,10 @@ public class CardCounterController {
 	@Autowired
 	private CardCounterService officeService;
 
-	@RequestMapping(value = "/car/moving", method = RequestMethod.GET)
+	@RequestMapping(value = "/car/moving", method = RequestMethod.POST)
 	public String updateMovingCars(HttpServletResponse response) {
 		response.addHeader("Access-Control-Allow-Origin", "*");
+		System.out.println("Se actulizo la cantidad de autos");
 		return officeService.updateMovingCars();
 	}
 

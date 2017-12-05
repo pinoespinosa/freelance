@@ -195,8 +195,13 @@ public class View {
 				executor.submit(() -> {
 
 
-					CarDetector.showCars(imagen, frame, txtVehiculos);
-
+	
+					try {
+						CarDetector.showCars(imagen, frame, txtVehiculos);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				});
 
 				startButton.setEnabled(false);

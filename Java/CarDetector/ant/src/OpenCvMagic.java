@@ -29,7 +29,6 @@ class OpenCvMagic {
 	static ImageIcon icon2;
 
 	//static String source = "http://75.130.56.53:80/mjpg/video.mjpg?COUNTER";
-	static String source = "/home/pino/Downloads/example2.mp4";
 
 	static BufferedImage imageOtra;
 	static byte[] data;
@@ -64,7 +63,7 @@ class OpenCvMagic {
 		
 		Imgproc.resize(kameraVerisi,dst,size);//resize image
 		
-		System.out.println("ancho" + ancho + " alto" + alto);
+//		System.out.println("ancho" + ancho + " alto" + alto);
 
 		MatOfByte byteMatVerisi = new MatOfByte();
 		Imgcodecs.imencode(".jpg", dst, byteMatVerisi);
