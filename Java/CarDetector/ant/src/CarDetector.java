@@ -53,8 +53,8 @@ class CarDetector {
 	static JLabel lbl2;
 	static ImageIcon icon2;
 
-	// static String source = "http://75.130.56.53:80/mjpg/video.mjpg?COUNTER";
-	static String source = "example4.mp4";
+//	static String source = "http://75.130.56.53:80/mjpg/video.mjpg?COUNTER";
+	static String source = "EJEMPLO5.mp4";
 
 	static BufferedImage imageOtra;
 	static byte[] data;
@@ -100,7 +100,7 @@ class CarDetector {
 
 			videoDevice.read(frInicial);
 
-			Mat base = Imgcodecs.imread("fondo.bmp");
+			Mat base = Imgcodecs.imread("EJEMPLO5.bmp");
 
 			int cantidad = 0;
 			float valores = 0;
@@ -186,14 +186,14 @@ class CarDetector {
 
 					double color = Core.sumElems(image_output).val[0] / rect.area();
 
-					if (true) {
+					if (color > 5) {
 						Imgproc.putText(frame_ANTIGUO, "Auto", new Point(rect.x, rect.y - 5), 1, 2,
 								new Scalar(0, 0, 255)); // Kare
 						Imgproc.rectangle(frame_ANTIGUO, new Point(rect.x, rect.y),
 								new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(200, 200, 100), 2);
 
 						if (cantidad > 10) {
-							texto.setText(new Float(valores / 10).intValue() + " vehiculos detectados");
+							texto.setText(new Float(valores / 7).intValue() + " vehiculos detectados");
 							cantidad = 0;
 							valores = 0;
 
