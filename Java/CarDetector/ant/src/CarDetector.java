@@ -55,6 +55,8 @@ class CarDetector {
 
 //	static String source = "http://75.130.56.53:80/mjpg/video.mjpg?COUNTER";
 	static String source = "EJEMPLO5.mp4";
+// 	http://camaras.vera.com.uy/camara/33
+
 
 	static BufferedImage imageOtra;
 	static byte[] data;
@@ -195,11 +197,11 @@ class CarDetector {
 						if (cantidad > 10) {
 							texto.setText(new Float(valores / 7).intValue() + " vehiculos detectados");
 							cantidad = 0;
-							valores = 0;
+
+							String valor = new Float(valores / 7).intValue()+"";
 
 
-
-							   URL url = new URL("http://localhost:8080/car-counter/api/car/moving");
+							   URL url = new URL("http://18.216.175.95:8080/server/api/car/moving?congestion=" + valor);
 						        HttpURLConnection con = (HttpURLConnection) url.openConnection();
 						        con.setRequestMethod("POST");
 						        con.setRequestProperty("Content-Type", "application/json");
@@ -222,6 +224,7 @@ class CarDetector {
 
 
 
+							valores = 0;
 
 
 

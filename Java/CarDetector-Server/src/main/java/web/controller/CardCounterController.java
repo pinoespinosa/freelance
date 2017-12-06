@@ -18,9 +18,9 @@ public class CardCounterController {
 	private CardCounterService officeService;
 
 	@RequestMapping(value = "/car/moving", method = RequestMethod.POST)
-	public String updateMovingCars(HttpServletResponse response) {
+	public String updateMovingCars(@RequestParam String congestion, HttpServletResponse response) {
 		response.addHeader("Access-Control-Allow-Origin", "*");
-		System.out.println("Se actulizo la cantidad de autos");
+		System.out.println("Congestion:" + congestion );
 		return officeService.updateMovingCars();
 	}
 
