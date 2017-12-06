@@ -78,14 +78,25 @@
                 </li>
                 <li class="dropdown-submenu">
                   <a  class="dropdown-item" tabindex="-1" href="#">Agregar</a>
+                  
                   <ul class="dropdown-menu">
+                    
                     <li class="dropdown-item">
                       <a tabindex="-1" [routerLink]="['/register']">Cliente</a>
                     </li>
+                    
                     <li class="dropdown-item">
                       <a [routerLink]="['/register-work']">Trabajo</a>
                     </li>
-                    <li class="dropdown-item"><a [routerLink]="['/register-asesor']">Asesor</a></li>
+                    
+                    <li class="dropdown-item">
+                      <a tabindex="-1" [routerLink]="['/register-all']">Cliente-Trabajo-Pago</a>
+                    </li>
+                    
+                    <li class="dropdown-item">
+                    <a [routerLink]="['/register-asesor']">Asesor</a>
+                    </li>
+
                   </ul>
                 </li>
                 <li class="dropdown-item">

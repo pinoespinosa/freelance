@@ -39,8 +39,8 @@ export class RegisterAsesorComponent implements OnInit  {
 		    alert("Complete los campos obligatorios para continuar")
 			return;
 		}
-		 let test = new Asesor("", this.field_nombre);
-		 
+		 let test = new Asesor("", this.field_nombre, "te", "em", "ce", "di", "fe","");
+
 
         let loading = this.service.createAsesor(test).subscribe(
             response => {

@@ -15,21 +15,23 @@ import { AppRoutingModule }                 from './routing/app-routing.module';
 import { LoginComponent }                   from './pages/login/login.component';
 import { HeaderComponent }                  from './pages/header/header.component';
 import { HomeComponent }                    from './pages/home/home.component';
+
 import { RegisterComponent }                from './pages/register/register.component';
 import { RegisterUserComponent }            from './pages/register-user/register-user.component';
-
-import { RegisterAsesorComponent }            from './pages/register-asesor/register-asesor.component';
-
-
+import { RegisterAsesorComponent }          from './pages/register-asesor/register-asesor.component';
 import { RegisterWorkComponent }            from './pages/register-work/register-work.component';
 import { RegisterPaymentComponent }         from './pages/register-payment/register-payment.component';
+import { RegisterAllComponent }             from './pages/register-all/register-all.component';
+
 import { MoreDetailsComponent }             from './pages/more-details/more-details.component';
 import { ChangeDateComponent }              from './pages/change-date/change-date.component';
-import { ReportsToDoComponent }             from './pages/reports/to-do/to-do.component';
 import { AuditsComponent }                  from './pages/audits/audits.component';
+
+import { ReportsToDoComponent }             from './pages/reports/to-do/to-do.component';
 import { ReportsNewClientsComponent }       from './pages/reports/new-clients/new-clients.component';
 import { ReportsOldClientsComponent }       from './pages/reports/old-clients/old-clients.component';
 import { ReportsIndicatorsComponent }       from './pages/reports/indicators/indicators.component';
+
 import { DialogComponent }                  from './pages/dialog.component';
 import { ChangeStateDialogComponent }       from './pages/change-state-dialog/change-state-dialog.component';
 
@@ -49,7 +51,8 @@ import { Service }                          from './service';
     RegisterPaymentComponent,
     RegisterUserComponent,
     RegisterAsesorComponent,
-    
+    RegisterAllComponent,
+
     HomeComponent,
     MoreDetailsComponent,
     

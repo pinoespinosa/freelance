@@ -18,7 +18,10 @@ export class ClientFull{
 	public estado : string,
  	 	
     public ordenEstado : string,
-    public asesor: string
+    public asesor: string,
+
+    public abono: string,
+
 
   ) { }
 }

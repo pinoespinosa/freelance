@@ -1,0 +1,317 @@
+
+<form class="form-horizontal" action='' method="POST">
+   <div class="row" style="padding-top: 30px;" >
+      <div class="col-12" style="padding-left: 40px;" >
+         <h2 class="row register-row">Registro de nuevo cliente</h2>
+      </div>
+   </div>
+
+   <div class="row details-data-row">
+      <div class="col-6">
+         <div class="detail-title">Nombre y Apellido*</div>
+         <input (input)="update_field_nombre($event.target.value)" class="form-control" type="text" placeholder="Nombre y Apellido" minlength="1">
+      </div>
+   
+      <div class="col-6">
+         <div class="detail-title">Fecha de registro</div>
+         <input type="text" class="form-control" value ="{{ date | date:'dd-MM-yyyy'}}" [disabled]="true"> 
+      </div>
+      
+   </div>     
+   
+   <div class="row details-data-row">
+      
+      <div class="col-4">
+         <div class="detail-title">Telefono 1</div>
+         <input (input)="update_field_telef1($event.target.value)" type="string" class="form-control" placeholder="Telefono 1"  >
+      </div>
+
+      <div class="col-4">
+         <div class="detail-title">Telefono 2</div>
+         <input (input)="update_field_telef2($event.target.value)" type="string" class="form-control" placeholder="Telefono 2"  >
+      </div>
+
+      <div class="col-4">
+         <div class="detail-title">Telefono 3</div>
+         <!--<div>{{item.telefono}}</div>-->
+         <input (input)="update_field_telef3($event.target.value)" type="string" class="form-control" placeholder="Telefono 3"  >
+      </div>
+      
+   </div>     
+
+   <div class="row details-data-row">
+      
+      <div class="col-4">
+         <div class="detail-title">Email 1</div>
+         <!--<div>{{item.email}}</div>-->
+         <input (input)="update_field_email1($event.target.value)" type="text" class="form-control" placeholder="Email 1" >
+      </div> 
+
+      <div class="col-4">
+         <div class="detail-title">Email 2</div>
+         <!--<div>{{item.email}}</div>-->
+         <input (input)="update_field_email2($event.target.value)" type="text" class="form-control" placeholder="Email 2"  >
+      </div>
+
+      <div class="col-4">
+         <div class="detail-title">Email 3</div>
+         <!--<div>{{item.email}}</div>-->
+         <input (input)="update_field_email3($event.target.value)" type="text" class="form-control" placeholder="Email 3"  >
+      </div>
+      
+   </div>    
+
+       
+
+   <div class="row">
+      <div class="col-3">
+      </div>
+      
+      <div class="col-3">
+         <a [routerLink]="['/register-work']" (click)="do()" class="btn btn-success agregar-cliente" style="width: 100%;color: white;" >Guardar y Cargar Trabajo</a>
+      </div>
+      <div class="col-3">
+         <a [routerLink]="['/home']" class="btn btn-danger agregar-cliente" style="width: 100%;color: white;" >Finalizar</a>
+      </div>
+   </div>
+
+</form>
+ 
+
+
+<!-- ###########################   AGREGAR CARRERA   ############################### -->
+<change-state [(visible)]="showDialogAddCarre">
+<h2 style="margin: 10px;margin-bottom: 20px;" >Agregar Carrera</h2>
+<div class="col-12" style="margin-bottom: 20px;">
+   <input #nuevaCarr type="text" class="form-control" placeholder="Carrera">
+</div>
+<div class="row">
+   <div class="col-6"> 
+      <button (click)="showDialogAddCarre = !showDialogAddCarre" (click)="addCarrera(nuevaCarr.value)"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+   </div>
+   <div class="col-6"> 
+      <button (click)="showDialogAddCarre = !showDialogAddCarre" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
+   </div>
+</div>
+</change-state>
+
+<!-- ###########################   AGREGAR UNIVERSIDAD   ############################### -->
+<change-state [(visible)]="showDialogAddUniv">
+<h2 style="margin: 10px;margin-bottom: 20px;" >Agregar Universidad</h2>
+<div class="col-12" style="margin-bottom: 20px;">
+   <input #nuevaUniv type="text" id="agregar-universidad-texto" class="form-control" placeholder="Universidad" >
+</div>
+<div class="row">
+   <div class="col-6"> 
+      <button (click)="showDialogAddUniv = !showDialogAddUniv" (click)="addUniv(nuevaUniv.value)"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+   </div>
+   <div class="col-6"> 
+      <button (click)="showDialogAddUniv = !showDialogAddUniv" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
+   </div>
+</div>
+</change-state>
+
+
+<!-- ###########################   DONDE SE ENTERO   ############################### -->
+<change-state [(visible)]="showDialogAddLugar">
+<h2 style="margin: 10px;margin-bottom: 20px;" >Agregar lugar donde se entero</h2>
+<div class="col-12" style="margin-bottom: 20px;">
+   <input #nuevoLugar type="text" class="form-control" placeholder="Lugar donde se entero">
+</div>
+<div class="row">
+   <div class="col-6"> 
+      <button (click)="showDialogAddLugar = !showDialogAddLugar" (click)="addDondeEntero(nuevoLugar.value)" class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+   </div>
+   <div class="col-6"> 
+      <button (click)="showDialogAddLugar = !showDialogAddLugar" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
+   </div>
+</div>
+</change-state>
+
+<!-- ###########################   AGREGAR REQUERIMIENTO   ############################### -->
+<change-state [(visible)]="showDialogAddReq">
+<h2 style="margin: 10px;margin-bottom: 20px;" >Agregar Requerimiento</h2>
+<div class="col-12" style="margin-bottom: 20px;">
+   <input type="text" class="form-control" placeholder="Requerimiento">
+</div>
+<div class="row">
+   <div class="col-6"> 
+      <button (click)="addReq(reqq.value)" (click)="showDialogAddReq = !showDialogAddReq" class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+   </div>
+   <div class="col-6"> 
+      <button (click)="showDialogAddReq = !showDialogAddReq" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
+   </div>
+</div>
+</change-state>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form class="form-horizontal" action='' method="POST">
+   <script type="text/javascript">
+      $('.dropdown-menu a').click(function(){
+         $('#selected').text($(this).text());
+      });
+   </script>
+
+   <div class="row">
+      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+         <input #tema type="text" class="form-control" id="exampleInputPassword1" placeholder="Tema *">
+      </div>
+   </div>
+
+   <div class="row" style="margin-left: 10px;">
+      <div class="col-4" style="font-size: 15px;" >
+         <select #asesor class="dropdown-select" >
+            <option disabled hidden [value]="selectUndefinedOptionValue">-- Asesor --</option>
+            <option *ngFor="let asesor of asesores" >{{asesor.nombre}}</option>
+         </select>
+      </div>
+      <div class="col-1" style="align-self: center;" >
+         <a class="btn"  [routerLink]="['/register-asesor']" >   
+            <img style="width: 20px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
+         </a>
+      </div>
+   </div>
+
+   <div class="row" style="margin-left: 10px;">
+      <div class="col-4" style="font-size: 15px;" >
+         <select #car class="dropdown-select" >
+            <option disabled hidden [value]="selectUndefinedOptionValue">-- Carrera --</option>
+            <option *ngFor="let carrera of carreras" >{{carrera}}</option>
+         </select>
+      </div>
+      <div class="col-1" style="align-self: center;" >
+         <a class="btn" (click)="showDialogAddCarre = true" >   
+            <img style="width: 20px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
+         </a>
+      </div>
+   </div>
+
+   <div class="row" style="margin-left: 10px;">
+      <div class="col-4" style="font-size: 15px;" >
+         <select #uni class="dropdown-select" >
+            <option disabled hidden [value]="selectUndefinedOptionValue">-- Universidad --</option>
+            <option *ngFor="let universidad of universidades" >{{universidad}}</option>
+         </select>
+      </div>
+      <div class="col-1" style="align-self: center;" >
+         <a class="btn" (click)="showDialogAddUniv = true" >   
+         <img style="width: 20px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
+         </a>
+      </div>
+   </div>
+
+   <div class="row" style="margin-left: 10px;">
+      <div class="col-4" style="font-size: 15px;" >
+         <select #lug class="dropdown-select" >
+            <option disabled hidden [value]="selectUndefinedOptionValue">-- Lugar de donde se entero --</option>
+            <option *ngFor="let lugar of lugarEntero" >{{lugar}}</option>
+         </select>
+      </div>
+      <div class="col-1" style="align-self: center;" >
+         <a class="btn" (click)="showDialogAddLugar = true" >   
+            <img style="width: 20px;margin: -30px;" src="./assets/reque.png" alt="Flowers in Chania">
+         </a>
+      </div>
+   </div>
+
+
+   <div class="row">
+      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+         <input 
+            #fecha_entrega 
+            type="text" 
+            pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" 
+            class="form-control" 
+            id="exampleInputPassword1" 
+            placeholder="Fecha de entrega Ej. 2018-10-15">
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+         <input 
+            #monto 
+            type="text" 
+            class="form-control" 
+            id="exampleInputPassword1" 
+            placeholder="Monto">
+      </div>
+   </div>
+
+   <div class="row" style="margin-top: 40px;" > 
+      <div class="col-4" style="padding: 10px;padding-left: 40px;display: flex;" >
+         <b>Requerimientos</b>
+               <div>
+         <a style="padding: 0px;padding-left: 15px;" class="btn" (click)="showDialogAddReq = true" >   
+         <img style="width: 20px" src="./assets/reque.png" alt="Flowers in Chania">
+         </a>
+      </div>
+      </div>
+
+   </div>
+
+   <div class="row" style="margin-left: 10px;">
+      <div class="col-8" style="font-size: 15px;" >
+
+         <table class="table table-new table-striped">
+            <thead>
+               <tr class="client-columns" >
+                  <th>  Fecha de carga
+                     <a (click)="sortNombre()" class="btn clients-sort">
+                        <img class="sort-img" src="./assets/sort.png" alt="">
+                     </a>
+                  </th>
+                  
+                  <th>
+                     Requerimiento
+                  </th>
+               </tr>
+            </thead>
+            
+               <tbody class="centro" *ngIf="requerimientos?.length > 0" >
+                  <tr *ngFor="let req of requerimientos" class="client-columns" (dblclick)="showDialogAddReq = !showDialogAddReq">
+                     <td>{{ date | date:'dd-MM-yyyy'}}</td>
+                     <td>{{req.texto}}</td>
+                  </tr>
+               </tbody>
+
+               <tbody class="centro" *ngIf="requerimientos?.length == 0" >
+                  <tr>
+                     <td></td>
+                     <td style="color: silver;" >Para agregar requerimientos debes hacer clic en el icono superior ... </td>
+                     <td></td>
+                  </tr>
+               </tbody>
+
+         </table>
+      </div>
+   </div>
+
+
+
+
+   <div class="row" style="margin-top: 25px;" >
+      <div class="col-3" style="text-align: center;">
+      </div>
+      <div class="col-3 " style="text-align: center;">
+         <a  [routerLink]="['/register-payment']" (click)="do( '', tema.value, uni.value, car.value, asesor.value, lug.value, fecha_entrega.value, monto.value, true )" class="btn btn-success agregar-cliente" style="width: 100%;color: white;">Guardar y Cargar Pago</a>
+      </div>
+      <div class="col-3" style="text-align: center;">
+         <a  (click)="do( '', tema.value, uni.value,  car.value, asesor.value, lug.value, fecha_entrega.value, monto.value, false )" class="btn btn-danger agregar-cliente" style="width: 100%;color: white;" >Finalizar</a>
+      </div>
+      <div class="col-3" style="text-align: center;">
+      </div>
+   </div>
+</form>
+

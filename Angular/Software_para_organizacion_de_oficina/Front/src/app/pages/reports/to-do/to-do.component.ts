@@ -20,7 +20,7 @@ export class ReportsToDoComponent implements OnInit  {
 
 	constructor(private router: Router, private route : ActivatedRoute, private service: Service){
 		this.pendingJobs();
-		this.trabajo = new ClientFull("","","","","","","","","","","","","","");
+		this.trabajo = new ClientFull("","","","","","","","","","","","","","","");
 		this.clientes=[];
 	}
 	
@@ -47,7 +47,7 @@ export class ReportsToDoComponent implements OnInit  {
           					trabajo.fecha_entrega,
           					"", 
           					"",
-          					trabajo.asesor);
+          					trabajo.asesor,"");
             			this.clientes.push(cF);
           			}
           		}

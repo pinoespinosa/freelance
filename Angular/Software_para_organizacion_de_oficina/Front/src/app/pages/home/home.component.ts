@@ -49,7 +49,7 @@ export class HomeComponent   {
     this.items=[];
     this.items_orig = [];
     this.cliente = new Client("","","", "","","", "","","",null);
-    this.cliente2 = new ClientFull("","","","","","","","","","","","","","");
+    this.cliente2 = new ClientFull("","","","","","","","","","","","","","","");
 
   }
 
@@ -223,7 +223,7 @@ export class HomeComponent   {
        					break; 
   						} 
   					} 
-            let fu = new ClientFull(aa.id,aa.nombre,"",bb.id,bb.tema,"",bb.monto,bb.saldo,bb.carrera,bb.universidad,bb.fecha_entrega,bb.estado, result + '_' + bb.fecha_entrega,"");
+            let fu = new ClientFull(aa.id,aa.nombre,"",bb.id,bb.tema,"",bb.monto,bb.saldo,bb.carrera,bb.universidad,bb.fecha_entrega,bb.estado, result + '_' + bb.fecha_entrega,"", +bb.monto - +bb.saldo + "");
             this.items.push(fu);
             this.items_orig.push(fu);
           }
