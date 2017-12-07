@@ -2,7 +2,7 @@
 <form class="form-horizontal" action='' method="POST">
    <div class="row" style="padding-top: 30px;" >
       <div class="col-12" style="padding-left: 40px;" >
-         <h2 class="row register-row">Registro de nuevo cliente</h2>
+         <h2 class="row register-row">Registro de nuevo cliente y trabajo</h2>
       </div>
    </div>
 
@@ -63,12 +63,12 @@
 
        
 
-   <div class="row">
+   <div class="row" hidden>
       <div class="col-3">
       </div>
       
       <div class="col-3">
-         <a [routerLink]="['/register-work']" (click)="do()" class="btn btn-success agregar-cliente" style="width: 100%;color: white;" >Guardar y Cargar Trabajo</a>
+         <a [routerLink]="['/register-work']" (click)="do2()" class="btn btn-success agregar-cliente" style="width: 100%;color: white;" >Guardar y Cargar Trabajo</a>
       </div>
       <div class="col-3">
          <a [routerLink]="['/home']" class="btn btn-danger agregar-cliente" style="width: 100%;color: white;" >Finalizar</a>
@@ -76,7 +76,20 @@
    </div>
 
 </form>
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- ###########################   AGREGAR CARRERA   ############################### -->
@@ -156,7 +169,9 @@
 
 
 
-<form class="form-horizontal" action='' method="POST">
+<form style="margin-left: -25px;" class="form-horizontal" action='' method="POST">
+   <div class="row" style="padding-top: 30px;" >
+   </div>
    <script type="text/javascript">
       $('.dropdown-menu a').click(function(){
          $('#selected').text($(this).text());
@@ -305,7 +320,7 @@
       <div class="col-3" style="text-align: center;">
       </div>
       <div class="col-3 " style="text-align: center;">
-         <a  [routerLink]="['/register-payment']" (click)="do( '', tema.value, uni.value, car.value, asesor.value, lug.value, fecha_entrega.value, monto.value, true )" class="btn btn-success agregar-cliente" style="width: 100%;color: white;">Guardar y Cargar Pago</a>
+         <a hidden [routerLink]="['/register-payment']" (click)="do( '', tema.value, uni.value, car.value, asesor.value, lug.value, fecha_entrega.value, monto.value, true )" class="btn btn-success agregar-cliente" style="width: 100%;color: white;">Guardar y Cargar Pago</a>
       </div>
       <div class="col-3" style="text-align: center;">
          <a  (click)="do( '', tema.value, uni.value,  car.value, asesor.value, lug.value, fecha_entrega.value, monto.value, false )" class="btn btn-danger agregar-cliente" style="width: 100%;color: white;" >Finalizar</a>

@@ -44,9 +44,15 @@ public class CardCounterController {
 		officeService.updateTimeMax(time, color);
 	}
 
-	@RequestMapping(value = "/semaphore/color", method = RequestMethod.GET)
+	@RequestMapping(value = "/semaphore/color1", method = RequestMethod.GET)
 	public String getColor(HttpServletResponse response) {
 		response.addHeader("Access-Control-Allow-Origin", "*");
-		return "{ \"id\":\"" + officeService.getColor() + "\"}";
+		return "{ \"id\":\"" + officeService.getColor("1") + "\"}";
+	}
+	
+	@RequestMapping(value = "/semaphore/color2", method = RequestMethod.GET)
+	public String getColor2(HttpServletResponse response) {
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		return "{ \"id\":\"" + officeService.getColor("2") + "\"}";
 	}
 }

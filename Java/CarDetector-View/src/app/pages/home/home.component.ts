@@ -19,7 +19,8 @@ import {Observable} from 'rxjs/Rx';
 export class HomeComponent   {
 
   title = 'app';
-  color = 'red';
+  color1 = 'red';
+  color2 = 'red';
 
 
   constructor(private service: Service) {
@@ -30,19 +31,30 @@ export class HomeComponent   {
 
   updateColor(){
 
-  this.service.getColor().subscribe(
+  this.service.getColor1().subscribe(
      cats => {
         console.log(cats);
-       return this.color = cats;
+       return this.color1 = cats;
      }
    );
+
+  this.service.getColor2().subscribe(
+     cats => {
+        console.log(cats);
+       return this.color2 = cats;
+     }
+   );
+
     
   }
 
-  getColor(){
-    return this.color;
+  getColor1(){
+    return this.color1;
   }
 
+  getColor2(){
+    return this.color2;
+  }
 
 }
  

@@ -2,30 +2,19 @@ package web.service;
 
 public class SemaphoreEngine {
 
-	private static int tiempo_rojo = 10;
-	private static int tiempo_verde = 10;
+	private static int tiempo_verde_1 = 10;
+	private static int tiempo_verde_2 = 10;
+
 	private static int tiempo_amarillo = 2;
-	private static String color = "red";
-	
+
+	private static String color1 = "red";
+	private static String color2 = "red";
+
 	public SemaphoreEngine() {
 		init();
 	}
 
-	public static int getTiempo_rojo() {
-		return tiempo_rojo;
-	}
 
-	public static void setTiempo_rojo(int tiempo_rojo) {
-		SemaphoreEngine.tiempo_rojo = tiempo_rojo;
-	}
-
-	public static int getTiempo_verde() {
-		return tiempo_verde;
-	}
-
-	public static void setTiempo_verde(int tiempo_verde) {
-		SemaphoreEngine.tiempo_verde = tiempo_verde;
-	}
 
 	public static int getTiempo_amarillo() {
 		return tiempo_amarillo;
@@ -43,19 +32,43 @@ public class SemaphoreEngine {
 				while (true) {
 
 					try {
-						setColor("green");
-						Thread.sleep(1000*tiempo_verde);
+
+						setColor1("green");
+						setColor2("red");
+						Thread.sleep(1000 * tiempo_verde_1);
+
+						setColor1("yellow");
+						setColor2("red");
+						Thread.sleep(1000 * tiempo_amarillo);
+
+						setColor1("red");
+						setColor2("red");
+						Thread.sleep(1000 * 2);
+
+						
+
+						setColor1("red");
+						setColor2("green");
+						Thread.sleep(1000 * tiempo_verde_2);
+
+						setColor1("red");
+						setColor2("yellow");
+						Thread.sleep(1000 * tiempo_amarillo);
+
+						setColor1("red");
+						setColor2("red");
+						Thread.sleep(1000 * 2);
+						
+						
+						
+						
+						
+						
+						
+						
+						
 					} catch (Exception e) {
-					}
-					try {
-						setColor("yellow");
-						Thread.sleep(1000*tiempo_amarillo);
-					} catch (Exception e) {
-					}
-					try {
-						setColor("red");
-						Thread.sleep(1000*tiempo_rojo);
-					} catch (Exception e) {
+						// TODO: handle exception
 					}
 
 				}
@@ -67,12 +80,30 @@ public class SemaphoreEngine {
 
 	}
 
-	public static String getColor() {
-		return color;
+
+
+	public static String getColor1() {
+		return color1;
 	}
 
-	public static void setColor(String color) {
-		SemaphoreEngine.color = color;
+
+
+	public static void setColor1(String color1) {
+		SemaphoreEngine.color1 = color1;
 	}
+
+
+
+	public static String getColor2() {
+		return color2;
+	}
+
+
+
+	public static void setColor2(String color2) {
+		SemaphoreEngine.color2 = color2;
+	}
+
+
 
 }

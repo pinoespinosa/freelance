@@ -14,5 +14,5 @@ public interface CardCounterService {
 
 	void updateTimeMax(int time, ColorSemaforo color);
 
-	String getColor();
+	String getColor(String sem);
 }

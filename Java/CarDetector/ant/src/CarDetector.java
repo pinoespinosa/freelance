@@ -31,17 +31,6 @@ import org.opencv.objdetect.CascadeClassifier;
 import org.opencv.video.BackgroundSubtractorMOG2;
 import org.opencv.videoio.VideoCapture;
 
-
-
-
-
-
-
-
-
-
-
-
 class CarDetector {
 
 	// static JFrame frame;
@@ -53,10 +42,11 @@ class CarDetector {
 	static JLabel lbl2;
 	static ImageIcon icon2;
 
-//	static String source = "http://75.130.56.53:80/mjpg/video.mjpg?COUNTER";
-	static String source = "EJEMPLO5.mp4";
-// 	http://camaras.vera.com.uy/camara/33
-
+	//static String source = "http://75.130.56.53:80/mjpg/video.mjpg?COUNTER";
+	// static String source =
+	// "http://104.157.73.60:80/cgi-bin/faststream.jpg?stream=half&fps=15&rand=COUNTER"
+	 static String source = "EJEMPLO5.mp4";
+	// http://camaras.vera.com.uy/camara/33
 
 	static BufferedImage imageOtra;
 	static byte[] data;
@@ -82,15 +72,14 @@ class CarDetector {
 		return mask;
 	}
 
-	public static void showCars(JLabel marcoImg, JFrame frame2, JTextPane texto) throws Exception {
+	public void showCars(JLabel marcoImg, JFrame frame2, JTextPane texto) throws Exception {
 
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		mask = new Mat();
 
 		System.out.println("pas");
 
-		CascadeClassifier cascadeEyeClassifier = new CascadeClassifier(
-				"cars.xml");
+		CascadeClassifier cascadeEyeClassifier = new CascadeClassifier("cars.xml");
 
 		VideoCapture videoDevice = new VideoCapture(source);
 		// videoDevice.open(source);
@@ -102,10 +91,11 @@ class CarDetector {
 
 			videoDevice.read(frInicial);
 
+			// Mat base = Imgcodecs.imread("EJEMPLO5.bmp");
 			Mat base = Imgcodecs.imread("EJEMPLO5.bmp");
 
-			int cantidad = 0;
-			float valores = 0;
+			int cantFotogramas = 0;
+			float autoDetect = 0;
 
 			Mat frameCapture = new Mat();
 			videoDevice.read(frameCapture);
@@ -186,75 +176,63 @@ class CarDetector {
 							new Point(rect.x + rect.width, rect.y + rect.height));
 					Mat image_output = forma.submat(rectCrop);
 
-					double color = Core.sumElems(image_output).val[0] / rect.area();
+					double porcentaColor = Core.sumElems(image_output).val[0] / rect.area();
 
-					if (color > 5) {
+					if (porcentaColor > 5) {
 						Imgproc.putText(frame_ANTIGUO, "Auto", new Point(rect.x, rect.y - 5), 1, 2,
 								new Scalar(0, 0, 255)); // Kare
 						Imgproc.rectangle(frame_ANTIGUO, new Point(rect.x, rect.y),
 								new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(200, 200, 100), 2);
 
-						if (cantidad > 10) {
-							texto.setText(new Float(valores / 7).intValue() + " vehiculos detectados");
-							cantidad = 0;
-
-							String valor = new Float(valores / 7).intValue()+"";
-
-
-							   URL url = new URL("http://18.216.175.95:8080/server/api/car/moving?congestion=" + valor);
-						        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-						        con.setRequestMethod("POST");
-						        con.setRequestProperty("Content-Type", "application/json");
-
-						        Map<String, String> parameters = new HashMap<>();
-						        parameters.put("param1", "val");
-						        con.setDoOutput(true);
-						        DataOutputStream out = new DataOutputStream(con.getOutputStream());
-						        out.flush();
-						        out.close();
-
-						        int status = con.getResponseCode();
-						        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-						        String inputLine;
-						        StringBuilder content = new StringBuilder();
-						        while ((inputLine = in.readLine()) != null) {
-						            content.append(inputLine);
-						        }
-						        in.close();
-
-
-
-							valores = 0;
-
-
-
-
-						} else
-							valores += 1;
+							autoDetect += 1;
 
 					}
 
 				}
+				
+				
+				if (cantFotogramas > 10) {
+	//				texto.setText(new Float(autoDetect / 7).intValue() + " vehiculos detectados");
+					cantFotogramas = 0;
 
-				cantidad++;
+					String valor = new Float(autoDetect / 7).intValue() + "";
 
-				boolean valor = (anchoVentana == frame2.getSize().width) && (altoVentana == frame2.getSize().height);
+					System.out.println("pego");
 
-				if (!valor) {
-					anchoVentana = frame2.getSize().width;
-					altoVentana = frame2.getSize().height;
+					try {
+						System.out.println("Congestion: " + valor);
 
-					tamLocAlto = marcoImg.getSize().height;
-					tamLocAncho = marcoImg.getSize().width;
+						URL url = new URL("http://localhost:8080/car-counter/api/car/moving?congestion=" + valor);
+						HttpURLConnection con = (HttpURLConnection) url.openConnection();
+						con.setRequestMethod("POST");
+						con.setRequestProperty("Content-Type", "application/json");
 
-		//			System.out.println("cambie" + tamLocAlto + " " + tamLocAncho);
-				}
-				else
-		//			System.out.println("igual" + tamLocAlto + " " + tamLocAncho);
+						Map<String, String> parameters = new HashMap<>();
+						parameters.put("param1", "val");
+						con.setDoOutput(true);
+						DataOutputStream out = new DataOutputStream(con.getOutputStream());
+						out.flush();
+						out.close();
+
+						int status = con.getResponseCode();
+						BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+						String inputLine;
+						StringBuilder content = new StringBuilder();
+						while ((inputLine = in.readLine()) != null) {
+							content.append(inputLine);
+						}
+						in.close();
+
+						
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
 					
 
-				PushImage(OpenCvMagic.ConvertMat2Image(frame_ANTIGUO, tamLocAncho, tamLocAlto), marcoImg,
-						frame2);
+					autoDetect = 0;
+				}
+				
+				cantFotogramas++;
 
 			}
 		} else {

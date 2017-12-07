@@ -29,8 +29,12 @@ public class CardCounterServiceImpl implements CardCounterService {
 	}
 
 	@Override
-	public String getColor() {
-		return semaforo.getColor();
+	public String getColor(String col) {
+		if (col.equals("1"))
+			return semaforo.getColor1();
+		else
+			return semaforo.getColor2();
+			
 	}
 
 	@Override
@@ -53,23 +57,10 @@ public class CardCounterServiceImpl implements CardCounterService {
 
 	@Override
 	public void updateTimeMax(int time, ColorSemaforo color) {
-
-		switch (color) {
-		
-		case green:
-			semaforo.setTiempo_verde(time);
-			break;
-
-		case red:
-			semaforo.setTiempo_rojo(time);
-			break;
-
-		case yellow:
-			semaforo.setTiempo_amarillo(time);
-			break;
-
-		}
+		// TODO Auto-generated method stub
 		
 	}
+
+
 
 }

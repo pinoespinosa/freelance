@@ -20,8 +20,13 @@ export class Service {
   constructor(private http: Http, private http2: HttpClient ) {
   }
 
-  getColor(): Observable<string> {
-    return this.http.get("http://localhost:8080/car-counter/api/semaphore/color").map(this.extractData);
+  getColor1(): Observable<string> {
+    return this.http.get("http://localhost:8080/car-counter/api/semaphore/color1").map(this.extractData);
+//      return this.http.get(this.server+"/api/client/").map(this.extractData);
+  }
+
+  getColor2(): Observable<string> {
+    return this.http.get("http://localhost:8080/car-counter/api/semaphore/color2").map(this.extractData);
 //      return this.http.get(this.server+"/api/client/").map(this.extractData);
   }
 

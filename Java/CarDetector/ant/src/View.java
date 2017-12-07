@@ -54,9 +54,27 @@ public class View {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					View window = new View();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
+
+
+   Runnable myRunnable = new Runnable(){
+
+     public void run(){
+		CarDetector cam = new CarDetector();
+		try {
+			cam.showCars(null, null, null);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
+   
+   };
+   		Thread thread = new Thread(myRunnable);
+   		thread.start();
+			
+		CarDetector cam1 = new CarDetector();
+		cam1.showCars(null, null, null);
+
+		} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -196,12 +214,6 @@ public class View {
 
 
 	
-					try {
-						CarDetector.showCars(imagen, frame, txtVehiculos);
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
 				});
 
 				startButton.setEnabled(false);
