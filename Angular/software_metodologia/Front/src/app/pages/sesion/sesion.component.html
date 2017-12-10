@@ -19,11 +19,11 @@
 <change-state [(visible)]="showADD_TAREA">
 <h2 style="margin: 10px;margin-bottom: 20px;" >Crear una Tarea Nueva</h2>
 <div class="col-12" style="margin-bottom: 20px;">
-   <input #nuevaCarr type="text" class="form-control" placeholder="Descripcion">
+   <input #nuevaTarea type="text" class="form-control" placeholder="Descripcion">
 </div>
 <div class="row">
    <div class="col-6"> 
-      <button (click)="showADD_TAREA = !showADD_TAREA" (click)="crearTarea(nuevaCarr.value)"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+      <button (click)="showADD_TAREA = !showADD_TAREA" (click)="crearTarea(nuevaTarea.value)"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
    </div>
    <div class="col-6"> 
       <button (click)="showADD_TAREA = !showADD_TAREA" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>

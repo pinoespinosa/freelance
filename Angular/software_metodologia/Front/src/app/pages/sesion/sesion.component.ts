@@ -143,6 +143,15 @@ clicActaNext(actaCombo):void{
     this.service.getTemas(this.actaSelect.id).subscribe(
       response =>{ 
         this.temasDelActa = response;
+        this.temasDelActa.sort((a, b) => {
+        if ( (+a.id) < (+b.id) ) 
+          return 1;
+        else 
+          if ((+a.id) > (+b.id) ) 
+            return -1 ;
+          else 
+            return 0;
+    });
         if(response.length>0){
           this.temaActual = response[0];
           this.indice=0;
@@ -171,6 +180,7 @@ clicActaNext(actaCombo):void{
 
   crearTema(tema):void{
 
+    console.log("Tema " + tema)
     let temaN = new Tema("","Abierto",tema,[],[]);
     let ccID = this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1];
 
@@ -179,6 +189,18 @@ clicActaNext(actaCombo):void{
     subscribe(
       response =>{ 
         this.temasDelActa.unshift(response);
+
+        this.temasDelActa.sort((a, b) => {
+        if ( (+a.id) < (+b.id) ) 
+          return 1;
+        else 
+          if ((+a.id) > (+b.id) ) 
+            return -1 ;
+          else 
+            return 0;
+    });
+
+
         this.temaActual=response;
         alert("Se ha creado un nuevo tema")
       }         
@@ -310,6 +332,17 @@ clicActaNext(actaCombo):void{
           this.tareasMostrar.push(aa);
         }
     }
+
+        this.tareasMostrar.sort((a, b) => {
+        if ( (+a.id) < (+b.id) ) 
+          return 1;
+        else 
+          if ((+a.id) > (+b.id) ) 
+            return -1 ;
+          else 
+            return 0;
+    });
+
 
     if (this.tareasMostrar.length > 0){
       this.tareaActual = this.tareasMostrar[0];

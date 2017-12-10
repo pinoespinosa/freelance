@@ -258,7 +258,7 @@ public class DataSourceReal implements IDataSource {
 
 		tema.setId(ccOrig.getTemas().size()+"");
 		ccOrig.getTemas().put(tema.getId(), tema);
-		tema.getEventos().add("Se ha creado el tema en el acta" + actaID);
+		tema.getEventos().add("Se ha creado el tema en el acta " + actaID);
 		updateFile();
 		return tema;	
 	}
