@@ -1,0 +1,18 @@
+.home-page-container {
+	background-color: #dce2f4;
+}
+.bottom-buttons-container {
+	background-color: #dce2f4;
+	align-items: center;
+}
+.logo-home {
+	text-align: center;
+}
+
+.buttons-middle-container {
+	align-self: center;
+}
+
+.home-buttons {
+	width: 100%;
+}

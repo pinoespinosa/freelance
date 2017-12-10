@@ -1,17 +1,14 @@
+@import url("./styles/home.css");
+@import url("./styles/reuniones.css");
 
+body {
+    background-color: #dce2f4;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+.btn {
+    border-color: #e4ad2d;
+    background-color: #e4ad2d;
+}
 .tooltip {
     position: relative;
     display: inline-block;

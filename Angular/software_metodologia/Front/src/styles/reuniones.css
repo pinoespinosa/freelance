@@ -1,0 +1,11 @@
+.reuniones-form-container {
+	position:absolute;
+	top:50%;
+	right:0;
+	left:0;
+}
+
+.dropdown-select {
+	width: 100%;
+	margin-bottom: 10px;
+}
