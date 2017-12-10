@@ -45,8 +45,6 @@ public class View {
 
 	boolean cambio = true;
 
-
-
 	/**
 	 * Launch the application.
 	 */
@@ -55,26 +53,36 @@ public class View {
 			public void run() {
 				try {
 
+					Thread thread = new Thread(new Runnable() {
 
-   Runnable myRunnable = new Runnable(){
+						public void run() {
+							CarDetector cam = new CarDetector();
+							try {
+								cam.showCars(null, null, null, "http://75.130.56.53/mjpg/video.mjpg?COUNTER","1", "FONDO_COUNTER.bmp");
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
 
-     public void run(){
-		CarDetector cam = new CarDetector();
-		try {
-			cam.showCars(null, null, null);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-    }
-   
-   };
-   		Thread thread = new Thread(myRunnable);
-   		thread.start();
-			
-		CarDetector cam1 = new CarDetector();
-		cam1.showCars(null, null, null);
+					});
+					thread.start();
 
-		} catch (Exception e) {
+					Thread thread2 = new Thread(new Runnable() {
+
+						public void run() {
+							CarDetector cam = new CarDetector();
+							try {
+								cam.showCars(null, null, null, "http://104.157.73.60:80/cgi-bin/faststream.jpg?stream=half&fps=15&rand=COUNTER","2", "EJEMPLO6.bmp");
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+
+					});
+					thread2.start();
+					
+
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
@@ -98,11 +106,13 @@ public class View {
 			@Override
 			public void componentResized(ComponentEvent e) {
 				/*
-				System.out.println("Tamañoo");
-				
-				int ancho = new Double(frame.getSize().width*0.75).intValue();
-				int alto = new Double(frame.getSize().height*0.75).intValue();
-				imagen.setSize(ancho, alto);*/
+				 * System.out.println("Tamañoo");
+				 * 
+				 * int ancho = new
+				 * Double(frame.getSize().width*0.75).intValue(); int alto = new
+				 * Double(frame.getSize().height*0.75).intValue();
+				 * imagen.setSize(ancho, alto);
+				 */
 			}
 		});
 		frame.setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
@@ -203,7 +213,7 @@ public class View {
 		gbc_lblIntermitenteTiempoIndefinido.gridx = 3;
 		gbc_lblIntermitenteTiempoIndefinido.gridy = 6;
 		frame.getContentPane().add(lblIntermitenteTiempoIndefinido, gbc_lblIntermitenteTiempoIndefinido);
-	
+
 		startButton = new JButton("Start");
 		startButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -212,8 +222,6 @@ public class View {
 				ExecutorService executor = Executors.newSingleThreadExecutor();
 				executor.submit(() -> {
 
-
-	
 				});
 
 				startButton.setEnabled(false);

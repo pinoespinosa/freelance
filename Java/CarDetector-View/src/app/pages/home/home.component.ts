@@ -21,7 +21,8 @@ export class HomeComponent   {
   title = 'app';
   color1 = 'red';
   color2 = 'red';
-
+  cant1 = '0';
+  cant2 = '0';
 
   constructor(private service: Service) {
         Observable.interval(1000 * 1).subscribe(x => {
@@ -45,6 +46,20 @@ export class HomeComponent   {
      }
    );
 
+
+  this.service.getCant1().subscribe(
+     cats => {
+        console.log(cats);
+       return this.cant1 = cats;
+     }
+   );
+
+  this.service.getCant2().subscribe(
+     cats => {
+        console.log(cats);
+       return this.cant2 = cats;
+     }
+   );
     
   }
 
@@ -54,6 +69,14 @@ export class HomeComponent   {
 
   getColor2(){
     return this.color2;
+  }
+
+  getCant1(){
+    return this.cant1;
+  }
+
+  getCant2(){
+    return this.cant2;
   }
 
 }

@@ -17,13 +17,20 @@ public class CardCounterController {
 	@Autowired
 	private CardCounterService officeService;
 
-	@RequestMapping(value = "/car/moving", method = RequestMethod.POST)
-	public String updateMovingCars(@RequestParam String congestion, HttpServletResponse response) {
+	@RequestMapping(value = "/car/moving1", method = RequestMethod.POST)
+	public void updateMovingCars1(@RequestParam String congestion, HttpServletResponse response) {
 		response.addHeader("Access-Control-Allow-Origin", "*");
-		System.out.println("Congestion:" + congestion );
-		return officeService.updateMovingCars();
+		System.out.println("Congestion1:" + congestion );
+		officeService.updateMovingCars("1", congestion);
 	}
 
+	@RequestMapping(value = "/car/moving2", method = RequestMethod.POST)
+	public void updateMovingCars2(@RequestParam String congestion, HttpServletResponse response) {
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		System.out.println("Congestion2:" + congestion );
+		officeService.updateMovingCars("2",congestion);
+	}
+	
 	@RequestMapping(value = "/car/waiting", method = RequestMethod.GET)
 	public String updateWaitingCars(HttpServletResponse response) {
 		response.addHeader("Access-Control-Allow-Origin", "*");
@@ -55,4 +62,17 @@ public class CardCounterController {
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		return "{ \"id\":\"" + officeService.getColor("2") + "\"}";
 	}
+	
+	@RequestMapping(value = "/semaphore/cant1", method = RequestMethod.GET)
+	public String getCant1(HttpServletResponse response) {
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		return "{ \"id\":\"" + officeService.getCant("1") + "\"}";
+	}
+	
+	@RequestMapping(value = "/semaphore/cant2", method = RequestMethod.GET)
+	public String getCant2(HttpServletResponse response) {
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		return "{ \"id\":\"" + officeService.getCant("2") + "\"}";
+	}
+	
 }

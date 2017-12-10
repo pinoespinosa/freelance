@@ -33,6 +33,8 @@ import org.opencv.videoio.VideoCapture;
 
 class CarDetector {
 
+	private static boolean hardAlgorithm = true;
+
 	// static JFrame frame;
 	// static JFrame frame_orig;
 
@@ -42,10 +44,10 @@ class CarDetector {
 	static JLabel lbl2;
 	static ImageIcon icon2;
 
-	//static String source = "http://75.130.56.53:80/mjpg/video.mjpg?COUNTER";
+	// static String source = "http://75.130.56.53:80/mjpg/video.mjpg?COUNTER";
 	// static String source =
 	// "http://104.157.73.60:80/cgi-bin/faststream.jpg?stream=half&fps=15&rand=COUNTER"
-	 static String source = "EJEMPLO5.mp4";
+	// static String source = "EJEMPLO5.mp4";
 	// http://camaras.vera.com.uy/camara/33
 
 	static BufferedImage imageOtra;
@@ -72,7 +74,7 @@ class CarDetector {
 		return mask;
 	}
 
-	public void showCars(JLabel marcoImg, JFrame frame2, JTextPane texto) throws Exception {
+	public void showCars(JLabel marcoImg, JFrame frame2, JTextPane texto, String urlVideo, String cant, String fondo) throws Exception {
 
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		mask = new Mat();
@@ -81,7 +83,7 @@ class CarDetector {
 
 		CascadeClassifier cascadeEyeClassifier = new CascadeClassifier("cars.xml");
 
-		VideoCapture videoDevice = new VideoCapture(source);
+		VideoCapture videoDevice = new VideoCapture(urlVideo);
 		// videoDevice.open(source);
 
 		Mat frameN2_COPIA = new Mat();
@@ -92,8 +94,10 @@ class CarDetector {
 			videoDevice.read(frInicial);
 
 			// Mat base = Imgcodecs.imread("EJEMPLO5.bmp");
-			Mat base = Imgcodecs.imread("EJEMPLO5.bmp");
-
+			Mat base = Imgcodecs.imread(fondo);
+			
+			System.out.println("cargue fondo");
+			
 			int cantFotogramas = 0;
 			float autoDetect = 0;
 
@@ -135,74 +139,86 @@ class CarDetector {
 
 				videoDevice.read(frameCapture);
 
-				Mat frameCaptureBorders2 = frameCapture.clone();
+				Mat frameCaptureBorders2 = null;
+				if (hardAlgorithm) {
+					frameCaptureBorders2 = frameCapture.clone();
 
-				Core.subtract(frameCapture, base, frameCaptureBorders2);
+					Core.subtract(frameCapture, base, frameCaptureBorders2);
 
-				Mat resta1 = new Mat();
-				Core.subtract(frameCaptureBorders2, frame_ANTIGUO, resta1);
-				Core.bitwise_not(resta1, resta1);
-				Core.subtract(frameCapture, resta1, resta1);
+					Mat resta1 = new Mat();
+					Core.subtract(frameCaptureBorders2, frame_ANTIGUO, resta1);
+					Core.bitwise_not(resta1, resta1);
+					Core.subtract(frameCapture, resta1, resta1);
 
-				Mat resta2 = new Mat();
-				Core.subtract(frameCaptureBorders2, frame_ANTIGUO5, resta2);
-				Core.bitwise_not(resta2, resta2);
-				Core.subtract(frameCapture, resta2, resta2);
+					Mat resta2 = new Mat();
+					Core.subtract(frameCaptureBorders2, frame_ANTIGUO5, resta2);
+					Core.bitwise_not(resta2, resta2);
+					Core.subtract(frameCapture, resta2, resta2);
 
-				Mat resta3 = new Mat();
-				Core.subtract(frameCaptureBorders2, frame_ANTIGUO9, resta3);
-				Core.bitwise_not(resta3, resta3);
-				Core.subtract(frameCapture, resta3, resta3);
+					Mat resta3 = new Mat();
+					Core.subtract(frameCaptureBorders2, frame_ANTIGUO9, resta3);
+					Core.bitwise_not(resta3, resta3);
+					Core.subtract(frameCapture, resta3, resta3);
 
-				Mat resta4 = new Mat();
-				Core.subtract(frameCaptureBorders2, frame_ANTIGUO14, resta4);
-				Core.bitwise_not(resta4, resta4);
-				Core.subtract(frameCapture, resta4, resta4);
+					Mat resta4 = new Mat();
+					Core.subtract(frameCaptureBorders2, frame_ANTIGUO14, resta4);
+					Core.bitwise_not(resta4, resta4);
+					Core.subtract(frameCapture, resta4, resta4);
 
-				Core.add(resta1, resta2, frameCaptureBorders2);
-				Core.add(resta3, frameCaptureBorders2, frameCaptureBorders2);
-				Core.add(resta4, frameCaptureBorders2, frameCaptureBorders2);
+					Core.add(resta1, resta2, frameCaptureBorders2);
+					Core.add(resta3, frameCaptureBorders2, frameCaptureBorders2);
+					Core.add(resta4, frameCaptureBorders2, frameCaptureBorders2);
 
-				Imgproc.cvtColor(frameCaptureBorders2, frameCaptureBorders2, Imgproc.COLOR_RGB2GRAY);
+					Imgproc.cvtColor(frameCaptureBorders2, frameCaptureBorders2, Imgproc.COLOR_RGB2GRAY);
+
+				}
 
 				MatOfRect eyes = new MatOfRect();
 				cascadeEyeClassifier.detectMultiScale(frameCapture, eyes);
 
 				for (Rect rect : eyes.toArray()) {
 
-					Mat forma = frameCaptureBorders2.clone();
+					Mat forma = null;
+					if (hardAlgorithm)
+						forma = frameCaptureBorders2.clone();
 
 					Rect rectCrop = new Rect(new Point(rect.x, rect.y),
 							new Point(rect.x + rect.width, rect.y + rect.height));
-					Mat image_output = forma.submat(rectCrop);
+					Mat image_output = null;
 
-					double porcentaColor = Core.sumElems(image_output).val[0] / rect.area();
+					double porcentaColor = 10;
+					if (hardAlgorithm) {
+						image_output = forma.submat(rectCrop);
+						porcentaColor = Core.sumElems(image_output).val[0] / rect.area();
+
+					}
 
 					if (porcentaColor > 5) {
+						System.out.println("auto en " + cant);
+
 						Imgproc.putText(frame_ANTIGUO, "Auto", new Point(rect.x, rect.y - 5), 1, 2,
 								new Scalar(0, 0, 255)); // Kare
 						Imgproc.rectangle(frame_ANTIGUO, new Point(rect.x, rect.y),
 								new Point(rect.x + rect.width, rect.y + rect.height), new Scalar(200, 200, 100), 2);
 
-							autoDetect += 1;
+						autoDetect += 1;
 
 					}
 
 				}
-				
-				
-				if (cantFotogramas > 10) {
-	//				texto.setText(new Float(autoDetect / 7).intValue() + " vehiculos detectados");
+
+				if (cantFotogramas > 5) {
+					// texto.setText(new Float(autoDetect / 7).intValue() + "
+					// vehiculos detectados");
 					cantFotogramas = 0;
 
-					String valor = new Float(autoDetect / 7).intValue() + "";
+					String valor = new Float(autoDetect / 4) + "";
 
-					System.out.println("pego");
 
 					try {
 						System.out.println("Congestion: " + valor);
 
-						URL url = new URL("http://localhost:8080/car-counter/api/car/moving?congestion=" + valor);
+						URL url = new URL("http://18.216.175.95:8080/car-server/api/car/moving"+cant+"?congestion=" + valor);
 						HttpURLConnection con = (HttpURLConnection) url.openConnection();
 						con.setRequestMethod("POST");
 						con.setRequestProperty("Content-Type", "application/json");
@@ -223,15 +239,13 @@ class CarDetector {
 						}
 						in.close();
 
-						
 					} catch (Exception e) {
 						// TODO: handle exception
 					}
-					
 
 					autoDetect = 0;
 				}
-				
+
 				cantFotogramas++;
 
 			}

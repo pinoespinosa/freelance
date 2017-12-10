@@ -15,20 +15,30 @@ import { Trabajo }               from 'app/data-objects/trabajo';
 export class Service {
 
 
-  private server = 'http://18.216.175.95:8080/spring-security-rest/'
+  private server = 'http://18.216.175.95:8080/car-server/'
 
   constructor(private http: Http, private http2: HttpClient ) {
   }
 
   getColor1(): Observable<string> {
-    return this.http.get("http://localhost:8080/car-counter/api/semaphore/color1").map(this.extractData);
-//      return this.http.get(this.server+"/api/client/").map(this.extractData);
+    return this.http.get(this.server+ "api/semaphore/color1").map(this.extractData);
   }
 
   getColor2(): Observable<string> {
-    return this.http.get("http://localhost:8080/car-counter/api/semaphore/color2").map(this.extractData);
-//      return this.http.get(this.server+"/api/client/").map(this.extractData);
+    return this.http.get(this.server+ "api/semaphore/color2").map(this.extractData);
   }
+
+
+  getCant1(): Observable<string> {
+    return this.http.get(this.server+ "api/semaphore/cant1").map(this.extractData);
+  }
+
+  getCant2(): Observable<string> {
+    return this.http.get(this.server+ "api/semaphore/cant2").map(this.extractData);
+  }
+
+
+
 
   getClient(id): Observable<Client> {
       return this.http.get(this.server+"/api/client/" + id).map(this.extractData);

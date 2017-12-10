@@ -6,7 +6,7 @@ public interface CardCounterService {
 
 	String getHelloWorld();
 
-	String updateMovingCars();
+	void updateMovingCars(String string, String congestion);
 
 	String updateWaitingCars();
 
@@ -15,4 +15,6 @@ public interface CardCounterService {
 	void updateTimeMax(int time, ColorSemaforo color);
 
 	String getColor(String sem);
+
+	String getCant(String string);
 }

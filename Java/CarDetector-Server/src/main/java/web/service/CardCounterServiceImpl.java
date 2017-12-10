@@ -11,16 +11,15 @@ public class CardCounterServiceImpl implements CardCounterService {
 	@Autowired
 	SemaphoreEngine semaforo;
 
+	float cant1=0;
+	float cant2=0;
+	
 	@Override
 	public String getHelloWorld() {
 		return "Holaa";
 	}
 
-	@Override
-	public String updateMovingCars() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public String updateWaitingCars() {
@@ -59,6 +58,25 @@ public class CardCounterServiceImpl implements CardCounterService {
 	public void updateTimeMax(int time, ColorSemaforo color) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public String getCant(String string) {
+		if (string.equals("1"))
+			return cant1+"";
+		else
+			return cant2+"";
+	}
+
+
+
+	@Override
+	public void updateMovingCars(String string, String cong) {
+		if (string.equals("1"))
+			cant1 = Float.parseFloat(cong);
+		else
+			cant2 = Float.parseFloat(cong);
+
 	}
 
 
