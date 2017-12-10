@@ -15,7 +15,7 @@
       <div class="col-4" >
          <select style="width: 100%;" #act class="dropdown-select" (change)="selectActa(act)">
          <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione el Número de Acta --</option>
-         <option *ngFor="let acta of actas" >Acta Nro. {{acta.numeroActa}}</option>
+         <option *ngFor="let acta of actas" >Acta Nro. {{acta.id}}</option>
          </select>
       </div>
    </div>

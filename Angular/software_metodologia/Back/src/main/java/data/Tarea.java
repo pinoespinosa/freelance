@@ -3,12 +3,12 @@ package data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tema {
+public class Tarea {
 
 	private String id;
 	private String estado;
 	private String detalle;
-	private List<Tarea> tareas;
+	
 	private List<String> eventos;
 
 	public String getId() {
@@ -45,14 +45,13 @@ public class Tema {
 		this.detalle = detalle;
 	}
 
-	public List<Tarea> getTareas() {
-		if (tareas==null)
-			tareas = new ArrayList<>();
-		return tareas;
-	}
-
-	public void setTareas(List<Tarea> tareas) {
-		this.tareas = tareas;
+	@Override
+	public boolean equals(Object obj) {
+		if (obj.getClass().equals(Tarea.class)) {
+			Tarea t = (Tarea) obj;
+			return t.getId().equals(getId());
+		}
+		return false;
 	}
 
 

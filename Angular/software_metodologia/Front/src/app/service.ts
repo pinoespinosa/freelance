@@ -45,47 +45,89 @@ export class Service {
 
 
   getCuerpoColegiado(cuerpocolegiadoID): Observable<CuerpoColegiado> {
-      return this.http.get(this.server+"api/cuerpocolegiado/"+cuerpocolegiadoID).map(this.extractData);
+    return this.http.get(this.server+"api/cuerpocolegiado/"+cuerpocolegiadoID).map(this.extractData);
   }
 
   getUsuarios(cuerpoColegiado): Observable<Usuario[]> {
-      var headers = new Headers();
-      headers.append('acces-token', localStorage.getItem('token'));
-      return this.http.get(this.server+"api/usuario?cuerpoColegiadoID=" +cuerpoColegiado, { headers: headers }).map(this.extractData);
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.get(this.server+"api/usuario?cuerpoColegiadoID=" +cuerpoColegiado, { headers: headers }).map(this.extractData);
+  }
+
+  getUsuariosConActa(acta): Observable<Usuario[]> {
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.get(this.server+"api/acta/usuario?actaID=" +acta, { headers: headers }).map(this.extractData);
   }
 
   getLastActa(cuerpoColegiadoID): Observable<Acta> {
-      return this.http.get(this.server + 'api/'+ cuerpoColegiadoID + '/acta/last').map(this.extractData);
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+
+    return this.http.get(this.server + 'api/'+ cuerpoColegiadoID + '/acta/last', { headers: headers }).map(this.extractData);
   }
 
-  getActasCitadas(cuerpoColegiadoID): Observable<Acta[]> {
-      var headers = new Headers();
-      headers.append('acces-token', localStorage.getItem('token'));
-      return this.http.get(this.server + 'api/'+ cuerpoColegiadoID + '/acta/citada?cuerpoColegiadoID='+cuerpoColegiadoID, { headers: headers }).map(
-      this.extractData);
+  getActasCitadas(): Observable<Acta[]> {
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.get(this.server + 'api/acta/citada', { headers: headers }).map(this.extractData);
   }
 
-  getTemas(cuerpoColegiadoID): Observable<Tema[]> {
-      return this.http.get(this.server + 'api/'+ cuerpoColegiadoID + '/tema/abierto').map(this.extractData);
+
+  getTemas(actaID): Observable<Tema[]> {
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.get(this.server + 'api/'+ actaID + '/acta/tema/abierto', { headers: headers }).map(this.extractData);
   }
 
   createActa(cuerpoColegiadoID, acta): Observable<Acta> {
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/acta/create',acta, { headers: headers }).map(this.extractData);
 
-      var headers = new Headers();
-      return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/acta/create',acta, { headers: headers }).map(this.extractData);
+  }
 
+  createTema(cuerpoColegiadoID, tema): Observable<Tema> {
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tema/create',tema, { headers: headers }).map(this.extractData);
   }
 
   editActa(cuerpoColegiadoID, acta): Observable<Acta> {
 
       var headers = new Headers();
       return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/acta/edit',acta, { headers: headers }).map(this.extractData);
-
   }
 
+  createComentario(cuerpoColegiadoID, tema, com): Observable<Tema> {
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tema/addComment?temaID='+tema+'&comentario='+com, tema,{ headers: headers }).map(this.extractData);
+  }
 
+  createComentarioTarea(cuerpoColegiadoID, tema, tarea, com): Observable<Tema> {
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tarea/addComment?temaID='+tema + '&tareaID='+tarea +'&comentario='+com, tema,{ headers: headers }).map(this.extractData);
+  }
 
+  closeTarea(cuerpoColegiadoID, tema, tarea, com): Observable<Tema> {
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tarea/close?temaID='+tema + '&tareaID='+tarea + '&comentario='+com, tema,{ headers: headers }).map(this.extractData);
+  }
 
+  crearTarea(cuerpoColegiadoID, temaID, tarea): Observable<Tema> {
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tarea/create?temaID='+temaID,tarea, { headers: headers }).map(this.extractData);
+  }
+
+  closeActa(cuerpoColegiadoID, tema, com): Observable<Tema> {
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tema/close?temaID='+tema+'&comentario='+com, tema,{ headers: headers }).map(this.extractData);
+  }
 
 
 

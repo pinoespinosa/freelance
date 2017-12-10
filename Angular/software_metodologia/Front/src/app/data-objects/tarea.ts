@@ -1,14 +1,11 @@
-import { Tarea }                    from 'app/data-objects/tarea';
-
-
-export class Tema {
+export class Tarea {
   constructor(
 
     public id: string,
     public estado:string,
     public detalle:string,
+
     public eventos: string[],
-    public tareas: Tarea[],
 
   ) { }
 }

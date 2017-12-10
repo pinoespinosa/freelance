@@ -2,9 +2,12 @@ package datasource;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Hashtable;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +23,7 @@ import data.Auth.Rol;
 import data.CuerpoColegiado;
 import data.Empresa;
 import data.Info;
+import data.Tarea;
 import data.Tema;
 import spring.ChipherTool;
 
@@ -35,20 +39,62 @@ public class DataSourceReal implements IDataSource {
 	void readFromFile() {
 		System.out.println("Current relative path is: " + Paths.get("").toAbsolutePath().toString());
 		ObjectMapper mapper = new ObjectMapper();
-		
-			System.out.println();
-			 try {
-				obj = mapper.readValue(new File("file.json"), Info.class);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		
+
+		System.out.println();
+		try {
+
+			Path currentRelativePath = Paths.get("");
+			String s = "/home/pino/freelance/Angular/software_metodologia/Front/";
+
+			File file = new File(s + "file.json");
+			obj = mapper.readValue(file, Info.class);
+		} catch (IOException e) {
+
+			obj = new Info();
+			obj.setEmpresas(new ArrayList<>());
+			obj.setUsers(new Hashtable<>());
+
+			Empresa emp = new Empresa();
+			emp.setLogoEmpresa("https://staticaltmetric.s3.amazonaws.com/uploads/2015/10/dark-logo-for-site.png");
+			emp.setNombreEmpresa("Arcor");
+			emp.setColegiados(new ArrayList<>());
+			emp = createEmpresa(emp);
+
+			CuerpoColegiado cc = new CuerpoColegiado();
+			cc.setActas(new ArrayList<>());
+			cc.setNombre("Comercial");
+			cc.setPrefijoDocs("COM");
+			cc.setTemas(new Hashtable<>());
+			cc = createCuerpoColegiado(emp.getId(), cc);
+
+			CuerpoColegiado cc2 = new CuerpoColegiado();
+			cc2.setActas(new ArrayList<>());
+			cc2.setNombre("Gerencial");
+			cc2.setPrefijoDocs("GER");
+			cc2.setTemas(new Hashtable<>());
+			cc2 = createCuerpoColegiado(emp.getId(), cc2);
+
+			create("pino", "1234", Rol.ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
+					"Andres Espinosa", "pino.espinosa91@gmail.com", "http://brandmark.io/logo-rank/random/bp.png");
+
+			create("vale", "1234", Rol.ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
+					"Valentina Alfonso", "ae@qbkconsulting.com", "http://brandmark.io/logo-rank/random/bp.png");
+
+			create("fer", "1234", Rol.ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
+					"Fernando Echevarria", "andresespinosa91@hotmail.com",
+					"http://brandmark.io/logo-rank/random/bp.png");
+
+			updateFile();
+		}
+
 	}
 
 	void infoToFile(Object data, String filename) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			mapper.writeValue(new File(filename), data);
+			
+			String s = "/home/pino/freelance/Angular/software_metodologia/Front/";
+			mapper.writeValue(new File(s + filename ), data);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -99,15 +145,15 @@ public class DataSourceReal implements IDataSource {
 	}
 	
 	@Override
-	public CuerpoColegiado createCuerpoColegiado(String empresaID, CuerpoColegiado user) {
+	public CuerpoColegiado createCuerpoColegiado(String empresaID, CuerpoColegiado cuerpo) {
 
 		Empresa emp = getEmpresa(empresaID);
 
 		if (emp != null) {
-			user.setId(emp.getId() + "-" + emp.getColegiados().size());
-			emp.getColegiados().add(user);
+			cuerpo.setId(emp.getId() + "-" + emp.getColegiados().size());
+			emp.getColegiados().add(cuerpo);
 			updateFile();
-			return user;
+			return cuerpo;
 		} else
 			return null;
 	}
@@ -135,19 +181,19 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
-	public Acta createActa(String cuerpoColegiadoID, String empresaID, Acta user) {
+	public Acta createActa(String cuerpoColegiadoID, String empresaID, Acta acta) {
 
 		CuerpoColegiado orig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 
-		user.setId(orig.getId() + "-" + orig.getActas().size() + "");
-		user.setNumeroActa(orig.getActas().size() + "");
-		user.setFecha(System.currentTimeMillis());
+		acta.setId(orig.getPrefijoDocs() +"_" + orig.getId() + "-" + orig.getActas().size() + "");
+		acta.setNumeroActa(orig.getActas().size() + "");
+		acta.setFecha(System.currentTimeMillis());
 
-		user.setEstado("Citada");
+		acta.setEstado("Citada");
 		
-		orig.getActas().add(user);
+		orig.getActas().add(acta);
 		updateFile();
-		return user;
+		return acta;
 	}
 
 	@Override
@@ -307,7 +353,7 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
-	public Empresa createEmpresa(String empresaID, Empresa empresa) {
+	public Empresa createEmpresa(Empresa empresa) {
 		
 
 		empresa.setId(obj.getEmpresas().size() + "");
@@ -330,8 +376,69 @@ public class DataSourceReal implements IDataSource {
 		return valores;
 	}
 
+	@Override
+	public Tema addComentarioToTema(String cuerpoColegiadoID, String temaID, String comentario, String empresaID) {
 
+		
+		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
+		ccOrig.getTemas().get(temaID).getEventos().add(comentario);
+		updateFile();
+		return ccOrig.getTemas().get(temaID);	
+		
+		
+	}
 
+	@Override
+	public Tema cerrarTema(String cuerpoColegiadoID, String temaID, String comentario, String empresaID) {
+
+		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
+		ccOrig.getTemas().get(temaID).getEventos().add(comentario);
+		ccOrig.getTemas().get(temaID).setEstado("Cerrado");
+		updateFile();
+		return ccOrig.getTemas().get(temaID);
+	}
+
+	@Override
+	public Tema createTarea(String cuerpoColegiadoID, String temaID, Tarea tarea, String empresaID) {
+
+		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
+		Tema tema = ccOrig.getTemas().get(temaID);
+		tarea.setId(tema.getTareas().size() + "");
+		tema.getTareas().add(tarea);
+		updateFile();
+
+		return tema;
+	}
+
+	@Override
+	public Tarea addComentarioToTarea(String cuerpoColegiadoID, String temaID, String tareaID, String comentario,
+			String empresaID) {
+
+		
+		Tema tema = getCuerpoColegiado(cuerpoColegiadoID, empresaID).getTemas().get(temaID);
+		
+		Tarea t = new Tarea();
+		t.setId(tareaID);
+		Tarea aa = tema.getTareas().get( tema.getTareas().indexOf(t) );
+		aa.getEventos().add(comentario);
+		updateFile();
+		return aa;	
+	}
+
+	@Override
+	public Tarea closeTarea(String cuerpoColegiadoID, String temaID, String tareaID, String empresaID, String comentario) {
+
+		
+		Tema tema = getCuerpoColegiado(cuerpoColegiadoID, empresaID).getTemas().get(temaID);
+		
+		Tarea t = new Tarea();
+		t.setId(tareaID);
+		Tarea aa = tema.getTareas().get( tema.getTareas().indexOf(t) );
+		aa.getEventos().add("La tarea fue cerrada en el acta " + comentario);
+		aa.setEstado("Cerrada");
+		updateFile();
+		return aa;	
+	}
 
 
 

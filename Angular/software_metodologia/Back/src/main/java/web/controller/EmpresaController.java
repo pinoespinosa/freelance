@@ -30,7 +30,7 @@ public class EmpresaController {
 	public Empresa createEmpresa(
 			@RequestBody Empresa empresa,
 			@RequestHeader("Acces-Token") String token) {
-		return dataSource.createEmpresa(Auth.getEmpresaID(token),empresa);
+		return dataSource.createEmpresa(empresa);
 	}
 
 

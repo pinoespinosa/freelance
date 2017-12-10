@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import data.Acta;
 import data.Auth;
+import data.CuerpoColegiado;
 import datasource.IDataSource;
 import io.swagger.annotations.ApiOperation;
 import spring.ProjectConstants;
@@ -36,22 +37,43 @@ public class ActaController {
 		return dataSource.getActaList(cuerpoColegiadoID, Auth.getEmpresaID(token));
 	}
 
+	
+	/**
+	 * Retorna el ultimo acta
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "{cuerpoColegiadoID}/acta/last", method = RequestMethod.GET)
+	public Acta getActaLast(
+			@PathVariable final String cuerpoColegiadoID,
+			@RequestHeader("Acces-Token") String token) {
+
+		
+		
+		List<Acta> list = dataSource.getActaList(cuerpoColegiadoID, Auth.getEmpresaID(token));
+		return list.get(list.size()-1);
+	}
+	
 	/**
 	 * Retorna la lista de las actas
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
-	@RequestMapping(value = "{cuerpoColegiadoID}/acta/citada", method = RequestMethod.GET)
-	public List<Acta> getActaCitadaList(
-			@PathVariable final String cuerpoColegiadoID,
-			@RequestHeader("Acces-Token") String token) {
+	@RequestMapping(value = "acta/citada", method = RequestMethod.GET)
+	public List<Acta> getActaCitadaList(@RequestHeader("Acces-Token") String token) {
 
-		List<Acta> actas = dataSource.getActaList(cuerpoColegiadoID, Auth.getEmpresaID(token));
+		List<CuerpoColegiado> ccList = dataSource.getCuerpoColegiadoList(Auth.getEmpresaID(token),
+				Auth.getCuerpoColegiadosList(token));
+
 		List<Acta> filtradas = new ArrayList<>();
-		for (Acta acta : actas) {
-			if ("Citada".equals(acta.getEstado()))
+
+		for (CuerpoColegiado cc : ccList) {
+
+			for (Acta acta : cc.getActas()) {
+				if ("Citada".equals(acta.getEstado()))
 					filtradas.add(acta);
+			}
+
 		}
-		
+
 		return filtradas;
 	}
 	

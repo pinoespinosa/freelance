@@ -32,6 +32,15 @@ public class UsuariosController {
 	}
 
 
+	/**
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "acta/usuario", method = RequestMethod.GET)
+	public List<Auth> getUsuariosActaList(@RequestHeader("Acces-Token") String token, @RequestParam String actaID) {
+		
+		String[] ccId = actaID.split("_")[1].split("-");
+		return dataSource.getUsuariosList(ccId[0] + "-" + ccId[1]);
+	}
 
 	public IDataSource getDataSource() {
 		return dataSource;

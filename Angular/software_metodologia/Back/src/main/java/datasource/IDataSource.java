@@ -12,6 +12,7 @@ import data.Auth;
 import data.Auth.Rol;
 import data.CuerpoColegiado;
 import data.Empresa;
+import data.Tarea;
 import data.Tema;
 
 public interface IDataSource {
@@ -30,7 +31,7 @@ public interface IDataSource {
 
 	void initBD();
 
-	List<CuerpoColegiado> getCuerpoColegiadoList(String empresaID, List<String> list);
+	List<CuerpoColegiado> getCuerpoColegiadoList(String empresaID, List<String> cc);
 
 	CuerpoColegiado createCuerpoColegiado(String empresaID, CuerpoColegiado user);
 
@@ -50,11 +51,22 @@ public interface IDataSource {
 
 	Tema createTema(String cuerpoColegiadoID, Tema tema, String empresaID);
 
-	Empresa createEmpresa(String empresaID, Empresa empresa);
+	Empresa createEmpresa(Empresa empresa);
 
 	List<Auth> getUsuariosList(String cuerpoColegiadoID);
 
 	Auth create(String user, String pass, Rol rol, String empresaID, List<String> ccList, String nombre, String email,
 			String logo);
+
+	Tema addComentarioToTema(String cuerpoColegiadoID, String temaID, String comentario, String empresaID);
+
+	Tema cerrarTema(String cuerpoColegiadoID, String temaID, String comentario, String empresaID);
+
+	Tema createTarea(String cuerpoColegiadoID, String temaID, Tarea tarea, String empresaID);
+
+	Tarea addComentarioToTarea(String cuerpoColegiadoID, String temaID, String tareaID, String comentario,
+			String empresaID);
+
+	Tarea closeTarea(String cuerpoColegiadoID, String temaID, String tareaID, String empresaID, String comentario);
 
 }

@@ -33,7 +33,7 @@ export class ConsultasComponent implements OnInit  {
   actaCombo;
 
   temasDelActa: Tema[] = [];
-  temaActual: Tema = new Tema("","","");
+  temaActual: Tema = new Tema("","","",[],[]);
   indice = 0;
 
 
@@ -69,7 +69,7 @@ export class ConsultasComponent implements OnInit  {
 	selectCuerpo(cuerpo):void{
     	this.cuerpoColegiadoSelect = this.cuerposColegiado[cuerpo.selectedIndex-1];
     	this.actas = this.cuerpoColegiadoSelect.actas
-      this.temaActual= new Tema("","","");
+      this.temaActual= new Tema("","","",[],[]);
       this.temasDelActa = []
       this.indice = 0;
       this.actaCombo.selectedIndex=-1

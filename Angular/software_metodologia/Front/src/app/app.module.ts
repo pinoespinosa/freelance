@@ -18,6 +18,7 @@ import { ReunionesComponent }               from './pages/reuniones/reuniones.co
 import { SesionComponent }               from './pages/sesion/sesion.component';
 
 import { ActaCompletaComponent }            from './pages/acta-completa/acta-completa.component';
+import { ChangeStateDialogComponent }       from './pages/change-state-dialog/change-state-dialog.component';
 
 
 import { HeaderComponent }                  from './pages/header/header.component';
@@ -37,7 +38,9 @@ import { Service }                          from './service';
     ConsultasComponent,
     ActaCompletaComponent,
     ReunionesComponent,
-    SesionComponent
+    SesionComponent,
+
+    ChangeStateDialogComponent
   ],
   imports: [
     BrowserModule,
