@@ -23,8 +23,8 @@ export class Service {
 
   //private server = 'http://18.216.175.95:8080/metodologia-manager/'
   //private server = 'http://192.168.1.4:8080/metodologiamanager/'
-  private server = 'http://localhost:8080/metodologiamanager/'
-
+  //private server = 'http://localhost:8080/metodologiamanager/'
+  private server = 'http://192.168.1.4:8080/metodologiamanager/'
   getServer(): string{
     return this.server;
   }
