@@ -87,10 +87,10 @@ export class Service {
 
   }
 
-  createTema(cuerpoColegiadoID, tema): Observable<Tema> {
+  createTema(cuerpoColegiadoID, tema, actaID): Observable<Tema> {
     var headers = new Headers();
     headers.append('acces-token', localStorage.getItem('token'));
-    return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tema/create',tema, { headers: headers }).map(this.extractData);
+    return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tema/create?actaID='+actaID,tema, { headers: headers }).map(this.extractData);
   }
 
   editActa(cuerpoColegiadoID, acta): Observable<Acta> {
@@ -130,6 +130,11 @@ export class Service {
   }
 
 
+
+  checkAvanzarTareas(actaID): Observable<Tema> {
+     var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.get(this.server + 'api/'+ actaID + '/acta/isDone', { headers: headers }).map(this.extractData);  }
 
 
 

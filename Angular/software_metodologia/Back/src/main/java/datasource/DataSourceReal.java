@@ -252,12 +252,13 @@ public class DataSourceReal implements IDataSource {
 	}
 	
 	@Override
-	public Tema createTema(String cuerpoColegiadoID, Tema tema, String empresaID) {
+	public Tema createTema(String cuerpoColegiadoID, Tema tema, String empresaID, String actaID) {
 
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 
 		tema.setId(ccOrig.getTemas().size()+"");
 		ccOrig.getTemas().put(tema.getId(), tema);
+		tema.getEventos().add("Se ha creado el tema en el acta" + actaID);
 		updateFile();
 		return tema;	
 	}
@@ -427,10 +428,8 @@ public class DataSourceReal implements IDataSource {
 
 	@Override
 	public Tarea closeTarea(String cuerpoColegiadoID, String temaID, String tareaID, String empresaID, String comentario) {
-
 		
 		Tema tema = getCuerpoColegiado(cuerpoColegiadoID, empresaID).getTemas().get(temaID);
-		
 		Tarea t = new Tarea();
 		t.setId(tareaID);
 		Tarea aa = tema.getTareas().get( tema.getTareas().indexOf(t) );
@@ -438,6 +437,36 @@ public class DataSourceReal implements IDataSource {
 		aa.setEstado("Cerrada");
 		updateFile();
 		return aa;	
+	}
+
+	@Override
+	public Tema actaIsDone(String cuerpoColegiadoID, String empresaID, String actaID) {
+
+		String temasAbiertos = "";
+
+		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
+
+		for (Tema tema : ccOrig.getTemas().values()) {
+
+			List<String> eventos = tema.getEventos();
+			boolean faltaComment  = false;
+			for (String evento : eventos) {
+				if(!evento.contains(actaID))
+					faltaComment=true;
+			}
+			if (faltaComment)
+				temasAbiertos += "  * Tema:"+tema.getId() + "\n";
+		
+		}
+
+		if (!temasAbiertos.isEmpty())
+		{
+			temasAbiertos = "Existen temas sobre los cuales no se ha dejado comentario, ¿desea continuar de todos modos?\n\n" + temasAbiertos; 
+		}
+		Tema t = new Tema();
+		t.setDetalle(temasAbiertos);
+		return t;
+
 	}
 
 

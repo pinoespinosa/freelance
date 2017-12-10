@@ -50,6 +50,20 @@ public class TemasController {
 		return dataSource.getTemaAbiertoList(ccId[0] + "-" + ccId[1] ,Auth.getEmpresaID(token));
 	}
 	
+	
+	/**
+	 * Retorna la lista de clientes
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "{actaID}/acta/isDone", method = RequestMethod.GET)
+	public Tema actaIsDone(
+			@PathVariable final String actaID,
+			@RequestHeader("Acces-Token") String token) {
+		
+		String[] ccId = actaID.split("_")[1].split("-");
+		return dataSource.actaIsDone(ccId[0] + "-" + ccId[1] ,Auth.getEmpresaID(token),actaID);
+	}
+	
 	/**
 	 * Crea un tema
 	 */
@@ -59,8 +73,9 @@ public class TemasController {
 	public Tema createTema(
 			@PathVariable final String cuerpoColegiadoID, 
 			@RequestBody Tema tema,
+			@RequestParam String actaID, 
 			@RequestHeader("Acces-Token") String token) {
-		return dataSource.createTema(cuerpoColegiadoID, tema,Auth.getEmpresaID(token));
+		return dataSource.createTema(cuerpoColegiadoID, tema,Auth.getEmpresaID(token), actaID);
 	}
 
 	/**

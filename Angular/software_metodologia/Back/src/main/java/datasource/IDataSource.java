@@ -49,7 +49,7 @@ public interface IDataSource {
 
 	List<Tema> getTemaAbiertoList(String cuerpoColegiadoID, String empresaID);
 
-	Tema createTema(String cuerpoColegiadoID, Tema tema, String empresaID);
+	Tema createTema(String cuerpoColegiadoID, Tema tema, String empresaID, String actaID);
 
 	Empresa createEmpresa(Empresa empresa);
 
@@ -68,5 +68,7 @@ public interface IDataSource {
 			String empresaID);
 
 	Tarea closeTarea(String cuerpoColegiadoID, String temaID, String tareaID, String empresaID, String comentario);
+
+	Tema actaIsDone(String cuerpoColegiadoID, String empresaID, String actaID);
 
 }

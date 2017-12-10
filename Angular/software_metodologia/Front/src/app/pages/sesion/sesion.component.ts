@@ -175,7 +175,7 @@ clicActaNext(actaCombo):void{
     let ccID = this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1];
 
     let loading = 
-    this.service.createTema(ccID, temaN).
+    this.service.createTema(ccID, temaN,this.actaSelect.id).
     subscribe(
       response =>{ 
         this.temasDelActa.unshift(response);
@@ -235,6 +235,20 @@ clicActaNext(actaCombo):void{
           }         
         );
     }
+  }
+
+
+  checkAvanzarTareas():void{
+
+      this.service.checkAvanzarTareas(this.actaSelect.id).subscribe(
+          response =>{ 
+            if (confirm(response.detalle)){
+              this.paso=4;
+
+            }
+          }         
+        );
+    
   }
 
 
