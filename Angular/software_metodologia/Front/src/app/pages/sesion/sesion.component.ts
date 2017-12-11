@@ -51,6 +51,7 @@ export class SesionComponent implements OnInit  {
 
   showADD_TAREA=false;
 
+  logo:string = "";
 
 
 
@@ -60,6 +61,7 @@ export class SesionComponent implements OnInit  {
   constructor(    private router: Router, private route : ActivatedRoute, private service: Service
 ){
 
+  this.logo = localStorage.getItem('logo');
 
     let sub = this.route
       .queryParams

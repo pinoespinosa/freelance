@@ -31,6 +31,7 @@ export class HomeComponent   {
   cliente: Client;
   cliente2: ClientFull;
 
+  logo:string = "";
 
 
   items : ClientFull[];
@@ -50,6 +51,8 @@ export class HomeComponent   {
     this.items_orig = [];
     this.cliente = new Client("","","", "","","", "","","",null);
     this.cliente2 = new ClientFull("","","","","","","","","","","","","","");
+    this.logo = localStorage.getItem('logo');
+
 
   }
 

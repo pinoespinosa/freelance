@@ -158,7 +158,10 @@
 
 
    <div  *ngIf="temasDelActa.length>0" class="row" >
-      <div class="col-xl-2" >
+      <div class="col-xl-2" style="text-align: center;">
+
+         <img src="assets/logo.png" style="max-width: 200px;max-height: 150px;margin-top: -40px;" >  
+
       </div>
       <div class="col-xl-8" >
          <div class="row" style="align-items: center;">
@@ -253,6 +256,9 @@ Tema:{{temaActual.id}} [ {{temaActual.detalle}} ] {{toString(temaActual.eventos)
 
          <button (click)="checkAvanzarTareas()" type="button" class="btn"><b>Continuar</b></button>
       </div>
+      <div class="col-2" style="text-align: center;">
+         <img [src]="logo" style="max-width: 200px;max-height: 150px;margin-top: -30px;" >  
+      </div>
    </div>
 
    <div  *ngIf="temasDelActa.length==0" class="row" >
@@ -278,6 +284,10 @@ Tema:{{temaActual.id}} [ {{temaActual.detalle}} ] {{toString(temaActual.eventos)
          <textarea (dblclick)="showDialogAddCarre=true" class="form-control" rows="4" id="comment" placeholder="Agregar Comentario" readonly>  No existen temas abiertos, para crear uno nuevo haga clic aqui .... </textarea>
          <button (click)="paso=5" type="button" class="btn"><b>Continuar</b></button>
       </div>
+      <div class="col-2" style="text-align: center;">
+         <img [src]="logo" style="max-width: 200px;max-height: 150px;margin-top: -30px;" >  
+      </div>
+
    </div>
 
 </form>
