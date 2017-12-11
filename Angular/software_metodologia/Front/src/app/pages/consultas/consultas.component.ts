@@ -27,6 +27,7 @@ export class ConsultasComponent implements OnInit  {
   responsables: string[] = ["Responsable 1","Responsable 2","Responsable 3","Responsable 4","Responsable 5"];
   temas: string[] = ["Tema 1","Tema 2","Tema 3","Tema 4","Tema 5"];
 
+  logo:string = "";
 
 	actas: Acta[] = [];
 
@@ -41,6 +42,8 @@ export class ConsultasComponent implements OnInit  {
 
   constructor(    private router: Router, private route : ActivatedRoute, private service: Service
 ){
+  this.logo = localStorage.getItem('logo');
+
 }
 
 	ngOnInit(): void {

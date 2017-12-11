@@ -71,4 +71,6 @@ public interface IDataSource {
 
 	Tema actaIsDone(String cuerpoColegiadoID, String empresaID, String actaID);
 
+	Tema actaIsDoneOk(String cuerpoColegiadoID, String empresaID, String actaID);
+
 }

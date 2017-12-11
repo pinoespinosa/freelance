@@ -469,6 +469,40 @@ public class DataSourceReal implements IDataSource {
 
 	}
 
+	@Override
+	public Tema actaIsDoneOk(String cuerpoColegiadoID, String empresaID, String actaID) {
+
+
+		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
+
+		for (Tema tema : ccOrig.getTemas().values()) {
+
+			List<String> eventos = tema.getEventos();
+			boolean faltaComment  = false;
+			for (String evento : eventos) {
+				if(!evento.contains(actaID))
+					faltaComment=true;
+			}
+			if (faltaComment)
+				tema.getEventos().add("No se registraron comentarios para el acta " + actaID);
+		
+		}
+		
+		Acta ac = new Acta();
+		ac.setId(actaID);
+		
+		ccOrig.getActas().get(ccOrig.getActas().indexOf(ac)).setEstado("Cerrada");;
+		updateFile();
+	
+		return null;	
+	
+	
+	
+	
+	
+	
+	}
+
 
 
 

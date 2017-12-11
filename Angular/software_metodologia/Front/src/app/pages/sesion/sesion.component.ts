@@ -158,6 +158,9 @@ clicActaNext(actaCombo):void{
           this.temaActual = response[0];
           this.indice=0;
         }
+        else
+          this.indice=-1;
+
         this.updateTareas();
       });
 
@@ -306,6 +309,9 @@ clicActaNext(actaCombo):void{
           this.temaActual = response[0];
           this.indice=0;
         }
+        else
+          this.indice=-1;
+
         this.updateTareas();
       });
 
@@ -348,9 +354,13 @@ clicActaNext(actaCombo):void{
 
     if (this.tareasMostrar.length > 0){
       this.tareaActual = this.tareasMostrar[0];
+      this.indiceTAREA = 0;
+
+
     } 
     else{
       this.tareaActual = new Tarea("","","",[]);
+      this.indiceTAREA = -1;
     }
 
   }
@@ -393,6 +403,9 @@ clicActaNext(actaCombo):void{
           this.temaActual = response[0];
           this.indice=0;
         }
+        else
+          this.indice=-1;
+
         this.updateTareas();
       });
   }
