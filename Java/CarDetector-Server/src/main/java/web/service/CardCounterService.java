@@ -1,5 +1,6 @@
 package web.service;
 
+import spring.SemaforoConfig;
 import web.controller.ColorSemaforo;
 
 public interface CardCounterService {
@@ -17,4 +18,8 @@ public interface CardCounterService {
 	String getColor(String sem);
 
 	String getCant(String string);
+
+	void configSemaforos(SemaforoConfig config);
+
+	SemaforoConfig getConfigSemaforos();
 }

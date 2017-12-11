@@ -37,6 +37,10 @@ export class Service {
     return this.http.get(this.server+ "api/semaphore/cant2").map(this.extractData);
   }
 
+  getConfig(): Observable<string> {
+    return this.http.get(this.server+ "api/semaphore/config").map(this.extractData2);
+  }
+
 
 
 
@@ -70,6 +74,11 @@ export class Service {
    return body.id || { };
   }
 
+  private extractData2(res: Response) {
+
+      let body = res.json();
+   return body || { };
+  }
 
   private handleError (error: Response | any) {
     // In a real world app, you might use a remote logging infrastructure

@@ -3,6 +3,7 @@ package web.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import spring.SemaforoConfig;
 import web.controller.ColorSemaforo;
 
 @Service
@@ -18,7 +19,6 @@ public class CardCounterServiceImpl implements CardCounterService {
 	public String getHelloWorld() {
 		return "Holaa";
 	}
-
 
 
 	@Override
@@ -77,6 +77,19 @@ public class CardCounterServiceImpl implements CardCounterService {
 		else
 			cant2 = Float.parseFloat(cong);
 
+	}
+
+
+	@Override
+	public void configSemaforos(SemaforoConfig config) {
+		semaforo.configSemaforos(config);
+		
+	}
+
+
+	@Override
+	public SemaforoConfig getConfigSemaforos() {
+		return semaforo.getConfigSemaforos();
 	}
 
 

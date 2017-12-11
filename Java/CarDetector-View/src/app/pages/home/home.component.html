@@ -1,17 +1,25 @@
 <div class="row">
+   <div class="col-1" >
+
+<a href="http://18.216.175.95:8080/car-server/api/swagger-ui.html">
+      <button type="button" class="btn btn-primary active" style="width: 100%; margin-top: 20px;padding: 0px;" >Ir a config</button>   
+</a>
+
+
+   </div>
    <div class="col-4" >
       <select style="width: 100%;" #dir class="dropdown-select" (change)="showCamera(dir)">
-         <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione una direccion --</option>
-         <option *ngFor="let direccion of direcciones" >{{usuario.dir}}</option>
+         <option disabled hidden [value]="selectUndefinedOptionValue">Esq Ejemplo 1 y Esq Ejemplo 2</option>
+         <option *ngFor="let direccion of direcciones" >{{direccion}}</option>
       </select>
    </div>
 </div>
 <div class="row">
    <div class="col-6" style="text-align: center;align-self: center;">
-         <h5>Camara 1</h5>
+      <h5>Esq Ejemplo 1</h5>
    </div>
    <div class="col-6" style="text-align: center;align-self: center;">
-      <h5>Camara 2</h5>
+      <h5>Esq Ejemplo 2</h5>
    </div>
 </div>
 
@@ -39,9 +47,14 @@
          <span class="col-2 label-autos">
             {{getCant1()}} autos
          </span>
-         <textarea  disabled class="col-7 log-container" style="width: 100%;" rows="5" id="comment" style="font-size: x-small;">
-         Tema:
-      </textarea>
+      <span class="col-7">
+<textarea  disabled style="width: 100%;" rows="7" id="comment" style="font-size: x-small;width: 100%;">
+Configuracion: 
+   * Tiempo de verde Semaforo: {{data.tiempo_verde_1}}
+   * Tiempo de amari Semaforo: {{data.tiempo_amarillo_1}}
+   * Tiempo de rojo en ambos Semaforos: {{data.tiempo_rojo_doble}}
+</textarea>       
+      </span>
       </div>
 </div>
 <div class="col-6" style="text-align: center;align-self: center;">
@@ -52,9 +65,16 @@
       <span class="col-2 label-autos">
          {{getCant2()}} autos
       </span>
-      <textarea  disabled class="col-7 log-container" style="width: 100%;" rows="5" id="comment" style="font-size: x-small;">
-         Tema:
-      </textarea>
+
+      <span class="col-7">
+<textarea  disabled style="width: 100%;" rows="7" id="comment" style="font-size: x-small;width: 100%;">
+Configuracion: 
+   * Tiempo de verde Semaforo: {{data.tiempo_verde_2}}
+   * Tiempo de amari Semaforo: {{data.tiempo_amarillo_2}}
+   * Tiempo de rojo en ambos Semaforos: {{data.tiempo_rojo_doble}}
+</textarea>      
+      </span>
+
    </div>
 
 </div>
