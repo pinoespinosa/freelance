@@ -1,7 +1,7 @@
    
 <form *ngIf="paso==1" class="form-horizontal reuniones-form-container" action='' method="POST" >
    <div class="row" style="align-self: center;" >
-      <div class="col-4 offset-md-4" >
+      <div class="col-4 offset-4" >
          <select #clii class="dropdown-select" (change)="selectCuerpo(clii)">
          <option disabled hidden [value]="empty">-- Seleccione el Cuerpo Colegiado --</option>
          <option *ngFor="let cuerpoColegiado of cuerposColegiado" >{{cuerpoColegiado.nombre}}</option>
@@ -14,12 +14,14 @@
 
 <form *ngIf="paso==2" class="form-horizontal reuniones-form-container" action='' method="POST">
    <div class="row" >
-      <div class="col-4 offset-md-4" >
-         <input #lugar type="text" class="form-control" placeholder="Lugar *">
-         <input #ciudad type="text" class="form-control" placeholder="Horario *">
-         <input #reqq type="text" class="form-control" placeholder="Fin en Mente de la Reunión *">
+      <div class="col-4 offset-4" >
+         <input type="text" class="form-control" placeholder="Lugar *" #lugar>
+         <input type="text" class="form-control" placeholder="Horario *" #ciudad>
+         <input type="text" class="form-control" placeholder="Fin en Mente de la Reunión *" #reqq>
 
-         <button [disabled]="lugar.value == '' || ciudad.value == '' || reqq.value == '' " (click)="setPaso2Info(lugar.value, ciudad.value, reqq.value)" type="button" class="btn"><b>Continuar</b></button>
+         <button type="button" class="btn" 
+         [disabled]="lugar.value == '' || ciudad.value == '' || reqq.value == ''" 
+         (click)="setPaso2Info(lugar.value, ciudad.value, reqq.value)" ><b>Continuar</b></button>
       </div>
    </div>
 </form>
@@ -29,7 +31,7 @@
 
 <form *ngIf="paso==3" class="form-horizontal reuniones-form-container" action='' method="POST">
    <div class="row" >
-      <div class="col-4 offset-md-2" >
+      <div class="col-4 offset-2" >
          Integrantes de la reunion seleccionados
 
          <div *ngIf="actaCreada.integrantes?.length>0">

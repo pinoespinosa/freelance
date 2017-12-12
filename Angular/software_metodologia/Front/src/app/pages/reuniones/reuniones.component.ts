@@ -107,6 +107,11 @@ removeUser(user):void{
 }
 
 setPaso2Info(lugar, ciudad, fin):void{
+    
+    console.log(lugar)
+    console.log(ciudad)
+    console.log(fin)
+
     this.actaCreada.lugar = lugar;
     this.actaCreada.ciudad = ciudad;
     this.actaCreada.finMenteGral = fin;
