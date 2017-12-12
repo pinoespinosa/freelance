@@ -143,7 +143,7 @@ public class TemasController {
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "{cuerpoColegiadoID}/tarea/addComment", method = RequestMethod.POST)
 	@ResponseBody
-	public Tarea addComentarioToTema(
+	public Tarea addComentarioToTarea(
 			@PathVariable final String cuerpoColegiadoID, 
 			@RequestParam String temaID, 
 			@RequestParam String tareaID, 

@@ -451,10 +451,10 @@ public class DataSourceReal implements IDataSource {
 		for (Tema tema : ccOrig.getTemas().values()) {
 
 			List<Evento> eventos = tema.getEventos();
-			boolean faltaComment  = false;
+			boolean faltaComment  = true;
 			for (Evento evento : eventos) {
-				if(!evento.getTexto().contains(actaID))
-					faltaComment=true;
+				if(evento.getTexto().contains(actaID))
+					faltaComment=false;
 			}
 			if (faltaComment)
 				temasAbiertos += "  * Tema:"+tema.getId() + "\n";
@@ -480,10 +480,10 @@ public class DataSourceReal implements IDataSource {
 		for (Tema tema : ccOrig.getTemas().values()) {
 
 			List<Evento> eventos = tema.getEventos();
-			boolean faltaComment  = false;
+			boolean faltaComment  = true;
 			for (Evento evento : eventos) {
 				if(!evento.getTexto().contains(actaID))
-					faltaComment=true;
+					faltaComment=false;
 			}
 			if (faltaComment)
 				tema.getEventos().add( new Evento("No se registraron comentarios para el acta " + actaID, System.currentTimeMillis()));

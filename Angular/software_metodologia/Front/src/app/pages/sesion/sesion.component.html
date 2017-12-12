@@ -19,11 +19,16 @@
 <change-state [(visible)]="showADD_TAREA">
 <h2 style="margin: 10px;margin-bottom: 20px;" >Crear una Tarea Nueva</h2>
 <div class="col-12" style="margin-bottom: 20px;">
-   <input #nuevaTarea type="text" class="form-control" placeholder="Descripcion">
+   <input #nuevaTarea type="text" class="form-control" placeholder="Definición">
+   <select style="width: 100%;" #usuu class="dropdown-select" (change)="addUser(us)">
+      <option disabled hidden [value]="Presente">-- Seleccione un responsable --</option>
+      <option *ngFor="let usuario of integrantesPresentes()" >{{usuario.nombre}}</option>
+   </select>
+   <label style="margin: 0px;" >Fecha de entrega</label> <input type="date" #myDate >
 </div>
 <div class="row">
    <div class="col-6"> 
-      <button (click)="showADD_TAREA = !showADD_TAREA" (click)="crearTarea(nuevaTarea.value)"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+      <button (click)="showADD_TAREA = !showADD_TAREA" (click)="crearTarea(nuevaTarea.value, usuu)"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
    </div>
    <div class="col-6"> 
       <button (click)="showADD_TAREA = !showADD_TAREA" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
@@ -51,8 +56,6 @@
 </form>
 
 
-
-
 <form style="margin-top: 200px;" *ngIf="paso==1" class="form-horizontal" action='' method="POST">
    <div class="row" >
       <div class="col-1" >
@@ -66,7 +69,7 @@
                      <button style="width: 100%;" type="button" class="btn"><b>{{asistente.nombre}}</b></button>
                   </div>
                   <div class="col-4" style="padding-right: 0px;align-self: center;" >
-                     <select style="width: 100%;text-align: center;" #us class="dropdown-select" (change)="addUser(us)">
+                     <select style="width: 100%;text-align: center;" #estado class="dropdown-select" (change)="asistente.estado = estado.value">
                      <option disabled hidden [value]="selectUndefinedOptionValue">-- Estado --</option>
                      <option *ngFor="let estado of estadosUsuario" >{{estado}}</option>
                      </select>
@@ -99,7 +102,7 @@
    </div>
    <div class="row" style="margin-top: 25px;">
       <div class="col-2 offset-5" >
-         <button style="width: 100%;" (click)="paso=2" [disabled]="actaSelect == null" type="button" class="btn"><b>Continuar</b></button>
+         <button style="width: 100%;" (click)="paso=2" [disabled]="integrantesConEstado()" type="button" class="btn"><b>Continuar</b></button>
       </div>
    </div>
 </form>
@@ -187,7 +190,7 @@
 
          </div>
          <textarea  disabled class="form-control" rows="8" id="comment" style="font-size: x-small;">
-Tema:{{temaActual.id}} [ {{temaActual.detalle}} ] {{toString(temaActual.eventos)}}
+Tema:{{temaActual.id}} [ {{temaActual.detalle}} ] {{toStringTema(temaActual.eventos)}}
          </textarea>
          
          <div class="row" style="align-items: center;">
@@ -237,7 +240,11 @@ Tema:{{temaActual.id}} [ {{temaActual.detalle}} ] {{toString(temaActual.eventos)
                </button> 
             </div>
          </div>
-         <textarea id="Texto Tarea" disabled class="form-control" rows="8" style="font-size: x-small;" placeholder="Agregar Comentario">Tarea:{{tareaActual.id}} [ {{tareaActual.detalle}} ] -  {{tareaActual.estado}} {{toString(tareaActual.eventos)}}</textarea>
+         <textarea id="Texto Tarea" disabled class="form-control" rows="8" style="font-size: x-small;" placeholder="Agregar Comentario"
+>Tarea:{{tareaActual.id}} [ Responsable: {{tareaActual.responsable?.nombre}} ]
+Estado: {{tareaActual.estado}}
+Resumen: {{tareaActual.detalle}}
+{{toString(tareaActual.eventos)}}</textarea>
 
          <div class="row" style="align-items: center;">
             <div class="col-8" style="padding-right: 0px;" >

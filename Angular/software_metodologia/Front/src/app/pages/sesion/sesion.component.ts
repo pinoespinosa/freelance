@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Renderer2 } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild, Renderer2 } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute }                                from '@angular/router';
 import { trigger, state, style, animate, transition }                           from '@angular/animations';
 import { Service }   			      						      from 'app/service';
@@ -13,6 +13,7 @@ import { Usuario }                                from 'app/data-objects/usuario
 import { UsuarioActa }                                  from 'app/data-objects/usuarioActa';
 
 
+
 @Component({
   selector: 'sesion',
   templateUrl: 'sesion.component.html',
@@ -20,7 +21,9 @@ import { UsuarioActa }                                  from 'app/data-objects/u
   ],
 })
 
-export class SesionComponent implements OnInit  {
+
+
+export class SesionComponent implements OnInit, OnDestroy  {
 
   paso = 0 ;
 	cuerpoColegiadoSelect: CuerpoColegiado;
@@ -35,7 +38,7 @@ export class SesionComponent implements OnInit  {
 
   tareasMostrar: Tarea[] = [];
 
-  tareaActual: Tarea = new Tarea("","","",[]);
+  tareaActual: Tarea = new Tarea("","","",[],null);
 
   tareasFiltro = "Todas";
 
@@ -91,6 +94,27 @@ export class SesionComponent implements OnInit  {
 
 	};
 
+  ngOnDestroy(): void {
+
+    confirm("On destroy")
+    return
+
+  };
+
+    canDeactivate() {
+        console.log('i am navigating away');
+        if (true) {
+            console.log('no, you wont navigate anywhere');
+            return false;
+        }
+
+    }
+
+endChat() {
+   confirm("on exit")
+    return
+}
+
   indiceTemaMas(){
     if (this.indice < this.temasDelActa.length -1){
       this.indice = this.indice +1;
@@ -110,6 +134,50 @@ export class SesionComponent implements OnInit  {
 
   }
 
+  integrantesConEstado(){
+  
+  console.log(this.actaSelect.integrantes)
+
+  let esta = false;
+  for (let aa of this.actaSelect.integrantes) {
+    if (!aa.estado)
+      esta = true;
+  }
+  return esta;
+  }
+
+removeUser(user):void{
+
+  let nuevo: UsuarioActa[]=[];
+  let asiiii : Usuario =  user;
+
+  let esta:boolean = false;
+  for (let aa of this.actaSelect.integrantes) {
+    if (aa.userID != asiiii.userID)
+      nuevo.push(aa);
+  }
+  
+  this.actaSelect.integrantes = nuevo;
+
+}
+
+
+ integrantesPresentes():UsuarioActa[]{
+  
+  let mm : UsuarioActa[] = []; 
+
+  if (!this.actaSelect)
+    return mm;
+
+  if (!this.actaSelect.integrantes)
+    return mm;
+
+  for (let aa of this.actaSelect.integrantes) {
+    if (aa.estado == 'Presente')
+      mm.push(aa)
+  }
+  return mm;
+}
 
 
   indiceTareaMas(){
@@ -179,7 +247,7 @@ clicActaNext(actaCombo):void{
   }
   
   if (!esta){
-    this.actaSelect.integrantes.push(new UsuarioActa(asiiii.userID, asiiii.nombre, ""));
+    this.actaSelect.integrantes.push(new UsuarioActa(asiiii.userID, asiiii.nombre, "",""));
   }
 }
 
@@ -213,9 +281,14 @@ clicActaNext(actaCombo):void{
 
   }
 
-  crearTarea(tarea):void{
+  crearTarea(tarea, responsable):void{
 
-    let tareaN = new Tarea("","Abierto",tarea,[]);
+
+    let respon : Usuario =  this.usuarios[responsable.selectedIndex-1];
+
+    let mmmm : UsuarioActa = new UsuarioActa(respon.userID, respon.nombre, "","Presente");
+
+    let tareaN = new Tarea("","Abierto",tarea,[],mmmm);
 
     let ccID = this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1];
 
@@ -229,7 +302,7 @@ clicActaNext(actaCombo):void{
           this.tareaActual = this.temaActual.tareas[0];
         } 
         else{
-          this.tareaActual = new Tarea("","","",[]);
+          this.tareaActual = new Tarea("","","",[],null);
         }
 
         alert("Se ha creado un nueva tarea")
@@ -239,7 +312,7 @@ clicActaNext(actaCombo):void{
   }
 
 
-  toString(array){
+  toStringTema(array){
 
   let ff='\n\n';
 
@@ -252,6 +325,19 @@ clicActaNext(actaCombo):void{
     return ff;
   }
 
+
+  toString(array){
+
+  let ff='\n';
+
+  for (let aa of array) {
+
+  ff = ff + aa + '\n'
+
+  }
+
+    return ff;
+  }
   addComentario(com):void{
 
     if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")){
@@ -269,10 +355,16 @@ clicActaNext(actaCombo):void{
 
       this.service.checkAvanzarTareas(this.actaSelect.id).subscribe(
           response =>{ 
+            
             if (confirm(response.detalle)){
               this.paso=4;
-
+              this.service.checkAvanzarTareasOK(this.actaSelect.id).subscribe(
+                response =>{ 
+                }         
+              );
             }
+
+
           }         
         );
     
@@ -361,7 +453,7 @@ clicActaNext(actaCombo):void{
 
     } 
     else{
-      this.tareaActual = new Tarea("","","",[]);
+      this.tareaActual = new Tarea("","","",[],null);
       this.indiceTAREA = -1;
     }
 

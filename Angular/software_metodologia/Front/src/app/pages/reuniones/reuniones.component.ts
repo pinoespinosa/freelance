@@ -86,7 +86,7 @@ addUser(user):void{
   }
   
   if (!esta){
-    this.actaCreada.integrantes.push(new UsuarioActa(asiiii.userID, asiiii.nombre, ""));
+    this.actaCreada.integrantes.push(new UsuarioActa(asiiii.userID, asiiii.nombre, "",""));
   }
 }
 

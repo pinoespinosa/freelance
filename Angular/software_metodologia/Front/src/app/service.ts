@@ -144,7 +144,10 @@ export class Service {
     headers.append('acces-token', localStorage.getItem('token'));
     return this.http.get(this.server + 'api/'+ actaID + '/acta/isDone', { headers: headers }).map(this.extractData);  }
 
-
+  checkAvanzarTareasOK(actaID): Observable<Tema> {
+     var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.get(this.server + 'api/'+ actaID + '/acta/isDone/ok', { headers: headers }).map(this.extractData);  }
 
 
 

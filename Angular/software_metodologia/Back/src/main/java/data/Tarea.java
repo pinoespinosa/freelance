@@ -8,7 +8,8 @@ public class Tarea {
 	private String id;
 	private String estado;
 	private String detalle;
-	
+	private UsuarioActa responsable;
+
 	private List<String> eventos;
 
 	public String getId() {
@@ -54,5 +55,12 @@ public class Tarea {
 		return false;
 	}
 
+	public UsuarioActa getResponsable() {
+		return responsable;
+	}
+
+	public void setResponsable(UsuarioActa responsable) {
+		this.responsable = responsable;
+	}
 
 }

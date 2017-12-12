@@ -8,6 +8,8 @@ import { ChartsModule }                     from 'ng2-charts';
 
 // ######################## Manejode permisos y rutas ########################
 import { AuthGuard }                        from './routing/auth-guard.service';
+import { CanDeactivateGuard }                        from './routing/CanDeactivateGuard';
+
 import { PaymentAuthGuard }                 from './routing/payment-auth-guard.service';
 import { AppRoutingModule }                 from './routing/app-routing.module';
 
@@ -53,7 +55,8 @@ import { Service }                          from './service';
   providers: [ 
     Service,
     AuthGuard,
-    PaymentAuthGuard
+    PaymentAuthGuard,
+    CanDeactivateGuard
   ],
   bootstrap: [AppComponent]
 })

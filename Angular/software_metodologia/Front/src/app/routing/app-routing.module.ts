@@ -2,6 +2,8 @@ import { NgModule }             							from '@angular/core';
 import { RouterModule, Routes } 							from '@angular/router';
 
 import { AuthGuard }                   			from '../routing/auth-guard.service';
+import { CanDeactivateGuard }               from '../routing/CanDeactivateGuard';
+
 import { PaymentAuthGuard }                   	from '../routing/payment-auth-guard.service';
 
 import { ActaCompletaComponent }                from '../pages/acta-completa/acta-completa.component';
@@ -17,7 +19,7 @@ const routes: Routes = [
 	{ path: 'login',  				component: LoginComponent, 				data: {title: 'Login'} },
 	{ path: 'consultas',			component: ConsultasComponent, 			data: {title: 'Home'}, canActivate: [AuthGuard]},
 	{ path: 'reuniones',			component: ReunionesComponent, 			data: {title: 'Home'}, canActivate: [AuthGuard]},
-	{ path: 'sesion',				component: SesionComponent, 			data: {title: 'Home'}, canActivate: [AuthGuard]},
+	{ path: 'sesion',				component: SesionComponent, 			data: {title: 'Home'}, canActivate: [AuthGuard] },
 
 	{ path: 'acta-completa',		component: ActaCompletaComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard]},
 
@@ -33,3 +35,7 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule {}
+export const APP_ROUTER_PROVIDERS = [
+    CanDeactivateGuard,
+    AuthGuard
+];

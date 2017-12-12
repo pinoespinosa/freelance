@@ -7,6 +7,7 @@ public class Tema {
 
 	private String id;
 	private String estado;
+	private String objetivoEstrategico;
 	private String detalle;
 	private List<Tarea> tareas;
 	private List<Evento> eventos;
@@ -53,6 +54,14 @@ public class Tema {
 
 	public void setTareas(List<Tarea> tareas) {
 		this.tareas = tareas;
+	}
+
+	public String getObjetivoEstrategico() {
+		return objetivoEstrategico;
+	}
+
+	public void setObjetivoEstrategico(String objetivoEstrategico) {
+		this.objetivoEstrategico = objetivoEstrategico;
 	}
 
 
