@@ -46,9 +46,10 @@ public class DataSourceReal implements IDataSource {
 
 			Path currentRelativePath = Paths.get("");
 			String s = "/home/pino/freelance/Angular/software_metodologia/Front/";
-
 			File file = new File(s + "file.json");
 			obj = mapper.readValue(file, Info.class);
+
+		
 		} catch (IOException e) {
 
 			obj = new Info();
@@ -515,17 +516,22 @@ public class DataSourceReal implements IDataSource {
 		for (Tema tema : cc.getTemas().values()) {
 			
 			Tema aux = new Tema();
+			boolean tuvoActividad = false;
+
 			for (Evento e : tema.getEventos()) {
 
-				if (e.getTexto().contains(actaID) && e.getDate() <= time )
+				if (e.getDate() <= time )
+					if (e.getTexto().contains(actaID))
+						tuvoActividad=true;
 					aux.getEventos().add(e);
 			}
-			if (!aux.getEventos().isEmpty())
+			if (!aux.getEventos().isEmpty() && tuvoActividad){
 				aux.setDetalle(tema.getDetalle());
 				aux.setEstado(tema.getEstado());
 				aux.setId(tema.getId());
 				aux.setTareas(tema.getTareas());
 				list.add(aux);
+			}
 		}
 		
 		return list;

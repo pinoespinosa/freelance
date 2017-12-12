@@ -75,48 +75,78 @@
 
 
 
-<form class="form-horizontal" action='' method="POST">
-   <div class="row" style="margin-top: 45px;" >
-      <div class="col-xl-1" >
+<form style="margin-top: 20px;" class="form-horizontal" action='' method="POST">
+
+<!-- ################################## Temas ##################################  -->
+
+
+   <div  *ngIf="temasDelActa.length>0" class="row" >
+      <div class="col-xl-2" style="text-align: center;">
       </div>
-      <div class="col-xl-10" >
+      <div class="col-xl-8" >
          <div class="row" style="align-items: center;">
             <div class="col-8" >
                <h4>Temas Abiertos</h4>
             </div>
-            <div class="col-1" style="padding-left: 5px;padding-right: 5px;">
+            <div class="col-1" style="padding-left: 5px;padding-right: 5px;text-align: right;">
                <button style="width: 32px;" type="button" class="btn" (click)="indiceTemaMenos()">
                <img src="assets/left.png" style="width: 150%;" >
                </button> 
             </div>
-            <div class="col-2" style="text-align: center;">  {{indice + 1}} de {{temasDelActa?.length}} </div>
+            <div class="col-1" style="text-align: center;padding-left: 0px;padding-right: 0px;">  {{indice + 1}} de {{temasDelActa?.length}} </div>
             <div class="col-1" style="padding-left: 5px;padding-right: 5px;">
                <button style="width: 32px;" type="button" class="btn" (click)="indiceTemaMas()">      
                <img src="assets/rigth.png" style="width: 150%;" >
                </button> 
             </div>
-         </div>
-         <textarea class="form-control" rows="6" id="comment" placeholder="Temas Abiertos" text>{{temaActual.desarrollo}}
-         </textarea>
-         <div class="row" style="align-items: center;">
-            <div class="col-8" >
-               <h4>Tareas Abiertas</h4>
+            <div class="col-1" style="padding-left: 5px;padding-right: 5px;" hidden>
+               <button (click)="showDialogAddCarre=true" style="width: 40px;padding-left: 0px;padding-right: 0px;" type="button" class="btn" (click)="indiceTemaMenos()">
+               <img src="assets/add.png" style="width: 22px;" >
+               </button> 
             </div>
-            <div class="col-1 " style="padding-left: 5px;padding-right: 5px;">
-               <button style="width: 32px;" type="button" class="btn">
+
+         </div>
+         <textarea  disabled class="form-control" rows="8" id="comment" style="font-size: x-small;">
+Tema:{{temaActual.id}} [ {{temaActual.detalle}} ] {{toString(temaActual.eventos)}}
+         </textarea>
+         
+
+
+<!-- ################################## Tareas ##################################  -->
+
+         <div class="row" style="align-items: center;padding-top: 10px;">
+            <div class="col-8" style="display: flex;align-items: center;" >
+               <h4 style="margin-right: 20px;">Tareas Abiertas</h4>
+            
+            </div>
+            
+            <div class="col-1 " style="padding-left: 5px;padding-right: 5px;text-align: right;">
+               <button style="width: 32px;" type="button" class="btn" (click)="indiceTareaMenos()">
                <img src="assets/left.png" style="width: 150%;" >
                </button> 
             </div>
-            <div class="col-2" style="text-align: center;">  1 de 4 </div>
+            <div class="col-1" style="text-align: center;padding-left: 0px;padding-right: 0px;"> {{indiceTAREA + 1}} de {{tareasMostrar.length}} </div>
             <div class="col-1" style="padding-left: 5px;padding-right: 5px;">
-               <button style="width: 32px;" type="button" class="btn">      
+               <button style="width: 32px;" type="button" class="btn" (click)="indiceTareaMas()">      
                <img src="assets/rigth.png" style="width: 150%;" >
                </button> 
             </div>
          </div>
-         <textarea class="form-control" rows="6" id="comment" placeholder="Tareas abiertas"></textarea>
+         <textarea id="Texto Tarea" disabled class="form-control" rows="8" style="font-size: x-small;" placeholder="Agregar Comentario">Tarea:{{tareaActual.id}} [ {{tareaActual.detalle}} ] -  {{tareaActual.estado}} {{toString(tareaActual.eventos)}}</textarea>
+
+
+
+      </div>
+      <div class="col-2" style="text-align: center;">
       </div>
    </div>
+
+   <div  *ngIf="temasDelActa.length==0" class="row" >
+
+
+   </div>
+
 </form>
+
 
 

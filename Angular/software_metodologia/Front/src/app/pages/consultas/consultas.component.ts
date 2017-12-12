@@ -7,6 +7,7 @@ import { Trabajo }               												from 'app/data-objects/trabajo';
 import { CuerpoColegiado }               										from 'app/data-objects/cuerpoColegiado';
 import { Acta }               													from 'app/data-objects/acta';
 import { Tema }                                         from 'app/data-objects/tema';
+import { Tarea }                                   from 'app/data-objects/tarea';
 
 
 
@@ -37,6 +38,12 @@ export class ConsultasComponent implements OnInit  {
   temaActual: Tema = new Tema("","","",[],[]);
   indice = 0;
 
+  tareasMostrar: Tarea[] = [];
+  tareaActual: Tarea = new Tarea("","","",[]);
+  tareasFiltro = "Todas";
+
+  indiceTAREA = 0;
+
 
   respon
 
@@ -59,6 +66,8 @@ export class ConsultasComponent implements OnInit  {
         this.indice = this.indice +1;
         this.temaActual = this.temasDelActa[this.indice]
       }
+          this.updateTareas();
+
   }
 
   indiceTemaMenos(){
@@ -69,14 +78,70 @@ export class ConsultasComponent implements OnInit  {
 
   }
 
+  indiceTareaMas(){
+    if (this.indiceTAREA < this.tareasMostrar.length -1){
+      this.indiceTAREA = this.indiceTAREA +1;
+      this.tareaActual = this.tareasMostrar[this.indiceTAREA];
+    }
+        this.updateTareas();
+
+  }
+
+  indiceTareaMenos(){
+    if (this.indiceTAREA > 0 ){
+        this.indiceTAREA = this.indiceTAREA -1;
+        this.tareaActual = this.tareasMostrar[this.indiceTAREA];
+    }
+  }
+
+
 	selectCuerpo(cuerpo):void{
     	this.cuerpoColegiadoSelect = this.cuerposColegiado[cuerpo.selectedIndex-1];
     	this.actas = this.cuerpoColegiadoSelect.actas
       this.temaActual= new Tema("","","",[],[]);
       this.temasDelActa = []
       this.indice = 0;
-      this.actaCombo.selectedIndex=-1
  	}
+
+  updateTareas(){
+    this.tareasMostrar = [];
+    for (let aa of this.temaActual.tareas) {
+
+      if (this.tareasFiltro=="Todas")
+        this.tareasMostrar.push(aa);
+      else{
+        if (aa.estado == this.tareasFiltro)
+          this.tareasMostrar.push(aa);
+        }
+    }
+
+        this.tareasMostrar.sort((a, b) => {
+        if ( (+a.id) < (+b.id) ) 
+          return 1;
+        else 
+          if ((+a.id) > (+b.id) ) 
+            return -1 ;
+          else 
+            return 0;
+    });
+
+
+    if (this.tareasMostrar.length > 0){
+      this.tareaActual = this.tareasMostrar[0];
+      this.indiceTAREA = 0;
+
+
+    } 
+    else{
+      this.tareaActual = new Tarea("","","",[]);
+      this.indiceTAREA = -1;
+    }
+
+  }
+
+  updateClii(cuerpo):void{
+
+  }
 
   selectActa(actaSelect):void{
       let actaaa = this.actas[actaSelect.selectedIndex-1];
@@ -91,10 +156,26 @@ export class ConsultasComponent implements OnInit  {
             console.log(response)
           });
 
+    this.updateTareas();
+
 
       this.actaCombo = actaSelect;
 
   }
+
+    toString(array){
+
+  let ff='\n\n';
+
+  for (let aa of array) {
+
+  ff = ff + aa.texto + '\n'
+
+  }
+
+    return ff;
+  }
+
 	
 }
  
