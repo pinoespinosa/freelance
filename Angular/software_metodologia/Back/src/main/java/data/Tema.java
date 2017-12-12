@@ -9,7 +9,7 @@ public class Tema {
 	private String estado;
 	private String detalle;
 	private List<Tarea> tareas;
-	private List<String> eventos;
+	private List<Evento> eventos;
 
 	public String getId() {
 		return id;
@@ -27,13 +27,13 @@ public class Tema {
 		this.estado = estado;
 	}
 
-	public List<String> getEventos() {
+	public List<Evento> getEventos() {
 		if (eventos==null)
-			eventos = new ArrayList<String>();
+			eventos = new ArrayList<Evento>();
 		return eventos;
 	}
 
-	public void setEventos(List<String> eventos) {
+	public void setEventos(List<Evento> eventos) {
 		this.eventos = eventos;
 	}
 

@@ -14,8 +14,11 @@
 
 </div>
 
+
 <form class="form-horizontal" action='' method="POST">
    <div class="row" >
+
+   <!-- ******************************** COMBOS *************************** -->
       <div class="col-4" >
          <select style="width: 100%;" #clii class="dropdown-select" (change)="updateClii(clii)">
          <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione un Tipo de Consulta --</option>
@@ -35,6 +38,9 @@
          </select>
       </div>
    </div>
+   
+
+
    <div class="row" *ngIf="clii.value == 'Por Temas'">
       <div class="col-4 offset-4" >
          <select style="width: 100%;margin-top: 10px;" #cuerpo class="dropdown-select" (change)="selectCuerpo(cuerpo)">
@@ -90,7 +96,7 @@
                </button> 
             </div>
          </div>
-         <textarea class="form-control" rows="4" id="comment" placeholder="Temas Abiertos" text>{{temaActual.desarrollo}}
+         <textarea class="form-control" rows="6" id="comment" placeholder="Temas Abiertos" text>{{temaActual.desarrollo}}
          </textarea>
          <div class="row" style="align-items: center;">
             <div class="col-8" >
@@ -108,7 +114,7 @@
                </button> 
             </div>
          </div>
-         <textarea class="form-control" rows="4" id="comment" placeholder="Tareas abiertas"></textarea>
+         <textarea class="form-control" rows="6" id="comment" placeholder="Tareas abiertas"></textarea>
       </div>
    </div>
 </form>

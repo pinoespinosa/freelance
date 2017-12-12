@@ -15,6 +15,7 @@ import { CuerpoColegiado }            from 'app/data-objects/cuerpoColegiado';
 import { Acta }                       from 'app/data-objects/acta';
 import { Usuario }                    from 'app/data-objects/usuario';
 import { Tema }                                         from 'app/data-objects/tema';
+import { Tarea }                                         from 'app/data-objects/tarea';
 
 
 @Injectable()
@@ -67,6 +68,13 @@ export class Service {
     return this.http.get(this.server + 'api/'+ cuerpoColegiadoID + '/acta/last', { headers: headers }).map(this.extractData);
   }
 
+  getTemasConsulta(cuerpoColegiadoID,actaID): Observable<Tema[]> {
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.get(this.server + 'api/'+ cuerpoColegiadoID + '/tema/historico?actaID='+actaID, { headers: headers }).map(this.extractData);
+  }
+
+
   getActasCitadas(): Observable<Acta[]> {
     var headers = new Headers();
     headers.append('acces-token', localStorage.getItem('token'));
@@ -105,13 +113,13 @@ export class Service {
     return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tema/addComment?temaID='+tema+'&comentario='+com, tema,{ headers: headers }).map(this.extractData);
   }
 
-  createComentarioTarea(cuerpoColegiadoID, tema, tarea, com): Observable<Tema> {
+  createComentarioTarea(cuerpoColegiadoID, tema, tarea, com): Observable<Tarea> {
     var headers = new Headers();
     headers.append('acces-token', localStorage.getItem('token'));
     return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tarea/addComment?temaID='+tema + '&tareaID='+tarea +'&comentario='+com, tema,{ headers: headers }).map(this.extractData);
   }
 
-  closeTarea(cuerpoColegiadoID, tema, tarea, com): Observable<Tema> {
+  closeTarea(cuerpoColegiadoID, tema, tarea, com): Observable<Tarea> {
     var headers = new Headers();
     headers.append('acces-token', localStorage.getItem('token'));
     return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tarea/close?temaID='+tema + '&tareaID='+tarea + '&comentario='+com, tema,{ headers: headers }).map(this.extractData);

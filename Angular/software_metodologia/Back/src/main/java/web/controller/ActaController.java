@@ -50,7 +50,10 @@ public class ActaController {
 		
 		
 		List<Acta> list = dataSource.getActaList(cuerpoColegiadoID, Auth.getEmpresaID(token));
-		return list.get(list.size()-1);
+		if (!list.isEmpty())
+			return list.get(list.size()-1);
+		else
+			return new Acta();
 	}
 	
 	/**

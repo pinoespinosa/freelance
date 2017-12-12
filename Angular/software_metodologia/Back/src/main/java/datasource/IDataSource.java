@@ -73,4 +73,6 @@ public interface IDataSource {
 
 	Tema actaIsDoneOk(String cuerpoColegiadoID, String empresaID, String actaID);
 
+	List<Tema> getTemaListConsulta(String cuerpoColegiadoID, String actaID, String empresaID);
+
 }

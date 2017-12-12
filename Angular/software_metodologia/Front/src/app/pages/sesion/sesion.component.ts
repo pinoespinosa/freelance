@@ -245,7 +245,7 @@ clicActaNext(actaCombo):void{
 
   for (let aa of array) {
 
-  ff = ff + aa + '\n'
+  ff = ff + aa.texto + '\n'
 
   }
 
@@ -296,7 +296,9 @@ clicActaNext(actaCombo):void{
 
     if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")){
       this.service.closeTarea(
-        this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1], this.temaActual.id, this.tareaActual.id, this.actaSelect.id).subscribe(
+        this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1], this.temaActual.id, 
+        this.tareaActual.id, 
+        this.actaSelect.id).subscribe(
           response =>{ 
             this.tareaActual = response;
           }         

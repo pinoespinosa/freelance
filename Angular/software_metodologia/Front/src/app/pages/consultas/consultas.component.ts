@@ -82,7 +82,7 @@ export class ConsultasComponent implements OnInit  {
       let actaaa = this.actas[actaSelect.selectedIndex-1];
 
 
-      let loading = this.service.getTemas(this.cuerpoColegiadoSelect.id).subscribe(
+      let loading = this.service.getTemasConsulta(this.cuerpoColegiadoSelect.id, actaaa.id).subscribe(
           response =>{ 
             this.temasDelActa = response;
             if(response.length>=0)

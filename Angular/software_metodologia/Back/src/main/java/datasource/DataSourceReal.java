@@ -22,6 +22,7 @@ import data.Auth;
 import data.Auth.Rol;
 import data.CuerpoColegiado;
 import data.Empresa;
+import data.Evento;
 import data.Info;
 import data.Tarea;
 import data.Tema;
@@ -258,7 +259,7 @@ public class DataSourceReal implements IDataSource {
 
 		tema.setId(ccOrig.getTemas().size()+"");
 		ccOrig.getTemas().put(tema.getId(), tema);
-		tema.getEventos().add("Se ha creado el tema en el acta " + actaID);
+		tema.getEventos().add(new Evento("Se ha creado el tema en el acta " + actaID, System.currentTimeMillis()));
 		updateFile();
 		return tema;	
 	}
@@ -382,7 +383,7 @@ public class DataSourceReal implements IDataSource {
 
 		
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
-		ccOrig.getTemas().get(temaID).getEventos().add(comentario);
+		ccOrig.getTemas().get(temaID).getEventos().add(new Evento(comentario, System.currentTimeMillis()));
 		updateFile();
 		return ccOrig.getTemas().get(temaID);	
 		
@@ -393,7 +394,7 @@ public class DataSourceReal implements IDataSource {
 	public Tema cerrarTema(String cuerpoColegiadoID, String temaID, String comentario, String empresaID) {
 
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
-		ccOrig.getTemas().get(temaID).getEventos().add(comentario);
+		ccOrig.getTemas().get(temaID).getEventos().add(new Evento(comentario, System.currentTimeMillis()));
 		ccOrig.getTemas().get(temaID).setEstado("Cerrado");
 		updateFile();
 		return ccOrig.getTemas().get(temaID);
@@ -448,10 +449,10 @@ public class DataSourceReal implements IDataSource {
 
 		for (Tema tema : ccOrig.getTemas().values()) {
 
-			List<String> eventos = tema.getEventos();
+			List<Evento> eventos = tema.getEventos();
 			boolean faltaComment  = false;
-			for (String evento : eventos) {
-				if(!evento.contains(actaID))
+			for (Evento evento : eventos) {
+				if(!evento.getTexto().contains(actaID))
 					faltaComment=true;
 			}
 			if (faltaComment)
@@ -477,14 +478,14 @@ public class DataSourceReal implements IDataSource {
 
 		for (Tema tema : ccOrig.getTemas().values()) {
 
-			List<String> eventos = tema.getEventos();
+			List<Evento> eventos = tema.getEventos();
 			boolean faltaComment  = false;
-			for (String evento : eventos) {
-				if(!evento.contains(actaID))
+			for (Evento evento : eventos) {
+				if(!evento.getTexto().contains(actaID))
 					faltaComment=true;
 			}
 			if (faltaComment)
-				tema.getEventos().add("No se registraron comentarios para el acta " + actaID);
+				tema.getEventos().add( new Evento("No se registraron comentarios para el acta " + actaID, System.currentTimeMillis()));
 		
 		}
 		
@@ -495,12 +496,39 @@ public class DataSourceReal implements IDataSource {
 		updateFile();
 	
 		return null;	
-	
-	
-	
-	
-	
-	
+		
+	}
+
+	@Override
+	public List<Tema> getTemaListConsulta(String cuerpoColegiadoID, String actaID, String empresaID) {
+
+		CuerpoColegiado cc = getCuerpoColeg(cuerpoColegiadoID);
+		
+		Acta a = new Acta();
+		a.setId(actaID);
+		a = cc.getActas().get(cc.getActas().indexOf(a));
+		
+		long time = a.getFechaCierre() == 0? System.currentTimeMillis() : a.getFechaCierre();
+		
+		List<Tema> list = new ArrayList<>();
+		
+		for (Tema tema : cc.getTemas().values()) {
+			
+			Tema aux = new Tema();
+			for (Evento e : tema.getEventos()) {
+
+				if (e.getTexto().contains(actaID) && e.getDate() <= time )
+					aux.getEventos().add(e);
+			}
+			if (!aux.getEventos().isEmpty())
+				aux.setDetalle(tema.getDetalle());
+				aux.setEstado(tema.getEstado());
+				aux.setId(tema.getId());
+				aux.setTareas(tema.getTareas());
+				list.add(aux);
+		}
+		
+		return list;
 	}
 
 

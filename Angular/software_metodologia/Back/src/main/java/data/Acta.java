@@ -1,21 +1,22 @@
 package data;
 
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 
 public class Acta {
 
 	private String id;
-	
+
 	private String numeroActa;
 	private long fecha;
+
+	private long fechaCierre;
 
 	private String lugar;
 	private String ciudad;
 
 	private String estado;
-	
+
 	private List<UsuarioActa> integrantes;
 
 	private String finMenteGral;
@@ -23,6 +24,18 @@ public class Acta {
 	private List<Comentario> temas;
 
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj.getClass().equals(Acta.class)) {
+			Acta t = (Acta) obj;
+			return t.getId().equals(getId());
+		}
+		return false;
+	}
+	
+	public Acta() {
+		fechaCierre = 0;
+	}
 
 	public String getNumeroActa() {
 		return numeroActa;
@@ -73,8 +86,8 @@ public class Acta {
 	}
 
 	public List<UsuarioActa> getIntegrantes() {
-		if (integrantes==null)
-			integrantes=new ArrayList<>();
+		if (integrantes == null)
+			integrantes = new ArrayList<>();
 		return integrantes;
 	}
 
@@ -96,6 +109,14 @@ public class Acta {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+
+	public long getFechaCierre() {
+		return fechaCierre;
+	}
+
+	public void setFechaCierre(long fechaCierre) {
+		this.fechaCierre = fechaCierre;
 	}
 
 }
