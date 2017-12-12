@@ -11,6 +11,7 @@ import java.util.Hashtable;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.JFrame;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,6 +25,7 @@ import data.CuerpoColegiado;
 import data.Empresa;
 import data.Evento;
 import data.Info;
+import data.MainClass;
 import data.Tarea;
 import data.Tema;
 import spring.ChipherTool;
@@ -398,6 +400,18 @@ public class DataSourceReal implements IDataSource {
 		ccOrig.getTemas().get(temaID).getEventos().add(new Evento(comentario, System.currentTimeMillis()));
 		ccOrig.getTemas().get(temaID).setEstado("Cerrado");
 		updateFile();
+		
+		try {
+			MainClass frame = new MainClass();
+		    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		    frame.pack();
+		    frame.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		
+		
 		return ccOrig.getTemas().get(temaID);
 	}
 
@@ -440,6 +454,8 @@ public class DataSourceReal implements IDataSource {
 		updateFile();
 		return aa;	
 	}
+	
+
 
 	@Override
 	public Tema actaIsDone(String cuerpoColegiadoID, String empresaID, String actaID) {
