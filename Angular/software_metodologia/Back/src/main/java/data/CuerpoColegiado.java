@@ -11,11 +11,21 @@ public class CuerpoColegiado {
 	private String prefijoDocs;
 
 	private List<Acta> actas;
-	private Hashtable<String, Tema> temas = new Hashtable<>();
+	  private Hashtable<String, Tema> temas = new Hashtable<>(); 
 
 	public CuerpoColegiado() {
 	}
 
+	public void updateTemas(Empresa e){
+		
+		for (String s : temas.keySet()) {
+			if (e.getTemas().containsKey(s))
+				temas.put(s, e.getTemas().get(s));
+			else
+				e.getTemas().put(s, temas.get(s));
+		}
+	}
+	
 	public CuerpoColegiado(String id) {
 		super();
 		this.id = id;
@@ -56,13 +66,6 @@ public class CuerpoColegiado {
 		return false;
 	}
 
-	public Hashtable<String, Tema> getTemas() {
-		return temas;
-	}
-
-	public void setTemas(Hashtable<String, Tema> temas) {
-		this.temas = temas;
-	}
 
 	public String getPrefijoDocs() {
 		return prefijoDocs;
@@ -71,5 +74,16 @@ public class CuerpoColegiado {
 	public void setPrefijoDocs(String prefijoDocs) {
 		this.prefijoDocs = prefijoDocs;
 	}
+	
+	public Hashtable<String, Tema> getTemas() {
+		if (temas == null)
+			return new Hashtable<>();
+		return temas;
+	}
+
+	public void setTemas(Hashtable<String, Tema> temas) {
+		this.temas = temas;
+	}
+	
 
 }

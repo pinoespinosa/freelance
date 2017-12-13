@@ -1,12 +1,15 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 public class Empresa {
 
 	private String id;
 	private List<CuerpoColegiado> colegiados;
+	private Hashtable<String, Tema> temas = new Hashtable<>();
+
 	private String nombreEmpresa;
 	private String logoEmpresa;
 
@@ -53,6 +56,16 @@ public class Empresa {
 
 	public void setLogoEmpresa(String logoEmpresa) {
 		this.logoEmpresa = logoEmpresa;
+	}
+
+	public Hashtable<String, Tema> getTemas() {
+		if (temas == null)
+			temas = new Hashtable<>();
+		return temas;
+	}
+
+	public void setTemas(Hashtable<String, Tema> temas) {
+		this.temas = temas;
 	}
 
 }

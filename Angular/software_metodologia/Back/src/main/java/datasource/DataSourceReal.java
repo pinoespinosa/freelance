@@ -50,7 +50,13 @@ public class DataSourceReal implements IDataSource {
 			String s = "/home/pino/freelance/Angular/software_metodologia/Front/";
 			File file = new File(s + "file.json");
 			obj = mapper.readValue(file, Info.class);
-
+			
+			for (Empresa e : obj.getEmpresas()) {
+				for (CuerpoColegiado cc : e.getColegiados()) {
+					cc.updateTemas(e);
+					
+				}
+			}
 		
 		} catch (IOException e) {
 
@@ -263,6 +269,7 @@ public class DataSourceReal implements IDataSource {
 		tema.setId(ccOrig.getTemas().size()+"");
 		ccOrig.getTemas().put(tema.getId(), tema);
 		tema.getEventos().add(new Evento("Se ha creado el tema en el acta " + actaID, System.currentTimeMillis()));
+		
 		updateFile();
 		return tema;	
 	}

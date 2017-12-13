@@ -10,6 +10,7 @@ export class Tema {
     public detalle:string,
     public eventos: Evento[],
     public tareas: Tarea[],
+    public objetivoEstrategico: string,
 
   ) { }
 }

@@ -25,7 +25,7 @@ import { UsuarioActa }                                  from 'app/data-objects/u
 
 export class SesionComponent implements OnInit, OnDestroy  {
 
-  paso = 0 ;
+  paso = '0' ;
 	cuerpoColegiadoSelect: CuerpoColegiado;
  	cuerpoColegiadoSelectID = -1;
 
@@ -33,7 +33,7 @@ export class SesionComponent implements OnInit, OnDestroy  {
   actaSelect: Acta = null;
 
   temasDelActa: Tema[] = [];
-  temaActual: Tema = new Tema("","","",[],[]);
+  temaActual: Tema = new Tema("","","",[],[],"");
   
 
   tareasMostrar: Tarea[] = [];
@@ -96,24 +96,10 @@ export class SesionComponent implements OnInit, OnDestroy  {
 
   ngOnDestroy(): void {
 
-    confirm("On destroy")
-    return
+    alert("Se ha abandonado la sesión, se dejará constancia en el acta.")
 
   };
 
-    canDeactivate() {
-        console.log('i am navigating away');
-        if (true) {
-            console.log('no, you wont navigate anywhere');
-            return false;
-        }
-
-    }
-
-endChat() {
-   confirm("on exit")
-    return
-}
 
   indiceTemaMas(){
     if (this.indice < this.temasDelActa.length -1){
@@ -196,14 +182,18 @@ removeUser(user):void{
 
 selectActa(actaCombo):void{
       this.actaSelect = this.actasCitadas[actaCombo.selectedIndex-1];
-      this.updateTareas();
 
 }
 
 clicActaNext(actaCombo):void{
+
+      console.log("Holaaaa")
+
       this.actaSelect = this.actasCitadas[actaCombo.selectedIndex-1];
       
-      this.updatePaso('1');
+      this.paso = this.actaSelect.paso;
+      if ( +this.actaSelect.paso <= 0)
+        this.updatePaso('1');
 
       this.service.getUsuariosConActa(this.actaSelect.id).subscribe(
       response =>{ 
@@ -255,7 +245,7 @@ clicActaNext(actaCombo):void{
   crearTema(tema):void{
 
     console.log("Tema " + tema)
-    let temaN = new Tema("","Abierto",tema,[],[]);
+    let temaN = new Tema("","Abierto",tema,[],[],"");
     let ccID = this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1];
 
     let loading = 
@@ -358,7 +348,7 @@ clicActaNext(actaCombo):void{
           response =>{ 
             
             if (confirm(response.detalle)){
-              this.paso=4;
+              this.paso='4';
               this.service.checkAvanzarTareasOK(this.actaSelect.id).subscribe(
                 response =>{ 
                 }         
