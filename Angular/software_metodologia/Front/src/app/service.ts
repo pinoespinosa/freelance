@@ -151,7 +151,11 @@ export class Service {
 
 
 
-
+  updateActaPaso(cuerpoColegiadoID, actaID, paso): Observable<Acta> {
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/' + actaID + '/updatePaso?paso='+paso, paso ,{ headers: headers }).map(this.extractData);
+  }
 
 
 

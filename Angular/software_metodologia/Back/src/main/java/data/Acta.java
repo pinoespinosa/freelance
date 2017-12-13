@@ -6,15 +6,17 @@ import java.util.List;
 public class Acta {
 
 	private String id;
-
 	private String numeroActa;
-	private long fecha;
 
+	private long fecha;
 	private long fechaCierre;
 
 	private String lugar;
 	private String ciudad;
 
+	private String paso;
+
+	
 	private String estado;
 
 	private List<UsuarioActa> integrantes;
@@ -117,6 +119,14 @@ public class Acta {
 
 	public void setFechaCierre(long fechaCierre) {
 		this.fechaCierre = fechaCierre;
+	}
+
+	public String getPaso() {
+		return paso;
+	}
+
+	public void setPaso(String paso) {
+		this.paso = paso;
 	}
 
 }

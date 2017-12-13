@@ -398,14 +398,16 @@ public class DataSourceReal implements IDataSource {
 
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 		ccOrig.getTemas().get(temaID).getEventos().add(new Evento(comentario, System.currentTimeMillis()));
-		ccOrig.getTemas().get(temaID).setEstado("Cerrado");
+		// ccOrig.getTemas().get(temaID).setEstado("Cerrado");
 		updateFile();
 		
 		try {
-			MainClass frame = new MainClass();
+			MainClass frame = new MainClass(ccOrig, ccOrig.getTemas().get(temaID));
 		    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		    frame.pack();
 		    frame.setVisible(true);
+		    frame.dispose();
+		    
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -551,6 +553,21 @@ public class DataSourceReal implements IDataSource {
 		}
 		
 		return list;
+	}
+
+	@Override
+	public Acta updatePaso(String cuerpoColegiadoID, String actaID, String paso, String empresaID) {
+		
+		
+		CuerpoColegiado cc = getCuerpoColeg(cuerpoColegiadoID);
+		Acta a = new Acta();
+		a.setId(actaID);
+		a = cc.getActas().get(cc.getActas().indexOf(a));
+		a.setPaso(paso);
+		
+		updateFile();
+		
+		return a;
 	}
 
 

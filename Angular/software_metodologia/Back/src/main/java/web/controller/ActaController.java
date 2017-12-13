@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -109,6 +110,28 @@ public class ActaController {
 		return dataSource.createActa(cuerpoColegiadoID, Auth.getEmpresaID(token), user);
 	}
 
+	
+	/**
+	 * Crea un acta y envia las invitaciones
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "{cuerpoColegiadoID}/{actaID}/updatePaso", method = RequestMethod.POST)
+	@ResponseBody
+	public Acta updatePaso(
+			@PathVariable final String cuerpoColegiadoID, 
+			@PathVariable final String actaID, 
+			@RequestParam final String paso,
+			@RequestHeader("Acces-Token") String token) {
+
+		return dataSource.updatePaso(cuerpoColegiadoID, actaID, paso, Auth.getEmpresaID(token));
+	}
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Edita un acta
 	 */

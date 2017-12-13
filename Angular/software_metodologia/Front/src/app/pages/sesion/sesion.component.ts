@@ -202,9 +202,10 @@ selectActa(actaCombo):void{
 
 clicActaNext(actaCombo):void{
       this.actaSelect = this.actasCitadas[actaCombo.selectedIndex-1];
-      this.paso = 1;
+      
+      this.updatePaso('1');
 
-    this.service.getUsuariosConActa(this.actaSelect.id).subscribe(
+      this.service.getUsuariosConActa(this.actaSelect.id).subscribe(
       response =>{ 
         this.usuarios = response;
       }         
@@ -383,6 +384,19 @@ clicActaNext(actaCombo):void{
     }
   }
 
+
+  updatePaso(paso):void{
+
+  console.log('Actualice paso');
+
+    this.service.updateActaPaso(
+        this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1], this.actaSelect.id, paso).subscribe(
+      response =>{ 
+          console.log(response);
+          this.actaSelect = response;
+        });
+
+  }
 
   closeTarea():void{
 

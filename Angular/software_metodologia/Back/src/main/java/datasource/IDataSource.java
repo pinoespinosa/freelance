@@ -75,4 +75,6 @@ public interface IDataSource {
 
 	List<Tema> getTemaListConsulta(String cuerpoColegiadoID, String actaID, String empresaID);
 
+	Acta updatePaso(String cuerpoColegiadoID, String actaID, String empresaID, String string);
+
 }

@@ -37,7 +37,7 @@
 </change-state>
 
 
-<form *ngIf="paso==0" class="form-horizontal" action='' method="POST">
+<form *ngIf="actaSelect == null || actaSelect.paso=='0' " class="form-horizontal" action='' method="POST">
    <div class="row">
       <div class="col-4" >
       </div>
@@ -56,7 +56,7 @@
 </form>
 
 
-<form style="margin-top: 200px;" *ngIf="paso==1" class="form-horizontal" action='' method="POST">
+<form style="margin-top: 200px;" *ngIf="actaSelect?.paso==1" class="form-horizontal" action='' method="POST">
    <div class="row" >
       <div class="col-1" >
       </div>
@@ -102,7 +102,7 @@
    </div>
    <div class="row" style="margin-top: 25px;">
       <div class="col-2 offset-5" >
-         <button style="width: 100%;" (click)="paso=2" [disabled]="integrantesConEstado()" type="button" class="btn"><b>Continuar</b></button>
+         <button style="width: 100%;" (click)="updatePaso(2)" [disabled]="integrantesConEstado()" type="button" class="btn"><b>Continuar</b></button>
       </div>
    </div>
 </form>
@@ -112,7 +112,7 @@
 
 
 
-<form style="width: 100%;margin-top: 200px;" *ngIf="paso==2" class="form-horizontal" action='' method="POST">
+<form style="width: 100%;margin-top: 200px;" *ngIf="actaSelect?.paso==2" class="form-horizontal" action='' method="POST">
    <div class="row" >
       <div class="col-6 offset-3" >
          Integrantes de la reunion seleccionados
@@ -142,7 +142,7 @@
    </div>
    <div class="row" style="margin-top: 25px;">
       <div class="col-2 offset-5" >
-         <button style="width: 100%;" (click)="paso=3" [disabled]="actaSelect == null" type="button" class="btn"><b>Continuar</b></button>
+         <button style="width: 100%;" (click)="updatePaso(3)" [disabled]="actaSelect == null" type="button" class="btn"><b>Continuar</b></button>
       </div>
    </div>
 </form>
@@ -155,7 +155,7 @@
 
 
 
-<form style="margin-top: 50px;" *ngIf="paso==3" class="form-horizontal" action='' method="POST">
+<form style="margin-top: 50px;" *ngIf="actaSelect?.paso==3" class="form-horizontal" action='' method="POST">
 
 <!-- ################################## Temas ##################################  -->
 
