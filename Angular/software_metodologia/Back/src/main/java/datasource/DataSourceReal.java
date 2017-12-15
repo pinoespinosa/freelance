@@ -13,6 +13,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JFrame;
 
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -50,14 +51,14 @@ public class DataSourceReal implements IDataSource {
 			String s = "/home/pino/freelance/Angular/software_metodologia/Front/";
 			File file = new File(s + "file.json");
 			obj = mapper.readValue(file, Info.class);
-			
+
 			for (Empresa e : obj.getEmpresas()) {
 				for (CuerpoColegiado cc : e.getColegiados()) {
 					cc.updateTemas(e);
-					
+
 				}
 			}
-		
+
 		} catch (IOException e) {
 
 			obj = new Info();
@@ -102,23 +103,23 @@ public class DataSourceReal implements IDataSource {
 	void infoToFile(Object data, String filename) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			
+
 			String s = "/home/pino/freelance/Angular/software_metodologia/Front/";
-			mapper.writeValue(new File(s + filename ), data);
+			mapper.writeValue(new File(s + filename), data);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	void updateFile() {
-		infoToFile(obj,"file.json" );
+		infoToFile(obj, "file.json");
 	}
 
-	private CuerpoColegiado getCuerpoColeg(String cuerpoColegiadoID){
-		
+	private CuerpoColegiado getCuerpoColeg(String cuerpoColegiadoID) {
+
 		CuerpoColegiado pino = new CuerpoColegiado();
 		pino.setId(cuerpoColegiadoID);
-		
+
 		for (Empresa emp : obj.getEmpresas()) {
 			for (CuerpoColegiado cc : emp.getColegiados()) {
 				if (pino.equals(cc))
@@ -127,14 +128,14 @@ public class DataSourceReal implements IDataSource {
 		}
 		return new CuerpoColegiado();
 	}
-	
+
 	private CuerpoColegiado getCuerpoColeg(String cuerpoColegiadoID, String empresaID) {
 		Empresa e = getEmpresa(empresaID);
 		CuerpoColegiado cc = new CuerpoColegiado();
 		cc.setId(cuerpoColegiadoID);
 		return e.getColegiados().get((e.getColegiados().indexOf(cc)));
 	}
-	
+
 	@Override
 	public List<CuerpoColegiado> getCuerpoColegiadoList(String empresaID, List<String> cc) {
 
@@ -148,12 +149,12 @@ public class DataSourceReal implements IDataSource {
 
 	}
 
-	private Empresa getEmpresa(String id){
+	private Empresa getEmpresa(String id) {
 		Empresa cc = new Empresa();
 		cc.setId(id);
 		return obj.getEmpresas().get((obj.getEmpresas().indexOf(cc)));
 	}
-	
+
 	@Override
 	public CuerpoColegiado createCuerpoColegiado(String empresaID, CuerpoColegiado cuerpo) {
 
@@ -170,19 +171,19 @@ public class DataSourceReal implements IDataSource {
 
 	@Override
 	public CuerpoColegiado editCuerpoColegiado(CuerpoColegiado user, String empresaID) {
-		
+
 		CuerpoColegiado cc = getCuerpoColeg(user.getId(), empresaID);
 		cc.setNombre(user.getNombre());
 		updateFile();
 		return user;
 	}
-		
+
 	@Override
-	public CuerpoColegiado getCuerpoColegiado(String cuerpoColegiadoID, String empresaID){
+	public CuerpoColegiado getCuerpoColegiado(String cuerpoColegiadoID, String empresaID) {
 		return getCuerpoColeg(cuerpoColegiadoID, empresaID);
-		
+
 	}
-	
+
 	@Override
 	public List<Acta> getActaList(String cuerpoColegiadoID, String empresaID) {
 
@@ -195,12 +196,12 @@ public class DataSourceReal implements IDataSource {
 
 		CuerpoColegiado orig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 
-		acta.setId(orig.getPrefijoDocs() +"_" + orig.getId() + "-" + orig.getActas().size() + "");
+		acta.setId(orig.getPrefijoDocs() + "_" + orig.getId() + "-" + orig.getActas().size() + "");
 		acta.setNumeroActa(orig.getActas().size() + "");
 		acta.setFecha(System.currentTimeMillis());
 
 		acta.setEstado("Citada");
-		
+
 		orig.getActas().add(acta);
 		updateFile();
 		return acta;
@@ -223,62 +224,57 @@ public class DataSourceReal implements IDataSource {
 		updateFile();
 		return user;
 	}
-	
+
 	@Override
 	public Acta getLastActa(String cuerpoColegiadoID, String empresaID) {
 		CuerpoColegiado orig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 		if (orig.getActas().isEmpty())
 			return new Acta();
 		else
-			return orig.getActas().get(orig.getActas().size()-1);
+			return orig.getActas().get(orig.getActas().size() - 1);
 	}
 
-
-	
-		
 	@Override
 	public void initBD() {
 		obj = new Info();
 		updateFile();
 	}
-	
-	
-
 
 	@Override
 	public List<Tema> getTemaAbiertoList(String cuerpoColegiadoID, String empresaID) {
-		
+
 		List<Tema> temasAbiertos = new ArrayList<>();
-		
+
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 
-		
 		for (String claves : ccOrig.getTemas().keySet()) {
-			if ( "Abierto".equals(ccOrig.getTemas().get(claves).getEstado()) )
+			if ("Abierto".equals(ccOrig.getTemas().get(claves).getEstado()))
 				temasAbiertos.add(ccOrig.getTemas().get(claves));
 		}
-		
+
 		return temasAbiertos;
 	}
-	
+
 	@Override
-	public Tema createTema(String cuerpoColegiadoID, Tema tema, String empresaID, String actaID) {
+	public Tema createTema(String cuerpoColegiadoID, Tema tema, String empresaID, String actaID,
+			List<String> cuerpoColList) {
 
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 
-		tema.setId(ccOrig.getTemas().size()+"");
+		tema.setId(ccOrig.getPrefijoDocs() + ccOrig.getTemas().size() + "");
+		tema.setFechaCreacion(System.currentTimeMillis());
 		ccOrig.getTemas().put(tema.getId(), tema);
+
+		for (String ccID : cuerpoColList) {
+			CuerpoColegiado cc = getCuerpoColegiado(ccID, empresaID);
+			cc.getTemas().put(tema.getId(), tema);
+		}
+
 		tema.getEventos().add(new Evento("Se ha creado el tema en el acta " + actaID, System.currentTimeMillis()));
-		
+
 		updateFile();
-		return tema;	
+		return tema;
 	}
-
-	
-
-
-
-
 
 	public String getToken(Auth a) {
 		ObjectMapper mapper = new ObjectMapper();
@@ -289,67 +285,60 @@ public class DataSourceReal implements IDataSource {
 		}
 		return null;
 	}
-	
-	
+
 	@Override
 	public Auth auth(String user, String pass) {
 
 		String clave = ChipherTool.encrypt(user + "_" + pass);
-		
-		if ( "cabralito".equals(user) && "pascalito".equals(pass)) {
-			Auth auth = new Auth(clave, Rol.ADMINISTRADOR, "", null, clave, null, clave,"");
+
+		if ("cabralito".equals(user) && "pascalito".equals(pass)) {
+			Auth auth = new Auth(clave, Rol.ADMINISTRADOR, "", null, clave, null, clave, "");
 			auth.setToken(getToken(auth));
 			return auth;
 		}
-		
-		if (obj.getUsers().containsKey(clave))
-		{
+
+		if (obj.getUsers().containsKey(clave)) {
 			Auth auth = obj.getUsers().get(clave);
 			auth.setToken(getToken(auth));
 			Empresa empresa = getEmpresa(auth.getEmpresaID());
 			auth.setLogo(empresa.getLogoEmpresa());
 			auth.setEmpresaNombre(empresa.getNombreEmpresa());
 			return auth;
-			
-			
-			
+
 		}
 		return null;
-		
+
 	}
 
 	@Override
-	public Auth create(String user, String pass, Rol rol, String empresaID, List<String> ccList, String nombre, String email, String logo) {
-	
+	public Auth create(String user, String pass, Rol rol, String empresaID, List<String> ccList, String nombre,
+			String email, String logo) {
+
 		String clave = ChipherTool.encrypt(user + "_" + pass);
-		
-		Auth auth = new Auth(obj.getUsers().size()+"",rol,nombre, email, empresaID, ccList,"",logo);
+
+		Auth auth = new Auth(obj.getUsers().size() + "", rol, nombre, email, empresaID, ccList, "", logo);
 		obj.getUsers().put(clave, auth);
 		updateFile();
 
 		return auth;
 	}
 
-	
 	@Override
 	public Auth editUser(String user, String pass, Rol rol) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-
 	@Override
 	public void exportCSV(HttpServletResponse servletResponse) {
 		// TODO Auto-generated method stub
-		
-	}
 
+	}
 
 	@Override
 	public void importCSV(MultipartFile filename) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -366,7 +355,6 @@ public class DataSourceReal implements IDataSource {
 
 	@Override
 	public Empresa createEmpresa(Empresa empresa) {
-		
 
 		empresa.setId(obj.getEmpresas().size() + "");
 		obj.getEmpresas().add(empresa);
@@ -391,13 +379,11 @@ public class DataSourceReal implements IDataSource {
 	@Override
 	public Tema addComentarioToTema(String cuerpoColegiadoID, String temaID, String comentario, String empresaID) {
 
-		
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 		ccOrig.getTemas().get(temaID).getEventos().add(new Evento(comentario, System.currentTimeMillis()));
 		updateFile();
-		return ccOrig.getTemas().get(temaID);	
-		
-		
+		return ccOrig.getTemas().get(temaID);
+
 	}
 
 	@Override
@@ -407,20 +393,18 @@ public class DataSourceReal implements IDataSource {
 		ccOrig.getTemas().get(temaID).getEventos().add(new Evento(comentario, System.currentTimeMillis()));
 		// ccOrig.getTemas().get(temaID).setEstado("Cerrado");
 		updateFile();
-		
+
 		try {
 			MainClass frame = new MainClass(ccOrig, ccOrig.getTemas().get(temaID));
-		    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		    frame.pack();
-		    frame.setVisible(true);
-		    frame.dispose();
-		    
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame.pack();
+			frame.setVisible(true);
+			frame.dispose();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		
-		
 		return ccOrig.getTemas().get(temaID);
 	}
 
@@ -440,31 +424,29 @@ public class DataSourceReal implements IDataSource {
 	public Tarea addComentarioToTarea(String cuerpoColegiadoID, String temaID, String tareaID, String comentario,
 			String empresaID) {
 
-		
 		Tema tema = getCuerpoColegiado(cuerpoColegiadoID, empresaID).getTemas().get(temaID);
-		
+
 		Tarea t = new Tarea();
 		t.setId(tareaID);
-		Tarea aa = tema.getTareas().get( tema.getTareas().indexOf(t) );
+		Tarea aa = tema.getTareas().get(tema.getTareas().indexOf(t));
 		aa.getEventos().add(comentario);
 		updateFile();
-		return aa;	
+		return aa;
 	}
 
 	@Override
-	public Tarea closeTarea(String cuerpoColegiadoID, String temaID, String tareaID, String empresaID, String comentario) {
-		
+	public Tarea closeTarea(String cuerpoColegiadoID, String temaID, String tareaID, String empresaID,
+			String comentario) {
+
 		Tema tema = getCuerpoColegiado(cuerpoColegiadoID, empresaID).getTemas().get(temaID);
 		Tarea t = new Tarea();
 		t.setId(tareaID);
-		Tarea aa = tema.getTareas().get( tema.getTareas().indexOf(t) );
+		Tarea aa = tema.getTareas().get(tema.getTareas().indexOf(t));
 		aa.getEventos().add("La tarea fue cerrada en el acta " + comentario);
 		aa.setEstado("Cerrada");
 		updateFile();
-		return aa;	
+		return aa;
 	}
-	
-
 
 	@Override
 	public Tema actaIsDone(String cuerpoColegiadoID, String empresaID, String actaID) {
@@ -476,19 +458,19 @@ public class DataSourceReal implements IDataSource {
 		for (Tema tema : ccOrig.getTemas().values()) {
 
 			List<Evento> eventos = tema.getEventos();
-			boolean faltaComment  = true;
+			boolean faltaComment = true;
 			for (Evento evento : eventos) {
-				if(evento.getTexto().contains(actaID))
-					faltaComment=false;
+				if (evento.getTexto().contains(actaID))
+					faltaComment = false;
 			}
 			if (faltaComment)
-				temasAbiertos += "  * Tema:"+tema.getId() + "\n";
-		
+				temasAbiertos += "  * Tema:" + tema.getId() + "\n";
+
 		}
 
-		if (!temasAbiertos.isEmpty())
-		{
-			temasAbiertos = "Existen temas sobre los cuales no se ha dejado comentario, ¿desea continuar de todos modos?\n\n" + temasAbiertos; 
+		if (!temasAbiertos.isEmpty()) {
+			temasAbiertos = "Existen temas sobre los cuales no se ha dejado comentario, ¿desea continuar de todos modos?\n\n"
+					+ temasAbiertos;
 		}
 		Tema t = new Tema();
 		t.setDetalle(temasAbiertos);
@@ -499,89 +481,84 @@ public class DataSourceReal implements IDataSource {
 	@Override
 	public Tema actaIsDoneOk(String cuerpoColegiadoID, String empresaID, String actaID) {
 
-
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 
 		for (Tema tema : ccOrig.getTemas().values()) {
 
 			List<Evento> eventos = tema.getEventos();
-			boolean faltaComment  = true;
+			boolean faltaComment = true;
 			for (Evento evento : eventos) {
-				if(!evento.getTexto().contains(actaID))
-					faltaComment=false;
+				if (!evento.getTexto().contains(actaID))
+					faltaComment = false;
 			}
 			if (faltaComment)
-				tema.getEventos().add( new Evento("No se registraron comentarios para el acta " + actaID, System.currentTimeMillis()));
-		
+				tema.getEventos().add(
+						new Evento("No se registraron comentarios para el acta " + actaID, System.currentTimeMillis()));
+
 		}
-		
+
 		Acta ac = new Acta();
 		ac.setId(actaID);
-		
-		ccOrig.getActas().get(ccOrig.getActas().indexOf(ac)).setEstado("Cerrada");;
+
+		ccOrig.getActas().get(ccOrig.getActas().indexOf(ac)).setEstado("Cerrada");
+		;
 		updateFile();
-	
-		return null;	
-		
+
+		return null;
+
 	}
 
 	@Override
 	public List<Tema> getTemaListConsulta(String cuerpoColegiadoID, String actaID, String empresaID) {
 
 		CuerpoColegiado cc = getCuerpoColeg(cuerpoColegiadoID);
-		
+
 		Acta a = new Acta();
 		a.setId(actaID);
 		a = cc.getActas().get(cc.getActas().indexOf(a));
-		
-		long time = a.getFechaCierre() == 0? System.currentTimeMillis() : a.getFechaCierre();
-		
+
+		long time = a.getFechaCierre() == 0 ? System.currentTimeMillis() : a.getFechaCierre();
+
 		List<Tema> list = new ArrayList<>();
-		
+
 		for (Tema tema : cc.getTemas().values()) {
-			
+
 			Tema aux = new Tema();
 			boolean tuvoActividad = false;
 
 			for (Evento e : tema.getEventos()) {
 
-				if (e.getDate() <= time )
+				if (e.getDate() <= time)
 					if (e.getTexto().contains(actaID))
-						tuvoActividad=true;
-					aux.getEventos().add(e);
+						tuvoActividad = true;
+				aux.getEventos().add(e);
 			}
-			if (!aux.getEventos().isEmpty() && tuvoActividad){
+			if (!aux.getEventos().isEmpty() && tuvoActividad) {
 				aux.setDetalle(tema.getDetalle());
 				aux.setEstado(tema.getEstado());
+				aux.setIndicador(tema.getIndicador());
+				aux.setObjetivoEstrategico(tema.getObjetivoEstrategico());
 				aux.setId(tema.getId());
 				aux.setTareas(tema.getTareas());
 				list.add(aux);
 			}
 		}
-		
+
 		return list;
 	}
 
 	@Override
 	public Acta updatePaso(String cuerpoColegiadoID, String actaID, String paso, String empresaID) {
-		
-		
+
 		CuerpoColegiado cc = getCuerpoColeg(cuerpoColegiadoID);
 		Acta a = new Acta();
 		a.setId(actaID);
 		a = cc.getActas().get(cc.getActas().indexOf(a));
 		a.setPaso(paso);
-		
+
 		updateFile();
-		
+
 		return a;
 	}
-
-
-
-
-
-
-
 
 }

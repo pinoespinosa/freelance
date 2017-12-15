@@ -6,8 +6,11 @@ import java.util.List;
 public class Tema {
 
 	private String id;
+	private long fechaCreacion;
 	private String estado;
 	private String objetivoEstrategico;
+	private String indicador;
+	
 	private String detalle;
 	private List<Tarea> tareas;
 	private List<Evento> eventos;
@@ -62,6 +65,22 @@ public class Tema {
 
 	public void setObjetivoEstrategico(String objetivoEstrategico) {
 		this.objetivoEstrategico = objetivoEstrategico;
+	}
+
+	public long getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(long fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public String getIndicador() {
+		return indicador;
+	}
+
+	public void setIndicador(String indicador) {
+		this.indicador = indicador;
 	}
 
 

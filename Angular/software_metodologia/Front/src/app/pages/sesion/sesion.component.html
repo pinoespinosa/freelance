@@ -2,11 +2,30 @@
 <change-state [(visible)]="showDialogAddCarre">
 <h2 style="margin: 10px;margin-bottom: 20px;" >Crear un Tema Nuevo</h2>
 <div class="col-12" style="margin-bottom: 20px;">
-   <input #nuevaCarr type="text" class="form-control" placeholder="Descripcion">
+
+   <input #nuevaCarr type="text" class="form-control" placeholder="Definición">
+
+   <input #indicador type="text" class="form-control" placeholder="Indicador">
+
+   <select style="width: 100%;" #estrategia class="dropdown-select">
+      <option disabled hidden [value]="Presente">-- Seleccione una estrategia --</option>
+      <option *ngFor="let estrategia of estrategias" >{{estrategia}}</option>
+   </select>
+
+   <label>¿ Se relaciona con otros Cuerpos Colegiados? </label>
+   <div  *ngFor="let cc of otrosCuColegiado" >
+      <div style="display: inline;">
+      <input #cheq type="checkbox" style="margin-left: 40px;" (click)="update(cc,cheq)">{{cc.nombre}}
+
+
+
+      </div>
+   </div>           
+
 </div>
 <div class="row">
    <div class="col-6"> 
-      <button (click)="showDialogAddCarre = !showDialogAddCarre" (click)="crearTema(nuevaCarr.value)"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+      <button (click)="showDialogAddCarre = !showDialogAddCarre" (click)="crearTema(nuevaCarr.value, indicador.value, estrategia)"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
    </div>
    <div class="col-6"> 
       <button (click)="showDialogAddCarre = !showDialogAddCarre" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
@@ -190,19 +209,21 @@
 
          </div>
          <textarea  disabled class="form-control" rows="8" id="comment" style="font-size: x-small;">
-Tema:{{temaActual.id}} [ {{temaActual.detalle}} ] {{toStringTema(temaActual.eventos)}}
+Tema:{{temaActual.id}} [ {{temaActual.detalle}} ] --- > Objetivo Est: {{temaActual.objetivoEstrategico}} / {{temaActual.indicador}}  {{toStringTema(temaActual.eventos)}}
          </textarea>
          
          <div class="row" style="align-items: center;">
             <div class="col-8" style="padding-right: 0px;" >
-               <textarea #comment class="form-control" rows="1" id="comment" placeholder="Nuevo Comentario"></textarea>
+               <textarea #commentTema class="form-control" rows="1" placeholder="Nuevo Comentario" 
+               (keyup)="comentarioTema=commentTema.value" 
+               (keydown)="comentarioTema=commentTema.value"></textarea>
             </div>
             <div class="col-2" style="padding-right: 0px;" >
-               <button (click)="addComentario('Comentario del acta: ' + actaSelect.id +' - ' + comment.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" >Agregar Comentario</button>
+               <button [disabled]="comentarioTema == '' " (click)="addComentario('Comentario del acta: ' + actaSelect.id +' - ' + commentTema.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" >Agregar Comentario</button>
             </div>
             <div class="col-2" >
                <div style="text-align: center;" >         
-                  <button (click)="closeActa('Comentario del acta: ' + actaSelect.id +' - ' + comment.value)" type="button" style="width: 100%;font-size: x-small;" class="btn">Cerrar Tema</button>
+                  <button (click)="closeActa('Comentario del acta: ' + actaSelect.id +' - Se ha cerrado la tarea' )" type="button" style="width: 100%;font-size: x-small;" class="btn">Cerrar Tema</button>
                </div>            
             </div>
 
@@ -213,24 +234,24 @@ Tema:{{temaActual.id}} [ {{temaActual.detalle}} ] {{toStringTema(temaActual.even
          <div class="row" style="align-items: center;padding-top: 35px;">
             <div class="col-8" style="display: flex;align-items: center;" >
                <h4 style="margin-right: 20px;">Tareas Abiertas</h4>
-                  <input type="radio" id="contactChoice1" name="contact" (click)="updateFiltro('Todas')" checked>
+                  <input type="radio" id="contactChoice1" name="contact" (click)="updateFiltro('Todas')" checked [disabled]="tareasMostrar.length == 0" >
                   <label style="margin: 0px;" >Todas</label>
 
-                  <input type="radio" id="contactChoice2" name="contact" (click)="updateFiltro('Abierto')">
+                  <input type="radio" id="contactChoice2" name="contact" (click)="updateFiltro('Abierto')" [disabled]="tareasMostrar.length == 0" >
                   <label style="margin: 0px;" >Activas</label> 
                   
-                  <input type="radio" id="contactChoice3" name="contact" (click)="updateFiltro('Cerrada')">
+                  <input type="radio" id="contactChoice3" name="contact" (click)="updateFiltro('Cerrada')" [disabled]="tareasMostrar.length == 0" >
                   <label style="margin: 0px;" >Cerradas</label>             
             </div>
             
             <div class="col-1 " style="padding-left: 5px;padding-right: 5px;text-align: right;">
-               <button style="width: 32px;" type="button" class="btn" (click)="indiceTareaMenos()">
+               <button style="width: 32px;" type="button" class="btn" (click)="indiceTareaMenos()" [disabled]="tareasMostrar.length == 0" >
                <img src="assets/left.png" style="width: 150%;" >
                </button> 
             </div>
             <div class="col-1" style="text-align: center;padding-left: 0px;padding-right: 0px;"> {{indiceTAREA + 1}} de {{tareasMostrar.length}} </div>
             <div class="col-1" style="padding-left: 5px;padding-right: 5px;">
-               <button style="width: 32px;" type="button" class="btn" (click)="indiceTareaMas()">      
+               <button style="width: 32px;" type="button" class="btn" (click)="indiceTareaMas()" [disabled]="tareasMostrar.length == 0">      
                <img src="assets/rigth.png" style="width: 150%;" >
                </button> 
             </div>
@@ -248,10 +269,12 @@ Resumen: {{tareaActual.detalle}}
 
          <div class="row" style="align-items: center;">
             <div class="col-8" style="padding-right: 0px;" >
-               <textarea #comment2 class="form-control" rows="1" id="comment2" placeholder="Nuevo Comentario"></textarea>
+               <textarea #commentTarea class="form-control" rows="1" placeholder="Nuevo Comentario"
+               (keyup)="comentarioTarea=commentTema.value" 
+               (keydown)="comentarioTarea=commentTema.value"></textarea>
             </div>
             <div class="col-2" style="padding-right: 0px;" >
-               <button (click)="addComentarioTarea('Comentario del acta: ' + actaSelect.id +' - ' + comment2.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" [disabled]="tareaActual.estado != 'Abierto'" >Agregar Comentario</button>
+               <button (click)="addComentarioTarea('Comentario del acta: ' + actaSelect.id +' - ' + commentTarea.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" [disabled]="tareaActual.estado != 'Abierto' || commentTarea=='' || tareasMostrar.length == 0" >Agregar Comentario</button>
             </div>
             <div class="col-2" >
                <div style="text-align: center;" >         

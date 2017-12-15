@@ -11,6 +11,7 @@ export class Tema {
     public eventos: Evento[],
     public tareas: Tarea[],
     public objetivoEstrategico: string,
+    public indicador: string,
 
   ) { }
 }

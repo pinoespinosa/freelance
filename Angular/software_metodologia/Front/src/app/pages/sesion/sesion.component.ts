@@ -5,6 +5,7 @@ import { Service }   			      						      from 'app/service';
 import { Client }               									from 'app/data-objects/cliente';
 import { Trabajo }               									from 'app/data-objects/trabajo';
 import { CuerpoColegiado }               					from 'app/data-objects/cuerpoColegiado';
+import { CuerpoColegiadoSelect }            from 'app/data-objects/cuerpoColegiadoSelect';
 import { Acta }               										from 'app/data-objects/acta';
 import { Tema }                                   from 'app/data-objects/tema';
 import { Tarea }                                   from 'app/data-objects/tarea';
@@ -22,18 +23,22 @@ import { UsuarioActa }                                  from 'app/data-objects/u
 })
 
 
-
 export class SesionComponent implements OnInit, OnDestroy  {
 
   paso = '0' ;
 	cuerpoColegiadoSelect: CuerpoColegiado;
  	cuerpoColegiadoSelectID = -1;
 
+  otrosCuColegiado: CuerpoColegiadoSelect[];
+
+  comentarioTema : string = ''
+  comentarioTarea : string = ''
+
   actasCitadas: Acta[] = [];
   actaSelect: Acta = null;
 
   temasDelActa: Tema[] = [];
-  temaActual: Tema = new Tema("","","",[],[],"");
+  temaActual: Tema = new Tema("","","",[],[],"","");
   
 
   tareasMostrar: Tarea[] = [];
@@ -47,6 +52,7 @@ export class SesionComponent implements OnInit, OnDestroy  {
 
   estadosUsuario = ["Presente", "Ausente", "Remoto"];
 
+  estrategias = ["Estrategia1", "Estratagia2", "Estrategia3"];
   usuarios : Usuario[];
 
 
@@ -185,6 +191,10 @@ selectActa(actaCombo):void{
 
 }
 
+update(a,b){
+a.check = b.checked;
+}
+
 clicActaNext(actaCombo):void{
 
       console.log("Holaaaa")
@@ -194,6 +204,8 @@ clicActaNext(actaCombo):void{
       this.paso = this.actaSelect.paso;
       if ( +this.actaSelect.paso <= 0)
         this.updatePaso('1');
+
+      this.paso = this.actaSelect.paso;
 
       this.service.getUsuariosConActa(this.actaSelect.id).subscribe(
       response =>{ 
@@ -223,7 +235,21 @@ clicActaNext(actaCombo):void{
         this.updateTareas();
       });
 
-        
+    
+      let ccID = this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1];
+
+    this.service.getOtrosCuerposColegiado(ccID).subscribe(
+          response =>{ 
+            this.otrosCuColegiado = response;
+
+
+
+  for (let aa of this.otrosCuColegiado) {
+    aa.check = false;
+  }
+
+          });
+
 }
 
 	addUser(user):void{
@@ -242,14 +268,27 @@ clicActaNext(actaCombo):void{
   }
 }
 
-  crearTema(tema):void{
+  crearTema(tema, indicador, est):void{
+
+    let estrategia = this.estrategias[est.selectedIndex-1];
 
     console.log("Tema " + tema)
-    let temaN = new Tema("","Abierto",tema,[],[],"");
+    console.log(this.otrosCuColegiado)
+
+    let temaN = new Tema("","Abierto",tema,[],[],estrategia, indicador);
     let ccID = this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1];
 
+
+    let arreglo = [];
+
+    for (let aa of this.otrosCuColegiado) {
+      arreglo.push(aa.id);
+    }
+
+
+
     let loading = 
-    this.service.createTema(ccID, temaN,this.actaSelect.id).
+    this.service.createTema(ccID, temaN,this.actaSelect.id, arreglo).
     subscribe(
       response =>{ 
         this.temasDelActa.unshift(response);

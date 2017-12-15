@@ -12,6 +12,8 @@ import { Client }                     from 'app/data-objects/cliente';
 import { Trabajo }                    from 'app/data-objects/trabajo';
 import { Login }                      from 'app/data-objects/login';
 import { CuerpoColegiado }            from 'app/data-objects/cuerpoColegiado';
+import { CuerpoColegiadoSelect }      from 'app/data-objects/cuerpoColegiadoSelect';
+
 import { Acta }                       from 'app/data-objects/acta';
 import { Usuario }                    from 'app/data-objects/usuario';
 import { Tema }                                         from 'app/data-objects/tema';
@@ -95,10 +97,10 @@ export class Service {
 
   }
 
-  createTema(cuerpoColegiadoID, tema, actaID): Observable<Tema> {
+  createTema(cuerpoColegiadoID, tema, actaID, cuerpoColList): Observable<Tema> {
     var headers = new Headers();
     headers.append('acces-token', localStorage.getItem('token'));
-    return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tema/create?actaID='+actaID,tema, { headers: headers }).map(this.extractData);
+    return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tema/create?actaID='+actaID + '&cuerpoColList=' + cuerpoColList,tema, { headers: headers }).map(this.extractData);
   }
 
   editActa(cuerpoColegiadoID, acta): Observable<Acta> {
@@ -157,6 +159,11 @@ export class Service {
     return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/' + actaID + '/updatePaso?paso='+paso, paso ,{ headers: headers }).map(this.extractData);
   }
 
+  getOtrosCuerposColegiado(cuerpoColegiadoID): Observable<CuerpoColegiadoSelect[]> {
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.get(this.server + 'api/cuerpocolegiado/'+ cuerpoColegiadoID + '/otros',{ headers: headers }).map(this.extractData);
+  }
 
 
 

@@ -43,7 +43,21 @@ public class ColegiadoController {
 			@RequestHeader("Acces-Token") String token) {
 		return dataSource.getCuerpoColegiado(cuerpoColegiadoID, Auth.getEmpresaID(token));
 	}
-	
+	/**
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/cuerpocolegiado/{cuerpoColegiadoID}/otros", method = RequestMethod.GET)
+	public List<CuerpoColegiado> getCuerpoColegiadoOtros(@PathVariable final String cuerpoColegiadoID,
+			@RequestHeader("Acces-Token") String token) {
+		List<CuerpoColegiado> list = dataSource.getCuerpoColegiadoList(Auth.getEmpresaID(token),
+				Auth.getCuerpoColegiadosList(token));
+
+		CuerpoColegiado cc = new CuerpoColegiado();
+		cc.setId(cuerpoColegiadoID);
+		list.remove(cc);
+		return list;
+	}
+
 	/**
 	 * Crea un cliente
 	 */

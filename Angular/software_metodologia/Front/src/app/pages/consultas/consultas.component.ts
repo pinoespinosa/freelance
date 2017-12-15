@@ -8,6 +8,7 @@ import { CuerpoColegiado }               										from 'app/data-objects/cuerpo
 import { Acta }               													from 'app/data-objects/acta';
 import { Tema }                                         from 'app/data-objects/tema';
 import { Tarea }                                   from 'app/data-objects/tarea';
+import { Usuario }                                from 'app/data-objects/usuario';
 
 
 
@@ -24,18 +25,18 @@ export class ConsultasComponent implements OnInit  {
 	cuerposColegiado: CuerpoColegiado[] = [];
 	cuerpoColegiadoSelect: CuerpoColegiado;
  
-  estrategias: string[] = ["Estrategia 1","Estrategia 2","Estrategia 3","Estrategia 4","Estrategia 4"];
-  responsables: string[] = ["Responsable 1","Responsable 2","Responsable 3","Responsable 4","Responsable 5"];
-  temas: string[] = ["Tema 1","Tema 2","Tema 3","Tema 4","Tema 5"];
+  estrategias: string[] = ["Todas las estrategias", "Sin Estrategia","Estrategia 1","Estrategia 2","Estrategia 3","Estrategia 4","Estrategia 4"];
+  responsables : Usuario[] = [];
+
 
   logo:string = "";
 
 	actas: Acta[] = [];
 
-  actaCombo;
+  actaCombo : Acta;
 
   temasDelActa: Tema[] = [];
-  temaActual: Tema = new Tema("","","",[],[],"");
+  temaActual: Tema = new Tema("","","",[],[],"","");
   indice = 0;
 
   tareasMostrar: Tarea[] = [];
@@ -98,9 +99,17 @@ export class ConsultasComponent implements OnInit  {
 	selectCuerpo(cuerpo):void{
     	this.cuerpoColegiadoSelect = this.cuerposColegiado[cuerpo.selectedIndex-1];
     	this.actas = this.cuerpoColegiadoSelect.actas
-      this.temaActual= new Tema("","","",[],[],"");
-      this.temasDelActa = []
+      this.temaActual= new Tema("","","",[],[],"","");
       this.indice = 0;
+
+
+      if (this.actas.length == 1){
+        this.responsables = this.actas[0].integrantes;
+        this.selectActa2(this.actas[0])
+
+      }
+      else
+        this.temasDelActa = []
  	}
 
   updateTareas(){
@@ -144,7 +153,14 @@ export class ConsultasComponent implements OnInit  {
   }
 
   selectActa(actaSelect):void{
-      let actaaa = this.actas[actaSelect.selectedIndex-1];
+
+    this.responsables = this.actas[actaSelect.selectedIndex-1].integrantes;
+    this.selectActa2(this.actas[actaSelect.selectedIndex-1]);
+    this.actaCombo = actaSelect;
+
+}
+
+  selectActa2(actaaa):void{
 
 
       let loading = this.service.getTemasConsulta(this.cuerpoColegiadoSelect.id, actaaa.id).subscribe(
@@ -159,7 +175,6 @@ export class ConsultasComponent implements OnInit  {
     this.updateTareas();
 
 
-      this.actaCombo = actaSelect;
 
   }
 

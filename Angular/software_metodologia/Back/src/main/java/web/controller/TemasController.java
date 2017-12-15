@@ -1,5 +1,7 @@
 package web.controller;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import data.Acta;
 import data.Auth;
+import data.CuerpoColegiado;
 import data.Tarea;
 import data.Tema;
 import datasource.IDataSource;
@@ -64,7 +67,17 @@ public class TemasController {
 			@RequestHeader("Acces-Token") String token) {
 		
 		String[] ccId = actaID.split("_")[1].split("-");
-		return dataSource.getTemaAbiertoList(ccId[0] + "-" + ccId[1] ,Auth.getEmpresaID(token));
+		List<Tema> temaAbiertoList = dataSource.getTemaAbiertoList(ccId[0] + "-" + ccId[1] ,Auth.getEmpresaID(token));
+		
+		Collections.sort(temaAbiertoList, new Comparator<Tema>() {
+
+			@Override
+			public int compare(Tema o1, Tema o2) {
+					new Long(o1.getFechaCreacion()).compareTo(new Long(o2.getFechaCreacion()));
+				return 0;
+			}
+		} );
+		return temaAbiertoList;
 	}
 	
 	
@@ -104,9 +117,10 @@ public class TemasController {
 	public Tema createTema(
 			@PathVariable final String cuerpoColegiadoID, 
 			@RequestBody Tema tema,
-			@RequestParam String actaID, 
+			@RequestParam String actaID,
+			@RequestParam List<String> cuerpoColList,
 			@RequestHeader("Acces-Token") String token) {
-		return dataSource.createTema(cuerpoColegiadoID, tema,Auth.getEmpresaID(token), actaID);
+		return dataSource.createTema(cuerpoColegiadoID, tema,Auth.getEmpresaID(token), actaID, cuerpoColList);
 	}
 
 	/**

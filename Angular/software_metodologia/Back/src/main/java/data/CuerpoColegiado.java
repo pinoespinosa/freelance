@@ -4,25 +4,36 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class CuerpoColegiado {
 
 	private String id;
 	private String nombre;
 	private String prefijoDocs;
 
+
+
 	private List<Acta> actas;
-	  private Hashtable<String, Tema> temas = new Hashtable<>(); 
+	
+	@JsonIgnore
+    private Empresa empresa;
+	
+	@JsonIgnore
+    private Hashtable<String, Tema> temas;  
+
+	private List<String> temasId; 
 
 	public CuerpoColegiado() {
 	}
 
 	public void updateTemas(Empresa e){
 		
-		for (String s : temas.keySet()) {
+		empresa=e;
+		
+		for (String s : getTemasId()) {
 			if (e.getTemas().containsKey(s))
-				temas.put(s, e.getTemas().get(s));
-			else
-				e.getTemas().put(s, temas.get(s));
+				getTemas().put(s, e.getTemas().get(s));
 		}
 	}
 	
@@ -75,15 +86,47 @@ public class CuerpoColegiado {
 		this.prefijoDocs = prefijoDocs;
 	}
 	
+	@JsonIgnore
 	public Hashtable<String, Tema> getTemas() {
-		if (temas == null)
-			return new Hashtable<>();
+		if (temas == null){
+			temas = new Hashtable<String, Tema>(){
+
+				@Override
+				public synchronized Tema put(String key, Tema value) {
+					if (!temasId.contains(key))
+						temasId.add(key);
+					empresa.getTemas().put(key, value);
+					return super.put(key, value);
+				}
+				
+			};
+		}
 		return temas;
 	}
-
+	
+	@JsonIgnore
 	public void setTemas(Hashtable<String, Tema> temas) {
 		this.temas = temas;
 	}
+
+	public List<String> getTemasId() {
+		if (temasId==null)
+			temasId = new ArrayList<>();
+		return temasId;
+	}
+
+	public void setTemasId(List<String> temasId) {
+		this.temasId = temasId;
+	}
 	
+	@JsonIgnore
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	@JsonIgnore
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
 
 }
