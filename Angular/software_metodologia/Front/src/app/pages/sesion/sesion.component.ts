@@ -310,12 +310,12 @@ clicActaNext(actaCombo):void{
 
   crearTarea(tarea, responsable, fecha):void{
 
-    console.log(fecha)
-    console.log(fecha.value)
+    console.log(responsable)
+    console.log(responsable.selectedIndex)
 
     let aux : Usuario[] = this.integrantesPresentes();
 
-    let respon : Usuario =  aux[responsable.selectedIndex-1];
+    let respon : Usuario =  aux[responsable.selectedIndex];
 
 
 
@@ -337,6 +337,8 @@ clicActaNext(actaCombo):void{
         else{
           this.tareaActual = new Tarea("","","",[],null);
         }
+
+        this.updateTareas();
 
         alert("Se ha creado un nueva tarea")
       }         
@@ -447,36 +449,30 @@ clicActaNext(actaCombo):void{
   closeTarea():void{
 
     if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")){
+      
       this.service.closeTarea(
         this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1], this.temaActual.id, 
         this.tareaActual.id, 
         this.actaSelect.id).subscribe(
           response =>{ 
-            this.tareaActual = response;
+
+            this.service.getTemas(this.actaSelect.id).subscribe(
+            response =>{ 
+              this.temasDelActa = response;
+              if(response.length>0){
+                this.temaActual = response[0];
+                this.indice=0;
+              }
+              else
+                this.indice=-1;
+    
+              this.updateTareas();
+          });
+
           }         
         );
 
-    this.service.getTemas(this.actaSelect.id).subscribe(
-      response =>{ 
-        this.temasDelActa = response;
-        if(response.length>0){
-          this.temaActual = response[0];
-          this.indice=0;
-        }
-        else
-          this.indice=-1;
-
-        this.updateTareas();
-      });
-
-
-
-
-
-
-
-
-        
+    
     }
 
 
