@@ -159,6 +159,12 @@ export class Service {
     return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/' + actaID + '/updatePaso?paso='+paso, paso ,{ headers: headers }).map(this.extractData);
   }
 
+    updateActaIntegrantes(cuerpoColegiadoID, actaID, acta): Observable<Acta> {
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/' + actaID + '/updateIntegrantes', acta ,{ headers: headers }).map(this.extractData);
+  }
+
   getOtrosCuerposColegiado(cuerpoColegiadoID): Observable<CuerpoColegiadoSelect[]> {
     var headers = new Headers();
     headers.append('acces-token', localStorage.getItem('token'));

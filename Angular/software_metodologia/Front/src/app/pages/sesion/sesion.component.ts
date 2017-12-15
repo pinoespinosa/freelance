@@ -40,6 +40,8 @@ export class SesionComponent implements OnInit, OnDestroy  {
   temasDelActa: Tema[] = [];
   temaActual: Tema = new Tema("","","",[],[],"","");
   
+  fechaMostrar = '';
+  nuevaTareaSel ='';
 
   tareasMostrar: Tarea[] = [];
 
@@ -128,14 +130,12 @@ export class SesionComponent implements OnInit, OnDestroy  {
 
   integrantesConEstado(){
   
-  console.log(this.actaSelect.integrantes)
-
-  let esta = false;
-  for (let aa of this.actaSelect.integrantes) {
-    if (!aa.estado)
-      esta = true;
-  }
-  return esta;
+    let esta = false;
+    for (let aa of this.actaSelect.integrantes) {
+      if (!aa.estado)
+        esta = true;
+    }
+    return esta;
   }
 
 removeUser(user):void{
@@ -197,15 +197,12 @@ a.check = b.checked;
 
 clicActaNext(actaCombo):void{
 
-      console.log("Holaaaa")
-
       this.actaSelect = this.actasCitadas[actaCombo.selectedIndex-1];
       
       this.paso = this.actaSelect.paso;
       if ( +this.actaSelect.paso <= 0)
         this.updatePaso('1');
 
-      this.paso = this.actaSelect.paso;
 
       this.service.getUsuariosConActa(this.actaSelect.id).subscribe(
       response =>{ 
@@ -311,10 +308,16 @@ clicActaNext(actaCombo):void{
 
   }
 
-  crearTarea(tarea, responsable):void{
+  crearTarea(tarea, responsable, fecha):void{
+
+    console.log(fecha)
+    console.log(fecha.value)
+
+    let aux : Usuario[] = this.integrantesPresentes();
+
+    let respon : Usuario =  aux[responsable.selectedIndex-1];
 
 
-    let respon : Usuario =  this.usuarios[responsable.selectedIndex-1];
 
     let mmmm : UsuarioActa = new UsuarioActa(respon.userID, respon.nombre, "","Presente");
 
@@ -413,16 +416,30 @@ clicActaNext(actaCombo):void{
     }
   }
 
+  updatePasoIntegrantes(paso):void{
+
+
+    this.service.updateActaIntegrantes(
+        this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1], this.actaSelect.id, this.actaSelect).subscribe(
+      response =>{ 
+          console.log(response);
+          this.actaSelect = response;
+
+        });
+
+    this.updatePaso(paso);
+  }
+
 
   updatePaso(paso):void{
-
-  console.log('Actualice paso');
 
     this.service.updateActaPaso(
         this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1], this.actaSelect.id, paso).subscribe(
       response =>{ 
           console.log(response);
           this.actaSelect = response;
+          this.paso = paso;
+
         });
 
   }
