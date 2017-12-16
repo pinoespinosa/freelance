@@ -56,6 +56,30 @@
 </change-state>
 
 
+<!-- ###########################   AGREGAR USUARIO   ############################### -->
+<change-state [(visible)]="showADD_USUARIO">
+<h2 style="margin: 10px;margin-bottom: 20px;" >Crear una Tarea Nueva</h2>
+<div class="col-12" style="margin-bottom: 20px;">
+   <input #nuevaTarea type="text" class="form-control" placeholder="Definición" (change)="nuevaTareaSel = nuevaTarea.value">
+   <div style="display: flex;align-items: center;" >
+   <label>Responsable:</label> 
+   <select style="width: 100%;" #usuu class="dropdown-select" (change)="addUser(us)">
+      <option *ngFor="let usuario of integrantesPresentes()" >{{usuario.nombre}}</option>
+   </select>
+   </div>
+   <label style="margin: 0px;" >Fecha de entrega</label> 
+   <input type="date" #myDate (change)="fechaMostrar = myDate.value">
+</div>
+<div class="row">
+   <div class="col-6"> 
+      <button [disabled]="fechaMostrar=='' || nuevaTareaSel == ''" (click)="showADD_USUARIO = !showADD_USUARIO" (click)="crearTarea(nuevaTarea.value, usuu, myDate)"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+   </div>
+   <div class="col-6"> 
+      <button (click)="showADD_USUARIO = !showADD_USUARIO" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
+   </div>
+</div>
+</change-state>
+
 <form *ngIf="actaSelect == null || paso=='0' " class="form-horizontal" action='' method="POST">
    <div class="row">
       <div class="col-4" >
@@ -113,11 +137,26 @@
          </div>
       </div>
       <div class="col-4" style="margin-left: 60px;">
-         Agregar nuevos integrantes a la reunion
-         <select style="width: 100%;" #us class="dropdown-select" (change)="addUser(us)">
-         <option disabled hidden [value]="Presente">-- Seleccione un usuario para agregar a la reunion --</option>
-         <option *ngFor="let usuario of usuarios" >{{usuario.nombre}}</option>
-         </select>
+      <div>
+         <div>
+         Crear un nuevo usuario
+         </div>
+         <button  (click)="removeUser(asistente)" 
+         style="width: 32px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
+            <img src="https://cdn1.iconfinder.com/data/icons/social-messaging-productivity-4/128/add-user2-512.png" style="width: 18px;" >
+         </button>
+         </div>
+   <div style="margin-top: 30px;"  >Agregue un usuario</div>
+
+   <div style="background: #E4AD2D80;" >
+      <input type="text" [(ngModel)]="queryString" [ngModelOptions]="{standalone: true}" id="search" placeholder="Busque por email">
+      <ul style="max-height: 100px;overflow: scroll;" > 
+         <li *ngFor="let usuario of usuarios | FilterPipe: queryString ">
+            <button style="border: none;background: #E4AD2DCC;border-radius: 8px;font-size: small;" (click)="addUser(usuario)">{{usuario.nombre}} - {{usuario.email}}</button>
+         </li>
+      </ul>
+   </div>
+
       </div>
    </div>
    <div class="row" style="margin-top: 25px;">

@@ -1,17 +1,17 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild, Renderer2 } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute }                                from '@angular/router';
-import { trigger, state, style, animate, transition }                           from '@angular/animations';
+import { Router, NavigationEnd, ActivatedRoute }           from '@angular/router';
+import { trigger, state, style, animate, transition }      from '@angular/animations';
 import { Service }   			      						      from 'app/service';
 import { Client }               									from 'app/data-objects/cliente';
 import { Trabajo }               									from 'app/data-objects/trabajo';
 import { CuerpoColegiado }               					from 'app/data-objects/cuerpoColegiado';
-import { CuerpoColegiadoSelect }            from 'app/data-objects/cuerpoColegiadoSelect';
+import { CuerpoColegiadoSelect }                  from 'app/data-objects/cuerpoColegiadoSelect';
 import { Acta }               										from 'app/data-objects/acta';
 import { Tema }                                   from 'app/data-objects/tema';
-import { Tarea }                                   from 'app/data-objects/tarea';
+import { Tarea }                                  from 'app/data-objects/tarea';
 
 import { Usuario }                                from 'app/data-objects/usuario';
-import { UsuarioActa }                                  from 'app/data-objects/usuarioActa';
+import { UsuarioActa }                            from 'app/data-objects/usuarioActa';
 
 
 
@@ -59,12 +59,12 @@ export class SesionComponent implements OnInit, OnDestroy  {
 
 
   showDialogAddCarre=false;
-
   showADD_TAREA=false;
+  showADD_USUARIO=false;
 
   logo:string = "";
 
-
+queryString="";
 
 
 
@@ -251,8 +251,7 @@ clicActaNext(actaCombo):void{
 
 	addUser(user):void{
 
-  console.log(this.actaSelect.integrantes[user.selectedIndex-1])
-  let asiiii : Usuario =  this.usuarios[user.selectedIndex-1];
+  let asiiii : Usuario =  user;
 
   let esta:boolean = false;
   for (let aa of this.actaSelect.integrantes) {
@@ -261,7 +260,7 @@ clicActaNext(actaCombo):void{
   }
   
   if (!esta){
-    this.actaSelect.integrantes.push(new UsuarioActa(asiiii.userID, asiiii.nombre, "",""));
+    this.actaSelect.integrantes.push(new UsuarioActa(asiiii.userID, asiiii.nombre, "","",""));
   }
 }
 
@@ -319,7 +318,7 @@ clicActaNext(actaCombo):void{
 
 
 
-    let mmmm : UsuarioActa = new UsuarioActa(respon.userID, respon.nombre, "","Presente");
+    let mmmm : UsuarioActa = new UsuarioActa(respon.userID, respon.nombre, "","Presente","");
 
     let tareaN = new Tarea("","Abierto",tarea,[],mmmm);
 

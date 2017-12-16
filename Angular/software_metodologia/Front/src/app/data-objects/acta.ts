@@ -5,8 +5,8 @@ export class Acta {
   constructor(
 
     public id: string,
-    
     public numeroActa:string,
+
     public fecha: string,
     public lugar: string,
     public ciudad : string,
@@ -23,6 +23,11 @@ export class Acta {
     public huboInconvenientes : string,
     public tieneSugerencias : string,
     public redaccionDeTareasOk : string,
+
+    public horaInicio: string,
+    public horaFinal: string,
+    public fechaReunion: string,
+
 
   ) { }
 }

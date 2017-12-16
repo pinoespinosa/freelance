@@ -70,14 +70,13 @@ selectCuerpo(cuerpo):void{
  }
 
 createActa():void{
-  	this.actaCreada = new Acta("0","0","0","lugar","ciudad",[],"finGral",[],"0", "","","","","","");
+  	this.actaCreada = new Acta("0","0","0","lugar","ciudad",[],"finGral",[],"0", "","","","","","","","","");
 		this.paso = 2;
 }
 
 addUser(user):void{
 
-  console.log(this.actaCreada.integrantes[user.selectedIndex-1])
-  let asiiii : Usuario =  this.usuarios[user.selectedIndex-1];
+  let asiiii : Usuario =  user;
 
   let esta:boolean = false;
   for (let aa of this.actaCreada.integrantes) {
@@ -86,7 +85,7 @@ addUser(user):void{
   }
   
   if (!esta){
-    this.actaCreada.integrantes.push(new UsuarioActa(asiiii.userID, asiiii.nombre, "",""));
+    this.actaCreada.integrantes.push(new UsuarioActa(asiiii.userID, asiiii.nombre, "","",""));
   }
 }
 
@@ -106,16 +105,16 @@ removeUser(user):void{
 
 }
 
-setPaso2Info(lugar, ciudad, fin):void{
+setPaso2Info(lugar, ciudad, finMente, fecha, horaInicio, horaFinal):void{
     
-    console.log(lugar)
-    console.log(ciudad)
-    console.log(fin)
-
     this.actaCreada.lugar = lugar;
     this.actaCreada.ciudad = ciudad;
-    this.actaCreada.finMenteGral = fin;
-    console.log(this.actaCreada)
+    this.actaCreada.finMenteGral = finMente;
+
+    this.actaCreada.horaInicio = horaInicio;
+    this.actaCreada.horaFinal = horaFinal
+    this.actaCreada.fechaReunion = fecha
+
     this.getLastActa();
 
     if(!this.actaCreada.integrantes)

@@ -202,7 +202,7 @@ public class DataSourceReal implements IDataSource {
 		CuerpoColegiado orig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 
 		acta.setId(orig.getPrefijoDocs() + "_" + orig.getId() + "-" + orig.getActas().size() + "");
-		acta.setNumeroActa(orig.getActas().size() + "");
+		acta.setNumeroActa(orig.getPrefijoDocs() + orig.getActas().size() + "");
 		acta.setFecha(System.currentTimeMillis());
 
 		acta.setEstado("Citada");

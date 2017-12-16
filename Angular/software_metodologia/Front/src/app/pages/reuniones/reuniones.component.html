@@ -16,12 +16,47 @@
    <div class="row" >
       <div class="col-4 offset-4" >
          <input type="text" class="form-control" placeholder="Lugar *" #lugar>
-         <input type="text" class="form-control" placeholder="Horario *" #ciudad>
+         <input type="text" class="form-control" placeholder="Ciudad *" #ciudad>
          <input type="text" class="form-control" placeholder="Fin en Mente de la Reunión *" #reqq>
 
+         <div class="row" >
+            <div  class="col-5" style="align-self: center;text-align: right;" >
+               <label style="margin: 0px;" >Fecha de la reunion</label> 
+            </div>
+            <div  class="col-7" >
+               <input type="date" #fecha style="width: 100%;">
+            </div>
+         </div>
+
+         <div class="row" >
+            <div class="col-5" style="align-self: center;text-align: right;" >
+               <label style="margin: 0px;" >Hora de inicio</label> 
+            </div>
+            <div  class="col-7" >
+               <input #horaInicio type="time" style="width: 100%;" >
+            </div>
+         </div>
+
+         <div class="row" >
+            <div  class="col-5" style="align-self: center;text-align: right;" >
+               <label style="margin: 0px;" >Hora de fin</label> 
+            </div>
+            <div class="col-7" >
+            <input #horaFinal type="time" style="width: 100%;" >
+            </div>
+         </div>
+
+
          <button type="button" class="btn" 
-         [disabled]="lugar.value == '' || ciudad.value == '' || reqq.value == ''" 
-         (click)="setPaso2Info(lugar.value, ciudad.value, reqq.value)" ><b>Continuar</b></button>
+         [disabled]="
+         lugar.value == '' || 
+         ciudad.value == '' || 
+         reqq.value == '' || 
+         horaInicio.value == '' || 
+         horaFinal.value == '' || 
+         fecha.value == '' " 
+
+         (click)="setPaso2Info(lugar.value, ciudad.value, reqq.value, fecha.value, horaInicio.value, horaFinal.value)" ><b>Continuar</b></button>
       </div>
    </div>
 </form>
@@ -58,12 +93,27 @@
             </div>
          </div>
       </div>
-      <div class="col-4" >
-         Agregar nuevos integrantes a la reunion
-         <select style="width: 100%;" #us class="dropdown-select" (change)="addUser(us)">
-         <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione un usuario para agregar a la reunion --</option>
-         <option *ngFor="let usuario of usuarios" >{{usuario.nombre}}</option>
-         </select>
+      <div class="col-4" style="margin-left: 60px;">
+      <div>
+         <div>
+         Crear un nuevo usuario
+         </div>
+         <button  (click)="removeUser(asistente)" 
+         style="width: 32px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
+            <img src="https://cdn1.iconfinder.com/data/icons/social-messaging-productivity-4/128/add-user2-512.png" style="width: 18px;" >
+         </button>
+         </div>
+   <div style="margin-top: 30px;"  >Agregue un usuario</div>
+
+   <div style="background: #E4AD2D80;" >
+      <input type="text" [(ngModel)]="queryString" [ngModelOptions]="{standalone: true}" id="search" placeholder="Busque por email">
+      <ul style="max-height: 100px;overflow: scroll;" > 
+         <li *ngFor="let usuario of usuarios | FilterPipe: queryString ">
+            <button style="border: none;background: #E4AD2DCC;border-radius: 8px;font-size: small;" (click)="addUser(usuario)">{{usuario.nombre}} - {{usuario.email}}</button>
+         </li>
+      </ul>
+   </div>
+
       </div>
    </div>
    

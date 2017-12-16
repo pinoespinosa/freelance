@@ -16,7 +16,6 @@ public class Acta {
 
 	private String paso;
 
-	
 	private String estado;
 
 	private List<UsuarioActa> integrantes;
@@ -25,7 +24,17 @@ public class Acta {
 
 	private List<Comentario> temas;
 
-	
+	private String comentarioAdicionales;
+	private String seCumpliofinEnMente;
+	private String elTiempoFueSuficiente;
+	private String huboInconvenientes;
+	private String tieneSugerencias;
+	private String redaccionDeTareasOk;
+
+	private String horaInicio;
+	private String fechaReunion;
+	private String horaFinal;
+
 	@Override
 	public boolean equals(Object obj) {
 		if (obj.getClass().equals(Acta.class)) {
@@ -34,7 +43,7 @@ public class Acta {
 		}
 		return false;
 	}
-	
+
 	public Acta() {
 		fechaCierre = 0;
 	}
@@ -129,4 +138,75 @@ public class Acta {
 		this.paso = paso;
 	}
 
+	public String getComentarioAdicionales() {
+		return comentarioAdicionales;
+	}
+
+	public void setComentarioAdicionales(String comentarioAdicionales) {
+		this.comentarioAdicionales = comentarioAdicionales;
+	}
+
+	public String getSeCumpliofinEnMente() {
+		return seCumpliofinEnMente;
+	}
+
+	public void setSeCumpliofinEnMente(String seCumpliofinEnMente) {
+		this.seCumpliofinEnMente = seCumpliofinEnMente;
+	}
+
+	public String getElTiempoFueSuficiente() {
+		return elTiempoFueSuficiente;
+	}
+
+	public void setElTiempoFueSuficiente(String elTiempoFueSuficiente) {
+		this.elTiempoFueSuficiente = elTiempoFueSuficiente;
+	}
+
+	public String getHuboInconvenientes() {
+		return huboInconvenientes;
+	}
+
+	public void setHuboInconvenientes(String huboInconvenientes) {
+		this.huboInconvenientes = huboInconvenientes;
+	}
+
+	public String getTieneSugerencias() {
+		return tieneSugerencias;
+	}
+
+	public void setTieneSugerencias(String tieneSugerencias) {
+		this.tieneSugerencias = tieneSugerencias;
+	}
+
+	public String getRedaccionDeTareasOk() {
+		return redaccionDeTareasOk;
+	}
+
+	public void setRedaccionDeTareasOk(String redaccionDeTareasOk) {
+		this.redaccionDeTareasOk = redaccionDeTareasOk;
+	}
+
+	public String getHoraInicio() {
+		return horaInicio;
+	}
+
+	public void setHoraInicio(String horaInicio) {
+		this.horaInicio = horaInicio;
+	}
+
+	public String getHoraFinal() {
+		return horaFinal;
+	}
+
+	public void setHoraFinal(String horaFinal) {
+		this.horaFinal = horaFinal;
+	}
+
+	public String getFechaReunion() {
+		return fechaReunion;
+	}
+
+	public void setFechaReunion(String fechaReunion) {
+		this.fechaReunion = fechaReunion;
+	}
 }

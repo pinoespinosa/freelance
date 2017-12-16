@@ -6,7 +6,7 @@ import { HttpClientModule }                 from '@angular/common/http';
 import { HttpModule }                       from '@angular/http';
 import { ChartsModule }                     from 'ng2-charts';
 
-// ######################## Manejode permisos y rutas ########################
+// ######################## Manejo de permisos y rutas ########################
 import { AuthGuard }                        from './routing/auth-guard.service';
 import { CanDeactivateGuard }                        from './routing/CanDeactivateGuard';
 
@@ -29,6 +29,12 @@ import { HomeComponent }                    from './pages/home/home.component';
 import { AppComponent }                     from './app.component';
 import { Service }                          from './service';
 
+import { FilterPipe }                    from './pages/pipe/pipe';
+
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -41,7 +47,7 @@ import { Service }                          from './service';
     ActaCompletaComponent,
     ReunionesComponent,
     SesionComponent,
-
+    FilterPipe,
     ChangeStateDialogComponent
   ],
   imports: [
@@ -50,7 +56,8 @@ import { Service }                          from './service';
     ChartsModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule, 
+    FormsModule
   ],
   providers: [ 
     Service,

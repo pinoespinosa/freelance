@@ -12,8 +12,6 @@ public class CuerpoColegiado {
 	private String nombre;
 	private String prefijoDocs;
 
-
-
 	private List<Acta> actas;
 	
 	@JsonIgnore
