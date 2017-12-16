@@ -1,0 +1,99 @@
+[
+   {
+      "id":"1",
+      "nombre":"Andres",
+      "apellido":"Espinosa",
+      "email1":"pino@test.com",
+      "email2":null,
+      "email3":null,
+      "email4":null,
+      "telefono1":null,
+      "telefono2":null,
+      "telefono3":null,
+      "telefono4":null,
+      "trabajos":[
+         {
+            "id":"2",
+            "tema":"Animales",
+            "titulo":"Los animales de mi casa",
+            "universidad":"FASTA",
+            "monto":"5000",
+            "entrega":"2017/11/12",
+            "estado":"Hecho",
+
+             "pagos":[
+               {
+                  "id":"123",
+                  "cantida_abonada":"1235",
+                  "forma_pago":"contado",
+                  "detalle":"en negro"
+               }
+            ]
+         },
+         {
+            "id":"15",
+            "tema":"Plantas",
+            "titulo":"Las plantas de mi casa",
+            "universidad":"UNICEN",
+            "monto":"2374",
+            "estado":"Trabajando",
+            "entrega":"2016/05/14",
+             "pagos":[
+               {
+                  "id":"123",
+                  "cantida_abonada":"1235",
+                  "forma_pago":"contado",
+                  "detalle":"en negro"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "id":"2",
+      "nombre":"Valentina",
+      "apellido":"Alfonso",
+      "email1":"valen@test.com",
+      "email2":null,
+      "email3":null,
+      "email4":null,
+      "telefono1":null,
+      "telefono2":null,
+      "telefono3":null,
+      "telefono4":null,
+      "trabajos":[
+         {
+            "id":"2",
+            "tema":"Los escarabajos",
+            "titulo":"Los escarabajos de mi casa",
+            "universidad":"UNITEC",
+            "monto":"1247",
+            "entrega":"2017/10/14",
+            "estado":"Hecho",
+            "pagos":[
+               {
+                  "id":"123",
+                  "cantida_abonada":"1235",
+                  "forma_pago":"contado",
+                  "detalle":"en negro"
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "id":"3",
+      "nombre":"Pepe",
+      "apellido":"Gomez",
+      "email1":"test@test.com",
+      "email2":null,
+      "email3":null,
+      "email4":null,
+      "telefono1":null,
+      "telefono2":null,
+      "telefono3":null,
+      "telefono4":null,
+      "trabajos":[]
+
+   }
+]
