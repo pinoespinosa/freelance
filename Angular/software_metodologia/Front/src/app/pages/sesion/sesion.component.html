@@ -223,7 +223,7 @@ Tema:{{temaActual.id}} [ {{temaActual.detalle}} ] --- > Objetivo Est: {{temaActu
             </div>
             <div class="col-2" >
                <div style="text-align: center;" >         
-                  <button (click)="closeActa('Comentario del acta: ' + actaSelect.id +' - Se ha cerrado la tarea' )" type="button" style="width: 100%;font-size: x-small;" class="btn">Cerrar Tema</button>
+                  <button (click)="closeTema('Comentario del acta: ' + actaSelect.id +' - Se ha cerrado el tema' )" type="button" style="width: 100%;font-size: x-small;" class="btn">Cerrar Tema</button>
                </div>            
             </div>
 
@@ -283,8 +283,9 @@ Resumen: {{tareaActual.detalle}}
             </div>
 
          </div>
-
+         <div style="text-align: center;margin-top: 20px;" >
          <button (click)="checkAvanzarTareas()" type="button" class="btn"><b>Continuar</b></button>
+         </div>
       </div>
       <div class="col-2" style="text-align: center;">
          <img [src]="logo" style="max-width: 175px;max-height: 150px;margin-top: -30px;" >  
@@ -312,8 +313,9 @@ Resumen: {{tareaActual.detalle}}
             </div>
          </div>
          <textarea (dblclick)="showDialogAddCarre=true" class="form-control" rows="4" id="comment" placeholder="Agregar Comentario" readonly>  No existen temas abiertos, para crear uno nuevo haga clic aqui .... </textarea>
-         <button (click)="paso=5" type="button" class="btn"><b>Continuar</b></button>
-      </div>
+         <div style="text-align: center;margin-top: 20px;" >
+         <button (click)="checkAvanzarTareas()" type="button" class="btn"><b>Continuar</b></button>
+         </div>      </div>
       <div class="col-2" style="text-align: center;">
          <img [src]="logo" style="max-width: 175px;max-height: 150px;margin-top: -30px;" >  
       </div>
@@ -323,6 +325,7 @@ Resumen: {{tareaActual.detalle}}
 </form>
 
 
+<!--
 
 <form style="margin-top: 50px;" *ngIf="paso==4" class="form-horizontal" action='' method="POST">
    <div class="row" >
@@ -350,4 +353,4 @@ Resumen: {{tareaActual.detalle}}
       </div>
    </div>
 
-</form>
+</form>-->

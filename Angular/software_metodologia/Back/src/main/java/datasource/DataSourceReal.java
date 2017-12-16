@@ -391,7 +391,7 @@ public class DataSourceReal implements IDataSource {
 
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 		ccOrig.getTemas().get(temaID).getEventos().add(new Evento(comentario, System.currentTimeMillis()));
-		// ccOrig.getTemas().get(temaID).setEstado("Cerrado");
+	//	ccOrig.getTemas().get(temaID).setEstado("Cerrado");
 		updateFile();
 
 		try {
@@ -463,7 +463,7 @@ public class DataSourceReal implements IDataSource {
 				if (evento.getTexto().contains(actaID))
 					faltaComment = false;
 			}
-			if (faltaComment)
+			if (faltaComment && "Abierto".equals(tema.getEstado()))
 				temasAbiertos += "  * Tema:" + tema.getId() + "\n";
 
 		}
@@ -488,10 +488,10 @@ public class DataSourceReal implements IDataSource {
 			List<Evento> eventos = tema.getEventos();
 			boolean faltaComment = true;
 			for (Evento evento : eventos) {
-				if (!evento.getTexto().contains(actaID))
+				if (evento.getTexto().contains(actaID))
 					faltaComment = false;
 			}
-			if (faltaComment)
+			if (faltaComment && "Abierto".equals(tema.getEstado()))
 				tema.getEventos().add(
 						new Evento("No se registraron comentarios para el acta " + actaID, System.currentTimeMillis()));
 

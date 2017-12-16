@@ -522,7 +522,7 @@ clicActaNext(actaCombo):void{
 
   }
 
-  closeActa(com):void{
+  closeTema(com):void{
 
     let tareasAbiertas : boolean = false;
     for (let aa of this.temaActual.tareas) {
@@ -540,24 +540,24 @@ clicActaNext(actaCombo):void{
         this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1], this.temaActual.id, com).subscribe(
           response =>{ 
 
+            this.service.getTemas(this.actaSelect.id).subscribe(
+              response =>{ 
+                this.temasDelActa = response;
+                if(response.length>0){
+                  this.temaActual = response[0];
+                  this.indice=0;
+                }
+                else
+                  this.indice=-1;
 
+                this.updateTareas();
+      });
 
           }         
         );
     }
 
-        this.service.getTemas(this.actaSelect.id).subscribe(
-      response =>{ 
-        this.temasDelActa = response;
-        if(response.length>0){
-          this.temaActual = response[0];
-          this.indice=0;
-        }
-        else
-          this.indice=-1;
 
-        this.updateTareas();
-      });
   }
 
 	
