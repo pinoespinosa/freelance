@@ -13,10 +13,16 @@ export class Acta {
 
     public integrantes:UsuarioActa[],
     public finMenteGral: string,
-    public finMenteEsp: string,
     public temas : string[],
 
-    public paso : string
+    public paso : string,
+
+    public comentarioAdicionales : string,
+    public seCumpliofinEnMente : string,
+    public elTiempoFueSuficiente : string,
+    public huboInconvenientes : string,
+    public tieneSugerencias : string,
+    public redaccionDeTareasOk : string,
 
   ) { }
 }

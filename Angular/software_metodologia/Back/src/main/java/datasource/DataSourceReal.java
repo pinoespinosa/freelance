@@ -13,7 +13,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JFrame;
 
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,6 +32,12 @@ import spring.ChipherTool;
 
 public class DataSourceReal implements IDataSource {
 
+	public static final String TEMA_CERRADO = "Cerrado";
+	public static final String TEMA_ABIERTO = "Abierto";
+	
+	public static final String TAREA_CERRADA = "Cerrada";
+	public static final String TAREA_ABIERTA = "Abierta";
+	
 	private Info obj;
 
 	public DataSourceReal() {
@@ -248,7 +253,7 @@ public class DataSourceReal implements IDataSource {
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 
 		for (String claves : ccOrig.getTemas().keySet()) {
-			if ("Abierto".equals(ccOrig.getTemas().get(claves).getEstado()))
+			if (TEMA_ABIERTO.equals(ccOrig.getTemas().get(claves).getEstado()))
 				temasAbiertos.add(ccOrig.getTemas().get(claves));
 		}
 
@@ -443,7 +448,7 @@ public class DataSourceReal implements IDataSource {
 		t.setId(tareaID);
 		Tarea aa = tema.getTareas().get(tema.getTareas().indexOf(t));
 		aa.getEventos().add("La tarea fue cerrada en el acta " + comentario);
-		aa.setEstado("Cerrada");
+		aa.setEstado(TAREA_CERRADA);
 		updateFile();
 		return aa;
 	}
@@ -463,7 +468,7 @@ public class DataSourceReal implements IDataSource {
 				if (evento.getTexto().contains(actaID))
 					faltaComment = false;
 			}
-			if (faltaComment && "Abierto".equals(tema.getEstado()))
+			if (faltaComment && TEMA_ABIERTO.equals(tema.getEstado()))
 				temasAbiertos += "  * Tema:" + tema.getId() + "\n";
 
 		}
@@ -472,6 +477,7 @@ public class DataSourceReal implements IDataSource {
 			temasAbiertos = "Existen temas sobre los cuales no se ha dejado comentario, ¿desea continuar de todos modos?\n\n"
 					+ temasAbiertos;
 		}
+		
 		Tema t = new Tema();
 		t.setDetalle(temasAbiertos);
 		return t;
@@ -491,7 +497,7 @@ public class DataSourceReal implements IDataSource {
 				if (evento.getTexto().contains(actaID))
 					faltaComment = false;
 			}
-			if (faltaComment && "Abierto".equals(tema.getEstado()))
+			if (faltaComment && TEMA_ABIERTO.equals(tema.getEstado()))
 				tema.getEventos().add(
 						new Evento("No se registraron comentarios para el acta " + actaID, System.currentTimeMillis()));
 
@@ -500,8 +506,8 @@ public class DataSourceReal implements IDataSource {
 		Acta ac = new Acta();
 		ac.setId(actaID);
 
-		ccOrig.getActas().get(ccOrig.getActas().indexOf(ac)).setEstado("Cerrada");
-		;
+		//ccOrig.getActas().get(ccOrig.getActas().indexOf(ac)).setEstado("Cerrada");
+		
 		updateFile();
 
 		return null;

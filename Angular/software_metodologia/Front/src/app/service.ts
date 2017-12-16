@@ -139,7 +139,11 @@ export class Service {
     return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tema/close?temaID='+tema+'&comentario='+com, tema,{ headers: headers }).map(this.extractData);
   }
 
-
+  closeTema(cuerpoColegiadoID, tema, com): Observable<Tema> {
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tema/close?temaID='+tema+'&comentario='+com, tema,{ headers: headers }).map(this.extractData);
+  }
 
   checkAvanzarTareas(actaID): Observable<Tema> {
      var headers = new Headers();

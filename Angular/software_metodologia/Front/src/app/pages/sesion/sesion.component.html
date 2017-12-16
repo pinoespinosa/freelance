@@ -76,6 +76,7 @@
 
 
 <form style="margin-top: 200px;" *ngIf="paso==1" class="form-horizontal" action='' method="POST">
+   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.id}} - [ {{actaSelect.finMenteGral}} ]</h5>
    <div class="row" >
       <div class="col-1" >
       </div>
@@ -132,6 +133,7 @@
 
 
 <form style="width: 100%;margin-top: 200px;" *ngIf="paso==2" class="form-horizontal" action='' method="POST">
+   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.id}} - [ {{actaSelect.finMenteGral}} ]</h5>
    <div class="row" >
       <div class="col-6 offset-3" >
          Integrantes de la reunion seleccionados
@@ -175,10 +177,9 @@
 
 
 <form style="margin-top: 50px;" *ngIf="paso==3" class="form-horizontal" action='' method="POST">
+   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.id}} - [ {{actaSelect.finMenteGral}} ]</h5>
 
 <!-- ################################## Temas ##################################  -->
-
-
    <div  *ngIf="temasDelActa.length>0" class="row" >
       <div class="col-xl-2" style="text-align: center;">
 
@@ -325,32 +326,48 @@ Resumen: {{tareaActual.detalle}}
 </form>
 
 
-<!--
+
+
+
+
+
+
+
 
 <form style="margin-top: 50px;" *ngIf="paso==4" class="form-horizontal" action='' method="POST">
-   <div class="row" >
-      <div class="col-xl-2" >
-      </div>
-      <div class="col-xl-8" >
-         <div class="row" style="align-items: center;">
-            <div class="col-8" >
-               <h4>Temas Abiertos</h4>
-            </div>
-            <div class="col-1" style="padding-left: 5px;padding-right: 5px;;opacity: 0.5;">
-               <button style="width: 32px;" type="button" class="btn" (click)="indiceTemaMenos()">
-               <img src="assets/left.png" style="width: 150%;" >
-               </button> 
-            </div>
-            <div class="col-2" style="text-align: center;">Sin temas</div>
-            <div class="col-1" style="padding-left: 5px;padding-right: 5px;opacity: 0.5;">
-               <button style="width: 32px;" type="button" class="btn" (click)="indiceTemaMas()">      
-               <img src="assets/rigth.png" style="width: 150%;" >
-               </button> 
-            </div>
-         </div>
-         <textarea (dblclick)="showDialogAddCarre=true" class="form-control" rows="4" id="comment" placeholder="Agregar Comentario" readonly>  No existen temas abiertos, para crear uno nuevo haga clic aqui .... </textarea>
-         <button (click)="paso=5" type="button" class="btn"><b>Continuar</b></button>
-      </div>
+   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.id}} - [ {{actaSelect.finMenteGral}} ]</h5>
+   <div style="text-align: center;margin-top: 100px;" >
+      ¿ Desea agregar un tema nuevo?
+      <button (click)="showDialogAddCarre=true" (click)="updatePaso('3')" style="width: 40px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
+      <img src="assets/add.png" style="width: 22px;" >
+      </button> 
    </div>
+   <div style="text-align: center;margin-top: 20px;" >
+      <button (click)="updatePaso('5')" type="button" class="btn"><b>Continuar, sin agregar un tema</b></button>
+   </div>
+</form>
 
-</form>-->
+
+
+
+<form style="margin-top: 50px;" *ngIf="paso==5" class="form-horizontal" action='' method="POST">
+   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.id}} - [ {{actaSelect.finMenteGral}} ]</h5>
+   <div style="text-align: center;margin: 100px;" >
+      
+
+      <textarea (dblclick)="showDialogAddCarre=true" class="form-control" rows="4" id="comment" placeholder="Comentarios Adicionales"></textarea>
+      <input #fin (change)="asistente.finEnMente=fin.value" type="text" class="form-control" placeholder="¿Se cumplió el fin en mente de la reunión?">
+      <input #fin (change)="asistente.finEnMente=fin.value" type="text" class="form-control" placeholder="¿Fue suficiente el tiempo utilizado en la reunión? ">
+      <input #fin (change)="asistente.finEnMente=fin.value" type="text" class="form-control" placeholder="¿Tuvo algún inconveniente en la reunión?">
+      <input #fin (change)="asistente.finEnMente=fin.value" type="text" class="form-control" placeholder="¿Tiene alguna sugerencia sobre la reunión o sus participantes?">
+      <input #fin (change)="asistente.finEnMente=fin.value" type="text" class="form-control" placeholder="¿La redacción de las tareas nuevas fue aprobada por quién es
+responsable de la tarea?">
+   </div>
+   <div style="text-align: center;" >
+      <button (click)="closeActa()" type="button" class="btn"><b>Finalizar</b></button>
+   </div>
+</form>
+
+
+
+

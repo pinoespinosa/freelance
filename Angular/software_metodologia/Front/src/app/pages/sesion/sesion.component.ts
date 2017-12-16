@@ -391,14 +391,23 @@ clicActaNext(actaCombo):void{
       this.service.checkAvanzarTareas(this.actaSelect.id).subscribe(
           response =>{ 
             
-            if (confirm(response.detalle)){
-              this.paso='4';
-              this.service.checkAvanzarTareasOK(this.actaSelect.id).subscribe(
-                response =>{ 
-                }         
-              );
-            }
+            if (response.detalle)
+            {
 
+              if (confirm(response.detalle)){
+                this.updatePaso('4');
+                this.service.checkAvanzarTareasOK(this.actaSelect.id).subscribe(
+                  response =>{ }         
+                );
+              }
+            }
+            else
+            {
+                this.updatePaso('4');
+                this.service.checkAvanzarTareasOK(this.actaSelect.id).subscribe(
+                  response =>{ }         
+                );
+            }
 
           }         
         );
@@ -522,6 +531,13 @@ clicActaNext(actaCombo):void{
 
   }
 
+  closeActa(){
+
+
+  alert('Se enviará un email con las minutas del acta y el resumen por PDF de la misma');
+  }
+
+
   closeTema(com):void{
 
     let tareasAbiertas : boolean = false;
@@ -536,7 +552,7 @@ clicActaNext(actaCombo):void{
     else
 {
     if (confirm("Esta a punto de cerrar un tema. ¿Desea continuar?")){
-      this.service.closeActa(
+      this.service.closeTema(
         this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1], this.temaActual.id, com).subscribe(
           response =>{ 
 
