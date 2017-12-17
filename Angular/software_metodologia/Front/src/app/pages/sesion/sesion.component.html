@@ -225,32 +225,36 @@
             </div>
          </div>
          <!-- ################################## Tareas ##################################  -->
-         <div *ngIf="tareasMostrar.length > 0" >
-            <div class="row" style="align-items: center;padding-top: 35px;">
-               <h4 style="margin-left: 15px;" >Tarea: {{tareaActual.detalle}}</h4>
-            </div>
-            <textarea *ngIf="tareasMostrar.length > 0" id="Texto Tarea" disabled class="form-control" rows="8" style="font-size: x-small;" placeholder="Agregar Comentario"
-               >Tarea:{{tareaActual.id}} [ Responsable: {{tareaActual.responsable?.nombre}} ]
+
+
+<div *ngIf="tareasMostrar.length > 0" >
+   <div class="row" style="align-items: center;padding-top: 35px;">
+      <h4 style="margin-left: 15px;" >Tarea: {{tareaActual.detalle}}</h4>
+   </div>
+   <textarea *ngIf="tareasMostrar.length > 0" id="Texto Tarea" disabled class="form-control" rows="8" style="font-size: x-small;" placeholder="Agregar Comentario"
+      >Tarea:{{tareaActual.id}} [ Responsable: {{tareaActual.responsable?.nombre}} ]
 Estado: {{tareaActual.estado}}
 Resumen: {{tareaActual.detalle}}
 {{toString(tareaActual.eventos)}}</textarea>
-            <textarea *ngIf="tareasMostrar.length == 0" id="Texto Tarea" disabled class="form-control" rows="8" style="font-size: x-small;"></textarea>
-            <div class="row" style="align-items: center;">
-               <div class="col-8" style="padding-right: 0px;" >
-                  <textarea #commentTarea class="form-control" rows="1" placeholder="Nuevo Comentario"
-                  (keyup)="comentarioTarea=commentTema.value" 
-                  (keydown)="comentarioTarea=commentTema.value" [disabled]="tareasMostrar.length == 0" ></textarea>
-               </div>
-               <div class="col-2" style="padding-right: 0px;" >
-                  <button (click)="addComentarioTarea('Comentario del acta: ' + actaSelect.id +' - ' + commentTarea.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" [disabled]="tareaActual.estado != 'Abierto' || comentarioTarea=='' || tareasMostrar.length == 0" >Agregar Comentario</button>
-               </div>
-               <div class="col-2" >
-                  <div style="text-align: center;" >         
-                     <button (click)="closeTarea()" type="button" style="width: 100%;font-size: x-small;" class="btn" [disabled]="tareaActual.estado != 'Abierto'" >Cerrar Tarea</button>
-                  </div>
-               </div>
-            </div>
+   <textarea *ngIf="tareasMostrar.length == 0" id="Texto Tarea" disabled class="form-control" rows="8" style="font-size: x-small;"></textarea>
+   <div class="row" style="align-items: center;">
+      <div class="col-8" style="padding-right: 0px;" >
+         <textarea #commentTarea class="form-control" rows="1" placeholder="Nuevo Comentario"
+         (keyup)="comentarioTarea=commentTema.value" 
+         (keydown)="comentarioTarea=commentTema.value" [disabled]="tareasMostrar.length == 0" ></textarea>
+      </div>
+      <div class="col-2" style="padding-right: 0px;" >
+         <button (click)="addComentarioTarea('Comentario del acta: ' + actaSelect.id +' - ' + commentTarea.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" [disabled]="tareaActual.estado != 'Abierto' || comentarioTarea=='' || tareasMostrar.length == 0" >Agregar Comentario</button>
+      </div>
+      <div class="col-2" >
+         <div style="text-align: center;" >         
+            <button (click)="closeTarea()" type="button" style="width: 100%;font-size: x-small;" class="btn" [disabled]="tareaActual.estado != 'Abierto'" >Cerrar Tarea</button>
          </div>
+      </div>
+   </div>
+</div>
+
+
          <div style="text-align: center;margin-top: 20px;" >
             <button (click)="avanzar()" type="button" class="btn"><b>Continuar</b></button>
          </div>
