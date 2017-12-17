@@ -568,7 +568,17 @@ public class DataSourceReal implements IDataSource {
 	@Override
 	public Acta getActa(String actaID, String empresaID) {
 		
-		return getActa(actaID, empresaID);
+		Empresa empresa = getEmpresa(empresaID);
+		
+		Acta a = new Acta();
+		a.setId(actaID);
+
+		for (CuerpoColegiado cc : empresa.getColegiados()) {	
+			if (cc.getActas().contains(a))
+				return cc.getActas().get(cc.getActas().indexOf(a));
+		}
+
+		return null;	
 	}
 
 }

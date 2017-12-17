@@ -82,7 +82,6 @@ export class Sesion2Component implements OnInit, OnDestroy  {
         result => {
           // Defaults to 0 if no query param provided.
           this.actaSelect.id = result['actaID']
-          this.actaSelect.finMenteGral = result['finMenteGral']
         }
 
       );
@@ -90,13 +89,27 @@ export class Sesion2Component implements OnInit, OnDestroy  {
 
 
     console.log("Holaa " + this.actaSelect.id)
-    this.updatePasoIntegrantes('4')
+    this.updatePaso('4')
 
     let ccID = this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1];
 
-    this.service.getActa(ccID).subscribe(
+    this.service.getActa(this.actaSelect.id).subscribe(
           response =>{ 
             this.actaSelect = response;
+
+
+
+                 this.service.getOtrosCuerposColegiado(ccID).subscribe(
+                  response =>{ 
+                    this.otrosCuColegiado = response;
+
+                      for (let aa of this.otrosCuColegiado) {
+                        aa.check = false;
+                      }
+
+                    });
+
+
 
           });
 

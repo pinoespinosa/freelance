@@ -407,9 +407,7 @@ clicActaNext(actaCombo):void{
 
     let navigationExtras: NavigationExtras = {
         queryParams: {
-            "actaID": this.actaSelect.id,
-            "finMenteGral": this.actaSelect.finMenteGral
-
+            "actaID": this.actaSelect.id
         }
     };
 
