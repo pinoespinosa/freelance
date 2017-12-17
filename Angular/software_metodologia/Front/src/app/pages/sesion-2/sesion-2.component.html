@@ -4,7 +4,6 @@
 <div class="col-12" style="margin-bottom: 20px;">
 
    <input #nuevaCarr type="text" class="form-control" placeholder="Definición">
-
    <input #indicador type="text" class="form-control" placeholder="Indicador">
 
    <select style="width: 100%;" #estrategia class="dropdown-select">
@@ -22,10 +21,12 @@
 </div>
 <div class="row">
    <div class="col-6"> 
-      <button (click)="showDialogAddCarre = !showDialogAddCarre" (click)="crearTema(nuevaCarr.value, indicador.value, estrategia)"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+      <button (click)="showDialogAddCarre = !showDialogAddCarre" 
+      (click)="crearTema(nuevaCarr.value, indicador.value, estrategia)"  
+      class="btn" style="width: 100%;background: #72C585" >Agregar</button>
    </div>
    <div class="col-6"> 
-      <button (click)="showDialogAddCarre = !showDialogAddCarre" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
+      <button (click)="showDialogAddCarre = !showDialogAddCarre" (click)="paso='4'" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
    </div>
 </div>
 </change-state>
@@ -56,29 +57,6 @@
 </change-state>
 
 
-<!-- ###########################   AGREGAR USUARIO   ############################### -->
-<change-state [(visible)]="showADD_USUARIO">
-<h2 style="margin: 10px;margin-bottom: 20px;" >Crear una Tarea Nueva</h2>
-<div class="col-12" style="margin-bottom: 20px;">
-   <input #nuevaTarea type="text" class="form-control" placeholder="Definición" (change)="nuevaTareaSel = nuevaTarea.value">
-   <div style="display: flex;align-items: center;" >
-   <label>Responsable:</label> 
-   <select style="width: 100%;" #usuu class="dropdown-select" (change)="addUser(us)">
-      <option *ngFor="let usuario of integrantesPresentes()" >{{usuario.nombre}}</option>
-   </select>
-   </div>
-   <label style="margin: 0px;" >Fecha de entrega</label> 
-   <input type="date" #myDate (change)="fechaMostrar = myDate.value">
-</div>
-<div class="row">
-   <div class="col-6"> 
-      <button [disabled]="fechaMostrar=='' || nuevaTareaSel == ''" (click)="showADD_USUARIO = !showADD_USUARIO" (click)="crearTarea(nuevaTarea.value, usuu, myDate)"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
-   </div>
-   <div class="col-6"> 
-      <button (click)="showADD_USUARIO = !showADD_USUARIO" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
-   </div>
-</div>
-</change-state>
 
 <form *ngIf="actaSelect == null || paso=='0' " class="form-horizontal" action='' method="POST">
    <div class="row">
@@ -228,7 +206,7 @@
       <div class="col-xl-8" >
          <div class="row" style="align-items: center;" >
             <div class="col-8" >
-               <h4>Tema: {{actaSelect.finMenteGral}}</h4>
+               <h4>Tema: {{temaActual.detalle}}</h4>
             </div>
          </div>
 
@@ -254,12 +232,24 @@ Tema:{{temaActual.id}} [ {{temaActual.detalle}} ] --- > Objetivo Est: {{temaActu
          </div>
 
 <!-- ################################## Tareas ##################################  -->
-
-         <div class="row" style="align-items: center;padding-top: 35px;">
-               <h4 style="margin-left: 15px;" >Tarea: {{tareaActual.detalle}}</h4>
+         <div class="row" style="align-items: center;padding-top: 35px;" >
+            <div  class="col-10" *ngIf="tareasMostrar.length > 0">
+               <h4 style="margin-left: 15px;"> Tarea: {{tareaActual.detalle}}</h4>
+            </div>
+            <div  class="col-2" style="text-align: right;" *ngIf="tareasMostrar.length > 0" >
                <button (click)="showADD_TAREA=true" style="width: 40px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
                   <img src="assets/add.png" style="width: 22px;" >
-               </button> 
+               </button>            
+            </div>
+
+
+
+            <div class="col-12" style="display: inline-flex;align-items: center;" *ngIf="tareasMostrar.length == 0" >
+               <h4 style="margin-left: 15px;" *ngIf="tareasMostrar.length == 0" >Agregar tarea</h4>
+               <button (click)="showADD_TAREA=true" style="width: 40px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
+                  <img src="assets/add.png" style="width: 22px;" >
+               </button>            
+            </div>
 
          </div>
          <textarea *ngIf="tareasMostrar.length > 0" id="Texto Tarea" disabled class="form-control" rows="8" style="font-size: x-small;" placeholder="Agregar Comentario"
@@ -267,8 +257,8 @@ Tema:{{temaActual.id}} [ {{temaActual.detalle}} ] --- > Objetivo Est: {{temaActu
 Estado: {{tareaActual.estado}}
 Resumen: {{tareaActual.detalle}}
 {{toString(tareaActual.eventos)}}</textarea>
-         <textarea *ngIf="tareasMostrar.length == 0" id="Texto Tarea" disabled class="form-control" rows="8" style="font-size: x-small;"></textarea>
-         <div class="row" style="align-items: center;">
+
+         <div class="row" style="align-items: center;" *ngIf="tareasMostrar.length > 0" >
             <div class="col-8" style="padding-right: 0px;" >
                <textarea #commentTarea class="form-control" rows="1" placeholder="Nuevo Comentario"
                (keyup)="comentarioTarea=commentTema.value" 
@@ -338,7 +328,7 @@ Resumen: {{tareaActual.detalle}}
    <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.id}} - [ {{actaSelect.finMenteGral}} ]</h5>
    <div style="text-align: center;margin-top: 100px;" >
       ¿ Desea agregar un tema nuevo?
-      <button (click)="showDialogAddCarre=true" (click)="updatePaso('3')" style="width: 40px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
+      <button (click)="showDialogAddCarre=true" (click)="paso='3'" (click)="cleanAll()" style="width: 40px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
       <img src="assets/add.png" style="width: 22px;" >
       </button> 
    </div>

@@ -103,9 +103,6 @@ queryString="";
 	};
 
   ngOnDestroy(): void {
-
-    alert("Se ha abandonado la sesión, se dejará constancia en el acta.")
-
   };
 
 
@@ -410,6 +407,7 @@ clicActaNext(actaCombo):void{
             "actaID": this.actaSelect.id
         }
     };
+    this.updatePaso('4');
 
     this.router.navigate(['/sesion-2'],navigationExtras);
     

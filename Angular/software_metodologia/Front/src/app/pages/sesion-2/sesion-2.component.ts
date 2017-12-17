@@ -88,15 +88,13 @@ export class Sesion2Component implements OnInit, OnDestroy  {
 
 
 
-    console.log("Holaa " + this.actaSelect.id)
-    this.updatePaso('4')
-
     let ccID = this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1];
 
     this.service.getActa(this.actaSelect.id).subscribe(
           response =>{ 
             this.actaSelect = response;
-
+            this.paso = this.actaSelect.paso;
+            console.log("Se establece el paso del acta: " + this.paso);
 
 
                  this.service.getOtrosCuerposColegiado(ccID).subscribe(
@@ -113,7 +111,16 @@ export class Sesion2Component implements OnInit, OnDestroy  {
 
           });
 
+
 }
+
+
+  cleanAll(){
+
+      this.temasDelActa = [];
+
+
+  }
 
 	ngOnInit(): void {
 
