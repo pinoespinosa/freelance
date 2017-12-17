@@ -25,6 +25,24 @@ public class ActaController {
 
 	@Autowired
 	private IDataSource dataSource;
+
+	
+	/**
+	 * Retorna la lista de las actas
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "acta/{actaID}", method = RequestMethod.GET)
+	public Acta getActa(
+			@PathVariable final String actaID,
+			@RequestHeader("Acces-Token") String token) {
+
+		return dataSource.getActa(actaID, Auth.getEmpresaID(token));
+	}
+	
+	
+	
+	
+	
 	
 	/**
 	 * Retorna la lista de las actas

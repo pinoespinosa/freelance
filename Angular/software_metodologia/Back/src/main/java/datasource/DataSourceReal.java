@@ -485,7 +485,7 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
-	public Tema actaIsDoneOk(String cuerpoColegiadoID, String empresaID, String actaID) {
+	public void actaIsDoneOk(String cuerpoColegiadoID, String empresaID, String actaID) {
 
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 
@@ -509,8 +509,6 @@ public class DataSourceReal implements IDataSource {
 		//ccOrig.getActas().get(ccOrig.getActas().indexOf(ac)).setEstado("Cerrada");
 		
 		updateFile();
-
-		return null;
 
 	}
 
@@ -565,6 +563,12 @@ public class DataSourceReal implements IDataSource {
 		updateFile();
 
 		return a;
+	}
+
+	@Override
+	public Acta getActa(String actaID, String empresaID) {
+		
+		return getActa(actaID, empresaID);
 	}
 
 }

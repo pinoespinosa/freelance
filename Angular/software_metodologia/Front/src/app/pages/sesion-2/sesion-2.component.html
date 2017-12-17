@@ -257,6 +257,9 @@ Tema:{{temaActual.id}} [ {{temaActual.detalle}} ] --- > Objetivo Est: {{temaActu
 
          <div class="row" style="align-items: center;padding-top: 35px;">
                <h4 style="margin-left: 15px;" >Tarea: {{tareaActual.detalle}}</h4>
+               <button (click)="showADD_TAREA=true" style="width: 40px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
+                  <img src="assets/add.png" style="width: 22px;" >
+               </button> 
 
          </div>
          <textarea *ngIf="tareasMostrar.length > 0" id="Texto Tarea" disabled class="form-control" rows="8" style="font-size: x-small;" placeholder="Agregar Comentario"
@@ -282,7 +285,7 @@ Resumen: {{tareaActual.detalle}}
 
          </div>
          <div style="text-align: center;margin-top: 20px;" >
-         <button (click)="checkAvanzarTareas()" type="button" class="btn"><b>Continuar</b></button>
+         <button (click)="avanzar()" type="button" class="btn"><b>Continuar</b></button>
          </div>
       </div>
       <div class="col-2" style="text-align: center;">

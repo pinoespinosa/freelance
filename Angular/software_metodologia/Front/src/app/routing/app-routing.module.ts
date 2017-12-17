@@ -11,6 +11,7 @@ import { ActaCompletaComponent }                from '../pages/acta-completa/act
 import { ConsultasComponent }                   from '../pages/consultas/consultas.component';
 import { ReunionesComponent }                   from '../pages/reuniones/reuniones.component';
 import { SesionComponent }                   	from '../pages/sesion/sesion.component';
+import { Sesion2Component }                   	from '../pages/sesion-2/sesion-2.component';
 
 import { LoginComponent }                   	from '../pages/login/login.component';
 import { HomeComponent }                   		from '../pages/home/home.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
 	{ path: 'consultas',			component: ConsultasComponent, 			data: {title: 'Home'}, canActivate: [AuthGuard]},
 	{ path: 'reuniones',			component: ReunionesComponent, 			data: {title: 'Home'}, canActivate: [AuthGuard]},
 	{ path: 'sesion',				component: SesionComponent, 			data: {title: 'Home'}, canActivate: [AuthGuard] },
+	{ path: 'sesion-2',				component: Sesion2Component, 			data: {title: 'Home'}, canActivate: [AuthGuard] },
 
 	{ path: 'acta-completa',		component: ActaCompletaComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard]},
 

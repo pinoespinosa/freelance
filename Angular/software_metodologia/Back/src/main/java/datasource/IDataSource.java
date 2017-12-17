@@ -71,10 +71,12 @@ public interface IDataSource {
 
 	Tema actaIsDone(String cuerpoColegiadoID, String empresaID, String actaID);
 
-	Tema actaIsDoneOk(String cuerpoColegiadoID, String empresaID, String actaID);
+	void actaIsDoneOk(String cuerpoColegiadoID, String empresaID, String actaID);
 
 	List<Tema> getTemaListConsulta(String cuerpoColegiadoID, String actaID, String empresaID);
 
 	Acta updatePaso(String cuerpoColegiadoID, String actaID, String empresaID, String string);
+
+	Acta getActa(String actaID, String empresaID);
 
 }

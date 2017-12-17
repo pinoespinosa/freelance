@@ -84,6 +84,12 @@ export class Service {
   }
 
 
+  getActa(actaID): Observable<Acta> {
+    var headers = new Headers();
+    headers.append('acces-token', localStorage.getItem('token'));
+    return this.http.get(this.server + 'api/acta/'+ actaID, { headers: headers }).map(this.extractData);
+  }
+
   getTemas(actaID): Observable<Tema[]> {
     var headers = new Headers();
     headers.append('acces-token', localStorage.getItem('token'));

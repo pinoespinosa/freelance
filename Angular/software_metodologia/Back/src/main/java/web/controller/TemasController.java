@@ -100,12 +100,12 @@ public class TemasController {
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "{actaID}/acta/isDone/ok", method = RequestMethod.GET)
-	public Tema actaIsDoneOk(
+	public void actaIsDoneOk(
 			@PathVariable final String actaID,
 			@RequestHeader("Acces-Token") String token) {
 		
 		String[] ccId = actaID.split("_")[1].split("-");
-		return dataSource.actaIsDoneOk(ccId[0] + "-" + ccId[1] ,Auth.getEmpresaID(token),actaID);
+		dataSource.actaIsDoneOk(ccId[0] + "-" + ccId[1] ,Auth.getEmpresaID(token),actaID);
 	}
 	
 	/**

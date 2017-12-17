@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild, Renderer2 } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute, NavigationExtras }           from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute }           from '@angular/router';
 import { trigger, state, style, animate, transition }      from '@angular/animations';
 import { Service }   			      						      from 'app/service';
 import { Client }               									from 'app/data-objects/cliente';
@@ -16,14 +16,14 @@ import { UsuarioActa }                            from 'app/data-objects/usuario
 
 
 @Component({
-  selector: 'sesion',
-  templateUrl: 'sesion.component.html',
+  selector: 'sesion-2',
+  templateUrl: 'sesion-2.component.html',
   animations: [
   ],
 })
 
 
-export class SesionComponent implements OnInit, OnDestroy  {
+export class Sesion2Component implements OnInit, OnDestroy  {
 
   paso = '0' ;
 	cuerpoColegiadoSelect: CuerpoColegiado;
@@ -64,7 +64,7 @@ export class SesionComponent implements OnInit, OnDestroy  {
 
   logo:string = "";
 
-queryString="";
+  queryString="";
 
 
 
@@ -73,6 +73,7 @@ queryString="";
 ){
 
   this.logo = localStorage.getItem('logo');
+  this.actaSelect = new Acta("","","","","", [], "",[],"","","","","","","","","","")
 
     let sub = this.route
       .queryParams
@@ -80,19 +81,24 @@ queryString="";
 
         result => {
           // Defaults to 0 if no query param provided.
-          this.cuerpoColegiadoSelectID = result['cc']
-
+          this.actaSelect.id = result['actaID']
+          this.actaSelect.finMenteGral = result['finMenteGral']
         }
 
       );
 
-		let loading = this.service.getActasCitadas().subscribe(
-      		response =>{ 
-        		this.actasCitadas = response;
-      		});
 
 
+    console.log("Holaa " + this.actaSelect.id)
+    this.updatePasoIntegrantes('4')
 
+    let ccID = this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1];
+
+    this.service.getActa(ccID).subscribe(
+          response =>{ 
+            this.actaSelect = response;
+
+          });
 
 }
 
@@ -289,9 +295,9 @@ clicActaNext(actaCombo):void{
     console.log("Tema " + tema)
     console.log(this.otrosCuColegiado)
 
-    let temaN = new Tema("","Abierto",tema,[],[],estrategia, indicador);
     let ccID = this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1];
 
+    let temaN = new Tema("","Abierto",tema,[],[],estrategia, indicador);
 
     let arreglo = [];
 
@@ -405,17 +411,13 @@ clicActaNext(actaCombo):void{
 
   checkAvanzarTareas():void{
 
-    let navigationExtras: NavigationExtras = {
-        queryParams: {
-            "actaID": this.actaSelect.id,
-            "finMenteGral": this.actaSelect.finMenteGral
-
-        }
-    };
-
-    this.router.navigate(['/sesion-2'],navigationExtras);
+    this.updatePaso('4');
+    this.service.checkAvanzarTareasOK(this.actaSelect.id).subscribe(
+      response =>{ }         
+    );
     
   }
+
 
   addComentarioTarea(com):void{
 
@@ -435,7 +437,6 @@ clicActaNext(actaCombo):void{
     this.service.updateActaIntegrantes(
         this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1], this.actaSelect.id, this.actaSelect).subscribe(
       response =>{ 
-          console.log(response);
           this.actaSelect = response;
 
         });
