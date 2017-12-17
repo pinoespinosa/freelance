@@ -236,7 +236,15 @@ selectActa(actaCombo):void{
 }
 
 update(a,b){
-a.check = b.checked;
+  console.log("------------ METHOD_UPDATE [INI]-------------");  
+  console.log(a);
+  console.log(b);
+  console.log("-------------------------");  
+  a.check = b.checked;
+  console.log(a);
+  console.log(b);
+  console.log("------------ METHOD_UPDATE [FIN]-------------");  
+
 }
 
 clicActaNext(actaCombo):void{
@@ -312,9 +320,10 @@ clicActaNext(actaCombo):void{
 
     let estrategia = this.estrategias[est.selectedIndex-1];
 
-    console.log("Tema " + tema)
+    console.log("CREAR_TEMA:");
     console.log(this.otrosCuColegiado)
-
+    console.log("Tema " + tema)
+ 
     let ccID = this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1];
 
     let temaN = new Tema("","Abierto",tema,[],[],estrategia, indicador);
@@ -322,7 +331,8 @@ clicActaNext(actaCombo):void{
     let arreglo = [];
 
     for (let aa of this.otrosCuColegiado) {
-      arreglo.push(aa.id);
+      if (aa.check)
+        arreglo.push(aa.id);
     }
 
 
