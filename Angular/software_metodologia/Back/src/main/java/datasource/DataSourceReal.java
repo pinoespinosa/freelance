@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 import data.Acta;
 import data.Auditoria;
@@ -107,6 +108,7 @@ public class DataSourceReal implements IDataSource {
 
 	void infoToFile(Object data, String filename) {
 		ObjectMapper mapper = new ObjectMapper();
+		mapper.enable(SerializationFeature.INDENT_OUTPUT);
 		try {
 
 			String s = "/home/pino/freelance/Angular/software_metodologia/Front/";

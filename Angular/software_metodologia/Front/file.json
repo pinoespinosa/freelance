@@ -1,1 +1,57 @@
-{"audit":[],"empresas":[{"id":"0","colegiados":[{"id":"0-0","nombre":"Comercial","prefijoDocs":"COM","actas":[],"temasId":[]},{"id":"0-1","nombre":"Gerencial","prefijoDocs":"GER","actas":[],"temasId":[]}],"temas":{},"nombreEmpresa":"Arcor","logoEmpresa":"https://staticaltmetric.s3.amazonaws.com/uploads/2015/10/dark-logo-for-site.png"}],"users":{"TBFSKQUXdTKJioHVCP84ww==":{"userID":"0","rol":"ADMINISTRADOR","nombre":"Andres Espinosa","email":"pino.espinosa91@gmail.com","logo":"http://brandmark.io/logo-rank/random/bp.png","empresaID":"0","empresaNombre":null,"ccList":["0-0","0-1"],"token":""},"ITnR1wTUWOEpxm+3GFSYhA==":{"userID":"1","rol":"ADMINISTRADOR","nombre":"Valentina Alfonso","email":"ae@qbkconsulting.com","logo":"http://brandmark.io/logo-rank/random/bp.png","empresaID":"0","empresaNombre":null,"ccList":["0-0","0-1"],"token":""},"VCwjyrlhutv3PzEJEjNUQw==":{"userID":"2","rol":"ADMINISTRADOR","nombre":"Fernando Echevarria","email":"andresespinosa91@hotmail.com","logo":"http://brandmark.io/logo-rank/random/bp.png","empresaID":"0","empresaNombre":null,"ccList":["0-0","0-1"],"token":""}}}
+{
+  "audit" : [ ],
+  "empresas" : [ {
+    "id" : "0",
+    "colegiados" : [ {
+      "id" : "0-0",
+      "nombre" : "Comercial",
+      "prefijoDocs" : "COM",
+      "actas" : [ ],
+      "temasId" : [ ]
+    }, {
+      "id" : "0-1",
+      "nombre" : "Gerencial",
+      "prefijoDocs" : "GER",
+      "actas" : [ ],
+      "temasId" : [ ]
+    } ],
+    "temas" : { },
+    "nombreEmpresa" : "Arcor",
+    "logoEmpresa" : "https://staticaltmetric.s3.amazonaws.com/uploads/2015/10/dark-logo-for-site.png"
+  } ],
+  "users" : {
+    "TBFSKQUXdTKJioHVCP84ww==" : {
+      "userID" : "0",
+      "rol" : "ADMINISTRADOR",
+      "nombre" : "Andres Espinosa",
+      "email" : "pino.espinosa91@gmail.com",
+      "logo" : "http://brandmark.io/logo-rank/random/bp.png",
+      "empresaID" : "0",
+      "empresaNombre" : null,
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : ""
+    },
+    "ITnR1wTUWOEpxm+3GFSYhA==" : {
+      "userID" : "1",
+      "rol" : "ADMINISTRADOR",
+      "nombre" : "Valentina Alfonso",
+      "email" : "ae@qbkconsulting.com",
+      "logo" : "http://brandmark.io/logo-rank/random/bp.png",
+      "empresaID" : "0",
+      "empresaNombre" : null,
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : ""
+    },
+    "VCwjyrlhutv3PzEJEjNUQw==" : {
+      "userID" : "2",
+      "rol" : "ADMINISTRADOR",
+      "nombre" : "Fernando Echevarria",
+      "email" : "andresespinosa91@hotmail.com",
+      "logo" : "http://brandmark.io/logo-rank/random/bp.png",
+      "empresaID" : "0",
+      "empresaNombre" : null,
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : ""
+    }
+  }
+}
