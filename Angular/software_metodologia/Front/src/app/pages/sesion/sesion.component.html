@@ -255,6 +255,7 @@ Tema:{{temaActual.id}} [ {{temaActual.detalle}} ] --- > Objetivo Est: {{temaActu
 
 <!-- ################################## Tareas ##################################  -->
 
+<div *ngIf="tareasMostrar.length > 0" >
          <div class="row" style="align-items: center;padding-top: 35px;">
                <h4 style="margin-left: 15px;" >Tarea: {{tareaActual.detalle}}</h4>
 
@@ -281,6 +282,9 @@ Resumen: {{tareaActual.detalle}}
             </div>
 
          </div>
+
+</div>
+
          <div style="text-align: center;margin-top: 20px;" >
          <button (click)="checkAvanzarTareas()" type="button" class="btn"><b>Continuar</b></button>
          </div>
