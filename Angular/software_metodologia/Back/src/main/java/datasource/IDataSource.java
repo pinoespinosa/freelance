@@ -79,4 +79,6 @@ public interface IDataSource {
 
 	Acta getActa(String actaID, String empresaID);
 
+	void readFromFile();
+
 }

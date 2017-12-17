@@ -46,7 +46,8 @@ public class DataSourceReal implements IDataSource {
 		updateFile();
 	}
 
-	void readFromFile() {
+	@Override
+	public void readFromFile() {
 		System.out.println("Current relative path is: " + Paths.get("").toAbsolutePath().toString());
 		ObjectMapper mapper = new ObjectMapper();
 

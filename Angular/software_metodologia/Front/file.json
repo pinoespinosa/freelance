@@ -6,7 +6,38 @@
       "id" : "0-0",
       "nombre" : "Comercial",
       "prefijoDocs" : "COM",
-      "actas" : [ ],
+      "actas" : [ {
+        "id" : "COM_0-0-0",
+        "numeroActa" : "COM0",
+        "fecha" : 1513531312728,
+        "fechaCierre" : 0,
+        "lugar" : "SUM",
+        "ciudad" : "Balcarce",
+        "paso" : "3",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "finEnMente" : "No lo lei",
+          "estado" : "Presente"
+        }, {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "finEnMente" : "Yo tampoco",
+          "estado" : "Presente"
+        } ],
+        "finMenteGral" : "Conocernos",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "03:22",
+        "fechaReunion" : "2017-11-29",
+        "horaFinal" : "03:22"
+      } ],
       "temasId" : [ ]
     }, {
       "id" : "0-1",
