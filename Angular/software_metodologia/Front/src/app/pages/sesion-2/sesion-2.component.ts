@@ -72,6 +72,20 @@ export class Sesion2Component implements OnInit, OnDestroy  {
   constructor(    private router: Router, private route : ActivatedRoute, private service: Service
 ){
 
+
+
+
+}
+
+
+  cleanAll(){
+
+      this.temasDelActa = [];
+
+
+  }
+
+	ngOnInit(): void {
   this.logo = localStorage.getItem('logo');
   this.actaSelect = new Acta("","","","","", [], "",[],"","","","","","","","","","")
 
@@ -110,20 +124,6 @@ export class Sesion2Component implements OnInit, OnDestroy  {
 
 
           });
-
-
-}
-
-
-  cleanAll(){
-
-      this.temasDelActa = [];
-
-
-  }
-
-	ngOnInit(): void {
-
 
 
 	};
