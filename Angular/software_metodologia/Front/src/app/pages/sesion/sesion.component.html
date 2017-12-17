@@ -55,22 +55,9 @@
 
 <!-- ###########################   AGREGAR USUARIO   ############################### -->
 <change-state [(visible)]="showADD_USUARIO">
-<h2 style="margin: 10px;margin-bottom: 20px;" >Crear una Tarea Nueva</h2>
-<div class="col-12" style="margin-bottom: 20px;">
-   <input #nuevaTarea type="text" class="form-control" placeholder="Definición" (change)="nuevaTareaSel = nuevaTarea.value">
-   <div style="display: flex;align-items: center;" >
-      <label>Responsable:</label> 
-      <select style="width: 100%;" #usuu class="dropdown-select" (change)="addUser(us)">
-      <option *ngFor="let usuario of integrantesPresentes()" >{{usuario.nombre}}</option>
-      </select>
-   </div>
-   <label style="margin: 0px;" >Fecha de entrega</label> 
-   <input type="date" #myDate (change)="fechaMostrar = myDate.value">
-</div>
+<h2 style="margin: 10px;margin-bottom: 20px;" >Crear un Nuevo Usuario</h2>
+
 <div class="row">
-   <div class="col-6"> 
-      <button [disabled]="fechaMostrar=='' || nuevaTareaSel == ''" (click)="showADD_USUARIO = !showADD_USUARIO" (click)="crearTarea(nuevaTarea.value, usuu, myDate)"  class="btn" style="width: 100%;background: #72C585" >Agregar</button>
-   </div>
    <div class="col-6"> 
       <button (click)="showADD_USUARIO = !showADD_USUARIO" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
    </div>
@@ -195,6 +182,7 @@
 </form>
 <form style="margin-top: 50px;" *ngIf="paso==3" class="form-horizontal" action='' method="POST">
    <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.id}} - [ {{actaSelect.finMenteGral}} ]</h5>
+
    <!-- ################################## Temas ##################################  -->
    <div  *ngIf="temasDelActa.length>0" class="row" >
       <div class="col-xl-2" style="text-align: center;">
@@ -224,32 +212,42 @@
                </div>
             </div>
          </div>
-         <!-- ################################## Tareas ##################################  -->
+         
+      <!-- ################################## Tareas ##################################  -->
 
-
-<div *ngIf="tareasMostrar.length > 0" >
-   <div class="row" style="align-items: center;padding-top: 35px;">
-      <h4 style="margin-left: 15px;" >Tarea: {{tareaActual.detalle}}</h4>
+<div class="row" style="align-items: center;padding-top: 35px;" >
+   <div  class="col-10" *ngIf="tareasMostrar.length > 0">
+      <h4 style="margin-left: 15px;"> Tarea: {{tareaActual.detalle}}</h4>
    </div>
-   <textarea *ngIf="tareasMostrar.length > 0" id="Texto Tarea" disabled class="form-control" rows="8" style="font-size: x-small;" placeholder="Agregar Comentario"
-      >Tarea:{{tareaActual.id}} [ Responsable: {{tareaActual.responsable?.nombre}} ]
+   <div  class="col-2" style="text-align: right;" *ngIf="tareasMostrar.length > 0" >
+      <button (click)="showADD_TAREA=true" style="width: 40px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
+      <img src="assets/add.png" style="width: 22px;" >
+      </button>            
+   </div>
+   <div class="col-12" style="display: inline-flex;align-items: center;" *ngIf="tareasMostrar.length == 0" >
+      <h4 style="margin-left: 15px;margin-right: 20px;" *ngIf="tareasMostrar.length == 0" >Agregar tarea</h4>
+      <button (click)="showADD_TAREA=true" style="width: 40px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
+      <img src="assets/add.png" style="width: 22px;" >
+      </button>            
+   </div>
+</div>
+<textarea *ngIf="tareasMostrar.length > 0" id="Texto Tarea" disabled class="form-control" rows="8" style="font-size: x-small;" placeholder="Agregar Comentario"
+   >Tarea:{{tareaActual.id}} [ Responsable: {{tareaActual.responsable?.nombre}} ]
 Estado: {{tareaActual.estado}}
 Resumen: {{tareaActual.detalle}}
 {{toString(tareaActual.eventos)}}</textarea>
-   <textarea *ngIf="tareasMostrar.length == 0" id="Texto Tarea" disabled class="form-control" rows="8" style="font-size: x-small;"></textarea>
-   <div class="row" style="align-items: center;">
-      <div class="col-8" style="padding-right: 0px;" >
-         <textarea #commentTarea class="form-control" rows="1" placeholder="Nuevo Comentario"
-         (keyup)="comentarioTarea=commentTema.value" 
-         (keydown)="comentarioTarea=commentTema.value" [disabled]="tareasMostrar.length == 0" ></textarea>
-      </div>
-      <div class="col-2" style="padding-right: 0px;" >
-         <button (click)="addComentarioTarea('Comentario del acta: ' + actaSelect.id +' - ' + commentTarea.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" [disabled]="tareaActual.estado != 'Abierto' || comentarioTarea=='' || tareasMostrar.length == 0" >Agregar Comentario</button>
-      </div>
-      <div class="col-2" >
-         <div style="text-align: center;" >         
-            <button (click)="closeTarea()" type="button" style="width: 100%;font-size: x-small;" class="btn" [disabled]="tareaActual.estado != 'Abierto'" >Cerrar Tarea</button>
-         </div>
+<div class="row" style="align-items: center;" *ngIf="tareasMostrar.length > 0" >
+   <div class="col-8" style="padding-right: 0px;" >
+      <textarea #commentTarea class="form-control" rows="1" placeholder="Nuevo Comentario"
+      (keyup)="comentarioTarea=commentTema.value" 
+      (keydown)="comentarioTarea=commentTema.value" [disabled]="tareasMostrar.length == 0" ></textarea>
+   </div>
+   <div class="col-2" style="padding-right: 0px;" >
+      <button (click)="addComentarioTarea(actaSelect.id +' - ' + commentTarea.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" [disabled]="tareaActual.estado != 'Abierto' || comentarioTarea=='' || tareasMostrar.length == 0" >Agregar Comentario</button>
+   </div>
+   <div class="col-2" >
+      <div style="text-align: center;" >         
+         <button (click)="closeTarea()" type="button" style="width: 100%;font-size: x-small;" class="btn" [disabled]="tareaActual.estado != 'Abierto'" >Cerrar Tarea</button>
       </div>
    </div>
 </div>

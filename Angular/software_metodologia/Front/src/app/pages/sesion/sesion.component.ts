@@ -344,7 +344,8 @@ clicActaNext(actaCombo):void{
     subscribe(
       response =>{ 
         this.temaActual=response;
-
+        console.log("------METHOD_CREAR_TAREA-----");
+        console.log(response);
         if (this.temaActual.tareas.length > 0){
           this.tareaActual = this.temaActual.tareas[0];
         } 
