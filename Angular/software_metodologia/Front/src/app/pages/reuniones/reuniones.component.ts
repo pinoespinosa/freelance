@@ -143,7 +143,7 @@ if (confirm("Esta a punto de crear una reunion y enviar las invitaciones. ¿Dese
     let loading = this.service.createActa(this.cuerpoColegiadoSelect.id, this.actaCreada).subscribe(
       response =>{ 
         this.actaCreada = response;
-        alert("Se ha creado la reunion Acta " + response.id + " y se han enviado las invitaciones.")
+        alert("Se ha creado la reunion Acta " + response.numeroActa + " y se han enviado las invitaciones.")
         this.router.navigateByUrl('/home');
       }         
     );

@@ -65,7 +65,7 @@
       <div class="col-4" >
          <select style="width: 100%;margin-top: 200px;" #clii class="dropdown-select" (change)="selectActa(clii)">
          <option disabled hidden [value]="empty">-- Seleccione el Acta --</option>
-         <option *ngFor="let actaCit of actasCitadas" >Acta {{actaCit.id}}</option>
+         <option *ngFor="let actaCit of actasCitadas" >Acta {{actaCit.numeroActa}}</option>
          </select>
          <button (click)="clicActaNext(clii)" [disabled]="actaSelect == null" type="button" class="btn"><b>Continuar</b></button>
       </div>
@@ -78,7 +78,7 @@
 
 
 <form style="margin-top: 200px;" *ngIf="paso==1" class="form-horizontal" action='' method="POST">
-   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.id}} - [ {{actaSelect.finMenteGral}} ]</h5>
+   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.numeroActa}} - [ {{actaSelect.finMenteGral}} ]</h5>
    <div class="row" >
       <div class="col-1" >
       </div>
@@ -150,7 +150,7 @@
 
 
 <form style="width: 100%;margin-top: 200px;" *ngIf="paso==2" class="form-horizontal" action='' method="POST">
-   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.id}} - [ {{actaSelect.finMenteGral}} ]</h5>
+   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.numeroActa}} - [ {{actaSelect.finMenteGral}} ]</h5>
    <div class="row" >
       <div class="col-6 offset-3" >
          Integrantes de la reunion seleccionados
@@ -194,7 +194,7 @@
 
 
 <form style="margin-top: 50px;" *ngIf="paso==3" class="form-horizontal" action='' method="POST">
-   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.id}} - [ {{actaSelect.finMenteGral}} ]</h5>
+   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.numeroActa}} - [ {{actaSelect.finMenteGral}} ]</h5>
 
 <!-- ################################## Temas ##################################  -->
    <div  *ngIf="temasDelActa.length>0" class="row" >
@@ -221,11 +221,11 @@
                (keydown)="comentarioTema=commentTema.value"></textarea>
             </div>
             <div class="col-2" style="padding-right: 0px;" >
-               <button [disabled]="comentarioTema == '' " (click)="addComentario('Comentario del acta: ' + actaSelect.id +' - ' + commentTema.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" >Agregar Comentario</button>
+               <button [disabled]="comentarioTema == '' " (click)="addComentario(actaSelect.numeroActa +' - ' + commentTema.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" >Agregar Comentario</button>
             </div>
             <div class="col-2" >
                <div style="text-align: center;" >         
-                  <button (click)="closeTema('Comentario del acta: ' + actaSelect.id +' - Se ha cerrado el tema' )" type="button" style="width: 100%;font-size: x-small;" class="btn">Cerrar Tema</button>
+                  <button (click)="closeTema(actaSelect.numeroActa +' - Se ha cerrado el tema' )" type="button" style="width: 100%;font-size: x-small;" class="btn">Cerrar Tema</button>
                </div>            
             </div>
 
@@ -237,7 +237,7 @@
 
 <div class="row" style="align-items: center;padding-top: 35px;" >
    <div  class="col-10" *ngIf="tareasMostrar.length > 0">
-      <h4 style="margin-left: 15px;"> Tarea: {{tareaActual.detalle}}</h4>
+      <h4> Tarea: {{tareaActual.detalle}}</h4>
    </div>
    <div  class="col-2" style="text-align: right;" *ngIf="tareasMostrar.length > 0" >
       <button (click)="showADD_TAREA=true" style="width: 40px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
@@ -253,17 +253,16 @@
 </div>
 <textarea *ngIf="tareasMostrar.length > 0" id="Texto Tarea" disabled class="form-control" rows="8" style="font-size: x-small;" placeholder="Agregar Comentario"
    >Tarea:{{tareaActual.id}} [ Responsable: {{tareaActual.responsable?.nombre}} ]
-Estado: {{tareaActual.estado}}
 Resumen: {{tareaActual.detalle}}
 {{toString(tareaActual.eventos)}}</textarea>
 <div class="row" style="align-items: center;" *ngIf="tareasMostrar.length > 0" >
    <div class="col-8" style="padding-right: 0px;" >
       <textarea #commentTarea class="form-control" rows="1" placeholder="Nuevo Comentario"
-      (keyup)="comentarioTarea=commentTema.value" 
-      (keydown)="comentarioTarea=commentTema.value" [disabled]="tareasMostrar.length == 0" ></textarea>
+      (keyup)="comentarioTarea=commentTarea.value" 
+      (keydown)="comentarioTarea=commentTarea.value"></textarea>
    </div>
    <div class="col-2" style="padding-right: 0px;" >
-      <button (click)="addComentarioTarea('Comentario del acta: ' + actaSelect.id +' - ' + commentTarea.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" [disabled]="tareaActual.estado != 'Abierto' || comentarioTarea=='' || tareasMostrar.length == 0" >Agregar Comentario</button>
+      <button (click)="addComentarioTarea(actaSelect.numeroActa +' - ' + commentTarea.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" [disabled]="tareaActual.estado != 'Abierto' || comentarioTarea == '' " >Agregar Comentario</button>
    </div>
    <div class="col-2" >
       <div style="text-align: center;" >         
@@ -271,7 +270,9 @@ Resumen: {{tareaActual.detalle}}
       </div>
    </div>
 </div>
-
+         <div style="text-align: center;margin-top: 20px;" >
+         <button (click)="avanzar()" type="button" class="btn"><b>Continuar</b></button>
+         </div>
 
 </div>
 
@@ -287,9 +288,7 @@ Resumen: {{tareaActual.detalle}}
 
 
 
-         <div style="text-align: center;margin-top: 20px;" >
-         <button (click)="avanzar()" type="button" class="btn"><b>Continuar</b></button>
-         </div>
+
       <div class="col-2" style="text-align: center;">
          <img [src]="logo" style="max-width: 175px;max-height: 150px;margin-top: -30px;" >  
       </div>
@@ -308,7 +307,7 @@ Resumen: {{tareaActual.detalle}}
 
 
 <form style="margin-top: 50px;" *ngIf="paso==4" class="form-horizontal" action='' method="POST">
-   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.id}} - [ {{actaSelect.finMenteGral}} ]</h5>
+   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.numeroActa}} - [ {{actaSelect.finMenteGral}} ]</h5>
    <div style="text-align: center;margin-top: 100px;" >
       ¿ Desea agregar un tema nuevo?
       <button (click)="showDialogAddCarre=true" (click)="paso='3'" (click)="cleanAll()" style="width: 40px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
@@ -324,7 +323,7 @@ Resumen: {{tareaActual.detalle}}
 
 
 <form style="margin-top: 50px;" *ngIf="paso==5" class="form-horizontal" action='' method="POST">
-   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.id}} - [ {{actaSelect.finMenteGral}} ]</h5>
+   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.numeroActa}} - [ {{actaSelect.finMenteGral}} ]</h5>
    <div style="text-align: center;margin: 100px;" >
       
 

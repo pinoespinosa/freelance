@@ -23,31 +23,31 @@ import { UsuarioActa }                            from 'app/data-objects/usuario
 })
 
 
-export class SesionComponent implements OnInit, OnDestroy  {
 
-  paso = '0' ;
-	cuerpoColegiadoSelect: CuerpoColegiado;
- 	cuerpoColegiadoSelectID = -1;
+
+export class SesionComponent implements OnInit, OnDestroy {
+
+  paso = '0';
+  cuerpoColegiadoSelect: CuerpoColegiado;
+  cuerpoColegiadoSelectID = -1;
 
   otrosCuColegiado: CuerpoColegiadoSelect[];
 
-  comentarioTema : string = ''
-  comentarioTarea : string = ''
+  comentarioTema: string = ''
+  comentarioTarea: string = ''
 
   actasCitadas: Acta[] = [];
   actaSelect: Acta = null;
 
   temasDelActa: Tema[] = [];
-  temaActual: Tema = new Tema("","","",[],[],"","");
-  
+  temaActual: Tema = new Tema("", "", "", [], [], "", "");
+
   fechaMostrar = '';
-  nuevaTareaSel ='';
+  nuevaTareaSel = '';
 
   tareasMostrar: Tarea[] = [];
 
-  tareaActual: Tarea = new Tarea("","","",[],null);
-
-  tareasFiltro = "Todas";
+  tareaActual: Tarea = new Tarea("", "", "", [], null);
 
   indice = 0;
   indiceTAREA = 0;
@@ -55,108 +55,69 @@ export class SesionComponent implements OnInit, OnDestroy  {
   estadosUsuario = ["Presente", "Ausente", "Remoto"];
 
   estrategias = ["Estrategia1", "Estratagia2", "Estrategia3"];
-  usuarios : Usuario[];
+  usuarios: Usuario[];
+
+  hayCommentTarea : boolean = false;
+  hayCommentTema : boolean = false;
 
 
-  showDialogAddCarre=false;
-  showADD_TAREA=false;
-  showADD_USUARIO=false;
+  showDialogAddCarre = false;
+  showADD_TAREA = false;
+  showADD_USUARIO = false;
 
-  logo:string = "";
+  logo: string = "";
 
-queryString="";
-
-
+  queryString = "";
 
 
-  constructor(    private router: Router, private route : ActivatedRoute, private service: Service
-){
+  constructor(private router: Router, private route: ActivatedRoute, private service: Service) {
 
-  this.logo = localStorage.getItem('logo');
+    this.logo = localStorage.getItem('logo');
 
-    let sub = this.route
-      .queryParams
-      .subscribe(
-
-        result => {
-          // Defaults to 0 if no query param provided.
-          this.cuerpoColegiadoSelectID = result['cc']
-
-        }
-
-      );
-
-		let loading = this.service.getActasCitadas().subscribe(
-      		response =>{ 
-        		this.actasCitadas = response;
-      		});
+    let loading = this.service.getActasCitadas().subscribe(
+      response => {
+        this.actasCitadas = response;
+      });
 
 
+  }
+
+  ngOnInit(): void {
 
 
-}
-
-	ngOnInit(): void {
-
-
-
-	};
-
-  ngOnDestroy(): void {
   };
 
+  ngOnDestroy(): void {};
 
-  indiceTemaMas(){
-    if (this.indice < this.temasDelActa.length -1){
-      this.indice = this.indice +1;
+
+  indiceTemaMas() {
+    if (this.indice < this.temasDelActa.length - 1) {
+      this.indice = this.indice + 1;
       this.temaActual = this.temasDelActa[this.indice]
       this.updateTareas();
-      console.log("tema ok")
+      console.log("METHOD_TEMA_MAS")
+      console.log("Indice tema " + this.indice)
+      console.log("Total temas " + (this.temasDelActa.length - 1))
       return true;
     }
     return false;
 
   }
 
-  indiceTemaMenos(){
-    if (this.indice > 0 ){
-      this.indice = this.indice -1;
-      this.temaActual = this.temasDelActa[this.indice]
-      this.updateTareas();
-      return true;
-    }
-    return false;
-
-
-  }
-
-
-  indiceTareaMas(){
-    if (this.indiceTAREA < this.tareasMostrar.length -1){
-      this.indiceTAREA = this.indiceTAREA +1;
+  indiceTareaMas() {
+    if (this.indiceTAREA < this.tareasMostrar.length - 1) {
+      this.indiceTAREA = this.indiceTAREA + 1;
       this.tareaActual = this.tareasMostrar[this.indiceTAREA];
       console.log("tarea ok")
-       return true;
-    }
-    return false;
-
-  }
-
-  indiceTareaMenos(){
-    if (this.indiceTAREA > 0 ){
-        this.indiceTAREA = this.indiceTAREA -1;
-        this.tareaActual = this.tareasMostrar[this.indiceTAREA];
-        return true;
+      return true;
     }
     return false;
 
   }
 
 
+  integrantesConEstado() {
 
-
-  integrantesConEstado(){
-  
     let esta = false;
     for (let aa of this.actaSelect.integrantes) {
       if (!aa.estado)
@@ -165,129 +126,125 @@ queryString="";
     return esta;
   }
 
-removeUser(user):void{
+  removeUser(user): void {
 
-  let nuevo: UsuarioActa[]=[];
-  let asiiii : Usuario =  user;
+    let nuevo: UsuarioActa[] = [];
+    let asiiii: Usuario = user;
 
-  let esta:boolean = false;
-  for (let aa of this.actaSelect.integrantes) {
-    if (aa.userID != asiiii.userID)
-      nuevo.push(aa);
+    let esta: boolean = false;
+    for (let aa of this.actaSelect.integrantes) {
+      if (aa.userID != asiiii.userID)
+        nuevo.push(aa);
+    }
+
+    this.actaSelect.integrantes = nuevo;
+
   }
-  
-  this.actaSelect.integrantes = nuevo;
-
-}
 
 
- integrantesPresentes():UsuarioActa[]{
-  
-  let mm : UsuarioActa[] = []; 
+  integrantesPresentes(): UsuarioActa[] {
 
-  if (!this.actaSelect)
+    let mm: UsuarioActa[] = [];
+
+    if (!this.actaSelect)
+      return mm;
+
+    if (!this.actaSelect.integrantes)
+      return mm;
+
+    for (let aa of this.actaSelect.integrantes) {
+      if (aa.estado == 'Presente')
+        mm.push(aa)
+    }
     return mm;
-
-  if (!this.actaSelect.integrantes)
-    return mm;
-
-  for (let aa of this.actaSelect.integrantes) {
-    if (aa.estado == 'Presente')
-      mm.push(aa)
   }
-  return mm;
-}
 
 
+  selectActa(actaCombo): void {
+    this.actaSelect = this.actasCitadas[actaCombo.selectedIndex - 1];
+
+  }
+
+  update(a, b) {
+    a.check = b.checked;
+  }
+
+  clicActaNext(actaCombo): void {
+
+    this.actaSelect = this.actasCitadas[actaCombo.selectedIndex - 1];
+
+    this.paso = this.actaSelect.paso;
+    if (+this.actaSelect.paso <= 0)
+      this.updatePaso('1');
 
 
-selectActa(actaCombo):void{
-      this.actaSelect = this.actasCitadas[actaCombo.selectedIndex-1];
-
-}
-
-update(a,b){
-a.check = b.checked;
-}
-
-clicActaNext(actaCombo):void{
-
-      this.actaSelect = this.actasCitadas[actaCombo.selectedIndex-1];
-      
-      this.paso = this.actaSelect.paso;
-      if ( +this.actaSelect.paso <= 0)
-        this.updatePaso('1');
-
-
-      this.service.getUsuariosConActa(this.actaSelect.id).subscribe(
-      response =>{ 
+    this.service.getUsuariosConActa(this.actaSelect.id).subscribe(
+      response => {
         this.usuarios = response;
-      }         
+      }
     );
 
     this.service.getTemas(this.actaSelect.id).subscribe(
-      response =>{ 
+      response => {
         this.temasDelActa = response;
         this.temasDelActa.sort((a, b) => {
-        if ( (+a.id) < (+b.id) ) 
-          return 1;
-        else 
-          if ((+a.id) > (+b.id) ) 
-            return -1 ;
-          else 
+          if ((+a.id) < (+b.id))
+            return 1;
+          else
+          if ((+a.id) > (+b.id))
+            return -1;
+          else
             return 0;
-    });
-        if(response.length>0){
+        });
+        if (response.length > 0) {
           this.temaActual = response[0];
-          this.indice=0;
-        }
-        else
-          this.indice=-1;
+          this.indice = 0;
+        } else
+          this.indice = -1;
 
         this.updateTareas();
       });
 
-    
-      let ccID = this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1];
+
+    let ccID = this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1];
 
     this.service.getOtrosCuerposColegiado(ccID).subscribe(
-          response =>{ 
-            this.otrosCuColegiado = response;
+      response => {
+        this.otrosCuColegiado = response;
 
 
+        for (let aa of this.otrosCuColegiado) {
+          aa.check = false;
+        }
 
-  for (let aa of this.otrosCuColegiado) {
-    aa.check = false;
+      });
+
   }
 
-          });
+  addUser(user): void {
 
-}
+    let asiiii: Usuario = user;
 
-	addUser(user):void{
+    let esta: boolean = false;
+    for (let aa of this.actaSelect.integrantes) {
+      if (aa.userID == asiiii.userID)
+        esta = true;
+    }
 
-  let asiiii : Usuario =  user;
-
-  let esta:boolean = false;
-  for (let aa of this.actaSelect.integrantes) {
-    if (aa.userID == asiiii.userID)
-      esta = true;
+    if (!esta) {
+      this.actaSelect.integrantes.push(new UsuarioActa(asiiii.userID, asiiii.nombre, "", "", ""));
+    }
   }
-  
-  if (!esta){
-    this.actaSelect.integrantes.push(new UsuarioActa(asiiii.userID, asiiii.nombre, "","",""));
-  }
-}
 
-  crearTema(tema, indicador, est):void{
+  crearTema(tema, indicador, est): void {
 
-    let estrategia = this.estrategias[est.selectedIndex-1];
+    let estrategia = this.estrategias[est.selectedIndex - 1];
 
     console.log("Tema " + tema)
     console.log(this.otrosCuColegiado)
 
-    let temaN = new Tema("","Abierto",tema,[],[],estrategia, indicador);
-    let ccID = this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1];
+    let temaN = new Tema("", "Abierto", tema, [], [], estrategia, indicador);
+    let ccID = this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1];
 
 
     let arreglo = [];
@@ -297,299 +254,284 @@ clicActaNext(actaCombo):void{
     }
 
 
-
-    let loading = 
-    this.service.createTema(ccID, temaN,this.actaSelect.id, arreglo).
+    let loading =
+      this.service.createTema(ccID, temaN, this.actaSelect.id, arreglo).
     subscribe(
-      response =>{ 
+      response => {
         this.temasDelActa.unshift(response);
 
         this.temasDelActa.sort((a, b) => {
-        if ( (+a.id) < (+b.id) ) 
-          return 1;
-        else 
-          if ((+a.id) > (+b.id) ) 
-            return -1 ;
-          else 
+          if ((+a.id) < (+b.id))
+            return 1;
+          else
+          if ((+a.id) > (+b.id))
+            return -1;
+          else
             return 0;
-    });
+        });
 
 
-        this.temaActual=response;
+        this.temaActual = response;
         alert("Se ha creado un nuevo tema")
-      }         
+      }
     );
 
   }
 
-  crearTarea(tarea, responsable, fecha):void{
+  crearTarea(tarea, responsable, fecha): void {
 
     console.log(responsable)
     console.log(responsable.selectedIndex)
 
-    let aux : Usuario[] = this.integrantesPresentes();
+    let aux: Usuario[] = this.integrantesPresentes();
 
-    let respon : Usuario =  aux[responsable.selectedIndex];
+    let respon: Usuario = aux[responsable.selectedIndex];
 
 
+    let mmmm: UsuarioActa = new UsuarioActa(respon.userID, respon.nombre, "", "Presente", "");
 
-    let mmmm : UsuarioActa = new UsuarioActa(respon.userID, respon.nombre, "","Presente","");
+    let tareaN = new Tarea("", "Abierto", tarea, [], mmmm);
 
-    let tareaN = new Tarea("","Abierto",tarea,[],mmmm);
+    let ccID = this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1];
 
-    let ccID = this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1];
-
-    let loading = 
-    this.service.crearTarea(ccID,this.temaActual.id, tareaN).
+    let loading =
+      this.service.crearTarea(ccID, this.temaActual.id, tareaN).
     subscribe(
-      response =>{ 
-        this.temaActual=response;
+      response => {
+        this.temaActual = response;
         console.log("------METHOD_CREAR_TAREA-----");
         console.log(response);
-        if (this.temaActual.tareas.length > 0){
+        if (this.temaActual.tareas.length > 0) {
           this.tareaActual = this.temaActual.tareas[0];
-        } 
-        else{
-          this.tareaActual = new Tarea("","","",[],null);
+        } else {
+          this.tareaActual = new Tarea("", "", "", [], null);
         }
 
         this.updateTareas();
 
         alert("Se ha creado un nueva tarea")
-      }         
+      }
     );
 
   }
 
 
-  toStringTema(array){
+  toStringTema(array) {
 
-  let ff='\n\n';
+    let ff = '\n\n';
 
-  for (let aa of array) {
+    for (let aa of array) {
 
-  ff = ff + aa.texto + '\n'
+      ff = ff + aa.texto + '\n'
 
-  }
-
-    return ff;
-  }
-
-
-  toString(array){
-
-  let ff='\n';
-
-  for (let aa of array) {
-
-  ff = ff + aa + '\n'
-
-  }
+    }
 
     return ff;
   }
-  addComentario(com):void{
 
-    if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")){
+
+  toString(array) {
+
+    let ff = '\n';
+
+    for (let aa of array) {
+
+      ff = ff + aa + '\n'
+
+    }
+
+    return ff;
+  }
+  addComentario(com): void {
+
+    if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
       this.service.createComentario(
-        this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1], this.temaActual.id, com).subscribe(
-          response =>{ 
-            this.temaActual = response;
-          }         
-        );
+        this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, com).subscribe(
+        response => {
+          this.temaActual = response;
+        }
+      );
+      this.hayCommentTema = true;
     }
   }
 
 
-  checkAvanzarTareas():void{
+  checkAvanzarTareas(): void {
 
+    console.log("METHOD_AVANZAR_TAREA");
     let navigationExtras: NavigationExtras = {
-        queryParams: {
-            "actaID": this.actaSelect.id
-        }
+      queryParams: {
+        "actaID": this.actaSelect.id
+      }
     };
     this.updatePaso('4');
 
-    this.router.navigate(['/sesion-2'],navigationExtras);
-    
+    this.router.navigate(['/sesion-2'], navigationExtras);
+
   }
 
-  addComentarioTarea(com):void{
+  addComentarioTarea(com): void {
 
-    if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")){
+    if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
       this.service.createComentarioTarea(
-        this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1], this.temaActual.id, this.tareaActual.id, com).subscribe(
-          response =>{ 
-            this.tareaActual = response;
-          }         
-        );
+        this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, this.tareaActual.id, com).subscribe(
+        response => {
+          this.tareaActual = response;
+        }
+      );
+      this.hayCommentTarea = true;
     }
   }
 
-  updatePasoIntegrantes(paso):void{
+  updatePasoIntegrantes(paso): void {
 
 
     this.service.updateActaIntegrantes(
-        this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1], this.actaSelect.id, this.actaSelect).subscribe(
-      response =>{ 
-          console.log(response);
-          this.actaSelect = response;
+      this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.actaSelect.id, this.actaSelect).subscribe(
+      response => {
+        console.log(response);
+        this.actaSelect = response;
 
-        });
+      });
 
     this.updatePaso(paso);
   }
 
 
-  updatePaso(paso):void{
+  updatePaso(paso): void {
 
     this.service.updateActaPaso(
-        this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1], this.actaSelect.id, paso).subscribe(
-      response =>{ 
-          console.log(response);
-          this.actaSelect = response;
-          this.paso = paso;
+      this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.actaSelect.id, paso).subscribe(
+      response => {
+        console.log(response);
+        this.actaSelect = response;
+        this.paso = paso;
 
-        });
+      });
 
   }
 
-  closeTarea():void{
+  closeTarea(): void {
 
-    if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")){
-      
+    if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
+
       this.service.closeTarea(
-        this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1], this.temaActual.id, 
-        this.tareaActual.id, 
+        this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id,
+        this.tareaActual.id,
         this.actaSelect.id).subscribe(
-          response =>{ 
+        response => {
 
-            this.service.getTemas(this.actaSelect.id).subscribe(
-            response =>{ 
+          this.service.getTemas(this.actaSelect.id).subscribe(
+            response => {
               this.temasDelActa = response;
-              if(response.length>0){
+              if (response.length > 0) {
                 this.temaActual = response[0];
-                this.indice=0;
-              }
-              else
-                this.indice=-1;
-    
+                this.indice = 0;
+              } else
+                this.indice = -1;
+
               this.updateTareas();
-          });
+            });
 
-          }         
-        );
+        }
+      );
 
-    
+
+    }
+
+
+  }
+
+
+  avanzar() {
+
+    let done : boolean = false;
+
+    if (this.tareasMostrar.length != 0)
+      if (this.hayCommentTarea || confirm("Avanzar Tarea?")){
+        done = this.indiceTareaMas();
+        this.hayCommentTarea = false;
+      }
+
+    if (!done && (this.hayCommentTema || confirm("Avanzar Tema?"))){
+      this.hayCommentTema = false;
+
+      if (!this.indiceTemaMas()){
+        this.checkAvanzarTareas();
+      }
     }
 
 
 
-  }
+}
 
-
-  avanzar(){
-
-    if (!this.indiceTareaMas())
-      if (!this.indiceTemaMas())
-        this.checkAvanzarTareas();
-
-  }
-
-
-
-
-
-
-
-  updateTareas(){
+  updateTareas() {
     this.tareasMostrar = [];
     for (let aa of this.temaActual.tareas) {
-
-      if (this.tareasFiltro=="Todas")
-        this.tareasMostrar.push(aa);
-      else{
-        if (aa.estado == this.tareasFiltro)
+        if (aa.estado == "Abierto" || aa.estado == "Abierta")
           this.tareasMostrar.push(aa);
-        }
     }
 
-        this.tareasMostrar.sort((a, b) => {
-        if ( (+a.id) < (+b.id) ) 
-          return 1;
-        else 
-          if ((+a.id) > (+b.id) ) 
-            return -1 ;
-          else 
-            return 0;
+    this.tareasMostrar.sort((a, b) => {
+      if ((+a.id) < (+b.id))
+        return 1;
+      else
+      if ((+a.id) > (+b.id))
+        return -1;
+      else
+        return 0;
     });
 
 
-    if (this.tareasMostrar.length > 0){
+    if (this.tareasMostrar.length > 0) {
       this.tareaActual = this.tareasMostrar[0];
       this.indiceTAREA = 0;
 
 
-    } 
-    else{
-      this.tareaActual = new Tarea("","","",[],null);
+    } else {
+      this.tareaActual = new Tarea("", "", "", [], null);
       this.indiceTAREA = -1;
     }
 
   }
 
-  updateFiltro(valor){
+  closeTema(com): void {
 
-    this.tareasFiltro = valor;
-    this.updateTareas();
-
-  }
-
-  closeActa(){
-
-
-  alert('Se enviará un email con las minutas del acta y el resumen por PDF de la misma');
-  }
-
-
-  closeTema(com):void{
-
-    let tareasAbiertas : boolean = false;
+    let tareasAbiertas: boolean = false;
     for (let aa of this.temaActual.tareas) {
-        if (aa.estado == 'Abierto')
-          tareasAbiertas = true;
-        }
-    
+      if (aa.estado == 'Abierto')
+        tareasAbiertas = true;
+    }
+
 
     if (tareasAbiertas)
-        alert("No se puede cerrar porque existen tareas abiertas.")
-    else
-{
-    if (confirm("Esta a punto de cerrar un tema. ¿Desea continuar?")){
-      this.service.closeTema(
-        this.actaSelect.id.split('-')[0].split('_')[1]+'-'+this.actaSelect.id.split('-')[1], this.temaActual.id, com).subscribe(
-          response =>{ 
+      alert("No se puede cerrar porque existen tareas abiertas.")
+    else {
+      if (confirm("Esta a punto de cerrar un tema. ¿Desea continuar?")) {
+        this.service.closeTema(
+          this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, com).subscribe(
+          response => {
 
             this.service.getTemas(this.actaSelect.id).subscribe(
-              response =>{ 
+              response => {
                 this.temasDelActa = response;
-                if(response.length>0){
+                if (response.length > 0) {
                   this.temaActual = response[0];
-                  this.indice=0;
-                }
-                else
-                  this.indice=-1;
+                  this.indice = 0;
+                } else
+                  this.indice = -1;
 
                 this.updateTareas();
-      });
+              });
 
-          }         
+          }
         );
+      }
+
+
     }
 
 
   }
-
-	
 }
- }
+
