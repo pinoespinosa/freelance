@@ -547,10 +547,20 @@ export class Sesion2Component implements OnInit, OnDestroy {
 
   closeActa() {
 
-
+    console.log(this.actaSelect);
     alert('Se enviará un email con las minutas del acta y el resumen por PDF de la misma');
   }
 
+
+  esDone() : boolean {
+    return  this.actaSelect.seCumpliofinEnMente.length == 0 || 
+            this.actaSelect.elTiempoFueSuficiente.length == 0 || 
+            this.actaSelect.huboInconvenientes.length == 0 || 
+            this.actaSelect.tieneSugerencias.length == 0 || 
+            this.actaSelect.redaccionDeTareasOk.length == 0 ;
+
+
+  }
 
   closeTema(com): void {
 

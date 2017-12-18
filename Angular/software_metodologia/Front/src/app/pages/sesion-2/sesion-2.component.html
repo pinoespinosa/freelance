@@ -322,23 +322,28 @@ Resumen: {{tareaActual.detalle}}
 
 
 
+
+
 <form style="margin-top: 50px;" *ngIf="paso==5" class="form-horizontal" action='' method="POST">
    <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.numeroActa}} - [ {{actaSelect.finMenteGral}} ]</h5>
-   <div style="text-align: center;margin: 100px;" >
-      
+   <div style="margin: 40px;" >
 
-      <textarea (dblclick)="showDialogAddCarre=true" class="form-control" rows="4" id="comment" placeholder="Comentarios Adicionales"></textarea>
-      <input #fin (change)="asistente.finEnMente=fin.value" type="text" class="form-control" placeholder="¿Se cumplió el fin en mente de la reunión?">
-      <input #fin (change)="asistente.finEnMente=fin.value" type="text" class="form-control" placeholder="¿Fue suficiente el tiempo utilizado en la reunión? ">
-      <input #fin (change)="asistente.finEnMente=fin.value" type="text" class="form-control" placeholder="¿Tuvo algún inconveniente en la reunión?">
-      <input #fin (change)="asistente.finEnMente=fin.value" type="text" class="form-control" placeholder="¿Tiene alguna sugerencia sobre la reunión o sus participantes?">
-      <input #fin (change)="asistente.finEnMente=fin.value" type="text" class="form-control" placeholder="¿La redacción de las tareas nuevas fue aprobada por quién es
-responsable de la tarea?">
+      <input type="checkbox" [indeterminate]="true" [(ngModel)]="actaSelect.seCumpliofinEnMente"   [ngModelOptions]="{standalone: true}"> ¿Se cumplió el fin en mente de la reunión?<br>
+      <input type="checkbox" [indeterminate]="true" [(ngModel)]="actaSelect.elTiempoFueSuficiente" [ngModelOptions]="{standalone: true}"> ¿Fue suficiente el tiempo utilizado en la reunión?<br>
+      <input type="checkbox" [indeterminate]="true" [(ngModel)]="actaSelect.huboInconvenientes"    [ngModelOptions]="{standalone: true}"> ¿Tuvo algún inconveniente en la reunión?<br>
+      <input type="checkbox" [indeterminate]="true" [(ngModel)]="actaSelect.tieneSugerencias"      [ngModelOptions]="{standalone: true}"> ¿Tiene alguna sugerencia sobre la reunión o sus participantes?<br>
+      <input type="checkbox" [indeterminate]="true" [(ngModel)]="actaSelect.redaccionDeTareasOk"   [ngModelOptions]="{standalone: true}"> ¿La redacción de las tareas nuevas fue aprobada por quién es responsable de la tarea?"<br>
+      
+      <textarea style="margin-top: 40px;" (dblclick)="showDialogAddCarre=true" class="form-control" rows="4" id="comment" placeholder="Comentarios Adicionales"></textarea>
    </div>
    <div style="text-align: center;" >
-      <button (click)="closeActa()" type="button" class="btn"><b>Finalizar</b></button>
+      <button type="button" class="btn" 
+      [disabled]="esDone()" 
+      (click)="closeActa()" ><b>Finalizar</b></button>
    </div>
 </form>
+
+
 
 
 
