@@ -1,6 +1,6 @@
 <?php
 
-define("GSMARENA_FILE_PATH", "");
+define("GSMARENA_FILE_PATH", "file_GSMARENA.xml");
 define("PHONERARENA_FILE_PATH", "file_PHONERARENA.xml");
 define("DEVICESPECIFICATIONS_FILE_PATH", "file_DEVICESPECIFICATIONS.xml");
 define("WHISLEOUT_FILE_PATH", "file_WHISLEOUT.xml");

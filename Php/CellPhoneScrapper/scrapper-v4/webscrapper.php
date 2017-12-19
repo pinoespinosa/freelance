@@ -42,7 +42,9 @@ set_error_handler("exception_error_handler");
 
 
 if(isset($_POST["submit1"])) {
-    print 'Under construction ...';
+    $file1 = fopen( GSMARENA_FILE_PATH , "w") or die("Unable to open file!");
+    invokeGsmarena($file1);
+    fclose($file1);
 }
 
 if(isset($_POST["submit2"])) {
