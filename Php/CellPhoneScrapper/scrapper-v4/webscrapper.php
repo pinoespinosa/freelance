@@ -2,7 +2,7 @@
 <html>
 <body>
 <form action="webscrapper.php" method="post" enctype="multipart/form-data"  >   
-    <input type="submit" value="Start scan gsmarena" name="submit1" style="width: 300px;" ><br>
+    <input type="submit" value="Start scan gsmarena --> Done" name="submit1" style="width: 300px;" ><br>
     <input type="submit" value="Start scan phonearena --> Done" name="submit2" style="width: 300px;" ><br>
     <input type="submit" value="Start scan devicespecifications --> Done" name="submit3" style="width: 300px;" ><br>
     <input type="submit" value="Start scan whistleout --> Done" name="submit4" style="width: 300px;">
@@ -20,6 +20,7 @@
 include 'configFile.php';
 
 include 'printerXML.php';
+include 'data_gsmarenaData.php';
 include 'data_phoneData.php';
 include 'data_whistleoutData.php';
 include 'data_devicespecifications.php';
