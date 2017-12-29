@@ -41,7 +41,7 @@ public class DataSourceReal implements IDataSource {
 		readFromFile();
 	}
 
-	void readFromFile() {
+	synchronized void readFromFile() {
 		System.out.println("Current relative path is: " + Paths.get("").toAbsolutePath().toString());
 		ObjectMapper mapper = new ObjectMapper();
 		try {
@@ -51,7 +51,7 @@ public class DataSourceReal implements IDataSource {
 		}
 	}
 
-	void infoToFile(Object data, String filename) {
+	synchronized void infoToFile(Object data, String filename) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			mapper.writeValue(new File(filename), data);
