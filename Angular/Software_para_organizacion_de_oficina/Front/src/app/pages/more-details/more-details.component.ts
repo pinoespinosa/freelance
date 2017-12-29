@@ -22,7 +22,7 @@ export class MoreDetailsComponent implements OnInit  {
 	cliente : Client = new Client("", "", "" , "", "", "", "", "", "", true, null);
 
 	trabajoID = ''
-  trabajo : Trabajo = new Trabajo("","","","", "","","","", "","","",null,null )
+  trabajo : Trabajo = new Trabajo("","","","", "","","","", "","","","",null,null )
 
 
   constructor(private router: Router, private route : ActivatedRoute, private service: Service) {

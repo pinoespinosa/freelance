@@ -133,7 +133,7 @@ getOpacity(elem){
     this.requerimientos.push(new Requerimiento(req, "", ""))
   }
 
-  do(fecha, tema, univer, carrera, asesor, lugar, fecha_entrega, monto, conti){
+  do(fecha, tema, univer, carrera, asesor, lugar, fecha_entrega, monto, conti, notas){
 		
 
 		if (!this.field_nombre){
@@ -173,7 +173,7 @@ getOpacity(elem){
       estado = 'Listo por revisar'
     }
 
-    let trab = new Trabajo("",  "",tema, univer , carrera,asesor, lugar, estado, fecha_entrega, monto, monto, this.requerimientos, null);
+    let trab = new Trabajo("",  "",tema, univer , carrera,asesor, lugar, estado, fecha_entrega, monto, monto, notas, this.requerimientos, null);
 
     let loading = this.service.crearTrabajo(this.cliSelect.id,trab).subscribe(
       response => {

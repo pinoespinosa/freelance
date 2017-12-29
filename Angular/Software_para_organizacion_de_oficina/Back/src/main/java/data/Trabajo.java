@@ -20,6 +20,9 @@ public class Trabajo {
 
 	private String monto;
 	private String saldo;
+
+	private String notas;
+
 	
 	private List<Requerimiento> requerimientos;
 	private List<Pago> pagos;
@@ -182,6 +185,14 @@ public class Trabajo {
 		System.out.println();
 		return String.join("\";\"", list) + "\";" + tex + tex2;
 				
+	}
+
+	public String getNotas() {
+		return notas;
+	}
+
+	public void setNotas(String notas) {
+		this.notas = notas;
 	}
 
 }

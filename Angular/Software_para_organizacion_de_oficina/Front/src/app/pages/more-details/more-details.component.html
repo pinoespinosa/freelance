@@ -236,6 +236,21 @@
       </div> 
    </div>  
 
+
+   <div class="row details-data-row">
+      <div class="col-4">
+         <div class="detail-title">Notas</div>
+         <textarea 
+            #notas
+            type="text" 
+            class="form-control" 
+            placeholder="Notas" 
+            value="{{trabajo.notas}}" 
+            [disabled]="buttonState()" 
+            (change)="addMasDetalleTrabajo('notas', notas.value)"> </textarea> 
+      </div>
+   </div>  
+
     <div class="row" style="margin-top: 40px;" > 
       <div class="col-4" style="padding: 10px;padding-left: 40px;display: flex;" >
          <b>Requerimientos</b>

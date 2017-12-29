@@ -25,7 +25,7 @@ export class RegisterPaymentComponent implements OnInit  {
 	clientes :Client[];
 	nuevoPago: Pago = new Pago("","","1234","","")
 	trabajoID = ''
-	trabajo : Trabajo = new Trabajo("","","","", "","","","", "","","",null,null )
+	trabajo : Trabajo = new Trabajo("","","","", "","","","", "","","","",null,null )
 
 	valorValue: number = 0;
 	valorSinIva: number = 0;

@@ -19,6 +19,8 @@ export class Trabajo {
 
     public monto: string,
     public saldo: string,
+
+    public notas: string,
     
     public requerimientos: Requerimiento[],
     public pagos: Pago[]

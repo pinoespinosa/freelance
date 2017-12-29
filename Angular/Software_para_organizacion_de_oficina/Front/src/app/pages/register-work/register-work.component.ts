@@ -71,7 +71,7 @@ export class RegisterWorkComponent implements OnInit  {
     this.requerimientos.push(new Requerimiento(req, "", ""))
   }
 
-  do(fecha, tema, univer, carrera, asesor, lugar, fecha_entrega, monto, conti){
+  do(fecha, tema, univer, carrera, asesor, lugar, fecha_entrega, monto, conti, notas){
     if (!this.cliSelect){
       alert("Debe seleccionar un cliente para crear el trabajo")
       return;
@@ -95,7 +95,7 @@ export class RegisterWorkComponent implements OnInit  {
       estado = 'Listo por revisar'
     }
 
-    let trab = new Trabajo("",  "",tema, univer , carrera,asesor, lugar, estado, fecha_entrega, monto, monto, this.requerimientos, null);
+    let trab = new Trabajo("",  "",tema, univer , carrera,asesor, lugar, estado, fecha_entrega, monto, monto, notas, this.requerimientos, null);
 
     let loading = this.service.crearTrabajo(this.clientes[this.cliSelect.selectedIndex-1].id,trab).subscribe(
       response => {

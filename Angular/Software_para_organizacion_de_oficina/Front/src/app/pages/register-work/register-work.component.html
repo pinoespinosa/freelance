@@ -237,17 +237,27 @@
       </div>
    </div>
 
-
+   <div class="row">
+      <div class="col-4" style="padding: 10px;padding-left: 40px;" >
+         <b>Notas</b>
+         <input 
+            #notas 
+            type="text" 
+            class="form-control" 
+            id="notas" 
+            placeholder="Notas">
+      </div>
+   </div>
 
 
    <div class="row" style="margin-top: 25px;" >
       <div class="col-3" style="text-align: center;">
       </div>
       <div class="col-3 " style="text-align: center;">
-         <a  [routerLink]="['/register-payment']" (click)="do( '', tema.value, uni.value, car.value, asesor.value, lug.value, fecha_entrega.value, monto.value, true )" class="btn btn-success agregar-cliente" style="width: 100%;color: white;">Guardar y Cargar Pago</a>
+         <a  [routerLink]="['/register-payment']" (click)="do( '', tema.value, uni.value, car.value, asesor.value, lug.value, fecha_entrega.value, monto.value, true, notas.value )" class="btn btn-success agregar-cliente" style="width: 100%;color: white;">Guardar y Cargar Pago</a>
       </div>
       <div class="col-3" style="text-align: center;">
-         <a  (click)="do( '', tema.value, uni.value,  car.value, asesor.value, lug.value, fecha_entrega.value, monto.value, false )" class="btn btn-danger agregar-cliente" style="width: 100%;color: white;" >Finalizar</a>
+         <a  (click)="do( '', tema.value, uni.value,  car.value, asesor.value, lug.value, fecha_entrega.value, monto.value, false, notas.value )" class="btn btn-danger agregar-cliente" style="width: 100%;color: white;" >Finalizar</a>
       </div>
       <div class="col-3" style="text-align: center;">
       </div>

@@ -835,6 +835,8 @@ public class DataSourceReal implements IDataSource {
 		
 		dbTrab.setMonto(trab.getMonto());	
 
+		dbTrab.setNotas(trab.getNotas());	
+		
 		dbTrab.setTema(trab.getTema());	
 		dbTrab.setUniversidad(trab.getUniversidad());	
 				
