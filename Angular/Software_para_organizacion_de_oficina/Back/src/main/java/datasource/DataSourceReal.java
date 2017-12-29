@@ -124,7 +124,7 @@ public class DataSourceReal implements IDataSource {
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		c.setFechaSuscripcion(sdf.format(new Date()));
-		
+		c.setEstado(true);
 		c.setTrabajos(new ArrayList<>());
 		obj.getClientes().add(c);
 		return c;
@@ -807,6 +807,8 @@ public class DataSourceReal implements IDataSource {
 		dbUser.setTelefono1(editedUser.getTelefono1());
 		dbUser.setTelefono2(editedUser.getTelefono2());
 		dbUser.setTelefono3(editedUser.getTelefono3());
+		
+		dbUser.setEstado(editedUser.getEstado());
 		
 		updateFile();
 		return editedUser;

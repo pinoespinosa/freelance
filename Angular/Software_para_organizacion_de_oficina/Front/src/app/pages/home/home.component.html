@@ -39,15 +39,31 @@
 
 <div class="row">
 
-<div class="col-4">
+<div class="col-6">
 </div>
 
-<div class="col-4">
+<div class="col-2" style="display: inline-flex;" >
+  <div style="margin: 10px;" >Activos   
+    <input type="checkbox" name="Activos" checked
+    [(ngModel)]="filtroACTIVOS"    [ngModelOptions]="{standalone: true}"
+    (change)="myFunction()"
+    >
+  </div>
+  <div style="margin: 10px;" >No Activos   
+    <input type="checkbox" name="NoActivos"
+    [(ngModel)]="filtroNOACTIVOS"    [ngModelOptions]="{standalone: true}"
+    (change)="myFunction()"
+    >
+  </div>
 </div>
 
   <div class="col-4">
     <div class="input-group" style="padding: 10px;">
-      <input class="form-control" (input)="myFunction($event.target.value)" type="text" placeholder="Search">
+      <input class="form-control" (input)="myFunction()" type="text" placeholder="Search"
+
+            [(ngModel)]="filtroTEXTO"    [ngModelOptions]="{standalone: true}"
+
+      >
       <span class="input-group-btn" >
         <button  class="btn btn-secondary" type="button" style="background: lightgray;">
             <img style="width: 20px;" src="https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-128.png">

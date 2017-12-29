@@ -29,6 +29,8 @@ public class Cliente {
 	private String telefono2;
 	private String telefono3;
 
+	private Boolean estado;
+
 	private Trabajo fistWork;
 	
 	private List<Trabajo> trabajos;
@@ -200,6 +202,18 @@ public class Cliente {
 
 		return String.join("\";\"", list);
 
+	}
+
+	public boolean getEstado() {
+		
+		if (estado==null)
+			return true;
+		
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
 	}
 
 }

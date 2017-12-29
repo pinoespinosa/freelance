@@ -21,7 +21,7 @@ export class RegisterPaymentComponent implements OnInit  {
 	lugarEntero = [ 'Diario', 'Television', 'Amigo'];
 	metodosPago = ['Deposito', 'Tarjeta de Credito','Tarjeta de Debito', 'Efectivo', 'Cheque']
 	clienteID = ''
-	cliente : Client = new Client("", "", "" , "", "", "", "", "", "", null);
+	cliente : Client = new Client("", "", "" , "", "", "", "", "", "", true, null);
 	clientes :Client[];
 	nuevoPago: Pago = new Pago("","","1234","","")
 	trabajoID = ''

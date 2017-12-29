@@ -125,6 +125,27 @@
       
    </div>     
 
+   <div class="row details-data-row">
+      
+      <div class="col-4">
+         <div class="detail-title">Usuario Activo</div>
+         <input style="width: auto;"
+            #estadoUser 
+            type="checkbox" 
+            class="form-control" 
+            checked="{{cliente.estado}}"
+            [disabled]="buttonState()"
+
+            [(ngModel)]="cliente['estado']"    [ngModelOptions]="{standalone: true}"
+
+            >
+
+
+
+      </div> 
+      
+   </div> 
+
    <div class="row more-details-row">
       <div class="col-6">
          <h4 class="more-details-title">Datos trabajo</h4>

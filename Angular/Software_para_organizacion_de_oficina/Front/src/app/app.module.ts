@@ -38,6 +38,8 @@ import { ChangeStateDialogComponent }       from './pages/change-state-dialog/ch
 import { AppComponent }                     from './app.component';
 import { Service }                          from './service';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { Service }                          from './service';
     ChartsModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
+
   ],
   providers: [ 
     Service,

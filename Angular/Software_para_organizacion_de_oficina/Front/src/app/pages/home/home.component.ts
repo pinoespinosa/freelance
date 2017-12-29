@@ -31,7 +31,9 @@ export class HomeComponent   {
   cliente: Client;
   cliente2: ClientFull;
 
-
+  filtroACTIVOS:boolean=true;
+  filtroNOACTIVOS:boolean=false;
+  filtroTEXTO:string='';
 
   items : ClientFull[];
   items_orig : ClientFull[];
@@ -48,8 +50,8 @@ export class HomeComponent   {
     this.getWorks();
     this.items=[];
     this.items_orig = [];
-    this.cliente = new Client("","","", "","","", "","","",null);
-    this.cliente2 = new ClientFull("","","","","","","","","","","","","","","");
+    this.cliente = new Client("","","", "","","", "","","",true,null);
+    this.cliente2 = new ClientFull("","","","","","","","","","","","","","","",true);
 
   }
 
@@ -71,14 +73,12 @@ export class HomeComponent   {
     );
   }
 
-
-
   sortNombre(){
     this.items.sort((a, b) => {
-      if ( (a.nombre +a.apellido) < (b.nombre + b.apellido) ) 
+      if ( (a.nombre.toLowerCase() +a.apellido.toLowerCase()) < (b.nombre.toLowerCase() + b.apellido.toLowerCase()) ) 
         return -1 * this.tipo_orden;
       else 
-        if ((a.nombre +a.apellido) > (b.nombre + b.apellido) ) 
+        if ((a.nombre.toLowerCase() +a.apellido.toLowerCase()) > (b.nombre.toLowerCase() + b.apellido.toLowerCase()) ) 
           return 1 * this.tipo_orden;
         else 
           return 0;
@@ -168,16 +168,35 @@ export class HomeComponent   {
   }
 
 
-  myFunction(valor){
+  myFunction(){
     
+    let valor = this.filtroTEXTO;
     this.items = [];
     console.log(valor)
     for (var aa of this.items_orig){
 
       if ( aa.nombre.toLowerCase().includes(valor.toLowerCase()) ||  aa.tema.toLowerCase().includes(valor.toLowerCase()) ){
-        this.items.push(aa);
+
+        if (aa.estadoCliente){
+
+          if (this.filtroACTIVOS)
+            this.items.push(aa);
+
+        }
+        else{
+
+          if (this.filtroNOACTIVOS)
+            this.items.push(aa);
+        }
+      
+
       }
-    } 
+    }
+
+    console.log(this.filtroACTIVOS)
+    console.log(this.filtroNOACTIVOS)
+    console.log(this.filtroTEXTO)
+
   }
 
   getWorks(): void {
@@ -224,7 +243,7 @@ export class HomeComponent   {
        					break; 
   						} 
   					} 
-            let fu = new ClientFull(aa.id,aa.nombre,"",bb.id,bb.tema,"",bb.monto,bb.saldo,bb.carrera,bb.universidad,bb.fecha_entrega,bb.estado, result + '_' + bb.fecha_entrega,"", +bb.monto - +bb.saldo + "");
+            let fu = new ClientFull(aa.id,aa.nombre,"",bb.id,bb.tema,"",bb.monto,bb.saldo,bb.carrera,bb.universidad,bb.fecha_entrega,bb.estado, result + '_' + bb.fecha_entrega,"", +bb.monto - +bb.saldo + "", aa.estado);
             this.items.push(fu);
             this.items_orig.push(fu);
           }

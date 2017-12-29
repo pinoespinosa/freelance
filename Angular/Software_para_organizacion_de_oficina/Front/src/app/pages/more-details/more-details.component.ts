@@ -19,7 +19,7 @@ export class MoreDetailsComponent implements OnInit  {
   requerimientos: Requerimiento[];
     
 	clienteID = ''
-	cliente : Client = new Client("", "", "" , "", "", "", "", "", "", null);
+	cliente : Client = new Client("", "", "" , "", "", "", "", "", "", true, null);
 
 	trabajoID = ''
   trabajo : Trabajo = new Trabajo("","","","", "","","","", "","","",null,null )

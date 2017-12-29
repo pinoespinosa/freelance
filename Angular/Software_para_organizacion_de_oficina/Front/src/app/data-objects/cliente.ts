@@ -15,6 +15,8 @@ export class Client {
     public telefono2: string,
     public telefono3: string,
 
+    public estado: boolean,
+
     public trabajos: Trabajo[],
 
   ) { }

@@ -110,7 +110,7 @@ getOpacity(elem){
 		    alert("Complete los campos obligatorios para continuar")
 			return;
 		}
-		 let test = new Client("", this.field_nombre, "" , this.field_telef1, this.field_telef2, this.field_telef3, this.field_email1, this.field_email2, this.field_email3, null);
+		 let test = new Client("", this.field_nombre, "" , this.field_telef1, this.field_telef2, this.field_telef3, this.field_email1, this.field_email2, this.field_email3, true, null);
 		 
 
         let loading = this.service.createCliente(test).subscribe(
@@ -140,7 +140,7 @@ getOpacity(elem){
 		    alert("Complete los campos obligatorios para continuar")
 			return;
 		}
-		 let test = new Client("", this.field_nombre, "" , this.field_telef1, this.field_telef2, this.field_telef3, this.field_email1, this.field_email2, this.field_email3, null);
+		 let test = new Client("", this.field_nombre, "" , this.field_telef1, this.field_telef2, this.field_telef3, this.field_email1, this.field_email2, this.field_email3, true, null);
 		 
 
          this.service.createCliente(test).subscribe(

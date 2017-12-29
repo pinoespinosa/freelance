@@ -120,7 +120,7 @@ export class ReportsNewClientsComponent  {
     this.filterClientes("","");
     this.items=[];
     this.items_orig = [];
-    this.cliente = new Client("","","", "","","", "","","",null);
+    this.cliente = new Client("","","", "","","", "","","",true,null);
     this.cliente2 = new RowNewClient("","","","","", "","","","",true);
 
 

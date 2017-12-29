@@ -22,6 +22,7 @@ export class ClientFull{
 
     public abono: string,
 
+    public estadoCliente: boolean,
 
   ) { }
 }
