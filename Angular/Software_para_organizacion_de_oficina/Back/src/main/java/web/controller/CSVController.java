@@ -1,5 +1,7 @@
 package web.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,14 @@ public class CSVController {
 		return OfficeController.OK;
 	}
 
+	@ApiOperation(value = "Get specific Student in the System ", tags = "Import CSV")
+	@RequestMapping(value = "/importJSON", method = RequestMethod.POST)
+	@ResponseBody
+	public String importJSON(@RequestParam(required = true) final MultipartFile file) throws IOException {
+		officeService.importJSON(file);
+		return OfficeController.OK;
+	}
+	
 	@ApiOperation(value = "Get specific Student in the System ", tags = "Export CSV")
 	@RequestMapping(value = "/exportCSV", method = RequestMethod.POST)
 	@ResponseBody

@@ -1,7 +1,10 @@
 package datasource;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
 import java.text.ParseException;
@@ -19,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.base.Strings;
 
 import data.Asesor;
@@ -41,6 +45,13 @@ public class DataSourceReal implements IDataSource {
 		readFromFile();
 	}
 
+	synchronized void read(String data) {
+		if (data==null)
+			readFromFile();
+		else
+			readFromString(data);
+	}
+	
 	synchronized void readFromFile() {
 		System.out.println("Current relative path is: " + Paths.get("").toAbsolutePath().toString());
 		ObjectMapper mapper = new ObjectMapper();
@@ -51,6 +62,16 @@ public class DataSourceReal implements IDataSource {
 		}
 	}
 
+	synchronized void readFromString(String data) {
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.enable(SerializationFeature.INDENT_OUTPUT);
+		try {
+			obj = mapper.readValue(data, Info.class);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	synchronized void infoToFile(Object data, String filename) {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
@@ -58,6 +79,10 @@ public class DataSourceReal implements IDataSource {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	synchronized void updateFile() {
+		infoToFile(obj, "file.json");
 	}
 
 	@Override
@@ -112,7 +137,7 @@ public class DataSourceReal implements IDataSource {
 	@Override
 	public void createUniversidad(String universidad) {
 		obj.getUniversidades().add(universidad);
-		infoToFile(obj, "file.json");
+		updateFile();
 	}
 	
 
@@ -126,10 +151,35 @@ public class DataSourceReal implements IDataSource {
 		
 		
 		original.getTrabajos().add(trabajo);
-		infoToFile(obj, "file.json");
+		updateFile();
 		return trabajo;
 	}
 
+	@Override
+	public void importJSON(MultipartFile filename) throws IOException {
+
+		String line = "";
+		String total = "";
+
+		InputStream inputStream = filename.getInputStream();
+
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+
+			while ((line = br.readLine()) != null) {
+				total += line + " ";
+			}
+
+		} catch (
+
+		IOException e) {
+			e.printStackTrace();
+		}
+
+		readFromString(total);
+		updateFile();
+
+	}
+	
 	@Override
 	public void importCSV(MultipartFile filename) {
 
@@ -328,7 +378,7 @@ public class DataSourceReal implements IDataSource {
 	public Trabajo updateFechaEntrega(String clienteID, String trabajoID, String fechaNueva) {
 		Trabajo t = getTrabajo(clienteID, trabajoID);
 		t.setFecha_entrega(fechaNueva);
-		infoToFile(obj, "file.json");
+		updateFile();
 		return t;
 	}
 
@@ -336,7 +386,7 @@ public class DataSourceReal implements IDataSource {
 	public Trabajo updateAsesor(String clienteID, String trabajoID, String asesor) {
 		Trabajo t = getTrabajo(clienteID, trabajoID);
 		t.setAsesor(asesor);
-		infoToFile(obj, "file.json");
+		updateFile();
 		return t;
 	}
 	
@@ -722,14 +772,14 @@ public class DataSourceReal implements IDataSource {
 	@Override
 	public void createCarrera(String carrera) {
 		obj.getCarreras().add(carrera);
-		infoToFile(obj, "file.json");
+		updateFile();
 
 	}
 
 	@Override
 	public void createDondeEntero(String dondeEntero) {
 		obj.getDondeSeEntero().add(dondeEntero);
-		infoToFile(obj, "file.json");
+		updateFile();
 
 	}
 
@@ -747,7 +797,7 @@ public class DataSourceReal implements IDataSource {
 		dbUser.setTelefono2(editedUser.getTelefono2());
 		dbUser.setTelefono3(editedUser.getTelefono3());
 		
-		infoToFile(obj, "file.json");
+		updateFile();
 		return editedUser;
 	}
 
@@ -776,7 +826,7 @@ public class DataSourceReal implements IDataSource {
 		dbTrab.setUniversidad(trab.getUniversidad());	
 				
 				
-		infoToFile(obj, "file.json");
+		updateFile();
 		return dbTrab;
 	}
 
@@ -808,7 +858,7 @@ public class DataSourceReal implements IDataSource {
 			return new Auth(null, "FAIL");
 		
 		obj.getUsers().put(clave, valor);
-		infoToFile(obj, "file.json");
+		updateFile();
 		return valor;
 	}
 
@@ -831,7 +881,7 @@ public class DataSourceReal implements IDataSource {
 	public String audit(Auditoria audit) {
 		audit.setId(obj.getAudit().size()+"");
 		obj.getAudit().add(audit);
-		infoToFile(obj, "file.json");
+		updateFile();
 		return OfficeController.OK;
 	}
 
@@ -850,7 +900,7 @@ public class DataSourceReal implements IDataSource {
 		
 		asesor.setId(obj.getAsesores().size()+"");
 		obj.getAsesores().add(asesor);
-		infoToFile(obj, "file.json");
+		updateFile();
 
 		return asesor;
 	}

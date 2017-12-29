@@ -1,5 +1,6 @@
 package datasource;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Hashtable;
@@ -87,5 +88,7 @@ public interface IDataSource {
 	List<Asesor> getAsesorList();
 
 	Asesor createAsesor(Asesor user);
+
+	void importJSON(MultipartFile file) throws IOException;
 	
 }

@@ -1,5 +1,6 @@
 package web.service;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -245,6 +246,12 @@ public class OfficeServiceImpl implements OfficeService {
 	@Override
 	public Asesor createAsesor(Asesor user) {
 		return datasource.createAsesor(user);
+	}
+
+	@Override
+	public void importJSON(MultipartFile file) throws IOException {
+		datasource.importJSON(file);
+		
 	}
 
 

@@ -1,5 +1,6 @@
 package web.service;
 
+import java.io.IOException;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -86,5 +87,7 @@ public interface OfficeService {
 	List<Asesor> getAsesorList();
 
 	Asesor createAsesor(Asesor user);
+
+	void importJSON(MultipartFile file) throws IOException;
 
 }
