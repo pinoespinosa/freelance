@@ -18,12 +18,14 @@
         "integrantes" : [ {
           "userID" : "0",
           "nombre" : "Andres Espinosa",
-          "finEnMente" : "No lo lei",
+          "email" : null,
+          "finEnMente" : "aaaaaa",
           "estado" : "Presente"
         }, {
           "userID" : "1",
           "nombre" : "Valentina Alfonso",
-          "finEnMente" : "Yo tampoco",
+          "email" : null,
+          "finEnMente" : "bbbbbb",
           "estado" : "Presente"
         } ],
         "finMenteGral" : "Conocernos",
@@ -37,32 +39,1136 @@
         "horaInicio" : "03:22",
         "fechaReunion" : "2017-11-29",
         "horaFinal" : "03:22"
+      }, {
+        "id" : "COM_0-0-1",
+        "numeroActa" : "COM001",
+        "fecha" : 1513542379627,
+        "fechaCierre" : 0,
+        "lugar" : "y",
+        "ciudad" : "y",
+        "paso" : "5",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : "Presente"
+        }, {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : "Presente"
+        } ],
+        "finMenteGral" : "y",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "06:27",
+        "fechaReunion" : "2017-12-04",
+        "horaFinal" : "06:27"
+      }, {
+        "id" : "COM_0-0-2",
+        "numeroActa" : "COM002",
+        "fecha" : 1514287470320,
+        "fechaCierre" : 0,
+        "lugar" : "a",
+        "ciudad" : "a",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : "Presente"
+        }, {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : "Presente"
+        } ],
+        "finMenteGral" : "a",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "09:25",
+        "fechaReunion" : "2017-12-05",
+        "horaFinal" : "09:25"
+      }, {
+        "id" : "COM_0-0-3",
+        "numeroActa" : "COM003",
+        "fecha" : 1514287634615,
+        "fechaCierre" : 0,
+        "lugar" : "h",
+        "ciudad" : "h",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : "Presente"
+        }, {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : "Presente"
+        } ],
+        "finMenteGral" : "h",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "09:28",
+        "fechaReunion" : "2017-12-12",
+        "horaFinal" : "09:28"
+      }, {
+        "id" : "COM_0-0-4",
+        "numeroActa" : "COM004",
+        "fecha" : 1514287802590,
+        "fechaCierre" : 0,
+        "lugar" : "y",
+        "ciudad" : "y",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "y",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "09:30",
+        "fechaReunion" : "2017-12-12",
+        "horaFinal" : "09:30"
+      }, {
+        "id" : "COM_0-0-5",
+        "numeroActa" : "COM005",
+        "fecha" : 1514287934759,
+        "fechaCierre" : 0,
+        "lugar" : "g",
+        "ciudad" : "g",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "g",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "09:33",
+        "fechaReunion" : "2017-12-05",
+        "horaFinal" : "09:33"
+      }, {
+        "id" : "COM_0-0-6",
+        "numeroActa" : "COM006",
+        "fecha" : 1514287991152,
+        "fechaCierre" : 0,
+        "lugar" : "u",
+        "ciudad" : "u",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "2",
+          "nombre" : "Fernando Echevarria",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "u",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "09:33",
+        "fechaReunion" : "2017-12-05",
+        "horaFinal" : "09:33"
+      }, {
+        "id" : "COM_0-0-7",
+        "numeroActa" : "COM007",
+        "fecha" : 1514288087894,
+        "fechaCierre" : 0,
+        "lugar" : "tt",
+        "ciudad" : "t",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "5",
+          "nombre" : "II",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "7",
+          "nombre" : "ttttt",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "t",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "09:35",
+        "fechaReunion" : "2017-12-06",
+        "horaFinal" : "09:35"
+      }, {
+        "id" : "COM_0-0-8",
+        "numeroActa" : "COM008",
+        "fecha" : 1514288225045,
+        "fechaCierre" : 0,
+        "lugar" : "a",
+        "ciudad" : "a",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "5",
+          "nombre" : "II",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "7",
+          "nombre" : "ttttt",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "a",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "09:37",
+        "fechaReunion" : "2017-12-12",
+        "horaFinal" : "09:38"
+      }, {
+        "id" : "COM_0-0-9",
+        "numeroActa" : "COM009",
+        "fecha" : 1514288404452,
+        "fechaCierre" : 0,
+        "lugar" : "h",
+        "ciudad" : "h",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "2",
+          "nombre" : "Fernando Echevarria",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "h",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "09:40",
+        "fechaReunion" : "2017-12-12",
+        "horaFinal" : "09:40"
+      }, {
+        "id" : "COM_0-0-10",
+        "numeroActa" : "COM010",
+        "fecha" : 1514288522537,
+        "fechaCierre" : 0,
+        "lugar" : "f",
+        "ciudad" : "f",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "7",
+          "nombre" : "ttttt",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "5",
+          "nombre" : "II",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "f",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "09:42",
+        "fechaReunion" : "2017-12-05",
+        "horaFinal" : "09:42"
+      }, {
+        "id" : "COM_0-0-11",
+        "numeroActa" : "COM011",
+        "fecha" : 1514288740176,
+        "fechaCierre" : 0,
+        "lugar" : "y",
+        "ciudad" : "t",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : "ae@qbkconsulting.com",
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : "pino.espinosa91@gmail.com",
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "t",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "09:46",
+        "fechaReunion" : "2017-12-06",
+        "horaFinal" : "09:46"
+      }, {
+        "id" : "COM_0-0-12",
+        "numeroActa" : "COM012",
+        "fecha" : 1514289325335,
+        "fechaCierre" : 0,
+        "lugar" : "i",
+        "ciudad" : "i",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "7",
+          "nombre" : "ttttt",
+          "email" : "a@r.com",
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : "ae@qbkconsulting.com",
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "2",
+          "nombre" : "Fernando Echevarria",
+          "email" : "andresespinosa91@hotmail.com",
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : "pino.espinosa91@gmail.com",
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "i",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "09:53",
+        "fechaReunion" : "2017-12-05",
+        "horaFinal" : "09:53"
+      }, {
+        "id" : "COM_0-0-13",
+        "numeroActa" : "COM013",
+        "fecha" : 1514289611701,
+        "fechaCierre" : 0,
+        "lugar" : "t",
+        "ciudad" : "t",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "7",
+          "nombre" : "ttttt",
+          "email" : "a@r.com",
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : "ae@qbkconsulting.com",
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "2",
+          "nombre" : "Fernando Echevarria",
+          "email" : "andresespinosa91@hotmail.com",
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : "pino.espinosa91@gmail.com",
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "t",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "10:01",
+        "fechaReunion" : "2017-12-06",
+        "horaFinal" : "10:01"
+      }, {
+        "id" : "COM_0-0-14",
+        "numeroActa" : "COM014",
+        "fecha" : 1514290153269,
+        "fechaCierre" : 0,
+        "lugar" : "f",
+        "ciudad" : "f",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "5",
+          "nombre" : "II",
+          "email" : "a@w.com",
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : "pino.espinosa91@gmail.com",
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : "ae@qbkconsulting.com",
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "2",
+          "nombre" : "Fernando Echevarria",
+          "email" : "andresespinosa91@hotmail.com",
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "f",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "10:09",
+        "fechaReunion" : "2017-12-05",
+        "horaFinal" : "10:10"
+      }, {
+        "id" : "COM_0-0-15",
+        "numeroActa" : "COM015",
+        "fecha" : 1514290524465,
+        "fechaCierre" : 0,
+        "lugar" : "g",
+        "ciudad" : "g",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "7",
+          "nombre" : "ttttt",
+          "email" : "a@r.com",
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "5",
+          "nombre" : "II",
+          "email" : "a@w.com",
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "4",
+          "nombre" : "aaaaa",
+          "email" : "a@q.com",
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "g",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "10:16",
+        "fechaReunion" : "2017-12-05",
+        "horaFinal" : "10:16"
+      }, {
+        "id" : "COM_0-0-16",
+        "numeroActa" : "COM016",
+        "fecha" : 1514290595514,
+        "fechaCierre" : 0,
+        "lugar" : "f",
+        "ciudad" : "f",
+        "paso" : "5",
+        "estado" : "Cerrado",
+        "integrantes" : [ {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : "ae@qbkconsulting.com",
+          "finEnMente" : "aaaaa",
+          "estado" : "Presente"
+        }, {
+          "userID" : "5",
+          "nombre" : "II",
+          "email" : "a@w.com",
+          "finEnMente" : "aaa",
+          "estado" : "Presente"
+        }, {
+          "userID" : "7",
+          "nombre" : "ttttt",
+          "email" : "a@r.com",
+          "finEnMente" : "aaaaaa",
+          "estado" : "Ausente"
+        } ],
+        "finMenteGral" : "f",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "10:17",
+        "fechaReunion" : "2017-12-05",
+        "horaFinal" : "10:17"
+      }, {
+        "id" : "COM_0-0-17",
+        "numeroActa" : "COM017",
+        "fecha" : 1514290809191,
+        "fechaCierre" : 0,
+        "lugar" : "s",
+        "ciudad" : "s",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "2",
+          "nombre" : "Fernando Echevarria",
+          "email" : "andresespinosa91@hotmail.com",
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : "ae@qbkconsulting.com",
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : "pino.espinosa91@gmail.com",
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "s",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "10:21",
+        "fechaReunion" : "2017-12-12",
+        "horaFinal" : "10:21"
+      }, {
+        "id" : "COM_0-0-18",
+        "numeroActa" : "COM018",
+        "fecha" : 1514365290228,
+        "fechaCierre" : 0,
+        "lugar" : "t",
+        "ciudad" : "t",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : "pino.espinosa91@gmail.com",
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "t",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "07:02",
+        "fechaReunion" : "2017-12-05",
+        "horaFinal" : "07:02"
+      }, {
+        "id" : "COM_0-0-19",
+        "numeroActa" : "COM019",
+        "fecha" : 1514365454412,
+        "fechaCierre" : 0,
+        "lugar" : "Salon de Usos Multiples",
+        "ciudad" : "Balcarce",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : "pino.espinosa91@gmail.com",
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "Ponernos de acuerdo con la metodologia",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "07:05",
+        "fechaReunion" : "2017-12-05",
+        "horaFinal" : "08:06"
+      }, {
+        "id" : "COM_0-0-20",
+        "numeroActa" : "COM020",
+        "fecha" : 1514365672139,
+        "fechaCierre" : 0,
+        "lugar" : "galeria",
+        "ciudad" : "mar del plata",
+        "paso" : "5",
+        "estado" : "Cerrado",
+        "integrantes" : [ {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : "pino.espinosa91@gmail.com",
+          "finEnMente" : "soy el fn en mente",
+          "estado" : "Presente"
+        } ],
+        "finMenteGral" : "fin en menteee",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "15:00",
+        "fechaReunion" : "2017-12-27",
+        "horaFinal" : "15:30"
       } ],
-      "temasId" : [ ]
+      "temasId" : [ "COM0", "COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9", "COM10", "COM11", "COM12", "COM13", "COM14" ]
     }, {
       "id" : "0-1",
       "nombre" : "Gerencial",
       "prefijoDocs" : "GER",
-      "actas" : [ ],
-      "temasId" : [ ]
+      "actas" : [ {
+        "id" : "GER_0-1-0",
+        "numeroActa" : "GER00000",
+        "fecha" : 1513541943705,
+        "fechaCierre" : 0,
+        "lugar" : "li",
+        "ciudad" : "li",
+        "paso" : "1",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "2",
+          "nombre" : "Fernando Echevarria",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "l",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "06:19",
+        "fechaReunion" : "2017-12-05",
+        "horaFinal" : "07:19"
+      }, {
+        "id" : "GER_0-1-1",
+        "numeroActa" : "GER001",
+        "fecha" : 1514287527668,
+        "fechaCierre" : 0,
+        "lugar" : "h",
+        "ciudad" : "h",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : null,
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "h",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "09:26",
+        "fechaReunion" : "2017-12-06",
+        "horaFinal" : "09:26"
+      }, {
+        "id" : "GER_0-1-2",
+        "numeroActa" : "GER002",
+        "fecha" : 1514290065791,
+        "fechaCierre" : 0,
+        "lugar" : "d",
+        "ciudad" : "d",
+        "paso" : "0",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "7",
+          "nombre" : "ttttt",
+          "email" : "a@r.com",
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : "ae@qbkconsulting.com",
+          "finEnMente" : "",
+          "estado" : ""
+        }, {
+          "userID" : "5",
+          "nombre" : "II",
+          "email" : "a@w.com",
+          "finEnMente" : "",
+          "estado" : ""
+        } ],
+        "finMenteGral" : "d",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "10:07",
+        "fechaReunion" : "2017-12-05",
+        "horaFinal" : "10:07"
+      } ],
+      "temasId" : [ "COM0", "COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7" ]
     } ],
-    "temas" : { },
+    "temas" : {
+      "COM13" : {
+        "id" : "COM13",
+        "fechaCreacion" : 1513535563439,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : "Estrategia1",
+        "indicador" : "ee",
+        "detalle" : "gggggee",
+        "tareas" : [ {
+          "id" : "0",
+          "estado" : "Abierto",
+          "detalle" : "sddas",
+          "responsable" : {
+            "userID" : "0",
+            "nombre" : "Andres Espinosa",
+            "email" : null,
+            "finEnMente" : "Presente",
+            "estado" : ""
+          },
+          "eventos" : [ "COM_0-0-0 - Soy un comentario" ]
+        } ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM_0-0-0",
+          "date" : 1513535563439
+        } ]
+      },
+      "COM12" : {
+        "id" : "COM12",
+        "fechaCreacion" : 1513535550313,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : "Estrategia1",
+        "indicador" : "ee",
+        "detalle" : "ee",
+        "tareas" : [ {
+          "id" : "0",
+          "estado" : "Abierto",
+          "detalle" : "aaaaaaaaaaa",
+          "responsable" : {
+            "userID" : "0",
+            "nombre" : "Andres Espinosa",
+            "email" : null,
+            "finEnMente" : "Presente",
+            "estado" : ""
+          },
+          "eventos" : [ ]
+        } ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM_0-0-0",
+          "date" : 1513535550313
+        } ]
+      },
+      "COM11" : {
+        "id" : "COM11",
+        "fechaCreacion" : 1513535428822,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : "Estrategia1",
+        "indicador" : "iikkkkkkkkkkkk",
+        "detalle" : "iikkkkkk",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM_0-0-0",
+          "date" : 1513535428822
+        }, {
+          "texto" : "Comentario del acta: COM_0-0-16 - aaaaaaaaa",
+          "date" : 1514372944630
+        } ]
+      },
+      "COM10" : {
+        "id" : "COM10",
+        "fechaCreacion" : 1513535397447,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : "Estrategia1",
+        "indicador" : "ii",
+        "detalle" : "ii",
+        "tareas" : [ {
+          "id" : "0",
+          "estado" : "Abierto",
+          "detalle" : "kii",
+          "responsable" : {
+            "userID" : "0",
+            "nombre" : "Andres Espinosa",
+            "email" : null,
+            "finEnMente" : "Presente",
+            "estado" : ""
+          },
+          "eventos" : [ ]
+        }, {
+          "id" : "1",
+          "estado" : "Cerrada",
+          "detalle" : "88",
+          "responsable" : {
+            "userID" : "0",
+            "nombre" : "Andres Espinosa",
+            "email" : null,
+            "finEnMente" : "Presente",
+            "estado" : ""
+          },
+          "eventos" : [ "La tarea fue cerrada en el acta COM_0-0-16" ]
+        } ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM_0-0-0",
+          "date" : 1513535397447
+        }, {
+          "texto" : "Comentario del acta: COM_0-0-16 - aaaaaaaaasdwdw",
+          "date" : 1514372951012
+        } ]
+      },
+      "COM9" : {
+        "id" : "COM9",
+        "fechaCreacion" : 1513535301853,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : "Estrategia1",
+        "indicador" : "tt",
+        "detalle" : "tt",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM_0-0-0",
+          "date" : 1513535301853
+        } ]
+      },
+      "COM8" : {
+        "id" : "COM8",
+        "fechaCreacion" : 1513532759559,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : null,
+        "indicador" : "uytutyu",
+        "detalle" : "uuyt",
+        "tareas" : [ {
+          "id" : "0",
+          "estado" : "Abierto",
+          "detalle" : "asdas",
+          "responsable" : {
+            "userID" : "0",
+            "nombre" : "Andres Espinosa",
+            "email" : null,
+            "finEnMente" : "Presente",
+            "estado" : ""
+          },
+          "eventos" : [ ]
+        }, {
+          "id" : "1",
+          "estado" : "Abierto",
+          "detalle" : "hhh",
+          "responsable" : {
+            "userID" : "0",
+            "nombre" : "Andres Espinosa",
+            "email" : null,
+            "finEnMente" : "Presente",
+            "estado" : ""
+          },
+          "eventos" : [ ]
+        } ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM_0-0-0",
+          "date" : 1513532759559
+        } ]
+      },
+      "COM7" : {
+        "id" : "COM7",
+        "fechaCreacion" : 1513532652692,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : null,
+        "indicador" : "YTY",
+        "detalle" : "TYT",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM_0-0-0",
+          "date" : 1513532652692
+        } ]
+      },
+      "COM6" : {
+        "id" : "COM6",
+        "fechaCreacion" : 1513532621647,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : null,
+        "indicador" : "YTY",
+        "detalle" : "TYT",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM_0-0-0",
+          "date" : 1513532621647
+        } ]
+      },
+      "COM5" : {
+        "id" : "COM5",
+        "fechaCreacion" : 1513532422328,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : null,
+        "indicador" : "TTTTTTTTT",
+        "detalle" : "TTTTTTTTT",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM_0-0-0",
+          "date" : 1513532422328
+        }, {
+          "texto" : "Comentario del acta: COM_0-0-0 - lala",
+          "date" : 1513541396370
+        } ]
+      },
+      "COM4" : {
+        "id" : "COM4",
+        "fechaCreacion" : 1513532381564,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : null,
+        "indicador" : "TTTTTTT",
+        "detalle" : "TTT",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM_0-0-0",
+          "date" : 1513532381565
+        } ]
+      },
+      "COM3" : {
+        "id" : "COM3",
+        "fechaCreacion" : 1513532318469,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : "Estrategia1",
+        "indicador" : "aaa",
+        "detalle" : "Dar la bienvienida a los miembros",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM_0-0-0",
+          "date" : 1513532318470
+        } ]
+      },
+      "COM2" : {
+        "id" : "COM2",
+        "fechaCreacion" : 1513532250795,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : "Estrategia1",
+        "indicador" : "aaa",
+        "detalle" : "Dar la bienvienida a los miembros",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM_0-0-0",
+          "date" : 1513532250795
+        } ]
+      },
+      "COM1" : {
+        "id" : "COM1",
+        "fechaCreacion" : 1513532233394,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : "Estrategia1",
+        "indicador" : "aaa",
+        "detalle" : "Dar la bienvienida a los miembros",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM_0-0-0",
+          "date" : 1513532233395
+        } ]
+      },
+      "COM0" : {
+        "id" : "COM0",
+        "fechaCreacion" : 1513532180400,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : "Estrategia1",
+        "indicador" : "aaa",
+        "detalle" : "Dar la bienvienida a los miembros",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM_0-0-0",
+          "date" : 1513532180400
+        } ]
+      },
+      "COM14" : {
+        "id" : "COM14",
+        "fechaCreacion" : 1513535658665,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : null,
+        "indicador" : "ss",
+        "detalle" : "ss",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM_0-0-0",
+          "date" : 1513535658665
+        }, {
+          "texto" : "Comentario del acta: COM_0-0-16 - Se ha cerrado el tema",
+          "date" : 1514372994178
+        } ]
+      }
+    },
     "nombreEmpresa" : "Arcor",
     "logoEmpresa" : "https://staticaltmetric.s3.amazonaws.com/uploads/2015/10/dark-logo-for-site.png"
   } ],
   "users" : {
-    "TBFSKQUXdTKJioHVCP84ww==" : {
-      "userID" : "0",
+    "BO6HksZrI6j/q2gCu2QKD772U7FeMg1i23xqgAsMq1eOzaaxvqhI9Ed2gazJ5XlU" : {
+      "userID" : "2",
       "rol" : "ADMINISTRADOR",
-      "nombre" : "Andres Espinosa",
-      "email" : "pino.espinosa91@gmail.com",
+      "nombre" : "Fernando Echevarria",
+      "email" : "andresespinosa91@hotmail.com",
       "logo" : "http://brandmark.io/logo-rank/random/bp.png",
       "empresaID" : "0",
       "empresaNombre" : null,
       "ccList" : [ "0-0", "0-1" ],
       "token" : ""
     },
-    "ITnR1wTUWOEpxm+3GFSYhA==" : {
+    "AxvQTh5o42Dw4THqVf2itHzT+uA5GkYRGKrKq04Xt80=" : {
+      "userID" : "7",
+      "rol" : "SOLO_CONSULTA",
+      "nombre" : "Maria la Tiradora",
+      "email" : "pino@jota.com",
+      "logo" : "dd",
+      "empresaID" : "0",
+      "empresaNombre" : null,
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : ""
+    },
+    "B6/FEncCX4mfwILRnUW+C7wXt5/VInCS1TY/ryIExIA=" : {
       "userID" : "1",
       "rol" : "ADMINISTRADOR",
       "nombre" : "Valentina Alfonso",
@@ -73,12 +1179,56 @@
       "ccList" : [ "0-0", "0-1" ],
       "token" : ""
     },
-    "VCwjyrlhutv3PzEJEjNUQw==" : {
-      "userID" : "2",
+    "DlTEyk6ub5y5cBJHOuQbD/YqpTsuJxImPH7MF+D/Ltw=" : {
+      "userID" : "0",
       "rol" : "ADMINISTRADOR",
-      "nombre" : "Fernando Echevarria",
-      "email" : "andresespinosa91@hotmail.com",
-      "logo" : "http://brandmark.io/logo-rank/random/bp.png",
+      "nombre" : "Andres Espinosa",
+      "email" : "pino.espinosa91@gmail.com",
+      "logo" : "https://staticaltmetric.s3.amazonaws.com/uploads/2015/10/dark-logo-for-site.png",
+      "empresaID" : "0",
+      "empresaNombre" : "Arcor",
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : "3hjbUqyJ0PxH0E/KpZVqfBsLxIvTNhiWzOvpnyZE10QRuuWjtd2bv0IIfbQHjpj/G4muWA58HW0gKoCuXcBmJ1RF/2HZ5FpyVD3NguPdypHT6NWUmfndFvtJ83kW6AedbXzBJ5UGrifpg2ItQJjyYd0i73fi/lP9EqY8uLqfDzW4zabjjETc5h4EWJh48oLEZXGqn7N36P3FFsqJowxAvMW5m54VsZasLlsfgYcZODBUO/cbOtxbBeQAXw0WOvTT0AKqP1smBa3unAqD/HJ6qBrIy4sH4nLQucB4Lqxc3yU="
+    },
+    "dAkcCXm/0ILD7IP+JqsQfA==" : {
+      "userID" : "7",
+      "rol" : "SOLO_CONSULTA",
+      "nombre" : "Pepe Pepino",
+      "email" : "a@r.com",
+      "logo" : "dd",
+      "empresaID" : "0",
+      "empresaNombre" : null,
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : ""
+    },
+    "XTWHiv9CM5UNRnEcH4T1+Q==" : {
+      "userID" : "5",
+      "rol" : "SOLO_CONSULTA",
+      "nombre" : "II",
+      "email" : "a@w.com",
+      "logo" : "dd",
+      "empresaID" : "0",
+      "empresaNombre" : null,
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : ""
+    },
+    "vLw6kz0RQyRmC2hcfbztbg==" : {
+      "userID" : "3",
+      "rol" : "ADMINISTRADOR",
+      "nombre" : "a",
+      "email" : "bb",
+      "logo" : "dd",
+      "empresaID" : null,
+      "empresaNombre" : null,
+      "ccList" : [ "11", "22", "33" ],
+      "token" : ""
+    },
+    "nDyldjknWgwoqMvn2Kp+MQ==" : {
+      "userID" : "4",
+      "rol" : "SOLO_CONSULTA",
+      "nombre" : "aaaaa",
+      "email" : "a@q.com",
+      "logo" : "dd",
       "empresaID" : "0",
       "empresaNombre" : null,
       "ccList" : [ "0-0", "0-1" ],

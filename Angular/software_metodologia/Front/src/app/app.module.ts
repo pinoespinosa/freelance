@@ -17,8 +17,10 @@ import { AppRoutingModule }                 from './routing/app-routing.module';
 import { LoginComponent }                   from './pages/login/login.component';
 import { ConsultasComponent }               from './pages/consultas/consultas.component';
 import { ReunionesComponent }               from './pages/reuniones/reuniones.component';
-import { SesionComponent }               from './pages/sesion/sesion.component';
-import { Sesion2Component }               from './pages/sesion-2/sesion-2.component';
+import { CreateUserComponent }              from './pages/create-user/create-user.component';
+
+import { SesionComponent }                  from './pages/sesion/sesion.component';
+import { Sesion2Component }                 from './pages/sesion-2/sesion-2.component';
 
 import { ActaCompletaComponent }            from './pages/acta-completa/acta-completa.component';
 import { ChangeStateDialogComponent }       from './pages/change-state-dialog/change-state-dialog.component';
@@ -50,7 +52,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SesionComponent,
     Sesion2Component,
     FilterPipe,
-    ChangeStateDialogComponent
+    ChangeStateDialogComponent,
+
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,

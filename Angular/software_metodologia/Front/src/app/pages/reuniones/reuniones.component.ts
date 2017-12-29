@@ -9,6 +9,8 @@ import { CuerpoColegiado }               								from 'app/data-objects/cuerpoCo
 import { Acta }               													from 'app/data-objects/acta';
 import { UsuarioActa }                                  from 'app/data-objects/usuarioActa';
 import { Usuario }                                      from 'app/data-objects/usuario';
+import {Observable}                                     from 'rxjs/Rx'; 
+import {Subscription}                                   from 'rxjs';
 
 
 @Component({
@@ -20,93 +22,107 @@ import { Usuario }                                      from 'app/data-objects/u
 
 export class ReunionesComponent implements OnInit  {
 
-
-	cuerposColegiado: CuerpoColegiado[];
-	cuerpoColegiadoSelect: CuerpoColegiado;
+  showDialogAddCarre:boolean = false;
+  cuerposColegiado: CuerpoColegiado[];
+  cuerpoColegiadoSelect: CuerpoColegiado;
 
   usuarios : Usuario[];
   
-	actaCreada: Acta;
+  actaCreada: Acta;
   actaAnterior: Acta;
 
+  subscription: Subscription;
 
-	paso = 1;
+
+  paso = 1;
 
 
   constructor( 
-  private router: Router, 
-  private route : ActivatedRoute, 
-  private service: Service)
+    private router: Router, 
+    private route : ActivatedRoute, 
+    private service: Service)
   {}
 
   ngOnInit(): void {
 
 
-    let loading = this.service.getCuerpoColegiados().subscribe(
+    this.service.getCuerpoColegiados().subscribe(
       response =>{ 
         this.cuerposColegiado = response;
-      }         
-    );
+      });
+
+    this.subscription = Observable.interval(1000 * 1).subscribe(x => { 
+      if (localStorage.getItem('REFRESH_USERS')=='TRUE') {
+        this.service.getUsuarios(this.cuerpoColegiadoSelect.id).subscribe(
+          response =>{ 
+            this.usuarios = response;
+            localStorage.setItem('REFRESH_USERS', 'FALSE');
+
+          });   
+      }
+    });
 
 
 
+  };
 
 
-	};
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
 
 
-
-
-
-selectCuerpo(cuerpo):void{
+  selectCuerpo(cuerpo):void{
     this.cuerpoColegiadoSelect = this.cuerposColegiado[cuerpo.selectedIndex-1];
     console.log(this.cuerpoColegiadoSelect)
     this.service.getUsuarios(this.cuerpoColegiadoSelect.id).subscribe(
       response =>{ 
         this.usuarios = response;
-      }         
-    );
- }
+      });
+  }
 
-createActa():void{
+  createActa():void{
   	this.actaCreada = new Acta("0","0","0","lugar","ciudad",[],"finGral",[],"0", "","","","","","","","","");
-		this.paso = 2;
-}
-
-addUser(user):void{
-
-  let asiiii : Usuario =  user;
-
-  let esta:boolean = false;
-  for (let aa of this.actaCreada.integrantes) {
-    if (aa.userID == asiiii.userID)
-      esta = true;
+    this.paso = 2;
   }
-  
-  if (!esta){
-    this.actaCreada.integrantes.push(new UsuarioActa(asiiii.userID, asiiii.nombre, "","",""));
+
+  addUser(user):void{
+
+    let asiiii : Usuario =  user;
+
+    let esta:boolean = false;
+    for (let aa of this.actaCreada.integrantes) {
+      if (aa.userID == asiiii.userID)
+        esta = true;
+    }
+
+    if (!esta){
+
+      let provii = new UsuarioActa(asiiii.userID, asiiii.nombre, asiiii.email,"","","");
+      console.log(provii)
+      this.actaCreada.integrantes.push(provii);
+    }
   }
-}
 
 
-removeUser(user):void{
+  removeUser(user):void{
 
-  let nuevo: UsuarioActa[]=[];
-  let asiiii : Usuario =  user;
+    let nuevo: UsuarioActa[]=[];
+    let asiiii : Usuario =  user;
 
-  let esta:boolean = false;
-  for (let aa of this.actaCreada.integrantes) {
-    if (aa.userID != asiiii.userID)
-      nuevo.push(aa);
+    let esta:boolean = false;
+    for (let aa of this.actaCreada.integrantes) {
+      if (aa.userID != asiiii.userID)
+        nuevo.push(aa);
+    }
+
+    this.actaCreada.integrantes = nuevo;
+
   }
-  
-  this.actaCreada.integrantes = nuevo;
 
-}
+  setPaso2Info(lugar, ciudad, finMente, fecha, horaInicio, horaFinal):void{
 
-setPaso2Info(lugar, ciudad, finMente, fecha, horaInicio, horaFinal):void{
-    
     this.actaCreada.lugar = lugar;
     this.actaCreada.ciudad = ciudad;
     this.actaCreada.finMenteGral = finMente;
@@ -119,50 +135,52 @@ setPaso2Info(lugar, ciudad, finMente, fecha, horaInicio, horaFinal):void{
 
     if(!this.actaCreada.integrantes)
       this.actaCreada.integrantes = []
+
     this.paso = 3;
-}
+  }
 
-print():void{
-  console.log(this.actaCreada.integrantes);
-}
+  print():void{
+    console.log(this.actaCreada.integrantes);
+  }
 
-getLastActa():void{
+  getLastActa():void{
     let loading = this.service.getLastActa(this.cuerpoColegiadoSelect.id).subscribe(
       response =>{ 
         this.actaAnterior = response;
         this.actaCreada.integrantes = response.integrantes;
-        }         
-    );
-  }
-
-createActaSend():void{
-
-if (confirm("Esta a punto de crear una reunion y enviar las invitaciones. ¿Desea continuar?")){
-
-
-    let loading = this.service.createActa(this.cuerpoColegiadoSelect.id, this.actaCreada).subscribe(
-      response =>{ 
-        this.actaCreada = response;
-        alert("Se ha creado la reunion Acta " + response.numeroActa + " y se han enviado las invitaciones.")
-        this.router.navigateByUrl('/home');
       }         
-    );
-}
+      );
   }
 
-cargarFinEnMente(fin):void{
+  createActaSend():void{
+
+    console.log(this.actaCreada);
+
+    if (confirm("Esta a punto de crear una reunion y enviar las invitaciones. ¿Desea continuar?")){
+
+
+      let loading = this.service.createActa(this.cuerpoColegiadoSelect.id, this.actaCreada).subscribe(
+        response =>{ 
+          this.actaCreada = response;
+          alert("Se ha creado la reunion Acta " + response.numeroActa + " y se han enviado las invitaciones.")
+          this.router.navigateByUrl('/home');
+        }         
+        );
+    }
+  }
+
+  cargarFinEnMente(fin):void{
 
   	this.actaCreada.finMenteGral = fin;
 
   	let loading = this.service.editActa(this.cuerpoColegiadoSelect.id,this.actaCreada).subscribe(
       response =>{ 
         this.actaCreada = response;
-		this.paso = 3;
+        this.paso = 3;
 
       }         
-    );
+      );
 
   }
-	
+
 }
- 

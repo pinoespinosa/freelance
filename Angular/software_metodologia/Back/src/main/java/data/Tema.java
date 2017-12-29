@@ -83,5 +83,11 @@ public class Tema {
 		this.indicador = indicador;
 	}
 
+	@Override
+	public String toString() {
+		return detalle;
+	}
 
+
+	
 }

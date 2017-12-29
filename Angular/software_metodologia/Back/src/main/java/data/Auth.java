@@ -10,7 +10,7 @@ import spring.ChipherTool;
 public class Auth {
 
 	public enum Rol {
-		ADMINISTRADOR, JEFE_ADMINIST, JEFE_OPERATIVO, GERENTE
+		ADMINISTRADOR, SUPER_ADMINISTRADOR, GENERAL, SOLO_CONSULTA
 	}
 	private String userID;
 
@@ -84,6 +84,20 @@ public class Auth {
 		return null;
 	}
 
+	public static String getUserEmail(String token) {
+
+		Auth obj;
+		ObjectMapper mapper = new ObjectMapper();
+
+		try {
+			obj = mapper.readValue(ChipherTool.decrypt(token), Auth.class);
+			return obj.getEmail();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	public static List<String> getCuerpoColegiadosList(String token) {
 		Auth obj;
 		ObjectMapper mapper = new ObjectMapper();

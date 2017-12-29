@@ -1,7 +1,10 @@
 package datasource;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -23,7 +26,7 @@ public interface IDataSource {
 
 	List<Auditoria> getAuditoria();
 
-	Auth auth(String user, String pass);
+	Auth auth(String email, String pass);
 
 	Auth editUser(String user, String pass, Rol rol);
 
@@ -41,7 +44,7 @@ public interface IDataSource {
 
 	List<Acta> getActaList(String cuerpoColegiadoID, String empresaID);
 
-	Acta createActa(String cuerpoColegiadoID, String empresaID, Acta user);
+	Acta createActa(String cuerpoColegiadoID, String empresaID, Acta acta, String email) throws UnsupportedEncodingException, AddressException;
 
 	Acta editActa(String cuerpoColegiadoID, Acta user, String empresaID);
 
@@ -55,8 +58,7 @@ public interface IDataSource {
 
 	List<Auth> getUsuariosList(String cuerpoColegiadoID);
 
-	Auth create(String user, String pass, Rol rol, String empresaID, List<String> ccList, String nombre, String email,
-			String logo);
+	Auth create(String pass, Rol rol, String empresaID, List<String> ccList, String nombre, String email, String logo);
 
 	Tema addComentarioToTema(String cuerpoColegiadoID, String temaID, String comentario, String empresaID);
 
@@ -80,5 +82,7 @@ public interface IDataSource {
 	Acta getActa(String actaID, String empresaID);
 
 	void readFromFile();
+
+	Acta closeActa(String cuerpoColegiadoID, String actaID, String empresaID) throws AddressException, UnsupportedEncodingException, IOException;
 
 }

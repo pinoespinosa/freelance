@@ -1,0 +1,30 @@
+
+<button (click)="visiblePop = !visiblePop" 
+style="width: 32px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
+<img src="https://cdn1.iconfinder.com/data/icons/social-messaging-productivity-4/128/add-user2-512.png" style="width: 18px;" >
+</button>
+
+<change-state [(visible)]="visiblePop">
+   <h2 style="margin: 10px;margin-bottom: 20px;" >Crear un Usuario Nuevo</h2>
+   <div class="col-12" style="margin-bottom: 20px;">
+      <input #nombre type="text" class="form-control" placeholder="Nombre y Apellido">
+      <div [hidden]="email.validity.valid || email.value==''" style="color: red;" >Invalid email account</div>
+      <input #email type="text" class="form-control" placeholder="Email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+      <label>¿ Se relaciona con otros Cuerpos Colegiados? </label>
+      <div  *ngFor="let cuColeg of cuerposColegiado" >
+         <div style="display: inline;">
+            <input #cuColegCheck type="checkbox" style="margin-left: 40px;" (click)="update(cuColeg,cuColegCheck)">{{cuColeg.nombre}}
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-6"> 
+      <button (click)="visiblePop=!visiblePop" (click)="createUser(nombre.value,email.value)"  
+         [disabled]=" !email.validity.valid || email.value=='' " class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+      </div>
+      <div class="col-6"> 
+         <button (click)="visiblePop=!visiblePop" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
+      </div>
+   </div>
+</change-state>
+

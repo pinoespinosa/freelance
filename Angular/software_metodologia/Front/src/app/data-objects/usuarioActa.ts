@@ -7,6 +7,8 @@ export class UsuarioActa {
     public finEnMente:string,
     public estado: string, 
 
+    public removible: string 
+
   ) { }
 }
 

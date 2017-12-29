@@ -1,6 +1,9 @@
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild, Renderer2 } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute, NavigationExtras }           from '@angular/router';
-import { trigger, state, style, animate, transition }      from '@angular/animations';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild, Renderer2 }  from '@angular/core';
+import { Router, NavigationEnd, ActivatedRoute, NavigationExtras }                          from '@angular/router';
+import { trigger, state, style, animate, transition }                                       from '@angular/animations';
+import {Subscription}                                                                       from 'rxjs';
+import {Observable}                                                                         from 'rxjs/Rx'; 
+
 import { Service }   			      						      from 'app/service';
 import { Client }               									from 'app/data-objects/cliente';
 import { Trabajo }               									from 'app/data-objects/trabajo';
@@ -68,6 +71,7 @@ export class SesionComponent implements OnInit, OnDestroy {
   logo: string = "";
 
   queryString = "";
+  subscription: Subscription;
 
 
   constructor(private router: Router, private route: ActivatedRoute, private service: Service) {
@@ -84,10 +88,22 @@ export class SesionComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
+    this.subscription = Observable.interval(1000 * 1).subscribe(x => { 
+      if (localStorage.getItem('REFRESH_USERS')=='TRUE' && this.actaSelect && this.actaSelect.id) {
+        this.service.getUsuariosConActa(this.actaSelect.id).subscribe(
+          response => {
+            this.usuarios = response;
+            localStorage.setItem('REFRESH_USERS', 'FALSE');
+          });
+      }
+    });
 
   };
 
-  ngOnDestroy(): void {};
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  };
 
 
   indiceTemaMas() {
@@ -181,8 +197,7 @@ export class SesionComponent implements OnInit, OnDestroy {
     this.service.getUsuariosConActa(this.actaSelect.id).subscribe(
       response => {
         this.usuarios = response;
-      }
-    );
+      });
 
     this.service.getTemas(this.actaSelect.id).subscribe(
       response => {
@@ -191,16 +206,16 @@ export class SesionComponent implements OnInit, OnDestroy {
           if ((+a.id) < (+b.id))
             return 1;
           else
-          if ((+a.id) > (+b.id))
-            return -1;
-          else
-            return 0;
-        });
+            if ((+a.id) > (+b.id))
+              return -1;
+            else
+              return 0;
+          });
         if (response.length > 0) {
           this.temaActual = response[0];
           this.indice = 0;
         } else
-          this.indice = -1;
+        this.indice = -1;
 
         this.updateTareas();
       });
@@ -232,7 +247,7 @@ export class SesionComponent implements OnInit, OnDestroy {
     }
 
     if (!esta) {
-      this.actaSelect.integrantes.push(new UsuarioActa(asiiii.userID, asiiii.nombre, "", "", ""));
+      this.actaSelect.integrantes.push(new UsuarioActa(asiiii.userID, asiiii.nombre, "", "", "", "New"));
     }
   }
 
@@ -255,7 +270,7 @@ export class SesionComponent implements OnInit, OnDestroy {
 
 
     let loading =
-      this.service.createTema(ccID, temaN, this.actaSelect.id, arreglo).
+    this.service.createTema(ccID, temaN, this.actaSelect.id, arreglo).
     subscribe(
       response => {
         this.temasDelActa.unshift(response);
@@ -264,17 +279,17 @@ export class SesionComponent implements OnInit, OnDestroy {
           if ((+a.id) < (+b.id))
             return 1;
           else
-          if ((+a.id) > (+b.id))
-            return -1;
-          else
-            return 0;
-        });
+            if ((+a.id) > (+b.id))
+              return -1;
+            else
+              return 0;
+          });
 
 
         this.temaActual = response;
         alert("Se ha creado un nuevo tema")
       }
-    );
+      );
 
   }
 
@@ -288,14 +303,14 @@ export class SesionComponent implements OnInit, OnDestroy {
     let respon: Usuario = aux[responsable.selectedIndex];
 
 
-    let mmmm: UsuarioActa = new UsuarioActa(respon.userID, respon.nombre, "", "Presente", "");
+    let mmmm: UsuarioActa = new UsuarioActa(respon.userID, respon.nombre, "", "Presente", "","");
 
     let tareaN = new Tarea("", "Abierto", tarea, [], mmmm);
 
     let ccID = this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1];
 
     let loading =
-      this.service.crearTarea(ccID, this.temaActual.id, tareaN).
+    this.service.crearTarea(ccID, this.temaActual.id, tareaN).
     subscribe(
       response => {
         this.temaActual = response;
@@ -311,7 +326,7 @@ export class SesionComponent implements OnInit, OnDestroy {
 
         alert("Se ha creado un nueva tarea")
       }
-    );
+      );
 
   }
 
@@ -350,188 +365,188 @@ export class SesionComponent implements OnInit, OnDestroy {
         response => {
           this.temaActual = response;
         }
-      );
-      this.hayCommentTema = true;
-    }
-  }
-
-
-  checkAvanzarTareas(): void {
-
-    console.log("METHOD_AVANZAR_TAREA");
-    let navigationExtras: NavigationExtras = {
-      queryParams: {
-        "actaID": this.actaSelect.id
+        );
+        this.hayCommentTema = true;
       }
-    };
-    this.updatePaso('4');
-
-    this.router.navigate(['/sesion-2'], navigationExtras);
-
-  }
-
-  addComentarioTarea(com): void {
-
-    if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
-      this.service.createComentarioTarea(
-        this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, this.tareaActual.id, com).subscribe(
-        response => {
-          this.tareaActual = response;
-        }
-      );
-      this.hayCommentTarea = true;
     }
-  }
-
-  updatePasoIntegrantes(paso): void {
 
 
-    this.service.updateActaIntegrantes(
-      this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.actaSelect.id, this.actaSelect).subscribe(
-      response => {
-        console.log(response);
-        this.actaSelect = response;
+    checkAvanzarTareas(): void {
 
-      });
+      console.log("METHOD_AVANZAR_TAREA");
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          "actaID": this.actaSelect.id
+        }
+      };
+      this.updatePaso('4');
 
-    this.updatePaso(paso);
-  }
+      this.router.navigate(['/sesion-2'], navigationExtras);
+
+    }
+
+    addComentarioTarea(com): void {
+
+      if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
+        this.service.createComentarioTarea(
+          this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, this.tareaActual.id, com).subscribe(
+          response => {
+            this.tareaActual = response;
+          }
+          );
+          this.hayCommentTarea = true;
+        }
+      }
+
+      updatePasoIntegrantes(paso): void {
 
 
-  updatePaso(paso): void {
+        this.service.updateActaIntegrantes(
+          this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.actaSelect.id, this.actaSelect).subscribe(
+          response => {
+            console.log(response);
+            this.actaSelect = response;
 
-    this.service.updateActaPaso(
-      this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.actaSelect.id, paso).subscribe(
-      response => {
-        console.log(response);
-        this.actaSelect = response;
-        this.paso = paso;
+          });
 
-      });
+          this.updatePaso(paso);
+        }
 
-  }
 
-  closeTarea(): void {
+        updatePaso(paso): void {
 
-    if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
-
-      this.service.closeTarea(
-        this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id,
-        this.tareaActual.id,
-        this.actaSelect.id).subscribe(
-        response => {
-
-          this.service.getTemas(this.actaSelect.id).subscribe(
+          this.service.updateActaPaso(
+            this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.actaSelect.id, paso).subscribe(
             response => {
-              this.temasDelActa = response;
-              if (response.length > 0) {
-                this.temaActual = response[0];
-                this.indice = 0;
-              } else
-                this.indice = -1;
+              console.log(response);
+              this.actaSelect = response;
+              this.paso = paso;
 
-              this.updateTareas();
             });
 
-        }
-      );
-
-
-    }
-
-
-  }
-
-
-  avanzar() {
-
-    let done : boolean = false;
-
-    if (this.tareasMostrar.length != 0)
-      if (this.hayCommentTarea || confirm("Avanzar Tarea?")){
-        done = this.indiceTareaMas();
-        this.hayCommentTarea = false;
-      }
-
-    if (!done && (this.hayCommentTema || confirm("Avanzar Tema?"))){
-      this.hayCommentTema = false;
-
-      if (!this.indiceTemaMas()){
-        this.checkAvanzarTareas();
-      }
-    }
-
-
-
-}
-
-  updateTareas() {
-    this.tareasMostrar = [];
-    for (let aa of this.temaActual.tareas) {
-        if (aa.estado == "Abierto" || aa.estado == "Abierta")
-          this.tareasMostrar.push(aa);
-    }
-
-    this.tareasMostrar.sort((a, b) => {
-      if ((+a.id) < (+b.id))
-        return 1;
-      else
-      if ((+a.id) > (+b.id))
-        return -1;
-      else
-        return 0;
-    });
-
-
-    if (this.tareasMostrar.length > 0) {
-      this.tareaActual = this.tareasMostrar[0];
-      this.indiceTAREA = 0;
-
-
-    } else {
-      this.tareaActual = new Tarea("", "", "", [], null);
-      this.indiceTAREA = -1;
-    }
-
-  }
-
-  closeTema(com): void {
-
-    let tareasAbiertas: boolean = false;
-    for (let aa of this.temaActual.tareas) {
-      if (aa.estado == 'Abierto')
-        tareasAbiertas = true;
-    }
-
-
-    if (tareasAbiertas)
-      alert("No se puede cerrar porque existen tareas abiertas.")
-    else {
-      if (confirm("Esta a punto de cerrar un tema. ¿Desea continuar?")) {
-        this.service.closeTema(
-          this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, com).subscribe(
-          response => {
-
-            this.service.getTemas(this.actaSelect.id).subscribe(
-              response => {
-                this.temasDelActa = response;
-                if (response.length > 0) {
-                  this.temaActual = response[0];
-                  this.indice = 0;
-                } else
-                  this.indice = -1;
-
-                this.updateTareas();
-              });
-
           }
-        );
-      }
+
+          closeTarea(): void {
+
+            if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
+
+              this.service.closeTarea(
+                this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id,
+                this.tareaActual.id,
+                this.actaSelect.id).subscribe(
+                response => {
+
+                  this.service.getTemas(this.actaSelect.id).subscribe(
+                    response => {
+                      this.temasDelActa = response;
+                      if (response.length > 0) {
+                        this.temaActual = response[0];
+                        this.indice = 0;
+                      } else
+                      this.indice = -1;
+
+                      this.updateTareas();
+                    });
+
+                }
+                );
 
 
-    }
+              }
 
 
-  }
-}
+            }
+
+
+            avanzar() {
+
+              let done : boolean = false;
+
+              if (this.tareasMostrar.length != 0)
+                if (this.hayCommentTarea || confirm("Avanzar Tarea?")){
+                  done = this.indiceTareaMas();
+                  this.hayCommentTarea = false;
+                }
+
+                if (!done && (this.hayCommentTema || confirm("Avanzar Tema?"))){
+                  this.hayCommentTema = false;
+
+                  if (!this.indiceTemaMas()){
+                    this.checkAvanzarTareas();
+                  }
+                }
+
+
+
+              }
+
+              updateTareas() {
+                this.tareasMostrar = [];
+                for (let aa of this.temaActual.tareas) {
+                  if (aa.estado == "Abierto" || aa.estado == "Abierta")
+                    this.tareasMostrar.push(aa);
+                }
+
+                this.tareasMostrar.sort((a, b) => {
+                  if ((+a.id) < (+b.id))
+                    return 1;
+                  else
+                    if ((+a.id) > (+b.id))
+                      return -1;
+                    else
+                      return 0;
+                  });
+
+
+                if (this.tareasMostrar.length > 0) {
+                  this.tareaActual = this.tareasMostrar[0];
+                  this.indiceTAREA = 0;
+
+
+                } else {
+                  this.tareaActual = new Tarea("", "", "", [], null);
+                  this.indiceTAREA = -1;
+                }
+
+              }
+
+              closeTema(com): void {
+
+                let tareasAbiertas: boolean = false;
+                for (let aa of this.temaActual.tareas) {
+                  if (aa.estado == 'Abierto')
+                    tareasAbiertas = true;
+                }
+
+
+                if (tareasAbiertas)
+                  alert("No se puede cerrar porque existen tareas abiertas.")
+                else {
+                  if (confirm("Esta a punto de cerrar un tema. ¿Desea continuar?")) {
+                    this.service.closeTema(
+                      this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, com).subscribe(
+                      response => {
+
+                        this.service.getTemas(this.actaSelect.id).subscribe(
+                          response => {
+                            this.temasDelActa = response;
+                            if (response.length > 0) {
+                              this.temaActual = response[0];
+                              this.indice = 0;
+                            } else
+                            this.indice = -1;
+
+                            this.updateTareas();
+                          });
+
+                      }
+                      );
+                    }
+
+
+                  }
+
+
+                }
+              }
 

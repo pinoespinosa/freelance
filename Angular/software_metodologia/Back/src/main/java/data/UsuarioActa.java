@@ -6,8 +6,6 @@ public class UsuarioActa {
 
 	private String userID;
 	private String nombre;
-
-	@JsonIgnore
 	private String email;
 	
 	private String finEnMente;
@@ -47,12 +45,10 @@ public class UsuarioActa {
 		this.estado = estado;
 	}
 	
-	@JsonIgnore
 	public String getEmail() {
 		return email;
 	}
 	
-	@JsonIgnore
 	public void setEmail(String email) {
 		this.email = email;
 	}

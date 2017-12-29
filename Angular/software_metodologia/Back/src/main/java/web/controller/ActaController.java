@@ -1,7 +1,11 @@
 package web.controller;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.mail.internet.AddressException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -116,16 +120,18 @@ public class ActaController {
 	
 	/**
 	 * Crea un acta y envia las invitaciones
+	 * @throws UnsupportedEncodingException 
+	 * @throws AddressException 
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "{cuerpoColegiadoID}/acta/create", method = RequestMethod.POST)
 	@ResponseBody
 	public Acta createActa(
 			@PathVariable final String cuerpoColegiadoID, 
-			@RequestBody Acta user,
-			@RequestHeader("Acces-Token") String token) {
+			@RequestBody Acta acta,
+			@RequestHeader("Acces-Token") String token) throws UnsupportedEncodingException, AddressException {
 
-		return dataSource.createActa(cuerpoColegiadoID, Auth.getEmpresaID(token), user);
+		return dataSource.createActa(cuerpoColegiadoID, Auth.getEmpresaID(token), acta, Auth.getUserEmail(token));
 	}
 
 	
@@ -142,6 +148,21 @@ public class ActaController {
 			@RequestHeader("Acces-Token") String token) {
 
 		return dataSource.updatePaso(cuerpoColegiadoID, actaID, paso, Auth.getEmpresaID(token));
+	}
+	
+	/**
+	 * @throws AddressException 
+	 * @throws IOException 
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "{cuerpoColegiadoID}/{actaID}/close", method = RequestMethod.POST)
+	@ResponseBody
+	public Acta closeActa(
+			@PathVariable final String cuerpoColegiadoID, 
+			@PathVariable final String actaID, 
+			@RequestHeader("Acces-Token") String token) throws AddressException, IOException {
+
+		return dataSource.closeActa(cuerpoColegiadoID, actaID, Auth.getEmpresaID(token));
 	}
 	
 	

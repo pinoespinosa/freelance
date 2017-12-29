@@ -298,7 +298,7 @@ export class Sesion2Component implements OnInit, OnDestroy {
     }
 
     if (!esta) {
-      this.actaSelect.integrantes.push(new UsuarioActa(asiiii.userID, asiiii.nombre, "", "", ""));
+      this.actaSelect.integrantes.push(new UsuarioActa(asiiii.userID, asiiii.nombre, "", "", "",""));
     }
   }
 
@@ -357,7 +357,7 @@ export class Sesion2Component implements OnInit, OnDestroy {
     let respon: Usuario = aux[responsable.selectedIndex];
 
 
-    let mmmm: UsuarioActa = new UsuarioActa(respon.userID, respon.nombre, "", "Presente", "");
+    let mmmm: UsuarioActa = new UsuarioActa(respon.userID, respon.nombre, "", "Presente", "","");
 
     let tareaN = new Tarea("", "Abierta", tarea, [], mmmm);
 
@@ -546,9 +546,14 @@ export class Sesion2Component implements OnInit, OnDestroy {
 
 
   closeActa() {
-
-    console.log(this.actaSelect);
     alert('Se enviará un email con las minutas del acta y el resumen por PDF de la misma');
+
+                this.service.closeActa(this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.actaSelect.id).subscribe(
+              response => {
+
+
+              });
+
   }
 
 

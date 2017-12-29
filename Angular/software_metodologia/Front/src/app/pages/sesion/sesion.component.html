@@ -95,14 +95,14 @@
                   <div class="col-7" style="padding-right: 0px;" >
                      <button style="width: 100%;" type="button" class="btn"><b>{{asistente.nombre}}</b></button>
                   </div>
-                  <div class="col-4" style="padding-right: 0px;align-self: center;" >
+                  <div class="col-4" style="padding-right: 0px;align-self: center;height: 32px;" >
                      <select style="width: 100%;text-align: center;" #estSelect class="dropdown-select" (change)="asistente.estado = estSelect.value">
                      <option disabled hidden [value]="selectUndefinedOptionValue">-- Estado --</option>
                      <option *ngFor="let estado of estadosUsuario" >{{estado}}</option>
                      </select>
                   </div>
                   <div class="col-1" >
-                     <button  (click)="removeUser(asistente)" style="width: 32px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
+                     <button [hidden]="asistente.removible!='New'" (click)="removeUser(asistente)" style="width: 32px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
                      <img src="assets/trash.png" style="width: 18px;" >
                      </button> 
                   </div>
@@ -124,15 +124,13 @@
             <div>
                Crear un nuevo usuario
             </div>
-            <button  (click)="removeUser(asistente)" 
-               style="width: 32px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
-            <img src="https://cdn1.iconfinder.com/data/icons/social-messaging-productivity-4/128/add-user2-512.png" style="width: 18px;" >
-            </button>
+            <create-user></create-user>
+
          </div>
          <div style="margin-top: 30px;"  >Agregue un usuario</div>
          <div style="background: #E4AD2D80;" >
             <input type="text" [(ngModel)]="queryString" [ngModelOptions]="{standalone: true}" id="search" placeholder="Busque por email">
-            <ul style="max-height: 100px;overflow: scroll;" >
+            <ul style="max-height: 200px;overflow-y: scroll;" >
                <li *ngFor="let usuario of usuarios | FilterPipe: queryString ">
                   <button style="border: none;background: #E4AD2DCC;border-radius: 8px;font-size: small;" (click)="addUser(usuario)">{{usuario.nombre}} - {{usuario.email}}</button>
                </li>
@@ -204,11 +202,11 @@
                (keydown)="comentarioTema=commentTema.value"></textarea>
             </div>
             <div class="col-2" style="padding-right: 0px;" >
-               <button [disabled]="comentarioTema == '' " (click)="addComentario('Comentario del acta: ' + actaSelect.id +' - ' + commentTema.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" >Agregar Comentario</button>
+               <button [disabled]="comentarioTema == '' " (click)="addComentario(actaSelect.id +' - ' + commentTema.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" >Agregar Comentario</button>
             </div>
             <div class="col-2" >
                <div style="text-align: center;" >         
-                  <button (click)="closeTema('Comentario del acta: ' + actaSelect.id +' - Se ha cerrado el tema' )" type="button" style="width: 100%;font-size: x-small;" class="btn">Cerrar Tema</button>
+                  <button (click)="closeTema(actaSelect.id +' - Se ha cerrado el tema' )" type="button" style="width: 100%;font-size: x-small;" class="btn">Cerrar Tema</button>
                </div>
             </div>
          </div>

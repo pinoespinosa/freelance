@@ -1,4 +1,4 @@
-   
+
 <form *ngIf="paso==1" class="form-horizontal reuniones-form-container" action='' method="POST" >
    <div class="row" style="align-self: center;" >
       <div class="col-4 offset-4" >
@@ -95,19 +95,15 @@
       </div>
       <div class="col-4" style="margin-left: 60px;">
       <div>
-         <div>
-         Crear un nuevo usuario
-         </div>
-         <button  (click)="removeUser(asistente)" 
-         style="width: 32px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
-            <img src="https://cdn1.iconfinder.com/data/icons/social-messaging-productivity-4/128/add-user2-512.png" style="width: 18px;" >
-         </button>
+         <div>Crear un nuevo usuario</div>
+         <create-user></create-user>
+
          </div>
    <div style="margin-top: 30px;"  >Agregue un usuario</div>
 
    <div style="background: #E4AD2D80;" >
       <input type="text" [(ngModel)]="queryString" [ngModelOptions]="{standalone: true}" id="search" placeholder="Busque por email">
-      <ul style="max-height: 100px;overflow: scroll;" > 
+      <ul style="max-height: 200px;overflow-y: scroll;" > 
          <li *ngFor="let usuario of usuarios | FilterPipe: queryString ">
             <button style="border: none;background: #E4AD2DCC;border-radius: 8px;font-size: small;" (click)="addUser(usuario)">{{usuario.nombre}} - {{usuario.email}}</button>
          </li>

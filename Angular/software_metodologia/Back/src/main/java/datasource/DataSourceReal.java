@@ -2,6 +2,7 @@ package datasource;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.Collection;
 import java.util.Hashtable;
 import java.util.List;
 
+import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JFrame;
 
@@ -26,10 +28,12 @@ import data.CuerpoColegiado;
 import data.Empresa;
 import data.Evento;
 import data.Info;
-import data.MainClass;
+import data.PdfPrinter;
 import data.Tarea;
 import data.Tema;
+import data.UsuarioActa;
 import spring.ChipherTool;
+import spring.EmailUtils;
 
 public class DataSourceReal implements IDataSource {
 
@@ -92,13 +96,13 @@ public class DataSourceReal implements IDataSource {
 			cc2.setTemas(new Hashtable<>());
 			cc2 = createCuerpoColegiado(emp.getId(), cc2);
 
-			create("pino", "1234", Rol.ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
+			create("1234", Rol.ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
 					"Andres Espinosa", "pino.espinosa91@gmail.com", "http://brandmark.io/logo-rank/random/bp.png");
 
-			create("vale", "1234", Rol.ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
+			create("1234", Rol.ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
 					"Valentina Alfonso", "ae@qbkconsulting.com", "http://brandmark.io/logo-rank/random/bp.png");
 
-			create("fer", "1234", Rol.ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
+			create("1234", Rol.ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
 					"Fernando Echevarria", "andresespinosa91@hotmail.com",
 					"http://brandmark.io/logo-rank/random/bp.png");
 
@@ -200,23 +204,42 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
-	public Acta createActa(String cuerpoColegiadoID, String empresaID, Acta acta) {
+	public Acta createActa(String cuerpoColegiadoID, String empresaID, Acta acta, String email) throws UnsupportedEncodingException, AddressException {
 
 		CuerpoColegiado orig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 
 		acta.setId(orig.getPrefijoDocs() + "_" + orig.getId() + "-" + orig.getActas().size() + "");
-		
-		String nro = orig.getActas().size() +"";
-		
-		while (nro.length()<3)
+
+		String nro = orig.getActas().size() + "";
+
+		while (nro.length() < 3)
 			nro = "0" + nro;
-		
+
 		acta.setNumeroActa(orig.getPrefijoDocs() + nro);
 		acta.setFecha(System.currentTimeMillis());
 
 		acta.setEstado("Citada");
 
 		orig.getActas().add(acta);
+
+		List<String> emailList = new ArrayList<>();
+		for (UsuarioActa uActa : acta.getIntegrantes()) {
+			if (uActa.getEmail() != null && !uActa.getEmail().isEmpty())
+				emailList.add(uActa.getEmail());
+		}
+
+		List<Tema> temasList = getTemaAbiertoList(cuerpoColegiadoID, empresaID);
+		List<String> tList = new ArrayList<>();
+		
+		for (Tema tema : temasList) {
+			tList.add(tema.toString());
+		}
+		
+		EmailUtils.sendEmail(email, emailList, "Citación a la Reunion " + acta.getNumeroActa(),
+				"Te estoy citando a la reunion " + acta.getNumeroActa() + 
+				" a concretarse " + acta.getFechaReunion() + " entre las " + acta.getHoraFinal() + " y las " + acta.getHoraInicio() +  
+				" en: " + acta.getLugar() + "\n\nLos temas a tratar son:\n\n" + String.join("\n", tList) + "\n\nFavor de responder con el fin en mente individual." );
+
 		updateFile();
 		return acta;
 	}
@@ -301,11 +324,11 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
-	public Auth auth(String user, String pass) {
+	public Auth auth(String email, String pass) {
 
-		String clave = ChipherTool.encrypt(user + "_" + pass);
+		String clave = ChipherTool.encrypt(email + "_" + pass);
 
-		if ("cabralito".equals(user) && "pascalito".equals(pass)) {
+		if ("cabralito".equals(email) && "pascalito".equals(pass)) {
 			Auth auth = new Auth(clave, Rol.ADMINISTRADOR, "", null, clave, null, clave, "");
 			auth.setToken(getToken(auth));
 			return auth;
@@ -325,10 +348,10 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
-	public Auth create(String user, String pass, Rol rol, String empresaID, List<String> ccList, String nombre,
+	public Auth create( String pass, Rol rol, String empresaID, List<String> ccList, String nombre,
 			String email, String logo) {
 
-		String clave = ChipherTool.encrypt(user + "_" + pass);
+		String clave = ChipherTool.encrypt(email + "_" + pass);
 
 		Auth auth = new Auth(obj.getUsers().size() + "", rol, nombre, email, empresaID, ccList, "", logo);
 		obj.getUsers().put(clave, auth);
@@ -408,17 +431,6 @@ public class DataSourceReal implements IDataSource {
 	//	ccOrig.getTemas().get(temaID).setEstado("Cerrado");
 		updateFile();
 
-		try {
-			MainClass frame = new MainClass(ccOrig, ccOrig.getTemas().get(temaID));
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame.pack();
-			frame.setVisible(true);
-			frame.dispose();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
 		return ccOrig.getTemas().get(temaID);
 	}
 
@@ -462,6 +474,34 @@ public class DataSourceReal implements IDataSource {
 		return aa;
 	}
 
+	@Override
+	public Acta closeActa(String cuerpoColegiadoID, String actaID, String empresaID) throws AddressException, IOException {
+
+		Acta actaToClose = getActa(actaID, empresaID);
+		CuerpoColegiado cc = getCuerpoColeg(cuerpoColegiadoID);
+		String fileName = "";
+		try {
+			fileName = PdfPrinter.printPDF(actaToClose, cc);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		List<String> emailList = new ArrayList<>();
+		for (UsuarioActa uActa : actaToClose.getIntegrantes()) {
+			if (uActa.getEmail() != null && !uActa.getEmail().isEmpty())
+				emailList.add(uActa.getEmail());
+		}
+		
+		EmailUtils.sendEmailAttachFile("", emailList, "Resumen de la reunion", "",fileName );
+
+		
+		actaToClose.setEstado(TEMA_CERRADO);
+		updateFile();
+		return actaToClose;
+	}
+
+	
 	@Override
 	public Tema actaIsDone(String cuerpoColegiadoID, String empresaID, String actaID) {
 
