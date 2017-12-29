@@ -35,6 +35,7 @@ import data.Pago;
 import data.Requerimiento;
 import data.Trabajo;
 import spring.ChipherTool;
+import spring.ProjectConstants;
 import web.controller.OfficeController;
 
 public class DataSourceReal implements IDataSource {
@@ -56,7 +57,7 @@ public class DataSourceReal implements IDataSource {
 		System.out.println("Current relative path is: " + Paths.get("").toAbsolutePath().toString());
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			obj = mapper.readValue(new File("file.json"), Info.class);
+			obj = mapper.readValue(new File(ProjectConstants.PROJECT_SMALL_NAME + ".json"), Info.class);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -64,7 +65,6 @@ public class DataSourceReal implements IDataSource {
 
 	synchronized void readFromString(String data) {
 		ObjectMapper mapper = new ObjectMapper();
-		mapper.enable(SerializationFeature.INDENT_OUTPUT);
 		try {
 			obj = mapper.readValue(data, Info.class);
 		} catch (IOException e) {
@@ -74,6 +74,7 @@ public class DataSourceReal implements IDataSource {
 	
 	synchronized void infoToFile(Object data, String filename) {
 		ObjectMapper mapper = new ObjectMapper();
+		mapper.enable(SerializationFeature.INDENT_OUTPUT);
 		try {
 			mapper.writeValue(new File(filename), data);
 		} catch (IOException e) {
@@ -82,7 +83,7 @@ public class DataSourceReal implements IDataSource {
 	}
 	
 	synchronized void updateFile() {
-		infoToFile(obj, "file.json");
+		infoToFile(obj, ProjectConstants.PROJECT_SMALL_NAME + ".json");
 	}
 
 	@Override
@@ -321,7 +322,7 @@ public class DataSourceReal implements IDataSource {
 			e.printStackTrace();
 		}
 
-		infoToFile(base, "file.json");
+		infoToFile(base, ProjectConstants.PROJECT_SMALL_NAME + ".json");
 		obj=base;
 	}
 
