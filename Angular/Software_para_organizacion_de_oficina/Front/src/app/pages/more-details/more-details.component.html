@@ -15,7 +15,7 @@
          </button>
       </div>
       <div class="col-2">
-         <button (click)="do()" type="button" class="btn btn-danger cancel-client-button client-button" [disabled]="buttonState()"> 
+         <button (click)="do()" (click)="cancelMasDetalles()" type="button" class="btn btn-danger cancel-client-button client-button" [disabled]="buttonState()"> 
             Cancelar
          </button>
       </div>

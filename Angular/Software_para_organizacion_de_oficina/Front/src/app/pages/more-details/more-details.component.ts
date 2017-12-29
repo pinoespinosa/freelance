@@ -95,10 +95,17 @@ export class MoreDetailsComponent implements OnInit  {
       }        
     );
   }
+
+  cancelMasDetalles(){
+   this.getWorks(this.clienteID, this.trabajoID);
+  }
+
   saveMasDetalles(){
     this.service.editCliente(this.cliente).subscribe(
       response => {
         let cliente = response;
+        alert('Se han guardado los cambios exitosamente.')
+
       },
       error => {
         // Defaults to 0 if no query param provided.
