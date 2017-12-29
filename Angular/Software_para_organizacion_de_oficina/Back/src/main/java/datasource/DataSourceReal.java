@@ -150,6 +150,16 @@ public class DataSourceReal implements IDataSource {
 		Cliente original = obj.getClientes().get(obj.getClientes().indexOf(c));
 		trabajo.setId(c.getId() + "-" + original.getTrabajos().size());
 		
+		if (trabajo.getRequerimientos()!=null){
+			
+			for (Requerimiento req : trabajo.getRequerimientos()) {			
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				req.setFecha(sdf.format(new Date()));
+				
+			}
+		}
+		
+		
 		
 		original.getTrabajos().add(trabajo);
 		updateFile();
@@ -741,12 +751,12 @@ public class DataSourceReal implements IDataSource {
 				"Ab9", "Fecha9", "Ab10", "Fecha10", "FPago1", "Obv1", "FPago2", "Obv2", "FPago3", "Obv3", "FPago4",
 				"Obv4", "FPago5", "Obv5", "FPago6", "Obv6", "FPago7", "Obv7", "FPago8", "Obv8", "FPago9", "Obv9",
 				"FPago10", "Obv10");
-		String aaasda =  String.join(",", list);
+		String aaasda =  String.join(";", list);
 		filas.add(aaasda);
 		
 		for (Cliente c : obj.getClientes()) {
 			for (Trabajo t : c.getTrabajos()) {
-				filas.add('"'+ c.toCSV() +'"'+','+'"'+ t.toCSV());
+				filas.add('"'+ c.toCSV() +'"'+';'+'"'+ t.toCSV());
 			}
 		}
 

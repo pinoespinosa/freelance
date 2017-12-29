@@ -198,7 +198,7 @@ public class Cliente {
 				getTelefono1() + "/" + getTelefono2() + "/" + getTelefono3(),
 				getEmail1() + "/" + getEmail2() + "/" + getEmail3());
 
-		return String.join("\",\"", list);
+		return String.join("\";\"", list);
 
 	}
 

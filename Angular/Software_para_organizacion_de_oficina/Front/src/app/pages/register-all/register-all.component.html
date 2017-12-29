@@ -1,3 +1,9 @@
+      <div class="col-1 offset-md-11" style="width: 100%; margin-top: 15px;">
+         <button [routerLink]="['/home']" type="button" class="btn btn-secondary"> 
+            Volver
+         </button>
+      </div>
+
 
 <form class="form-horizontal" action='' method="POST">
    <div class="row" style="padding-top: 30px;" >
@@ -145,7 +151,7 @@
 <change-state [(visible)]="showDialogAddReq">
 <h2 style="margin: 10px;margin-bottom: 20px;" >Agregar Requerimiento</h2>
 <div class="col-12" style="margin-bottom: 20px;">
-   <input type="text" class="form-control" placeholder="Requerimiento">
+   <input #reqq type="text" class="form-control" placeholder="Requerimiento">
 </div>
 <div class="row">
    <div class="col-6"> 

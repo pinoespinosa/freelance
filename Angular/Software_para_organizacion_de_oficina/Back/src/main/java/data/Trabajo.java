@@ -149,19 +149,19 @@ public class Trabajo {
 		String tex = "";
 		for (int i = 0; i < 10; i++) {
 			if (i < pagos.size())
-				tex += '"' + pagos.get(i).getAbono() + '"' + ',' + '"' + pagos.get(i).getFecha_pago() + '"' + ',';
+				tex += '"' + pagos.get(i).getAbono() + '"' + ';' + '"' + pagos.get(i).getFecha_pago() + '"' + ';';
 			else
 				//tex += '"' + "-" + '"' + ',' + '"' + "-" + '"' + ',';
-				tex += "\"-\",\"-\",";
+				tex += "\"-\";\"-\";";
 
 		}
 
 		String tex2 = "";
 		for (int i = 0; i < 10; i++) {
 			if (i < pagos.size())
-				tex2 += '"' + pagos.get(i).getForma_pago() + '"' + ',' + '"' + pagos.get(i).getDetalle() + '"' + ',';
+				tex2 += '"' + pagos.get(i).getForma_pago() + '"' + ';' + '"' + pagos.get(i).getDetalle() + '"' + ';';
 			else
-				tex2 += "\"-\",\"-\",";
+				tex2 += "\"-\";\"-\";";
 		}
 		
 		List<String> list = Arrays.asList(
@@ -180,7 +180,7 @@ public class Trabajo {
 		System.out.println(tex2);
 		System.out.println();
 		System.out.println();
-		return String.join("\",\"", list) + "\"," + tex + tex2;
+		return String.join("\";\"", list) + "\";" + tex + tex2;
 				
 	}
 
