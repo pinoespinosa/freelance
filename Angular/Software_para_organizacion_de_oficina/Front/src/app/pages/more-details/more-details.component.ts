@@ -45,7 +45,18 @@ export class MoreDetailsComponent implements OnInit  {
   };
 
   addReq(req){
-    this.requerimientos.push(new Requerimiento(req, "", ""))
+    
+    let re = new Requerimiento(req,"","");
+
+    let loading = this.service.agregarRequerimiento(this.clienteID, this.trabajoID, re).subscribe(
+      response =>{ 
+        let aa = response;
+        this.requerimientos.push(aa)
+        alert("Se ha agregado un requerimiento exitosamente")
+
+      }         
+    );
+
   }
 
   delteReq(req){

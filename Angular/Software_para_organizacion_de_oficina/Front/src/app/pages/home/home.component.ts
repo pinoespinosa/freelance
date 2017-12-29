@@ -66,6 +66,7 @@ export class HomeComponent   {
     let loading = this.service.agregarRequerimiento(this.cliente2.clienteID, this.cliente2.id_trabajo, re).subscribe(
       response =>{ 
         let aa = response;
+        alert("Se ha agregado un requerimiento exitosamente")
       }         
     );
   }

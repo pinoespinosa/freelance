@@ -249,9 +249,9 @@
             
                <tbody class="centro" *ngIf="requerimientos?.length > 0" >
                   <tr *ngFor="let req of trabajo.requerimientos" class="requirements-columns" (dblclick)="showDialogAddReq = !showDialogAddReq">
-                     <td>{{ date | date:'dd-MM-yyyy'}}</td>
+                     <td>{{ req.fecha | date:'dd-MM-yyyy'}}</td>
                      <td>{{req.texto}}</td>
-                     <td>
+                     <td hidden>
                         <a class="btn clients-actions"  (click)="showDialogAddReq = true" >
                           <div class="tooltip">              
                             <img class="clients-img" src="./assets/reque.png" alt="">
@@ -259,7 +259,7 @@
                           </div>
                         </a>
                      </td>
-                     <td>
+                     <td hidden>
                         <a class="btn clients-actions"  (click)="showDialogDelete = true" >
                           <div class="tooltip">              
                             <img class="clients-img" src="./assets/trash.png" alt="">

@@ -319,6 +319,8 @@ public class DataSourceReal implements IDataSource {
 	@Override
 	public void addRequerimiento(String idCliente, String idTrabajo, Requerimiento requerimiento) {
 		Trabajo t = getTrabajo(idCliente, idTrabajo);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		requerimiento.setFecha(sdf.format(new Date()));
 		t.getRequerimientos().add(requerimiento);
 	}
 
