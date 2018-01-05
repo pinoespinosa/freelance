@@ -211,7 +211,7 @@
         "fechaCierre" : 0,
         "lugar" : "u",
         "ciudad" : "u",
-        "paso" : "0",
+        "paso" : "1",
         "estado" : "Citada",
         "integrantes" : [ {
           "userID" : "0",
@@ -250,20 +250,20 @@
         "fechaCierre" : 0,
         "lugar" : "tt",
         "ciudad" : "t",
-        "paso" : "0",
+        "paso" : "3",
         "estado" : "Citada",
         "integrantes" : [ {
           "userID" : "5",
           "nombre" : "II",
           "email" : null,
-          "finEnMente" : "",
-          "estado" : ""
+          "finEnMente" : "jj",
+          "estado" : "Presente"
         }, {
           "userID" : "7",
           "nombre" : "ttttt",
           "email" : null,
-          "finEnMente" : "",
-          "estado" : ""
+          "finEnMente" : "jj",
+          "estado" : "Presente"
         } ],
         "finMenteGral" : "t",
         "temas" : [ ],
@@ -1146,23 +1146,23 @@
     "logoEmpresa" : "https://staticaltmetric.s3.amazonaws.com/uploads/2015/10/dark-logo-for-site.png"
   } ],
   "users" : {
-    "BO6HksZrI6j/q2gCu2QKD772U7FeMg1i23xqgAsMq1eOzaaxvqhI9Ed2gazJ5XlU" : {
-      "userID" : "2",
-      "rol" : "ADMINISTRADOR",
-      "nombre" : "Fernando Echevarria",
-      "email" : "andresespinosa91@hotmail.com",
-      "logo" : "http://brandmark.io/logo-rank/random/bp.png",
-      "empresaID" : "0",
-      "empresaNombre" : null,
-      "ccList" : [ "0-0", "0-1" ],
-      "token" : ""
-    },
     "AxvQTh5o42Dw4THqVf2itHzT+uA5GkYRGKrKq04Xt80=" : {
       "userID" : "7",
       "rol" : "SOLO_CONSULTA",
       "nombre" : "Maria la Tiradora",
       "email" : "pino@jota.com",
       "logo" : "dd",
+      "empresaID" : "0",
+      "empresaNombre" : null,
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : ""
+    },
+    "BO6HksZrI6j/q2gCu2QKD772U7FeMg1i23xqgAsMq1eOzaaxvqhI9Ed2gazJ5XlU" : {
+      "userID" : "2",
+      "rol" : "ADMINISTRADOR",
+      "nombre" : "Fernando Echevarria",
+      "email" : "andresespinosa91@hotmail.com",
+      "logo" : "http://brandmark.io/logo-rank/random/bp.png",
       "empresaID" : "0",
       "empresaNombre" : null,
       "ccList" : [ "0-0", "0-1" ],
@@ -1179,17 +1179,6 @@
       "ccList" : [ "0-0", "0-1" ],
       "token" : ""
     },
-    "DlTEyk6ub5y5cBJHOuQbD/YqpTsuJxImPH7MF+D/Ltw=" : {
-      "userID" : "0",
-      "rol" : "ADMINISTRADOR",
-      "nombre" : "Andres Espinosa",
-      "email" : "pino.espinosa91@gmail.com",
-      "logo" : "https://staticaltmetric.s3.amazonaws.com/uploads/2015/10/dark-logo-for-site.png",
-      "empresaID" : "0",
-      "empresaNombre" : "Arcor",
-      "ccList" : [ "0-0", "0-1" ],
-      "token" : "3hjbUqyJ0PxH0E/KpZVqfBsLxIvTNhiWzOvpnyZE10QRuuWjtd2bv0IIfbQHjpj/G4muWA58HW0gKoCuXcBmJ1RF/2HZ5FpyVD3NguPdypHT6NWUmfndFvtJ83kW6AedbXzBJ5UGrifpg2ItQJjyYd0i73fi/lP9EqY8uLqfDzW4zabjjETc5h4EWJh48oLEZXGqn7N36P3FFsqJowxAvMW5m54VsZasLlsfgYcZODBUO/cbOtxbBeQAXw0WOvTT0AKqP1smBa3unAqD/HJ6qBrIy4sH4nLQucB4Lqxc3yU="
-    },
     "dAkcCXm/0ILD7IP+JqsQfA==" : {
       "userID" : "7",
       "rol" : "SOLO_CONSULTA",
@@ -1201,11 +1190,33 @@
       "ccList" : [ "0-0", "0-1" ],
       "token" : ""
     },
+    "DlTEyk6ub5y5cBJHOuQbD/YqpTsuJxImPH7MF+D/Ltw=" : {
+      "userID" : "0",
+      "rol" : "ADMINISTRADOR",
+      "nombre" : "Andres Espinosa",
+      "email" : "pino.espinosa91@gmail.com",
+      "logo" : "https://staticaltmetric.s3.amazonaws.com/uploads/2015/10/dark-logo-for-site.png",
+      "empresaID" : "0",
+      "empresaNombre" : "Arcor",
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : "3hjbUqyJ0PxH0E/KpZVqfBsLxIvTNhiWzOvpnyZE10QRuuWjtd2bv0IIfbQHjpj/G4muWA58HW0gKoCuXcBmJ1RF/2HZ5FpyVD3NguPdypHT6NWUmfndFvtJ83kW6AedbXzBJ5UGrifpg2ItQJjyYd0i73fi/lP9EqY8uLqfDzW4zabjjETc5h4EWJh48oLEZXGqn7N36P3FFsqJowxAvMW5m54VsZasLlsfgYcZODBUO/cbOtxbBeQAXw0WOvTT0AKqP1smBa3unAqD/HJ6qBrIy4sH4nLQucB4Lqxc3yU="
+    },
     "XTWHiv9CM5UNRnEcH4T1+Q==" : {
       "userID" : "5",
       "rol" : "SOLO_CONSULTA",
       "nombre" : "II",
       "email" : "a@w.com",
+      "logo" : "dd",
+      "empresaID" : "0",
+      "empresaNombre" : null,
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : ""
+    },
+    "nDyldjknWgwoqMvn2Kp+MQ==" : {
+      "userID" : "4",
+      "rol" : "SOLO_CONSULTA",
+      "nombre" : "aaaaa",
+      "email" : "a@q.com",
       "logo" : "dd",
       "empresaID" : "0",
       "empresaNombre" : null,
@@ -1221,17 +1232,6 @@
       "empresaID" : null,
       "empresaNombre" : null,
       "ccList" : [ "11", "22", "33" ],
-      "token" : ""
-    },
-    "nDyldjknWgwoqMvn2Kp+MQ==" : {
-      "userID" : "4",
-      "rol" : "SOLO_CONSULTA",
-      "nombre" : "aaaaa",
-      "email" : "a@q.com",
-      "logo" : "dd",
-      "empresaID" : "0",
-      "empresaNombre" : null,
-      "ccList" : [ "0-0", "0-1" ],
       "token" : ""
     }
   }

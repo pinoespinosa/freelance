@@ -463,12 +463,12 @@ export class SesionComponent implements OnInit, OnDestroy {
               let done : boolean = false;
 
               if (this.tareasMostrar.length != 0)
-                if (this.hayCommentTarea || confirm("Avanzar Tarea?")){
+                if (this.hayCommentTarea || confirm("No ha dejado comentarios en esta tarea. ¿Desea avanzar de todos modos?")){
                   done = this.indiceTareaMas();
                   this.hayCommentTarea = false;
                 }
 
-                if (!done && (this.hayCommentTema || confirm("Avanzar Tema?"))){
+                if (!done && (this.hayCommentTema || confirm("No ha dejado comentarios en este tema. ¿Desea avanzar de todos modos?"))){
                   this.hayCommentTema = false;
 
                   if (!this.indiceTemaMas()){
