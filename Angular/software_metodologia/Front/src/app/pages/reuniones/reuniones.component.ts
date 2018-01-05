@@ -156,7 +156,7 @@ export class ReunionesComponent implements OnInit  {
 
     console.log(this.actaCreada);
 
-    if (confirm("Esta a punto de crear una reunion y enviar las invitaciones. ¿Desea continuar?")){
+    if (confirm("Esta a punto de crear una reunion y enviar las invitaciones. ¿Desea continuar? (Si presiona OK, espere unos segundos)")){
 
 
       let loading = this.service.createActa(this.cuerpoColegiadoSelect.id, this.actaCreada).subscribe(

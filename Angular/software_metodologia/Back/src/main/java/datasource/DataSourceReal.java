@@ -274,10 +274,12 @@ public class DataSourceReal implements IDataSource {
 			tList.add(tema.toString());
 		}
 		
-		EmailUtils.sendEmail(email, emailList, "Citación a la Reunion " + acta.getNumeroActa(),
-				"Te estoy citando a la reunion " + acta.getNumeroActa() + 
-				" a concretarse " + acta.getFechaReunion() + " entre las " + acta.getHoraFinal() + " y las " + acta.getHoraInicio() +  
-				" en: " + acta.getLugar() + "\n\nLos temas a tratar son:\n\n" + String.join("\n", tList) + "\n\nFavor de responder con el fin en mente individual." );
+		String cuerpoEmail = "Te estoy citando a la reunion " + acta.getNumeroActa() + 
+				" a concretarse " + acta.getFechaReunion() + " entre las " + acta.getHoraInicio() + " y las " + acta.getHoraFinal() +  
+				" en: " + acta.getLugar() + "\n\nLos temas a tratar son:\n\n" + String.join("\n", tList) + "\n\nFavor de responder con el fin en mente individual.";
+		
+		EmailUtils.sendEmailAttachFileCalendar(email, emailList, "Citación a la Reunion " + acta.getNumeroActa(),cuerpoEmail
+				,acta.getFechaReunion(), acta.getHoraInicio(), acta.getHoraFinal() );
 
 		updateFile();
 		return acta;
