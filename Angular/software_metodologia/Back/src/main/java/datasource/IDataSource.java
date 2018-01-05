@@ -85,4 +85,6 @@ public interface IDataSource {
 
 	Acta closeActa(String cuerpoColegiadoID, String actaID, String empresaID) throws AddressException, UnsupportedEncodingException, IOException;
 
+	void importJSON(MultipartFile file) throws IOException;
+
 }

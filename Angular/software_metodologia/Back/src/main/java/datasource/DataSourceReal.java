@@ -1,7 +1,10 @@
 package datasource;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -51,6 +54,40 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
+	public void importJSON(MultipartFile filename) throws IOException {
+
+		String line = "";
+		String total = "";
+
+		InputStream inputStream = filename.getInputStream();
+
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+
+			while ((line = br.readLine()) != null) {
+				total += line + " ";
+			}
+
+		} catch (
+
+		IOException e) {
+			e.printStackTrace();
+		}
+
+		readFromString(total);
+		updateFile();
+
+	}
+	
+	synchronized void readFromString(String data) {
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			obj = mapper.readValue(data, Info.class);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
 	public void readFromFile() {
 		System.out.println("Current relative path is: " + Paths.get("").toAbsolutePath().toString());
 		ObjectMapper mapper = new ObjectMapper();
@@ -60,6 +97,8 @@ public class DataSourceReal implements IDataSource {
 
 			Path currentRelativePath = Paths.get("");
 			String s = "/home/pino/freelance/Angular/software_metodologia/Front/";
+//			String s = "";
+
 			File file = new File(s + "file.json");
 			obj = mapper.readValue(file, Info.class);
 
