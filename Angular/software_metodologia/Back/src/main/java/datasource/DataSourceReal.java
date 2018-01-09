@@ -37,6 +37,7 @@ import data.Tema;
 import data.UsuarioActa;
 import spring.ChipherTool;
 import spring.EmailUtils;
+import spring.ProjectConstants;
 
 public class DataSourceReal implements IDataSource {
 
@@ -95,10 +96,10 @@ public class DataSourceReal implements IDataSource {
 		System.out.println();
 		try {
 
-			Path currentRelativePath = Paths.get("");
-			String s = "/home/pino/freelance/Angular/software_metodologia/Front/";
-//			String s = "";
-
+			String s = "";
+			if (ProjectConstants.isLocal())
+				s = "/home/pino/freelance/Angular/software_metodologia/Front/";
+			
 			File file = new File(s + "file.json");
 			obj = mapper.readValue(file, Info.class);
 
@@ -392,6 +393,11 @@ public class DataSourceReal implements IDataSource {
 	public Auth create( String pass, Rol rol, String empresaID, List<String> ccList, String nombre,
 			String email, String logo) {
 
+		for (Auth string : obj.getUsers().values()) {
+			if (string.getEmail().equals(email))
+				throw new RuntimeException("El email ya existe");
+		}
+				
 		String clave = ChipherTool.encrypt(email + "_" + pass);
 
 		Auth auth = new Auth(obj.getUsers().size() + "", rol, nombre, email, empresaID, ccList, "", logo);

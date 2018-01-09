@@ -60,8 +60,13 @@ export class CreateUserComponent implements OnInit  {
       response =>{ 
         alert("Se ha creado el usuario exitosamente.")
         localStorage.setItem('REFRESH_USERS', 'TRUE');
+      },
+      error =>{ 
+        alert("Ya existe un usuario con ese email registrado. No se ha creado el usuario")
+        localStorage.setItem('REFRESH_USERS', 'TRUE');
+      },
 
-      });
+      );
   }
   
   update(a, b) {
