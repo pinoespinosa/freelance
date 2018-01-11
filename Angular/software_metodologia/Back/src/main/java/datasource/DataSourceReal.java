@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -36,6 +39,7 @@ import data.Tarea;
 import data.Tema;
 import data.UsuarioActa;
 import spring.ChipherTool;
+import spring.ClientWebConfig;
 import spring.EmailUtils;
 import spring.ProjectConstants;
 
@@ -440,6 +444,17 @@ public class DataSourceReal implements IDataSource {
 	@Override
 	public Empresa createEmpresa(Empresa empresa) {
 
+		try (InputStream in = new URL(empresa.getLogoEmpresa()).openStream()) {
+			
+			String fileName = "assets/imagenes/" + System.currentTimeMillis();
+			Files.copy(in, Paths.get(ProjectConstants.isFrontAssetPath() + fileName));
+			empresa.setLogoEmpresa(fileName);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		empresa.setId(obj.getEmpresas().size() + "");
 		obj.getEmpresas().add(empresa);
 		updateFile();
@@ -675,6 +690,31 @@ public class DataSourceReal implements IDataSource {
 		}
 
 		return null;	
+	}
+
+	@Override
+	public List<Empresa> listEmpresa() {
+		return obj.getEmpresas();
+	}
+
+	@Override
+	public Empresa updateEmpresa(Empresa empresa) {
+		Empresa aa = getEmpresa(empresa.getId());
+				
+		try (InputStream in = new URL(empresa.getLogoEmpresa()).openStream()) {
+			
+			String fileName = "assets/imagenes/" + System.currentTimeMillis();
+			Files.copy(in, Paths.get(ClientWebConfig.getFrontDirectory() + fileName));
+			aa.setLogoEmpresa(fileName);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		aa.setNombreEmpresa(empresa.getNombreEmpresa());
+		updateFile();
+		
+		return aa;
 	}
 
 }

@@ -1,5 +1,7 @@
 package web.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -33,7 +35,31 @@ public class EmpresaController {
 		return dataSource.createEmpresa(empresa);
 	}
 
-
+	
+	/**
+	 * Crea una empresa
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/empresa/update", method = RequestMethod.POST)
+	@ResponseBody
+	public Empresa updateEmpresa(
+			@RequestBody Empresa empresa,
+			@RequestHeader("Acces-Token") String token) {
+		return dataSource.updateEmpresa(empresa);
+	}
+	
+	
+	/**
+	 * Crea una empresa
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/empresa/list", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Empresa> listEmpresa(
+			@RequestHeader("Acces-Token") String token) {
+		return dataSource.listEmpresa();
+	}
+	
 	public IDataSource getDataSource() {
 		return dataSource;
 	}

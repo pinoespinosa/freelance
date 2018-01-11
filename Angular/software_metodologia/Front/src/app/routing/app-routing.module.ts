@@ -14,7 +14,7 @@ import { SesionComponent }                   	from '../pages/sesion/sesion.compo
 import { Sesion2Component }                   	from '../pages/sesion-2/sesion-2.component';
 
 import { CreateUserComponent }              	from '../pages/create-user/create-user.component';
-
+import { MantenimientoComponent }               from '../pages/mantenimiento/mantenimiento.component';
 
 import { LoginComponent }                   	from '../pages/login/login.component';
 import { HomeComponent }                   		from '../pages/home/home.component';
@@ -29,7 +29,7 @@ const routes: Routes = [
 	{ path: 'sesion-2',				component: Sesion2Component, 			data: {title: 'Home'}, canActivate: [AuthGuard] },
 
 	{ path: 'create-user',			component: CreateUserComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard] },
-
+	{ path: 'mantenimiento',		component: MantenimientoComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard] },
 
 	{ path: 'acta-completa',		component: ActaCompletaComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard]},
 

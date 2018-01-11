@@ -87,4 +87,8 @@ public interface IDataSource {
 
 	void importJSON(MultipartFile file) throws IOException;
 
+	List<Empresa> listEmpresa();
+
+	Empresa updateEmpresa(Empresa empresa);
+
 }

@@ -17,7 +17,11 @@ import { AppRoutingModule }                 from './routing/app-routing.module';
 import { LoginComponent }                   from './pages/login/login.component';
 import { ConsultasComponent }               from './pages/consultas/consultas.component';
 import { ReunionesComponent }               from './pages/reuniones/reuniones.component';
+
 import { CreateUserComponent }              from './pages/create-user/create-user.component';
+import { CreateEmpresaComponent }           from './pages/create-empresa/create-empresa.component';
+
+import { MantenimientoComponent }           from './pages/mantenimiento/mantenimiento.component';
 
 import { SesionComponent }                  from './pages/sesion/sesion.component';
 import { Sesion2Component }                 from './pages/sesion-2/sesion-2.component';
@@ -32,7 +36,7 @@ import { HomeComponent }                    from './pages/home/home.component';
 import { AppComponent }                     from './app.component';
 import { Service }                          from './service';
 
-import { FilterPipe }                    from './pages/pipe/pipe';
+import { FilterPipe }                       from './pages/pipe/pipe';
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -53,8 +57,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     Sesion2Component,
     FilterPipe,
     ChangeStateDialogComponent,
+    MantenimientoComponent,
 
-    CreateUserComponent
+    CreateUserComponent,
+    CreateEmpresaComponent
   ],
   imports: [
     BrowserModule,

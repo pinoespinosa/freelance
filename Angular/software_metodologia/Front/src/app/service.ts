@@ -24,7 +24,7 @@ import { Tarea }                                        from 'app/data-objects/t
 export class Service {
 
 
-private server = 'http://18.216.175.95:8080/metodologia-manager/'
+private server = 'http://ec2-18-218-106-36.us-east-2.compute.amazonaws.com:8080/metodologia-manager/'
 //private server = 'http://192.168.1.4:8080/metodologiamanager/'
 //private server = 'http://localhost:8080/metodologiamanager/'
 //private server = 'http://192.168.1.4:8080/metodologiamanager/'
@@ -64,10 +64,21 @@ getUsuariosConActa(acta): Observable<Usuario[]> {
   return this.http.get(this.server+"api/acta/usuario?actaID=" +acta, { headers: headers }).map(this.extractData);
 }
 
+getEmpresas(): Observable<any[]> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.get(this.server+"api/empresa/list", { headers: headers }).map(this.extractData);
+}
+
+updateEmpresa(empresa): Observable<any> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.post(this.server+"api/empresa/update", empresa, { headers: headers }).map(this.extractData);
+}
+
 getLastActa(cuerpoColegiadoID): Observable<Acta> {
   var headers = new Headers();
   headers.append('acces-token', localStorage.getItem('token'));
-
   return this.http.get(this.server + 'api/'+ cuerpoColegiadoID + '/acta/last', { headers: headers }).map(this.extractData);
 }
 
@@ -77,13 +88,11 @@ getTemasConsulta(cuerpoColegiadoID,actaID): Observable<Tema[]> {
   return this.http.get(this.server + 'api/'+ cuerpoColegiadoID + '/tema/historico?actaID='+actaID, { headers: headers }).map(this.extractData);
 }
 
-
 getActasCitadas(): Observable<Acta[]> {
   var headers = new Headers();
   headers.append('acces-token', localStorage.getItem('token'));
   return this.http.get(this.server + 'api/acta/citada', { headers: headers }).map(this.extractData);
 }
-
 
 getActa(actaID): Observable<Acta> {
   var headers = new Headers();
