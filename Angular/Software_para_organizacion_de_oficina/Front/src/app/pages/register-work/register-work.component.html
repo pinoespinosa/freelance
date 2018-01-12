@@ -53,7 +53,7 @@
 <change-state [(visible)]="showDialogAddReq">
 <h2 style="margin: 10px;margin-bottom: 20px;" >Agregar Requerimiento</h2>
 <div class="col-12" style="margin-bottom: 20px;">
-   <input type="text" class="form-control" placeholder="Requerimiento">
+   <input #reqq type="text" class="form-control" placeholder="Requerimiento">
 </div>
 <div class="row">
    <div class="col-6"> 
@@ -254,7 +254,7 @@
       <div class="col-3" style="text-align: center;">
       </div>
       <div class="col-3 " style="text-align: center;">
-         <a  [routerLink]="['/register-payment']" (click)="do( '', tema.value, uni.value, car.value, asesor.value, lug.value, fecha_entrega.value, monto.value, true, notas.value )" class="btn btn-success agregar-cliente" style="width: 100%;color: white;">Guardar y Cargar Pago</a>
+         <a  (click)="do( '', tema.value, uni.value, car.value, asesor.value, lug.value, fecha_entrega.value, monto.value, true, notas.value )" class="btn btn-success agregar-cliente" style="width: 100%;color: white;">Guardar y Cargar Pago</a>
       </div>
       <div class="col-3" style="text-align: center;">
          <a  (click)="do( '', tema.value, uni.value,  car.value, asesor.value, lug.value, fecha_entrega.value, monto.value, false, notas.value )" class="btn btn-danger agregar-cliente" style="width: 100%;color: white;" >Finalizar</a>

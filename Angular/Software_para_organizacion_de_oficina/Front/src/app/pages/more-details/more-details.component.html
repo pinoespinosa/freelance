@@ -51,7 +51,7 @@
          <div class="detail-title">Telefono 1</div>
          <input
             #telefono1 
-            type="number" 
+            type="text" 
             class="form-control" 
             placeholder="Telefono 1" 
             value="{{cliente.telefono1}}" 
@@ -63,7 +63,7 @@
          <div class="detail-title">Telefono 2</div>
          <input
             #telefono2 
-            type="number" 
+            type="text" 
             class="form-control" 
             placeholder="Telefono 2" 
             value="{{cliente.telefono2}}" 
@@ -75,7 +75,7 @@
          <div class="detail-title">Telefono 3</div>
          <input
             #telefono3 
-            type="number" 
+            type="text" 
             class="form-control" 
             placeholder="Telefono 3" 
             value="{{cliente.telefono3}}" 
@@ -91,7 +91,7 @@
          <div class="detail-title">Email 1</div>
          <input
             #email1 
-            type="number" 
+            type="text" 
             class="form-control" 
             placeholder="Email 1"
             value="{{cliente.email1}}"
@@ -103,7 +103,7 @@
          <div class="detail-title">Email 2</div>
          <input
             #email2 
-            type="number" 
+            type="text" 
             class="form-control" 
             placeholder="Email 2"
             value="{{cliente.email2}}"
@@ -115,7 +115,7 @@
          <div class="detail-title">Email 3</div>
          <input
             #email2 
-            type="number" 
+            type="text" 
             class="form-control" 
             placeholder="Email 2"
             value="{{cliente.email2}}"
@@ -264,7 +264,7 @@
    </div>
 
    <div class="row" style="margin-left: 10px;">
-      <div class="col-8" style="font-size: 18px;" >
+      <div class="col-12" style="font-size: 18px;" >
 
          <table class="table table-new table-striped">
             <thead>
@@ -286,7 +286,7 @@
                <tbody class="centro" *ngIf="requerimientos?.length > 0" >
                   <tr *ngFor="let req of trabajo.requerimientos" class="requirements-columns" (dblclick)="showDialogAddReq = !showDialogAddReq">
                      <td>{{ req.fecha | date:'dd-MM-yyyy'}}</td>
-                     <td>{{req.texto}}</td>
+                     <td><textarea cols="20" wrap="soft" style="line-height: normal; width: 100%;height: 100%;min-height:  50px;" rows="4" readonly="true">{{req.texto}}</textarea></td>
                      <td hidden>
                         <a class="btn clients-actions"  (click)="showDialogAddReq = true" >
                           <div class="tooltip">              
@@ -319,7 +319,6 @@
          </table>
       </div>
    </div>
-
 </form>
 
 

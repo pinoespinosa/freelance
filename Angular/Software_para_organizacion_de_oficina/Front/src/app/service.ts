@@ -19,9 +19,9 @@ import { Asesor }                 from 'app/data-objects/asesor';
 export class Service {
 
 
-  private server = 'http://18.216.175.95:8080/spring-security-rest/'
+  //private server = 'http://18.216.175.95:8080/spring-security-rest/'
   //private server = 'http://192.168.1.4:8080/officemanager/'
-  //private server = 'http://localhost:8080/officemanager/'
+  private server = 'http://localhost:8080/officemanager/'
 
   getServer(): string{
     return this.server;
