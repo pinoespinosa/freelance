@@ -29,6 +29,7 @@ export class EditCuerpoColegiadoComponent implements OnInit  {
 
   nombreAux : string = ''
   prefijo : string = ''
+  idCC : string = ''
 
   cuerposColegiadoSelect: any = null;
   empresaSelect: any = null;
@@ -50,19 +51,17 @@ export class EditCuerpoColegiadoComponent implements OnInit  {
     this.refreshEmpresas();
   };
 
-  createEmpresa(nombre, logo):void{
-
-    console.log(nombre)
+  editCuerpo():void{
 
     let emp = {
-      'id': '',
-      'nombreEmpresa' : nombre,
-      'logoEmpresa' : logo
+      'id': this.idCC,
+      'nombre' : this.nombreAux,
+      'prefijoDocs' : this.prefijo
     }
 
-    this.service.createEmpresa(emp).subscribe(
+    this.service.editCuerpo(emp).subscribe(
       response =>{ 
-        alert("Se ha creado la empresa exitosamente.")
+        alert("Se ha editado el cuerpo exitosamente.")
         this.router.navigate(['/home']);
       },
       error =>{ 
@@ -104,6 +103,7 @@ export class EditCuerpoColegiadoComponent implements OnInit  {
     this.cuerposColegiadoSelect = aa;
     this.nombreAux = aa.nombre;
     this.prefijo = aa.prefijoDocs;
+    this.idCC = aa.id;
   }
 
 }

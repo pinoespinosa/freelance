@@ -236,7 +236,10 @@ public class DataSourceReal implements IDataSource {
 	public CuerpoColegiado editCuerpoColegiado(CuerpoColegiado user, String empresaID) {
 
 		CuerpoColegiado cc = getCuerpoColeg(user.getId(), empresaID);
-		cc.setNombre(user.getNombre());
+		if (!Strings.isNullOrEmpty(user.getNombre()))
+			cc.setNombre(user.getNombre());
+		if (!Strings.isNullOrEmpty(user.getPrefijoDocs()))
+			cc.setPrefijoDocs(user.getPrefijoDocs());
 		updateFile();
 		return user;
 	}
