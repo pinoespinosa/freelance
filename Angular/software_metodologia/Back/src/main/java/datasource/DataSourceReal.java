@@ -291,7 +291,7 @@ public class DataSourceReal implements IDataSource {
 		
 		String cuerpoEmail = "Te estoy citando a la reunion " + acta.getNumeroActa() + 
 				" a concretarse " + acta.getFechaReunion() + " entre las " + acta.getHoraInicio() + " y las " + acta.getHoraFinal() +  
-				" en: " + acta.getLugar() + "\n\nLos temas a tratar son:\n\n" + String.join("\n", tList) + "\n\nFavor de responder con el fin en mente individual.";
+				" en: " + acta.getLugar() + ", " + acta.getCiudad()+ ".\n\nLos temas a tratar son:\n\n" + String.join("\n", tList) + "\n\nFavor de responder con el fin en mente individual.";
 		
 		EmailUtils.sendEmailAttachFileCalendar(email, emailList, "Citación a la Reunion " + acta.getNumeroActa(),cuerpoEmail
 				,acta.getFechaReunion(), acta.getHoraInicio(), acta.getHoraFinal() );
@@ -352,6 +352,8 @@ public class DataSourceReal implements IDataSource {
 	public Tema createTema(String cuerpoColegiadoID, Tema tema, String empresaID, String actaID,
 			List<String> cuerpoColList) {
 
+		Acta acta = getActa(actaID, empresaID);
+		
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 
 		tema.setId(ccOrig.getPrefijoDocs() + ccOrig.getTemas().size() + "");
@@ -363,7 +365,7 @@ public class DataSourceReal implements IDataSource {
 			cc.getTemas().put(tema.getId(), tema);
 		}
 
-		tema.getEventos().add(new Evento("Se ha creado el tema en el acta " + actaID, System.currentTimeMillis()));
+		tema.getEventos().add(new Evento(actaID, "Se ha creado el tema en el acta " + acta.getNumeroActa(), System.currentTimeMillis()));
 
 		updateFile();
 		return tema;
@@ -471,7 +473,7 @@ public class DataSourceReal implements IDataSource {
 	public Tema addComentarioToTema(String cuerpoColegiadoID, String temaID, String comentario, String empresaID) {
 
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
-		ccOrig.getTemas().get(temaID).getEventos().add(new Evento(comentario, System.currentTimeMillis()));
+		ccOrig.getTemas().get(temaID).getEventos().add(new Evento(comentario.split("___")[0],comentario.split("___")[1], System.currentTimeMillis()));
 		updateFile();
 		return ccOrig.getTemas().get(temaID);
 
@@ -481,7 +483,7 @@ public class DataSourceReal implements IDataSource {
 	public Tema cerrarTema(String cuerpoColegiadoID, String temaID, String comentario, String empresaID) {
 
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
-		ccOrig.getTemas().get(temaID).getEventos().add(new Evento(comentario, System.currentTimeMillis()));
+		ccOrig.getTemas().get(temaID).getEventos().add(new Evento(comentario.split("___")[0],comentario.split("___")[1], System.currentTimeMillis()));
 	//	ccOrig.getTemas().get(temaID).setEstado("Cerrado");
 		updateFile();
 
@@ -509,7 +511,7 @@ public class DataSourceReal implements IDataSource {
 		Tarea t = new Tarea();
 		t.setId(tareaID);
 		Tarea aa = tema.getTareas().get(tema.getTareas().indexOf(t));
-		aa.getEventos().add(comentario);
+		aa.getEventos().add(comentario.split("___")[1]);
 		updateFile();
 		return aa;
 	}
@@ -591,18 +593,20 @@ public class DataSourceReal implements IDataSource {
 	public void actaIsDoneOk(String cuerpoColegiadoID, String empresaID, String actaID) {
 
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
-
+	
+		Acta acta = getActa(actaID, empresaID);
+		
 		for (Tema tema : ccOrig.getTemas().values()) {
 
 			List<Evento> eventos = tema.getEventos();
 			boolean faltaComment = true;
 			for (Evento evento : eventos) {
-				if (evento.getTexto().contains(actaID))
+				if (evento.getIdActa().equals(actaID))
 					faltaComment = false;
 			}
 			if (faltaComment && TEMA_ABIERTO.equals(tema.getEstado()))
 				tema.getEventos().add(
-						new Evento("No se registraron comentarios para el acta " + actaID, System.currentTimeMillis()));
+						new Evento(actaID, "No se registraron comentarios para el acta " + acta.getNumeroActa(), System.currentTimeMillis()));
 
 		}
 
