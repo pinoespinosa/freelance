@@ -1,0 +1,61 @@
+
+
+<button (click)="visiblePop = !visiblePop" style="margin: 7px;" type="button" class="btn">{{titulo}}</button>
+<change-state [(visible)]="visiblePop">
+<h2 style="margin: 10px;margin-bottom: 20px;" >{{titulo}}</h2>
+<table class="table table-hover">
+   <thead>
+      <tr>
+         <td>Id</td>
+         <td>Nombre</td>
+         <td>Logo</td>
+         <td></td>
+         <td></td>
+      </tr>
+   </thead>
+   <tbody>
+      <tr *ngFor="let transfer of empresas" >
+         <td style="padding: 2px;vertical-align: middle;" >{{transfer.id}}</td>
+         <!-- Modo Lectura -->
+         <td *ngIf="!transfer.edit" style="padding: 2px;vertical-align: middle;" >{{transfer.nombreEmpresa}}</td>
+         <td *ngIf="!transfer.edit" style="padding: 2px;vertical-align: middle;" >
+            <img src="{{transfer.logoEmpresa}}" style="max-width: 40px; max-height: 40px">
+         </td>
+         <td *ngIf="!transfer.edit"  style="padding: 2px;vertical-align: middle;" >
+            <button [disabled]="modoCreacion" 
+            (click)="transfer.edit=true" 
+            (click)="modoCreacion=true" 
+            (click)="nombreAux=transfer.nombreEmpresa"
+             >Editar</button> 
+         </td>
+         <!-- Modo Edicion -->
+         <td *ngIf="transfer.edit" style="padding: 2px;vertical-align: middle;" >
+            <input #nombreEmpresa value="{{transfer.nombreEmpresa}}" 
+            (change)="nombreAux=nombreEmpresa.value" style="width: 100px;font-size: small;" >
+         </td>
+         <td *ngIf="transfer.edit" style="padding: 2px;vertical-align: middle;" >
+            <input #logoEmpresa value="{{transfer.logoEmpresa}}" 
+            (change)="logoAux=logoEmpresa.value" style="width: 100px;font-size: small;" >
+         </td>
+         <td *ngIf="transfer.edit" style="padding: 2px;vertical-align: middle;" >
+            <button 
+            (click)="transfer.edit=false"
+            (click)="modoCreacion=true" 
+            (click)="updateEmpresa(transfer.id, nombreAux, logoAux)" >Guardar</button> 
+         </td>
+         <td *ngIf="transfer.edit" style="padding: 2px;vertical-align: middle;">
+            <button 
+            (click)="transfer.edit=false" 
+            (click)="modoCreacion=false" >Cancelar</button> 
+         </td>
+      </tr>
+   </tbody>
+</table>
+
+<div class="row">
+   <div class="col-6"> 
+      <button (click)="visiblePop=!visiblePop" class="btn" style="width: 100%;background: #72C585" >Listo</button>
+   </div>
+</div>
+</change-state>
+

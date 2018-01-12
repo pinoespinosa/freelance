@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.google.common.base.Strings;
 
 import data.Acta;
 import data.Auditoria;
@@ -205,6 +206,12 @@ public class DataSourceReal implements IDataSource {
 
 	}
 
+	@Override
+	public List<CuerpoColegiado> getCuerpoColegiadoList(String empresaID) {
+
+		return getEmpresa(empresaID).getColegiados();
+	}
+	
 	private Empresa getEmpresa(String id) {
 		Empresa cc = new Empresa();
 		cc.setId(id);
@@ -441,25 +448,7 @@ public class DataSourceReal implements IDataSource {
 		return null;
 	}
 
-	@Override
-	public Empresa createEmpresa(Empresa empresa) {
 
-		try (InputStream in = new URL(empresa.getLogoEmpresa()).openStream()) {
-			
-			String fileName = "assets/imagenes/" + System.currentTimeMillis();
-			Files.copy(in, Paths.get(ProjectConstants.isFrontAssetPath() + fileName));
-			empresa.setLogoEmpresa(fileName);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		empresa.setId(obj.getEmpresas().size() + "");
-		obj.getEmpresas().add(empresa);
-		updateFile();
-		return empresa;
-	}
 
 	@Override
 	public List<Auth> getUsuariosList(String cuerpoColegiadoID) {
@@ -698,22 +687,48 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
+	public Empresa createEmpresa(Empresa empresa) {
+
+		if (!empresa.getLogoEmpresa().startsWith("assets/imagenes/")) {
+			try (InputStream in = new URL(empresa.getLogoEmpresa()).openStream()) {
+
+				String fileName = "assets/imagenes/" + System.currentTimeMillis();
+				Files.copy(in, Paths.get(ProjectConstants.isFrontAssetPath() + fileName));
+				empresa.setLogoEmpresa(fileName);
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		empresa.setId(obj.getEmpresas().size() + "");
+		obj.getEmpresas().add(empresa);
+		updateFile();
+		return empresa;
+	}
+
+	@Override
 	public Empresa updateEmpresa(Empresa empresa) {
 		Empresa aa = getEmpresa(empresa.getId());
-				
-		try (InputStream in = new URL(empresa.getLogoEmpresa()).openStream()) {
-			
-			String fileName = "assets/imagenes/" + System.currentTimeMillis();
-			Files.copy(in, Paths.get(ClientWebConfig.getFrontDirectory() + fileName));
-			aa.setLogoEmpresa(fileName);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+
+		if (!empresa.getLogoEmpresa().startsWith("assets/imagenes/")) {
+			try (InputStream in = new URL(empresa.getLogoEmpresa()).openStream()) {
+
+				String fileName = "assets/imagenes/" + System.currentTimeMillis();
+				Files.copy(in, Paths.get(ClientWebConfig.getFrontDirectory() + fileName));
+				aa.setLogoEmpresa(fileName);
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		aa.setNombreEmpresa(empresa.getNombreEmpresa());
+
+		if (!Strings.isNullOrEmpty(empresa.getNombreEmpresa())) {
+			aa.setNombreEmpresa(empresa.getNombreEmpresa());
+		}
 		updateFile();
-		
+
 		return aa;
 	}
 

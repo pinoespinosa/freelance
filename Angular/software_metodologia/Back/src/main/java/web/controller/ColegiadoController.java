@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,6 +35,13 @@ public class ColegiadoController {
 		return dataSource.getCuerpoColegiadoList(Auth.getEmpresaID(token), Auth.getCuerpoColegiadosList(token));
 	}
 
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/cuerpocolegiado/lista", method = RequestMethod.GET)
+	public List<CuerpoColegiado> getCuerpoColegiadoList(
+			@RequestHeader("Acces-Token") String token, @RequestParam String empresaID) {
+		return dataSource.getCuerpoColegiadoList(empresaID);
+	}
+	
 	/**
 	 * Retorna la lista de clientes
 	 */

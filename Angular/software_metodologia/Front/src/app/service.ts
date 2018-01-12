@@ -24,9 +24,9 @@ import { Tarea }                                        from 'app/data-objects/t
 export class Service {
 
 
-private server = 'http://ec2-18-218-106-36.us-east-2.compute.amazonaws.com:8080/metodologia-manager/'
+//private server = 'http://ec2-18-218-106-36.us-east-2.compute.amazonaws.com:8080/metodologia-manager/'
 //private server = 'http://192.168.1.4:8080/metodologiamanager/'
-//private server = 'http://localhost:8080/metodologiamanager/'
+private server = 'http://localhost:8080/metodologiamanager/'
 //private server = 'http://192.168.1.4:8080/metodologiamanager/'
 
 getServer(): string{
@@ -47,6 +47,11 @@ getCuerpoColegiados(): Observable<CuerpoColegiado[]> {
   return this.http.get(this.server+"api/cuerpocolegiado", { headers: headers }).map(this.extractData);
 }
 
+getCuerpoColegiadosSimple(empresaID): Observable<CuerpoColegiado[]> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.get(this.server+"api/cuerpocolegiado/lista?empresaID="+empresaID, { headers: headers }).map(this.extractData);
+}
 
 getCuerpoColegiado(cuerpocolegiadoID): Observable<CuerpoColegiado> {
   return this.http.get(this.server+"api/cuerpocolegiado/"+cuerpocolegiadoID).map(this.extractData);
@@ -74,6 +79,24 @@ updateEmpresa(empresa): Observable<any> {
   var headers = new Headers();
   headers.append('acces-token', localStorage.getItem('token'));
   return this.http.post(this.server+"api/empresa/update", empresa, { headers: headers }).map(this.extractData);
+}
+
+createEmpresa(empresa): Observable<any> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.post(this.server+"api/empresa/create", empresa, { headers: headers }).map(this.extractData);
+}
+
+createCuerpo(cuerpo): Observable<any> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.post(this.server+"api/cuerpocolegiado/create", cuerpo, { headers: headers }).map(this.extractData);
+}
+
+editCuerpo(cuerpo): Observable<any> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.post(this.server+"api/cuerpocolegiado/edit", cuerpo, { headers: headers }).map(this.extractData);
 }
 
 getLastActa(cuerpoColegiadoID): Observable<Acta> {
@@ -167,30 +190,27 @@ checkAvanzarTareas(actaID): Observable<Tema> {
   headers.append('acces-token', localStorage.getItem('token'));
   return this.http.get(this.server + 'api/'+ actaID + '/acta/isDone', { headers: headers }).map(this.extractData);  }
 
-  checkAvanzarTareasOK(actaID): Observable<Tema> {
-    var headers = new Headers();
-    headers.append('acces-token', localStorage.getItem('token'));
-    return this.http.get(this.server + 'api/'+ actaID + '/acta/isDone/ok', { headers: headers }).map(this.extractData);  }
+checkAvanzarTareasOK(actaID): Observable<Tema> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.get(this.server + 'api/'+ actaID + '/acta/isDone/ok', { headers: headers }).map(this.extractData);  }
 
 
 
-    updateActaPaso(cuerpoColegiadoID, actaID, paso): Observable<Acta> {
-      var headers = new Headers();
-      headers.append('acces-token', localStorage.getItem('token'));
-      return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/' + actaID + '/updatePaso?paso='+paso, paso ,{ headers: headers }).map(this.extractData);
-    }
+updateActaPaso(cuerpoColegiadoID, actaID, paso): Observable<Acta> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/' + actaID + '/updatePaso?paso='+paso, paso ,{ headers: headers }).map(this.extractData);}
 
-    closeActa(cuerpoColegiadoID, actaID): Observable<Acta> {
-      var headers = new Headers();
-      headers.append('acces-token', localStorage.getItem('token'));
-      return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/' + actaID + '/close', actaID ,{ headers: headers }).map(this.extractData);
-    }
+closeActa(cuerpoColegiadoID, actaID): Observable<Acta> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/' + actaID + '/close', actaID ,{ headers: headers }).map(this.extractData); }
 
-    updateActaIntegrantes(cuerpoColegiadoID, actaID, acta): Observable<Acta> {
-      var headers = new Headers();
-      headers.append('acces-token', localStorage.getItem('token'));
-      return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/' + actaID + '/updateIntegrantes', acta ,{ headers: headers }).map(this.extractData);
-    }
+updateActaIntegrantes(cuerpoColegiadoID, actaID, acta): Observable<Acta> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/' + actaID + '/updateIntegrantes', acta ,{ headers: headers }).map(this.extractData); }
 
     getOtrosCuerposColegiado(cuerpoColegiadoID): Observable<CuerpoColegiadoSelect[]> {
       var headers = new Headers();

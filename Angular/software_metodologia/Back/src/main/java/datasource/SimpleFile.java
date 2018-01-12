@@ -63,10 +63,8 @@ public class SimpleFile {
 			reader = new BufferedReader(new FileReader(path+fileName));
 			String line = null;
 
-			reader.readLine();
 			while ( (line = reader.readLine()) != null) 
 				lista.add(line);
-
 			
 			reader.close();
 		} catch (Exception e) {

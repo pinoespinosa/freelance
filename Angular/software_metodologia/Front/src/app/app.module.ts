@@ -20,6 +20,9 @@ import { ReunionesComponent }               from './pages/reuniones/reuniones.co
 
 import { CreateUserComponent }              from './pages/create-user/create-user.component';
 import { CreateEmpresaComponent }           from './pages/create-empresa/create-empresa.component';
+import { EditEmpresaComponent }             from './pages/edit-empresa/edit-empresa.component';
+import { CreateCuerpoColegiadoComponent }   from './pages/create-cuerpo-colegiado/create-cuerpo-colegiado.component';
+import { EditCuerpoColegiadoComponent }     from './pages/edit-cuerpo-colegiado/edit-cuerpo-colegiado.component';
 
 import { MantenimientoComponent }           from './pages/mantenimiento/mantenimiento.component';
 
@@ -60,7 +63,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MantenimientoComponent,
 
     CreateUserComponent,
-    CreateEmpresaComponent
+    CreateEmpresaComponent,
+    EditEmpresaComponent,
+    CreateCuerpoColegiadoComponent,
+    EditCuerpoColegiadoComponent
   ],
   imports: [
     BrowserModule,

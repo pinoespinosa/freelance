@@ -91,4 +91,6 @@ public interface IDataSource {
 
 	Empresa updateEmpresa(Empresa empresa);
 
+	List<CuerpoColegiado> getCuerpoColegiadoList(String empresaID);
+
 }

@@ -13,24 +13,27 @@ import { Usuario }                                      from 'app/data-objects/u
 
 
 @Component({
-  selector: 'create-empresa',
-  templateUrl: 'create-empresa.component.html',
+  selector: 'create-cuerpo-colegiado',
+  templateUrl: 'create-cuerpo-colegiado.component.html',
   animations: [
   ],
 })
 
-export class CreateEmpresaComponent implements OnInit  {
+export class CreateCuerpoColegiadoComponent implements OnInit  {
 
-  titulo : string = 'Crear Empresa'
+  titulo : string = 'Crear Cuerpo Colegiado'
 
   visiblePop : boolean = false;
 
   modoCreacion : boolean = false;
 
   nombreAux : string = ''
-  logoAux : string = ''
+  prefijo : string = ''
 
-  cuerposColegiado: CuerpoColegiadoSelect[];
+  cuerposColegiadoSelect: any = null;
+  empresaSelect: any = null;
+
+  cuerpos: any[];
   empresas: any[];
 
 
@@ -40,7 +43,6 @@ export class CreateEmpresaComponent implements OnInit  {
     private service: Service)
   {
 
-    this.cuerposColegiado = [];
 
   }
 
@@ -48,19 +50,17 @@ export class CreateEmpresaComponent implements OnInit  {
     this.refreshEmpresas();
   };
 
-  createEmpresa(nombre, logo):void{
-
-    console.log(nombre)
+  createCuerpo():void{
 
     let emp = {
       'id': '',
-      'nombreEmpresa' : nombre,
-      'logoEmpresa' : logo
+      'nombre' : this.nombreAux,
+      'prefijoDocs' : this.prefijo
     }
 
-    this.service.createEmpresa(emp).subscribe(
+    this.service.createCuerpo(emp).subscribe(
       response =>{ 
-        alert("Se ha creado la empresa exitosamente.")
+        alert("Se ha creado el cuerpo exitosamente.")
         this.router.navigate(['/home']);
       },
       error =>{ 
@@ -72,38 +72,36 @@ export class CreateEmpresaComponent implements OnInit  {
 
 
   refreshEmpresas(){
+
+
+
     this.service.getEmpresas().subscribe(
       response =>{ 
         this.empresas = response;
       });
 
-
+      if (this.empresaSelect != null){
+        this.service.getCuerpoColegiadosSimple(this.empresaSelect).subscribe(
+          response =>{ 
+            this.cuerpos = response;
+          });
+      }
   }
 
-  createUser(nombre, email):void{
 
-    let listaCC='';
-
-    for (let cc of this.cuerposColegiado) {
-      if (cc.check)
-        listaCC = listaCC + '&ccList=' + cc.id;
-    }
-
-    this.service.createUser(nombre, email, listaCC).subscribe(
-      response =>{ 
-        alert("Se ha creado el usuario exitosamente.")
-        localStorage.setItem('REFRESH_USERS', 'TRUE');
-      },
-      error =>{ 
-        alert("Ya existe un usuario con ese email registrado. No se ha creado el usuario")
-        localStorage.setItem('REFRESH_USERS', 'TRUE');
-      },
-
-      );
-  }
   
-  update(a, b) {
-    a.check = b.checked;
+  updatte(aa) {
+    this.empresaSelect = aa;
+            this.service.getCuerpoColegiadosSimple(this.empresaSelect).subscribe(
+          response =>{ 
+            this.cuerpos = response;
+          });
+  }
+
+  updatteCuerpo(aa) {
+    this.cuerposColegiadoSelect = aa;
+    this.nombreAux = aa.nombre;
+    this.prefijo = aa.prefijoDocs;
   }
 
 }

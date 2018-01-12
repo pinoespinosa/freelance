@@ -30,6 +30,7 @@ const routes: Routes = [
 
 	{ path: 'create-user',			component: CreateUserComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard] },
 	{ path: 'mantenimiento',		component: MantenimientoComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard] },
+	{ path: 'mantenimiento2',		component: MantenimientoComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard] },
 
 	{ path: 'acta-completa',		component: ActaCompletaComponent, 		data: {title: 'Home'}, canActivate: [AuthGuard]},
 

@@ -13,15 +13,15 @@ import { Usuario }                                      from 'app/data-objects/u
 
 
 @Component({
-  selector: 'create-empresa',
-  templateUrl: 'create-empresa.component.html',
+  selector: 'edit-empresa',
+  templateUrl: 'edit-empresa.component.html',
   animations: [
   ],
 })
 
-export class CreateEmpresaComponent implements OnInit  {
+export class EditEmpresaComponent implements OnInit  {
 
-  titulo : string = 'Crear Empresa'
+  titulo : string = 'Administrar Empresas'
 
   visiblePop : boolean = false;
 
@@ -48,19 +48,19 @@ export class CreateEmpresaComponent implements OnInit  {
     this.refreshEmpresas();
   };
 
-  createEmpresa(nombre, logo):void{
+  updateEmpresa(id, nombre, logo):void{
 
     console.log(nombre)
 
     let emp = {
-      'id': '',
+      'id': id,
       'nombreEmpresa' : nombre,
       'logoEmpresa' : logo
     }
 
-    this.service.createEmpresa(emp).subscribe(
+    this.service.updateEmpresa(emp).subscribe(
       response =>{ 
-        alert("Se ha creado la empresa exitosamente.")
+        alert("Se ha actualizado la empresa exitosamente.")
         this.router.navigate(['/home']);
       },
       error =>{ 
@@ -78,28 +78,6 @@ export class CreateEmpresaComponent implements OnInit  {
       });
 
 
-  }
-
-  createUser(nombre, email):void{
-
-    let listaCC='';
-
-    for (let cc of this.cuerposColegiado) {
-      if (cc.check)
-        listaCC = listaCC + '&ccList=' + cc.id;
-    }
-
-    this.service.createUser(nombre, email, listaCC).subscribe(
-      response =>{ 
-        alert("Se ha creado el usuario exitosamente.")
-        localStorage.setItem('REFRESH_USERS', 'TRUE');
-      },
-      error =>{ 
-        alert("Ya existe un usuario con ese email registrado. No se ha creado el usuario")
-        localStorage.setItem('REFRESH_USERS', 'TRUE');
-      },
-
-      );
   }
   
   update(a, b) {

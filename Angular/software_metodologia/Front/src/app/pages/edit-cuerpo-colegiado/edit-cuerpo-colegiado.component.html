@@ -1,0 +1,33 @@
+
+
+<button (click)="visiblePop = !visiblePop" style="margin: 7px;" type="button" class="btn">{{titulo}}</button>
+<change-state [(visible)]="visiblePop">
+	<h2 style="margin: 10px;margin-bottom: 20px;" >{{titulo}}</h2>
+
+	Empresa:
+	<select style="width: 100%;" #usuu class="dropdown-select">
+        <option disabled hidden [value]="empty">-- Seleccione la empresa --</option>
+		<option *ngFor="let usuario of empresas" (click)="updatte(usuario.id)">{{usuario.nombreEmpresa}}</option>
+	</select>
+
+	Cuerpos Colegiados Existente:<br>
+	<select *ngIf="cuerpos && cuerpos.length>0" style="width: 100%;" #usuu class="dropdown-select">
+		<option *ngFor="let usuario of cuerpos" (click)="updatteCuerpo(usuario)">{{usuario.nombre}} - {{usuario.prefijoDocs}}</option>
+	</select>
+	<div *ngIf="( !cuerpos || cuerpos.length==0 ) && empresaSelect" style="width: 100%;">
+		La empresa no tiene Cuerpos Colegiados registrados
+	</div>
+
+	<input #nombreEmpresa type="text" name="" value="{{nombreAux}}" placeholder="Nombre Cuerpo" 
+	(change)="nombreAux=nombreEmpresa.value">
+	<input #logoEmpresa type="text" name="" value="{{prefijo}}" placeholder="Prefijo" 
+	(change)="prefijo=logoEmpresa.value" >
+
+	<div class="row">
+		<div class="col-6"> 
+			<button (click)="visiblePop=!visiblePop" class="btn" style="width: 100%;background: #72C585" 
+			(click)="createEmpresa(nombreAux, logoAux)" >Listo</button>
+		</div>
+	</div>
+</change-state>
+
