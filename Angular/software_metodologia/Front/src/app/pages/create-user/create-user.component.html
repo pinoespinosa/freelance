@@ -20,11 +20,10 @@ style="width: 32px;padding-left: 0px;padding-right: 0px;" type="button" class="b
    <div class="row">
       <div class="col-6"> 
       <button (click)="visiblePop=!visiblePop" (click)="createUser(nombre.value,email.value)"  
-         [disabled]=" !email.validity.valid || email.value=='' " class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+         [disabled]=" !isValid() || !email.validity.valid" class="btn" style="width: 100%;background: #72C585" >Agregar</button>
       </div>
       <div class="col-6"> 
-         <button (click)="visiblePop=!visiblePop" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
+         <button (click)="quitarToken()" (click)="visiblePop=!visiblePop" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
       </div>
    </div>
 </change-state>
-

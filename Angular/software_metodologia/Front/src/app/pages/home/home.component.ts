@@ -32,6 +32,7 @@ export class HomeComponent   {
   cliente2: ClientFull;
 
   logo:string = "";
+  rol:string = "";
 
 
   items : ClientFull[];
@@ -51,7 +52,7 @@ export class HomeComponent   {
     this.cliente = new Client("","","", "","","", "","","",null);
     this.cliente2 = new ClientFull("","","","","","","","","","","","","","");
     this.logo = localStorage.getItem('logo');
-
+    this.rol = localStorage.getItem('rol');
 
   }
 

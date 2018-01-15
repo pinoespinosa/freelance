@@ -620,6 +620,25 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
+	public List<Tema> getTemaListConsulta2(String actaID, String empresaID) {
+
+		Acta actaSele = getActa(actaID, empresaID);
+		CuerpoColegiado cuerpoSelect = null;
+
+		for (CuerpoColegiado cuerpoColeg : getEmpresa(empresaID).getColegiados()) {
+			
+			if (cuerpoSelect ==null && cuerpoColeg.getActas().contains(actaSele))
+				cuerpoSelect = cuerpoColeg;
+			
+		}
+		
+		if (cuerpoSelect != null)
+			return getTemaListConsulta(cuerpoSelect.getId(), actaID, empresaID);
+		
+		return null;
+	}
+	
+	@Override
 	public List<Tema> getTemaListConsulta(String cuerpoColegiadoID, String actaID, String empresaID) {
 
 		CuerpoColegiado cc = getCuerpoColeg(cuerpoColegiadoID);
@@ -640,7 +659,7 @@ public class DataSourceReal implements IDataSource {
 			for (Evento e : tema.getEventos()) {
 
 				if (e.getDate() <= time)
-					if (e.getTexto().contains(actaID))
+					if (e.getIdActa().equals(actaID))
 						tuvoActividad = true;
 				aux.getEventos().add(e);
 			}
@@ -738,5 +757,16 @@ public class DataSourceReal implements IDataSource {
 
 		return aa;
 	}
+
+	@Override
+	public List<Acta> getActaFiltroMente(String filtroMente, String empresaID) {
+
+		List<Acta> lista = new ArrayList<>();
+		Empresa a = getEmpresa(empresaID);
+		a.getColegiados().forEach(cuerpoCol -> lista.addAll(cuerpoCol.getActas()));
+		return lista;
+	}
+
+
 
 }

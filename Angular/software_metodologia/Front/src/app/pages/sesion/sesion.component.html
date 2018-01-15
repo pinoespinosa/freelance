@@ -1,3 +1,22 @@
+<div *ngIf="paso!=3" class="row" style="margin-bottom: 30px;" >
+
+   <div class="col-3" style="align-self: center;text-align: center;" >
+      <img src="assets/logo.png" style="max-width: 200px;max-height: 150px;" [routerLink]="['/home']" >  
+   </div>
+
+   <div class="col-6" style="align-self: center;text-align: center;" >
+   </div>
+
+   <div class="col-3" style="align-self: center;text-align: center;" >
+      <img [src]="logo" style="max-width: 175px;max-height: 150px;" >  
+   </div>
+
+</div>
+
+
+
+
+
 
 
 <!-- ###########################   AGREGAR TEMA   ############################### -->
@@ -70,7 +89,7 @@
       <div class="col-4" >
       </div>
       <div class="col-4" >
-         <select style="width: 100%;margin-top: 200px;" #clii class="dropdown-select" (change)="selectActa(clii)">
+         <select style="width: 100%;margin-top: 100px;" #clii class="dropdown-select" (change)="selectActa(clii)">
          <option disabled hidden [value]="empty">-- Seleccione el Acta --</option>
          <option *ngFor="let actaCit of actasCitadas" >Acta {{actaCit.numeroActa}}</option>
          </select>
@@ -82,7 +101,9 @@
    <div class="row" >
    </div>
 </form>
-<form style="margin-top: 200px;" *ngIf="paso==1" class="form-horizontal" action='' method="POST">
+
+
+<form *ngIf="paso==1" class="form-horizontal" action='' method="POST">
    <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.numeroActa}} - [ {{actaSelect.finMenteGral}} ]</h5>
    <div class="row" >
       <div class="col-1" >
@@ -130,7 +151,7 @@
          <div style="margin-top: 30px;"  >Agregue un usuario</div>
          <div style="background: #E4AD2D80;" >
             <input type="text" [(ngModel)]="queryString" [ngModelOptions]="{standalone: true}" id="search" placeholder="Busque por email">
-            <ul style="max-height: 200px;overflow-y: scroll;" >
+            <ul style="overflow-y: scroll;" >
                <li *ngFor="let usuario of usuarios | FilterPipe: queryString ">
                   <button style="border: none;background: #E4AD2DCC;border-radius: 8px;font-size: small;" (click)="addUser(usuario)">{{usuario.nombre}} - {{usuario.email}}</button>
                </li>
@@ -144,7 +165,7 @@
       </div>
    </div>
 </form>
-<form style="width: 100%;margin-top: 200px;" *ngIf="paso==2" class="form-horizontal" action='' method="POST">
+<form style="width: 100%" *ngIf="paso==2" class="form-horizontal" action='' method="POST">
    <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.numeroActa}} - [ {{actaSelect.finMenteGral}} ]</h5>
    <div class="row" >
       <div class="col-6 offset-3" >
@@ -184,7 +205,7 @@
    <!-- ################################## Temas ##################################  -->
    <div  *ngIf="temasDelActa.length>0" class="row" >
       <div class="col-xl-2" style="text-align: center;">
-         <img src="assets/logo.png" style="max-width: 200px;max-height: 150px;margin-top: -40px;" >  
+         <img src="assets/logo.png" style="max-width: 200px;max-height: 150px;margin-top: -40px;" [routerLink]="['/home']">  
       </div>
       <div class="col-xl-8" >
          <div class="row" style="align-items: center;" >
@@ -274,33 +295,6 @@ Resumen: {{tareaActual.detalle}}
       <div class="col-2" style="text-align: center;">
          <img [src]="logo" style="max-width: 175px;max-height: 150px;margin-top: -30px;" >  
       </div>
-   </div>
-</form>
-<form style="margin-top: 50px;" *ngIf="paso==4" class="form-horizontal" action='' method="POST">
-   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.id}} - [ {{actaSelect.finMenteGral}} ]</h5>
-   <div style="text-align: center;margin-top: 100px;" >
-      ¿ Desea agregar un tema nuevo?
-      <button (click)="showDialogAddCarre=true" (click)="updatePaso('3')" style="width: 40px;padding-left: 0px;padding-right: 0px;" type="button" class="btn">
-      <img src="assets/add.png" style="width: 22px;" >
-      </button> 
-   </div>
-   <div style="text-align: center;margin-top: 20px;" >
-      <button (click)="updatePaso('5')" type="button" class="btn"><b>Continuar, sin agregar un tema</b></button>
-   </div>
-</form>
-<form style="margin-top: 50px;" *ngIf="paso==5" class="form-horizontal" action='' method="POST">
-   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.id}} - [ {{actaSelect.finMenteGral}} ]</h5>
-   <div style="text-align: center;margin: 100px;" >
-      <textarea (dblclick)="showDialogAddCarre=true" class="form-control" rows="4" id="comment" placeholder="Comentarios Adicionales"></textarea>
-      <input #fin (change)="asistente.finEnMente=fin.value" type="text" class="form-control" placeholder="¿Se cumplió el fin en mente de la reunión?">
-      <input #fin (change)="asistente.finEnMente=fin.value" type="text" class="form-control" placeholder="¿Fue suficiente el tiempo utilizado en la reunión? ">
-      <input #fin (change)="asistente.finEnMente=fin.value" type="text" class="form-control" placeholder="¿Tuvo algún inconveniente en la reunión?">
-      <input #fin (change)="asistente.finEnMente=fin.value" type="text" class="form-control" placeholder="¿Tiene alguna sugerencia sobre la reunión o sus participantes?">
-      <input #fin (change)="asistente.finEnMente=fin.value" type="text" class="form-control" placeholder="¿La redacción de las tareas nuevas fue aprobada por quién es
-      responsable de la tarea?">
-   </div>
-   <div style="text-align: center;" >
-      <button (click)="closeActa()" type="button" class="btn"><b>Finalizar</b></button>
    </div>
 </form>
 

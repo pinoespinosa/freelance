@@ -84,6 +84,21 @@ public class Auth {
 		return null;
 	}
 
+	public static Rol getUserRol(String token) {
+
+		Auth obj;
+		ObjectMapper mapper = new ObjectMapper();
+
+		try {
+			obj = mapper.readValue(ChipherTool.decrypt(token), Auth.class);
+			return obj.getRol();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	
 	public static String getUserEmail(String token) {
 
 		Auth obj;

@@ -16,6 +16,14 @@ import { AppRoutingModule }                 from './routing/app-routing.module';
 // ######################## Paginas del sitio ########################
 import { LoginComponent }                   from './pages/login/login.component';
 import { ConsultasComponent }               from './pages/consultas/consultas.component';
+
+import { ConsultasTemaComponent }           from './pages/consultas/consultas-tema/consultas-tema.component';
+import { ConsultasTareaComponent }          from './pages/consultas/consultas-tarea/consultas-tarea.component';
+import { ConsultasFinMenteComponent }       from './pages/consultas/consultas-fin-mente/consultas-fin-mente.component';
+import { ConsultasActaComponent }           from './pages/consultas/consultas-acta/consultas-acta.component';
+
+import { VisorActaComponent }               from './pages/consultas/visor-acta/visor-acta.component';
+
 import { ReunionesComponent }               from './pages/reuniones/reuniones.component';
 
 import { CreateUserComponent }              from './pages/create-user/create-user.component';
@@ -40,6 +48,7 @@ import { AppComponent }                     from './app.component';
 import { Service }                          from './service';
 
 import { FilterPipe }                       from './pages/pipe/pipe';
+import { FilterPipe2 }                       from './pages/pipe2/pipe';
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -54,11 +63,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
     HomeComponent,
     ConsultasComponent,
+    ConsultasTemaComponent,
+    ConsultasTareaComponent,
+    ConsultasFinMenteComponent,
+    ConsultasActaComponent,
+    VisorActaComponent,
+
     ActaCompletaComponent,
     ReunionesComponent,
     SesionComponent,
     Sesion2Component,
     FilterPipe,
+    FilterPipe2,
     ChangeStateDialogComponent,
     MantenimientoComponent,
 

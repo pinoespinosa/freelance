@@ -61,6 +61,21 @@ public class TemasController {
 	 * Retorna la lista de clientes
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "tema/historico2", method = RequestMethod.GET)
+	public List<Tema> getTemaListConsulta2(
+			@RequestParam final String actaID,
+			@RequestHeader("Acces-Token") String token) {
+		
+		
+		
+		return dataSource.getTemaListConsulta2(actaID, Auth.getEmpresaID(token));
+
+	}
+	
+	/**
+	 * Retorna la lista de clientes
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "{actaID}/acta/tema/abierto", method = RequestMethod.GET)
 	public List<Tema> getTemaAbiertoFromActaList(
 			@PathVariable final String actaID,

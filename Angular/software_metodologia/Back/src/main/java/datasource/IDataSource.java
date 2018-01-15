@@ -93,4 +93,8 @@ public interface IDataSource {
 
 	List<CuerpoColegiado> getCuerpoColegiadoList(String empresaID);
 
+	List<Acta> getActaFiltroMente(String filtroMente, String empresaID);
+
+	List<Tema> getTemaListConsulta2(String actaID, String empresaID);
+
 }

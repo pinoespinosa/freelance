@@ -13,25 +13,22 @@ import { Usuario }                                from 'app/data-objects/usuario
 
 
 @Component({
-  selector: 'consultas',
-  templateUrl: 'consultas.component.html',
+  selector: 'consultas-fin-mente',
+  templateUrl: 'consultas-fin-mente.component.html',
   animations: [
   ],
 })
 
-export class ConsultasComponent implements OnInit  {
+export class ConsultasFinMenteComponent implements OnInit  {
 
-	tipoConsulta: string[] = ["Acta Completa", "Por Fin en Mente", "Por Temas", "Por Tareas"];
-	consultaSelect = ''
+  finesMente: string[] = ["Acta Completa", "Por Fin en Mente", "Por Temas", "Por Tareas", "Por Comentarios", "Por Estrategia", "Por indicadores","Acta Completa", "Por Fin en Mente", "Por Temas", "Por Tareas", "Por Comentarios", "Por Estrategia", "Por indicadores"];
 
-  logo = ''
+  actas:any[];
+  logo:string = "";
 
-  cuerposColegiado: CuerpoColegiado[] = [];
-	cuerpoColegiadoSelect: CuerpoColegiado;
- 
-  actaSelect : any = '';
+  actaSelect;
+  consultaSelect;
   
-
   constructor(    private router: Router, private route : ActivatedRoute, private service: Service
 ){
   this.logo = localStorage.getItem('logo');
@@ -39,10 +36,12 @@ export class ConsultasComponent implements OnInit  {
 }
 
 	ngOnInit(): void {
-		let loading = this.service.getCuerpoColegiados().subscribe(
-      		response =>{ 
-        		this.cuerposColegiado = response;
-      		});
+
+    this.service.getActasFinMente('').subscribe(
+      response =>{ 
+        this.actas = response;
+      });
+
 
     let sub = this.route
       .queryParams
@@ -54,27 +53,24 @@ export class ConsultasComponent implements OnInit  {
             this.consultaSelect = result['type'].split('_').join(' ')
           if(result['actaID'])
             this.actaSelect = result['actaID'].split('_').join(' ')
-          else
-            this.actaSelect = ""
         }
 
       );
+
 	};
 
 
-updateValueTipoConsulta(consulta){
-  this.consultaSelect = consulta;
+  selectActa(actaID): void {
 
-  let navigationExtras: NavigationExtras = {
-    queryParams: {
-      "type": this.consultaSelect.split(' ').join('_')
-    }
-  };
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "type": this.consultaSelect.split(' ').join('_'),
+        "actaID": actaID
+      }
+    };
   
-  this.router.navigate(['/consultas'], navigationExtras);
+    this.router.navigate(['/consultas'], navigationExtras);
 
- }
 
-	
 }
- 
+ }

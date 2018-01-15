@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Renderer2 } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild, Renderer2 } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute }                                from '@angular/router';
 import { trigger, state, style, animate, transition }                           from '@angular/animations';
 import { Service }                                      from 'app/service';
@@ -19,10 +19,11 @@ import { Usuario }                                      from 'app/data-objects/u
   ],
 })
 
-export class CreateUserComponent implements OnInit  {
+export class CreateUserComponent implements OnInit, OnDestroy  {
 
   visiblePop : boolean = false;
   cuerposColegiado: CuerpoColegiadoSelect[];
+  empresaCreada : string = '';
 
 
   constructor( 
@@ -35,7 +36,19 @@ export class CreateUserComponent implements OnInit  {
 
   }
 
+  quitarToken(){
+      localStorage.setItem('empresa-creada','');
+  }
+
+  ngOnDestroy(): void {
+    this.quitarToken();
+  }
+
   ngOnInit(): void {
+
+    this.empresaCreada = localStorage.getItem('empresa-creada');
+
+
 
     this.service.getCuerpoColegiados().subscribe(
       response =>{ 
@@ -47,6 +60,23 @@ export class CreateUserComponent implements OnInit  {
 
   };
 
+  isValid() : boolean{
+
+    let listaCC='';
+
+    for (let cc of this.cuerposColegiado) {
+      if (cc.check)
+        listaCC = listaCC + '&ccList=' + cc.id;
+    }
+
+    console.log ('Valid' + listaCC != '')
+
+    return listaCC != '';
+
+
+  }
+
+
   createUser(nombre, email):void{
 
     let listaCC='';
@@ -55,6 +85,31 @@ export class CreateUserComponent implements OnInit  {
       if (cc.check)
         listaCC = listaCC + '&ccList=' + cc.id;
     }
+
+    if (!listaCC)
+        alert("Debe seleccionar un cuerpo colegiado.")
+    else{
+
+      this.empresaCreada = localStorage.getItem('empresa-creada');
+
+      if (this.empresaCreada!=''){
+
+
+    this.service.createUserAdmin(nombre, email, listaCC, this.empresaCreada).subscribe(
+      response =>{ 
+        alert("Se ha creado el usuario exitosamente.")
+        localStorage.setItem('REFRESH_USERS', 'TRUE');
+      },
+      error =>{ 
+        alert("Ya existe un usuario con ese email registrado. No se ha creado el usuario")
+        localStorage.setItem('REFRESH_USERS', 'TRUE');
+      },
+
+      );
+
+      }
+else
+{
 
     this.service.createUser(nombre, email, listaCC).subscribe(
       response =>{ 
@@ -67,6 +122,8 @@ export class CreateUserComponent implements OnInit  {
       },
 
       );
+  }
+      }
   }
   
   update(a, b) {

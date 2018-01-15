@@ -558,11 +558,12 @@ export class Sesion2Component implements OnInit, OnDestroy {
 
 
   esDone() : boolean {
-    return  this.actaSelect.seCumpliofinEnMente.length == 0 || 
-            this.actaSelect.elTiempoFueSuficiente.length == 0 || 
-            this.actaSelect.huboInconvenientes.length == 0 || 
-            this.actaSelect.tieneSugerencias.length == 0 || 
-            this.actaSelect.redaccionDeTareasOk.length == 0 ;
+
+    return  (this.actaSelect.seCumpliofinEnMente+"") == "" || 
+            (this.actaSelect.elTiempoFueSuficiente+"") == "" || 
+            (this.actaSelect.huboInconvenientes+"") == "" || 
+            (this.actaSelect.tieneSugerencias+"") == "" || 
+            (this.actaSelect.redaccionDeTareasOk+"") == "" ;
 
 
   }

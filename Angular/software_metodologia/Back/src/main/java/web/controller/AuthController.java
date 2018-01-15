@@ -3,6 +3,7 @@ package web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,6 +54,27 @@ public class AuthController {
 			) {
 		return dataSource.create(pass,rol, Auth.getEmpresaID(token), ccList, nombre, email,logo);
 	}
+
+	/**
+	 * Crear User
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/createUser/admin", method = RequestMethod.POST)
+	public Auth createUserAdmin(@RequestHeader("Acces-Token") String token,
+			@RequestParam(required = true) final String nombre, @RequestParam(required = true) final String empresaID,
+			@RequestParam(required = true) final String email, @RequestParam(required = true) final String pass,
+			@RequestParam(required = true) final String logo, @RequestParam(required = true) final Rol rol,
+			@RequestParam(required = true) final List<String> ccList
+
+	) {
+
+		if (Rol.SUPER_ADMINISTRADOR.equals(Auth.getUserRol(token))) {
+
+			return dataSource.create(pass, rol, empresaID, ccList, nombre, email, logo);
+		}
+		return null;
+	}
+
 	
 	/**
 	 * Crear User

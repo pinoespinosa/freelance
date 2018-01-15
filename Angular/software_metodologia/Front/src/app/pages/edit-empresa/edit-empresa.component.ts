@@ -84,4 +84,8 @@ export class EditEmpresaComponent implements OnInit  {
     a.check = b.checked;
   }
 
+  setEmpresaLocalSto(empres){
+    localStorage.setItem('empresa-creada',empres.id);
+  }
+
 }

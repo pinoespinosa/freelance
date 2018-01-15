@@ -111,10 +111,22 @@ getTemasConsulta(cuerpoColegiadoID,actaID): Observable<Tema[]> {
   return this.http.get(this.server + 'api/'+ cuerpoColegiadoID + '/tema/historico?actaID='+actaID, { headers: headers }).map(this.extractData);
 }
 
+getTemasConsulta2(actaID): Observable<Tema[]> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.get(this.server + 'api/tema/historico2?actaID='+actaID, { headers: headers }).map(this.extractData);
+}
+
 getActasCitadas(): Observable<Acta[]> {
   var headers = new Headers();
   headers.append('acces-token', localStorage.getItem('token'));
   return this.http.get(this.server + 'api/acta/citada', { headers: headers }).map(this.extractData);
+}
+
+getActasFinMente(t): Observable<Acta[]> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.get(this.server + 'api/acta/filtroMente?texto='+t, { headers: headers }).map(this.extractData);
 }
 
 getActa(actaID): Observable<Acta> {
@@ -133,6 +145,12 @@ createUser(nombre, email, listaCC): Observable<Usuario> {
   var headers = new Headers();
   headers.append('acces-token', localStorage.getItem('token'));
   return this.http.post(this.server + '/api/createUser?nombre='+nombre+'&email='+email+'&pass=1234&logo=dd&rol=SOLO_CONSULTA'+listaCC,'', { headers: headers }).map(this.extractData);
+}
+
+createUserAdmin(nombre, email, listaCC, empresaID): Observable<Usuario> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.post(this.server + '/api/createUser/admin?empresaID='+empresaID+'&nombre='+nombre+'&email='+email+'&pass=1234&logo=dd&rol=SOLO_CONSULTA'+listaCC,'', { headers: headers }).map(this.extractData);
 }
 
 createActa(cuerpoColegiadoID, acta): Observable<Acta> {

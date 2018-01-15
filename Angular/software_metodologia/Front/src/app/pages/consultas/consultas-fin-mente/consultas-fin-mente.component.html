@@ -1,0 +1,32 @@
+
+<form class="form-horizontal" action='' method="POST">
+   <div class="row" >
+
+      <!-- ******************************** COMBOS *************************** -->
+
+      <div class="col-4" >
+      </div>
+
+      <div class="col-4" >
+
+         <div style="background: #B7B5B080;padding: 10px;" >
+            <input type="text" [(ngModel)]="queryString" [ngModelOptions]="{standalone: true}" id="search" placeholder="Texto del Fin en Mente">
+            <ul style="max-height: 120px;overflow-y: scroll;" > 
+               <li *ngFor="let usuario of actas | FilterPipe2: queryString ">
+                  <button style="border: none;background: #E4AD2DCC;border-radius: 8px;font-size: small;" (click)="selectActa(usuario.id)"> {{usuario.numeroActa}} - {{usuario.finMenteGral | slice:0:30 }} ... </button>
+               </li>
+            </ul>
+         </div>
+
+      </div>
+
+   </div>
+
+</form>
+
+
+
+
+
+
+

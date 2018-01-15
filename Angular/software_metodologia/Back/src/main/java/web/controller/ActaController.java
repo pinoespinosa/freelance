@@ -32,7 +32,7 @@ public class ActaController {
 
 	
 	/**
-	 * Retorna la lista de las actas
+	 * Retorna el acta
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "acta/{actaID}", method = RequestMethod.GET)
@@ -43,7 +43,17 @@ public class ActaController {
 		return dataSource.getActa(actaID, Auth.getEmpresaID(token));
 	}
 	
-	
+	/**
+	 * Retorna el acta por fin en mente
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "acta/filtroMente", method = RequestMethod.GET)
+	public List<Acta> getActaFinMente(
+			@RequestParam final String texto,
+			@RequestHeader("Acces-Token") String token) {
+
+		return dataSource.getActaFiltroMente(texto, Auth.getEmpresaID(token));
+	}
 	
 	
 	

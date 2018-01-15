@@ -194,6 +194,20 @@ export class SesionComponent implements OnInit, OnDestroy {
       this.updatePaso('1');
 
 
+    if (this.paso == '4' || this.paso == '5'){
+
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          "actaID": this.actaSelect.id
+        }
+      };
+
+      this.router.navigate(['/sesion-2'], navigationExtras);
+
+
+
+    }
+
     this.service.getUsuariosConActa(this.actaSelect.id).subscribe(
       response => {
         this.usuarios = response;
@@ -384,6 +398,19 @@ export class SesionComponent implements OnInit, OnDestroy {
       this.router.navigate(['/sesion-2'], navigationExtras);
 
     }
+
+    redirect(): void {
+
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          "actaID": this.actaSelect.id
+        }
+      };
+      this.router.navigate(['/sesion-2'], navigationExtras);
+
+    }
+
+
 
     addComentarioTarea(com): void {
 
