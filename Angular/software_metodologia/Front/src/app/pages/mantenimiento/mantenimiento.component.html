@@ -1,5 +1,11 @@
-<div class="row" >
-   <create-empresa></create-empresa>
+<div  class="row bottom-buttons-container">
+   <div class="col-12" style="text-align: right;" >
+      <img src="assets/logo.png" style="max-width: 300px;max-height: 150px;margin: 15px" >  
+   </div>
+</div>
+
+<div class="row"  >
+   <create-empresa *ngIf="userType=='SUPER_ADMINISTRADOR'" ></create-empresa>
    <edit-empresa></edit-empresa>
 </div>
 
@@ -9,5 +15,5 @@
    <edit-cuerpo-colegiado></edit-cuerpo-colegiado>
 </div>
 
-<div class="row" >
-</div>
+
+ 

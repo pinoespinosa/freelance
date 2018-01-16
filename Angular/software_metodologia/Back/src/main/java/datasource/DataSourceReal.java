@@ -714,8 +714,15 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
-	public List<Empresa> listEmpresa() {
-		return obj.getEmpresas();
+	public List<Empresa> listEmpresa(String token) {
+
+		if (Rol.SUPER_ADMINISTRADOR.equals(Auth.getUserRol(token))) {
+			return obj.getEmpresas();
+		} else {
+			List<Empresa> list = new ArrayList<>();
+			list.add(getEmpresa(Auth.getEmpresaID(token)));
+			return list;
+		}
 	}
 
 	@Override

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import data.Auth;
 import data.Empresa;
+import data.Auth.Rol;
 import datasource.IDataSource;
 import io.swagger.annotations.ApiOperation;
 import spring.ProjectConstants;
@@ -55,9 +56,10 @@ public class EmpresaController {
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "/empresa/list", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Empresa> listEmpresa(
-			@RequestHeader("Acces-Token") String token) {
-		return dataSource.listEmpresa();
+	public List<Empresa> listEmpresa(@RequestHeader("Acces-Token") String token) {
+
+		return dataSource.listEmpresa(token);
+
 	}
 	
 	public IDataSource getDataSource() {

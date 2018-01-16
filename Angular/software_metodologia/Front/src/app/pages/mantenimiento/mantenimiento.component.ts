@@ -30,6 +30,7 @@ export class MantenimientoComponent implements OnInit  {
 
 
   logo:string = "";
+  userType:string = "";
 
 	actas: Acta[] = [];
 
@@ -51,6 +52,7 @@ export class MantenimientoComponent implements OnInit  {
   constructor(    private router: Router, private route : ActivatedRoute, private service: Service
 ){
   this.logo = localStorage.getItem('logo');
+  this.userType = localStorage.getItem('rol');
 
 }
 
@@ -61,135 +63,6 @@ export class MantenimientoComponent implements OnInit  {
       		});
 	};
 
-  indiceTemaMas(){
-    console.log("ddd")
-      if (this.indice < this.temasDelActa.length -1){
-        this.indice = this.indice +1;
-        this.temaActual = this.temasDelActa[this.indice]
-      }
-          this.updateTareas();
-
-  }
-
-  indiceTemaMenos(){
-    if (this.indice > 0 ){
-        this.indice = this.indice -1;
-        this.temaActual = this.temasDelActa[this.indice]
-  }
-
-  }
-
-  indiceTareaMas(){
-    if (this.indiceTAREA < this.tareasMostrar.length -1){
-      this.indiceTAREA = this.indiceTAREA +1;
-      this.tareaActual = this.tareasMostrar[this.indiceTAREA];
-    }
-        this.updateTareas();
-
-  }
-
-  indiceTareaMenos(){
-    if (this.indiceTAREA > 0 ){
-        this.indiceTAREA = this.indiceTAREA -1;
-        this.tareaActual = this.tareasMostrar[this.indiceTAREA];
-    }
-  }
-
-
-	selectCuerpo(cuerpo):void{
-    	this.cuerpoColegiadoSelect = this.cuerposColegiado[cuerpo.selectedIndex-1];
-    	this.actas = this.cuerpoColegiadoSelect.actas
-      this.temaActual= new Tema("","","",[],[],"","");
-      this.indice = 0;
-
-
-      if (this.actas.length == 1){
-        this.responsables = this.actas[0].integrantes;
-        this.selectActa2(this.actas[0])
-
-      }
-      else
-        this.temasDelActa = []
- 	}
-
-  updateTareas(){
-    this.tareasMostrar = [];
-    for (let aa of this.temaActual.tareas) {
-
-      if (this.tareasFiltro=="Todas")
-        this.tareasMostrar.push(aa);
-      else{
-        if (aa.estado == this.tareasFiltro)
-          this.tareasMostrar.push(aa);
-        }
-    }
-
-        this.tareasMostrar.sort((a, b) => {
-        if ( (+a.id) < (+b.id) ) 
-          return 1;
-        else 
-          if ((+a.id) > (+b.id) ) 
-            return -1 ;
-          else 
-            return 0;
-    });
-
-
-    if (this.tareasMostrar.length > 0){
-      this.tareaActual = this.tareasMostrar[0];
-      this.indiceTAREA = 0;
-
-
-    } 
-    else{
-      this.tareaActual = new Tarea("","","",[],null);
-      this.indiceTAREA = -1;
-    }
-
-  }
-
-  updateClii(cuerpo):void{
-
-  }
-
-  selectActa(actaSelect):void{
-
-    this.responsables = this.actas[actaSelect.selectedIndex-1].integrantes;
-    this.selectActa2(this.actas[actaSelect.selectedIndex-1]);
-    this.actaCombo = actaSelect;
-
-}
-
-  selectActa2(actaaa):void{
-
-
-      let loading = this.service.getTemasConsulta(this.cuerpoColegiadoSelect.id, actaaa.id).subscribe(
-          response =>{ 
-            this.temasDelActa = response;
-            if(response.length>=0)
-              this.temaActual = response[0]
-            this.indice=0;
-            console.log(response)
-          });
-
-    this.updateTareas();
-
-
-
-  }
-
-    toString(array){
-
-  let ff='\n\n';
-
-  for (let aa of array) {
-
-  ff = ff + aa.texto + '\n'
-
-  }
-
-    return ff;
-  }
 
 	
 }

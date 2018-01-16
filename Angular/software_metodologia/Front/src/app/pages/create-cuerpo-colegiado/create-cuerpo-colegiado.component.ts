@@ -29,6 +29,7 @@ export class CreateCuerpoColegiadoComponent implements OnInit  {
 
   nombreAux : string = ''
   prefijo : string = ''
+  userType : string = ''
 
   cuerposColegiadoSelect: any = null;
   empresaSelect: any = null;
@@ -42,6 +43,13 @@ export class CreateCuerpoColegiadoComponent implements OnInit  {
     private route : ActivatedRoute, 
     private service: Service)
   {
+
+    this.userType = localStorage.getItem('rol');
+    if (this.userType != 'SUPER_ADMINISTRADOR'){
+      this.empresaSelect = localStorage.getItem('empresaID')
+      this.updatte(this.empresaSelect);
+
+    }
 
 
   }
@@ -58,7 +66,7 @@ export class CreateCuerpoColegiadoComponent implements OnInit  {
       'prefijoDocs' : this.prefijo
     }
 
-    this.service.createCuerpo(emp).subscribe(
+    this.service.createCuerpo(emp,this.empresaSelect).subscribe(
       response =>{ 
         alert("Se ha creado el cuerpo exitosamente.")
         this.router.navigate(['/home']);

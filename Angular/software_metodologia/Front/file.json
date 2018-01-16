@@ -5,208 +5,59 @@
     "colegiados" : [ {
       "id" : "0-0",
       "nombre" : "Comercial",
-      "prefijoDocs" : "COMER",
-      "actas" : [ {
-        "id" : "COM_0-0-0",
-        "numeroActa" : "COM000",
-        "fecha" : 1515759274508,
-        "fechaCierre" : 0,
-        "lugar" : "SUM",
-        "ciudad" : "Mar del Plata",
-        "paso" : "5",
-        "estado" : "Cerrado",
-        "integrantes" : [ {
-          "userID" : "0",
-          "nombre" : "Andres Espinosa",
-          "email" : "pino.espinosa91@gmail.com",
-          "finEnMente" : "Definir el grupo de trabajo",
-          "estado" : "Presente"
-        }, {
-          "userID" : "1",
-          "nombre" : "Valentina Alfonso",
-          "email" : "sas@gmail.com",
-          "finEnMente" : "Ver los equipos",
-          "estado" : "Presente"
-        } ],
-        "finMenteGral" : "Definir organizacion",
-        "temas" : [ ],
-        "comentarioAdicionales" : "",
-        "seCumpliofinEnMente" : "",
-        "elTiempoFueSuficiente" : "",
-        "huboInconvenientes" : "",
-        "tieneSugerencias" : "",
-        "redaccionDeTareasOk" : "",
-        "horaInicio" : "10:15",
-        "fechaReunion" : "2018-01-17",
-        "horaFinal" : "11:15"
-      }, {
-        "id" : "COM_0-0-1",
-        "numeroActa" : "COM001",
-        "fecha" : 1515945456138,
-        "fechaCierre" : 0,
-        "lugar" : "aa",
-        "ciudad" : "aa",
-        "paso" : "5",
-        "estado" : "Cerrado",
-        "integrantes" : [ {
-          "userID" : "0",
-          "nombre" : "Andres Espinosa",
-          "email" : "pino.espinosa91@gmail.com",
-          "finEnMente" : "uuyuy",
-          "estado" : "Presente"
-        }, {
-          "userID" : "1",
-          "nombre" : "Valentina Alfonso",
-          "email" : "ae@qbkconsulting.com",
-          "finEnMente" : "uyuyu",
-          "estado" : "Presente"
-        } ],
-        "finMenteGral" : "Soy un fin en mente re largo y por eso sigo asi, asi Soy un fin en mente re largo y por eso sigo asi, asi Soy un fin en mente re largo y por eso sigo asi, asi Soy un fin en mente re largo y por eso sigo asi, asi Soy un fin en mente re largo y por eso sigo asi, asi Soy un fin en mente re largo y por eso sigo asi, asi",
-        "temas" : [ ],
-        "comentarioAdicionales" : "",
-        "seCumpliofinEnMente" : "",
-        "elTiempoFueSuficiente" : "",
-        "huboInconvenientes" : "",
-        "tieneSugerencias" : "",
-        "redaccionDeTareasOk" : "",
-        "horaInicio" : "11:56",
-        "fechaReunion" : "2019-02-15",
-        "horaFinal" : "01:58"
-      }, {
-        "id" : "COM_0-0-2",
-        "numeroActa" : "COM002",
-        "fecha" : 1515954555737,
-        "fechaCierre" : 0,
-        "lugar" : "a",
-        "ciudad" : "a",
-        "paso" : "5",
-        "estado" : "Citada",
-        "integrantes" : [ {
-          "userID" : "0",
-          "nombre" : "Andres Espinosa",
-          "email" : "pino.espinosa91@gmail.com",
-          "finEnMente" : "uuyuy",
-          "estado" : "Presente"
-        }, {
-          "userID" : "1",
-          "nombre" : "Valentina Alfonso",
-          "email" : "ae@qbkconsulting.com",
-          "finEnMente" : "uyuyu",
-          "estado" : "Presente"
-        } ],
-        "finMenteGral" : "a",
-        "temas" : [ ],
-        "comentarioAdicionales" : "",
-        "seCumpliofinEnMente" : "",
-        "elTiempoFueSuficiente" : "",
-        "huboInconvenientes" : "",
-        "tieneSugerencias" : "",
-        "redaccionDeTareasOk" : "",
-        "horaInicio" : "04:30",
-        "fechaReunion" : "2018-01-24",
-        "horaFinal" : "04:30"
-      } ],
-      "temasId" : [ "COM0" ]
+      "prefijoDocs" : "COM",
+      "actas" : [ ],
+      "temasId" : [ ]
     }, {
       "id" : "0-1",
       "nombre" : "Gerencial",
       "prefijoDocs" : "GER",
       "actas" : [ ],
-      "temasId" : [ "COM0" ]
+      "temasId" : [ ]
+    }, {
+      "id" : "0-2",
+      "nombre" : "iiiii",
+      "prefijoDocs" : "iiiiii",
+      "actas" : [ ],
+      "temasId" : [ ]
+    }, {
+      "id" : "0-3",
+      "nombre" : "o",
+      "prefijoDocs" : "o",
+      "actas" : [ ],
+      "temasId" : [ ]
     } ],
-    "temas" : {
-      "COM0" : {
-        "id" : "COM0",
-        "fechaCreacion" : 1515858937098,
-        "estado" : "Abierto",
-        "objetivoEstrategico" : "Estrategia1",
-        "indicador" : "Indicador Inicial",
-        "detalle" : "Tema Inicial",
-        "tareas" : [ {
-          "id" : "0",
-          "estado" : "Abierto",
-          "detalle" : "Tarea Diez",
-          "responsable" : {
-            "userID" : "0",
-            "nombre" : "Andres Espinosa",
-            "email" : "",
-            "finEnMente" : "Presente",
-            "estado" : ""
-          },
-          "eventos" : [ "COM000 - Comentario Tarea Inicial", "COM001 - dsadasdasd asdas" ]
-        } ],
-        "eventos" : [ {
-          "texto" : "Se ha creado el tema en el acta COM000",
-          "idActa" : "COM_0-0-0",
-          "date" : 1515858937099
-        }, {
-          "texto" : "COM000 - Primer Cometantario",
-          "idActa" : "COM_0-0-0",
-          "date" : 1515859072893
-        }, {
-          "texto" : "COM001 - la la l a",
-          "idActa" : "COM_0-0-1",
-          "date" : 1515949211153
-        } ]
-      }
-    },
+    "temas" : { },
     "nombreEmpresa" : "Arcor",
-    "logoEmpresa" : "assets/imagenes/1515953297710"
+    "logoEmpresa" : "assets/imagenes/1516068382676"
   }, {
     "id" : "1",
-    "colegiados" : [ ],
+    "colegiados" : [ {
+      "id" : "1-0",
+      "nombre" : "Gerentes",
+      "prefijoDocs" : "GER",
+      "actas" : [ ],
+      "temasId" : [ ]
+    } ],
     "temas" : { },
-    "nombreEmpresa" : "Sancora",
-    "logoEmpresa" : "assets/imagenes/1515982422529"
+    "nombreEmpresa" : "Sanyo",
+    "logoEmpresa" : "assets/imagenes/1516097061791"
   } ],
   "users" : {
     "BO6HksZrI6j/q2gCu2QKD772U7FeMg1i23xqgAsMq1eOzaaxvqhI9Ed2gazJ5XlU" : {
       "userID" : "2",
-      "rol" : "ADMINISTRADOR",
-      "nombre" : "Fernando Echevarria",
+      "rol" : "SOLO_CONSULTA",
+      "nombre" : "Valentina Alfonso",
       "email" : "andresespinosa91@hotmail.com",
-      "logo" : "assets/imagenes/1515953297710",
+      "logo" : "assets/imagenes/1516068382676",
       "empresaID" : "0",
       "empresaNombre" : "Arcor",
       "ccList" : [ "0-0", "0-1" ],
-      "token" : "yZoj22BRAMkL98AAPdovqRsLxIvTNhiWzOvpnyZE10Q6JH/k1gxZmQkYYMz8uPpUWxVyvyA99JcRHL4TCZTmukgkwKHNAQLWFQJ2w9m27GQE8jJhXTZEWx/v+eGoek/E0KAR5g6yHYCffIDKBqrTfAddvyAau7I47Cvk8Je3YgMFGMbKpgY7/ffm8IhneQNAsuvjBRp2ZJ5J997eToWKnrozPJsSUbyXhlcSRXIb3FYpvIO/QbCYIHJE+03ZF/EKBhAQhVRWINf1V/LQGQEVcmEtBIwD2mUxgE0Mctn6QKO/VI90f7mnsHd/TYOxv+4crbyqd5SSG1oweZnCdW7+te/IesO34xAW1wGzRPJjLJfWDXx70m8FGaAbEIDbSy64ei7VYqrEDxpNR9dSy31hurexpAnTTfi9oKd85sXxbk4oRwdd0r6WTEBM6IYRSqm1BoUXc18qAUzU9byKRb8BgUTmX31b8ax9zj4Zez2l2l3efd1fnCQQyswcWUtK6/tqdxFi9NMQ2vavr/1S0qFVgDLeGACLX7hJr93ztoSxrfyLYA6giCQrH1+HwT8RY+yXeF4sYwubUNred1upx4XZJF/vEg4uUrxovkpPz2pYs3qkLOfHDyfkLvBS0MGSxmVn0N50al0i5TtmqTtgP06kCFqmCKYFGqCNO7zbdiaq+GV2gF7yGcRU637Xe1aaJ+gsCxZ9wVUVd03TO+JwRY8uwQ=="
-    },
-    "6qaMKLWFz7xhLV30r2BkBg==" : {
-      "userID" : "4",
-      "rol" : "SOLO_CONSULTA",
-      "nombre" : "aaa",
-      "email" : "a@a.com",
-      "logo" : "dd",
-      "empresaID" : "0",
-      "empresaNombre" : null,
-      "ccList" : [ "0-0" ],
-      "token" : ""
-    },
-    "wiIiAU1vgX4CVvRpoVXQJg==" : {
-      "userID" : "5",
-      "rol" : "SOLO_CONSULTA",
-      "nombre" : "aaa",
-      "email" : "aa@a.com",
-      "logo" : "dd",
-      "empresaID" : "0",
-      "empresaNombre" : null,
-      "ccList" : [ "0-0" ],
-      "token" : ""
-    },
-    "w/SSyH7LgFmaUwT4aL5Y7XzT+uA5GkYRGKrKq04Xt80=" : {
-      "userID" : "3",
-      "rol" : "SOLO_CONSULTA",
-      "nombre" : "SAS",
-      "email" : "sas@gmail.com",
-      "logo" : "dd",
-      "empresaID" : "0",
-      "empresaNombre" : null,
-      "ccList" : [ "0-0" ],
-      "token" : ""
+      "token" : "yZoj22BRAMkL98AAPdovqe9ftjBFMG6XPh2r7qvwK3CruuImquM6ACyiQASODK02qoUlqSh34Z7IVXW/uIVnR+EeuaI5dNA7hvrqbel0S7lkT0JkG/ulY499jecT8L4zVXmiZ09CYE0mQEdA2n7VzqeiLoLeJl75mq8hVcGCjLClid6fab5nyTNVTNDQTlXR6DHEqBUNlQxC2qSUylXcb3RlgHlym14Es3CzMtYO+Wp7d1AbijjpwJuXfxrSwOayJChq8ssA5+is7579AWAAAU+U15g2chfDeT0s1aoVE/42yPMxRzZUVV2yDgJIvdzu"
     },
     "B6/FEncCX4mfwILRnUW+C7wXt5/VInCS1TY/ryIExIA=" : {
       "userID" : "1",
-      "rol" : "ADMINISTRADOR",
+      "rol" : "GENERAL",
       "nombre" : "Valentina Alfonso",
       "email" : "ae@qbkconsulting.com",
       "logo" : "http://brandmark.io/logo-rank/random/bp.png",
@@ -217,14 +68,25 @@
     },
     "DlTEyk6ub5y5cBJHOuQbD/YqpTsuJxImPH7MF+D/Ltw=" : {
       "userID" : "0",
-      "rol" : "SUPER_ADMINISTRADOR",
+      "rol" : "ADMINISTRADOR",
       "nombre" : "Andres Espinosa",
       "email" : "pino.espinosa91@gmail.com",
-      "logo" : "assets/imagenes/1515953297710",
+      "logo" : "assets/imagenes/1516068382676",
       "empresaID" : "0",
       "empresaNombre" : "Arcor",
       "ccList" : [ "0-0", "0-1" ],
-      "token" : "3hjbUqyJ0PxH0E/KpZVqfOb/4k0sr0NKvkB7N0q71S2JW3nfZXdpJhewvJZ3vsJHoCiHQXtlhmvKps9at+CFXp2lynsmd/eRqlKSgWDPCnhDumQMu7euENRyLSMtgzEF8b4BmOtIP3SnhsKWibAZViK1ETrQNZtAa99rxew5IRtfQpvZMvDGZQqqpVo/jE2hqYA0aJYkWNSl/PNrE7ea93uDgX/Kde+/2x1cT+N9s6kqjedrcJsRWBxsnPi3k1a4sSC6l7mr37od2j3Mt9d7Duo52/9nF2JKcUJ6F5cFP9eGt4zpB1yNCK3s3KppZB7kDwRdWz5n2/16OTYiAyd1aj8RpKazTVnF02X3LTJZRmM1Nh6jHRPEI5piqAZYlqMRMnRBLjTIigJIOb7ageBX6hrpn4vEbrUkcv4qDN0e3oRAwDSvTEzKQ25LtpDchP0zRq4hAwS25i/S8KpB3Jl/sq1pfKwK6Qezi+gSn0Ejog9gDtHGHSi6Tn1liXqsUVm5KLOF6TA5h+igPIkWQdeEAOxkle6hkCvH7vbaZZXauMfK4sTwMeWTB77DdZ+Wh5Hvwo+kLsxVOPt4CNJkS7xPdBQlg32mA/EPsiVgWOYr/COJV0I0RX/U9y6M1wZXmQubQJJh88vXQxIILsgVxIqN89CsVu+g/7Uu6nr/4govlpNGEAXi4P7P5ZnjAYfsMO3khtyQB1/hv6SjXNkDRRsP2AHPle+BNtKZdTPM/5phMqeJ734AqYp1pHFa7gmR/vEURZWkOWvo1VLZokgt2k/wRnGaVgpylMhhRZNIZPL9fS8mddLA7bAF8lkB1ox5hjpIOEe/r1W04CZ6NYDDe2VtkES3KPoXR/iY6QUsQPbwOgJdFVXLxVl9LrC7pgOUZmvTBhpc1SnlVDTC1hXWq0UoucmJVY8sQarV3OeGB05nG7S/hxbCsm27LGU8tWip3lHTBMn9+yFZCQD1tEg/0KRR9mkVtTUCKXd1ea0x5HKqw5hVy1FbFK3Z1BRbGJQ6dgLbtBVhr6FQnV0+dLKI2LF8907TKR3f4EQxx4FSxCAzFMdatqRbNhTkGyHPpRgVxiRBe6aWeUvgl0DqNDwZcUIgwM8SYWsHbhReC+DJl91gfFBZUTvjTfBxPXF2GHQEobqSdSkWgU1Fen517VZwwPVPXK8E8b1FkCqcN3VvVob5C+54SrgOhqD7sNdLREMOGvoq85s79rG6qxf9muTMyOiJRg=="
+      "token" : "3hjbUqyJ0PxH0E/KpZVqfBsLxIvTNhiWzOvpnyZE10QRuuWjtd2bv0IIfbQHjpj/G4muWA58HW0gKoCuXcBmJ1RF/2HZ5FpyVD3NguPdypHT6NWUmfndFvtJ83kW6AedpIRLOGvJB81mf5+hR3wdN3ybpmN55sH65KbMeSCSP8e1oQ/mqoczmUBzez5SlyB4Fy2po2cAhAs4E5F74dYR3SH4E+RR4Z0gI5kz0XbG2i1h45YPzmUhNXF6i4KjddiqT5TXmDZyF8N5PSzVqhUT/r4DJr6G39gOvto2EWO0P3OuuBjcCNoZLjEOZMtsQuQ5ZvFXTK34FiIfj6/v1KKYz+FAkiRYoOgd8ONdlZgTsffr/t0fsoMfCRqz/iWskH1tc564pKzHR69w2Bqqm21VRkspDkQDCS5MDHT1YaM62cozOHmkeIrK6/256QRcvZ0dU+GR32Ey5hZFxT73lwBsVgPyt/n71UKJRs4eFx/Ss3ZtgAOkDJCc6IYPBUk3S22tcI7X6XSUhHvk3HqlJJPPR+UqHfG+PzuTJJVup6nPCtZ0J/BywxSkkg+jmGmHNY9mHSu4q7eb0MBgIlQ3TJa9xwhBaS2XYknaeFSaI9Rti7VK/ZazeszgE9gCCmcIGmYRYRDe8puhr2krJlO9O5LQYpKH5eiPhobxmAK8k0jK7RfdI9//a9JMQV8T+GnSSi3e"
+    },
+    "+Vj0ZJ89nq18xGutdAzcyxKixAQ9jJKEz8LiZSQn0Dg=" : {
+      "userID" : "3",
+      "rol" : "SUPER_ADMINISTRADOR",
+      "nombre" : "Fernando Echevarria",
+      "email" : "juanloa@efevisium.com",
+      "logo" : "assets/imagenes/1516068382676",
+      "empresaID" : "0",
+      "empresaNombre" : "Arcor",
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : "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"
     }
   }
 }

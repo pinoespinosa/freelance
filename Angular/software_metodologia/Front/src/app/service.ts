@@ -87,10 +87,10 @@ createEmpresa(empresa): Observable<any> {
   return this.http.post(this.server+"api/empresa/create", empresa, { headers: headers }).map(this.extractData);
 }
 
-createCuerpo(cuerpo): Observable<any> {
+createCuerpo(cuerpo, empresaID): Observable<any> {
   var headers = new Headers();
   headers.append('acces-token', localStorage.getItem('token'));
-  return this.http.post(this.server+"api/cuerpocolegiado/create", cuerpo, { headers: headers }).map(this.extractData);
+  return this.http.post(this.server+"api/cuerpocolegiado/create?empresaID="+empresaID, cuerpo, { headers: headers }).map(this.extractData);
 }
 
 editCuerpo(cuerpo): Observable<any> {

@@ -3,6 +3,8 @@ package web.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.plaf.basic.BasicTreeUI.TreeHomeAction;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -106,8 +108,16 @@ public class ColegiadoController {
 	@ResponseBody
 	public CuerpoColegiado createCuerpoColegiado(
 			@RequestBody CuerpoColegiado user,
+			@RequestParam String empresaID,
 			@RequestHeader("Acces-Token") String token) {
-		return dataSource.createCuerpoColegiado(Auth.getEmpresaID(token),user);
+		
+		if (!Rol.SUPER_ADMINISTRADOR.equals(Auth.getUserRol(token)))
+		{
+			if (!empresaID.equals(Auth.getEmpresaID(token)))
+				throw new RuntimeException("Creacion no permitida para este usuario");
+		}
+		
+		return dataSource.createCuerpoColegiado(empresaID,user);
 	}
 
 	/**
