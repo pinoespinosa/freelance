@@ -145,11 +145,14 @@ public class DataSourceReal implements IDataSource {
 			create("1234", Rol.ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
 					"Andres Espinosa", "pino.espinosa91@gmail.com", "http://brandmark.io/logo-rank/random/bp.png");
 
-			create("1234", Rol.ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
+			create("1234", Rol.GENERAL, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
 					"Valentina Alfonso", "ae@qbkconsulting.com", "http://brandmark.io/logo-rank/random/bp.png");
 
-			create("1234", Rol.ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
-					"Fernando Echevarria", "andresespinosa91@hotmail.com",
+			create("1234", Rol.SOLO_CONSULTA, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
+					"Valentina Alfonso", "andresespinosa91@hotmail.com", "http://brandmark.io/logo-rank/random/bp.png");
+			
+			create("1234", Rol.SUPER_ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
+					"Fernando Echevarria", "juanloa@efevisium.com",
 					"http://brandmark.io/logo-rank/random/bp.png");
 
 			updateFile();
