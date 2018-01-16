@@ -75,7 +75,7 @@ public interface IDataSource {
 
 	void actaIsDoneOk(String cuerpoColegiadoID, String empresaID, String actaID);
 
-	List<Tema> getTemaListConsulta(String cuerpoColegiadoID, String actaID, String empresaID);
+	List<Tema> getTemaListConsulta(String cuerpoColegiadoID, String actaID, String empresaID, String token);
 
 	Acta updatePaso(String cuerpoColegiadoID, String actaID, String empresaID, String string);
 
@@ -95,6 +95,6 @@ public interface IDataSource {
 
 	List<Acta> getActaFiltroMente(String filtroMente, String empresaID);
 
-	List<Tema> getTemaListConsulta2(String actaID, String empresaID);
+	List<Tema> getTemaListConsulta2(String actaID, String empresaID, String token);
 
 }

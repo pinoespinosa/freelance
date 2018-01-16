@@ -5,6 +5,7 @@ export class Login {
     public rol:string,
     public logo:string,
     public nombre:string,
+    public email:string
 
   ) { }
 }

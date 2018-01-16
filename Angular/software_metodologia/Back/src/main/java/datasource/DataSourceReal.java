@@ -21,6 +21,7 @@ import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.JFrame;
 
+import org.apache.http.auth.AUTH;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -620,7 +621,7 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
-	public List<Tema> getTemaListConsulta2(String actaID, String empresaID) {
+	public List<Tema> getTemaListConsulta2(String actaID, String empresaID, String token ) {
 
 		Acta actaSele = getActa(actaID, empresaID);
 		CuerpoColegiado cuerpoSelect = null;
@@ -633,14 +634,14 @@ public class DataSourceReal implements IDataSource {
 		}
 		
 		if (cuerpoSelect != null)
-			return getTemaListConsulta(cuerpoSelect.getId(), actaID, empresaID);
+			return getTemaListConsulta(cuerpoSelect.getId(), actaID, empresaID, token);
 		
 		return null;
 	}
 	
 	@Override
-	public List<Tema> getTemaListConsulta(String cuerpoColegiadoID, String actaID, String empresaID) {
-
+	public List<Tema> getTemaListConsulta(String cuerpoColegiadoID, String actaID, String empresaID, String token) {
+		
 		CuerpoColegiado cc = getCuerpoColeg(cuerpoColegiadoID);
 
 		Acta a = new Acta();
@@ -661,6 +662,7 @@ public class DataSourceReal implements IDataSource {
 				if (e.getDate() <= time)
 					if (e.getIdActa().equals(actaID))
 						tuvoActividad = true;
+				
 				aux.getEventos().add(e);
 			}
 			if (!aux.getEventos().isEmpty() && tuvoActividad) {
@@ -674,6 +676,7 @@ public class DataSourceReal implements IDataSource {
 			}
 		}
 
+			
 		return list;
 	}
 

@@ -1,5 +1,6 @@
 package web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import data.Acta;
 import data.Auth;
+import data.Auth.Rol;
 import data.CuerpoColegiado;
+import data.UsuarioActa;
 import datasource.IDataSource;
 import io.swagger.annotations.ApiOperation;
 import spring.ProjectConstants;
@@ -32,7 +36,34 @@ public class ColegiadoController {
 	@RequestMapping(value = "/cuerpocolegiado", method = RequestMethod.GET)
 	public List<CuerpoColegiado> getCuerpoColegiadoList(
 			@RequestHeader("Acces-Token") String token) {
-		return dataSource.getCuerpoColegiadoList(Auth.getEmpresaID(token), Auth.getCuerpoColegiadosList(token));
+		List<CuerpoColegiado> aa =  dataSource.getCuerpoColegiadoList(Auth.getEmpresaID(token), Auth.getCuerpoColegiadosList(token));
+		
+		List<CuerpoColegiado> aux = new ArrayList<>();
+		for (CuerpoColegiado cuerpoColegiado : aa) {
+			aux.add(cuerpoColegiado.clone());
+		}
+		
+		if (Rol.SOLO_CONSULTA.equals(Auth.getUserRol(token)))
+		{
+			String usuarioEmail = Auth.getUserEmail(token);
+			for (CuerpoColegiado cuerpoColegiado : aux) {
+				List<Acta> act= new ArrayList<>();
+				for (Acta acta : cuerpoColegiado.getActas()) {
+					boolean estuvo = false;
+					for (UsuarioActa user : acta.getIntegrantes()) {
+						if (!estuvo && user.getEmail().equals(usuarioEmail))
+							estuvo = true;
+					}
+					
+					if (estuvo){
+						act.add(acta);
+					}
+				}
+				cuerpoColegiado.setActas(act);
+			}
+		}
+		
+		return aux;
 	}
 
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")

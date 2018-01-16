@@ -24,7 +24,7 @@
         }, {
           "userID" : "1",
           "nombre" : "Valentina Alfonso",
-          "email" : "ae@qbkconsulting.com",
+          "email" : "sas@gmail.com",
           "finEnMente" : "Ver los equipos",
           "estado" : "Presente"
         } ],
@@ -160,17 +160,6 @@
     "logoEmpresa" : "assets/imagenes/1515982422529"
   } ],
   "users" : {
-    "6qaMKLWFz7xhLV30r2BkBg==" : {
-      "userID" : "4",
-      "rol" : "SOLO_CONSULTA",
-      "nombre" : "aaa",
-      "email" : "a@a.com",
-      "logo" : "dd",
-      "empresaID" : "0",
-      "empresaNombre" : null,
-      "ccList" : [ "0-0" ],
-      "token" : ""
-    },
     "BO6HksZrI6j/q2gCu2QKD772U7FeMg1i23xqgAsMq1eOzaaxvqhI9Ed2gazJ5XlU" : {
       "userID" : "2",
       "rol" : "ADMINISTRADOR",
@@ -182,15 +171,26 @@
       "ccList" : [ "0-0", "0-1" ],
       "token" : "yZoj22BRAMkL98AAPdovqRsLxIvTNhiWzOvpnyZE10Q6JH/k1gxZmQkYYMz8uPpUWxVyvyA99JcRHL4TCZTmukgkwKHNAQLWFQJ2w9m27GQE8jJhXTZEWx/v+eGoek/E0KAR5g6yHYCffIDKBqrTfAddvyAau7I47Cvk8Je3YgMFGMbKpgY7/ffm8IhneQNAsuvjBRp2ZJ5J997eToWKnrozPJsSUbyXhlcSRXIb3FYpvIO/QbCYIHJE+03ZF/EKBhAQhVRWINf1V/LQGQEVcmEtBIwD2mUxgE0Mctn6QKO/VI90f7mnsHd/TYOxv+4crbyqd5SSG1oweZnCdW7+te/IesO34xAW1wGzRPJjLJfWDXx70m8FGaAbEIDbSy64ei7VYqrEDxpNR9dSy31hurexpAnTTfi9oKd85sXxbk4oRwdd0r6WTEBM6IYRSqm1BoUXc18qAUzU9byKRb8BgUTmX31b8ax9zj4Zez2l2l3efd1fnCQQyswcWUtK6/tqdxFi9NMQ2vavr/1S0qFVgDLeGACLX7hJr93ztoSxrfyLYA6giCQrH1+HwT8RY+yXeF4sYwubUNred1upx4XZJF/vEg4uUrxovkpPz2pYs3qkLOfHDyfkLvBS0MGSxmVn0N50al0i5TtmqTtgP06kCFqmCKYFGqCNO7zbdiaq+GV2gF7yGcRU637Xe1aaJ+gsCxZ9wVUVd03TO+JwRY8uwQ=="
     },
-    "B6/FEncCX4mfwILRnUW+C7wXt5/VInCS1TY/ryIExIA=" : {
-      "userID" : "1",
-      "rol" : "ADMINISTRADOR",
-      "nombre" : "Valentina Alfonso",
-      "email" : "ae@qbkconsulting.com",
-      "logo" : "http://brandmark.io/logo-rank/random/bp.png",
+    "6qaMKLWFz7xhLV30r2BkBg==" : {
+      "userID" : "4",
+      "rol" : "SOLO_CONSULTA",
+      "nombre" : "aaa",
+      "email" : "a@a.com",
+      "logo" : "dd",
       "empresaID" : "0",
       "empresaNombre" : null,
-      "ccList" : [ "0-0", "0-1" ],
+      "ccList" : [ "0-0" ],
+      "token" : ""
+    },
+    "wiIiAU1vgX4CVvRpoVXQJg==" : {
+      "userID" : "5",
+      "rol" : "SOLO_CONSULTA",
+      "nombre" : "aaa",
+      "email" : "aa@a.com",
+      "logo" : "dd",
+      "empresaID" : "0",
+      "empresaNombre" : null,
+      "ccList" : [ "0-0" ],
       "token" : ""
     },
     "w/SSyH7LgFmaUwT4aL5Y7XzT+uA5GkYRGKrKq04Xt80=" : {
@@ -202,6 +202,17 @@
       "empresaID" : "0",
       "empresaNombre" : null,
       "ccList" : [ "0-0" ],
+      "token" : ""
+    },
+    "B6/FEncCX4mfwILRnUW+C7wXt5/VInCS1TY/ryIExIA=" : {
+      "userID" : "1",
+      "rol" : "ADMINISTRADOR",
+      "nombre" : "Valentina Alfonso",
+      "email" : "ae@qbkconsulting.com",
+      "logo" : "http://brandmark.io/logo-rank/random/bp.png",
+      "empresaID" : "0",
+      "empresaNombre" : null,
+      "ccList" : [ "0-0", "0-1" ],
       "token" : ""
     },
     "DlTEyk6ub5y5cBJHOuQbD/YqpTsuJxImPH7MF+D/Ltw=" : {

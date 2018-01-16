@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import data.Acta;
 import data.Auth;
 import data.CuerpoColegiado;
+import data.UsuarioActa;
+import data.Auth.Rol;
 import datasource.IDataSource;
 import io.swagger.annotations.ApiOperation;
 import spring.ProjectConstants;
@@ -48,11 +50,29 @@ public class ActaController {
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "acta/filtroMente", method = RequestMethod.GET)
-	public List<Acta> getActaFinMente(
-			@RequestParam final String texto,
-			@RequestHeader("Acces-Token") String token) {
+	public List<Acta> getActaFinMente(@RequestParam final String texto, @RequestHeader("Acces-Token") String token) {
 
-		return dataSource.getActaFiltroMente(texto, Auth.getEmpresaID(token));
+		List<Acta> actasBD = dataSource.getActaFiltroMente(texto, Auth.getEmpresaID(token));
+
+		String usuarioEmail = Auth.getUserEmail(token);
+
+		if (Rol.SOLO_CONSULTA.equals(Auth.getUserRol(token))) {
+			List<Acta> resultado = new ArrayList<>();
+
+			for (Acta acta : actasBD) {
+				boolean estuvo = false;
+				for (UsuarioActa user : acta.getIntegrantes()) {
+					if (!estuvo && user.getEmail().equals(usuarioEmail))
+						estuvo = true;
+				}
+
+				if (estuvo) {
+					resultado.add(acta);
+				}
+			}
+			return resultado;
+		}
+		return actasBD;
 	}
 	
 	

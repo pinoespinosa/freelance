@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import javax.xml.transform.SourceLocator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +21,7 @@ import data.Auth;
 import data.CuerpoColegiado;
 import data.Tarea;
 import data.Tema;
+import data.Auth.Rol;
 import datasource.IDataSource;
 import io.swagger.annotations.ApiOperation;
 import spring.ProjectConstants;
@@ -46,29 +49,24 @@ public class TemasController {
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "{cuerpoColegiadoID}/tema/historico", method = RequestMethod.GET)
-	public List<Tema> getTemaListConsulta(
-			@PathVariable final String cuerpoColegiadoID,
-			@RequestParam final String actaID,
-			@RequestHeader("Acces-Token") String token) {
-		
-		
-		
-		return dataSource.getTemaListConsulta(cuerpoColegiadoID, actaID, Auth.getEmpresaID(token));
+	public List<Tema> getTemaListConsulta(@PathVariable final String cuerpoColegiadoID,
+			@RequestParam final String actaID, @RequestHeader("Acces-Token") String token) {
+
+		return dataSource.getTemaListConsulta(cuerpoColegiadoID, actaID, Auth.getEmpresaID(token),
+				token);
 
 	}
-	
+
 	/**
 	 * Retorna la lista de clientes
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "tema/historico2", method = RequestMethod.GET)
-	public List<Tema> getTemaListConsulta2(
-			@RequestParam final String actaID,
+	public List<Tema> getTemaListConsulta2(@RequestParam final String actaID,
 			@RequestHeader("Acces-Token") String token) {
-		
-		
-		
-		return dataSource.getTemaListConsulta2(actaID, Auth.getEmpresaID(token));
+
+		return dataSource.getTemaListConsulta2(actaID, Auth.getEmpresaID(token),
+				token);
 
 	}
 	

@@ -28,10 +28,14 @@ export class LoginComponent implements OnInit  {
 		let loginServ = this.service.logIn(this.usuario, this.password).subscribe(
 	      response =>{ 
 	      	if (response.token !== 'FAIL'){
+
+	      		console.log(response)
+
 	      		localStorage.setItem('token',  response.token);
             	localStorage.setItem('rol',  response.rol);
             	localStorage.setItem('logo',  response.logo);
             	localStorage.setItem('empresa',  response.nombre);
+            	localStorage.setItem('email',  response.email);
 
             	this.router.navigate(['/home']);
 	      	} else {

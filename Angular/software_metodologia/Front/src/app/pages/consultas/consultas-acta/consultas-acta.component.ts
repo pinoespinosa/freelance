@@ -105,7 +105,6 @@ export class ConsultasActaComponent implements OnInit  {
 
       if (this.actas.length == 1){
         this.responsables = this.actas[0].integrantes;
-        this.selectActa2(this.actas[0])
 
       }
       else

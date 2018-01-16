@@ -1,10 +1,13 @@
 package data;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class CuerpoColegiado {
 
@@ -126,5 +129,23 @@ public class CuerpoColegiado {
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
+
+	@Override
+	public CuerpoColegiado clone() {
+
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			String value = mapper.writeValueAsString(CuerpoColegiado.this);
+			return mapper.readValue(value, CuerpoColegiado.class);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return null;
+	}
+	
+	
+	
 
 }
