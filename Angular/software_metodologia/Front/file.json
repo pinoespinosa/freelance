@@ -6,14 +6,53 @@
       "id" : "0-0",
       "nombre" : "Comercial",
       "prefijoDocs" : "COM",
-      "actas" : [ ],
-      "temasId" : [ ]
+      "actas" : [ {
+        "id" : "COM_0-0-0",
+        "numeroActa" : "COM000",
+        "fecha" : 1516148280071,
+        "fechaCierre" : 0,
+        "lugar" : "sum",
+        "ciudad" : "mar del plata",
+        "paso" : "5",
+        "estado" : "Cerrado",
+        "integrantes" : [ {
+          "userID" : "0",
+          "nombre" : "Andres Espinosa",
+          "email" : "pino.espinosa91@gmail.com",
+          "finEnMente" : "AAA",
+          "estado" : "Ausente"
+        }, {
+          "userID" : "1",
+          "nombre" : "Valentina Alfonso",
+          "email" : "ae@qbkconsulting.com",
+          "finEnMente" : "BBB",
+          "estado" : "Presente"
+        }, {
+          "userID" : "3",
+          "nombre" : "Fernando Echevarria",
+          "email" : "juanloa@efevisium.com",
+          "finEnMente" : "CCC",
+          "estado" : "Remoto"
+        } ],
+        "finMenteGral" : "conocer a los miembros",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "horaInicio" : "10:15",
+        "fechaReunion" : "2018-01-17",
+        "horaFinal" : "11:15"
+      } ],
+      "temasId" : [ "COM0" ]
     }, {
       "id" : "0-1",
       "nombre" : "Gerencial",
       "prefijoDocs" : "GER",
       "actas" : [ ],
-      "temasId" : [ ]
+      "temasId" : [ "COM0" ]
     }, {
       "id" : "0-2",
       "nombre" : "iiiii",
@@ -27,7 +66,34 @@
       "actas" : [ ],
       "temasId" : [ ]
     } ],
-    "temas" : { },
+    "temas" : {
+      "COM0" : {
+        "id" : "COM0",
+        "fechaCreacion" : 1516148982144,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : "Estrategia1",
+        "indicador" : "indicardor",
+        "detalle" : "Nuevos miembros",
+        "tareas" : [ {
+          "id" : "0",
+          "estado" : "Abierto",
+          "detalle" : "Repartir tarjetas",
+          "responsable" : {
+            "userID" : "1",
+            "nombre" : "Valentina Alfonso",
+            "email" : "",
+            "finEnMente" : "Presente",
+            "estado" : ""
+          },
+          "eventos" : [ ]
+        } ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM000",
+          "idActa" : "COM_0-0-0",
+          "date" : 1516148982144
+        } ]
+      }
+    },
     "nombreEmpresa" : "Arcor",
     "logoEmpresa" : "assets/imagenes/1516068382676"
   }, {
@@ -42,6 +108,12 @@
     "temas" : { },
     "nombreEmpresa" : "Sanyo",
     "logoEmpresa" : "assets/imagenes/1516097061791"
+  }, {
+    "id" : "2",
+    "colegiados" : [ ],
+    "temas" : { },
+    "nombreEmpresa" : "Empresa Ejemplo",
+    "logoEmpresa" : "assets/imagenes/1516149998777"
   } ],
   "users" : {
     "BO6HksZrI6j/q2gCu2QKD772U7FeMg1i23xqgAsMq1eOzaaxvqhI9Ed2gazJ5XlU" : {
@@ -53,7 +125,7 @@
       "empresaID" : "0",
       "empresaNombre" : "Arcor",
       "ccList" : [ "0-0", "0-1" ],
-      "token" : "yZoj22BRAMkL98AAPdovqe9ftjBFMG6XPh2r7qvwK3CruuImquM6ACyiQASODK02qoUlqSh34Z7IVXW/uIVnR+EeuaI5dNA7hvrqbel0S7lkT0JkG/ulY499jecT8L4zVXmiZ09CYE0mQEdA2n7VzqeiLoLeJl75mq8hVcGCjLClid6fab5nyTNVTNDQTlXR6DHEqBUNlQxC2qSUylXcb3RlgHlym14Es3CzMtYO+Wp7d1AbijjpwJuXfxrSwOayJChq8ssA5+is7579AWAAAU+U15g2chfDeT0s1aoVE/42yPMxRzZUVV2yDgJIvdzu"
+      "token" : ""
     },
     "B6/FEncCX4mfwILRnUW+C7wXt5/VInCS1TY/ryIExIA=" : {
       "userID" : "1",
@@ -75,7 +147,7 @@
       "empresaID" : "0",
       "empresaNombre" : "Arcor",
       "ccList" : [ "0-0", "0-1" ],
-      "token" : "3hjbUqyJ0PxH0E/KpZVqfBsLxIvTNhiWzOvpnyZE10QRuuWjtd2bv0IIfbQHjpj/G4muWA58HW0gKoCuXcBmJ1RF/2HZ5FpyVD3NguPdypHT6NWUmfndFvtJ83kW6AedpIRLOGvJB81mf5+hR3wdN3ybpmN55sH65KbMeSCSP8e1oQ/mqoczmUBzez5SlyB4Fy2po2cAhAs4E5F74dYR3SH4E+RR4Z0gI5kz0XbG2i1h45YPzmUhNXF6i4KjddiqT5TXmDZyF8N5PSzVqhUT/r4DJr6G39gOvto2EWO0P3OuuBjcCNoZLjEOZMtsQuQ5ZvFXTK34FiIfj6/v1KKYz+FAkiRYoOgd8ONdlZgTsffr/t0fsoMfCRqz/iWskH1tc564pKzHR69w2Bqqm21VRkspDkQDCS5MDHT1YaM62cozOHmkeIrK6/256QRcvZ0dU+GR32Ey5hZFxT73lwBsVgPyt/n71UKJRs4eFx/Ss3ZtgAOkDJCc6IYPBUk3S22tcI7X6XSUhHvk3HqlJJPPR+UqHfG+PzuTJJVup6nPCtZ0J/BywxSkkg+jmGmHNY9mHSu4q7eb0MBgIlQ3TJa9xwhBaS2XYknaeFSaI9Rti7VK/ZazeszgE9gCCmcIGmYRYRDe8puhr2krJlO9O5LQYpKH5eiPhobxmAK8k0jK7RfdI9//a9JMQV8T+GnSSi3e"
+      "token" : ""
     },
     "+Vj0ZJ89nq18xGutdAzcyxKixAQ9jJKEz8LiZSQn0Dg=" : {
       "userID" : "3",
@@ -86,7 +158,7 @@
       "empresaID" : "0",
       "empresaNombre" : "Arcor",
       "ccList" : [ "0-0", "0-1" ],
-      "token" : "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"
+      "token" : ""
     }
   }
 }

@@ -173,6 +173,9 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	void updateFile() {
+		for (Auth auth : obj.getUsers().values()) {
+			auth.setToken("");
+		}
 		infoToFile(obj, "file.json");
 	}
 
@@ -376,6 +379,7 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	public String getToken(Auth a) {
+		a.setToken("");
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			return ChipherTool.encrypt(mapper.writeValueAsString(a));
@@ -732,7 +736,9 @@ public class DataSourceReal implements IDataSource {
 			try (InputStream in = new URL(empresa.getLogoEmpresa()).openStream()) {
 
 				String fileName = "assets/imagenes/" + System.currentTimeMillis();
-				Files.copy(in, Paths.get(ProjectConstants.isFrontAssetPath() + fileName));
+				Files.copy(in, Paths.get(ClientWebConfig.getFrontDirectory() + fileName));
+//				Files.copy(in, Paths.get(ProjectConstants.isFrontAssetPath() + fileName));
+
 				empresa.setLogoEmpresa(fileName);
 			} catch (MalformedURLException e) {
 				e.printStackTrace();

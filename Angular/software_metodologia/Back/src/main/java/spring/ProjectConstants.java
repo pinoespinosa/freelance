@@ -14,8 +14,8 @@ public class ProjectConstants {
 		return MacUtils.getMac().contains("pino-BES-G1529");
 	}
 	
-	public static String isFrontAssetPath(){
-		return "/home/pino/freelance/Angular/software_metodologia/Front/src/";
-	}
+//	public static String isFrontAssetPath(){
+//		return "/home/pino/freelance/Angular/software_metodologia/Front/src/";
+//	}
 	
 }

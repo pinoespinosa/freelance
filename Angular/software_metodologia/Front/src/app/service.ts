@@ -24,7 +24,7 @@ import { Tarea }                                        from 'app/data-objects/t
 export class Service {
 
 
-//private server = 'http://ec2-18-218-106-36.us-east-2.compute.amazonaws.com:8080/metodologia-manager/'
+//private server = 'http://ec2-18-231-64-98.sa-east-1.compute.amazonaws.com:8080/metodologia-manager/'
 //private server = 'http://192.168.1.4:8080/metodologiamanager/'
 private server = 'http://localhost:8080/metodologiamanager/'
 //private server = 'http://192.168.1.4:8080/metodologiamanager/'
