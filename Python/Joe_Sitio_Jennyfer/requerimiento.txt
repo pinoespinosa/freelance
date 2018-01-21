@@ -1,0 +1,3 @@
+Un scraping de la pagina http://www.vianala.com
+Necesito codigo de producto, nombre, link de fotos, notas del producto.
+*Nota. Cada producto tiene varias fotos. Se necesitan todas 

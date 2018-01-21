@@ -68,6 +68,33 @@ def descargarResultadoData(URL, TIMEOUT, INTENTS, DATA, HEADERS):
 	
 	return pagina;
 
+
+
+def descargarResultadoDataSinBeautiful(URL, TIMEOUT, INTENTS, DATA, HEADERS):
+
+	tries=0;
+	pagina='';
+        
+	if not URL:
+		return '';
+
+	while tries<11:
+		try:
+			req = urllib.request.Request( URL);
+			response = urllib.request.urlopen(req, timeout=TIMEOUT)
+			html = response.read()
+
+			pagina = BeautifulSoup(html, 'html.parser');
+
+			tries = 12;
+		except KeyboardInterrupt:
+			print('The user abort the script.')
+			sys.exit()
+	
+	return html;
+
+
+
 def descargarResultadoData2(URL, TIMEOUT, INTENTS, DATA, HEADERS):
 
 
