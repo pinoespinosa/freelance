@@ -97,4 +97,6 @@ public interface IDataSource {
 
 	List<Tema> getTemaListConsulta2(String actaID, String empresaID, String token);
 
+	Auth changePassword(String userEmail, String passNueva, String passNueva2);
+
 }

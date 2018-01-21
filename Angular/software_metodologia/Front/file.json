@@ -138,6 +138,17 @@
       "ccList" : [ "0-0", "0-1" ],
       "token" : ""
     },
+    "+Vj0ZJ89nq18xGutdAzcyzemPaOvwOIaeI1EC6065Qk=" : {
+      "userID" : "3",
+      "rol" : "SUPER_ADMINISTRADOR",
+      "nombre" : "Fernando Echevarria",
+      "email" : "juanloa@efevisium.com",
+      "logo" : "assets/imagenes/1516068382676",
+      "empresaID" : "0",
+      "empresaNombre" : "Arcor",
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : ""
+    },
     "DlTEyk6ub5y5cBJHOuQbD/YqpTsuJxImPH7MF+D/Ltw=" : {
       "userID" : "0",
       "rol" : "ADMINISTRADOR",
@@ -149,7 +160,7 @@
       "ccList" : [ "0-0", "0-1" ],
       "token" : ""
     },
-    "+Vj0ZJ89nq18xGutdAzcyxKixAQ9jJKEz8LiZSQn0Dg=" : {
+    "+Vj0ZJ89nq18xGutdAzcy6jCX86OtVs3w318d+uysjc=" : {
       "userID" : "3",
       "rol" : "SUPER_ADMINISTRADOR",
       "nombre" : "Fernando Echevarria",

@@ -1,5 +1,7 @@
 package data;
 
+import static org.hamcrest.Matchers.instanceOf;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -28,7 +30,6 @@ public class Auth {
 	public Auth() {
 	}
 
-
 	public Auth(String userID, Rol rol, String nombre, String email, String empresaID, List<String> ccList,
 			String token, String logo) {
 		super();
@@ -42,7 +43,15 @@ public class Auth {
 		this.logo = logo;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
 
+		if (obj instanceof Auth){
+			Auth mm = (Auth) obj;
+			return mm.equals(email);
+		}
+		return false;
+	}
 
 	public Rol getRol() {
 		return rol;

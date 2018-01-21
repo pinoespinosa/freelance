@@ -23,9 +23,9 @@ import { Tarea }                                        from 'app/data-objects/t
 @Injectable()
 export class Service {
 
-private server = 'http://ec2-52-67-241-219.sa-east-1.compute.amazonaws.com:8080/metodologia-manager/'
+//private server = 'http://ec2-52-67-241-219.sa-east-1.compute.amazonaws.com:8080/metodologia-manager/'
 //private server = 'http://192.168.1.4:8080/metodologiamanager/'
-//private server = 'http://localhost:8080/metodologiamanager/'
+private server = 'http://localhost:8080/metodologiamanager/'
 //private server = 'http://192.168.1.4:8080/metodologiamanager/'
 
 getServer(): string{
@@ -37,6 +37,12 @@ constructor(private http: Http, private http2: HttpClient ) {
 
 logIn(user, pass): Observable<Login> {
   return this.http.get(this.server+"api/auth?email="+user+"&pass="+pass).map(this.extractData);
+}
+
+changePasswordUsuario(pass, passNueva, passConfirm): Observable<Login> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.post(this.server+"api/changePassword?pass=" + pass + '&passNueva='+ passNueva + '&passConfirm=' + passConfirm, pass, { headers: headers }).map(this.extractData);
 }
 
 

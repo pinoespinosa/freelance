@@ -2,6 +2,8 @@ package web.controller;
 
 import java.util.List;
 
+import javax.security.sasl.AuthenticationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -28,15 +30,41 @@ public class AuthController {
 	
 	/**
 	 * Authentication
+	 * 
+	 * @throws AuthenticationException
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "/auth", method = RequestMethod.GET)
 	public Auth auth(
 			@RequestParam(required = true) final String email,
-			@RequestParam(required = true) final String pass) {
-		return dataSource.auth(email, pass);
+			@RequestParam(required = true) final String pass) throws AuthenticationException {
+		
+		Auth session = dataSource.auth(email, pass);
+		if (session == null)
+			session = new Auth("", null, "", "", "", null, "FAIL", "");
+
+		return session;
 	}
 
+	/**
+	 * Crear User
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/changePassword", method = RequestMethod.POST)
+	public Auth cambiarContraseña(
+			@RequestHeader("Acces-Token") String token,
+			@RequestParam(required = true) final String pass,
+			@RequestParam(required = true) final String passNueva,
+			@RequestParam(required = true) final String passConfirm
+			) {
+		
+		Auth session = dataSource.auth(Auth.getUserEmail(token), pass);
+
+		if (session != null && passNueva.equals(passConfirm))
+			return dataSource.changePassword(Auth.getUserEmail(token),pass, passNueva);
+		
+		return null;
+	}	
 	/**
 	 * Crear User
 	 */
@@ -61,9 +89,12 @@ public class AuthController {
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "/createUser/admin", method = RequestMethod.POST)
 	public Auth createUserAdmin(@RequestHeader("Acces-Token") String token,
-			@RequestParam(required = true) final String nombre, @RequestParam(required = true) final String empresaID,
-			@RequestParam(required = true) final String email, @RequestParam(required = true) final String pass,
-			@RequestParam(required = true) final String logo, @RequestParam(required = true) final Rol rol,
+			@RequestParam(required = true) final String nombre, 
+			@RequestParam(required = true) final String empresaID,
+			@RequestParam(required = true) final String email, 
+			@RequestParam(required = true) final String pass,
+			@RequestParam(required = true) final String logo, 
+			@RequestParam(required = true) final Rol rol,
 			@RequestParam(required = true) final List<String> ccList
 
 	) {

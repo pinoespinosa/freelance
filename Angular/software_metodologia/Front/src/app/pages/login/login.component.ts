@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit  {
 
             	this.router.navigate(['/home']);
 	      	} else {
-	      		alert ('contraseña y/o usuario incorrectos, por favor intente de nuevo');
+	      		alert ('Contraseña y/o usuario incorrectos, por favor intente de nuevo');
 	      	}
             
 	      }         

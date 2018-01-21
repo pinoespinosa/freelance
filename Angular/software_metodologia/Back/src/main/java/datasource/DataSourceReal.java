@@ -412,6 +412,23 @@ public class DataSourceReal implements IDataSource {
 
 	}
 
+	
+	@Override
+	public Auth changePassword(String userEmail, String passVieja, String passNueva) {
+
+		String clave = ChipherTool.encrypt(userEmail + "_" + passVieja);
+		String claveNueva = ChipherTool.encrypt(userEmail + "_" + passNueva);
+
+		if (obj.getUsers().containsKey(clave)) {
+			Auth aux = obj.getUsers().get(clave);
+			obj.getUsers().remove(clave);
+			obj.getUsers().put(claveNueva, aux);
+			updateFile();
+			return aux;
+		}
+		return null;
+	}
+	
 	@Override
 	public Auth create( String pass, Rol rol, String empresaID, List<String> ccList, String nombre,
 			String email, String logo) {
@@ -784,6 +801,8 @@ public class DataSourceReal implements IDataSource {
 		a.getColegiados().forEach(cuerpoCol -> lista.addAll(cuerpoCol.getActas()));
 		return lista;
 	}
+
+
 
 
 
