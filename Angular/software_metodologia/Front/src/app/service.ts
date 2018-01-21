@@ -23,10 +23,9 @@ import { Tarea }                                        from 'app/data-objects/t
 @Injectable()
 export class Service {
 
-
-//private server = 'http://ec2-18-231-64-98.sa-east-1.compute.amazonaws.com:8080/metodologia-manager/'
+private server = 'http://ec2-52-67-241-219.sa-east-1.compute.amazonaws.com:8080/metodologia-manager/'
 //private server = 'http://192.168.1.4:8080/metodologiamanager/'
-private server = 'http://localhost:8080/metodologiamanager/'
+//private server = 'http://localhost:8080/metodologiamanager/'
 //private server = 'http://192.168.1.4:8080/metodologiamanager/'
 
 getServer(): string{

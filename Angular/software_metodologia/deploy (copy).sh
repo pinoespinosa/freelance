@@ -29,5 +29,6 @@ cd ..
 cd 
 cd Downloads
 
-scp -i "Efevisium.pem" ../freelance/Angular/software_metodologia/Front/dist/*  ubuntu@ec2-52-67-241-219.sa-east-1.compute.amazonaws.com:/home/ubuntu/apache-tomcat-8.5.14/webapps/metodologia-front
+scp -i "Efevisium.pem" ../freelance/Angular/software_metodologia/Front/dist/*  ubuntu@ec2-18-231-64-98.sa-east-1.compute.amazonaws.com:/home/ubuntu/apache-tomcat-8.5.14/webapps/metodologia-front
+scp -i "Efevisium.pem" ../Desktop/metodologia-manager.war  ubuntu@ec2-18-231-64-98.sa-east-1.compute.amazonaws.com:/home/ubuntu/apache-tomcat-8.5.14/webapps/
 

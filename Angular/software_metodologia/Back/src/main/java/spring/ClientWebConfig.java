@@ -50,15 +50,16 @@ public class ClientWebConfig extends WebMvcConfigurerAdapter {
 
 		if (frontDirectory == null) {
 			String s = "";
+
 			if (ProjectConstants.isLocal())
 				s = "/home/pino/freelance/Angular/software_metodologia/Front/";
+			else
+				s = "/home/ubuntu/apache-tomcat-8.5.14/webapps/assets/imagenes";
+			setFrontDirectory(s);
 
-			List<String> lista = SimpleFile.readFile(s, "config.prop");
-			setFrontDirectory(lista.get(0));
 		}
 		return frontDirectory;
 	}
-
 
 	public static void setFrontDirectory(String frontDirectory) {
 		ClientWebConfig.frontDirectory = frontDirectory;

@@ -102,9 +102,7 @@ public class DataSourceReal implements IDataSource {
 		System.out.println();
 		try {
 
-			String s = "";
-			if (ProjectConstants.isLocal())
-				s = "/home/pino/freelance/Angular/software_metodologia/Front/";
+			String s = ClientWebConfig.getFrontDirectory();
 			
 			File file = new File(s + "file.json");
 			obj = mapper.readValue(file, Info.class);
@@ -165,7 +163,8 @@ public class DataSourceReal implements IDataSource {
 		mapper.enable(SerializationFeature.INDENT_OUTPUT);
 		try {
 
-			String s = "/home/pino/freelance/Angular/software_metodologia/Front/";
+			String s = ClientWebConfig.getFrontDirectory();
+									
 			mapper.writeValue(new File(s + filename), data);
 		} catch (IOException e) {
 			e.printStackTrace();
