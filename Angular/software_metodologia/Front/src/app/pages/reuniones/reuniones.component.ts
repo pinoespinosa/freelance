@@ -32,6 +32,7 @@ export class ReunionesComponent implements OnInit  {
   actaAnterior: Acta;
 
   subscription: Subscription;
+  logo = ''
 
 
   paso = 1;
@@ -41,7 +42,9 @@ export class ReunionesComponent implements OnInit  {
     private router: Router, 
     private route : ActivatedRoute, 
     private service: Service)
-  {}
+  	{
+  		this.logo = localStorage.getItem('logo');
+  	}
 
   ngOnInit(): void {
 

@@ -131,9 +131,10 @@ public class TemasController {
 			@PathVariable final String cuerpoColegiadoID, 
 			@RequestBody Tema tema,
 			@RequestParam String actaID,
+			@RequestParam String comm,
 			@RequestParam List<String> cuerpoColList,
 			@RequestHeader("Acces-Token") String token) {
-		return dataSource.createTema(cuerpoColegiadoID, tema,Auth.getEmpresaID(token), actaID, cuerpoColList);
+		return dataSource.createTema(cuerpoColegiadoID, tema,Auth.getEmpresaID(token), actaID, cuerpoColList, comm);
 	}
 
 	/**

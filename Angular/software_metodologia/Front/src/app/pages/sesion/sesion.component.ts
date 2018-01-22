@@ -284,7 +284,7 @@ export class SesionComponent implements OnInit, OnDestroy {
 
 
     let loading =
-    this.service.createTema(ccID, temaN, this.actaSelect.id, arreglo).
+    this.service.createTema(ccID, temaN, this.actaSelect.id, arreglo, '').
     subscribe(
       response => {
         this.temasDelActa.unshift(response);

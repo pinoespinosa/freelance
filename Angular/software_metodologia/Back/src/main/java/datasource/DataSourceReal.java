@@ -297,9 +297,9 @@ public class DataSourceReal implements IDataSource {
 		
 		String cuerpoEmail = "Te estoy citando a la reunion " + acta.getNumeroActa() + 
 				" a concretarse " + acta.getFechaReunion() + " entre las " + acta.getHoraInicio() + " y las " + acta.getHoraFinal() +  
-				" en: " + acta.getLugar() + ", " + acta.getCiudad()+ ".\n\nLos temas a tratar son:\n\n" + String.join("\n", tList) + "\n\nFavor de responder con el fin en mente individual.";
+				" en: " + acta.getLugar() + ", " + acta.getCiudad()+ ".\nEl fin en mente de la reunion es " + acta.getFinMenteGral() + "\n\nLos temas a tratar son:\n\n" + String.join("\n", tList) + "\n\nFavor de responder con el fin en mente individual.";
 		
-		EmailUtils.sendEmailAttachFileCalendar(email, emailList, "Citación a la Reunion " + acta.getNumeroActa(),cuerpoEmail
+		EmailUtils.sendEmailAttachFileCalendar(email, emailList, orig.getPrefijoDocs() + acta.getNumeroActa() + " - " + orig.getNombre(),cuerpoEmail
 				,acta.getFechaReunion(), acta.getHoraInicio(), acta.getHoraFinal() );
 
 		updateFile();
@@ -356,7 +356,7 @@ public class DataSourceReal implements IDataSource {
 
 	@Override
 	public Tema createTema(String cuerpoColegiadoID, Tema tema, String empresaID, String actaID,
-			List<String> cuerpoColList) {
+			List<String> cuerpoColList, String comm) {
 
 		Acta acta = getActa(actaID, empresaID);
 		
@@ -372,7 +372,7 @@ public class DataSourceReal implements IDataSource {
 		}
 
 		tema.getEventos().add(new Evento(actaID, "Se ha creado el tema en el acta " + acta.getNumeroActa(), System.currentTimeMillis()));
-
+		addComentarioToTema(cuerpoColegiadoID, tema.getId(), comm, empresaID);
 		updateFile();
 		return tema;
 	}

@@ -52,7 +52,7 @@ public interface IDataSource {
 
 	List<Tema> getTemaAbiertoList(String cuerpoColegiadoID, String empresaID);
 
-	Tema createTema(String cuerpoColegiadoID, Tema tema, String empresaID, String actaID, List<String> cuerpoColList);
+	Tema createTema(String cuerpoColegiadoID, Tema tema, String empresaID, String actaID, List<String> cuerpoColList, String comm);
 
 	Empresa createEmpresa(Empresa empresa);
 

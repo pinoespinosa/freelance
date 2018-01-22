@@ -164,10 +164,10 @@ createActa(cuerpoColegiadoID, acta): Observable<Acta> {
   return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/acta/create',acta, { headers: headers }).map(this.extractData);
 }
 
-createTema(cuerpoColegiadoID, tema, actaID, cuerpoColList): Observable<Tema> {
+createTema(cuerpoColegiadoID, tema, actaID, cuerpoColList, comm): Observable<Tema> {
   var headers = new Headers();
   headers.append('acces-token', localStorage.getItem('token'));
-  return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tema/create?actaID='+actaID + '&cuerpoColList=' + cuerpoColList,tema, { headers: headers }).map(this.extractData);
+  return this.http.post(this.server + 'api/'+ cuerpoColegiadoID + '/tema/create?actaID='+actaID + '&cuerpoColList=' + cuerpoColList + '&comm=' + comm,tema, { headers: headers }).map(this.extractData);
 }
 
 editActa(cuerpoColegiadoID, acta): Observable<Acta> {

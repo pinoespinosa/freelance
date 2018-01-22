@@ -1,14 +1,14 @@
 <div class="row" style="margin-bottom: 30px;" >
 
    <div class="col-3" style="align-self: center;text-align: center;" >
-      <img src="assets/logo.png" style="max-width: 200px;max-height: 150px;" [routerLink]="['/home']" >  
+      <img [routerLink]="['/home']" [src]="logo" style="max-width: 200px;max-height: 150px;" >  
    </div>
 
-   <div class="col-6" style="align-self: center;text-align: center;" >
+   <div class="col-6" style="align-self: center;text-align: center; margin-top: 50px" >
    </div>
 
    <div class="col-3" style="align-self: center;text-align: center;" >
-      <img [src]="logo" style="max-width: 175px;max-height: 150px;" >  
+      <img src="assets/logo.png" style="max-width: 150px;max-height: 100px;" [routerLink]="['/home']" >  
    </div>
 
 </div>
@@ -130,7 +130,7 @@
    </div>
    
    <div style="text-align: center;margin-top: 25px;" >
-      <button (click)="createActaSend()" type="button" class="btn" [disabled]="asistentes?.length==0" ><b>Enviar invitaciones</b></button>
+      <button (click)="createActaSend()" type="button" class="btn" [disabled]="actaCreada.integrantes?.length==0" ><b>Enviar invitaciones</b></button>
    </div>
 </form>
 

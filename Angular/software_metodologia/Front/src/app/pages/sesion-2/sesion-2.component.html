@@ -20,8 +20,10 @@
    <h2 style="margin: 10px;margin-bottom: 20px;" >Crear un Tema Nuevo</h2>
    <div class="col-12" style="margin-bottom: 20px;">
 
-      <input #nuevaCarr type="text" class="form-control" placeholder="Definición">
-      <input #indicador type="text" class="form-control" placeholder="Indicador">
+      <input #nuevaCarr type="text" placeholder="Título">
+
+      <input #primerComm type="text" placeholder="Definición">
+      <input #indicador type="text" placeholder="Indicador">
 
       <select style="width: 100%;" #estrategia class="dropdown-select">
          <option disabled hidden [value]="Presente">-- Seleccione una estrategia --</option>
@@ -39,7 +41,7 @@
    <div class="row">
       <div class="col-6"> 
          <button (click)="showDialogAddCarre = !showDialogAddCarre" 
-         (click)="crearTema(nuevaCarr.value, indicador.value, estrategia)"  
+         (click)="crearTema(nuevaCarr.value, indicador.value, estrategia, primerComm.value)"  
          class="btn" style="width: 100%;background: #72C585" >Agregar</button>
       </div>
       <div class="col-6"> 

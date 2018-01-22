@@ -302,7 +302,7 @@ export class Sesion2Component implements OnInit, OnDestroy {
     }
   }
 
-  crearTema(tema, indicador, est): void {
+  crearTema(tema, indicador, est, comm): void {
 
     let estrategia = this.estrategias[est.selectedIndex - 1];
 
@@ -322,7 +322,7 @@ export class Sesion2Component implements OnInit, OnDestroy {
     }
 
     let loading =
-      this.service.createTema(ccID, temaN, this.actaSelect.id, arreglo).
+      this.service.createTema(ccID, temaN, this.actaSelect.id, arreglo, comm).
     subscribe(
       response => {
         this.temasDelActa.unshift(response);
