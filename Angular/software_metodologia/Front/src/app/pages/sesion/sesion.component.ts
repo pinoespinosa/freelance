@@ -4,6 +4,9 @@ import { trigger, state, style, animate, transition }                           
 import {Subscription}                                                                       from 'rxjs';
 import {Observable}                                                                         from 'rxjs/Rx'; 
 
+import { FileUploader }       from 'ng2-file-upload/ng2-file-upload';
+
+
 import { Service }   			      						      from 'app/service';
 import { Client }               									from 'app/data-objects/cliente';
 import { Trabajo }               									from 'app/data-objects/trabajo';
@@ -15,6 +18,9 @@ import { Tarea }                                  from 'app/data-objects/tarea';
 
 import { Usuario }                                from 'app/data-objects/usuario';
 import { UsuarioActa }                            from 'app/data-objects/usuarioActa';
+
+//URL to use ng2-file-upload for generate the uploader array of files
+const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 
 
@@ -29,6 +35,23 @@ import { UsuarioActa }                            from 'app/data-objects/usuario
 
 
 export class SesionComponent implements OnInit, OnDestroy {
+
+  public uploader:FileUploader = new FileUploader({url: URL});
+  public hasBaseDropZoneOver:boolean = false;
+
+  public validatedFiles = [];
+  public errorValidated = 0;
+  public successfullValidated = 0;
+  private sellerUser_ID = null;
+  public show:boolean =true;
+  public validatedTotal = 0;
+
+  public loading: Subscription;
+  public filesAnalyzed = [];
+
+
+
+
 
   paso = '0';
   cuerpoColegiadoSelect: CuerpoColegiado;
@@ -86,7 +109,21 @@ export class SesionComponent implements OnInit, OnDestroy {
 
   }
 
+
+  public fileOverBase(e:any):void {
+    this.hasBaseDropZoneOver = e;
+  }
+
+  public allFilesAnalyzed() :any {
+    let ret = true;  
+    this.filesAnalyzed.forEach( (file) => {
+      ret = ret && file.analyzed;
+    });
+    return ret;
+  }
+
   ngOnInit(): void {
+
 
     this.subscription = Observable.interval(1000 * 1).subscribe(x => { 
       if (localStorage.getItem('REFRESH_USERS')=='TRUE' && this.actaSelect && this.actaSelect.id) {
@@ -100,6 +137,16 @@ export class SesionComponent implements OnInit, OnDestroy {
 
   };
 
+  public onFileDrop(e:any) {
+    let uploadedFiles = this.uploader.queue;
+    this.show = false;
+    uploadedFiles.forEach((fileItem) =>{
+      let validatedFile = null;
+      this.filesAnalyzed.push({'fileName': fileItem._file.name, 'analyzed': false});
+
+
+    });
+  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

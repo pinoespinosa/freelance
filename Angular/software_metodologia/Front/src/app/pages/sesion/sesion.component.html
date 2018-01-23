@@ -23,7 +23,9 @@
 <h2 style="margin: 10px;margin-bottom: 20px;" >Crear un Tema Nuevo</h2>
 <div class="col-12" style="margin-bottom: 20px;">
    <input #nuevaCarr type="text" placeholder="Título">
-   <input #primerComm type="text" placeholder="Definición">
+
+   <textarea #primerComm placeholder="Definición" rows="4" cols="50"></textarea> 
+
    <input #indicador type="text" placeholder="Indicador">
    <select style="width: 100%;" #estrategia class="dropdown-select">
       <option disabled hidden [value]="Presente">-- Seleccione una estrategia --</option>
@@ -227,6 +229,10 @@
             <div class="col-2" style="padding-right: 0px;" >
                <button [disabled]="comentarioTema == '' " (click)="addComentario(actaSelect.id + '___' + actaSelect.numeroActa+' - ' + commentTema.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" >Agregar Comentario</button>
             </div>
+
+          <input type="file" ng2FileSelect [uploader]="uploader" (change)="onFileDrop($event)" multiple  [hidden]="false"
+          accept=".gif,.jpg,.png">
+
             <div class="col-2" >
                <div style="text-align: center;" >         
                   <button (click)="closeTema(actaSelect.id +' - Se ha cerrado el tema' )" type="button" style="width: 100%;font-size: x-small;" class="btn">Cerrar Tema</button>

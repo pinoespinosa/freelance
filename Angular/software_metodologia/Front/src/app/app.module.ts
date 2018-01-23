@@ -52,6 +52,8 @@ import { Service }                          from './service';
 import { FilterPipe }                       from './pages/pipe/pipe';
 import { FilterPipe2 }                       from './pages/pipe2/pipe';
 
+import { FileUploadModule }                   from 'ng2-file-upload/ng2-file-upload';
+
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -95,7 +97,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule, 
-    FormsModule
+    FormsModule,
+    FileUploadModule,
+
   ],
   providers: [ 
     Service,

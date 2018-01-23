@@ -1,9 +1,11 @@
 package web.controller;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.transform.SourceLocator;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import data.Acta;
 import data.Auth;
@@ -42,6 +45,17 @@ public class TemasController {
 			@RequestHeader("Acces-Token") String token) {
 		return dataSource.getTemaAbiertoList(cuerpoColegiadoID,Auth.getEmpresaID(token));
 	}
+
+	
+	  @RequestMapping(value = "/images", method = RequestMethod.POST)
+	  @ResponseBody
+	  public String importMedia(@RequestParam("file") final MultipartFile file,
+	      final HttpServletRequest request) throws IllegalStateException, IOException {
+
+			return dataSource.crearFile(file);
+
+
+	  }
 
 	
 	/**

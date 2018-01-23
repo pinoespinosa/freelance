@@ -372,7 +372,7 @@ public class DataSourceReal implements IDataSource {
 		}
 
 		tema.getEventos().add(new Evento(actaID, "Se ha creado el tema en el acta " + acta.getNumeroActa(), System.currentTimeMillis()));
-		addComentarioToTema(cuerpoColegiadoID, tema.getId(), comm, empresaID);
+		addComentarioToTema(cuerpoColegiadoID, tema.getId(), actaID + "___" + acta.getNumeroActa() + " - " + comm, empresaID);
 		updateFile();
 		return tema;
 	}
@@ -745,6 +745,18 @@ public class DataSourceReal implements IDataSource {
 		}
 	}
 
+
+	@Override
+	public String crearFile(MultipartFile file) throws IllegalStateException, IOException {
+
+		String filePath = ClientWebConfig.getFrontDirectory(); 
+		file.transferTo(new File(filePath));
+		
+		
+		return null;
+	}
+	
+	
 	@Override
 	public Empresa createEmpresa(Empresa empresa) {
 

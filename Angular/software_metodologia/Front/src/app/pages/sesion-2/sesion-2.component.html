@@ -1,19 +1,3 @@
-<div class="row" style="margin-bottom: 30px;" >
-
-   <div class="col-3" style="align-self: center;text-align: center;" >
-      <img src="assets/logo.png" style="max-width: 200px;max-height: 150px;" [routerLink]="['/home']" >  
-   </div>
-
-   <div class="col-6" style="align-self: center;text-align: center;" >
-   </div>
-
-   <div class="col-3" style="align-self: center;text-align: center;" >
-      <img [src]="logo" style="max-width: 175px;max-height: 150px;" >  
-   </div>
-
-</div>
-
-
 
 <!-- ###########################   AGREGAR TEMA   ############################### -->
 <change-state [(visible)]="showDialogAddCarre">
@@ -22,7 +6,8 @@
 
       <input #nuevaCarr type="text" placeholder="Título">
 
-      <input #primerComm type="text" placeholder="Definición">
+      <textarea #primerComm placeholder="Definición" rows="4" cols="50" style="margin-left: 5px;" ></textarea> 
+
       <input #indicador type="text" placeholder="Indicador">
 
       <select style="width: 100%;" #estrategia class="dropdown-select">
@@ -79,17 +64,33 @@
 
 
 
-<form style="margin-top: 50px;" *ngIf="paso==3" class="form-horizontal" action='' method="POST">
-   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.numeroActa}} - [ {{actaSelect.finMenteGral}} ]</h5>
+<form style="margin-top: 10px;" *ngIf="paso==3" class="form-horizontal" action='' method="POST">
 
    <!-- ################################## Temas ##################################  -->
-   <div  *ngIf="temasDelActa.length>0" class="row" >
-      <div class="col-xl-2" style="text-align: center;">
+   <div  *ngIf="temasDelActa.length>0" >
 
-         <img src="assets/logo.png" style="max-width: 200px;max-height: 150px;margin-top: -40px;" >  
 
-      </div>
-      <div class="col-xl-8" >
+<div class="row" style="margin-bottom: 30px;" >
+
+   <div class="col-3" style="align-self: center;text-align: center;" >
+      <img [routerLink]="['/home']" [src]="logo" style="max-width: 200px;max-height: 150px;" >  
+   </div>
+
+   <div class="col-6" style="align-self: center;text-align: center;" >
+   <h5 style="text-align: center;font-style: italic;color: peru;font-weight: bold;">Acta: {{actaSelect.numeroActa}} - [ {{actaSelect.finMenteGral}} ]</h5>
+
+   </div>
+
+   <div class="col-3" style="align-self: center;text-align: center;" >
+      <img src="assets/logo.png" style="max-width: 150px;max-height: 100px;" [routerLink]="['/home']" >  
+   </div>
+
+</div>
+
+<div class="row" style="margin-bottom: 30px;" >
+
+   
+      <div class="col-8 offset-2" >
          <div class="row" style="align-items: center;" >
             <div class="col-8" >
                <h4>Tema: {{temaActual.detalle}}</h4>
@@ -107,7 +108,7 @@
                (keydown)="comentarioTema=commentTema.value"></textarea>
             </div>
             <div class="col-2" style="padding-right: 0px;" >
-               <button [disabled]="comentarioTema == '' " (click)="addComentario(actaSelect.numeroActa +' - ' + commentTema.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" >Agregar Comentario</button>
+               <button [disabled]="comentarioTema == '' " (click)="addComentario(actaSelect.id + '___' + actaSelect.numeroActa +' - ' + commentTema.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" >Agregar Comentario</button>
             </div>
             <div class="col-2" >
                <div style="text-align: center;" >         
@@ -118,8 +119,6 @@
          </div>
 
          <!-- ################################## Tareas ##################################  -->
-
-
 
          <div class="row" style="align-items: center;padding-top: 35px;" >
             <div  class="col-10" *ngIf="tareasMostrar.length > 0">
@@ -163,23 +162,9 @@
          </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-         <div class="col-2" style="text-align: center;">
-            <img [src]="logo" style="max-width: 175px;max-height: 150px;margin-top: -30px;" >  
-         </div>
       </div>
 
+      </div>
 
    </form>
 

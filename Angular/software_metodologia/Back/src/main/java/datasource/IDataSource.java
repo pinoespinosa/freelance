@@ -99,4 +99,6 @@ public interface IDataSource {
 
 	Auth changePassword(String userEmail, String passNueva, String passNueva2);
 
+	String crearFile(MultipartFile file) throws IllegalStateException, IOException;
+
 }
