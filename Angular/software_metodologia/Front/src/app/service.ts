@@ -35,6 +35,16 @@ getServer(): string{
 constructor(private http: Http, private http2: HttpClient ) {
 }
 
+validateImage(file: File): Observable<string> {
+    let headers = new Headers({'token' : localStorage.getItem('token')});
+    let formData: FormData = new FormData();
+    formData.append("file", file);
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(this.server+"api/images", formData, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+}
+
 logIn(user, pass): Observable<Login> {
   return this.http.get(this.server+"api/auth?email="+user+"&pass="+pass).map(this.extractData);
 }

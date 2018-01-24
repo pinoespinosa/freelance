@@ -145,6 +145,21 @@ export class SesionComponent implements OnInit, OnDestroy {
       this.filesAnalyzed.push({'fileName': fileItem._file.name, 'analyzed': false});
 
 
+
+      this.service.validateImage(fileItem._file).subscribe(
+        response => {
+
+
+        },
+        error => {
+
+
+
+        }
+      );
+
+
+
     });
   }
 

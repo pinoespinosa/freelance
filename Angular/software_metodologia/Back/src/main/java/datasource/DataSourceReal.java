@@ -750,10 +750,9 @@ public class DataSourceReal implements IDataSource {
 	public String crearFile(MultipartFile file) throws IllegalStateException, IOException {
 
 		String filePath = ClientWebConfig.getFrontDirectory(); 
-		file.transferTo(new File(filePath));
+		file.transferTo(new File(filePath + "/" + System.currentTimeMillis() + file.getOriginalFilename().replaceAll(" ", "_") ));
 		
-		
-		return null;
+		return "OK";
 	}
 	
 	
