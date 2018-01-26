@@ -1,4 +1,4 @@
-<div class="row" style="margin-bottom: 30px;" >
+<div *ngIf="paso!=3" class="row" style="margin-bottom: 30px;" >
 
    <div class="col-3" style="align-self: center;text-align: center;" >
       <img [routerLink]="['/home']" [src]="logo" style="max-width: 200px;max-height: 150px;" >  
@@ -208,20 +208,33 @@
 
    <!-- ################################## Temas ##################################  -->
    <div  *ngIf="temasDelActa.length>0" class="row" >
-      <div class="col-xl-2" style="text-align: center;">
-         <img src="assets/logo.png" style="max-width: 200px;max-height: 150px;margin-top: -40px;" [routerLink]="['/home']">  
-      </div>
+      
+   <div class="col-2" style="text-align: center;margin-top: -50px;" >
+      <img [routerLink]="['/home']" [src]="logo" style="max-width: 200px;max-height: 150px;" >  
+   </div>
+
       <div class="col-xl-8" >
          <div class="row" style="align-items: center;" >
             <div class="col-8" >
                <h4>Tema: {{temaActual.detalle}}</h4>
             </div>
          </div>
-         <textarea  disabled class="form-control" rows="8" id="comment" style="font-size: x-small;">
-{{temaActual.id}} [ {{temaActual.detalle}} ] --- > Objetivo Est: {{temaActual.objetivoEstrategico}} / {{temaActual.indicador}}  {{toStringTema(temaActual.eventos)}}
-         </textarea>
+         <div  disabled class="form-control" rows="8" id="comment" style="font-size: x-small;">
+{{temaActual.id}} [ {{temaActual.detalle}} ] --- > Objetivo Est: {{temaActual.objetivoEstrategico}} / {{temaActual.indicador}}  
+
+
+<div *ngFor="let estrategia of temaActual.eventos" >
+   <div *ngIf="estrategia.texto.indexOf('Archivo adjunto:') == -1" >
+     {{estrategia.texto}}
+  </div> 
+  <div *ngIf="estrategia.texto.indexOf('Archivo adjunto:') !== -1" >
+   <p><a href={{estrategia.texto}} title="Mouseover Description">Link Text Description</a></p>
+</div> 
+
+</div>
+         </div>
          <div class="row" style="align-items: center;">
-            <div class="col-8" style="padding-right: 0px;" >
+            <div class="col-6" style="padding-right: 0px;" >
                <textarea #commentTema class="form-control" rows="1" placeholder="Nuevo Comentario" 
                (keyup)="comentarioTema=commentTema.value" 
                (keydown)="comentarioTema=commentTema.value"></textarea>
@@ -230,8 +243,10 @@
                <button [disabled]="comentarioTema == '' " (click)="addComentario(actaSelect.id + '___' + actaSelect.numeroActa+' - ' + commentTema.value)" type="button" class="btn" style="width: 100%;font-size: x-small;" >Agregar Comentario</button>
             </div>
 
-          <input type="file" ng2FileSelect [uploader]="uploader" (change)="onFileDrop($event)" multiple  [hidden]="false"
-          accept=".gif,.jpg,.png">
+            <div class="col-2" style="font-size: x-small;padding-top: 10px;padding-left: 37px;margin: 0px;text-align: center;" >
+               Adjuntar un archivo<input type="file" ng2FileSelect [uploader]="uploader" (change)="onFileDrop($event)" multiple [hidden]="false" accept=".gif,.jpg,.png" style="color: #DCE2F4;width: 100%;">
+            </div>
+
 
             <div class="col-2" >
                <div style="text-align: center;" >         
@@ -283,13 +298,18 @@ Resumen: {{tareaActual.detalle}}
             <button (click)="avanzar()" type="button" class="btn"><b>Continuar</b></button>
          </div>
       </div>
-      <div class="col-2" style="text-align: center;">
-         <img [src]="logo" style="max-width: 175px;max-height: 150px;margin-top: -30px;" >  
-      </div>
+
+   <div class="col-2" style="text-align: center;margin-top: -50px;" >
+      <img src="assets/logo.png" style="max-width: 150px;max-height: 100px;" [routerLink]="['/home']" >  
+   </div>
+
    </div>
    <div  *ngIf="temasDelActa.length==0" class="row" >
-      <div class="col-xl-2" >
-      </div>
+      
+   <div class="col-2" style="align-self: center;text-align: center;" >
+      <img src="assets/logo.png" style="max-width: 150px;max-height: 100px;" [routerLink]="['/home']" >  
+   </div>
+
       <div class="col-xl-8" >
          <div class="row" style="align-items: center;">
             <div class="col-8" >
@@ -300,9 +320,11 @@ Resumen: {{tareaActual.detalle}}
             <button (click)="avanzar()" type="button" class="btn"><b>Continuar</b></button>
          </div>
       </div>
-      <div class="col-2" style="text-align: center;">
-         <img [src]="logo" style="max-width: 175px;max-height: 150px;margin-top: -30px;" >  
-      </div>
+
+   <div class="col-2" style="align-self: center;text-align: center;" >
+      <img src="assets/logo.png" style="max-width: 150px;max-height: 100px;" [routerLink]="['/home']" >  
+   </div>
+
    </div>
 </form>
 

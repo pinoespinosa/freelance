@@ -50,9 +50,6 @@ export class SesionComponent implements OnInit, OnDestroy {
   public filesAnalyzed = [];
 
 
-
-
-
   paso = '0';
   cuerpoColegiadoSelect: CuerpoColegiado;
   cuerpoColegiadoSelectID = -1;
@@ -124,7 +121,6 @@ export class SesionComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-
     this.subscription = Observable.interval(1000 * 1).subscribe(x => { 
       if (localStorage.getItem('REFRESH_USERS')=='TRUE' && this.actaSelect && this.actaSelect.id) {
         this.service.getUsuariosConActa(this.actaSelect.id).subscribe(
@@ -140,27 +136,26 @@ export class SesionComponent implements OnInit, OnDestroy {
   public onFileDrop(e:any) {
     let uploadedFiles = this.uploader.queue;
     this.show = false;
-    uploadedFiles.forEach((fileItem) =>{
-      let validatedFile = null;
-      this.filesAnalyzed.push({'fileName': fileItem._file.name, 'analyzed': false});
+
+    if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
+
+      uploadedFiles.forEach((fileItem) =>{
+        let validatedFile = null;
+        this.filesAnalyzed.push({'fileName': fileItem._file.name, 'analyzed': false});
+
+        this.service.validateImage(fileItem._file).subscribe(
+          response => {
+
+            this.addComentarioDirecto(response)
 
 
+          },
+          error => {
+          }
+        );
 
-      this.service.validateImage(fileItem._file).subscribe(
-        response => {
-
-
-        },
-        error => {
-
-
-
-        }
-      );
-
-
-
-    });
+      });
+    }
   }
 
   ngOnDestroy(): void {
@@ -446,6 +441,17 @@ export class SesionComponent implements OnInit, OnDestroy {
       }
     }
 
+  addComentarioDirecto(com): void {
+
+      this.service.createComentario(
+        this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, com).subscribe(
+        response => {
+          this.temaActual = response;
+        }
+        );
+        this.hayCommentTema = true;
+      }
+    
 
     checkAvanzarTareas(): void {
 

@@ -19,7 +19,8 @@ import datasource.SimpleFile;
 public class ClientWebConfig extends WebMvcConfigurerAdapter {
 
 	private static String frontDirectory;
-	
+	private static String filesDirectory;
+
     public ClientWebConfig() {
         super();
         
@@ -54,13 +55,29 @@ public class ClientWebConfig extends WebMvcConfigurerAdapter {
 			if (ProjectConstants.isLocal())
 				s = "/home/pino/freelance/Angular/software_metodologia/Front/";
 			else
-				s = "/home/ubuntu/apache-tomcat-8.5.14/webapps/assets/imagenes";
+				s = "/home/ubuntu/apache-tomcat-8.5.14/webapps/assets/imagenes/";
 			setFrontDirectory(s);
 
 		}
 		return frontDirectory;
 	}
 
+	public static String getFilesDirectory() {
+
+		if (filesDirectory == null) {
+			String s = "";
+
+			if (ProjectConstants.isLocal())
+				s = "/home/pino/freelance/Angular/software_metodologia/Front/src/";
+			else
+				s = "/home/ubuntu/apache-tomcat-8.5.14/webapps/assets/imagenes/";
+			
+			filesDirectory=s;
+		}
+		return filesDirectory;
+	}
+	
+	
 	public static void setFrontDirectory(String frontDirectory) {
 		ClientWebConfig.frontDirectory = frontDirectory;
 	}

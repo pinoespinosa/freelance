@@ -1,0 +1,68 @@
+{
+  "audit" : [ ],
+  "empresas" : [ {
+    "id" : "0",
+    "colegiados" : [ {
+      "id" : "0-0",
+      "nombre" : "Comercial",
+      "prefijoDocs" : "COM",
+      "actas" : [ ],
+      "temasId" : [ ]
+    }, {
+      "id" : "0-1",
+      "nombre" : "Gerencial",
+      "prefijoDocs" : "GER",
+      "actas" : [ ],
+      "temasId" : [ ]
+    } ],
+    "temas" : { },
+    "nombreEmpresa" : "Arcor",
+    "logoEmpresa" : "assets/imagenes/1516965257828"
+  } ],
+  "users" : {
+    "BO6HksZrI6j/q2gCu2QKD772U7FeMg1i23xqgAsMq1eOzaaxvqhI9Ed2gazJ5XlU" : {
+      "userID" : "2",
+      "rol" : "SOLO_CONSULTA",
+      "nombre" : "Valentina Alfonso",
+      "email" : "andresespinosa91@hotmail.com",
+      "logo" : "http://brandmark.io/logo-rank/random/bp.png",
+      "empresaID" : "0",
+      "empresaNombre" : null,
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : ""
+    },
+    "B6/FEncCX4mfwILRnUW+C7wXt5/VInCS1TY/ryIExIA=" : {
+      "userID" : "1",
+      "rol" : "GENERAL",
+      "nombre" : "Valentina Alfonso",
+      "email" : "ae@qbkconsulting.com",
+      "logo" : "http://brandmark.io/logo-rank/random/bp.png",
+      "empresaID" : "0",
+      "empresaNombre" : null,
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : ""
+    },
+    "DlTEyk6ub5y5cBJHOuQbD/YqpTsuJxImPH7MF+D/Ltw=" : {
+      "userID" : "0",
+      "rol" : "ADMINISTRADOR",
+      "nombre" : "Andres Espinosa",
+      "email" : "pino.espinosa91@gmail.com",
+      "logo" : "http://brandmark.io/logo-rank/random/bp.png",
+      "empresaID" : "0",
+      "empresaNombre" : null,
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : ""
+    },
+    "+Vj0ZJ89nq18xGutdAzcyxKixAQ9jJKEz8LiZSQn0Dg=" : {
+      "userID" : "3",
+      "rol" : "SUPER_ADMINISTRADOR",
+      "nombre" : "Fernando Echevarria",
+      "email" : "juanloa@efevisium.com",
+      "logo" : "http://brandmark.io/logo-rank/random/bp.png",
+      "empresaID" : "0",
+      "empresaNombre" : null,
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : ""
+    }
+  }
+}

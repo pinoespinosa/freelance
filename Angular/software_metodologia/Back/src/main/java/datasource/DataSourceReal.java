@@ -53,6 +53,8 @@ public class DataSourceReal implements IDataSource {
 	public static final String TAREA_CERRADA = "Cerrada";
 	public static final String TAREA_ABIERTA = "Abierta";
 	
+	private static String archivoNombre = "MetodManager.json";
+	
 	private Info obj;
 
 	public DataSourceReal() {
@@ -104,7 +106,7 @@ public class DataSourceReal implements IDataSource {
 
 			String s = ClientWebConfig.getFrontDirectory();
 			
-			File file = new File(s + "file.json");
+			File file = new File(s + archivoNombre);
 			obj = mapper.readValue(file, Info.class);
 
 			for (Empresa e : obj.getEmpresas()) {
@@ -175,7 +177,7 @@ public class DataSourceReal implements IDataSource {
 		for (Auth auth : obj.getUsers().values()) {
 			auth.setToken("");
 		}
-		infoToFile(obj, "file.json");
+		infoToFile(obj, archivoNombre);
 	}
 
 	private CuerpoColegiado getCuerpoColeg(String cuerpoColegiadoID) {
@@ -749,10 +751,10 @@ public class DataSourceReal implements IDataSource {
 	@Override
 	public String crearFile(MultipartFile file) throws IllegalStateException, IOException {
 
-		String filePath = ClientWebConfig.getFrontDirectory(); 
-		file.transferTo(new File(filePath + "/" + System.currentTimeMillis() + file.getOriginalFilename().replaceAll(" ", "_") ));
-		
-		return "OK";
+		String filePath = ClientWebConfig.getFilesDirectory() + "assets/";
+		String filePathFull = filePath + "/" + System.currentTimeMillis() + file.getOriginalFilename().replaceAll(" ", "_");
+		file.transferTo(new File(filePathFull ));
+		return "{\"File\": \" " + filePathFull + "\"}";
 	}
 	
 	

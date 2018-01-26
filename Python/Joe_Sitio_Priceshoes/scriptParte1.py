@@ -97,8 +97,8 @@ def descargarCategorias():
 def escanearPagina(url):
 
 	pag = 1;
-	cant = 1;
-	while (cant>0):
+	cant = 30;
+	while (cant>29):
 
 		print('Escaneado ... ' +url+ str(pag))
 
@@ -149,7 +149,7 @@ def escanearPagina(url):
 
 def escanearProducto(url):
 
-	print('Escaneando ' + url);
+	print(url.split('****')[1].replace('___','/').strip() + ' --- > ' + url.split('****')[0].strip());
 
 	cant = 1;
 	payload = ""
@@ -157,19 +157,14 @@ def escanearProducto(url):
 
 	html = descargarResultadoDataSinBeautiful(url.split('****')[0], 360, 10, payload, headers)
 	
+	pagina = BeautifulSoup(html, 'html.parser');
+
+	codSKU = pagina.find_all(class_='product attribute sku')[0].text.replace('SKU','').strip()
 
 	try:
 		coloresReq = str(html).split('var colors = ')[1].split(';')[0].replace("'","").replace("\\","");
 		tallesReq = str(html).split('var sizes = ')[2].split(';')[0].replace("'","").replace("\\","");
-	except:
-		print('')
 
-	pagina = BeautifulSoup(html, 'html.parser');
-
-	
-	codSKU = pagina.find_all(class_='product attribute sku')[0].text.replace('SKU','').strip()
-
-	try:
 		datosLocos = descargarResultadoDataSinBeautiful('http://www.priceshoes.com/services/search?action=getInventory&product='+codSKU.replace('ID-','')+'&sizes='+tallesReq+'=&colors='+coloresReq+'&prodId='+codSKU+'&color=', 360, 10, payload, headers)
 
 	#	saveFile(codSKU+'pino.tt',[str(html)]);
@@ -200,9 +195,7 @@ def escanearProducto(url):
 					try:
 						lala.append('[' + vallus[inde] + ']' + mm.text)
 					except:
-						print('fallo')
-						print('Indice:' + str(inde))
-						print(vallus)
+						pipipi = '';
 				else:
 					lala.append(mm.text)
 				inde = inde + 1;
@@ -215,7 +208,8 @@ def escanearProducto(url):
 				stockLococco = stockLococco + ii + '\n';
 
 	except:
-		print('')
+		print('Fallo Tiendas')
+		stockLococco = '';
 
 	try:
 		departamento = url.split('****')[1].split('___')[0];
@@ -273,9 +267,13 @@ def escanearProducto(url):
 	except:
 		imagenes = ''
 
-	listaResultados.append( '"' + codSKU + '";"' + departamento + '";"' + genero + '";"' + categoria + '";"' + url.split('****')[0]  + '";"' + nombre + '";"' + ','.join(listaTall) + '";"' + stockLococco + '";"' + descripcion + '";"' + descripcion2 + '";"' + foto + '";');
+	valorString = '"' + codSKU + '";"' + departamento + '";"' + genero + '";"' + categoria + '";"' + url.split('****')[0]  + '";"' + nombre + '";"' + ','.join(listaTall) + '";"' + stockLococco + '";"' + descripcion + '";"' + descripcion2 + '";"' + foto + '";';
 
-	return;
+	if ( (valorString not in listaResultados) ) :
+		listaResultados.append(valorString);
+	else:
+		print('Repetido ... ' + codSKU)
+	return;1
 
 
 # Escanear las paginas para obtener los links a los productos
@@ -431,6 +429,16 @@ listaLinksIniciales = [
 
 ];
 
+listaLinksIniciales2 = [
+'http://www.priceshoes.com/productos/ropa/dama/jeans/leggings-y-jeggings?product_list_order=newest&product_list_dir=desc&p=',
+'http://www.priceshoes.com/productos/ropa/dama/abrigos?p=',
+'http://www.priceshoes.com/productos/deportes/running/ropa?p=',
+'http://www.priceshoes.com/productos/deportes/running/accesorios?p=',
+'http://www.priceshoes.com/productos/ropa/lenceria/coordinados?p='
+ ]
+
+
+
 listaProductos = []
 escaneados = []
 
@@ -442,15 +450,13 @@ print(escaneados)
 
 for pagina in listaLinksIniciales:
 	print(pagina)
-	if (not (pagina+'\n' in escaneados)):
+	if (not (pagina in escaneados)):
 		escanearPagina(pagina);
 
 listaResultados = []
+loadFile("pino.csv", listaResultados)
 listaResultados.append( 'Sku;Departamento;Género;Categoria;Url;Nombre;Tallas;Existencias;Detalle;Descripcion;Imagenes');
 
 for prod in listaProductos:
-	try:
-		escanearProducto(prod);
-		saveFile('pino.csv',listaResultados);
-	except:
-		print('falle')
+	escanearProducto(prod);
+	saveFile('pino.csv',listaResultados);

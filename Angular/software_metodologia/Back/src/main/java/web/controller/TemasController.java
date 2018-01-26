@@ -46,16 +46,16 @@ public class TemasController {
 		return dataSource.getTemaAbiertoList(cuerpoColegiadoID,Auth.getEmpresaID(token));
 	}
 
-	
-	  @RequestMapping(value = "/images", method = RequestMethod.POST)
-	  @ResponseBody
-	  public String importMedia(@RequestParam("file") final MultipartFile file,
-	      final HttpServletRequest request) throws IllegalStateException, IOException {
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/images", method = RequestMethod.POST)
+	@ResponseBody
+	public String importMedia(@RequestParam("file") final MultipartFile file,
+			@RequestHeader("Acces-Token") String token, final HttpServletRequest request)
+			throws IllegalStateException, IOException {
 
-			return dataSource.crearFile(file);
+		return dataSource.crearFile(file);
 
-
-	  }
+	}
 
 	
 	/**

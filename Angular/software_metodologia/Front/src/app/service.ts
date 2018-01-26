@@ -36,7 +36,7 @@ constructor(private http: Http, private http2: HttpClient ) {
 }
 
 validateImage(file: File): Observable<string> {
-    let headers = new Headers({'token' : localStorage.getItem('token')});
+    let headers = new Headers({'acces-token' : localStorage.getItem('token')});
     let formData: FormData = new FormData();
     formData.append("file", file);
     let options = new RequestOptions({headers: headers});

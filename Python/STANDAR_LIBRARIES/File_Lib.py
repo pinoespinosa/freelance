@@ -18,7 +18,7 @@ def loadFile(FILENAME, LISTA):
 	try:
 		file = open(FILENAME, "r")
 		for line in file:
-			LISTA.append(line)
+			LISTA.append(line.strip())
 		file.close();
 	except (FileNotFoundError):
 		print('No se hallo el archivo ' + FILENAME);
