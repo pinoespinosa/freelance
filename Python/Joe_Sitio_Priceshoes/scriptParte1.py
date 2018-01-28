@@ -143,11 +143,16 @@ def escanearPagina(url):
 
 		escaneados.append(url)
 		saveFile('resultadosIndiv.csv', listaProductos)
-		saveFile('escaneados.txt', escaneados)
+	saveFile('escaneados.txt', escaneados)
 
 	return;
 
 def escanearProducto(url):
+
+
+	if (url.split('****')[0].strip() in  listaEscaneados):
+		print('Repetido:' + url.split('****')[0].strip() )
+		return
 
 	print(url.split('****')[1].replace('___','/').strip() + ' --- > ' + url.split('****')[0].strip());
 
@@ -210,6 +215,8 @@ def escanearProducto(url):
 	except:
 		print('Fallo Tiendas')
 		stockLococco = '';
+		vallus = {};
+
 
 	try:
 		departamento = url.split('****')[1].split('___')[0];
@@ -232,9 +239,34 @@ def escanearProducto(url):
 		nombre = ''
 
 	try:
-		foto = str(html).split('"img":"')[1].split('"')[0].replace('\\','');
+		foto = str(html).split('"img":"');
+
+		aa = []
+		for bb in foto:
+			if ('/catalog/product/cache/image/' in bb.split('"')[0].replace('\\','')):
+				aa.append( bb.split('"')[0].replace('\\','') );
+
+		foto = aa;
 	except:
 		foto = ''
+
+
+	try:
+		colores = str(html).split('jsonSwatchConfig: {')[1].split('}}}')[0].split('"label":"');
+
+		aa = []
+		for bb in colores:
+			if (bb.split('"')[0].replace('\\','')):
+				aa.append( bb.split('"')[0].replace('\\','') );
+
+		colores = aa;
+
+	except:
+		colores = [];
+
+
+
+
 
 
 	try:
@@ -267,13 +299,23 @@ def escanearProducto(url):
 	except:
 		imagenes = ''
 
-	valorString = '"' + codSKU + '";"' + departamento + '";"' + genero + '";"' + categoria + '";"' + url.split('****')[0]  + '";"' + nombre + '";"' + ','.join(listaTall) + '";"' + stockLococco + '";"' + descripcion + '";"' + descripcion2 + '";"' + foto + '";';
+	qq = [];
+	va = 'false';
+	for aa in vallus:
+		if (va == 'false'):
+			va = 'true'
+		else:
+			qq.append( vallus[aa] );
 
-	if ( (valorString not in listaResultados) ) :
+	valorString = '"' + codSKU + '";"' + departamento + '";"' + genero + '";"' + categoria + '";"' + url.split('****')[0]  + '";"' + nombre + '";"' + ', '.join(qq) + '";"' + stockLococco + '";"' + descripcion + '";"' + descripcion2 + '";"' + ', '.join(foto) + '";"' + ', '.join(colores)+ '";';
+
+	if ( (valorString not in listaResultados) and (codSKU not in  listaEscaneados) ) :
 		listaResultados.append(valorString);
+		listaEscaneados.append(url.split('****')[0].strip());
+
 	else:
 		print('Repetido ... ' + codSKU)
-	return;1
+	return;
 
 
 # Escanear las paginas para obtener los links a los productos
@@ -425,7 +467,51 @@ listaLinksIniciales = [
 'http://www.priceshoes.com/productos/deportes/otras-disciplinas/swimming?p=',
 'http://www.priceshoes.com/productos/deportes/otras-disciplinas/botas?p=',
 'http://www.priceshoes.com/productos/deportes/gorras?p=',
-'http://www.priceshoes.com/productos/deportes/kids?p='
+'http://www.priceshoes.com/productos/deportes/kids?p=',
+
+
+'http://www.priceshoes.com/productos/accesorios/accesorios-dama/bolsas?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-dama/carteras?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-dama/cinturones?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-dama/sombreros?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-dama/bufandas-y-guantes?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-dama/joyeria?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-nina/escolares?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-nina/gorras-y-sombreros?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-nina/joyeria?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-nina/accesorios-para-el-cabello?p=',
+'http://www.priceshoes.com/productos/accesorios/mochilas/bolsas-y-crossbody?p=',
+'http://www.priceshoes.com/productos/accesorios/mochilas/backpack-teens?p=',
+'http://www.priceshoes.com/productos/accesorios/mochilas/backpack-deportivo?p=',
+'http://www.priceshoes.com/productos/accesorios/mochilas/backpack-kids?p=',
+'http://www.priceshoes.com/productos/accesorios/mochilas/rueditas?p=',
+'http://www.priceshoes.com/productos/accesorios/mochilas/loncheras?p=',
+'http://www.priceshoes.com/productos/accesorios/mochilas/lapiceras?p=',
+'http://www.priceshoes.com/productos/accesorios/salud-belleza/secadoras-y-planchas-de-cabello?p=',
+'http://www.priceshoes.com/productos/accesorios/salud-belleza/maquillaje-cosmeticos?p=',
+'http://www.priceshoes.com/productos/accesorios/salud-belleza/fragancias-y-tratamientos?p=',
+'http://www.priceshoes.com/productos/accesorios/salud-belleza/depiladoras-y-rasuradoras?p=',
+'http://www.priceshoes.com/productos/accesorios/salud-belleza/aparatos-de-ejercicio?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-nino/carteras-monederos?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-nino/gorras-y-sombreros?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-nino/escolares?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-nino/relojes?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-caballero/relojes?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-caballero/mochilas?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-caballero/joyeria?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-caballero/cinturones?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-caballero/carteras?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-caballero/gorras-sombreros?p=',
+'http://www.priceshoes.com/productos/accesorios/accesorios-caballero/bufandas-guantes?p=',
+
+'http://www.priceshoes.com/productos/hogar/bano?p=',
+'http://www.priceshoes.com/productos/hogar/comedor-y-cocina?p=',
+'http://www.priceshoes.com/productos/hogar/electrodomesticos?p=',
+'http://www.priceshoes.com/productos/hogar/tabletas?p=',
+'http://www.priceshoes.com/productos/hogar/celulares-telefonos?p=',
+'http://www.priceshoes.com/productos/hogar/decoracion?p=',
+'http://www.priceshoes.com/productos/hogar/recamara-cama?p=',
+'http://www.priceshoes.com/productos/hogar/varios?p='
 
 ];
 
@@ -441,9 +527,11 @@ listaLinksIniciales2 = [
 
 listaProductos = []
 escaneados = []
+listaEscaneados = []
 
 loadFile("escaneados.txt", escaneados)
 loadFile("resultadosIndiv.csv", listaProductos)
+loadFile("prodEscaneados.csv", listaEscaneados)
 
 
 print(escaneados)
@@ -455,8 +543,11 @@ for pagina in listaLinksIniciales:
 
 listaResultados = []
 loadFile("pino.csv", listaResultados)
-listaResultados.append( 'Sku;Departamento;Género;Categoria;Url;Nombre;Tallas;Existencias;Detalle;Descripcion;Imagenes');
+
+if (not listaResultados):
+	listaResultados.append( 'Sku;Departamento;Género;Categoria;Url;Nombre;Tallas;Existencias;Detalle;Descripcion;Imagenes');
 
 for prod in listaProductos:
 	escanearProducto(prod);
 	saveFile('pino.csv',listaResultados);
+	saveFile('prodEscaneados.csv',listaEscaneados);
