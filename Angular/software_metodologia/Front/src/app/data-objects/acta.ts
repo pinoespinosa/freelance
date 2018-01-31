@@ -28,6 +28,8 @@ export class Acta {
     public horaFinal: string,
     public fechaReunion: string,
 
+    public huboInconvenientesTexto : string,
+    public tieneSugerenciasTexto : string,
 
   ) { }
 }

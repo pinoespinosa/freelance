@@ -97,6 +97,72 @@ public class DataSourceReal implements IDataSource {
 	}
 	
 	@Override
+	public void initBDSampleData() {
+		obj = new Info();
+		obj.setEmpresas(new ArrayList<>());
+		obj.setUsers(new Hashtable<>());
+
+		Empresa emp = new Empresa();
+		emp.setLogoEmpresa("https://staticaltmetric.s3.amazonaws.com/uploads/2015/10/dark-logo-for-site.png");
+		emp.setNombreEmpresa("Arcor");
+		emp.setColegiados(new ArrayList<>());
+		emp = createEmpresa(emp);
+
+		Empresa emp2 = new Empresa();
+		emp2.setLogoEmpresa("http://www.cfmdq.com.ar/uploads/noticias/images/7766_logo_mccain.jpg");
+		emp2.setNombreEmpresa("McKein");
+		emp2.setColegiados(new ArrayList<>());
+		emp2 = createEmpresa(emp2);
+				
+		CuerpoColegiado cc = new CuerpoColegiado();
+		cc.setActas(new ArrayList<>());
+		cc.setNombre("Comercial");
+		cc.setPrefijoDocs("COM");
+		cc.setTemas(new Hashtable<>());
+		cc = createCuerpoColegiado(emp.getId(), cc);
+
+		CuerpoColegiado cc2 = new CuerpoColegiado();
+		cc2.setActas(new ArrayList<>());
+		cc2.setNombre("Gerencial");
+		cc2.setPrefijoDocs("GER");
+		cc2.setTemas(new Hashtable<>());
+		cc2 = createCuerpoColegiado(emp.getId(), cc2);
+
+		create("1234", Rol.ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
+				"Andres Espinosa", "pino.espinosa91@gmail.com", "http://brandmark.io/logo-rank/random/bp.png");
+
+		create("1234", Rol.GENERAL, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
+				"Valentina Alfonso", "ae@qbkconsulting.com", "http://brandmark.io/logo-rank/random/bp.png");
+
+		create("1234", Rol.SOLO_CONSULTA, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
+				"Valentina Alfonso", "andresespinosa91@hotmail.com", "http://brandmark.io/logo-rank/random/bp.png");
+		
+		create("1234", Rol.SUPER_ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
+				"Juan Loa", "juanloa@efevisium.com",
+				"http://brandmark.io/logo-rank/random/bp.png");
+
+		updateFile();	
+	}
+	
+	@Override
+	public void initBD() {
+		obj = new Info();
+		obj.setEmpresas(new ArrayList<>());
+		obj.setUsers(new Hashtable<>());
+
+		create("1234", Rol.SUPER_ADMINISTRADOR, null, new ArrayList<>(),
+				"Andrés Espinosa", "pino.espinosa91@gmail.com",
+				"http://efevisium.com/wp-content/uploads/2017/07/logos-vertical-e1501185105618.png");
+
+		
+		create("1234", Rol.SUPER_ADMINISTRADOR, null, new ArrayList<>(),
+				"Juan Loa", "juanloa@efevisium.com",
+				"http://efevisium.com/wp-content/uploads/2017/07/logos-vertical-e1501185105618.png");
+
+		updateFile();
+	}
+	
+	@Override
 	public void readFromFile() {
 		System.out.println("Current relative path is: " + Paths.get("").toAbsolutePath().toString());
 		ObjectMapper mapper = new ObjectMapper();
@@ -118,44 +184,7 @@ public class DataSourceReal implements IDataSource {
 
 		} catch (IOException e) {
 
-			obj = new Info();
-			obj.setEmpresas(new ArrayList<>());
-			obj.setUsers(new Hashtable<>());
-
-			Empresa emp = new Empresa();
-			emp.setLogoEmpresa("https://staticaltmetric.s3.amazonaws.com/uploads/2015/10/dark-logo-for-site.png");
-			emp.setNombreEmpresa("Arcor");
-			emp.setColegiados(new ArrayList<>());
-			emp = createEmpresa(emp);
-
-			CuerpoColegiado cc = new CuerpoColegiado();
-			cc.setActas(new ArrayList<>());
-			cc.setNombre("Comercial");
-			cc.setPrefijoDocs("COM");
-			cc.setTemas(new Hashtable<>());
-			cc = createCuerpoColegiado(emp.getId(), cc);
-
-			CuerpoColegiado cc2 = new CuerpoColegiado();
-			cc2.setActas(new ArrayList<>());
-			cc2.setNombre("Gerencial");
-			cc2.setPrefijoDocs("GER");
-			cc2.setTemas(new Hashtable<>());
-			cc2 = createCuerpoColegiado(emp.getId(), cc2);
-
-			create("1234", Rol.ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
-					"Andres Espinosa", "pino.espinosa91@gmail.com", "http://brandmark.io/logo-rank/random/bp.png");
-
-			create("1234", Rol.GENERAL, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
-					"Valentina Alfonso", "ae@qbkconsulting.com", "http://brandmark.io/logo-rank/random/bp.png");
-
-			create("1234", Rol.SOLO_CONSULTA, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
-					"Valentina Alfonso", "andresespinosa91@hotmail.com", "http://brandmark.io/logo-rank/random/bp.png");
-			
-			create("1234", Rol.SUPER_ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
-					"Fernando Echevarria", "juanloa@efevisium.com",
-					"http://brandmark.io/logo-rank/random/bp.png");
-
-			updateFile();
+			initBD();
 		}
 
 	}
@@ -301,7 +330,7 @@ public class DataSourceReal implements IDataSource {
 				" a concretarse " + acta.getFechaReunion() + " entre las " + acta.getHoraInicio() + " y las " + acta.getHoraFinal() +  
 				" en: " + acta.getLugar() + ", " + acta.getCiudad()+ ".\nEl fin en mente de la reunion es " + acta.getFinMenteGral() + "\n\nLos temas a tratar son:\n\n" + String.join("\n", tList) + "\n\nFavor de responder con el fin en mente individual.";
 		
-		EmailUtils.sendEmailAttachFileCalendar(email, emailList, orig.getPrefijoDocs() + acta.getNumeroActa() + " - " + orig.getNombre(),cuerpoEmail
+		EmailUtils.sendEmailAttachFileCalendar(email, emailList, acta.getNumeroActa() + " - " + orig.getNombre(),cuerpoEmail
 				,acta.getFechaReunion(), acta.getHoraInicio(), acta.getHoraFinal() );
 
 		updateFile();
@@ -335,11 +364,6 @@ public class DataSourceReal implements IDataSource {
 			return orig.getActas().get(orig.getActas().size() - 1);
 	}
 
-	@Override
-	public void initBD() {
-		obj = new Info();
-		updateFile();
-	}
 
 	@Override
 	public List<Tema> getTemaAbiertoList(String cuerpoColegiadoID, String empresaID) {
@@ -404,14 +428,48 @@ public class DataSourceReal implements IDataSource {
 		if (obj.getUsers().containsKey(clave)) {
 			Auth auth = obj.getUsers().get(clave);
 			auth.setToken(getToken(auth));
-			Empresa empresa = getEmpresa(auth.getEmpresaID());
-			auth.setLogo(empresa.getLogoEmpresa());
-			auth.setEmpresaNombre(empresa.getNombreEmpresa());
-			return auth;
 
+			if (auth.getEmpresaID() != null) {
+				Empresa empresa = getEmpresa(auth.getEmpresaID());
+				auth.setLogo(empresa.getLogoEmpresa());
+				auth.setEmpresaNombre(empresa.getNombreEmpresa());
+			}
+			return auth;
 		}
 		return null;
 
+	}
+
+	@Override
+	public Auth authSuper(String email, String pass, String empresaID) {
+
+		Auth aa = auth(email, pass);
+		Auth bb = null;
+
+		if (!Rol.SUPER_ADMINISTRADOR.equals(aa.getRol()))
+			return null;
+
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			String value = mapper.writeValueAsString(aa);
+			bb = mapper.readValue(value, Auth.class);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		if (empresaID != null && !empresaID.equals("null")) {
+			Empresa empresaCombo = getEmpresa(empresaID);
+
+			bb.setEmpresaID(empresaCombo.getId());
+			bb.setLogo(empresaCombo.getLogoEmpresa());
+			bb.setEmpresaNombre(bb.getEmpresaNombre());
+			bb.setCcList(new ArrayList<>());
+			for (CuerpoColegiado cu : empresaCombo.getColegiados()) {
+				bb.getCcList().add(cu.getId());
+			}
+		}
+		bb.setToken(getToken(bb));
+		return bb;
 	}
 
 	
@@ -557,9 +615,20 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
-	public Acta closeActa(String cuerpoColegiadoID, String actaID, String empresaID) throws AddressException, IOException {
+	public Acta closeActa(String cuerpoColegiadoID, String actaID, String empresaID, Acta acta) throws AddressException, IOException {
 
 		Acta actaToClose = getActa(actaID, empresaID);
+		actaToClose.setSeCumpliofinEnMente(acta.getSeCumpliofinEnMente());
+		actaToClose.setElTiempoFueSuficiente(acta.getElTiempoFueSuficiente());
+		actaToClose.setHuboInconvenientes(acta.getHuboInconvenientes());
+		actaToClose.setTieneSugerencias(acta.getTieneSugerencias());
+		actaToClose.setRedaccionDeTareasOk(acta.getRedaccionDeTareasOk());
+		
+		actaToClose.setHuboInconvenientesTexto(acta.getHuboInconvenientesTexto());
+		actaToClose.setTieneSugerenciasTexto(acta.getTieneSugerenciasTexto());
+
+		actaToClose.setComentarioAdicionales(acta.getComentarioAdicionales());
+		
 		CuerpoColegiado cc = getCuerpoColeg(cuerpoColegiadoID);
 		String fileName = "";
 		try {
@@ -738,7 +807,7 @@ public class DataSourceReal implements IDataSource {
 	@Override
 	public List<Empresa> listEmpresa(String token) {
 
-		if (Rol.SUPER_ADMINISTRADOR.equals(Auth.getUserRol(token))) {
+		if (Rol.SUPER_ADMINISTRADOR.equals(Auth.getUserRol(token)) || Strings.isNullOrEmpty(token) ) {
 			return obj.getEmpresas();
 		} else {
 			List<Empresa> list = new ArrayList<>();
@@ -751,10 +820,9 @@ public class DataSourceReal implements IDataSource {
 	@Override
 	public String crearFile(MultipartFile file) throws IllegalStateException, IOException {
 
-		String filePath = ClientWebConfig.getFilesDirectory() + "assets/";
-		String filePathFull = filePath + "/" + System.currentTimeMillis() + file.getOriginalFilename().replaceAll(" ", "_");
-		file.transferTo(new File(filePathFull ));
-		return "{\"File\": \" " + filePathFull + "\"}";
+		String filePath = "assets/" + System.currentTimeMillis() + file.getOriginalFilename().replaceAll(" ", "_");
+		file.transferTo(new File(ClientWebConfig.getFilesDirectory() + filePath ));
+		return "{\"File\": \" " + filePath + "\"}";
 	}
 	
 	
@@ -814,6 +882,8 @@ public class DataSourceReal implements IDataSource {
 		a.getColegiados().forEach(cuerpoCol -> lista.addAll(cuerpoCol.getActas()));
 		return lista;
 	}
+
+
 
 
 

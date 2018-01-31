@@ -33,7 +33,7 @@ export class HomeComponent   {
 
   logo:string = "";
   rol:string = "";
-
+  empresaID = "";
 
   items : ClientFull[];
   items_orig : ClientFull[];
@@ -53,6 +53,7 @@ export class HomeComponent   {
     this.cliente2 = new ClientFull("","","","","","","","","","","","","","");
     this.logo = localStorage.getItem('logo');
     this.rol = localStorage.getItem('rol');
+    this.empresaID = localStorage.getItem('empresaID');
 
   }
 
@@ -90,7 +91,10 @@ export class HomeComponent   {
   }
 
   logout(){
+
+    let serverIP= localStorage.getItem('serverIP');
     localStorage.clear();
+    localStorage.setItem('serverIP',serverIP);
     this.router.navigate(['/login'])    
   }
 

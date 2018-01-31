@@ -33,11 +33,28 @@
             (change)="guardarUser('password', password.value)"> 
          </div>
       </div>
+
+      <div *ngIf="usuario.value == 'juanloa@efevisium.com' || usuario.value == 'pino.espinosa91@gmail.com'" class="row" style="align-items: center;" >
+         <div  style="text-align: right;" class="col-3">
+            Empresa
+         </div>
+         <div class="col-9">
+            <select #empresa class="dropdown-select" (change)="selectCuerpo(empresa)"  >
+               <option [value]="empty">-- Mantenimiento --</option>
+               <option *ngFor="let empresa of empresas" >{{empresa.nombreEmpresa}}</option>
+            </select>
+         </div>
+      </div>
+
+
+
       <div  class="row" style="align-items: center;" >
          <div  style="text-align: right;" class="col-3">
          </div>
          <div class="col-9">
-            <button (click)="do()"  style="width: 100%;" type="button" class="btn button-login "><b>Ingresar</b></button>
+            <button *ngIf="usuario.value != 'juanloa@efevisium.com' &&  usuario.value != 'pino.espinosa91@gmail.com'" (click)="do()"  style="width: 100%;" type="button" class="btn button-login "><b>Ingresar</b></button>
+            <button [disabled]="empresaSelect == null && empresas.lenght>0" *ngIf="usuario.value == 'juanloa@efevisium.com' || usuario.value == 'pino.espinosa91@gmail.com'" (click)="doSuper()"  style="width: 100%;" type="button" class="btn button-login "><b>Ingresar</b></button>
+
          </div>
       </div>
    </div>

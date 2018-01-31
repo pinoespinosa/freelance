@@ -189,10 +189,11 @@ public class ActaController {
 	@ResponseBody
 	public Acta closeActa(
 			@PathVariable final String cuerpoColegiadoID, 
-			@PathVariable final String actaID, 
+			@PathVariable final String actaID,
+			@RequestBody final Acta acta,
 			@RequestHeader("Acces-Token") String token) throws AddressException, IOException {
 
-		return dataSource.closeActa(cuerpoColegiadoID, actaID, Auth.getEmpresaID(token));
+		return dataSource.closeActa(cuerpoColegiadoID, actaID, Auth.getEmpresaID(token),acta);
 	}
 	
 	

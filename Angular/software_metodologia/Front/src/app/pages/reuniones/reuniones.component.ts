@@ -86,7 +86,7 @@ export class ReunionesComponent implements OnInit  {
   }
 
   createActa():void{
-  	this.actaCreada = new Acta("0","0","0","lugar","ciudad",[],"finGral",[],"0", "","","","","","","","","");
+  	this.actaCreada = new Acta("0","0","0","lugar","ciudad",[],"finGral",[],"0", "","","","","","","","","","","");
     this.paso = 2;
   }
 

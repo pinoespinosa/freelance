@@ -46,6 +46,26 @@ public class AuthController {
 		return session;
 	}
 
+	
+	/**
+	 * Authentication
+	 * 
+	 * @throws AuthenticationException
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/auth/superuser", method = RequestMethod.GET)
+	public Auth auth(
+			@RequestParam(required = true) final String email,
+			@RequestParam(required = true) final String pass,
+			@RequestParam(required = true) final String empresaID) throws AuthenticationException {
+		
+		Auth session = dataSource.authSuper(email, pass, empresaID);
+		if (session == null)
+			session = new Auth("", null, "", "", "", null, "FAIL", "");
+
+		return session;
+	}
+	
 	/**
 	 * Crear User
 	 */

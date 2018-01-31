@@ -47,6 +47,15 @@ public class CSVController {
 		dataSource.initBD();
 		return OK;
 	}
+
+	@ApiOperation(value = "Get specific Student in the System ", tags = "Import CSV")
+	@RequestMapping(value = "/sampleData", method = RequestMethod.POST)
+	@ResponseBody
+	public String sampleData() {
+		dataSource.initBDSampleData();
+		return OK;
+	}
+	
 	
 	@ApiOperation(value = "Get specific Student in the System ", tags = "Export CSV")
 	@RequestMapping(value = "/exportCSV", method = RequestMethod.POST)

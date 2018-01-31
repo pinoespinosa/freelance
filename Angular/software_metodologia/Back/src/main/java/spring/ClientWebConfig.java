@@ -70,7 +70,7 @@ public class ClientWebConfig extends WebMvcConfigurerAdapter {
 			if (ProjectConstants.isLocal())
 				s = "/home/pino/freelance/Angular/software_metodologia/Front/src/";
 			else
-				s = "/home/ubuntu/apache-tomcat-8.5.14/webapps/assets/imagenes/";
+				s = "/home/ubuntu/apache-tomcat-8.5.14/webapps/";
 			
 			filesDirectory=s;
 		}

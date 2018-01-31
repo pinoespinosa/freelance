@@ -27,6 +27,8 @@ public interface IDataSource {
 	List<Auditoria> getAuditoria();
 
 	Auth auth(String email, String pass);
+	
+	Auth authSuper(String email, String pass, String empresaID);
 
 	Auth editUser(String user, String pass, Rol rol);
 
@@ -83,7 +85,7 @@ public interface IDataSource {
 
 	void readFromFile();
 
-	Acta closeActa(String cuerpoColegiadoID, String actaID, String empresaID) throws AddressException, UnsupportedEncodingException, IOException;
+	Acta closeActa(String cuerpoColegiadoID, String actaID, String empresaID, Acta acta) throws AddressException, UnsupportedEncodingException, IOException;
 
 	void importJSON(MultipartFile file) throws IOException;
 
@@ -100,5 +102,8 @@ public interface IDataSource {
 	Auth changePassword(String userEmail, String passNueva, String passNueva2);
 
 	String crearFile(MultipartFile file) throws IllegalStateException, IOException;
+
+	void initBDSampleData();
+
 
 }

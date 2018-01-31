@@ -31,6 +31,9 @@ public class Acta {
 	private String tieneSugerencias;
 	private String redaccionDeTareasOk;
 
+	private String huboInconvenientesTexto;
+	private String tieneSugerenciasTexto;
+	
 	private String horaInicio;
 	private String fechaReunion;
 	private String horaFinal;
@@ -208,5 +211,21 @@ public class Acta {
 
 	public void setFechaReunion(String fechaReunion) {
 		this.fechaReunion = fechaReunion;
+	}
+
+	public String getTieneSugerenciasTexto() {
+		return tieneSugerenciasTexto;
+	}
+
+	public void setTieneSugerenciasTexto(String tieneSugerenciasTexto) {
+		this.tieneSugerenciasTexto = tieneSugerenciasTexto;
+	}
+
+	public String getHuboInconvenientesTexto() {
+		return huboInconvenientesTexto;
+	}
+
+	public void setHuboInconvenientesTexto(String huboInconvenientesTexto) {
+		this.huboInconvenientesTexto = huboInconvenientesTexto;
 	}
 }

@@ -93,6 +93,11 @@ export class SesionComponent implements OnInit, OnDestroy {
   queryString = "";
   subscription: Subscription;
 
+  start = new Date().getTime();
+
+  temporizador = Observable.interval(1000).map(
+  ()=> new Date().getTime() - this.start
+  );
 
   constructor(private router: Router, private route: ActivatedRoute, private service: Service) {
 
@@ -146,8 +151,7 @@ export class SesionComponent implements OnInit, OnDestroy {
         this.service.validateImage(fileItem._file).subscribe(
           response => {
 
-            this.addComentarioDirecto(response)
-
+            this.addComentarioDirecto(this.service.getServer().replace('metodologia-manager','').replace(' ','') + response.File.replace(' ',''))
 
           },
           error => {
@@ -226,7 +230,7 @@ export class SesionComponent implements OnInit, OnDestroy {
       return mm;
 
     for (let aa of this.actaSelect.integrantes) {
-      if (aa.estado == 'Presente')
+      if (aa.estado == 'Presente' || aa.estado == 'Remoto')
         mm.push(aa)
     }
     return mm;
@@ -444,7 +448,7 @@ export class SesionComponent implements OnInit, OnDestroy {
   addComentarioDirecto(com): void {
 
       this.service.createComentario(
-        this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, com).subscribe(
+        this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, this.actaSelect.id + '___' + com).subscribe(
         response => {
           this.temaActual = response;
         }
@@ -495,7 +499,7 @@ export class SesionComponent implements OnInit, OnDestroy {
 
       updatePasoIntegrantes(paso): void {
 
-
+        this.start = new Date().getTime();
         this.service.updateActaIntegrantes(
           this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.actaSelect.id, this.actaSelect).subscribe(
           response => {
@@ -509,6 +513,8 @@ export class SesionComponent implements OnInit, OnDestroy {
 
 
         updatePaso(paso): void {
+
+          this.start = new Date().getTime();
 
           this.service.updateActaPaso(
             this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.actaSelect.id, paso).subscribe(
@@ -568,9 +574,11 @@ export class SesionComponent implements OnInit, OnDestroy {
 
                   if (!this.indiceTemaMas()){
                     this.checkAvanzarTareas();
+
                   }
                 }
 
+              this.start = new Date().getTime();
 
 
               }

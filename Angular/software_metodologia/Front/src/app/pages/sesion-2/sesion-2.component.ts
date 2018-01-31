@@ -12,8 +12,13 @@ import { Tarea }                                  from 'app/data-objects/tarea';
 
 import { Usuario }                                from 'app/data-objects/usuario';
 import { UsuarioActa }                            from 'app/data-objects/usuarioActa';
+import {Observable}                                                                         from 'rxjs/Rx'; 
+import {Subscription}                                                                       from 'rxjs';
 
 
+import { FileUploader }       from 'ng2-file-upload/ng2-file-upload';
+//URL to use ng2-file-upload for generate the uploader array of files
+const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 @Component({
   selector: 'sesion-2',
@@ -66,6 +71,20 @@ export class Sesion2Component implements OnInit, OnDestroy {
   queryString = "";
 
 
+  public uploader:FileUploader = new FileUploader({url: URL});
+  public hasBaseDropZoneOver:boolean = false;
+  public show:boolean =true;
+  public validatedTotal = 0;
+  public loading: Subscription;
+  public filesAnalyzed = [];
+
+  start = new Date().getTime();
+
+  temporizador = Observable.interval(1000).map(
+  ()=> new Date().getTime() - this.start
+  );
+
+
   constructor(private router: Router, private route: ActivatedRoute, private service: Service) {
 
 
@@ -75,13 +94,38 @@ export class Sesion2Component implements OnInit, OnDestroy {
   cleanAll() {
 
     this.temasDelActa = [];
+    this.start = new Date().getTime();
 
 
   }
 
+  public onFileDrop(e:any) {
+    let uploadedFiles = this.uploader.queue;
+    this.show = false;
+
+    if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
+
+      uploadedFiles.forEach((fileItem) =>{
+        let validatedFile = null;
+        this.filesAnalyzed.push({'fileName': fileItem._file.name, 'analyzed': false});
+
+        this.service.validateImage(fileItem._file).subscribe(
+          response => {
+
+            this.addComentarioDirecto(this.service.getServer().replace('metodologia-manager','').replace(' ','') + response.File.replace(' ',''))
+
+          },
+          error => {
+          }
+        );
+
+      });
+    }
+  }
+
   ngOnInit(): void {
     this.logo = localStorage.getItem('logo');
-    this.actaSelect = new Acta("", "", "", "", "", [], "", [], "", "", "", "", "", "", "", "", "", "")
+    this.actaSelect = new Acta("", "", "", "", "", [], "", [], "", "", "", "", "", "", "", "", "", "", "","")
 
     let sub = this.route
       .queryParams
@@ -211,7 +255,7 @@ export class Sesion2Component implements OnInit, OnDestroy {
       return mm;
 
     for (let aa of this.actaSelect.integrantes) {
-      if (aa.estado == 'Presente')
+      if (aa.estado == 'Presente' || aa.estado == 'Remoto')
         mm.push(aa)
     }
     return mm;
@@ -510,6 +554,8 @@ export class Sesion2Component implements OnInit, OnDestroy {
       if (!this.indiceTemaMas())
         this.checkAvanzarTareas();
 
+    this.start = new Date().getTime();
+
   }
 
 
@@ -548,7 +594,7 @@ export class Sesion2Component implements OnInit, OnDestroy {
   closeActa() {
     alert('Se enviará un email con las minutas del acta y el resumen por PDF de la misma');
 
-                this.service.closeActa(this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.actaSelect.id).subscribe(
+                this.service.closeActa(this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.actaSelect.id, this.actaSelect).subscribe(
               response => {
 
 
@@ -561,12 +607,28 @@ export class Sesion2Component implements OnInit, OnDestroy {
 
     return  (this.actaSelect.seCumpliofinEnMente+"") == "" || 
             (this.actaSelect.elTiempoFueSuficiente+"") == "" || 
-            (this.actaSelect.huboInconvenientes+"") == "" || 
+
+            (this.actaSelect.huboInconvenientes+"") == "" ||  
+            (this.actaSelect.huboInconvenientes+"" == "true"  && this.actaSelect.huboInconvenientesTexto+"" == "")  || 
+
             (this.actaSelect.tieneSugerencias+"") == "" || 
+            (this.actaSelect.tieneSugerencias+"" == "true"  && this.actaSelect.tieneSugerenciasTexto+"" == "")  || 
+
             (this.actaSelect.redaccionDeTareasOk+"") == "" ;
 
 
   }
+
+
+  addComentarioDirecto(com): void {
+
+      this.service.createComentario(
+        this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, this.actaSelect.id + '___' + com).subscribe(
+        response => {
+          this.temaActual = response;
+        }
+        );
+      }
 
   closeTema(com): void {
 

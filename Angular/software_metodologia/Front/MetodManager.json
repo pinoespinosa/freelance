@@ -1,0 +1,28 @@
+{
+  "audit" : [ ],
+  "empresas" : [ ],
+  "users" : {
+    "DlTEyk6ub5y5cBJHOuQbD/YqpTsuJxImPH7MF+D/Ltw=" : {
+      "userID" : "0",
+      "rol" : "SUPER_ADMINISTRADOR",
+      "nombre" : "Andrés Espinosa",
+      "email" : "pino.espinosa91@gmail.com",
+      "logo" : "http://efevisium.com/wp-content/uploads/2017/07/logos-vertical-e1501185105618.png",
+      "empresaID" : null,
+      "empresaNombre" : null,
+      "ccList" : [ ],
+      "token" : ""
+    },
+    "+Vj0ZJ89nq18xGutdAzcyxKixAQ9jJKEz8LiZSQn0Dg=" : {
+      "userID" : "1",
+      "rol" : "SUPER_ADMINISTRADOR",
+      "nombre" : "Juan Loa",
+      "email" : "juanloa@efevisium.com",
+      "logo" : "http://efevisium.com/wp-content/uploads/2017/07/logos-vertical-e1501185105618.png",
+      "empresaID" : null,
+      "empresaNombre" : null,
+      "ccList" : [ ],
+      "token" : ""
+    }
+  }
+}

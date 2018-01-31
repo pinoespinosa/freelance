@@ -57,9 +57,7 @@ public class EmpresaController {
 	@RequestMapping(value = "/empresa/list", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Empresa> listEmpresa(@RequestHeader("Acces-Token") String token) {
-
 		return dataSource.listEmpresa(token);
-
 	}
 	
 	public IDataSource getDataSource() {
