@@ -164,7 +164,10 @@ def escanearProducto(url):
 	
 	pagina = BeautifulSoup(html, 'html.parser');
 
-	codSKU = pagina.find_all(class_='product attribute sku')[0].text.replace('SKU','').strip()
+	try:
+		codSKU = pagina.find_all(class_='product attribute sku')[0].text.replace('SKU','').strip()
+	except:
+		return
 
 	try:
 		coloresReq = str(html).split('var colors = ')[1].split(';')[0].replace("'","").replace("\\","");
@@ -315,6 +318,11 @@ def escanearProducto(url):
 
 	else:
 		print('Repetido ... ' + codSKU)
+
+
+	saveFile('pino.csv',listaResultados);
+	saveFile('prodEscaneados.csv',listaEscaneados);
+	
 	return;
 
 
@@ -548,6 +556,7 @@ if (not listaResultados):
 	listaResultados.append( 'Sku;Departamento;Género;Categoria;Url;Nombre;Tallas;Existencias;Detalle;Descripcion;Imagenes');
 
 for prod in listaProductos:
-	escanearProducto(prod);
-	saveFile('pino.csv',listaResultados);
-	saveFile('prodEscaneados.csv',listaEscaneados);
+	try:
+		escanearProducto(prod);
+	except:
+		print('fallo')
