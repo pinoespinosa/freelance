@@ -2,11 +2,11 @@
 cat lista.txt | while read LINE
 do
 
-B="$(echo $LINE | cut -d'/' -f8)"
+B="$(echo $LINE | cut -d'/' -f16)"
 
 
-if ! [ -s $B ] ; then
-	curl $LINE > $B
+if ! [ -s imagenes/$B ] ; then
+	curl $LINE > imagenes/$B
 
 fi
 
