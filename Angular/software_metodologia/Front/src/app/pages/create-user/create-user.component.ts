@@ -6,10 +6,12 @@ import { Client }                                       from 'app/data-objects/c
 import { Trabajo }                                      from 'app/data-objects/trabajo';
 
 import { CuerpoColegiado }                              from 'app/data-objects/cuerpoColegiado';
-import { CuerpoColegiadoSelect }                  from 'app/data-objects/cuerpoColegiadoSelect';
+import { CuerpoColegiadoSelect }                        from 'app/data-objects/cuerpoColegiadoSelect';
 import { Acta }                                         from 'app/data-objects/acta';
 import { UsuarioActa }                                  from 'app/data-objects/usuarioActa';
 import { Usuario }                                      from 'app/data-objects/usuario';
+import {Observable}                                     from 'rxjs/Rx'; 
+import {Subscription}                                   from 'rxjs';
 
 
 @Component({
@@ -31,32 +33,37 @@ export class CreateUserComponent implements OnInit, OnDestroy  {
     private route : ActivatedRoute, 
     private service: Service)
   {
-
     this.cuerposColegiado = [];
 
   }
 
-  quitarToken(){
-      localStorage.setItem('empresa-creada','');
-  }
+  temporizador = Observable.interval(1000).map(
+  ()=> this.refresh()
+  );
 
   ngOnDestroy(): void {
-    this.quitarToken();
   }
 
-  ngOnInit(): void {
+  refresh():boolean{
 
+    if (this.empresaCreada != localStorage.getItem('empresa-creada'))
+{
     this.empresaCreada = localStorage.getItem('empresa-creada');
 
-
-
-    this.service.getCuerpoColegiados().subscribe(
+    this.service.getCuerpoColegiadosSimple(this.empresaCreada).subscribe(
       response =>{ 
 
         for (let cc of response) {
           this.cuerposColegiado.push(new CuerpoColegiadoSelect(cc.id, cc.nombre, cc.actas));
         }
       });
+}
+return true;
+  }
+
+  ngOnInit(): void {
+
+  this.refresh();
 
   };
 
@@ -68,8 +75,6 @@ export class CreateUserComponent implements OnInit, OnDestroy  {
       if (cc.check)
         listaCC = listaCC + '&ccList=' + cc.id;
     }
-
-    console.log ('Valid' + listaCC != '')
 
     return listaCC != '';
 

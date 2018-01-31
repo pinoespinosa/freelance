@@ -3,15 +3,13 @@
 <button (click)="visiblePop = !visiblePop" style="margin: 7px;" type="button" class="btn">{{titulo}}</button>
 <change-state [(visible)]="visiblePop">
 <h2 style="margin: 10px;margin-bottom: 20px;" >{{titulo}}</h2>
-<input #nombreEmpresa type="text" name="" placeholder="Nombre Empresa" 
-(change)="nombreAux=nombreEmpresa.value">
-<input #logoEmpresa type="text" name="" placeholder="Logo Empresa" 
-(change)="logoAux=logoEmpresa.value" >
+<input #nombreEmpresa type="text" name="" placeholder="Nombre Empresa"   name="nombreAux" ng-control="nombreAux" [(ngModel)]="nombreAux" >
+<input #logoEmpresa type="text" name="" placeholder="Logo Empresa" (change)="logoAux=logoEmpresa.value" >
 
 <div class="row">
    <div class="col-6"> 
       <button (click)="visiblePop=!visiblePop" class="btn" style="width: 100%;background: #72C585" 
-      (click)="createEmpresa(nombreAux, logoAux)" >Listo</button>
+      [disabled]="nombreAux == ''" (click)="createEmpresa(nombreAux, logoAux)" >Listo</button>
    </div>
 </div>
 </change-state>

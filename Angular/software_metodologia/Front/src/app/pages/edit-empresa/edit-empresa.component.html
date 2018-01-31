@@ -28,7 +28,7 @@
             (click)="nombreAux=transfer.nombreEmpresa"
              >Editar</button> 
          </td>
-         <td>   
+         <td *ngIf="!transfer.edit" >   
             <create-user (click)="setEmpresaLocalSto(transfer)"></create-user>
          </td>
          <!-- Modo Edicion -->
