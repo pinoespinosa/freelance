@@ -1,7 +1,42 @@
 {
   "audit" : [ ],
-  "empresas" : [ ],
+  "empresas" : [ {
+    "id" : "0",
+    "colegiados" : [ {
+      "id" : "0-0",
+      "nombre" : "Comercial",
+      "prefijoDocs" : "COME",
+      "actas" : [ ],
+      "temasId" : [ ]
+    }, {
+      "id" : "0-1",
+      "nombre" : "Recursos",
+      "prefijoDocs" : "RECU",
+      "actas" : [ ],
+      "temasId" : [ ]
+    } ],
+    "temas" : { },
+    "nombreEmpresa" : "Marolio2",
+    "logoEmpresa" : ""
+  }, {
+    "id" : "1",
+    "colegiados" : [ ],
+    "temas" : { },
+    "nombreEmpresa" : "SinImagen",
+    "logoEmpresa" : "http://www.tiptoncommunications.com/components/com_easyblog/themes/wireframe/images/placeholder-image.png"
+  } ],
   "users" : {
+    "B6/FEncCX4mfwILRnUW+C7wXt5/VInCS1TY/ryIExIA=" : {
+      "userID" : "2",
+      "rol" : "SOLO_CONSULTA",
+      "nombre" : "Andres QBK",
+      "email" : "ae@qbkconsulting.com",
+      "logo" : "dd",
+      "empresaID" : "0",
+      "empresaNombre" : null,
+      "ccList" : [ "0-0", "0-1" ],
+      "token" : ""
+    },
     "DlTEyk6ub5y5cBJHOuQbD/YqpTsuJxImPH7MF+D/Ltw=" : {
       "userID" : "0",
       "rol" : "SUPER_ADMINISTRADOR",

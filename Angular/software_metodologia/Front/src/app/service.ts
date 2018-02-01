@@ -174,10 +174,10 @@ createUser(nombre, email, listaCC): Observable<Usuario> {
   return this.http.post(this.getServer() + '/api/createUser?nombre='+nombre+'&email='+email+'&pass=1234&logo=dd&rol=SOLO_CONSULTA'+listaCC,'', { headers: headers }).map(this.extractData);
 }
 
-createUserAdmin(nombre, email, listaCC, empresaID): Observable<Usuario> {
+createUserAdmin(nombre, email, listaCC, empresaID, perfil): Observable<Usuario> {
   var headers = new Headers();
   headers.append('acces-token', localStorage.getItem('token'));
-  return this.http.post(this.getServer() + '/api/createUser/admin?empresaID='+empresaID+'&nombre='+nombre+'&email='+email+'&pass=1234&logo=dd&rol=SOLO_CONSULTA'+listaCC,'', { headers: headers }).map(this.extractData);
+  return this.http.post(this.getServer() + '/api/createUser/admin?empresaID='+empresaID+'&nombre='+nombre+'&email='+email+'&pass=1234&logo=dd&rol='+perfil+ listaCC,'', { headers: headers }).map(this.extractData);
 }
 
 createActa(cuerpoColegiadoID, acta): Observable<Acta> {

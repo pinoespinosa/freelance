@@ -17,7 +17,7 @@
       <div class="col-12 buttons-middle-container" style="">
          <div class="buttons-middle-second-container" >
             <div  class="row buttons-middle-row" >
-               <div class="col-6 offset-md-3" *ngIf="( rol=='SUPER_ADMINISTRADOR' && empresaID!='null')">
+               <div class="col-6 offset-md-3" *ngIf="!( rol=='SUPER_ADMINISTRADOR' && empresaID=='null')">
                   <button 
                   [routerLink]="['/consultas']"  
                   type="button" 

@@ -27,6 +27,7 @@ export class CreateUserComponent implements OnInit, OnDestroy  {
   cuerposColegiado: CuerpoColegiadoSelect[];
   empresaCreada : string = '';
 
+  perfiles = ['ADMINISTRADOR', 'GENERAL', 'SOLO_CONSULTA']
 
   constructor( 
     private router: Router, 
@@ -37,7 +38,7 @@ export class CreateUserComponent implements OnInit, OnDestroy  {
 
   }
 
-  temporizador = Observable.interval(1000).map(
+  temporizador = Observable.interval(2000).map(
   ()=> this.refresh()
   );
 
@@ -48,14 +49,16 @@ export class CreateUserComponent implements OnInit, OnDestroy  {
 
     if (this.empresaCreada != localStorage.getItem('empresa-creada'))
 {
-    this.empresaCreada = localStorage.getItem('empresa-creada');
 
-    this.service.getCuerpoColegiadosSimple(this.empresaCreada).subscribe(
+    this.service.getCuerpoColegiadosSimple(localStorage.getItem('empresa-creada')).subscribe(
       response =>{ 
 
         for (let cc of response) {
           this.cuerposColegiado.push(new CuerpoColegiadoSelect(cc.id, cc.nombre, cc.actas));
         }
+        this.empresaCreada = localStorage.getItem('empresa-creada');
+
+
       });
 }
 return true;
@@ -67,7 +70,9 @@ return true;
 
   };
 
-  isValid() : boolean{
+  isValid(nombre, email, perfil) : boolean{
+
+    console.log(perfil)
 
     let listaCC='';
 
@@ -76,13 +81,13 @@ return true;
         listaCC = listaCC + '&ccList=' + cc.id;
     }
 
-    return listaCC != '';
+    return listaCC != '' && nombre!= '' && email!= '';
 
 
   }
 
 
-  createUser(nombre, email):void{
+  createUser(nombre, email, perfil ):void{
 
     let listaCC='';
 
@@ -100,7 +105,7 @@ return true;
       if (this.empresaCreada!=''){
 
 
-    this.service.createUserAdmin(nombre, email, listaCC, this.empresaCreada).subscribe(
+    this.service.createUserAdmin(nombre, email, listaCC, this.empresaCreada, perfil).subscribe(
       response =>{ 
         alert("Se ha creado el usuario exitosamente.")
         localStorage.setItem('REFRESH_USERS', 'TRUE');

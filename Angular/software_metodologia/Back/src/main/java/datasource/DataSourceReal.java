@@ -829,6 +829,9 @@ public class DataSourceReal implements IDataSource {
 	@Override
 	public Empresa createEmpresa(Empresa empresa) {
 
+		if(Strings.isNullOrEmpty(empresa.getLogoEmpresa()))
+			empresa.setLogoEmpresa("http://www.tiptoncommunications.com/components/com_easyblog/themes/wireframe/images/placeholder-image.png");
+		
 		if (!empresa.getLogoEmpresa().startsWith("assets/imagenes/")) {
 			try (InputStream in = new URL(empresa.getLogoEmpresa()).openStream()) {
 

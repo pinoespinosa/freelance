@@ -16,11 +16,17 @@ style="width: 32px;padding-left: 0px;padding-right: 0px;" type="button" class="b
             <input #cuColegCheck type="checkbox" style="margin-left: 40px;" (click)="update(cuColeg,cuColegCheck)">{{cuColeg.nombre}}
          </div>
       </div>
+
+      <label style="margin-top: 15px;" >Perfil de usuario</label>
+      <select style="width: 100%;" #perfil class="dropdown-select">
+         <option *ngFor="let perfil of perfiles" >{{perfil}}</option>
+      </select>
+
    </div>
    <div class="row">
       <div class="col-6"> 
-      <button (click)="visiblePop=!visiblePop" (click)="createUser(nombre.value,email.value)"  
-         [disabled]=" !isValid() || !email.validity.valid" class="btn" style="width: 100%;background: #72C585" >Agregar</button>
+      <button (click)="visiblePop=!visiblePop" (click)="createUser(nombre.value,email.value,perfil.value)"  
+         [disabled]=" !isValid(nombre.value, email.valu, perfil.value) || !email.validity.valid" class="btn" style="width: 100%;background: #72C585" >Agregar</button>
       </div>
       <div class="col-6"> 
          <button (click)="quitarToken()" (click)="visiblePop=!visiblePop" class="btn" style="width: 100%;background: #E87B85" >Cancelar</button>
