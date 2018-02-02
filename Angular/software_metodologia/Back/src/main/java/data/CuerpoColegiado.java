@@ -94,8 +94,8 @@ public class CuerpoColegiado {
 
 				@Override
 				public synchronized Tema put(String key, Tema value) {
-					if (!temasId.contains(key))
-						temasId.add(key);
+					if (!getTemasId().contains(key))
+						getTemasId().add(key);
 					empresa.getTemas().put(key, value);
 					return super.put(key, value);
 				}

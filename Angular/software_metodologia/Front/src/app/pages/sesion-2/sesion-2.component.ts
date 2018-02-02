@@ -350,13 +350,12 @@ export class Sesion2Component implements OnInit, OnDestroy {
 
     let estrategia = this.estrategias[est.selectedIndex - 1];
 
-    console.log("CREAR_TEMA:");
-    console.log(this.otrosCuColegiado)
     console.log("Tema " + tema)
-
-    let ccID = this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1];
+    console.log(this.otrosCuColegiado)
 
     let temaN = new Tema("", "Abierto", tema, [], [], estrategia, indicador);
+    let ccID = this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1];
+
 
     let arreglo = [];
 
@@ -375,11 +374,11 @@ export class Sesion2Component implements OnInit, OnDestroy {
           if ((+a.id) < (+b.id))
             return 1;
           else
-          if ((+a.id) > (+b.id))
-            return -1;
-          else
-            return 0;
-        });
+            if ((+a.id) > (+b.id))
+              return -1;
+            else
+              return 0;
+          });
 
 
         this.temaActual = response;
@@ -387,7 +386,7 @@ export class Sesion2Component implements OnInit, OnDestroy {
 
         alert("Se ha creado un nuevo tema")
       }
-    );
+      );
 
   }
 

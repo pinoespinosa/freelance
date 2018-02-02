@@ -326,7 +326,7 @@ export class SesionComponent implements OnInit, OnDestroy {
     }
   }
 
-  crearTema(tema, indicador, est): void {
+  crearTema(tema, indicador, est, comm): void {
 
     let estrategia = this.estrategias[est.selectedIndex - 1];
 
@@ -340,11 +340,12 @@ export class SesionComponent implements OnInit, OnDestroy {
     let arreglo = [];
 
     for (let aa of this.otrosCuColegiado) {
-      arreglo.push(aa.id);
+      if (aa.check)
+        arreglo.push(aa.id);
     }
 
     let loading =
-    this.service.createTema(ccID, temaN, this.actaSelect.id, arreglo, '').
+      this.service.createTema(ccID, temaN, this.actaSelect.id, arreglo, comm).
     subscribe(
       response => {
         this.temasDelActa.unshift(response);

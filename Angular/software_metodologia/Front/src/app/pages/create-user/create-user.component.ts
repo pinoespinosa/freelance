@@ -45,14 +45,13 @@ export class CreateUserComponent implements OnInit, OnDestroy  {
   ngOnDestroy(): void {
   }
 
-  refresh():boolean{
+  refreshAll(){
 
-    if (this.empresaCreada != localStorage.getItem('empresa-creada'))
-{
-
-    this.service.getCuerpoColegiadosSimple(localStorage.getItem('empresa-creada')).subscribe(
+      let val = localStorage.getItem('empresa-creada')
+      this.service.getCuerpoColegiadosSimple(val).subscribe(
       response =>{ 
 
+        this.cuerposColegiado = []
         for (let cc of response) {
           this.cuerposColegiado.push(new CuerpoColegiadoSelect(cc.id, cc.nombre, cc.actas));
         }
@@ -60,6 +59,14 @@ export class CreateUserComponent implements OnInit, OnDestroy  {
 
 
       });
+}
+
+  refresh():boolean{
+
+    if (this.empresaCreada != localStorage.getItem('empresa-creada'))
+{
+
+    this.refreshAll();
 }
 return true;
   }
