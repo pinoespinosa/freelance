@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.mail.internet.AddressException;
 
+import org.apache.http.auth.AUTH;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -160,8 +161,10 @@ public class ActaController {
 			@PathVariable final String cuerpoColegiadoID, 
 			@RequestBody Acta acta,
 			@RequestHeader("Acces-Token") String token) throws UnsupportedEncodingException, AddressException {
+		
+		boolean sendEmail = !(Rol.SUPER_ADMINISTRADOR.equals(Auth.getUserRol(token)) && !dataSource.getSendEmail());
 
-		return dataSource.createActa(cuerpoColegiadoID, Auth.getEmpresaID(token), acta, Auth.getUserEmail(token));
+		return dataSource.createActa(cuerpoColegiadoID, Auth.getEmpresaID(token), acta, Auth.getUserEmail(token), sendEmail);
 	}
 
 	
@@ -193,7 +196,9 @@ public class ActaController {
 			@RequestBody final Acta acta,
 			@RequestHeader("Acces-Token") String token) throws AddressException, IOException {
 
-		return dataSource.closeActa(cuerpoColegiadoID, actaID, Auth.getEmpresaID(token),acta);
+			boolean sendEmail = !(Rol.SUPER_ADMINISTRADOR.equals(Auth.getUserRol(token)) && !dataSource.getSendEmail());
+		
+		return dataSource.closeActa(cuerpoColegiadoID, actaID, Auth.getEmpresaID(token),acta, sendEmail);
 	}
 	
 	
@@ -226,6 +231,9 @@ public class ActaController {
 		return dataSource.editActa(cuerpoColegiadoID, user, Auth.getEmpresaID(token));
 	}
 
+	
+	
+	
 	public IDataSource getDataSource() {
 		return dataSource;
 	}

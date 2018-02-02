@@ -46,7 +46,7 @@ public interface IDataSource {
 
 	List<Acta> getActaList(String cuerpoColegiadoID, String empresaID);
 
-	Acta createActa(String cuerpoColegiadoID, String empresaID, Acta acta, String email) throws UnsupportedEncodingException, AddressException;
+	Acta createActa(String cuerpoColegiadoID, String empresaID, Acta acta, String email, boolean sendEmail) throws UnsupportedEncodingException, AddressException;
 
 	Acta editActa(String cuerpoColegiadoID, Acta user, String empresaID);
 
@@ -85,7 +85,7 @@ public interface IDataSource {
 
 	void readFromFile();
 
-	Acta closeActa(String cuerpoColegiadoID, String actaID, String empresaID, Acta acta) throws AddressException, UnsupportedEncodingException, IOException;
+	Acta closeActa(String cuerpoColegiadoID, String actaID, String empresaID, Acta acta, boolean sendEmail) throws AddressException, UnsupportedEncodingException, IOException;
 
 	void importJSON(MultipartFile file) throws IOException;
 
@@ -104,6 +104,10 @@ public interface IDataSource {
 	String crearFile(MultipartFile file) throws IllegalStateException, IOException;
 
 	void initBDSampleData();
+
+	void sendEmail(boolean valor);
+
+	Boolean getSendEmail();
 
 
 }

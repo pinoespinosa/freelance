@@ -6,6 +6,8 @@ import java.util.List;
 
 public class Info {
 
+	private boolean sendJuanEmail;
+	
 	private List<Auditoria> audit;
 
 	private List<Empresa> empresas;
@@ -41,5 +43,14 @@ public class Info {
 	public void setEmpresas(List<Empresa> empresas) {
 		this.empresas = empresas;
 	}
+
+	public boolean isSendJuanEmail() {
+		return sendJuanEmail;
+	}
+
+	public void setSendJuanEmail(boolean sendJuanEmail) {
+		this.sendJuanEmail = sendJuanEmail;
+	}
+
 
 }

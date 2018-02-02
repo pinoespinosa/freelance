@@ -1,10 +1,12 @@
 package web.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,8 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import data.CuerpoColegiado;
 import datasource.IDataSource;
 import io.swagger.annotations.ApiOperation;
+import spring.ProjectConstants;
 
 @RestController
 public class CSVController {
@@ -47,6 +51,21 @@ public class CSVController {
 		dataSource.initBD();
 		return OK;
 	}
+	
+	
+	@ApiOperation(value = "Get specific Student in the System ", tags = "Import CSV")
+	@RequestMapping(value = "/sendJuanEmail", method = RequestMethod.POST)
+	@ResponseBody
+	public String sendEmail(@RequestParam(required = true) final Boolean send) {
+		dataSource.sendEmail(send);
+		return OK;
+	}
+	
+	@ApiOperation(value = "Get specific Student in the System ", tags = "Import CSV")
+	@RequestMapping(value = "/sendJuanEmail", method = RequestMethod.GET)
+	public Boolean sendEmail() {
+		return dataSource.getSendEmail();
+	}
 
 	@ApiOperation(value = "Get specific Student in the System ", tags = "Import CSV")
 	@RequestMapping(value = "/sampleData", method = RequestMethod.POST)
@@ -55,8 +74,7 @@ public class CSVController {
 		dataSource.initBDSampleData();
 		return OK;
 	}
-	
-	
+		
 	@ApiOperation(value = "Get specific Student in the System ", tags = "Export CSV")
 	@RequestMapping(value = "/exportCSV", method = RequestMethod.POST)
 	@ResponseBody

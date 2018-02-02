@@ -343,7 +343,6 @@ export class SesionComponent implements OnInit, OnDestroy {
       arreglo.push(aa.id);
     }
 
-
     let loading =
     this.service.createTema(ccID, temaN, this.actaSelect.id, arreglo, '').
     subscribe(
@@ -362,6 +361,8 @@ export class SesionComponent implements OnInit, OnDestroy {
 
 
         this.temaActual = response;
+        this.updateTareas();
+
         alert("Se ha creado un nuevo tema")
       }
       );

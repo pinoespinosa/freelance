@@ -10,7 +10,7 @@ style="width: 32px;padding-left: 0px;padding-right: 0px;" type="button" class="b
       <div [hidden]="email.validity.valid || email.value==''" style="color: red;" >Invalid email account</div>
       <input #email type="text" class="form-control" placeholder="Email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
       <input #nombre type="text" class="form-control" placeholder="Nombre y Apellido">
-      <label>¿ Se relaciona con otros Cuerpos Colegiados? </label>
+      <label>¿ A que Cuerpos Colegiados petenece? </label>
       <div  *ngFor="let cuColeg of cuerposColegiado" >
          <div style="display: inline;">
             <input #cuColegCheck type="checkbox" style="margin-left: 40px;" (click)="update(cuColeg,cuColegCheck)">{{cuColeg.nombre}}

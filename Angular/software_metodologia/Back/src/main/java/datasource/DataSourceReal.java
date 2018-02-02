@@ -295,7 +295,7 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
-	public Acta createActa(String cuerpoColegiadoID, String empresaID, Acta acta, String email) throws UnsupportedEncodingException, AddressException {
+	public Acta createActa(String cuerpoColegiadoID, String empresaID, Acta acta, String email, boolean sendEmail) throws UnsupportedEncodingException, AddressException {
 
 		CuerpoColegiado orig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 
@@ -330,7 +330,8 @@ public class DataSourceReal implements IDataSource {
 				" a concretarse " + acta.getFechaReunion() + " entre las " + acta.getHoraInicio() + " y las " + acta.getHoraFinal() +  
 				" en: " + acta.getLugar() + ", " + acta.getCiudad()+ ".\nEl fin en mente de la reunion es " + acta.getFinMenteGral() + "\n\nLos temas a tratar son:\n\n" + String.join("\n", tList) + "\n\nFavor de responder con el fin en mente individual.";
 		
-		EmailUtils.sendEmailAttachFileCalendar(email, emailList, acta.getNumeroActa() + " - " + orig.getNombre(),cuerpoEmail
+		if (sendEmail)
+			EmailUtils.sendEmailAttachFileCalendar(email, emailList, acta.getNumeroActa() + " - " + orig.getNombre(),cuerpoEmail
 				,acta.getFechaReunion(), acta.getHoraInicio(), acta.getHoraFinal() );
 
 		updateFile();
@@ -568,7 +569,7 @@ public class DataSourceReal implements IDataSource {
 
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 		ccOrig.getTemas().get(temaID).getEventos().add(new Evento(comentario.split("___")[0],comentario.split("___")[1], System.currentTimeMillis()));
-	//	ccOrig.getTemas().get(temaID).setEstado("Cerrado");
+		ccOrig.getTemas().get(temaID).setEstado(TEMA_CERRADO);
 		updateFile();
 
 		return ccOrig.getTemas().get(temaID);
@@ -615,7 +616,7 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
-	public Acta closeActa(String cuerpoColegiadoID, String actaID, String empresaID, Acta acta) throws AddressException, IOException {
+	public Acta closeActa(String cuerpoColegiadoID, String actaID, String empresaID, Acta acta, boolean sendEmail) throws AddressException, IOException {
 
 		Acta actaToClose = getActa(actaID, empresaID);
 		actaToClose.setSeCumpliofinEnMente(acta.getSeCumpliofinEnMente());
@@ -644,7 +645,8 @@ public class DataSourceReal implements IDataSource {
 				emailList.add(uActa.getEmail());
 		}
 		
-		EmailUtils.sendEmailAttachFile("", emailList, "Resumen de la reunion", "",fileName );
+		if (sendEmail)
+			EmailUtils.sendEmailAttachFile("", emailList, "Resumen de la reunion", "",fileName );
 
 		
 		actaToClose.setEstado(TEMA_CERRADO);
@@ -884,6 +886,16 @@ public class DataSourceReal implements IDataSource {
 		Empresa a = getEmpresa(empresaID);
 		a.getColegiados().forEach(cuerpoCol -> lista.addAll(cuerpoCol.getActas()));
 		return lista;
+	}
+
+	@Override
+	public void sendEmail(boolean valor) {
+		obj.setSendJuanEmail(valor);
+	}
+
+	@Override
+	public Boolean getSendEmail() {
+		return obj.isSendJuanEmail();
 	}
 
 
