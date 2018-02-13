@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.transform.SourceLocator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,10 +20,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import data.Acta;
 import data.Auth;
-import data.CuerpoColegiado;
 import data.Tarea;
 import data.Tema;
-import data.Auth.Rol;
 import datasource.IDataSource;
 import io.swagger.annotations.ApiOperation;
 import spring.ProjectConstants;

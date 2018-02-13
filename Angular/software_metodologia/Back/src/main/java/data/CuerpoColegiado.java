@@ -1,6 +1,5 @@
 package data;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -91,6 +90,11 @@ public class CuerpoColegiado {
 	public Hashtable<String, Tema> getTemas() {
 		if (temas == null){
 			temas = new Hashtable<String, Tema>(){
+
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
 
 				@Override
 				public synchronized Tema put(String key, Tema value) {

@@ -38,6 +38,7 @@ public class SwaggerConfig {
 		return apiInfo;
 	}
 	
+	@SuppressWarnings("unused")
 	private ApiInfo apiInfoExample() {
 		ApiInfo apiInfo = new ApiInfo(ProjectConstants.PROJECT_NAME, "Version " + ProjectConstants.PROJECT_VERSION, "",
 				"Terms of service", new Contact("John Doe", "www.example.com", "myeaddress@company.com"),

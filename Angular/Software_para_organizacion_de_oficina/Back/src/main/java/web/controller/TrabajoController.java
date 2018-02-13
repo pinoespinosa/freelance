@@ -36,7 +36,7 @@ public class TrabajoController {
 	/**
 	 * Retorna un trabajo en base a un ID
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "{idCliente}/{idTrabajo}", method = RequestMethod.GET)
 	public Trabajo getTrabajo(@PathVariable final String idCliente, @PathVariable final String idTrabajo) {
 		return officeService.getTrabajo(idCliente, idTrabajo);
@@ -45,7 +45,7 @@ public class TrabajoController {
 	/**
 	 * Crea un trabajo
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "{idCliente}/trabajo", method = RequestMethod.POST)
 	@ResponseBody
 	public Trabajo createTrabajo(
@@ -63,7 +63,7 @@ public class TrabajoController {
 	/**
 	 * Edita in cliente
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "{idCliente}/trabajo/edit", method = RequestMethod.POST)
 	@ResponseBody
 	public Trabajo editTrabajo(
@@ -82,7 +82,7 @@ public class TrabajoController {
 	/**
 	 * Modifica el estado de un trabajo
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/{clienteID}/{trabajoID}/status", method = RequestMethod.POST)
 	public Trabajo getChangeTrabajoStatus(
 			@PathVariable final String clienteID, 
@@ -100,7 +100,7 @@ public class TrabajoController {
 	/**
 	 * Modifica la fecha de entrega de un trabajo
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/{clienteID}/{trabajoID}/fechaEntrega", method = RequestMethod.POST)
 	public Trabajo updateFechaEntrega(
 			@PathVariable final String clienteID, 
@@ -119,7 +119,7 @@ public class TrabajoController {
 	 * Modifica el asesor de un trabajo
 	 * @throws AccessDeniedException 
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/{clienteID}/{trabajoID}/asesor", method = RequestMethod.POST)
 	public Trabajo updateAsesor(
 			@PathVariable final String clienteID, 
@@ -137,7 +137,7 @@ public class TrabajoController {
 	/**
 	 * Agregar pago a un trabajo
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/{clienteID}/{trabajoID}/pago", method = RequestMethod.POST)
 	public Pago addPago(
 			@PathVariable final String clienteID, 

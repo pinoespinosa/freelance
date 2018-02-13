@@ -1,8 +1,6 @@
 package data;
 
 import java.awt.Color;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +9,6 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
-import com.lowagie.text.pdf.PdfWriter;
 
 public class PdfPrinter {
 
@@ -23,8 +20,6 @@ public class PdfPrinter {
 
 		Document document = new Document(PageSize.LETTER);
 		try {
-
-			PdfWriter cb = PdfWriter.getInstance(document, new FileOutputStream(name));
 
 			document.open();
 
@@ -70,8 +65,6 @@ public class PdfPrinter {
 
 		} catch (DocumentException de) {
 			System.err.println(de.getMessage());
-		} catch (IOException ioe) {
-			System.err.println(ioe.getMessage());
 		}
 
 		document.close();

@@ -100,3 +100,11 @@ div.cuadradoComentarios{
     height: 150px;
     overflow-y: scroll;
 }
+
+button.crearIndicador{
+    margin-top: 0px;
+    height: 31px;
+    font-size: small;
+    padding-left: 5px;
+    padding-right: 5px;
+}

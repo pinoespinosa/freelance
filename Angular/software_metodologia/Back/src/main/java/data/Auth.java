@@ -1,7 +1,5 @@
 package data;
 
-import static org.hamcrest.Matchers.instanceOf;
-
 import java.io.IOException;
 import java.util.List;
 

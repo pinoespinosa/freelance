@@ -1,0 +1,34 @@
+
+
+<button (click)="visiblePop = !visiblePop" type="button" class="btn crearIndicador">{{titulo}}</button>
+
+<change-state [(visible)]="visiblePop">
+	<h2 style="margin: 10px;margin-bottom: 20px;" >{{titulo}} Indicador</h2>
+
+
+	<div class="row">
+		
+		<div class="col-4" style="padding: 4px;">
+			<input #codigoInd style="width: 100%;font-size: small;" placeholder="Código" 
+			name="codIndicador" ng-control="codIndicador" [(ngModel)]="codIndicador">
+		</div>
+		
+		<div class="col-4" style="padding: 4px;">
+			<input #tituloInd style="width: 100%;font-size: small;" placeholder="Titulo" 
+			name="tituloIndicador" ng-control="tituloIndicador" [(ngModel)]="tituloIndicador">
+		</div>
+		
+		<div class="col-4" style="padding: 4px;"> 
+			<button class="btn" style="height: 30px;font-size: small;" 
+			[disabled]="tituloIndicador == '' || codIndicador == ''" 
+			(click)="createIndicador(codIndicador + ' - ' + tituloIndicador)" >Crear Estrategia</button>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12" style="text-align: center;"> 
+			<button (click)="visiblePop=!visiblePop" class="btn" style="background: #72C585" >Listo</button>
+		</div>
+	</div>
+</change-state>
+

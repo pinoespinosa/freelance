@@ -1,0 +1,33 @@
+
+
+<button (click)="visiblePop = !visiblePop" style="margin: 7px;" type="button" class="btn">{{titulo}}</button>
+<change-state [(visible)]="visiblePop">
+	<h2 style="margin: 10px;margin-bottom: 20px;" >{{titulo}}</h2>
+
+
+	<table class="table table-hover" *ngIf="estrategias?.length > 0">
+		<tbody>
+			<tr *ngFor="let transfer of estrategias" >
+				<td style="padding: 2px;vertical-align: middle;text-align: center;" >{{transfer}}</td>
+				<td style="padding: 2px;vertical-align: middle;text-align: center;">
+				<button class="btn" style="" (click)="deleteEstrategia(transfer)" >Borrar</button> </td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="row">
+		<div class="col-6">
+		<input #estrategia (change)="logoAux=logoEmpresa.value" style="width: 100%;font-size: small;" >
+		</div>
+		<div class="col-6"> 
+			<button class="btn" style="width: 100%;background: #72C585" [disabled]="estrategia.value == ''" (click)="createEstrategia(estrategia.value)" >Crear Estrategia</button>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12" style="text-align: center;"> 
+			<button (click)="visiblePop=!visiblePop" class="btn" style="background: #72C585" >Listo</button>
+		</div>
+	</div>
+</change-state>
+

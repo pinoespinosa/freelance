@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.mail.internet.AddressException;
 
-import org.apache.http.auth.AUTH;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,9 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import data.Acta;
 import data.Auth;
+import data.Auth.Rol;
 import data.CuerpoColegiado;
 import data.UsuarioActa;
-import data.Auth.Rol;
 import datasource.IDataSource;
 import io.swagger.annotations.ApiOperation;
 import spring.ProjectConstants;
@@ -118,7 +117,7 @@ public class ActaController {
 	public List<Acta> getActaCitadaList(@RequestHeader("Acces-Token") String token) {
 
 		List<CuerpoColegiado> ccList = dataSource.getCuerpoColegiadoList(Auth.getEmpresaID(token),
-				Auth.getCuerpoColegiadosList(token));
+				token);
 
 		List<Acta> filtradas = new ArrayList<>();
 

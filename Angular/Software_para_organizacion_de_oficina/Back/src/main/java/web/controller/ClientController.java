@@ -24,7 +24,7 @@ public class ClientController {
 	/**
 	 * Retorna la lista de clientes
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/client", method = RequestMethod.GET)
 	public List<Cliente> getClientList() {
 		return officeService.getClientList();
@@ -33,7 +33,7 @@ public class ClientController {
 	/**
 	 * Retorna la lista de clientes SOLO con trabajos pendientes
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/client/pending", method = RequestMethod.GET)
 	public List<Cliente> getClientListPendientes() {
 		return officeService.getClientListPendientes();
@@ -42,7 +42,7 @@ public class ClientController {
 	/**
 	 * Retorna un cliente en base al ID
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/client/{id}", method = RequestMethod.GET)
 	public Cliente getClient(@PathVariable final String id) {
 		return officeService.getClient(id);
@@ -51,7 +51,7 @@ public class ClientController {
 	/**
 	 * Crea un cliente
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/client/create", method = RequestMethod.POST)
 	@ResponseBody
 	public Cliente createCliente(@RequestBody Cliente user) {
@@ -61,7 +61,7 @@ public class ClientController {
 	/**
 	 * Edita un cliente
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/client/edit", method = RequestMethod.POST)
 	@ResponseBody
 	public Cliente editCliente(@RequestBody Cliente user) {

@@ -1,7 +1,5 @@
 package data;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 public class UsuarioActa {
 
 	private String userID;

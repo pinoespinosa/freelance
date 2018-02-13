@@ -1,40 +1,303 @@
 {
+  "sendJuanEmail" : false,
   "audit" : [ ],
   "empresas" : [ {
     "id" : "0",
     "colegiados" : [ {
       "id" : "0-0",
       "nombre" : "Comercial",
-      "prefijoDocs" : "COME",
+      "prefijoDocs" : "COM",
+      "actas" : [ {
+        "id" : "COM_0-0-0",
+        "numeroActa" : "COM000",
+        "fecha" : 1517533070626,
+        "fechaCierre" : 0,
+        "lugar" : "sum",
+        "ciudad" : "tandil",
+        "paso" : "5",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "2",
+          "nombre" : "Andres QBK",
+          "email" : "ae@qbkconsulting.com",
+          "finEnMente" : "gtg",
+          "estado" : "Presente"
+        } ],
+        "finMenteGral" : "alal",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "huboInconvenientesTexto" : "",
+        "tieneSugerenciasTexto" : "",
+        "horaInicio" : "10:51",
+        "fechaReunion" : "2018-02-06",
+        "horaFinal" : "10:51"
+      }, {
+        "id" : "COM_0-0-1",
+        "numeroActa" : "COM001",
+        "fecha" : 1517619452790,
+        "fechaCierre" : 0,
+        "lugar" : "t",
+        "ciudad" : "t",
+        "paso" : "5",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "2",
+          "nombre" : "Andres QBK",
+          "email" : "ae@qbkconsulting.com",
+          "finEnMente" : "gtg",
+          "estado" : "Presente"
+        } ],
+        "finMenteGral" : "t",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "huboInconvenientesTexto" : "",
+        "tieneSugerenciasTexto" : "",
+        "horaInicio" : "10:58",
+        "fechaReunion" : "2018-02-14",
+        "horaFinal" : "10:58"
+      }, {
+        "id" : "COM_0-0-2",
+        "numeroActa" : "COM002",
+        "fecha" : 1517662782959,
+        "fechaCierre" : 0,
+        "lugar" : "i",
+        "ciudad" : "i",
+        "paso" : "3",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "2",
+          "nombre" : "Andres QBK",
+          "email" : "ae@qbkconsulting.com",
+          "finEnMente" : "gtg",
+          "estado" : "Presente"
+        } ],
+        "finMenteGral" : "i",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "huboInconvenientesTexto" : "",
+        "tieneSugerenciasTexto" : "",
+        "horaInicio" : "10:00",
+        "fechaReunion" : "2018-02-20",
+        "horaFinal" : "10:00"
+      } ],
+      "temasId" : [ "COM0", "COM1", "COM2", "COM3", "COM4", "COM5" ]
+    }, {
+      "id" : "0-1",
+      "nombre" : "Empresarial",
+      "prefijoDocs" : "EMP",
+      "actas" : [ ],
+      "temasId" : [ "COM2", "COM3", "COM4", "COM5" ]
+    }, {
+      "id" : "0-2",
+      "nombre" : "Economico",
+      "prefijoDocs" : "ECON",
+      "actas" : [ ],
+      "temasId" : [ "COM0", "COM1" ]
+    }, {
+      "id" : "0-3",
+      "nombre" : "Jerarquico",
+      "prefijoDocs" : "JER",
       "actas" : [ ],
       "temasId" : [ ]
     }, {
-      "id" : "0-1",
-      "nombre" : "Recursos",
-      "prefijoDocs" : "RECU",
+      "id" : "0-4",
+      "nombre" : "Otros",
+      "prefijoDocs" : "OTR",
+      "actas" : [ ],
+      "temasId" : [ ]
+    }, {
+      "id" : "0-5",
+      "nombre" : "fgfgf",
+      "prefijoDocs" : "gfgfg",
+      "actas" : [ ],
+      "temasId" : [ ]
+    }, {
+      "id" : "0-6",
+      "nombre" : "laaaaaa",
+      "prefijoDocs" : "aaaaaaaaaa",
+      "actas" : [ ],
+      "temasId" : [ ]
+    }, {
+      "id" : "0-7",
+      "nombre" : "yyy",
+      "prefijoDocs" : "yyyy",
+      "actas" : [ ],
+      "temasId" : [ ]
+    }, {
+      "id" : "0-8",
+      "nombre" : "rrrrrrr",
+      "prefijoDocs" : "rrrrrrrrr",
       "actas" : [ ],
       "temasId" : [ ]
     } ],
-    "temas" : { },
-    "nombreEmpresa" : "Marolio2",
-    "logoEmpresa" : ""
+    "temas" : {
+      "COM5" : {
+        "id" : "COM5",
+        "fechaCreacion" : 1517662719416,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : "llllllllll",
+        "indicador" : "AA, ECON - Economico, ",
+        "detalle" : "yy",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM001",
+          "idActa" : "COM_0-0-1",
+          "date" : 1517662723229
+        }, {
+          "texto" : "COM001 - yy",
+          "idActa" : "COM_0-0-1",
+          "date" : 1517662723229
+        }, {
+          "texto" : "http://localhost:8080/metodologiamanager/assets/1517662751445ErrorExcel.png",
+          "idActa" : "COM_0-0-1",
+          "date" : 1517662751542
+        } ]
+      },
+      "COM4" : {
+        "id" : "COM4",
+        "fechaCreacion" : 1517662311424,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : "llllllllll",
+        "indicador" : "AA, ECON - Economico, undefined, undefined, undefined, ",
+        "detalle" : "yy",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM001",
+          "idActa" : "COM_0-0-1",
+          "date" : 1517662311432
+        }, {
+          "texto" : "COM001 - yy",
+          "idActa" : "COM_0-0-1",
+          "date" : 1517662311432
+        } ]
+      },
+      "COM3" : {
+        "id" : "COM3",
+        "fechaCreacion" : 1517662018570,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : "dsfsdfsd",
+        "indicador" : "AA, TR, undefined, undefined, undefined, ",
+        "detalle" : "33",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM001",
+          "idActa" : "COM_0-0-1",
+          "date" : 1517662018570
+        }, {
+          "texto" : "COM001 - 33",
+          "idActa" : "COM_0-0-1",
+          "date" : 1517662018570
+        } ]
+      },
+      "COM2" : {
+        "id" : "COM2",
+        "fechaCreacion" : 1517661826434,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : "dsfsdfsd",
+        "indicador" : "AA, TR, undefined, undefined, undefined, ",
+        "detalle" : "ññ",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM001",
+          "idActa" : "COM_0-0-1",
+          "date" : 1517661826434
+        }, {
+          "texto" : "COM001 - ññññññññññññ",
+          "idActa" : "COM_0-0-1",
+          "date" : 1517661826434
+        } ]
+      },
+      "COM1" : {
+        "id" : "COM1",
+        "fechaCreacion" : 1517534531081,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : "Estrategia1",
+        "indicador" : "G",
+        "detalle" : "AAA",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM000",
+          "idActa" : "COM_0-0-0",
+          "date" : 1517534531081
+        }, {
+          "texto" : "COM000 - BBB",
+          "idActa" : "COM_0-0-0",
+          "date" : 1517534531081
+        }, {
+          "texto" : "No se registraron comentarios para el acta COM001",
+          "idActa" : "COM_0-0-1",
+          "date" : 1517662690438
+        } ]
+      },
+      "COM0" : {
+        "id" : "COM0",
+        "fechaCreacion" : 1517533619944,
+        "estado" : "Cerrado",
+        "objetivoEstrategico" : "Estrategia1",
+        "indicador" : "sadasd",
+        "detalle" : "Repartir Entradas",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta COM000",
+          "idActa" : "COM_0-0-0",
+          "date" : 1517533625985
+        }, {
+          "texto" : "COM000 - ",
+          "idActa" : "COM_0-0-0",
+          "date" : 1517533625985
+        }, {
+          "texto" : "COM000 - Se ha cerrado el tema",
+          "idActa" : "COM_0-0-0",
+          "date" : 1517533659647
+        } ]
+      }
+    },
+    "estrategias" : [ "llllllllll", "dsfsdfsd" ],
+    "indicador" : [ "AA", "TR", "FGFG - FGFG", "aa - aaaa", "ECON - Economico" ],
+    "nombreEmpresa" : "Marolio",
+    "logoEmpresa" : "http://www.tiptoncommunications.com/components/com_easyblog/themes/wireframe/images/placeholder-image.png"
   }, {
     "id" : "1",
     "colegiados" : [ ],
     "temas" : { },
-    "nombreEmpresa" : "SinImagen",
+    "estrategias" : [ ],
+    "indicador" : [ ],
+    "nombreEmpresa" : "Empresa2",
     "logoEmpresa" : "http://www.tiptoncommunications.com/components/com_easyblog/themes/wireframe/images/placeholder-image.png"
+  }, {
+    "id" : "2",
+    "colegiados" : [ ],
+    "temas" : { },
+    "estrategias" : [ ],
+    "indicador" : [ ],
+    "nombreEmpresa" : "tttt",
+    "logoEmpresa" : "assets/15185497481032017-10-24.png"
   } ],
   "users" : {
     "B6/FEncCX4mfwILRnUW+C7wXt5/VInCS1TY/ryIExIA=" : {
       "userID" : "2",
-      "rol" : "SOLO_CONSULTA",
+      "rol" : "ADMINISTRADOR",
       "nombre" : "Andres QBK",
       "email" : "ae@qbkconsulting.com",
-      "logo" : "dd",
+      "logo" : "http://www.tiptoncommunications.com/components/com_easyblog/themes/wireframe/images/placeholder-image.png",
       "empresaID" : "0",
-      "empresaNombre" : null,
-      "ccList" : [ "0-0", "0-1" ],
+      "empresaNombre" : "Marolio",
+      "ccList" : [ "0-0", "0-2", "0-7", "0-8" ],
       "token" : ""
     },
     "DlTEyk6ub5y5cBJHOuQbD/YqpTsuJxImPH7MF+D/Ltw=" : {
@@ -56,7 +319,7 @@
       "logo" : "http://efevisium.com/wp-content/uploads/2017/07/logos-vertical-e1501185105618.png",
       "empresaID" : null,
       "empresaNombre" : null,
-      "ccList" : [ ],
+      "ccList" : [ "0-6" ],
       "token" : ""
     }
   }

@@ -60,7 +60,6 @@ public class EmailUtils {
 				return new PasswordAuthentication("techsystemtandil@gmail.com", "36442114");
 			}
 		});
-		Message msg = new MimeMessage(session);
 
 		try {
 			// Create a default MimeMessage object.
@@ -107,7 +106,6 @@ public class EmailUtils {
 				return new PasswordAuthentication("techsystemtandil@gmail.com", "36442114");
 			}
 		});
-		Message msg = new MimeMessage(session);
 
 		try {
 			// Create a default MimeMessage object.
@@ -171,7 +169,6 @@ public class EmailUtils {
 				return new PasswordAuthentication("techsystemtandil@gmail.com", "36442114");
 			}
 		});
-		Message msg = new MimeMessage(session);
 
 		MimeBodyPart pdfBodyPart = new MimeBodyPart();
 
@@ -220,11 +217,11 @@ public class EmailUtils {
 				calendar.getComponents().add(reunion);
 
 				// Print data
-				for (Iterator i = calendar.getComponents().iterator(); i.hasNext();) {
+				for (Iterator<?> i = calendar.getComponents().iterator(); i.hasNext();) {
 					Component component = (Component) i.next();
 					System.out.println("Component [" + component.getName() + "]");
 
-					for (Iterator j = component.getProperties().iterator(); j.hasNext();) {
+					for (Iterator<?> j = component.getProperties().iterator(); j.hasNext();) {
 						Property property = (Property) j.next();
 						System.out.println("Property [" + property.getName() + ", " + property.getValue() + "]");
 					}

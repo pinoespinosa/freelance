@@ -32,7 +32,10 @@ import { EditEmpresaComponent }             from './pages/edit-empresa/edit-empr
 import { CreateCuerpoColegiadoComponent }   from './pages/create-cuerpo-colegiado/create-cuerpo-colegiado.component';
 import { EditCuerpoColegiadoComponent }     from './pages/edit-cuerpo-colegiado/edit-cuerpo-colegiado.component';
 
-import { ChangePasswordComponent }     from './pages/change-password/change-password.component';
+import { CreateEstrategiaComponent }        from './pages/create-estrategia/create-estrategia.component';
+import { CreateIndicadorComponent }        from './pages/create-indicador/create-indicador.component';
+
+import { ChangePasswordComponent }          from './pages/change-password/change-password.component';
 
 import { MantenimientoComponent }           from './pages/mantenimiento/mantenimiento.component';
 
@@ -87,7 +90,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EditEmpresaComponent,
     CreateCuerpoColegiadoComponent,
     EditCuerpoColegiadoComponent,
-    
+    CreateIndicadorComponent,
+    CreateEstrategiaComponent,
     ChangePasswordComponent
   ],
   imports: [
@@ -98,6 +102,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule, 
     FormsModule,
+    ReactiveFormsModule,
     FileUploadModule,
 
   ],

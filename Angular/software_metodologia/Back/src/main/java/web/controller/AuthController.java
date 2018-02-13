@@ -5,7 +5,6 @@ import java.util.List;
 import javax.security.sasl.AuthenticationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import data.Auth;
 import data.Auth.Rol;
+import data.Empresa;
 import datasource.IDataSource;
 import io.swagger.annotations.ApiOperation;
 import spring.ProjectConstants;
@@ -139,6 +139,18 @@ public class AuthController {
 			@RequestParam(required = true) final String pass) {
 		return dataSource.editUser(user, pass,rol);
 	}
+	
+	/**
+	 * Crear User
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/user/list", method = RequestMethod.GET)
+	public List<Auth> usuariosEmpresaList(
+				@RequestParam(required = true) final String empresaID) {
+				
+		return dataSource.usuariosEmpresaList(empresaID);
+	}
+	
 	
 	/**
 	 */

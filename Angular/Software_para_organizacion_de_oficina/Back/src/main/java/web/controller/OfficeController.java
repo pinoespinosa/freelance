@@ -30,13 +30,13 @@ public class OfficeController {
 	@Autowired
 	private AccesManager accessManager;
 	
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/universidad", method = RequestMethod.GET)
 	public List<String> getUniversidades() {
 		return officeService.getUniversidList();
 	}
 
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/auditoria", method = RequestMethod.GET)
 	public List<Auditoria> getAuditoria(
 			@RequestHeader("Acces-Token") String token
@@ -48,19 +48,19 @@ public class OfficeController {
 		return officeService.getAuditoria();
 	}
 	
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/carrera", method = RequestMethod.GET)
 	public List<String> getCarreras() {
 		return officeService.getCarrerasList();
 	}
 
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/dondeEntero", method = RequestMethod.GET)
 	public List<String> getDondeEntero() {
 		return officeService.getDondeSeEnteroList();
 	}
 
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/universidad", method = RequestMethod.POST)
 	@ResponseBody
 	public String createUniversidad(@RequestBody final String universidad) {
@@ -68,7 +68,7 @@ public class OfficeController {
 		return OfficeController.OK;
 	}
 	
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/carrera", method = RequestMethod.POST)
 	@ResponseBody
 	public String createCarrera(@RequestBody final String carrera) {
@@ -77,7 +77,7 @@ public class OfficeController {
 	}
 	
 	
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/dondeEntero", method = RequestMethod.POST)
 	@ResponseBody
 	public String createDondeEntero(@RequestBody final String dondeEntero) {
@@ -85,7 +85,7 @@ public class OfficeController {
 		return OfficeController.OK;
 	}
 	
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "{idCliente}/{idTrabajo}/requerimiento", method = RequestMethod.POST)
 	@ResponseBody
 	public Requerimiento addRequerimiento(@PathVariable final String idCliente, @PathVariable final String idTrabajo,

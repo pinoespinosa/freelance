@@ -28,34 +28,34 @@ public class ReportsController {
 	@Autowired
 	private OfficeService officeService;
 
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/client/filtredPagos", method = RequestMethod.GET)
 	public List<Cliente> getClientNuevosList(@RequestParam(required = true) final String fechaDesde,
 			@RequestParam(required = true) final String fechaHasta) {
 		return officeService.getClientNuevosList(fechaDesde, fechaHasta);
 	}
 
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/client/sells/period", method = RequestMethod.GET)
 	public Hashtable<String, List<String>> getLastSellByTime(@RequestParam(required = true) final int cantidadDias) {
 		return officeService.getLastSellByTime(cantidadDias);
 	}
 
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/client/sells/period/chash/newClients", method = RequestMethod.GET)
 	public synchronized List<Float> getSellsCashByTimeNewClients(@RequestParam(required = true) final int cantidadDias,
 			@RequestParam(required = true) final int cantidadValores) {
 		return officeService.getSellsCashByTimeNewClients(cantidadDias, cantidadValores);
 	}
 
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/client/sells/period/chash/oldClients", method = RequestMethod.GET)
 	public synchronized List<Float> getSellsCashByTimeOldClients(@RequestParam(required = true) final int cantidadDias,
 			@RequestParam(required = true) final int cantidadValores) {
 		return officeService.getSellsCashByTimeOldClients(cantidadDias, cantidadValores);
 	}
 
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/client/sells/period/amount/newClients", method = RequestMethod.GET)
 	public synchronized List<Float> getSellsAmmountByTimeNewClients(
 			@RequestParam(required = true) final int cantidadDias,

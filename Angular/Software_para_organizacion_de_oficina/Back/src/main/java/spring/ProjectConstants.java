@@ -10,6 +10,6 @@ public class ProjectConstants {
 
 	public static boolean PROJECT_MODE_MOCK = false;
 
-	public final static boolean HIDE_SWAGGER_OP = true;
+	public final static boolean HIDE_SWAGGER_OP = false;
 	
 }

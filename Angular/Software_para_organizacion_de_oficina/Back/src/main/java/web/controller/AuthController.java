@@ -21,7 +21,7 @@ public class AuthController {
 	/**
 	 * Authentication
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/auth", method = RequestMethod.GET)
 	public Auth auth(
 			@RequestParam(required = true) final String user,
@@ -32,7 +32,7 @@ public class AuthController {
 	/**
 	 * Crear User
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/createUser", method = RequestMethod.GET)
 	public Auth createUser(
 			@RequestParam(required = true) final String token,
@@ -45,7 +45,7 @@ public class AuthController {
 	/**
 	 * Crear User
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/editUser", method = RequestMethod.GET)
 	public Auth editUser(
 			@RequestParam(required = true) final String token,

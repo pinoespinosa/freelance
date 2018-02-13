@@ -79,8 +79,6 @@ return true;
 
   isValid(nombre, email, perfil) : boolean{
 
-    console.log(perfil)
-
     let listaCC='';
 
     for (let cc of this.cuerposColegiado) {

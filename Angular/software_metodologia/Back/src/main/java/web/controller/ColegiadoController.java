@@ -3,8 +3,6 @@ package web.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.plaf.basic.BasicTreeUI.TreeHomeAction;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,7 +35,7 @@ public class ColegiadoController {
 	@RequestMapping(value = "/cuerpocolegiado", method = RequestMethod.GET)
 	public List<CuerpoColegiado> getCuerpoColegiadoList(
 			@RequestHeader("Acces-Token") String token) {
-		List<CuerpoColegiado> aa =  dataSource.getCuerpoColegiadoList(Auth.getEmpresaID(token), Auth.getCuerpoColegiadosList(token));
+		List<CuerpoColegiado> aa =  dataSource.getCuerpoColegiadoList(Auth.getEmpresaID(token), token);
 		
 		List<CuerpoColegiado> aux = new ArrayList<>();
 		for (CuerpoColegiado cuerpoColegiado : aa) {
@@ -72,7 +69,11 @@ public class ColegiadoController {
 	@RequestMapping(value = "/cuerpocolegiado/lista", method = RequestMethod.GET)
 	public List<CuerpoColegiado> getCuerpoColegiadoList(
 			@RequestHeader("Acces-Token") String token, @RequestParam String empresaID) {
-		return dataSource.getCuerpoColegiadoList(empresaID);
+		
+		if (empresaID != null && !empresaID.equals("null"))
+			return dataSource.getCuerpoColegiadoList(empresaID);
+		
+		return new ArrayList<>();
 	}
 	
 	/**
@@ -92,7 +93,7 @@ public class ColegiadoController {
 	public List<CuerpoColegiado> getCuerpoColegiadoOtros(@PathVariable final String cuerpoColegiadoID,
 			@RequestHeader("Acces-Token") String token) {
 		List<CuerpoColegiado> list = dataSource.getCuerpoColegiadoList(Auth.getEmpresaID(token),
-				Auth.getCuerpoColegiadosList(token));
+				token);
 
 		CuerpoColegiado cc = new CuerpoColegiado();
 		cc.setId(cuerpoColegiadoID);
@@ -117,7 +118,7 @@ public class ColegiadoController {
 				throw new RuntimeException("Creacion no permitida para este usuario");
 		}
 		
-		return dataSource.createCuerpoColegiado(empresaID,user);
+		return dataSource.createCuerpoColegiado(empresaID,user,token);
 	}
 
 	/**

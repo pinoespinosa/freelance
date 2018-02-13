@@ -25,7 +25,7 @@ public class AsesorController {
 	/**
 	 * Retorna la lista de clientes
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/asesor", method = RequestMethod.GET)
 	public List<Asesor> getAsesorList() {
 		return officeService.getAsesorList();
@@ -34,7 +34,7 @@ public class AsesorController {
 	/**
 	 * Crea un cliente
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/asesor/create", method = RequestMethod.POST)
 	@ResponseBody
 	public Asesor createCliente(@RequestBody Asesor user) {
@@ -44,7 +44,7 @@ public class AsesorController {
 	/**
 	 * Edita un cliente
 	 */
-	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "", tags = "Internal")
 	@RequestMapping(value = "/asesor/edit", method = RequestMethod.POST)
 	@ResponseBody
 	public Cliente editCliente(@RequestBody Cliente user) {

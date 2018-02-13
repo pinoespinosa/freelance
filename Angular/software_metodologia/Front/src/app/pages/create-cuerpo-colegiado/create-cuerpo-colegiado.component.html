@@ -5,9 +5,9 @@
 	<h2 style="margin: 10px;margin-bottom: 20px;" >{{titulo}}</h2>
 
 	<div *ngIf="userType =='SUPER_ADMINISTRADOR'">Empresa:</div>
-	<select style="width: 100%;" #usuu class="dropdown-select" *ngIf="userType == 'SUPER_ADMINISTRADOR'" >
+	<select style="width: 100%;" #usuu class="dropdown-select" (change)="updatteFront(usuu)" *ngIf="userType == 'SUPER_ADMINISTRADOR'"  >
         <option disabled hidden [value]="empty">-- Seleccione la empresa --</option>
-		<option *ngFor="let usuario of empresas" (click)="updatte(usuario.id)">{{usuario.nombreEmpresa}}</option>
+		<option *ngFor="let usuario of empresas">{{usuario.nombreEmpresa}}</option>
 	</select>
 
 	Cuerpos Colegiados Existente:<br>
@@ -22,6 +22,12 @@
 	(change)="nombreAux=nombreEmpresa.value">
 	<input #logoEmpresa type="text" name="" placeholder="Prefijo" 
 	(change)="prefijo=logoEmpresa.value" >
+
+      <div  *ngFor="let usuario of usuarios" >
+         <div style="display: inline;">
+            <input #cuColegCheck type="checkbox" style="margin-left: 40px;" >{{usuario.nombre}}
+         </div>
+      </div>
 
 	<div class="row">
 		<div class="col-6"> 

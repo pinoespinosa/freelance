@@ -3,7 +3,6 @@ package spring;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
-import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +11,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import datasource.DataSourceReal;
 import datasource.IDataSource;
-import datasource.SimpleFile;
 
 @EnableWebMvc
 @Configuration

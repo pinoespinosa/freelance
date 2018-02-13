@@ -58,7 +58,9 @@ export class Sesion2Component implements OnInit, OnDestroy {
 
   estadosUsuario = ["Presente", "Ausente", "Remoto"];
 
-  estrategias = ["Estrategia1", "Estratagia2", "Estrategia3"];
+  estrategias = [];
+  indicadores = [];
+
   usuarios: Usuario[];
 
 
@@ -87,9 +89,26 @@ export class Sesion2Component implements OnInit, OnDestroy {
 
   constructor(private router: Router, private route: ActivatedRoute, private service: Service) {
 
+    this.service.getEstrategias(localStorage.getItem('empresaID')).subscribe(
+    response =>{ 
+      this.estrategias = response
+  });
+
+    this.refreshIndicadores()
+
 
   }
 
+
+  refreshIndicadores() {
+
+    this.service.getIndicador(localStorage.getItem('empresaID')).subscribe(
+    response =>{ 
+      this.indicadores = response
+  });
+
+
+  }
 
   cleanAll() {
 

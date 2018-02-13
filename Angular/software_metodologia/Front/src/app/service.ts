@@ -80,6 +80,48 @@ getCuerpoColegiadosSimple(empresaID): Observable<CuerpoColegiado[]> {
   return this.http.get(this.getServer()+"api/cuerpocolegiado/lista?empresaID="+empresaID, { headers: headers }).map(this.extractData);
 }
 
+getEstrategias(empresaID): Observable<any[]> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.get(this.getServer()+"api/estrategias?empresaID="+empresaID, { headers: headers }).map(this.extractData);
+}
+
+getUsuariosEmpresa(empresaID): Observable<any[]> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.get(this.getServer()+"api/user/list?empresaID="+empresaID, { headers: headers }).map(this.extractData);
+}
+
+createEstrategia(empresa,estrategia): Observable<any> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.post(this.getServer()+"api/estrategias?estrategia="+estrategia+"&empresaID="+empresa, empresa, { headers: headers }).map(this.extractData);
+}
+
+deleteEstrategia(empresa, estrategia): Observable<any> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.post(this.getServer()+"api/estrategias/delete?estrategia="+estrategia+"&empresaID="+empresa, empresa, { headers: headers }).map(this.extractData);
+}
+
+getIndicador(empresaID): Observable<any[]> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.get(this.getServer()+"api/indicador?empresaID="+empresaID, { headers: headers }).map(this.extractData);
+}
+
+createIndicador(empresa,indicador): Observable<any> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.post(this.getServer()+"api/indicador?indicador="+indicador+"&empresaID="+empresa, empresa, { headers: headers }).map(this.extractData);
+}
+
+deleteIndicador(empresa, indicador): Observable<any> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.post(this.getServer()+"api/indicador/delete?indicador="+indicador+"&empresaID="+empresa, empresa, { headers: headers }).map(this.extractData);
+}
+
 getCuerpoColegiado(cuerpocolegiadoID): Observable<CuerpoColegiado> {
   return this.http.get(this.getServer()+"api/cuerpocolegiado/"+cuerpocolegiadoID).map(this.extractData);
 }

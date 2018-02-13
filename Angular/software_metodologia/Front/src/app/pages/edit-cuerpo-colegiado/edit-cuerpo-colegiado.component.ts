@@ -30,6 +30,7 @@ export class EditCuerpoColegiadoComponent implements OnInit  {
   nombreAux : string = ''
   prefijo : string = ''
   idCC : string = ''
+  userType : string = ''
 
   cuerposColegiadoSelect: any = null;
   empresaSelect: any = null;
@@ -44,7 +45,11 @@ export class EditCuerpoColegiadoComponent implements OnInit  {
     private service: Service)
   {
 
-
+    if (this.userType != 'SUPER_ADMINISTRADOR'){
+      console.log('entro')
+      this.empresaSelect = localStorage.getItem('empresaID')
+      this.updatte();
+    }
   }
 
   ngOnInit(): void {
@@ -91,12 +96,17 @@ export class EditCuerpoColegiadoComponent implements OnInit  {
 
 
   
-  updatte(aa) {
-    this.empresaSelect = aa;
-            this.service.getCuerpoColegiadosSimple(this.empresaSelect).subscribe(
-          response =>{ 
-            this.cuerpos = response;
-          });
+  updatteFront(aa) {
+    this.empresaSelect = this.empresas[aa.selectedIndex-1].id;
+    this.updatte();
+  }
+
+
+  updatte() {
+    this.service.getCuerpoColegiadosSimple(this.empresaSelect).subscribe(
+      response =>{ 
+        this.cuerpos = response;
+      });
   }
 
   updatteCuerpo(aa) {

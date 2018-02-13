@@ -4,6 +4,7 @@ import { trigger, state, style, animate, transition }                           
 import { Service }                                      from 'app/service';
 import { Client }                                       from 'app/data-objects/cliente';
 import { Trabajo }                                      from 'app/data-objects/trabajo';
+import { FileUploader }       from 'ng2-file-upload/ng2-file-upload';
 
 import { CuerpoColegiado }                              from 'app/data-objects/cuerpoColegiado';
 import { CuerpoColegiadoSelect }                  from 'app/data-objects/cuerpoColegiadoSelect';
@@ -11,6 +12,8 @@ import { Acta }                                         from 'app/data-objects/a
 import { UsuarioActa }                                  from 'app/data-objects/usuarioActa';
 import { Usuario }                                      from 'app/data-objects/usuario';
 
+//URL to use ng2-file-upload for generate the uploader array of files
+const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 @Component({
   selector: 'create-empresa',
@@ -20,6 +23,13 @@ import { Usuario }                                      from 'app/data-objects/u
 })
 
 export class CreateEmpresaComponent implements OnInit  {
+
+  public uploader:FileUploader = new FileUploader({url: URL});
+  public hasBaseDropZoneOver:boolean = false;
+  public filesAnalyzed = [];
+  public show:boolean =true;
+  public validatedTotal = 0;
+
 
   titulo : string = 'Crear Empresa'
 
@@ -32,6 +42,8 @@ export class CreateEmpresaComponent implements OnInit  {
 
   cuerposColegiado: CuerpoColegiadoSelect[];
   empresas: any[];
+
+  imagen: string =""
 
 
   constructor( 
@@ -48,6 +60,44 @@ export class CreateEmpresaComponent implements OnInit  {
     this.refreshEmpresas();
   };
 
+
+  public fileOverBase(e:any):void {
+    this.hasBaseDropZoneOver = e;
+  }
+
+  public allFilesAnalyzed() :any {
+    let ret = true;  
+    this.filesAnalyzed.forEach( (file) => {
+      ret = ret && file.analyzed;
+    });
+    return ret;
+  }
+
+
+    public onFileDrop(e:any) {
+    let uploadedFiles = this.uploader.queue;
+    this.show = false;
+
+    if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
+
+      uploadedFiles.forEach((fileItem) =>{
+        let validatedFile = null;
+        this.filesAnalyzed.push({'fileName': fileItem._file.name, 'analyzed': false});
+
+        this.service.validateImage(fileItem._file).subscribe(
+          response => {
+
+            this.imagen = response.File.replace(' ','')
+
+          },
+          error => {
+          }
+        );
+
+      });
+    }
+  }
+
   createEmpresa(nombre, logo):void{
 
     console.log(nombre)
@@ -55,7 +105,7 @@ export class CreateEmpresaComponent implements OnInit  {
     let emp = {
       'id': '',
       'nombreEmpresa' : nombre,
-      'logoEmpresa' : logo
+      'logoEmpresa' : this.imagen
     }
 
     this.service.createEmpresa(emp).subscribe(

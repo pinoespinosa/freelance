@@ -11,6 +11,8 @@
          <td>Logo</td>
          <td></td>
          <td></td>
+         <td></td>
+
       </tr>
    </thead>
    <tbody>
@@ -50,6 +52,9 @@
             <button 
             (click)="transfer.edit=false" 
             (click)="modoCreacion=false" >Cancelar</button> 
+         </td>
+         <td *ngIf="!transfer.edit" >   
+            <create-estrategia (click)="setEmpresaLocalSto(transfer)"></create-estrategia>
          </td>
       </tr>
    </tbody>

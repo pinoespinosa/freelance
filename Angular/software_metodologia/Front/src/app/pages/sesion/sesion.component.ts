@@ -77,7 +77,7 @@ export class SesionComponent implements OnInit, OnDestroy {
 
   estadosUsuario = ["Presente", "Ausente", "Remoto"];
 
-  estrategias = ["Estrategia1", "Estratagia2", "Estrategia3"];
+  estrategias = [];
   usuarios: Usuario[];
 
   hayCommentTarea : boolean = false;
@@ -108,6 +108,11 @@ export class SesionComponent implements OnInit, OnDestroy {
         this.actasCitadas = response;
       });
 
+
+    this.service.getEstrategias(localStorage.getItem('empresaID')).subscribe(
+    response =>{ 
+      this.estrategias = response
+  });
 
   }
 

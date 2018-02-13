@@ -36,9 +36,9 @@ public interface IDataSource {
 
 	void initBD();
 
-	List<CuerpoColegiado> getCuerpoColegiadoList(String empresaID, List<String> cc);
+	List<CuerpoColegiado> getCuerpoColegiadoList(String empresaID, String token);
 
-	CuerpoColegiado createCuerpoColegiado(String empresaID, CuerpoColegiado user);
+	CuerpoColegiado createCuerpoColegiado(String empresaID, CuerpoColegiado user, String token);
 
 	CuerpoColegiado editCuerpoColegiado(CuerpoColegiado user, String empresaID);
 
@@ -108,6 +108,22 @@ public interface IDataSource {
 	void sendEmail(boolean valor);
 
 	Boolean getSendEmail();
+
+	List<String> getEstrategias(String empresa);
+
+	List<String> createEstrategia(String estrategia, String string);
+
+	List<String> quitarEstrategia(String estrategia, String empresaID);
+
+	List<String> getIndicador(String empresaID);
+
+	List<String> createIndicador(String indicador, String empresaID);
+
+	List<String> quitarIndicador(String indicador, String empresaID);
+
+	Empresa getEmpresa(String id);
+
+	List<Auth> usuariosEmpresaList(String empresaId);
 
 
 }

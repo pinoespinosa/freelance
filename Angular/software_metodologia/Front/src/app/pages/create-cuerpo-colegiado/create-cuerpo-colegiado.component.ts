@@ -6,10 +6,11 @@ import { Client }                                       from 'app/data-objects/c
 import { Trabajo }                                      from 'app/data-objects/trabajo';
 
 import { CuerpoColegiado }                              from 'app/data-objects/cuerpoColegiado';
-import { CuerpoColegiadoSelect }                  from 'app/data-objects/cuerpoColegiadoSelect';
+import { CuerpoColegiadoSelect }                        from 'app/data-objects/cuerpoColegiadoSelect';
 import { Acta }                                         from 'app/data-objects/acta';
 import { UsuarioActa }                                  from 'app/data-objects/usuarioActa';
 import { Usuario }                                      from 'app/data-objects/usuario';
+import {FormsModule, ReactiveFormsModule}               from '@angular/forms';
 
 
 @Component({
@@ -36,6 +37,7 @@ export class CreateCuerpoColegiadoComponent implements OnInit  {
 
   cuerpos: any[];
   empresas: any[];
+  usuarios: any[];
 
 
   constructor( 
@@ -45,12 +47,25 @@ export class CreateCuerpoColegiadoComponent implements OnInit  {
   {
 
     this.userType = localStorage.getItem('rol');
-    if (this.userType != 'SUPER_ADMINISTRADOR'){
-      this.empresaSelect = localStorage.getItem('empresaID')
-      this.updatte(this.empresaSelect);
+    console.log(this.userType);
 
+    if (this.userType != 'SUPER_ADMINISTRADOR'){
+      console.log('entro')
+      this.empresaSelect = localStorage.getItem('empresaID')
+      this.updatte();
     }
 
+
+/*
+    this.service.getUsuariosEmpresa(this.empresaSelect).subscribe(
+      response =>{ 
+      this.usuarios = response;
+      },
+      error =>{ 
+      },
+
+      );
+*/
 
   }
 
@@ -98,13 +113,19 @@ export class CreateCuerpoColegiadoComponent implements OnInit  {
 
 
   
-  updatte(aa) {
-    this.empresaSelect = aa;
-            this.service.getCuerpoColegiadosSimple(this.empresaSelect).subscribe(
-          response =>{ 
-            this.cuerpos = response;
-          });
+  updatteFront(aa) {
+    this.empresaSelect = this.empresas[aa.selectedIndex-1].id;
+    this.updatte();
   }
+
+
+  updatte() {
+    this.service.getCuerpoColegiadosSimple(this.empresaSelect).subscribe(
+      response =>{ 
+        this.cuerpos = response;
+      });
+  }
+
 
   updatteCuerpo(aa) {
     this.cuerposColegiadoSelect = aa;

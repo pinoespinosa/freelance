@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd Front
-ng build --prod --aot=false --output-hashing=all
+ng build --prod --aot=false
 cd dist
 
 REMP="metodologia-front\/"
@@ -28,6 +28,4 @@ sed -i "s/$REMP6/$REMP$REMP6/g" index.html
 cd ..
 cd 
 cd Downloads
-
-#scp -i "Efevisium.pem" ../freelance/Angular/software_metodologia/Front/dist/*  ubuntu@ec2-52-67-241-219.sa-east-1.compute.amazonaws.com:/home/ubuntu/apache-tomcat-8.5.14/webapps/metodologia-front
 

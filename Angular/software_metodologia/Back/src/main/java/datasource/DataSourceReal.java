@@ -9,7 +9,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +18,6 @@ import java.util.List;
 
 import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.JFrame;
 
 import org.apache.http.auth.AUTH;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,7 +41,6 @@ import data.UsuarioActa;
 import spring.ChipherTool;
 import spring.ClientWebConfig;
 import spring.EmailUtils;
-import spring.ProjectConstants;
 
 public class DataSourceReal implements IDataSource {
 
@@ -119,14 +116,14 @@ public class DataSourceReal implements IDataSource {
 		cc.setNombre("Comercial");
 		cc.setPrefijoDocs("COM");
 		cc.setTemas(new Hashtable<>());
-		cc = createCuerpoColegiado(emp.getId(), cc);
+		cc = createCuerpoColegiado(emp.getId(), cc, null);
 
 		CuerpoColegiado cc2 = new CuerpoColegiado();
 		cc2.setActas(new ArrayList<>());
 		cc2.setNombre("Gerencial");
 		cc2.setPrefijoDocs("GER");
 		cc2.setTemas(new Hashtable<>());
-		cc2 = createCuerpoColegiado(emp.getId(), cc2);
+		cc2 = createCuerpoColegiado(emp.getId(), cc2, null);
 
 		create("1234", Rol.ADMINISTRADOR, emp.getId(), Arrays.asList(cc.getId(), cc2.getId()),
 				"Andres Espinosa", "pino.espinosa91@gmail.com", "http://brandmark.io/logo-rank/random/bp.png");
@@ -231,11 +228,22 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
-	public List<CuerpoColegiado> getCuerpoColegiadoList(String empresaID, List<String> cc) {
+	public List<CuerpoColegiado> getCuerpoColegiadoList(String empresaID, String token) {
+
+		if (empresaID == null)
+			return new ArrayList<>();
+
+		String email = Auth.getUserEmail(token);
+		Auth usuerrr = null;
+
+		for (Auth string : obj.getUsers().values()) {
+			if (string.getEmail().equals(email))
+				usuerrr = string;
+		}
 
 		List<CuerpoColegiado> result = new ArrayList<>();
 
-		for (String id : cc) {
+		for (String id : usuerrr.getCcList()) {
 			result.add(getCuerpoColeg(id, empresaID));
 		}
 
@@ -245,24 +253,39 @@ public class DataSourceReal implements IDataSource {
 
 	@Override
 	public List<CuerpoColegiado> getCuerpoColegiadoList(String empresaID) {
-
 		return getEmpresa(empresaID).getColegiados();
 	}
 	
-	private Empresa getEmpresa(String id) {
+	@Override
+	public Empresa getEmpresa(String id) {
 		Empresa cc = new Empresa();
 		cc.setId(id);
 		return obj.getEmpresas().get((obj.getEmpresas().indexOf(cc)));
 	}
 
 	@Override
-	public CuerpoColegiado createCuerpoColegiado(String empresaID, CuerpoColegiado cuerpo) {
+	public CuerpoColegiado createCuerpoColegiado(String empresaID, CuerpoColegiado cuerpo, String token) {
 
 		Empresa emp = getEmpresa(empresaID);
 
+		Collection<Auth> usuariosEmpresa = new ArrayList<>();
+		
+		for (Auth string : obj.getUsers().values()) {
+			if (string.getEmpresaID() != null && string.getEmpresaID().equals(empresaID))
+				usuariosEmpresa.add(string);
+		}
+		
+		
+		
 		if (emp != null) {
 			cuerpo.setId(emp.getId() + "-" + emp.getColegiados().size());
 			emp.getColegiados().add(cuerpo);
+
+			for (Auth auth : usuariosEmpresa) {
+				auth.getCcList().add(cuerpo.getId());
+
+			}
+			
 			updateFile();
 			return cuerpo;
 		} else
@@ -391,6 +414,17 @@ public class DataSourceReal implements IDataSource {
 
 		tema.setId(ccOrig.getPrefijoDocs() + ccOrig.getTemas().size() + "");
 		tema.setFechaCreacion(System.currentTimeMillis());
+		
+		String indicadores = tema.getIndicador();
+		String[] indicadoresList = indicadores.split(",");
+		List<String> indicadoresFiltro = new ArrayList<>();
+		
+		for (String ind : indicadoresList) {
+			if (!ind.trim().equals("undefined"))
+				indicadoresFiltro.add(ind.trim());		
+		}
+		tema.setIndicador(String.join(", ", indicadoresFiltro));
+		
 		ccOrig.getTemas().put(tema.getId(), tema);
 
 		for (String ccID : cuerpoColList) {
@@ -444,15 +478,15 @@ public class DataSourceReal implements IDataSource {
 	@Override
 	public Auth authSuper(String email, String pass, String empresaID) {
 
-		Auth aa = auth(email, pass);
+		Auth regularAuth = auth(email, pass);
 		Auth bb = null;
 
-		if (!Rol.SUPER_ADMINISTRADOR.equals(aa.getRol()))
+		if (regularAuth == null || !Rol.SUPER_ADMINISTRADOR.equals(regularAuth.getRol()))
 			return null;
 
 		try {
 			ObjectMapper mapper = new ObjectMapper();
-			String value = mapper.writeValueAsString(aa);
+			String value = mapper.writeValueAsString(regularAuth);
 			bb = mapper.readValue(value, Auth.class);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -897,6 +931,73 @@ public class DataSourceReal implements IDataSource {
 	public Boolean getSendEmail() {
 		return obj.isSendJuanEmail();
 	}
+
+	@Override
+	public List<String> getEstrategias(String empresa) {
+		Empresa emp = getEmpresa(empresa);
+		return emp.getEstrategias();
+	}
+
+	@Override
+	public List<String> createEstrategia(String estrategia, String empresa) {
+
+		Empresa emp = getEmpresa(empresa);
+		emp.getEstrategias().add(estrategia);
+		updateFile();
+	
+		return emp.getEstrategias();
+	}
+
+	@Override
+	public List<String> quitarEstrategia(String estrategia, String empresaID) {
+		Empresa emp = getEmpresa(empresaID);
+		emp.getEstrategias().remove(estrategia);
+		updateFile();
+	
+		return emp.getEstrategias();
+	}
+
+	@Override
+	public List<String> getIndicador(String empresaID) {
+		Empresa emp = getEmpresa(empresaID);
+		return emp.getIndicador();
+	}
+
+	@Override
+	public List<String> createIndicador(String indicador, String empresaID) {
+
+		Empresa emp = getEmpresa(empresaID);
+		emp.getIndicador().add(indicador);
+		updateFile();
+	
+		return emp.getIndicador();
+	}
+
+	@Override
+	public List<String> quitarIndicador(String indicador, String empresaID) {
+		Empresa emp = getEmpresa(empresaID);
+		emp.getIndicador().remove(indicador);
+		updateFile();
+	
+		return emp.getIndicador();
+	}
+
+	@Override
+	public List<Auth> usuariosEmpresaList(String empresaId) {
+
+		List<Auth> hh = new ArrayList<>();
+		
+		Collection<Auth> aa = obj.getUsers().values();
+		
+		for (Auth auth : aa) {
+			if (auth.getEmpresaID()!=null && auth.getEmpresaID().equals(empresaId))
+				hh.add(auth);
+		}
+		
+		return hh;
+	}
+
+
 
 
 

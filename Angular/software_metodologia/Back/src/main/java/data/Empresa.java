@@ -10,6 +10,9 @@ public class Empresa {
 	private List<CuerpoColegiado> colegiados;
 	private Hashtable<String, Tema> temas = new Hashtable<>();
 
+	private List<String> estrategias = new ArrayList<>();
+	private List<String> indicador = new ArrayList<>();
+		
 	private String nombreEmpresa;
 	private String logoEmpresa;
 
@@ -66,6 +69,26 @@ public class Empresa {
 
 	public void setTemas(Hashtable<String, Tema> temas) {
 		this.temas = temas;
+	}
+
+	public List<String> getEstrategias() {
+		if (estrategias==null)
+			estrategias= new ArrayList<>();
+		return estrategias;
+	}
+
+	public void setEstrategias(List<String> estrategias) {
+		this.estrategias = estrategias;
+	}
+
+	public List<String> getIndicador() {
+		if (indicador==null)
+			indicador=new ArrayList<>();
+		return indicador;
+	}
+
+	public void setIndicador(List<String> indicador) {
+		this.indicador = indicador;
 	}
 
 }
