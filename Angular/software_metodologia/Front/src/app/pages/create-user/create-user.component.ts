@@ -56,7 +56,7 @@ export class CreateUserComponent implements OnInit, OnDestroy  {
         for (let cc of response) {
           this.cuerposColegiado.push(new CuerpoColegiadoSelect(cc.id, cc.nombre, cc.actas));
         }
-        this.empresaCreada = localStorage.getItem('empresa-creada');
+        this.empresaCreada = val;
 
 
       });

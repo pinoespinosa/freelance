@@ -78,7 +78,6 @@ export class CreateEmpresaComponent implements OnInit  {
     let uploadedFiles = this.uploader.queue;
     this.show = false;
 
-    if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
 
       uploadedFiles.forEach((fileItem) =>{
         let validatedFile = null;
@@ -95,7 +94,7 @@ export class CreateEmpresaComponent implements OnInit  {
         );
 
       });
-    }
+    
   }
 
   createEmpresa(nombre):void{
