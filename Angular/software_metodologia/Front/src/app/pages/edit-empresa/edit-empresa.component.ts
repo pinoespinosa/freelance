@@ -10,6 +10,10 @@ import { CuerpoColegiadoSelect }                  from 'app/data-objects/cuerpoC
 import { Acta }                                         from 'app/data-objects/acta';
 import { UsuarioActa }                                  from 'app/data-objects/usuarioActa';
 import { Usuario }                                      from 'app/data-objects/usuario';
+import { FileUploader }       from 'ng2-file-upload/ng2-file-upload';
+
+//URL to use ng2-file-upload for generate the uploader array of files
+const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
 
 @Component({
@@ -20,6 +24,12 @@ import { Usuario }                                      from 'app/data-objects/u
 })
 
 export class EditEmpresaComponent implements OnInit  {
+
+  public uploader:FileUploader = new FileUploader({url: URL});
+  public hasBaseDropZoneOver:boolean = false;
+  public filesAnalyzed = [];
+  public show:boolean =true;
+  public validatedTotal = 0;
 
   titulo : string = 'Administrar Empresas'
 
@@ -33,6 +43,8 @@ export class EditEmpresaComponent implements OnInit  {
   cuerposColegiado: CuerpoColegiadoSelect[];
   empresas: any[];
 
+  imagen: string =""
+
 
   constructor( 
     private router: Router, 
@@ -44,18 +56,60 @@ export class EditEmpresaComponent implements OnInit  {
 
   }
 
+
+
+  public fileOverBase(e:any):void {
+    this.hasBaseDropZoneOver = e;
+  }
+
+  public allFilesAnalyzed() :any {
+    let ret = true;  
+    this.filesAnalyzed.forEach( (file) => {
+      ret = ret && file.analyzed;
+    });
+    return ret;
+  }
+
+
+    public onFileDrop(e:any) {
+    let uploadedFiles = this.uploader.queue;
+    this.show = false;
+
+    if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
+
+      uploadedFiles.forEach((fileItem) =>{
+        let validatedFile = null;
+        this.filesAnalyzed.push({'fileName': fileItem._file.name, 'analyzed': false});
+
+        this.service.validateImage(fileItem._file).subscribe(
+          response => {
+
+            this.imagen = response.File.replace(' ','')
+
+          },
+          error => {
+          }
+        );
+
+      });
+    }
+  }
+
+
+
+
   ngOnInit(): void {
     this.refreshEmpresas();
   };
 
-  updateEmpresa(id, nombre, logo):void{
+  updateEmpresa(id, nombre):void{
 
     console.log(nombre)
 
     let emp = {
       'id': id,
       'nombreEmpresa' : nombre,
-      'logoEmpresa' : logo
+      'logoEmpresa' : this.imagen
     }
 
     this.service.updateEmpresa(emp).subscribe(

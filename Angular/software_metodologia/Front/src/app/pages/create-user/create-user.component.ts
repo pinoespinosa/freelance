@@ -35,10 +35,11 @@ export class CreateUserComponent implements OnInit, OnDestroy  {
     private service: Service)
   {
     this.cuerposColegiado = [];
+    this.refreshAll();
 
   }
 
-  temporizador = Observable.interval(2000).map(
+  temporizador = Observable.interval(100).map(
   ()=> this.refresh()
   );
 
@@ -73,7 +74,7 @@ return true;
 
   ngOnInit(): void {
 
-  this.refresh();
+    this.refreshAll();
 
   };
 

@@ -98,9 +98,7 @@ export class CreateEmpresaComponent implements OnInit  {
     }
   }
 
-  createEmpresa(nombre, logo):void{
-
-    console.log(nombre)
+  createEmpresa(nombre):void{
 
     let emp = {
       'id': '',

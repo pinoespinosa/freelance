@@ -4,9 +4,8 @@
 <change-state [(visible)]="visiblePop">
 <h2 style="margin: 10px;margin-bottom: 20px;" >{{titulo}}</h2>
 <input #nombreEmpresa type="text" name="" placeholder="Nombre Empresa"   name="nombreAux" ng-control="nombreAux" [(ngModel)]="nombreAux" >
-<input #logoEmpresa type="text" name="" placeholder="Logo Empresa" (change)="logoAux=logoEmpresa.value" >
 
-<div class="col-2" style="font-size: x-small;padding-top: 10px;padding-left: 37px;margin: 0px;text-align: center;" >
+<div class="col-8" style="font-size: x-small;padding-top: 10px;padding-left: 37px;margin: 0px;text-align: center;" >
 Adjuntar un archivo (max 1 MB)
 	<input type="file" ng2FileSelect [uploader]="uploader" (change)="onFileDrop($event)" multiple [hidden]="false" accept=".gif,.jpg,.png" style="color: #DCE2F4;width: 100%;">
 </div>
@@ -14,7 +13,7 @@ Adjuntar un archivo (max 1 MB)
 <div class="row">
    <div class="col-6"> 
       <button (click)="visiblePop=!visiblePop" class="btn" style="width: 100%;background: #72C585" 
-      [disabled]="nombreAux == ''" (click)="createEmpresa(nombreAux, logoAux)" >Listo</button>
+      [disabled]="nombreAux == ''" (click)="createEmpresa(nombreAux)" >Listo</button>
    </div>
 </div>
 </change-state>
