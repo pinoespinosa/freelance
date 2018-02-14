@@ -76,7 +76,7 @@ export class SesionComponent implements OnInit, OnDestroy {
   indiceTAREA = 0;
 
   estadosUsuario = ["Presente", "Ausente", "Remoto"];
-
+  indicadores = [];
   estrategias = [];
   usuarios: Usuario[];
 
@@ -102,6 +102,10 @@ export class SesionComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private route: ActivatedRoute, private service: Service) {
 
     this.logo = localStorage.getItem('logo');
+    localStorage.setItem('empresa-creada',localStorage.getItem('empresaID'));
+
+    this.refreshIndicadores()
+
 
     let loading = this.service.getActasCitadas().subscribe(
       response => {
@@ -143,6 +147,15 @@ export class SesionComponent implements OnInit, OnDestroy {
 
   };
 
+
+  refreshIndicadores() {
+
+    this.service.getIndicador(localStorage.getItem('empresaID')).subscribe(
+    response =>{ 
+      this.indicadores = response
+  });
+
+}
   public onFileDrop(e:any) {
     let uploadedFiles = this.uploader.queue;
     this.show = false;

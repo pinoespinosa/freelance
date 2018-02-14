@@ -89,6 +89,8 @@ export class Sesion2Component implements OnInit, OnDestroy {
 
   constructor(private router: Router, private route: ActivatedRoute, private service: Service) {
 
+      localStorage.setItem('empresa-creada',localStorage.getItem('empresaID'));
+
     this.service.getEstrategias(localStorage.getItem('empresaID')).subscribe(
     response =>{ 
       this.estrategias = response

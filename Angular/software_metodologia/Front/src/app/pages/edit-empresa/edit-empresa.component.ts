@@ -36,6 +36,7 @@ export class EditEmpresaComponent implements OnInit  {
   visiblePop : boolean = false;
 
   modoCreacion : boolean = false;
+  imagenCargando : boolean = false;
 
   nombreAux : string = ''
   logoAux : string = ''
@@ -75,24 +76,28 @@ export class EditEmpresaComponent implements OnInit  {
     let uploadedFiles = this.uploader.queue;
     this.show = false;
 
-    if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
 
       uploadedFiles.forEach((fileItem) =>{
         let validatedFile = null;
         this.filesAnalyzed.push({'fileName': fileItem._file.name, 'analyzed': false});
+        this.imagenCargando = true;
 
         this.service.validateImage(fileItem._file).subscribe(
           response => {
 
             this.imagen = response.File.replace(' ','')
+            this.imagenCargando = false;
 
           },
           error => {
+            this.imagenCargando = false;
+
           }
         );
+        alert("Espere unos segundos... la imagen se esta cargando")
 
       });
-    }
+    
   }
 
 

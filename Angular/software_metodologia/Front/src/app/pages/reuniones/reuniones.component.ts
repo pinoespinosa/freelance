@@ -44,6 +44,8 @@ export class ReunionesComponent implements OnInit  {
     private service: Service)
   	{
   		this.logo = localStorage.getItem('logo');
+      localStorage.setItem('empresa-creada',localStorage.getItem('empresaID'));
+
   	}
 
   ngOnInit(): void {

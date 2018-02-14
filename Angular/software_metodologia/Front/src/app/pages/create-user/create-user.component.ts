@@ -39,9 +39,15 @@ export class CreateUserComponent implements OnInit, OnDestroy  {
 
   }
 
-  temporizador = Observable.interval(100).map(
-  ()=> this.refresh()
-  );
+
+
+     temporizador = Observable.interval(100 * 1).subscribe(x => { 
+
+      this.refresh()
+
+    });
+
+
 
   ngOnDestroy(): void {
   }
@@ -63,13 +69,11 @@ export class CreateUserComponent implements OnInit, OnDestroy  {
 }
 
   refresh():boolean{
-
     if (this.empresaCreada != localStorage.getItem('empresa-creada'))
-{
-
-    this.refreshAll();
-}
-return true;
+    {
+      this.refreshAll();
+    }
+    return true;
   }
 
   ngOnInit(): void {
@@ -117,6 +121,7 @@ return true;
         localStorage.setItem('REFRESH_USERS', 'TRUE');
       },
       error =>{ 
+        console.log(error)
         alert("Ya existe un usuario con ese email registrado. No se ha creado el usuario")
         localStorage.setItem('REFRESH_USERS', 'TRUE');
       },

@@ -119,11 +119,8 @@ public class AuthController {
 
 	) {
 
-		if (Rol.SUPER_ADMINISTRADOR.equals(Auth.getUserRol(token))) {
-
 			return dataSource.create(pass, rol, empresaID, ccList, nombre, email, logo);
-		}
-		return null;
+
 	}
 
 	

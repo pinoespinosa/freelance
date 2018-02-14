@@ -224,6 +224,14 @@ public class DataSourceReal implements IDataSource {
 		Empresa e = getEmpresa(empresaID);
 		CuerpoColegiado cc = new CuerpoColegiado();
 		cc.setId(cuerpoColegiadoID);
+
+		for (CuerpoColegiado cuCol : e.getColegiados()) {
+
+			if (cuCol.getEmpresa() == null)
+				cuCol.setEmpresa(e);
+
+		}
+
 		return e.getColegiados().get((e.getColegiados().indexOf(cc)));
 	}
 
@@ -243,10 +251,15 @@ public class DataSourceReal implements IDataSource {
 
 		List<CuerpoColegiado> result = new ArrayList<>();
 
-		for (String id : usuerrr.getCcList()) {
-			result.add(getCuerpoColeg(id, empresaID));
-		}
+		if (Rol.SUPER_ADMINISTRADOR.equals(usuerrr.getRol()))
+			result.addAll(getCuerpoColegiadoList(empresaID));
+		else {
 
+			for (String id : usuerrr.getCcList()) {
+				result.add(getCuerpoColeg(id, empresaID));
+			}
+
+		}
 		return result;
 
 	}
@@ -424,6 +437,8 @@ public class DataSourceReal implements IDataSource {
 				indicadoresFiltro.add(ind.trim());		
 		}
 		tema.setIndicador(String.join(", ", indicadoresFiltro));
+		
+		
 		
 		ccOrig.getTemas().put(tema.getId(), tema);
 

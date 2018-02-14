@@ -5,18 +5,77 @@
     "id" : "0",
     "colegiados" : [ {
       "id" : "0-0",
-      "nombre" : "Comercial",
-      "prefijoDocs" : "COMM",
-      "actas" : [ ],
-      "temasId" : [ ]
+      "nombre" : "dddddddddd",
+      "prefijoDocs" : "ddddddd",
+      "actas" : [ {
+        "id" : "ddddddd_0-0-0",
+        "numeroActa" : "ddddddd000",
+        "fecha" : 1518583232963,
+        "fechaCierre" : 0,
+        "lugar" : "ff",
+        "ciudad" : "f",
+        "paso" : "3",
+        "estado" : "Citada",
+        "integrantes" : [ {
+          "userID" : "2",
+          "nombre" : "asasa",
+          "email" : "aaa@a.com",
+          "finEnMente" : "",
+          "estado" : "Presente"
+        } ],
+        "finMenteGral" : "f",
+        "temas" : [ ],
+        "comentarioAdicionales" : "",
+        "seCumpliofinEnMente" : "",
+        "elTiempoFueSuficiente" : "",
+        "huboInconvenientes" : "",
+        "tieneSugerencias" : "",
+        "redaccionDeTareasOk" : "",
+        "huboInconvenientesTexto" : "",
+        "tieneSugerenciasTexto" : "",
+        "horaInicio" : "02:41",
+        "fechaReunion" : "2018-02-15",
+        "horaFinal" : "02:41"
+      } ],
+      "temasId" : [ "ddddddd0" ]
     } ],
-    "temas" : { },
+    "temas" : {
+      "ddddddd0" : {
+        "id" : "ddddddd0",
+        "fechaCreacion" : 1518583275197,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : null,
+        "indicador" : "12 - ddd, ",
+        "detalle" : "aad",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta ddddddd000",
+          "idActa" : "ddddddd_0-0-0",
+          "date" : 1518583275197
+        }, {
+          "texto" : "ddddddd000 - adada",
+          "idActa" : "ddddddd_0-0-0",
+          "date" : 1518583275197
+        } ]
+      }
+    },
     "estrategias" : [ ],
-    "indicador" : [ ],
-    "nombreEmpresa" : "Empresa1",
-    "logoEmpresa" : "assets/1518551045246Casos_de_uso.jpg"
+    "indicador" : [ "12 - ddd" ],
+    "nombreEmpresa" : "aaaa",
+    "logoEmpresa" : "http://www.tiptoncommunications.com/components/com_easyblog/themes/wireframe/images/placeholder-image.png"
   } ],
   "users" : {
+    "wrMf0vU4vI4z2zXkan3MnQ==" : {
+      "userID" : "2",
+      "rol" : "ADMINISTRADOR",
+      "nombre" : "asasa",
+      "email" : "aaa@a.com",
+      "logo" : "dd",
+      "empresaID" : "0",
+      "empresaNombre" : null,
+      "ccList" : [ "0-0" ],
+      "token" : ""
+    },
     "DlTEyk6ub5y5cBJHOuQbD/YqpTsuJxImPH7MF+D/Ltw=" : {
       "userID" : "0",
       "rol" : "SUPER_ADMINISTRADOR",

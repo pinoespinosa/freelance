@@ -13,7 +13,7 @@ Adjuntar un archivo (max 1 MB)
 <div class="row">
    <div class="col-6"> 
       <button (click)="visiblePop=!visiblePop" class="btn" style="width: 100%;background: #72C585" 
-      [disabled]="nombreAux == ''" (click)="createEmpresa(nombreAux)" >Listo</button>
+      [disabled]="nombreAux == '' && !imagenCargando" (click)="createEmpresa(nombreAux)" >Listo</button>
    </div>
 </div>
 </change-state>

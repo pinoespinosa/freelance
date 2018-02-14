@@ -91,9 +91,6 @@ public class CuerpoColegiado {
 		if (temas == null){
 			temas = new Hashtable<String, Tema>(){
 
-				/**
-				 * 
-				 */
 				private static final long serialVersionUID = 1L;
 
 				@Override

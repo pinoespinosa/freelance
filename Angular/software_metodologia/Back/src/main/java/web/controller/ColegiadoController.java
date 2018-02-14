@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.common.base.Strings;
+
 import data.Acta;
 import data.Auth;
 import data.Auth.Rol;
@@ -35,6 +37,7 @@ public class ColegiadoController {
 	@RequestMapping(value = "/cuerpocolegiado", method = RequestMethod.GET)
 	public List<CuerpoColegiado> getCuerpoColegiadoList(
 			@RequestHeader("Acces-Token") String token) {
+		
 		List<CuerpoColegiado> aa =  dataSource.getCuerpoColegiadoList(Auth.getEmpresaID(token), token);
 		
 		List<CuerpoColegiado> aux = new ArrayList<>();
@@ -70,7 +73,7 @@ public class ColegiadoController {
 	public List<CuerpoColegiado> getCuerpoColegiadoList(
 			@RequestHeader("Acces-Token") String token, @RequestParam String empresaID) {
 		
-		if (empresaID != null && !empresaID.equals("null"))
+		if ( !Strings.isNullOrEmpty(empresaID) && !empresaID.equals("null"))
 			return dataSource.getCuerpoColegiadoList(empresaID);
 		
 		return new ArrayList<>();
@@ -92,6 +95,7 @@ public class ColegiadoController {
 	@RequestMapping(value = "/cuerpocolegiado/{cuerpoColegiadoID}/otros", method = RequestMethod.GET)
 	public List<CuerpoColegiado> getCuerpoColegiadoOtros(@PathVariable final String cuerpoColegiadoID,
 			@RequestHeader("Acces-Token") String token) {
+		
 		List<CuerpoColegiado> list = dataSource.getCuerpoColegiadoList(Auth.getEmpresaID(token),
 				token);
 

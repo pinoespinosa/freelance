@@ -47,7 +47,7 @@ Adjuntar un archivo (max 1 MB)
          
          </td>
          <td *ngIf="transfer.edit" style="padding: 2px;vertical-align: middle;" >
-            <button 
+            <button [disabled]="!imagenCargando"
             (click)="transfer.edit=false"
             (click)="modoCreacion=true" 
             (click)="updateEmpresa(transfer.id, nombreAux)" >Guardar</button> 
