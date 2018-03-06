@@ -187,7 +187,6 @@ export class Sesion2Component implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
 
-    alert("Se ha abandonado la sesión, se dejará constancia en el acta.")
 
   };
 
@@ -474,13 +473,14 @@ export class Sesion2Component implements OnInit, OnDestroy {
 
     return ff;
   }
-  addComentario(com): void {
+  addComentario(com, obj): void {
 
     if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
       this.service.createComentario(
         this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, com).subscribe(
         response => {
           this.temaActual = response;
+          obj.value = ''
         }
       );
     }
@@ -497,13 +497,15 @@ export class Sesion2Component implements OnInit, OnDestroy {
   }
 
 
-  addComentarioTarea(com): void {
+  addComentarioTarea(com, obj): void {
 
     if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
       this.service.createComentarioTarea(
         this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, this.tareaActual.id, com).subscribe(
         response => {
           this.tareaActual = response;
+          obj.value = ''
+
         }
       );
     }
@@ -612,11 +614,12 @@ export class Sesion2Component implements OnInit, OnDestroy {
 
 
   closeActa() {
-    alert('Se enviará un email con las minutas del acta y el resumen por PDF de la misma');
+    alert('Se enviará un email con las minutas del acta y el resumen por PDF de la misma. Espere unos instantes ...');
 
                 this.service.closeActa(this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.actaSelect.id, this.actaSelect).subscribe(
               response => {
 
+                this.router.navigate(['/home']);
 
               });
 

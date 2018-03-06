@@ -49,7 +49,7 @@
                <label style="margin: 0px;" >Hora de inicio</label> 
             </div>
             <div  class="col-7" >
-               <input #horaInicio type="time" style="width: 100%;" >
+               <input #horaInicio type="time" style="width: 100%;" value='08:00'>
             </div>
          </div>
 
@@ -58,7 +58,7 @@
                <label style="margin: 0px;" >Hora de fin</label> 
             </div>
             <div class="col-7" >
-            <input #horaFinal type="time" style="width: 100%;" >
+            <input #horaFinal type="time" style="width: 100%;" value='10:00'>
             </div>
          </div>
 
@@ -70,7 +70,7 @@
          reqq.value == '' || 
          horaInicio.value == '' || 
          horaFinal.value == '' || 
-         fecha.value == '' " 
+         fecha.value == '' || !isValidateRangeHour(horaInicio.value, horaFinal.value)" 
 
          (click)="setPaso2Info(lugar.value, ciudad.value, reqq.value, fecha.value, horaInicio.value, horaFinal.value)" ><b>Continuar</b></button>
       </div>

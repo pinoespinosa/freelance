@@ -16,17 +16,20 @@ import json, sys
 
 def descargarResultado(URL, TIMEOUT, INTENTS):
 
+	print(URL)
+
 	tries=0;
 	pagina='';
         
 	if not URL:
-		return '';
+		return 'FALLE';
 	req = urllib.request.Request( URL );
 
 	while tries<11:
 		try:
 			response = urllib.request.urlopen(req, timeout=TIMEOUT)
 			html = response.read()
+			print('test')
 			pagina = BeautifulSoup(html, 'html.parser');
 			tries = 12;
 		except KeyboardInterrupt:

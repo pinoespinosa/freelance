@@ -452,14 +452,16 @@ export class SesionComponent implements OnInit, OnDestroy {
 
     return ff;
   }
-  addComentario(com): void {
+  addComentario(com, obj): void {
 
     if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
       this.service.createComentario(
         this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, com).subscribe(
         response => {
           this.temaActual = response;
-        }
+            if (obj){
+              obj.value = ''
+            }        }
         );
         this.hayCommentTema = true;
       }
@@ -504,13 +506,16 @@ export class SesionComponent implements OnInit, OnDestroy {
 
 
 
-    addComentarioTarea(com): void {
+    addComentarioTarea(com, obj): void {
 
       if (confirm("Esta a punto de agregar un comentario. ¿Desea continuar?")) {
         this.service.createComentarioTarea(
           this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, this.tareaActual.id, com).subscribe(
           response => {
             this.tareaActual = response;
+            if (obj){
+              obj.value = ''
+            }
           }
           );
           this.hayCommentTarea = true;
@@ -587,6 +592,8 @@ export class SesionComponent implements OnInit, OnDestroy {
                 if (this.hayCommentTarea || confirm("No ha dejado comentarios en esta tarea. ¿Desea avanzar de todos modos?")){
                   done = this.indiceTareaMas();
                   this.hayCommentTarea = false;
+                  this.addComentarioTarea(this.actaSelect.id + '___' + this.actaSelect.numeroActa + ' - Sin Comentarios', null);
+
                 }
 
                 if (!done && (this.hayCommentTema || confirm("No ha dejado comentarios en este tema. ¿Desea avanzar de todos modos?"))){
@@ -594,7 +601,7 @@ export class SesionComponent implements OnInit, OnDestroy {
 
                   if (!this.indiceTemaMas()){
                     this.checkAvanzarTareas();
-
+                    this.addComentario(this.actaSelect.id + '___' + this.actaSelect.numeroActa+' - Sin Comentarios', null );
                   }
                 }
 

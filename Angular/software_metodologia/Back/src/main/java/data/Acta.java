@@ -19,7 +19,10 @@ public class Acta {
 	private String estado;
 
 	private List<UsuarioActa> integrantes;
+	private String integranteAutorActa;
+	private String cuerpoColegiadoNombre;
 
+	
 	private String finMenteGral;
 
 	private List<Comentario> temas;
@@ -227,5 +230,21 @@ public class Acta {
 
 	public void setHuboInconvenientesTexto(String huboInconvenientesTexto) {
 		this.huboInconvenientesTexto = huboInconvenientesTexto;
+	}
+
+	public String getIntegranteAutorActa() {
+		return integranteAutorActa;
+	}
+
+	public void setIntegranteAutorActa(String integranteAutorActa) {
+		this.integranteAutorActa = integranteAutorActa;
+	}
+
+	public String getCuerpoColegiadoNombre() {
+		return cuerpoColegiadoNombre;
+	}
+
+	public void setCuerpoColegiadoNombre(String cuerpoColegiadoNombre) {
+		this.cuerpoColegiadoNombre = cuerpoColegiadoNombre;
 	}
 }

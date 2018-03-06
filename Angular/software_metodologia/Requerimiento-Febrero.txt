@@ -1,0 +1,37 @@
+
+1 - En administrar, ponerle al logo ir al inicio
+
+2 - Validar que la fecha de inicio sea mayor a la del final en la citación a la reunión
+
+3 - Poner una hora por defecto en la hora de inicio y final, a las 8 am
+
+4 - Solo puede administrar una reunion quien la creo.
+
+5 - Reprogramar reunion en tiempo y personas.
+
+6 - En el combo de administrar una reunion se debe mostrara ademas del Acta pfv011 {fecha} + {cuerpoColegiado}
+
+7 - Te estoy citando a la reunion PFV001 del {cuerpoColegiado} + .....
+
+8 - Cambiar el email de donde salen los correos a 
+info@efevisium.com
+71685471
+
+9 - El final del email seria, favor responder con el fin en mente aqui, y ahi poner un send to, el que cito.
+
+10 - Limpiar la pantalla despues de agregar un cometario
+
+11 - Estrategias, indicadores y 1° comentario van en entre el titulo y el recuadro de texto, por afuera
+
+12 - Poner los comentarios de mas nuevos a mas viejos.
+
+13 - Revisar lo de agregar tareas
+
+14 - Agregar boton de volver en la parte de las tareas
+
+15 - Revisar los pdf que envia el de resumen de la reunion
+
+16 - Se deberia mostrar todas las actas
+
+
+dcanaveral@muma.co

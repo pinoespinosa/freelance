@@ -128,6 +128,9 @@ export class ReunionesComponent implements OnInit  {
 
   setPaso2Info(lugar, ciudad, finMente, fecha, horaInicio, horaFinal):void{
 
+    console.log(horaInicio)
+    console.log(horaFinal)
+
     this.actaCreada.lugar = lugar;
     this.actaCreada.ciudad = ciudad;
     this.actaCreada.finMenteGral = finMente;
@@ -185,7 +188,19 @@ export class ReunionesComponent implements OnInit  {
 
       }         
       );
-
   }
+
+  isValidateRangeHour(inicio, final): boolean {
+  
+    let hora1 = inicio.split(':')[0]
+    let hora2 = final.split(':')[0]
+
+    let min1 = inicio.split(':')[1]
+    let min2 = final.split(':')[1]
+
+  return hora2 > hora1 || (hora2 == hora1 && min2 > min1)
+
+
+}
 
 }

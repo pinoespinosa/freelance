@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -27,6 +28,8 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
 
+import com.google.common.collect.Lists;
+
 import net.fortuna.ical4j.data.CalendarOutputter;
 import net.fortuna.ical4j.model.Calendar;
 import net.fortuna.ical4j.model.Component;
@@ -44,6 +47,14 @@ import net.fortuna.ical4j.util.UidGenerator;
 public class EmailUtils {
 
 	private static String SMTP_HOST = "smtp.gmail.com";
+//	private static String EMAIL = "techsystemtandil@gmail.com";
+//	private static String EMAIL_PASSWORD = "36442114";
+//	private static String EMAIL_FROM = "info@efevisium.com";
+
+	private static String EMAIL = "plataformaefevisium@gmail.com";
+	private static String EMAIL_PASSWORD = "71685471";
+
+	
 
 	public static void sendEmail(String from, List<String> toAddressesList, String title, String messageText)
 			throws UnsupportedEncodingException, AddressException {
@@ -57,7 +68,7 @@ public class EmailUtils {
 		Session session = Session.getInstance(properties, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("techsystemtandil@gmail.com", "36442114");
+				return new PasswordAuthentication(EMAIL, EMAIL_PASSWORD);
 			}
 		});
 
@@ -67,6 +78,7 @@ public class EmailUtils {
 
 			// Set From: header field of the header.
 			message.setFrom(new InternetAddress(from));
+			message.setReplyTo( new InternetAddress[] { new InternetAddress(from) } );
 
 			InternetAddress[] toAddresses = new InternetAddress[toAddressesList.size()];
 			int pos = 0;
@@ -103,7 +115,7 @@ public class EmailUtils {
 		Session session = Session.getInstance(properties, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("techsystemtandil@gmail.com", "36442114");
+				return new PasswordAuthentication(EMAIL, EMAIL_PASSWORD);
 			}
 		});
 
@@ -112,7 +124,8 @@ public class EmailUtils {
 			MimeMessage message = new MimeMessage(session);
 
 			// Set From: header field of the header.
-			message.setFrom(new InternetAddress("techsystemtandil@gmail.com"));
+			message.setFrom(new InternetAddress(from));
+			message.setReplyTo( new InternetAddress[] { new InternetAddress(from) } );
 
 			InternetAddress[] toAddresses = new InternetAddress[toAddressesList.size()];
 			int pos = 0;
@@ -166,7 +179,8 @@ public class EmailUtils {
 		Session session = Session.getInstance(properties, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("techsystemtandil@gmail.com", "36442114");
+				return new PasswordAuthentication(EMAIL, EMAIL_PASSWORD);
+
 			}
 		});
 
@@ -177,8 +191,9 @@ public class EmailUtils {
 			MimeMessage message = new MimeMessage(session);
 
 			// Set From: header field of the header.
-			message.setFrom(new InternetAddress("techsystemtandil@gmail.com"));
-
+			message.setFrom(new InternetAddress(from));
+			message.setReplyTo( new InternetAddress[] { new InternetAddress(from) } );
+			
 			InternetAddress[] toAddresses = new InternetAddress[toAddressesList.size()];
 			int pos = 0;
 			for (String toAdd : toAddressesList) {

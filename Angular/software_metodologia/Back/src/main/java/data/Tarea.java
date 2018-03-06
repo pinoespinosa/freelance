@@ -10,7 +10,7 @@ public class Tarea {
 	private String detalle;
 	private UsuarioActa responsable;
 
-	private List<String> eventos;
+	private ArrayList<String> eventos;
 
 	public String getId() {
 		return id;
@@ -28,13 +28,13 @@ public class Tarea {
 		this.estado = estado;
 	}
 
-	public List<String> getEventos() {
+	public ArrayList<String> getEventos() {
 		if (eventos==null)
 			eventos = new ArrayList<String>();
 		return eventos;
 	}
 
-	public void setEventos(List<String> eventos) {
+	public void setEventos(ArrayList<String> eventos) {
 		this.eventos = eventos;
 	}
 

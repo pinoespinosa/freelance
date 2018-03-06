@@ -361,10 +361,22 @@ public class DataSourceReal implements IDataSource {
 		for (Tema tema : temasList) {
 			tList.add(tema.toString());
 		}
+			
+		acta.setIntegranteAutorActa(email);
+		acta.setCuerpoColegiadoNombre(orig.getNombre());
 		
-		String cuerpoEmail = "Te estoy citando a la reunion " + acta.getNumeroActa() + 
-				" a concretarse " + acta.getFechaReunion() + " entre las " + acta.getHoraInicio() + " y las " + acta.getHoraFinal() +  
-				" en: " + acta.getLugar() + ", " + acta.getCiudad()+ ".\nEl fin en mente de la reunion es " + acta.getFinMenteGral() + "\n\nLos temas a tratar son:\n\n" + String.join("\n", tList) + "\n\nFavor de responder con el fin en mente individual.";
+		String cuerpoEmail = 
+				"Te estoy citando a la reunion " + acta.getNumeroActa() + 
+				" del cuerpo colegiado " + acta.getCuerpoColegiadoNombre() + 
+				" a concretarse " + acta.getFechaReunion() + 
+				" entre las " + acta.getHoraInicio() + 
+				" y las " + acta.getHoraFinal() + 
+				" en: " + acta.getLugar() + ", " + acta.getCiudad() + ".\n"+
+				"El fin en mente de la reunion es " + acta.getFinMenteGral() + "\n\n" +
+				
+				"Los temas a tratar son:\n\n" + String.join("\n", tList) + "\n\n"+
+				
+				"Favor de responder con el fin en mente individual.";
 		
 		if (sendEmail)
 			EmailUtils.sendEmailAttachFileCalendar(email, emailList, acta.getNumeroActa() + " - " + orig.getNombre(),cuerpoEmail
@@ -448,7 +460,10 @@ public class DataSourceReal implements IDataSource {
 		}
 
 		tema.getEventos().add(new Evento(actaID, "Se ha creado el tema en el acta " + acta.getNumeroActa(), System.currentTimeMillis()));
-		addComentarioToTema(cuerpoColegiadoID, tema.getId(), actaID + "___" + acta.getNumeroActa() + " - " + comm, empresaID);
+		
+		tema.setDetalle(comm);
+		
+	//	addComentarioToTema(cuerpoColegiadoID, tema.getId(), actaID + "___" + acta.getNumeroActa() + " - " + comm, empresaID);
 		updateFile();
 		return tema;
 	}
@@ -607,7 +622,7 @@ public class DataSourceReal implements IDataSource {
 	public Tema addComentarioToTema(String cuerpoColegiadoID, String temaID, String comentario, String empresaID) {
 
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
-		ccOrig.getTemas().get(temaID).getEventos().add(new Evento(comentario.split("___")[0],comentario.split("___")[1], System.currentTimeMillis()));
+		ccOrig.getTemas().get(temaID).getEventos().add(0,new Evento(comentario.split("___")[0],comentario.split("___")[1], System.currentTimeMillis()));
 		updateFile();
 		return ccOrig.getTemas().get(temaID);
 
@@ -645,7 +660,7 @@ public class DataSourceReal implements IDataSource {
 		Tarea t = new Tarea();
 		t.setId(tareaID);
 		Tarea aa = tema.getTareas().get(tema.getTareas().indexOf(t));
-		aa.getEventos().add(comentario.split("___")[1]);
+		aa.getEventos().add(0,comentario.split("___")[1]);
 		updateFile();
 		return aa;
 	}

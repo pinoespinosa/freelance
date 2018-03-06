@@ -13,7 +13,7 @@ public class Tema {
 	
 	private String detalle;
 	private List<Tarea> tareas;
-	private List<Evento> eventos;
+	private ArrayList<Evento> eventos;
 
 	public String getId() {
 		return id;
@@ -31,13 +31,13 @@ public class Tema {
 		this.estado = estado;
 	}
 
-	public List<Evento> getEventos() {
+	public ArrayList<Evento> getEventos() {
 		if (eventos==null)
 			eventos = new ArrayList<Evento>();
 		return eventos;
 	}
 
-	public void setEventos(List<Evento> eventos) {
+	public void setEventos(ArrayList<Evento> eventos) {
 		this.eventos = eventos;
 	}
 

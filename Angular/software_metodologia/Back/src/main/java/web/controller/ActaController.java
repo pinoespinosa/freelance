@@ -119,12 +119,14 @@ public class ActaController {
 		List<CuerpoColegiado> ccList = dataSource.getCuerpoColegiadoList(Auth.getEmpresaID(token),
 				token);
 
+		String email = Auth.getUserEmail(token);
+		
 		List<Acta> filtradas = new ArrayList<>();
 
 		for (CuerpoColegiado cc : ccList) {
 
 			for (Acta acta : cc.getActas()) {
-				if ("Citada".equals(acta.getEstado()))
+				if ("Citada".equals(acta.getEstado()) && email.equals(acta.getIntegranteAutorActa()))
 					filtradas.add(acta);
 			}
 
