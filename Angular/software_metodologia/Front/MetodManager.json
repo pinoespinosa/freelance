@@ -175,8 +175,8 @@
         "fechaCierre" : 0,
         "lugar" : "s",
         "ciudad" : "s",
-        "paso" : "0",
-        "estado" : "Citada",
+        "paso" : "5",
+        "estado" : "Cerrado",
         "integrantes" : [ {
           "userID" : "2",
           "nombre" : "asasa",
@@ -188,18 +188,18 @@
           "nombre" : "Andres",
           "email" : "ae@qbkconsulting.com",
           "finEnMente" : "",
-          "estado" : ""
+          "estado" : "Presente"
         } ],
         "integranteAutorActa" : "juanloa@efevisium.com",
         "cuerpoColegiadoNombre" : "dddddddddd",
         "finMenteGral" : "s",
         "temas" : [ ],
         "comentarioAdicionales" : "",
-        "seCumpliofinEnMente" : "",
-        "elTiempoFueSuficiente" : "",
-        "huboInconvenientes" : "",
-        "tieneSugerencias" : "",
-        "redaccionDeTareasOk" : "",
+        "seCumpliofinEnMente" : "false",
+        "elTiempoFueSuficiente" : "false",
+        "huboInconvenientes" : "false",
+        "tieneSugerencias" : "false",
+        "redaccionDeTareasOk" : "false",
         "huboInconvenientesTexto" : "",
         "tieneSugerenciasTexto" : "",
         "horaInicio" : "08:00",
@@ -212,8 +212,8 @@
         "fechaCierre" : 0,
         "lugar" : "a",
         "ciudad" : "a",
-        "paso" : "3",
-        "estado" : "Citada",
+        "paso" : "5",
+        "estado" : "Cerrado",
         "integrantes" : [ {
           "userID" : "2",
           "nombre" : "asasa",
@@ -232,11 +232,11 @@
         "finMenteGral" : "a",
         "temas" : [ ],
         "comentarioAdicionales" : "",
-        "seCumpliofinEnMente" : "",
-        "elTiempoFueSuficiente" : "",
-        "huboInconvenientes" : "",
-        "tieneSugerencias" : "",
-        "redaccionDeTareasOk" : "",
+        "seCumpliofinEnMente" : "false",
+        "elTiempoFueSuficiente" : "false",
+        "huboInconvenientes" : "false",
+        "tieneSugerencias" : "false",
+        "redaccionDeTareasOk" : "false",
         "huboInconvenientesTexto" : "",
         "tieneSugerenciasTexto" : "",
         "horaInicio" : "08:00",
@@ -249,8 +249,8 @@
         "fechaCierre" : 0,
         "lugar" : "A",
         "ciudad" : "A",
-        "paso" : "0",
-        "estado" : "Citada",
+        "paso" : "5",
+        "estado" : "Cerrado",
         "integrantes" : [ {
           "userID" : "2",
           "nombre" : "asasa",
@@ -262,18 +262,18 @@
           "nombre" : "Andres",
           "email" : "ae@qbkconsulting.com",
           "finEnMente" : "",
-          "estado" : ""
+          "estado" : "Presente"
         } ],
         "integranteAutorActa" : "juanloa@efevisium.com",
         "cuerpoColegiadoNombre" : "dddddddddd",
         "finMenteGral" : "A",
         "temas" : [ ],
         "comentarioAdicionales" : "",
-        "seCumpliofinEnMente" : "",
-        "elTiempoFueSuficiente" : "",
-        "huboInconvenientes" : "",
-        "tieneSugerencias" : "",
-        "redaccionDeTareasOk" : "",
+        "seCumpliofinEnMente" : "false",
+        "elTiempoFueSuficiente" : "false",
+        "huboInconvenientes" : "false",
+        "tieneSugerencias" : "false",
+        "redaccionDeTareasOk" : "false",
         "huboInconvenientesTexto" : "",
         "tieneSugerenciasTexto" : "",
         "horaInicio" : "08:00",
@@ -329,25 +329,25 @@
         "fechaCierre" : 0,
         "lugar" : "A",
         "ciudad" : "A",
-        "paso" : "0",
-        "estado" : "Citada",
+        "paso" : "5",
+        "estado" : "Cerrado",
         "integrantes" : [ {
           "userID" : "2",
           "nombre" : "asasa",
           "email" : "aaa@a.com",
           "finEnMente" : "",
-          "estado" : ""
+          "estado" : "Presente"
         } ],
         "integranteAutorActa" : "juanloa@efevisium.com",
         "cuerpoColegiadoNombre" : "Economico",
         "finMenteGral" : "A",
         "temas" : [ ],
         "comentarioAdicionales" : "",
-        "seCumpliofinEnMente" : "",
-        "elTiempoFueSuficiente" : "",
-        "huboInconvenientes" : "",
-        "tieneSugerencias" : "",
-        "redaccionDeTareasOk" : "",
+        "seCumpliofinEnMente" : "false",
+        "elTiempoFueSuficiente" : "false",
+        "huboInconvenientes" : "false",
+        "tieneSugerencias" : "false",
+        "redaccionDeTareasOk" : "false",
         "huboInconvenientesTexto" : "",
         "tieneSugerenciasTexto" : "",
         "horaInicio" : "08:00",
@@ -360,31 +360,31 @@
         "fechaCierre" : 0,
         "lugar" : "A",
         "ciudad" : "A",
-        "paso" : "0",
-        "estado" : "Citada",
+        "paso" : "5",
+        "estado" : "Cerrado",
         "integrantes" : [ {
           "userID" : "2",
           "nombre" : "asasa",
           "email" : "aaa@a.com",
           "finEnMente" : "",
-          "estado" : ""
+          "estado" : "Presente"
         }, {
           "userID" : "3",
           "nombre" : "Andres",
           "email" : "ae@qbkconsulting.com",
           "finEnMente" : "",
-          "estado" : ""
+          "estado" : "Presente"
         } ],
         "integranteAutorActa" : "juanloa@efevisium.com",
         "cuerpoColegiadoNombre" : "Economico",
         "finMenteGral" : "A",
         "temas" : [ ],
         "comentarioAdicionales" : "",
-        "seCumpliofinEnMente" : "",
-        "elTiempoFueSuficiente" : "",
-        "huboInconvenientes" : "",
-        "tieneSugerencias" : "",
-        "redaccionDeTareasOk" : "",
+        "seCumpliofinEnMente" : "false",
+        "elTiempoFueSuficiente" : "false",
+        "huboInconvenientes" : "false",
+        "tieneSugerencias" : "false",
+        "redaccionDeTareasOk" : "false",
         "huboInconvenientesTexto" : "",
         "tieneSugerenciasTexto" : "",
         "horaInicio" : "08:00",
@@ -397,31 +397,31 @@
         "fechaCierre" : 0,
         "lugar" : "A",
         "ciudad" : "A",
-        "paso" : "0",
-        "estado" : "Citada",
+        "paso" : "5",
+        "estado" : "Cerrado",
         "integrantes" : [ {
           "userID" : "2",
           "nombre" : "asasa",
           "email" : "aaa@a.com",
           "finEnMente" : "",
-          "estado" : ""
+          "estado" : "Presente"
         }, {
           "userID" : "3",
           "nombre" : "Andres",
           "email" : "ae@qbkconsulting.com",
           "finEnMente" : "",
-          "estado" : ""
+          "estado" : "Presente"
         } ],
         "integranteAutorActa" : "juanloa@efevisium.com",
         "cuerpoColegiadoNombre" : "Economico",
         "finMenteGral" : "A",
         "temas" : [ ],
         "comentarioAdicionales" : "",
-        "seCumpliofinEnMente" : "",
-        "elTiempoFueSuficiente" : "",
-        "huboInconvenientes" : "",
-        "tieneSugerencias" : "",
-        "redaccionDeTareasOk" : "",
+        "seCumpliofinEnMente" : "false",
+        "elTiempoFueSuficiente" : "false",
+        "huboInconvenientes" : "false",
+        "tieneSugerencias" : "false",
+        "redaccionDeTareasOk" : "false",
         "huboInconvenientesTexto" : "",
         "tieneSugerenciasTexto" : "",
         "horaInicio" : "08:00",
@@ -434,31 +434,31 @@
         "fechaCierre" : 0,
         "lugar" : "a",
         "ciudad" : "a",
-        "paso" : "0",
-        "estado" : "Citada",
+        "paso" : "5",
+        "estado" : "Cerrado",
         "integrantes" : [ {
           "userID" : "2",
           "nombre" : "asasa",
           "email" : "aaa@a.com",
           "finEnMente" : "",
-          "estado" : ""
+          "estado" : "Presente"
         }, {
           "userID" : "3",
           "nombre" : "Andres",
           "email" : "ae@qbkconsulting.com",
           "finEnMente" : "",
-          "estado" : ""
+          "estado" : "Presente"
         } ],
         "integranteAutorActa" : "juanloa@efevisium.com",
         "cuerpoColegiadoNombre" : "Economico",
         "finMenteGral" : "a",
         "temas" : [ ],
         "comentarioAdicionales" : "",
-        "seCumpliofinEnMente" : "",
-        "elTiempoFueSuficiente" : "",
-        "huboInconvenientes" : "",
-        "tieneSugerencias" : "",
-        "redaccionDeTareasOk" : "",
+        "seCumpliofinEnMente" : "false",
+        "elTiempoFueSuficiente" : "false",
+        "huboInconvenientes" : "false",
+        "tieneSugerencias" : "false",
+        "redaccionDeTareasOk" : "false",
         "huboInconvenientesTexto" : "",
         "tieneSugerenciasTexto" : "",
         "horaInicio" : "08:00",
@@ -588,6 +588,46 @@
         "detalle" : "DESCRIP",
         "tareas" : [ ],
         "eventos" : [ {
+          "texto" : "ECON003 - BBBBBBBBBBBBBBBBBBB",
+          "idActa" : "ECON_0-1-3",
+          "date" : 1520336391360
+        }, {
+          "texto" : "ECON003 - AAAAAAAAAAAAAAAA",
+          "idActa" : "ECON_0-1-3",
+          "date" : 1520336387324
+        }, {
+          "texto" : "Sin Comentarios",
+          "idActa" : "ECON_0-1-2",
+          "date" : 1520335979286
+        }, {
+          "texto" : "ECON_0-1-0",
+          "idActa" : "ECON_0-1-0",
+          "date" : 1520335577094
+        }, {
+          "texto" : "ECON_0-1-1",
+          "idActa" : "ECON_0-1-1",
+          "date" : 1520335403794
+        }, {
+          "texto" : "ECON_0-1-1",
+          "idActa" : "ECON_0-1-1",
+          "date" : 1520335401250
+        }, {
+          "texto" : "ECON_0-1-1",
+          "idActa" : "ECON_0-1-1",
+          "date" : 1520335361311
+        }, {
+          "texto" : "ddddddd_0-0-6",
+          "idActa" : "ddddddd_0-0-6",
+          "date" : 1520334937064
+        }, {
+          "texto" : "ddddddd_0-0-6",
+          "idActa" : "ddddddd_0-0-6",
+          "date" : 1520334935036
+        }, {
+          "texto" : "ddddddd_0-0-6",
+          "idActa" : "ddddddd_0-0-6",
+          "date" : 1520334922796
+        }, {
           "texto" : "ddddddd004 - COMENTARIOOI POSTA",
           "idActa" : "ddddddd_0-0-4",
           "date" : 1520252196101
@@ -618,6 +658,18 @@
         "detalle" : "dd",
         "tareas" : [ ],
         "eventos" : [ {
+          "texto" : "http://localhost:8080/metodologiamanager/assets/15203364054963b8eb0a5-af1a-4f2d-8ba8-457ed6958dbe.jpg",
+          "idActa" : "ECON_0-1-3",
+          "date" : 1520336405590
+        }, {
+          "texto" : "Sin Comentarios",
+          "idActa" : "ECON_0-1-2",
+          "date" : 1520335993902
+        }, {
+          "texto" : "ECON_0-1-0",
+          "idActa" : "ECON_0-1-0",
+          "date" : 1520335588724
+        }, {
           "texto" : "ECON006 - r",
           "idActa" : "ECON_0-1-6",
           "date" : 1520106980544
@@ -640,6 +692,18 @@
         "detalle" : "a",
         "tareas" : [ ],
         "eventos" : [ {
+          "texto" : "Sin Comentarios",
+          "idActa" : "ECON_0-1-2",
+          "date" : 1520335995404
+        }, {
+          "texto" : "ECON_0-1-0",
+          "idActa" : "ECON_0-1-0",
+          "date" : 1520335591499
+        }, {
+          "texto" : "ddddddd007 - Comentario Ejemplo",
+          "idActa" : "ddddddd_0-0-7",
+          "date" : 1520305934179
+        }, {
           "texto" : "ECON006 -  d",
           "idActa" : "ECON_0-1-6",
           "date" : 1520106937231
@@ -674,6 +738,10 @@
         "detalle" : "aad",
         "tareas" : [ ],
         "eventos" : [ {
+          "texto" : "ddddddd005 - Sin Comentarios",
+          "idActa" : "ddddddd_0-0-5",
+          "date" : 1520306021243
+        }, {
           "texto" : "ddddddd004 - Sin Comentarios",
           "idActa" : "ddddddd_0-0-4",
           "date" : 1520252291422

@@ -185,19 +185,6 @@ export class SesionComponent implements OnInit, OnDestroy {
   };
 
 
-  indiceTemaMas() {
-    if (this.indice < this.temasDelActa.length - 1) {
-      this.indice = this.indice + 1;
-      this.temaActual = this.temasDelActa[this.indice]
-      this.updateTareas();
-      console.log("METHOD_TEMA_MAS")
-      console.log("Indice tema " + this.indice)
-      console.log("Total temas " + (this.temasDelActa.length - 1))
-      return true;
-    }
-    return false;
-
-  }
 
   indiceTareaMas() {
     if (this.indiceTAREA < this.tareasMostrar.length - 1) {
@@ -469,29 +456,17 @@ export class SesionComponent implements OnInit, OnDestroy {
 
   addComentarioDirecto(com): void {
 
-      this.service.createComentario(
-        this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, this.actaSelect.id + '___' + com).subscribe(
+    let cuerpoColeg = this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1]
+    
+      this.service.createComentario(cuerpoColeg, this.temaActual.id, this.actaSelect.id + '___' + com).subscribe(
         response => {
           this.temaActual = response;
         }
         );
-        this.hayCommentTema = true;
       }
     
 
-    checkAvanzarTareas(): void {
 
-      console.log("METHOD_AVANZAR_TAREA");
-      let navigationExtras: NavigationExtras = {
-        queryParams: {
-          "actaID": this.actaSelect.id
-        }
-      };
-      this.updatePaso('4');
-
-      this.router.navigate(['/sesion-2'], navigationExtras);
-
-    }
 
     redirect(): void {
 
@@ -520,6 +495,18 @@ export class SesionComponent implements OnInit, OnDestroy {
           );
           this.hayCommentTarea = true;
         }
+      }
+
+    addComentarioTareaDirecto(com): void {
+
+        this.service.createComentarioTarea(
+          this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1], this.temaActual.id, this.tareaActual.id, com).subscribe(
+          response => {
+            this.tareaActual = response;
+
+          }
+          );
+        
       }
 
       updatePasoIntegrantes(paso): void {
@@ -584,31 +571,71 @@ export class SesionComponent implements OnInit, OnDestroy {
             }
 
 
+  indiceTemaMas() {
+    if (this.indice < this.temasDelActa.length - 1) {
+      this.indice = this.indice + 1;
+      this.temaActual = this.temasDelActa[this.indice]
+      this.updateTareas();
+      console.log("METHOD_TEMA_MAS")
+      console.log("Indice tema " + this.indice)
+      console.log("Total temas " + (this.temasDelActa.length - 1))
+      return true;
+    }
+    return false;
+
+  }
+
+    checkAvanzarTareas(): void {
+
+      console.log("METHOD_AVANZAR_TAREA");
+      let navigationExtras: NavigationExtras = {
+        queryParams: {
+          "actaID": this.actaSelect.id
+        }
+      };
+      this.updatePaso('4');
+
+      this.router.navigate(['/sesion-2'], navigationExtras);
+
+    }
+
+
             avanzar() {
 
-              let done : boolean = false;
-
               if (this.tareasMostrar.length != 0)
-                if (this.hayCommentTarea || confirm("No ha dejado comentarios en esta tarea. ¿Desea avanzar de todos modos?")){
-                  done = this.indiceTareaMas();
-                  this.hayCommentTarea = false;
-                  this.addComentarioTarea(this.actaSelect.id + '___' + this.actaSelect.numeroActa + ' - Sin Comentarios', null);
+                if (this.hayCommentTarea || confirm("No ha dejado comentarios en esta tarea. ¿Desea avanzar de todos modos? CARTEL 1")){
+                  
+                  //this.addComentarioTareaDirecto(this.actaSelect.id + '___' + this.actaSelect.numeroActa + ' - Sin Comentarios');
+                  console.log("ADD COMENTARIO VACIO")
 
+                  if (this.indiceTareaMas())
+                    return;
                 }
 
-                if (!done && (this.hayCommentTema || confirm("No ha dejado comentarios en este tema. ¿Desea avanzar de todos modos?"))){
+                if ( (this.hayCommentTema || confirm("No ha dejado comentarios en este tema. ¿Desea avanzar de todos modos? CARTEL 2"))){
                   this.hayCommentTema = false;
 
-                  if (!this.indiceTemaMas()){
-                    this.checkAvanzarTareas();
-                    this.addComentario(this.actaSelect.id + '___' + this.actaSelect.numeroActa+' - Sin Comentarios', null );
+                    //this.addComentarioDirecto('Sin Comentarios');
+                    console.log("ADD COMENTARIO VACIO")
+
+                    if (this.indice < this.temasDelActa.length - 1) {
+                      this.indice = this.indice + 1;
+                      this.temaActual = this.temasDelActa[this.indice]
+                      this.updateTareas();
+                      return;
+                    }
+                    else{
+                      console.log("paso a sesion 2")
+                      this.checkAvanzarTareas();
+                    }                  
+
                   }
-                }
+                
 
               this.start = new Date().getTime();
 
 
-              }
+            }
 
               updateTareas() {
                 this.tareasMostrar = [];
