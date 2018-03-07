@@ -61,32 +61,65 @@ public class PdfPrinter {
 			document.add(new Paragraph("Se trataron los siguientes temas con los siguientes comentarios:", f));
 			document.add(EMPTY_LINE);
 
+			document.add(new Paragraph("-------------------------------------------------------------", f));
+
 			for (Tema tema : ccOrig.getTemas().values()) {
 
-				List<Evento> eventos = tema.getEventos();
-				List<String> commentList = new ArrayList<String>();
+				{
+					List<Evento> eventos = tema.getEventos();
+					List<String> commentList = new ArrayList<String>();
 
-				for (Evento evento : eventos) {
-					if (evento.getIdActa().contains(acta.getId()))
-						commentList.add(evento.getTexto());
-				}
-
-				if (!commentList.isEmpty()) {
-					document.add(new Paragraph("Tema: " + tema.getDetalle(), f));
-					for (String comm : commentList) {
-						if (comm.contains("/assets/"))
-							document.add(new Paragraph("  - Se anexó el archivo " + comm.split("/assets/")[1], f));
-						else
-							document.add(new Paragraph("  - " + comm, f));
+					for (Evento evento : eventos) {
+						if (evento.getIdActa().contains(acta.getId()))
+							commentList.add(evento.getTexto());
 					}
-					document.add(EMPTY_LINE);
-				} else {
-					document.add(new Paragraph("Tema: " + tema.getDetalle(), f));
-					document.add(new Paragraph("  - Sin Comentarios", f));
+
+					if (!commentList.isEmpty()) {
+						document.add(new Paragraph("Tema: " + tema.getDetalle(), f));
+						for (String comm : commentList) {
+							if (comm.contains("/assets/"))
+								document.add(new Paragraph("  - Se anexó el archivo " + comm.split("/assets/")[1], f));
+							else
+								document.add(new Paragraph("  - " + comm, f));
+						}
+						document.add(EMPTY_LINE);
+					} else {
+						document.add(new Paragraph("Tema: " + tema.getDetalle(), f));
+						document.add(new Paragraph("  - Sin Comentarios", f));
+
+					}
+				}
+
+				for (Tarea tarea : tema.getTareas()) {
+
+					List<String> commentListTarea = new ArrayList<String>();
+
+					for (String evento : tarea.getEventos()) {
+						if (evento.contains(acta.getNumeroActa())) {
+							commentListTarea.add(evento.split(acta.getNumeroActa().toUpperCase())[1]);
+						}
+					}
+					if (!commentListTarea.isEmpty()) {
+						document.add(new Paragraph("Tarea: " + tarea.getDetalle(), f));
+						document.add(new Paragraph("   Responsable: " + tarea.getResponsable().getNombre(), f));
+
+						for (String comm : commentListTarea) {
+							document.add(new Paragraph("  " + comm, f));
+						}
+					} else {
+						document.add(new Paragraph("Tarea: " + tarea.getDetalle(), f));
+						document.add(new Paragraph("  - Sin Comentarios", f));
+
+					}
 
 				}
+
+				document.add(new Paragraph("-------------------------------------------------------------", f));
 
 			}
+
+			document.add(EMPTY_LINE);
+			document.add(EMPTY_LINE);
 
 			if (acta.getSeCumpliofinEnMente().equals("true")) {
 				document.add(new Paragraph("Se cumplió el fin en mente de la reunión", f));
@@ -112,17 +145,14 @@ public class PdfPrinter {
 				if (integ.getEstado().equals("Ausente"))
 					actaAusente.add(integ);
 			}
-			
-			if (!actaAusente.isEmpty())	{
+
+			if (!actaAusente.isEmpty()) {
 				document.add(new Paragraph("Estuvieron ausentes los siguientes miembros", f));
 				for (UsuarioActa usuarioActa : actaAusente) {
 					document.add(new Paragraph(usuarioActa.getNombre(), f));
 				}
 			}
-			
-			
-			
-			
+
 			if (acta.getTieneSugerencias().equals("true")) {
 				document.add(new Paragraph("Se hizo la siguiente sugerencia a la reunión:", f));
 				document.add(new Paragraph(acta.getTieneSugerenciasTexto(), f));
