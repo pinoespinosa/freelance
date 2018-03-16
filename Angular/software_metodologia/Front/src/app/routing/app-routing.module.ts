@@ -10,6 +10,8 @@ import { ActaCompletaComponent }                from '../pages/acta-completa/act
 
 import { ConsultasComponent }                   from '../pages/consultas/consultas.component';
 import { ReunionesComponent }                   from '../pages/reuniones/reuniones.component';
+import { ReunionesEdicionComponent }            from '../pages/reuniones-edicion/reuniones-edicion.component';
+
 import { SesionComponent }                   	from '../pages/sesion/sesion.component';
 import { Sesion2Component }                   	from '../pages/sesion-2/sesion-2.component';
 
@@ -25,6 +27,8 @@ const routes: Routes = [
 	{ path: 'login',  				component: LoginComponent, 				data: {title: 'Login'} },
 	{ path: 'consultas',			component: ConsultasComponent, 			data: {title: 'Home'}, canActivate: [AuthGuard]},
 	{ path: 'reuniones',			component: ReunionesComponent, 			data: {title: 'Home'}, canActivate: [AuthGuard]},
+	{ path: 'reuniones-edicion',	component: ReunionesEdicionComponent, 	data: {title: 'Home'}, canActivate: [AuthGuard]},
+
 	{ path: 'sesion',				component: SesionComponent, 			data: {title: 'Home'}, canActivate: [AuthGuard] },
 	{ path: 'sesion-2',				component: Sesion2Component, 			data: {title: 'Home'}, canActivate: [AuthGuard] },
 

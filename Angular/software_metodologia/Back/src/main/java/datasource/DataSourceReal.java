@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.http.auth.AUTH;
+import org.junit.Test;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -59,6 +61,10 @@ public class DataSourceReal implements IDataSource {
 		updateFile();
 	}
 
+
+
+	
+	
 	@Override
 	public void importJSON(MultipartFile filename) throws IOException {
 
@@ -404,6 +410,21 @@ public class DataSourceReal implements IDataSource {
 		return user;
 	}
 
+	@Override
+	public Acta editActaReunion( Acta acta, String empresaID) {
+
+		Acta orig = getActa(acta.getId(), empresaID);
+		orig.setCiudad(acta.getCiudad());
+		orig.setFecha(acta.getFecha());
+		orig.setFinMenteGral(acta.getFinMenteGral());
+		orig.setLugar(acta.getLugar());
+		orig.setHoraInicio(acta.getHoraInicio());
+		orig.setHoraFinal(acta.getHoraFinal());
+
+		updateFile();
+		return acta;
+	}
+	
 	@Override
 	public Acta getLastActa(String cuerpoColegiadoID, String empresaID) {
 		CuerpoColegiado orig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);

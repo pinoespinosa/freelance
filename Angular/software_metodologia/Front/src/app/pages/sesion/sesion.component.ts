@@ -600,6 +600,28 @@ export class SesionComponent implements OnInit, OnDestroy {
     }
 
 
+
+
+
+            irAlInicio() {
+
+              this.indice = 0;              
+
+              this.temaActual = this.temasDelActa[this.indice]
+              this.updateTareas();
+
+              this.start = new Date().getTime();
+
+
+            }
+
+
+
+
+
+
+
+
             avanzar() {
 
               if (this.tareasMostrar.length != 0)

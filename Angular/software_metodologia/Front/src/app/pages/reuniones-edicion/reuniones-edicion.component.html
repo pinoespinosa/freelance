@@ -1,0 +1,76 @@
+<div class="row" style="margin-bottom: 30px;" >
+
+   <div class="col-3" style="align-self: center;text-align: center;" >
+      <img [routerLink]="['/home']" [src]="logo" style="max-width: 200px;max-height: 150px;" >  
+   </div>
+
+   <div class="col-6" style="align-self: center;text-align: center; margin-top: 50px" >
+   </div>
+
+   <div class="col-3" style="align-self: center;text-align: center;" >
+      <img src="assets/logo.png" style="max-width: 150px;max-height: 100px;" [routerLink]="['/home']" >  
+   </div>
+
+</div>
+
+<form *ngIf="paso==1" class="form-horizontal reuniones-form-container" action='' method="POST" >
+   <div class="row" style="align-self: center;" >
+      <div class="col-4 offset-4" >
+         <select #clii class="dropdown-select" (change)="selectActa(clii)">
+         <option disabled hidden [value]="empty">-- Seleccione el Acta --</option>
+         <option *ngFor="let actaCit of actasCitadas" >Acta {{actaCit.numeroActa}} [ {{actaCit.fechaReunion.replace('-','/').replace('-','/') }} - {{actaCit.cuerpoColegiadoNombre}} ]</option>
+         </select>
+         <button (click)="createActa(cuerpoColegiado)" [disabled]="actaSelect == null" type="button" class="btn"><b>Continuar</b></button>
+      </div>
+   </div>
+</form>
+
+<form *ngIf="paso==2" class="form-horizontal reuniones-form-container" action='' method="POST">
+   <div class="row" >
+      <div class="col-4 offset-4" >
+         <input type="text" class="form-control" placeholder="Lugar *" value="{{actaSelect.lugar}}" #lugar>
+         <input type="text" class="form-control" placeholder="Ciudad *" value="{{actaSelect.ciudad}}" #ciudad>
+         <input type="text" class="form-control" placeholder="Fin en Mente de la Reunión *" value="{{actaSelect.finMenteGral}}" #reqq>
+
+         <div class="row" >
+            <div  class="col-5" style="align-self: center;text-align: right;" >
+               <label style="margin: 0px;" >Fecha de la reunion</label> 
+            </div>
+            <div  class="col-7" >
+               <input type="date" #fecha style="width: 100%;" value="{{actaSelect.fechaReunion}}" >
+            </div>
+         </div>
+
+         <div class="row" >
+            <div class="col-5" style="align-self: center;text-align: right;" >
+               <label style="margin: 0px;" >Hora de inicio</label> 
+            </div>
+            <div  class="col-7" >
+               <input #horaInicio type="time" style="width: 100%;" value="{{actaSelect.horaInicio}}">
+            </div>
+         </div>
+
+         <div class="row" >
+            <div  class="col-5" style="align-self: center;text-align: right;" >
+               <label style="margin: 0px;" >Hora de fin</label> 
+            </div>
+            <div class="col-7" >
+            <input #horaFinal type="time" style="width: 100%;" value="{{actaSelect.horaFinal}}">
+            </div>
+         </div>
+
+
+         <button type="button" class="btn" 
+         [disabled]="
+         lugar.value == '' || 
+         ciudad.value == '' || 
+         reqq.value == '' || 
+         horaInicio.value == '' || 
+         horaFinal.value == '' || 
+         fecha.value == '' || !isValidateRangeHour(horaInicio.value, horaFinal.value)" 
+
+         (click)="createActaSend( lugar.value, ciudad.value, reqq.value, horaInicio.value, horaFinal.value, fecha.value )" ><b>Guardar Cambios y Reenviar Email</b></button>
+      </div>
+   </div>
+</form>
+

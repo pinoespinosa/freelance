@@ -354,9 +354,25 @@ Resumen: {{tareaActual.detalle}}
 </div>
 
 
-         <div style="text-align: center;margin-top: 20px;" >
+<div class="row" >
+   <div class="col-6" style="padding-right: 0px;" >
+
+         <div style="text-align: right;margin-top: 20px;" >
+            <button (click)="irAlInicio()" type="button" class="btn"><b>Ir al inicio de los temas</b></button>
+         </div>
+
+   </div>
+   <div class="col-6" style="padding-right: 0px;" >
+
+            <div style="text-align: left;margin-top: 20px;" >
             <button (click)="avanzar()" type="button" class="btn"><b>Continuar</b></button>
          </div>
+   </div>
+</div>
+
+
+
+
       </div>
 
    <div class="col-2" style="text-align: center;margin-top: -50px;" >

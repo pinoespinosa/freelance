@@ -235,9 +235,14 @@ createTema(cuerpoColegiadoID, tema, actaID, cuerpoColList, comm): Observable<Tem
 }
 
 editActa(cuerpoColegiadoID, acta): Observable<Acta> {
-
   var headers = new Headers();
   return this.http.post(this.getServer() + 'api/'+ cuerpoColegiadoID + '/acta/edit',acta, { headers: headers }).map(this.extractData);
+}
+
+editActaReunion(acta): Observable<Acta> {
+  var headers = new Headers();
+  headers.append('acces-token', localStorage.getItem('token'));
+  return this.http.post(this.getServer() + 'api/acta/editReunion',acta, { headers: headers }).map(this.extractData);
 }
 
 createComentario(cuerpoColegiadoID, tema, com): Observable<Tema> {

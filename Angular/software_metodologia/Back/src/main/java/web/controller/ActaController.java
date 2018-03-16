@@ -233,6 +233,19 @@ public class ActaController {
 	}
 
 	
+	/**
+	 * Edita un acta
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "acta/editReunion", method = RequestMethod.POST)
+	@ResponseBody
+	public Acta editActaReunion(
+			@RequestBody Acta acta,
+			@RequestHeader("Acces-Token") String token) {
+		return dataSource.editActaReunion(acta, Auth.getEmpresaID(token));
+	}
+	
+	
 	
 	
 	public IDataSource getDataSource() {

@@ -125,5 +125,7 @@ public interface IDataSource {
 
 	List<Auth> usuariosEmpresaList(String empresaId);
 
+	Acta editActaReunion(Acta acta, String empresaID);
+
 
 }

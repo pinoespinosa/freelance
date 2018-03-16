@@ -1,13 +1,10 @@
 <app-header></app-header>
-
 <div  class="row bottom-buttons-container">
    <div class="col-12" style="text-align: right;" >
       <img src="assets/logo.png" style="max-width: 300px;max-height: 150px;margin: 15px" >  
    </div>
 </div>
-
 <div class="row home-page-container" style="height: 50vh;" >
-
    <div  class="col-6 " style="align-self: center;" >
       <div style="text-align: center;" >
          <img src="{{logo}}" style="max-width: 400px;max-height: 300px;" >  
@@ -16,75 +13,86 @@
    <div  class="col-6 " style="align-self: center;" >
       <div class="col-12 buttons-middle-container" style="">
          <div class="buttons-middle-second-container" >
+            
             <div  class="row buttons-middle-row" >
                <div class="col-6 offset-md-3" *ngIf="!( rol=='SUPER_ADMINISTRADOR' && empresaID=='null')">
                   <button 
-                  [routerLink]="['/consultas']"  
-                  type="button" 
-                  class="btn home-buttons">
+                     [routerLink]="['/consultas']"  
+                     type="button" 
+                     class="btn home-buttons">
                   <b>   
-                     Consultas
+                  Consultas
                   </b>
-               </button>
+                  </button>
+               </div>
             </div>
-         </div>
-
-         <div *ngIf="rol=='ADMINISTRADOR' || ( rol=='SUPER_ADMINISTRADOR' && empresaID!='null') || rol=='GENERAL'" class="row" >
-            <div class="col-6 offset-md-3">
-               <button 
-               [routerLink]="['/reuniones']"
-               type="button" 
-               class="btn home-buttons">
-               <b>
+                        
+            <div *ngIf="rol=='ADMINISTRADOR' || ( rol=='SUPER_ADMINISTRADOR' && empresaID!='null') || rol=='GENERAL'" class="row" >
+               <div class="col-6 offset-md-3">
+                  <button 
+                     [routerLink]="['/reuniones']"
+                     type="button" 
+                     class="btn home-buttons">
+                  <b>
                   Citar a una reunion
-               </b>
-            </button>
-         </div>
-      </div>
+                  </b>
+                  </button>
+               </div>
+            </div>
+            
+            <div *ngIf="rol=='ADMINISTRADOR' || ( rol=='SUPER_ADMINISTRADOR' && empresaID!='null') || rol=='GENERAL'" class="row" >
+               <div class="col-6 offset-md-3">
+                  <button 
+                     [routerLink]="['/reuniones-edicion']"
+                     type="button" 
+                     class="btn home-buttons">
+                  <b>
+                  Editar una reunion
+                  </b>
+                  </button>
+               </div>
+            </div>
 
-      <div *ngIf="rol=='ADMINISTRADOR' || ( rol=='SUPER_ADMINISTRADOR' && empresaID!='null') || rol=='GENERAL'" class="row" >
-         <div class="col-6 offset-md-3">
-            <button 
-            [routerLink]="['/sesion']"
-            type="button" 
-            class="btn home-buttons">
-            <b>
-               Administracion de reuniones
-            </b>
-         </button>
+            <div *ngIf="rol=='ADMINISTRADOR' || ( rol=='SUPER_ADMINISTRADOR' && empresaID!='null') || rol=='GENERAL'" class="row" >
+               <div class="col-6 offset-md-3">
+                  <button 
+                     [routerLink]="['/sesion']"
+                     type="button" 
+                     class="btn home-buttons">
+                  <b>
+                  Administracion de reuniones
+                  </b>
+                  </button>
+               </div>
+            </div>
+
+         </div>
       </div>
    </div>
 </div>
-
-</div>
-</div>
-</div>
 <div  class="row bottom-buttons-container">
-
    <div class="col-5 offset-6" >
       <div class="row" >
          <div *ngIf="rol=='ADMINISTRADOR' || rol == 'SUPER_ADMINISTRADOR'" class="col-6" >
             <button 
-            [routerLink]="['/mantenimiento']"
-            type="button" 
-            class="btn home-buttons">
+               [routerLink]="['/mantenimiento']"
+               type="button" 
+               class="btn home-buttons">
             <b>
-               Mantenimiento
+            Mantenimiento
             </b>
-         </button>
-      </div>
-      <div class="col-6">
-         <button 
-         (click)="logout()" 
-         type="button" 
-         class="btn home-buttons">
-         <b>
+            </button>
+         </div>
+         <div class="col-6">
+            <button 
+               (click)="logout()" 
+               type="button" 
+               class="btn home-buttons">
+            <b>
             Salir
-         </b>
-      </button>
+            </b>
+            </button>
+         </div>
+      </div>
    </div>
 </div>
-</div>
-</div>
-
-

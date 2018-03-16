@@ -25,6 +25,7 @@ import { ConsultasActaComponent }           from './pages/consultas/consultas-ac
 import { VisorActaComponent }               from './pages/consultas/visor-acta/visor-acta.component';
 
 import { ReunionesComponent }               from './pages/reuniones/reuniones.component';
+import { ReunionesEdicionComponent }        from './pages/reuniones-edicion/reuniones-edicion.component';
 
 import { CreateUserComponent }              from './pages/create-user/create-user.component';
 import { CreateEmpresaComponent }           from './pages/create-empresa/create-empresa.component';
@@ -33,7 +34,7 @@ import { CreateCuerpoColegiadoComponent }   from './pages/create-cuerpo-colegiad
 import { EditCuerpoColegiadoComponent }     from './pages/edit-cuerpo-colegiado/edit-cuerpo-colegiado.component';
 
 import { CreateEstrategiaComponent }        from './pages/create-estrategia/create-estrategia.component';
-import { CreateIndicadorComponent }        from './pages/create-indicador/create-indicador.component';
+import { CreateIndicadorComponent }         from './pages/create-indicador/create-indicador.component';
 
 import { ChangePasswordComponent }          from './pages/change-password/change-password.component';
 
@@ -78,6 +79,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
     ActaCompletaComponent,
     ReunionesComponent,
+    ReunionesEdicionComponent,
     SesionComponent,
     Sesion2Component,
     FilterPipe,
