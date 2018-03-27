@@ -8,7 +8,6 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLDecoder;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -17,11 +16,10 @@ import java.util.Collection;
 import java.util.Hashtable;
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.http.auth.AUTH;
-import org.junit.Test;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -701,7 +699,7 @@ public class DataSourceReal implements IDataSource {
 	}
 
 	@Override
-	public Acta closeActa(String cuerpoColegiadoID, String actaID, String empresaID, Acta acta, boolean sendEmail) throws AddressException, IOException {
+	public Acta closeActa(String cuerpoColegiadoID, String actaID, String empresaID, Acta acta, boolean sendEmail) throws IOException, MessagingException {
 
 		Acta actaToClose = getActa(actaID, empresaID);
 		actaToClose.setSeCumpliofinEnMente(acta.getSeCumpliofinEnMente());

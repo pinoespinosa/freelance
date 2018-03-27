@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 import javax.servlet.http.HttpServletResponse;
 
@@ -85,7 +86,7 @@ public interface IDataSource {
 
 	void readFromFile();
 
-	Acta closeActa(String cuerpoColegiadoID, String actaID, String empresaID, Acta acta, boolean sendEmail) throws AddressException, UnsupportedEncodingException, IOException;
+	Acta closeActa(String cuerpoColegiadoID, String actaID, String empresaID, Acta acta, boolean sendEmail) throws AddressException, UnsupportedEncodingException, IOException, MessagingException;
 
 	void importJSON(MultipartFile file) throws IOException;
 

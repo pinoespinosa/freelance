@@ -69,80 +69,6 @@
         "horaInicio" : "01:00",
         "fechaReunion" : "2018-02-22",
         "horaFinal" : "01:00"
-      }, {
-        "id" : "CuerpoEjemplo1_0-0-2",
-        "numeroActa" : "CuerpoEjemplo1002",
-        "fecha" : 1522147476824,
-        "fechaCierre" : 0,
-        "lugar" : "a",
-        "ciudad" : "a",
-        "paso" : "5",
-        "estado" : "Cerrado",
-        "integrantes" : [ {
-          "userID" : "2",
-          "nombre" : "Andres",
-          "email" : "a@a.com",
-          "finEnMente" : "aa",
-          "estado" : "Presente"
-        }, {
-          "userID" : "12",
-          "nombre" : "add",
-          "email" : "aespinosa@qsocialnow.com",
-          "finEnMente" : "",
-          "estado" : "Presente"
-        } ],
-        "integranteAutorActa" : "juanloa@efevisium.com",
-        "cuerpoColegiadoNombre" : "CuEj1",
-        "finMenteGral" : "a",
-        "temas" : [ ],
-        "comentarioAdicionales" : "",
-        "seCumpliofinEnMente" : "false",
-        "elTiempoFueSuficiente" : "false",
-        "huboInconvenientes" : "false",
-        "tieneSugerencias" : "false",
-        "redaccionDeTareasOk" : "false",
-        "huboInconvenientesTexto" : "",
-        "tieneSugerenciasTexto" : "",
-        "horaInicio" : "08:00",
-        "fechaReunion" : "2018-03-28",
-        "horaFinal" : "10:00"
-      }, {
-        "id" : "CuerpoEjemplo1_0-0-3",
-        "numeroActa" : "CuerpoEjemplo1003",
-        "fecha" : 1522148607339,
-        "fechaCierre" : 0,
-        "lugar" : "s",
-        "ciudad" : "s",
-        "paso" : "4",
-        "estado" : "Citada",
-        "integrantes" : [ {
-          "userID" : "2",
-          "nombre" : "Andres",
-          "email" : "a@a.com",
-          "finEnMente" : "aa",
-          "estado" : "Presente"
-        }, {
-          "userID" : "12",
-          "nombre" : "add",
-          "email" : "aespinosa@qsocialnow.com",
-          "finEnMente" : "",
-          "estado" : "Presente"
-        } ],
-        "integranteAutorActa" : "juanloa@efevisium.com",
-        "cuerpoColegiadoNombre" : "CuEj1",
-        "finMenteGral" : "s",
-        "temas" : [ ],
-        "comentarioAdicionales" : "",
-        "seCumpliofinEnMente" : "",
-        "elTiempoFueSuficiente" : "",
-        "huboInconvenientes" : "",
-        "tieneSugerencias" : "",
-        "redaccionDeTareasOk" : "",
-        "huboInconvenientesTexto" : "",
-        "tieneSugerenciasTexto" : "",
-        "horaInicio" : "08:00",
-        "fechaReunion" : "2018-03-20",
-        "horaFinal" : "10:00"
       } ],
       "temasId" : [ "CuerpoEjemplo10", "testing0" ]
     }, {
@@ -1251,17 +1177,6 @@
       "empresaID" : "0",
       "empresaNombre" : null,
       "ccList" : [ "0-0", "0-1", "0-2" ],
-      "token" : ""
-    },
-    "JMoTM+071AGIHscN7w03z94XLG3djc6UQsQ0lhzxNnE=" : {
-      "userID" : "12",
-      "rol" : "ADMINISTRADOR",
-      "nombre" : "add",
-      "email" : "aespinosa@qsocialnow.com",
-      "logo" : "dd",
-      "empresaID" : "0",
-      "empresaNombre" : null,
-      "ccList" : [ "0-0", "0-1" ],
       "token" : ""
     },
     "4yScCl67NrxcCoH3WjLeyQ==" : {

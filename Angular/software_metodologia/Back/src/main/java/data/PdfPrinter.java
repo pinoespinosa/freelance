@@ -8,10 +8,13 @@ import java.util.List;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.PageSize;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.pdf.PdfWriter;
+
+import datasource.DataSourceReal;
 
 public class PdfPrinter {
 
@@ -34,10 +37,21 @@ public class PdfPrinter {
 
 			document.open();
 
-			document.add(new Paragraph("ACTA " + acta.getNumeroActa().toUpperCase(), f));
-			document.add(new Paragraph(acta.getCuerpoColegiadoNombre().toUpperCase(), f));
-			document.add(new Paragraph("Fin en Mente General: " + acta.getFinMenteGral().toUpperCase(), f));
+			Paragraph parrafoTitulo = new Paragraph("ACTA " + acta.getNumeroActa().toUpperCase(), f);
+			parrafoTitulo.setAlignment(Element.ALIGN_CENTER);
+			document.add(parrafoTitulo);
+			document.add(EMPTY_LINE);
 
+			Paragraph parrafoCuerpo = new Paragraph(acta.getCuerpoColegiadoNombre().toUpperCase(), f);
+			parrafoCuerpo.setAlignment(Element.ALIGN_CENTER);
+			document.add(parrafoCuerpo);
+			document.add(EMPTY_LINE);
+
+			Paragraph parrafoFin = new Paragraph("Fin en Mente General: " + acta.getFinMenteGral().toUpperCase(), f);
+			parrafoFin.setAlignment(Element.ALIGN_CENTER);
+			document.add(parrafoFin);
+
+			document.add(EMPTY_LINE);
 			document.add(EMPTY_LINE);
 
 			document.add(new Paragraph("FECHA " + acta.getFechaReunion() + " hs   DE " + acta.getHoraInicio() + " A "
@@ -65,7 +79,10 @@ public class PdfPrinter {
 
 			for (Tema tema : ccOrig.getTemas().values()) {
 
+				boolean escribiAlgo = false;
+
 				{
+
 					List<Evento> eventos = tema.getEventos();
 					List<String> commentList = new ArrayList<String>();
 
@@ -75,6 +92,7 @@ public class PdfPrinter {
 					}
 
 					if (!commentList.isEmpty()) {
+						escribiAlgo = true;
 						document.add(new Paragraph("Tema: " + tema.getDetalle(), f));
 						for (String comm : commentList) {
 							if (comm.contains("/assets/"))
@@ -84,38 +102,44 @@ public class PdfPrinter {
 						}
 						document.add(EMPTY_LINE);
 					} else {
-						document.add(new Paragraph("Tema: " + tema.getDetalle(), f));
-						document.add(new Paragraph("  - Sin Comentarios", f));
-
+						if (tema.getEstado().equals(DataSourceReal.TEMA_CERRADO)) {
+							document.add(new Paragraph("Tema: " + tema.getDetalle(), f));
+							document.add(new Paragraph("  - Sin Comentarios", f));
+							escribiAlgo = true;
+						}
 					}
 				}
 
-				for (Tarea tarea : tema.getTareas()) {
+				if (escribiAlgo) {
+					for (Tarea tarea : tema.getTareas()) {
 
-					List<String> commentListTarea = new ArrayList<String>();
+						List<String> commentListTarea = new ArrayList<String>();
 
-					for (String evento : tarea.getEventos()) {
-						if (evento.contains(acta.getNumeroActa())) {
-							commentListTarea.add(evento.split(acta.getNumeroActa().toUpperCase())[1]);
+						for (String evento : tarea.getEventos()) {
+							if (evento.contains(acta.getNumeroActa())) {
+								commentListTarea.add(evento.split(acta.getNumeroActa().toUpperCase())[1]);
+							}
 						}
-					}
-					if (!commentListTarea.isEmpty()) {
-						document.add(new Paragraph("Tarea: " + tarea.getDetalle(), f));
-						document.add(new Paragraph("   Responsable: " + tarea.getResponsable().getNombre(), f));
+						if (!commentListTarea.isEmpty()) {
+							escribiAlgo = true;
+							document.add(new Paragraph("Tarea: " + tarea.getDetalle(), f));
+							document.add(new Paragraph("   Responsable: " + tarea.getResponsable().getNombre(), f));
 
-						for (String comm : commentListTarea) {
-							document.add(new Paragraph("  " + comm, f));
+							for (String comm : commentListTarea) {
+								document.add(new Paragraph("  " + comm, f));
+							}
+						} else {
+							if (tarea.getEstado().equals(DataSourceReal.TEMA_CERRADO)) {
+								escribiAlgo = true;
+								document.add(new Paragraph("Tarea: " + tarea.getDetalle(), f));
+								document.add(new Paragraph("  - Sin Comentarios", f));
+							}
 						}
-					} else {
-						document.add(new Paragraph("Tarea: " + tarea.getDetalle(), f));
-						document.add(new Paragraph("  - Sin Comentarios", f));
 
 					}
 
+					document.add(new Paragraph("-------------------------------------------------------------", f));
 				}
-
-				document.add(new Paragraph("-------------------------------------------------------------", f));
-
 			}
 
 			document.add(EMPTY_LINE);

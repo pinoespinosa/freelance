@@ -5,6 +5,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -185,8 +186,8 @@ public class ActaController {
 	}
 	
 	/**
-	 * @throws AddressException 
 	 * @throws IOException 
+	 * @throws MessagingException 
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
 	@RequestMapping(value = "{cuerpoColegiadoID}/{actaID}/close", method = RequestMethod.POST)
@@ -195,7 +196,7 @@ public class ActaController {
 			@PathVariable final String cuerpoColegiadoID, 
 			@PathVariable final String actaID,
 			@RequestBody final Acta acta,
-			@RequestHeader("Acces-Token") String token) throws AddressException, IOException {
+			@RequestHeader("Acces-Token") String token) throws IOException, MessagingException {
 
 			boolean sendEmail = !(Rol.SUPER_ADMINISTRADOR.equals(Auth.getUserRol(token)) && !dataSource.getSendEmail());
 		

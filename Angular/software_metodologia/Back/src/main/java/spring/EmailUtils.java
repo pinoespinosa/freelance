@@ -28,6 +28,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
 
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 
 import net.fortuna.ical4j.data.CalendarOutputter;
@@ -104,7 +105,7 @@ public class EmailUtils {
 	}
 
 	public static void sendEmailAttachFile(String from, List<String> toAddressesList, String title, String messageText,
-			String filePath) throws AddressException, IOException {
+			String filePath) throws IOException, MessagingException {
 
 		Properties properties = new Properties();
 		properties.put("mail.smtp.host", SMTP_HOST);
@@ -119,14 +120,28 @@ public class EmailUtils {
 			}
 		});
 
-		try {
+		
 			// Create a default MimeMessage object.
 			MimeMessage message = new MimeMessage(session);
 
-			// Set From: header field of the header.
-			message.setFrom(new InternetAddress(from));
-			message.setReplyTo( new InternetAddress[] { new InternetAddress(from) } );
+		// Set From: header field of the header.
+		try {
+			if (!Strings.isNullOrEmpty(from)) {
+				message.setFrom(new InternetAddress(from));
+			}
+		} catch (Exception e) {
+			message.setFrom(new InternetAddress(EMAIL));
+		}
 
+		try {
+			if (!Strings.isNullOrEmpty(from)) {
+				message.setReplyTo(new InternetAddress[] { new InternetAddress(from) });
+			}
+
+		} catch (Exception e) {
+			message.setFrom(new InternetAddress(EMAIL));
+		}
+			
 			InternetAddress[] toAddresses = new InternetAddress[toAddressesList.size()];
 			int pos = 0;
 			for (String toAdd : toAddressesList) {
@@ -158,9 +173,7 @@ public class EmailUtils {
 			// Send message
 			Transport.send(message);
 			System.out.println("Sent message successfully....");
-		} catch (MessagingException mex) {
-			mex.printStackTrace();
-		}
+		
 
 	}
 
