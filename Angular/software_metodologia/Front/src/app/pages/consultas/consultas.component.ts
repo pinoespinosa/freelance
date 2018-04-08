@@ -32,11 +32,9 @@ export class ConsultasComponent implements OnInit  {
   actaSelect : any = '';
   
 
-  constructor(    private router: Router, private route : ActivatedRoute, private service: Service
-){
-  this.logo = localStorage.getItem('logo');
-
-}
+  constructor(    private router: Router, private route : ActivatedRoute, private service: Service){
+    this.logo = localStorage.getItem('logo');
+  }
 
 	ngOnInit(): void {
 		let loading = this.service.getCuerpoColegiados().subscribe(

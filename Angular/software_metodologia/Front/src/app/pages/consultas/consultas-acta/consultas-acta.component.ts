@@ -48,11 +48,9 @@ export class ConsultasActaComponent implements OnInit  {
   indiceTAREA = 0;
 
 
-  constructor(    private router: Router, private route : ActivatedRoute, private service: Service
-){
-  this.logo = localStorage.getItem('logo');
-
-}
+  constructor(    private router: Router, private route : ActivatedRoute, private service: Service){
+    this.logo = localStorage.getItem('logo');
+  }
 
 	ngOnInit(): void {
 		let loading = this.service.getCuerpoColegiados().subscribe(
@@ -62,7 +60,6 @@ export class ConsultasActaComponent implements OnInit  {
 	};
 
   indiceTemaMas(){
-    console.log("ddd")
       if (this.indice < this.temasDelActa.length -1){
         this.indice = this.indice +1;
         this.temaActual = this.temasDelActa[this.indice]
@@ -84,8 +81,6 @@ export class ConsultasActaComponent implements OnInit  {
       this.indiceTAREA = this.indiceTAREA +1;
       this.tareaActual = this.tareasMostrar[this.indiceTAREA];
     }
-        this.updateTareas();
-
   }
 
   indiceTareaMenos(){
@@ -169,9 +164,10 @@ export class ConsultasActaComponent implements OnInit  {
               this.temaActual = response[0]
             this.indice=0;
             console.log(response)
+            this.updateTareas();
+
           });
 
-    this.updateTareas();
 
 
 

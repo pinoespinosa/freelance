@@ -48,8 +48,7 @@ export class ConsultasTemaComponent implements OnInit  {
 
   respon
 
-  constructor(    private router: Router, private route : ActivatedRoute, private service: Service
-){
+  constructor(    private router: Router, private route : ActivatedRoute, private service: Service){
   this.logo = localStorage.getItem('logo');
 
 }
@@ -59,6 +58,13 @@ export class ConsultasTemaComponent implements OnInit  {
       		response =>{ 
         		this.cuerposColegiado = response;
       		});
+
+    this.service.getResponsables().subscribe(
+          response =>{ 
+            this.responsables = response;
+          });
+
+
 	};
 
   indiceTemaMas(){

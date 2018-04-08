@@ -670,6 +670,66 @@ public class DataSourceReal implements IDataSource {
 		return tema;
 	}
 
+
+	@Override
+	public List<UsuarioActa> getResponsables(String empresaID) {
+
+		List<UsuarioActa> user = new ArrayList();
+
+		List<CuerpoColegiado> aa = getCuerpoColegiadoList(empresaID);
+		for (CuerpoColegiado cuerpoColegiado : aa) {
+
+			for (Tema temas : cuerpoColegiado.getTemas().values()) {
+
+				for (Tarea tarea : temas.getTareas()) {
+
+					if (!user.contains(tarea.getResponsable()))
+						user.add(tarea.getResponsable());
+				}
+			}
+		}
+
+		return user;
+
+	}
+	
+	@Override
+	public List<Tarea> getActaFiltrada(String empresaID, String responsableId, String estrategiaId, String temaId) {
+
+		List<Tarea> tareaList = new ArrayList<>();
+
+		for (CuerpoColegiado cuerpoColegiado : getCuerpoColegiadoList(empresaID)) {
+
+			for (Tema tema : cuerpoColegiado.getTemas().values()) {
+
+				if ((temaId.equals("Todos") || temaId.equals(tema.getId()))
+						&& (estrategiaId.equals("Todos") || estrategiaId.equals(tema.getObjetivoEstrategico())))
+					for (Tarea tarea : tema.getTareas()) {
+
+						if (!tareaList.contains(tarea))
+							tareaList.add(tarea);
+					}
+			}
+		}
+
+		if (!responsableId.equals("Todos")) {
+
+			List<Tarea> filtrada = new ArrayList<>();
+			for (Tarea tarea : tareaList) {
+
+				if (!filtrada.contains(tarea) && tarea.getResponsable().getUserID().equals(responsableId))
+					filtrada.add(tarea);
+			}
+
+			tareaList = filtrada;
+
+		}
+
+		return tareaList;
+	}
+
+
+	
 	@Override
 	public Tarea addComentarioToTarea(String cuerpoColegiadoID, String temaID, String tareaID, String comentario,
 			String empresaID) {
@@ -1045,6 +1105,15 @@ public class DataSourceReal implements IDataSource {
 		
 		return hh;
 	}
+
+
+
+
+
+
+
+
+
 
 
 

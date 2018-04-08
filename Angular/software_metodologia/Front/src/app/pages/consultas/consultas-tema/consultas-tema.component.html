@@ -5,7 +5,7 @@
    <!-- ******************************** COMBOS *************************** -->
       <div class="col-4" >
          <select style="width: 100%;margin-top: 10px;" #responsableSelect class="dropdown-select">
-         <option disabled hidden [value]="selectUndefinedOptionValue">-- Seleccione un Responsable --</option>
+         <option [value]="selectUndefinedOptionValue">-- Todos los responsables --</option>
          <option *ngFor="let responsable of responsables" >{{responsable.nombre}}</option>
          </select>
       </div>

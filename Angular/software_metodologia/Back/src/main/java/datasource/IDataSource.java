@@ -18,6 +18,7 @@ import data.CuerpoColegiado;
 import data.Empresa;
 import data.Tarea;
 import data.Tema;
+import data.UsuarioActa;
 
 public interface IDataSource {
 
@@ -127,6 +128,10 @@ public interface IDataSource {
 	List<Auth> usuariosEmpresaList(String empresaId);
 
 	Acta editActaReunion(Acta acta, String empresaID);
+
+	List<UsuarioActa> getResponsables(String empresaID);
+
+	List<Tarea> getActaFiltrada(String empresaID, String responsableId, String estrategiaId, String temaId);
 
 
 }

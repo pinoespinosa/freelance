@@ -22,6 +22,7 @@ import data.Acta;
 import data.Auth;
 import data.Auth.Rol;
 import data.CuerpoColegiado;
+import data.Tarea;
 import data.UsuarioActa;
 import datasource.IDataSource;
 import io.swagger.annotations.ApiOperation;
@@ -89,6 +90,30 @@ public class ActaController {
 			@RequestHeader("Acces-Token") String token) {
 
 		return dataSource.getActaList(cuerpoColegiadoID, Auth.getEmpresaID(token));
+	}
+
+	
+	/**
+	 * Retorna la lista de responsables
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/responsables", method = RequestMethod.GET)
+	public List<UsuarioActa> getResponsables(@RequestHeader("Acces-Token") String token) {
+
+		return dataSource.getResponsables(Auth.getEmpresaID(token));
+	}
+	
+
+	/**
+	 * Retorna la lista de las actas
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/acta/fitrada", method = RequestMethod.GET)
+	public List<Tarea> getTareaFiltrada(
+			@RequestHeader("Acces-Token") String token,
+			@RequestParam String responsableId, @RequestParam String estrategiaId, @RequestParam String temaId) {
+
+		return dataSource.getActaFiltrada(Auth.getEmpresaID(token), responsableId, estrategiaId, temaId);
 	}
 
 	

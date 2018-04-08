@@ -1,6 +1,8 @@
 package data;
 
-public class UsuarioActa {
+import static org.hamcrest.Matchers.instanceOf;
+
+public class UsuarioActa implements Comparable<UsuarioActa>{
 
 	private String userID;
 	private String nombre;
@@ -51,4 +53,28 @@ public class UsuarioActa {
 		this.email = email;
 	}
 
+	@Override
+	public int compareTo(UsuarioActa o) {
+		return o.getUserID().compareTo(this.getUserID());
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+
+		System.out.println();
+		
+		if (obj instanceof UsuarioActa ){
+			
+			UsuarioActa user = (UsuarioActa) obj;
+			
+			return user.getUserID().equals(this.getUserID());
+			
+			
+		}
+		
+		return super.equals(obj);
+	}
+
+	
+	
 }
