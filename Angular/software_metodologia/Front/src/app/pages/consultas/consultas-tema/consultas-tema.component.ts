@@ -21,49 +21,110 @@ import { Usuario }                                from 'app/data-objects/usuario
 
 export class ConsultasTemaComponent implements OnInit  {
 
-	tipoConsulta: string[] = ["Acta Completa", "Por Fin en Mente", "Por Temas", "Por Tareas", "Por Comentarios", "Por Estrategia", "Por indicadores"];
-	cuerposColegiado: CuerpoColegiado[] = [];
+	cuerposColegiadoList: CuerpoColegiado[] = [];
 	cuerpoColegiadoSelect: CuerpoColegiado;
- 
-  estrategias: string[] = ["Todas las estrategias", "Sin Estrategia","Estrategia 1","Estrategia 2","Estrategia 3","Estrategia 4","Estrategia 4"];
-  responsables : Usuario[] = [];
+
+  actaList: Acta[] = [];
+  actaSelect : Acta;
+
+  estrategiaList: string[] = ["Estrategia 1","Estrategia 2","Estrategia 3","Estrategia 4","Estrategia 4"];
+  estrategiaSelect : string = "Todas";
 
 
   logo:string = "";
-
-	actas: Acta[] = [];
-
-  actaCombo : Acta;
-
   temasDelActa: Tema[] = [];
   temaActual: Tema = new Tema("","","",[],[],"","");
   indice = 0;
-
   tareasMostrar: Tarea[] = [];
-  tareaActual: Tarea = new Tarea("","","",[],null);
+  tareaActual: Tarea = new Tarea("","","",[],null,"","");
   tareasFiltro = "Todas";
-
   indiceTAREA = 0;
-
-
-  respon
-
   constructor(    private router: Router, private route : ActivatedRoute, private service: Service){
   this.logo = localStorage.getItem('logo');
 
 }
 
+
+  setActa(acta):void{
+    this.actaSelect = this.actaList[acta.selectedIndex-1];
+    this.find();
+  }
+
+  setCuerpo(cuerpo):void{
+
+    console.log(cuerpo.value)
+
+    if (cuerpo.value.includes("Todos los Cuerpos Colegiados")){
+      this.cuerpoColegiadoSelect = null
+    } 
+    else {
+      this.cuerpoColegiadoSelect = this.cuerposColegiadoList[cuerpo.selectedIndex-1];
+      this.actaList = this.cuerpoColegiadoSelect.actas
+    } 
+
+    this.actaSelect = null
+    this.find();
+    console.log(this.cuerpoColegiadoSelect)
+
+  }
+
+  setEstrat(estrat):void{
+
+    if (estrat.value.includes("Todas las estrategias")){
+      this.estrategiaSelect = null
+    } 
+    else {
+      this.estrategiaSelect = this.estrategiaList[estrat.selectedIndex-1];
+    } 
+
+
+    this.find();
+  }
+
+
+
+
+  find ():void {
+
+    let actaValue = 'Todas'
+    if (this.actaSelect)
+      actaValue = this.actaSelect.id;
+
+    let cuerpoValue = 'Todas'
+    if (this.cuerpoColegiadoSelect)
+      cuerpoValue = this.cuerpoColegiadoSelect.id;
+
+    let estratValue = 'Todas'
+    if (this.estrategiaSelect)
+      estratValue = this.estrategiaSelect;
+
+
+      let loading = this.service.getActasFiltradasTemas(cuerpoValue, actaValue, estratValue).subscribe(
+          response =>{ 
+            this.temasDelActa = response;
+            if(response.length>=0)
+              this.temaActual = response[0]
+            this.indice=0;
+            this.updateTareas()
+
+          });
+
+
+
+  }
+
+
+
+
+
+
+
+
 	ngOnInit(): void {
 		let loading = this.service.getCuerpoColegiados().subscribe(
       		response =>{ 
-        		this.cuerposColegiado = response;
+        		this.cuerposColegiadoList = response;
       		});
-
-    this.service.getResponsables().subscribe(
-          response =>{ 
-            this.responsables = response;
-          });
-
 
 	};
 
@@ -90,8 +151,6 @@ export class ConsultasTemaComponent implements OnInit  {
       this.indiceTAREA = this.indiceTAREA +1;
       this.tareaActual = this.tareasMostrar[this.indiceTAREA];
     }
-        this.updateTareas();
-
   }
 
   indiceTareaMenos(){
@@ -103,23 +162,25 @@ export class ConsultasTemaComponent implements OnInit  {
 
 
 	selectCuerpo(cuerpo):void{
-    	this.cuerpoColegiadoSelect = this.cuerposColegiado[cuerpo.selectedIndex-1];
-    	this.actas = this.cuerpoColegiadoSelect.actas
+    	this.cuerpoColegiadoSelect = this.cuerposColegiadoList[cuerpo.selectedIndex-1];
+    	this.actaList = this.cuerpoColegiadoSelect.actas
       this.temaActual= new Tema("","","",[],[],"","");
       this.indice = 0;
 
-
-      if (this.actas.length == 1){
-        this.responsables = this.actas[0].integrantes;
-        this.selectActa2(this.actas[0])
-
+      if (this.actaList.length == 1){
+        this.selectActa2(this.actaList[0])
       }
-      else
+      else{
         this.temasDelActa = []
+      }
  	}
 
   updateTareas(){
     this.tareasMostrar = [];
+
+    if (!this.temaActual)
+      return;
+
     for (let aa of this.temaActual.tareas) {
 
       if (this.tareasFiltro=="Todas")
@@ -148,7 +209,7 @@ export class ConsultasTemaComponent implements OnInit  {
 
     } 
     else{
-      this.tareaActual = new Tarea("","","",[],null);
+      this.tareaActual = new Tarea("","","",[],null,"","");
       this.indiceTAREA = -1;
     }
 
@@ -158,11 +219,10 @@ export class ConsultasTemaComponent implements OnInit  {
 
   }
 
-  selectActa(actaSelect):void{
+  selectActa(a):void{
 
-    this.responsables = this.actas[actaSelect.selectedIndex-1].integrantes;
-    this.selectActa2(this.actas[actaSelect.selectedIndex-1]);
-    this.actaCombo = actaSelect;
+    this.selectActa2(this.actaList[a.selectedIndex-1]);
+    this.actaSelect = a;
 
 }
 

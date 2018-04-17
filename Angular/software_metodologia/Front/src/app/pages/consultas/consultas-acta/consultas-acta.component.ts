@@ -42,7 +42,7 @@ export class ConsultasActaComponent implements OnInit  {
   indice = 0;
 
   tareasMostrar: Tarea[] = [];
-  tareaActual: Tarea = new Tarea("","","",[],null);
+  tareaActual: Tarea = new Tarea("","","",[],null,"","");
   tareasFiltro = "Todas";
 
   indiceTAREA = 0;
@@ -136,7 +136,7 @@ export class ConsultasActaComponent implements OnInit  {
 
     } 
     else{
-      this.tareaActual = new Tarea("","","",[],null);
+      this.tareaActual = new Tarea("","","",[],null,"","");
       this.indiceTAREA = -1;
     }
 

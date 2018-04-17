@@ -10,9 +10,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -25,6 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.common.base.Strings;
+import com.sun.mail.smtp.SMTPSSLTransport;
 
 import data.Acta;
 import data.Auditoria;
@@ -49,6 +52,8 @@ public class DataSourceReal implements IDataSource {
 	
 	public static final String TAREA_CERRADA = "Cerrada";
 	public static final String TAREA_ABIERTA = "Abierta";
+	
+	public static final SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
 	
 	private static String archivoNombre = "MetodManager.json";
 	
@@ -664,6 +669,8 @@ public class DataSourceReal implements IDataSource {
 		CuerpoColegiado ccOrig = getCuerpoColegiado(cuerpoColegiadoID, empresaID);
 		Tema tema = ccOrig.getTemas().get(temaID);
 		tarea.setId(tema.getTareas().size() + "");
+		tarea.setTemaId(temaID);
+		tarea.setFechaCreacion(formatoFecha.format(new Date()));
 		tema.getTareas().add(tarea);
 		updateFile();
 
@@ -694,24 +701,37 @@ public class DataSourceReal implements IDataSource {
 	}
 	
 	@Override
-	public List<Tarea> getActaFiltrada(String empresaID, String responsableId, String estrategiaId, String temaId) {
+	public List<Tarea> getActaFiltrada(String empresaID, String responsableId, String cuerpoColegiadoId) {
 
 		List<Tarea> tareaList = new ArrayList<>();
 
-		for (CuerpoColegiado cuerpoColegiado : getCuerpoColegiadoList(empresaID)) {
+		if (cuerpoColegiadoId.equals("Todas")) {
 
-			for (Tema tema : cuerpoColegiado.getTemas().values()) {
+			for (CuerpoColegiado cuerpoColegiado : getCuerpoColegiadoList(empresaID)) {
 
-				if ((temaId.equals("Todos") || temaId.equals(tema.getId()))
-						&& (estrategiaId.equals("Todos") || estrategiaId.equals(tema.getObjetivoEstrategico())))
+				for (Tema tema : cuerpoColegiado.getTemas().values()) {
+
 					for (Tarea tarea : tema.getTareas()) {
 
 						if (!tareaList.contains(tarea))
 							tareaList.add(tarea);
 					}
+				}
 			}
-		}
+		} else {
 
+			Collection<Tema> cuerpoList = getCuerpoColeg(cuerpoColegiadoId).getTemas().values();
+			for (Tema tema : cuerpoList) {
+
+				for (Tarea tarea : tema.getTareas()) {
+					tarea.setTemaId(tema.getId());
+					if (!tareaList.contains(tarea))
+						tareaList.add(tarea);
+				}
+
+			}
+
+		}
 		if (!responsableId.equals("Todos")) {
 
 			List<Tarea> filtrada = new ArrayList<>();
@@ -729,6 +749,90 @@ public class DataSourceReal implements IDataSource {
 	}
 
 
+
+	@Override
+	public List<Tarea> getTareaDia(String empresaID, String responsableId, String cuerpoColegiadoId, String dia) {
+
+		List<Tarea> aa = getActaFiltrada(empresaID, responsableId, cuerpoColegiadoId);
+		
+		List<Tarea> filtrada = new ArrayList<>();
+		
+		for (Tarea tarea : aa) {
+			if (tarea.getFechaCreacion().equals(dia))
+				filtrada.add(tarea);
+		}
+		
+		
+		
+		return filtrada;
+	}
+
+	
+	
+
+	
+
+
+	@Override
+	public List<Tema> getTareaFiltradaPorTemas(String empresaID, String cuerpoColegiadoId, String actaId,
+			String estrategiasId) {
+
+		List<Tema> filtro = new ArrayList<>();
+
+		if (actaId.equals("Todas")) {
+
+			if (!cuerpoColegiadoId.equals("Todas")) {
+				CuerpoColegiado cuerpo = getCuerpoColeg(cuerpoColegiadoId);
+				filtro.addAll(cuerpo.getTemas().values());
+			}
+
+			else {
+
+				List<CuerpoColegiado> cuerposList = getCuerpoColegiadoList(empresaID);
+
+				for (CuerpoColegiado cuerpoColegiado : cuerposList) {
+
+					for (Tema tema : cuerpoColegiado.getTemas().values()) {
+						if (!filtro.contains(tema))
+							filtro.add(tema);
+					}
+				}
+			}
+
+		}
+
+		else
+			filtro.addAll(getTemaListConsulta(cuerpoColegiadoId, actaId, empresaID));
+
+		if (!estrategiasId.equals("Todas")) {
+
+			List<Tema> aux = new ArrayList<>();
+			aux.addAll(filtro);
+			filtro.clear();
+
+			for (Tema tema : aux) {
+
+				if (tema.getObjetivoEstrategico()!= null && tema.getObjetivoEstrategico().contains(estrategiasId))
+					filtro.add(tema);
+			}
+
+		}
+
+		return filtro;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@Override
 	public Tarea addComentarioToTarea(String cuerpoColegiadoID, String temaID, String tareaID, String comentario,
@@ -873,13 +977,13 @@ public class DataSourceReal implements IDataSource {
 		}
 		
 		if (cuerpoSelect != null)
-			return getTemaListConsulta(cuerpoSelect.getId(), actaID, empresaID, token);
+			return getTemaListConsulta(cuerpoSelect.getId(), actaID, empresaID);
 		
 		return null;
 	}
 	
 	@Override
-	public List<Tema> getTemaListConsulta(String cuerpoColegiadoID, String actaID, String empresaID, String token) {
+	public List<Tema> getTemaListConsulta(String cuerpoColegiadoID, String actaID, String empresaID) {
 		
 		CuerpoColegiado cc = getCuerpoColeg(cuerpoColegiadoID);
 
@@ -1105,6 +1209,13 @@ public class DataSourceReal implements IDataSource {
 		
 		return hh;
 	}
+
+
+
+
+
+
+
 
 
 

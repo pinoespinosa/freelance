@@ -79,7 +79,7 @@ public interface IDataSource {
 
 	void actaIsDoneOk(String cuerpoColegiadoID, String empresaID, String actaID);
 
-	List<Tema> getTemaListConsulta(String cuerpoColegiadoID, String actaID, String empresaID, String token);
+	List<Tema> getTemaListConsulta(String cuerpoColegiadoID, String actaID, String empresaID);
 
 	Acta updatePaso(String cuerpoColegiadoID, String actaID, String empresaID, String string);
 
@@ -131,7 +131,13 @@ public interface IDataSource {
 
 	List<UsuarioActa> getResponsables(String empresaID);
 
-	List<Tarea> getActaFiltrada(String empresaID, String responsableId, String estrategiaId, String temaId);
+	List<Tarea> getActaFiltrada(String empresaID, String responsableId, String cuerpoColegiadoId);
+
+	List<Tarea> getTareaDia(String empresaID, String responsableId, String cuerpoColegiadoId, String dia);
+
+	
+	List<Tema> getTareaFiltradaPorTemas(String empresaID, String cuerpoColegiado, String actaId, String estrategiasId);
+
 
 
 }

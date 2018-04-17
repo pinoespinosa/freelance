@@ -7,8 +7,9 @@ export class Tarea {
     public estado:string,
     public detalle:string,
     public eventos: string[],
-
     public responsable: UsuarioActa, 
+    private tareaID: string,
+    private fechaCreacion: string,
 
   ) { }
 }

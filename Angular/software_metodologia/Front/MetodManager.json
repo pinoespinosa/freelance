@@ -547,6 +547,8 @@
         "detalle" : "DOIOPUF",
         "tareas" : [ {
           "id" : "0",
+          "fechaCreacion" : "23/10/2005",
+          "temaId" : null,
           "estado" : "Cerrada",
           "detalle" : "nuevo trabajadores",
           "responsable" : {
@@ -572,6 +574,24 @@
           "date" : 1521920118672
         } ]
       },
+      "CuerpoEjemplo10" : {
+        "id" : "CuerpoEjemplo10",
+        "fechaCreacion" : 1518583843089,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : null,
+        "indicador" : "1111 - indicadoodrrrrr, ",
+        "detalle" : "TemaPrueba",
+        "tareas" : [ ],
+        "eventos" : [ {
+          "texto" : "Se ha creado el tema en el acta CuerpoEjemplo1000",
+          "idActa" : "CuerpoEjemplo1_0-0-0",
+          "date" : 1518583843089
+        }, {
+          "texto" : "CuerpoEjemplo1000 - Esta es la descripcion y primer comentario de un tema",
+          "idActa" : "CuerpoEjemplo1_0-0-0",
+          "date" : 1518583843089
+        } ]
+      },
       "testing0" : {
         "id" : "testing0",
         "fechaCreacion" : 1521504339450,
@@ -581,6 +601,8 @@
         "detalle" : "prueba",
         "tareas" : [ {
           "id" : "0",
+          "fechaCreacion" : "23/10/2005",
+          "temaId" : null,
           "estado" : "Cerrada",
           "detalle" : "LKLFJFJ",
           "responsable" : {
@@ -593,6 +615,8 @@
           "eventos" : [ "testing004 - nbbgc", "La tarea fue cerrada en el acta testing_0-1-4" ]
         }, {
           "id" : "1",
+          "fechaCreacion" : "23/10/2015",
+          "temaId" : null,
           "estado" : "Cerrada",
           "detalle" : "LKLFJFJ",
           "responsable" : {
@@ -605,6 +629,8 @@
           "eventos" : [ "testing004 -", "La tarea fue cerrada en el acta testing_0-1-4" ]
         }, {
           "id" : "2",
+          "fechaCreacion" : "23/10/2005",
+          "temaId" : null,
           "estado" : "Cerrada",
           "detalle" : "LKLFJFJFAEEWRTT",
           "responsable" : {
@@ -617,6 +643,8 @@
           "eventos" : [ "testing004 - kjhg", "La tarea fue cerrada en el acta testing_0-1-4" ]
         }, {
           "id" : "3",
+          "fechaCreacion" : "23/10/2005",
+          "temaId" : null,
           "estado" : "Cerrada",
           "detalle" : "kkkd",
           "responsable" : {
@@ -629,6 +657,8 @@
           "eventos" : [ "La tarea fue cerrada en el acta testing_0-1-4" ]
         }, {
           "id" : "4",
+          "fechaCreacion" : "23/10/2005",
+          "temaId" : null,
           "estado" : "Cerrada",
           "detalle" : "kkkd",
           "responsable" : {
@@ -641,6 +671,8 @@
           "eventos" : [ "La tarea fue cerrada en el acta testing_0-1-4" ]
         }, {
           "id" : "5",
+          "fechaCreacion" : "23/10/2005",
+          "temaId" : null,
           "estado" : "Cerrada",
           "detalle" : "kbvvv",
           "responsable" : {
@@ -680,24 +712,6 @@
           "texto" : "testing004 - Se ha cerrado el tema",
           "idActa" : "testing_0-1-4",
           "date" : 1521923531165
-        } ]
-      },
-      "CuerpoEjemplo10" : {
-        "id" : "CuerpoEjemplo10",
-        "fechaCreacion" : 1518583843089,
-        "estado" : "Abierto",
-        "objetivoEstrategico" : null,
-        "indicador" : "1111 - indicadoodrrrrr, ",
-        "detalle" : "TemaPrueba",
-        "tareas" : [ ],
-        "eventos" : [ {
-          "texto" : "Se ha creado el tema en el acta CuerpoEjemplo1000",
-          "idActa" : "CuerpoEjemplo1_0-0-0",
-          "date" : 1518583843089
-        }, {
-          "texto" : "CuerpoEjemplo1000 - Esta es la descripcion y primer comentario de un tema",
-          "idActa" : "CuerpoEjemplo1_0-0-0",
-          "date" : 1518583843089
         } ]
       }
     },
@@ -934,6 +948,8 @@
         "detalle" : "primer tema",
         "tareas" : [ {
           "id" : "0",
+          "fechaCreacion" : "23/10/2005",
+          "temaId" : null,
           "estado" : "Abierto",
           "detalle" : "tarea 1",
           "responsable" : {
@@ -946,6 +962,8 @@
           "eventos" : [ ]
         }, {
           "id" : "1",
+          "fechaCreacion" : "23/10/2005",
+          "temaId" : null,
           "estado" : "Abierto",
           "detalle" : "tarea 2",
           "responsable" : {
@@ -984,6 +1002,8 @@
         "detalle" : "Capacitaciones",
         "tareas" : [ {
           "id" : "0",
+          "fechaCreacion" : "23/10/2005",
+          "temaId" : null,
           "estado" : "Abierto",
           "detalle" : "revisar indicadores",
           "responsable" : {
@@ -996,6 +1016,8 @@
           "eventos" : [ ]
         }, {
           "id" : "1",
+          "fechaCreacion" : "23/10/2005",
+          "temaId" : null,
           "estado" : "Abierto",
           "detalle" : "Tarea1",
           "responsable" : {
@@ -1008,6 +1030,8 @@
           "eventos" : [ "PFV001 - Hacer esta tarea" ]
         }, {
           "id" : "2",
+          "fechaCreacion" : "23/10/2005",
+          "temaId" : null,
           "estado" : "Abierto",
           "detalle" : "Tarea2",
           "responsable" : {
@@ -1141,52 +1165,6 @@
           "date" : 1518890997077
         } ]
       },
-      "CTI1" : {
-        "id" : "CTI1",
-        "fechaCreacion" : 1521239134349,
-        "estado" : "Abierto",
-        "objetivoEstrategico" : "Estrategia2",
-        "indicador" : "IN132 - Cumplimiento en el proyecto Efevisium, IN132 - Cumplimiento en el proyecto Efevisium, IN132 - Cumplimiento en el proyecto Efevisium, IN132 - Cumplimiento en el proyecto Efevisium, IN132 - Cumplimiento en el proyecto Efevisium, ",
-        "detalle" : "definición",
-        "tareas" : [ {
-          "id" : "0",
-          "estado" : "Abierta",
-          "detalle" : "tarea 1",
-          "responsable" : {
-            "userID" : "3",
-            "nombre" : "juanloa g",
-            "email" : "",
-            "finEnMente" : "Presente",
-            "estado" : ""
-          },
-          "eventos" : [ ]
-        }, {
-          "id" : "1",
-          "estado" : "Abierta",
-          "detalle" : "tarea 2",
-          "responsable" : {
-            "userID" : "3",
-            "nombre" : "juanloa g",
-            "email" : "",
-            "finEnMente" : "Presente",
-            "estado" : ""
-          },
-          "eventos" : [ ]
-        } ],
-        "eventos" : [ {
-          "texto" : "CTI001 - dos",
-          "idActa" : "CTI_1-0-1",
-          "date" : 1521239187463
-        }, {
-          "texto" : "CTI001 - uno",
-          "idActa" : "CTI_1-0-1",
-          "date" : 1521239174904
-        }, {
-          "texto" : "Se ha creado el tema en el acta CTI001",
-          "idActa" : "CTI_1-0-1",
-          "date" : 1521239134349
-        } ]
-      },
       "PFV0" : {
         "id" : "PFV0",
         "fechaCreacion" : 1518890583239,
@@ -1211,6 +1189,56 @@
           "texto" : "PFV000 - validamos con los los jefes la forma como ven la estrategia",
           "idActa" : "PFV_1-1-0",
           "date" : 1518890655754
+        } ]
+      },
+      "CTI1" : {
+        "id" : "CTI1",
+        "fechaCreacion" : 1521239134349,
+        "estado" : "Abierto",
+        "objetivoEstrategico" : "Estrategia2",
+        "indicador" : "IN132 - Cumplimiento en el proyecto Efevisium, IN132 - Cumplimiento en el proyecto Efevisium, IN132 - Cumplimiento en el proyecto Efevisium, IN132 - Cumplimiento en el proyecto Efevisium, IN132 - Cumplimiento en el proyecto Efevisium, ",
+        "detalle" : "definición",
+        "tareas" : [ {
+          "id" : "0",
+          "fechaCreacion" : "23/10/2005",
+          "temaId" : null,
+          "estado" : "Abierta",
+          "detalle" : "tarea 1",
+          "responsable" : {
+            "userID" : "3",
+            "nombre" : "juanloa g",
+            "email" : "",
+            "finEnMente" : "Presente",
+            "estado" : ""
+          },
+          "eventos" : [ ]
+        }, {
+          "id" : "1",
+          "fechaCreacion" : "23/10/2005",
+          "temaId" : null,
+          "estado" : "Abierta",
+          "detalle" : "tarea 2",
+          "responsable" : {
+            "userID" : "3",
+            "nombre" : "juanloa g",
+            "email" : "",
+            "finEnMente" : "Presente",
+            "estado" : ""
+          },
+          "eventos" : [ ]
+        } ],
+        "eventos" : [ {
+          "texto" : "CTI001 - dos",
+          "idActa" : "CTI_1-0-1",
+          "date" : 1521239187463
+        }, {
+          "texto" : "CTI001 - uno",
+          "idActa" : "CTI_1-0-1",
+          "date" : 1521239174904
+        }, {
+          "texto" : "Se ha creado el tema en el acta CTI001",
+          "idActa" : "CTI_1-0-1",
+          "date" : 1521239134349
         } ]
       }
     },
@@ -1330,17 +1358,6 @@
       "ccList" : [ "0-0", "0-1", "0-2" ],
       "token" : ""
     },
-    "KfNrShhw61qzN+CRkhzWSAk7h7d/Q+uunhMepaPx3ATdI9//a9JMQV8T+GnSSi3e" : {
-      "userID" : "9",
-      "rol" : "ADMINISTRADOR",
-      "nombre" : "melina cordoba",
-      "email" : "melinacordoba17@hotmail.com",
-      "logo" : "assets/1518583699806132474075_8_(5th_copy).png",
-      "empresaID" : "0",
-      "empresaNombre" : "Empresa1",
-      "ccList" : [ "0-1", "0-2" ],
-      "token" : ""
-    },
     "6qaMKLWFz7xhLV30r2BkBg==" : {
       "userID" : "2",
       "rol" : "ADMINISTRADOR",
@@ -1350,6 +1367,17 @@
       "empresaID" : "0",
       "empresaNombre" : null,
       "ccList" : [ "0-0", "0-1", "0-2" ],
+      "token" : ""
+    },
+    "KfNrShhw61qzN+CRkhzWSAk7h7d/Q+uunhMepaPx3ATdI9//a9JMQV8T+GnSSi3e" : {
+      "userID" : "9",
+      "rol" : "ADMINISTRADOR",
+      "nombre" : "melina cordoba",
+      "email" : "melinacordoba17@hotmail.com",
+      "logo" : "assets/1518583699806132474075_8_(5th_copy).png",
+      "empresaID" : "0",
+      "empresaNombre" : "Empresa1",
+      "ccList" : [ "0-1", "0-2" ],
       "token" : ""
     },
     "wInK/9q8UHcrU5rI5PuTKlPj9kkT7Hk8FAYmufqMlvk=" : {

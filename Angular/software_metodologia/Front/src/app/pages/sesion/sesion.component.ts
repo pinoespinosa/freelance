@@ -70,7 +70,7 @@ export class SesionComponent implements OnInit, OnDestroy {
 
   tareasMostrar: Tarea[] = [];
 
-  tareaActual: Tarea = new Tarea("", "", "", [], null);
+  tareaActual: Tarea = new Tarea("", "", "", [], null,"","");
 
   indice = 0;
   indiceTAREA = 0;
@@ -387,7 +387,7 @@ export class SesionComponent implements OnInit, OnDestroy {
 
     let mmmm: UsuarioActa = new UsuarioActa(respon.userID, respon.nombre, "", "Presente", "","");
 
-    let tareaN = new Tarea("", "Abierto", tarea, [], mmmm);
+    let tareaN = new Tarea("", "Abierto", tarea, [], mmmm,"","");
 
     let ccID = this.actaSelect.id.split('-')[0].split('_')[1] + '-' + this.actaSelect.id.split('-')[1];
 
@@ -401,7 +401,7 @@ export class SesionComponent implements OnInit, OnDestroy {
         if (this.temaActual.tareas.length > 0) {
           this.tareaActual = this.temaActual.tareas[0];
         } else {
-          this.tareaActual = new Tarea("", "", "", [], null);
+          this.tareaActual = new Tarea("", "", "", [], null,"","");
         }
 
         this.updateTareas();
@@ -683,7 +683,7 @@ export class SesionComponent implements OnInit, OnDestroy {
 
 
                 } else {
-                  this.tareaActual = new Tarea("", "", "", [], null);
+                  this.tareaActual = new Tarea("", "", "", [], null,"","");
                   this.indiceTAREA = -1;
                 }
 

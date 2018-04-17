@@ -63,8 +63,7 @@ public class TemasController {
 	public List<Tema> getTemaListConsulta(@PathVariable final String cuerpoColegiadoID,
 			@RequestParam final String actaID, @RequestHeader("Acces-Token") String token) {
 
-		return dataSource.getTemaListConsulta(cuerpoColegiadoID, actaID, Auth.getEmpresaID(token),
-				token);
+		return dataSource.getTemaListConsulta(cuerpoColegiadoID, actaID, Auth.getEmpresaID(token));
 
 	}
 

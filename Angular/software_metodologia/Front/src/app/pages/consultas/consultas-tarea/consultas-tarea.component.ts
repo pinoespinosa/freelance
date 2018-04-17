@@ -10,6 +10,8 @@ import { Tema }                                         from 'app/data-objects/t
 import { Tarea }                                   from 'app/data-objects/tarea';
 import { Usuario }                                from 'app/data-objects/usuario';
 
+import { DatePipe } from '@angular/common';
+
 
 
 @Component({
@@ -21,176 +23,158 @@ import { Usuario }                                from 'app/data-objects/usuario
 
 export class ConsultasTareaComponent implements OnInit  {
 
-	tipoConsulta: string[] = ["Acta Completa", "Por Fin en Mente", "Por Temas", "Por Tareas", "Por Comentarios", "Por Estrategia", "Por indicadores"];
-	cuerposColegiado: CuerpoColegiado[] = [];
-	cuerpoColegiadoSelect: CuerpoColegiado;
- 
-  estrategias: string[] = ["Todas las estrategias", "Sin Estrategia","Estrategia 1","Estrategia 2","Estrategia 3","Estrategia 4","Estrategia 4"];
-  responsables : Usuario[] = [];
+  private logo
+
+  cuerposColegiadoList: CuerpoColegiado[] = [];
+  cuerpoColegiadoSelect: CuerpoColegiado;
+
+  responsableList : Usuario[] = [];
+  responsableSelect : Usuario = null;
+
+  tareaList: Tarea[] = null
+
+  tareaListCalendar: any = null
+
+  fechaCalendario = new Date();
+  fechaCalendarioString 
 
 
-  logo:string = "";
+  vistaLista: boolean = true;
 
-	actas: Acta[] = [];
-
-  actaCombo : Acta;
-
-  temasDelActa: Tema[] = [];
-  temaActual: Tema = new Tema("","","",[],[],"","");
-  indice = 0;
-
-  tareasMostrar: Tarea[] = [];
-  tareaActual: Tarea = new Tarea("","","",[],null);
-  tareasFiltro = "Todas";
-
-  indiceTAREA = 0;
-
-
-  respon
-
-  constructor(    private router: Router, private route : ActivatedRoute, private service: Service
-){
-  this.logo = localStorage.getItem('logo');
-
-}
+  constructor(    private router: Router, private route : ActivatedRoute, private service: Service, private datePipe: DatePipe){
+    this.logo = localStorage.getItem('logo');
+  }
 
 	ngOnInit(): void {
-		let loading = this.service.getCuerpoColegiados().subscribe(
-      		response =>{ 
-        		this.cuerposColegiado = response;
-      		});
-	};
-
-  indiceTemaMas(){
-    console.log("ddd")
-      if (this.indice < this.temasDelActa.length -1){
-        this.indice = this.indice +1;
-        this.temaActual = this.temasDelActa[this.indice]
-      }
-          this.updateTareas();
-
-  }
-
-  indiceTemaMenos(){
-    if (this.indice > 0 ){
-        this.indice = this.indice -1;
-        this.temaActual = this.temasDelActa[this.indice]
-  }
-
-  }
-
-  indiceTareaMas(){
-    if (this.indiceTAREA < this.tareasMostrar.length -1){
-      this.indiceTAREA = this.indiceTAREA +1;
-      this.tareaActual = this.tareasMostrar[this.indiceTAREA];
-    }
-        this.updateTareas();
-
-  }
-
-  indiceTareaMenos(){
-    if (this.indiceTAREA > 0 ){
-        this.indiceTAREA = this.indiceTAREA -1;
-        this.tareaActual = this.tareasMostrar[this.indiceTAREA];
-    }
-  }
-
-
-	selectCuerpo(cuerpo):void{
-    	this.cuerpoColegiadoSelect = this.cuerposColegiado[cuerpo.selectedIndex-1];
-    	this.actas = this.cuerpoColegiadoSelect.actas
-      this.temaActual= new Tema("","","",[],[],"","");
-      this.indice = 0;
-
-
-      if (this.actas.length == 1){
-        this.responsables = this.actas[0].integrantes;
-        this.selectActa2(this.actas[0])
-
-      }
-      else
-        this.temasDelActa = []
- 	}
-
-  updateTareas(){
-    this.tareasMostrar = [];
-    for (let aa of this.temaActual.tareas) {
-
-      if (this.tareasFiltro=="Todas")
-        this.tareasMostrar.push(aa);
-      else{
-        if (aa.estado == this.tareasFiltro)
-          this.tareasMostrar.push(aa);
-        }
-    }
-
-        this.tareasMostrar.sort((a, b) => {
-        if ( (+a.id) < (+b.id) ) 
-          return 1;
-        else 
-          if ((+a.id) > (+b.id) ) 
-            return -1 ;
-          else 
-            return 0;
-    });
-
-
-    if (this.tareasMostrar.length > 0){
-      this.tareaActual = this.tareasMostrar[0];
-      this.indiceTAREA = 0;
-
-
-    } 
-    else{
-      this.tareaActual = new Tarea("","","",[],null);
-      this.indiceTAREA = -1;
-    }
-
-  }
-
-  updateClii(cuerpo):void{
-
-  }
-
-  selectActa(actaSelect):void{
-
-    this.responsables = this.actas[actaSelect.selectedIndex-1].integrantes;
-    this.selectActa2(this.actas[actaSelect.selectedIndex-1]);
-    this.actaCombo = actaSelect;
-
-}
-
-  selectActa2(actaaa):void{
-
-
-      let loading = this.service.getTemasConsulta(this.cuerpoColegiadoSelect.id, actaaa.id).subscribe(
+    	this.service.getCuerpoColegiados().subscribe(
           response =>{ 
-            this.temasDelActa = response;
-            if(response.length>=0)
-              this.temaActual = response[0]
-            this.indice=0;
-            console.log(response)
+            this.cuerposColegiadoList = response;
           });
 
-    this.updateTareas();
+    	this.service.getResponsables().subscribe(
+          response =>{ 
+            this.responsableList = response;
+          });
 
-
-
-  }
-
-    toString(array){
-
-  let ff='\n\n';
-
-  for (let aa of array) {
-
-  ff = ff + aa.texto + '\n'
-
-  }
-
-    return ff;
-  }
-
-	
-}
+        this.fechaCalendarioString = this.datePipe.transform( this.fechaCalendario, 'MM-yyyy');
  
+
+	};
+
+
+    cambiarVista(){
+      this.vistaLista = !this.vistaLista;
+   }
+
+	mesMas(){
+
+		while ( this.fechaCalendarioString.includes(this.datePipe.transform( this.fechaCalendario, 'MM-yyyy'))){
+			  this.fechaCalendario.setDate( this.fechaCalendario.getDate() + 1 );
+		}
+
+		this.fechaCalendarioString = this.datePipe.transform( this.fechaCalendario, 'MM-yyyy');
+    	this.find();
+
+	}
+
+	mesMenos(){
+
+		while ( this.fechaCalendarioString.includes(this.datePipe.transform( this.fechaCalendario, 'MM-yyyy'))){
+			  this.fechaCalendario.setDate( this.fechaCalendario.getDate() - 1 );
+		}
+
+		this.fechaCalendarioString = this.datePipe.transform( this.fechaCalendario, 'MM-yyyy');
+    	this.find();
+
+
+	}
+
+    setCuerpo(cuerpo):void{
+
+
+    	if (cuerpo.value.includes("Todos los Cuerpos Colegiados")){
+      		this.cuerpoColegiadoSelect = null
+    	} 
+    	else {
+      		this.cuerpoColegiadoSelect = this.cuerposColegiadoList[cuerpo.selectedIndex-1];
+    	} 
+
+    	this.find();
+    	console.log(this.cuerpoColegiadoSelect)
+
+  }
+
+    setResponsable(respon){
+
+    	if (respon.value.includes("Todos los Responsables")){
+      		this.responsableSelect = null
+    	} 
+    	else {
+    		this.responsableSelect = this.responsableList[respon.selectedIndex-1];
+    	} 
+
+    	console.log(respon)
+    	this.find();
+
+   }
+
+  alert(tarea){
+
+    let texto = ''
+    for (let e of tarea.eventos){
+      texto += '    * ' + e + '\n'
+    }
+
+
+    alert(
+      tarea.fechaCreacion + '\n\n'+
+      'Tarea del Acta ' + tarea.temaId + '\n\n'+
+      'Responsable: ' + tarea.responsable.nombre + '\n\n' +
+      'Comentarios: \n' +
+      texto + '\n\n' 
+
+
+    )
+  }
+
+
+
+
+  find ():void {
+
+    let cuerpoValue = 'Todas'
+    if (this.cuerpoColegiadoSelect)
+      cuerpoValue = this.cuerpoColegiadoSelect.id;
+
+    let responsValue = 'Todos'
+    if (this.responsableSelect)
+      responsValue = this.responsableSelect.userID;
+
+
+      let loading = this.service.getActasFiltradas(cuerpoValue, responsValue).subscribe(
+          response =>{ 
+            this.tareaList = response;
+
+
+          });
+
+      this.service.getActasFiltradasCalendario(cuerpoValue, responsValue, this.fechaCalendarioString).subscribe(
+          response =>{ 
+
+          this.tareaListCalendar = response;
+
+          });
+
+
+  }
+
+
+
+
+
+
+
+  }
+ 
+
+

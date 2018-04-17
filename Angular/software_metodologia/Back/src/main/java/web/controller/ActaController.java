@@ -2,12 +2,17 @@ package web.controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,9 +27,12 @@ import data.Acta;
 import data.Auth;
 import data.Auth.Rol;
 import data.CuerpoColegiado;
+import data.DiaCalendar;
 import data.Tarea;
+import data.Tema;
 import data.UsuarioActa;
 import datasource.IDataSource;
+import edu.emory.mathcs.backport.java.util.Collections;
 import io.swagger.annotations.ApiOperation;
 import spring.ProjectConstants;
 
@@ -33,6 +41,8 @@ public class ActaController {
 
 	@Autowired
 	private IDataSource dataSource;
+
+	public static final SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
 
 	
 	/**
@@ -108,14 +118,121 @@ public class ActaController {
 	 * Retorna la lista de las actas
 	 */
 	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
-	@RequestMapping(value = "/acta/fitrada", method = RequestMethod.GET)
+	@RequestMapping(value = "/acta/filtrada", method = RequestMethod.GET)
 	public List<Tarea> getTareaFiltrada(
 			@RequestHeader("Acces-Token") String token,
-			@RequestParam String responsableId, @RequestParam String estrategiaId, @RequestParam String temaId) {
+			@RequestParam String responsableId, @RequestParam String cuerpoColegiadoId) {
 
-		return dataSource.getActaFiltrada(Auth.getEmpresaID(token), responsableId, estrategiaId, temaId);
+		return dataSource.getActaFiltrada(Auth.getEmpresaID(token), responsableId, cuerpoColegiadoId);
 	}
 
+
+	/**
+	 * Retorna la lista de las actas
+	 * 
+	 * @throws ParseException
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/acta/filtrada/calendario", method = RequestMethod.GET)
+	public List<List<DiaCalendar>> getTareasCalendario(@RequestHeader("Acces-Token") String token,
+			@RequestParam String responsableId, @RequestParam String cuerpoColegiadoId, @RequestParam String mes) throws ParseException {
+
+		List<List<DiaCalendar>> result = ejemplo(Auth.getEmpresaID(token), responsableId, cuerpoColegiadoId, mes.replace("-", "/"), Integer.parseInt(mes.split("-")[0])-1);
+
+		return result;
+	}
+	
+	
+	private List<List<DiaCalendar>> ejemplo(String empresaId, String responsableId, String cuerpoColegiadoId, String mes, int mesSolo )
+			throws ParseException {
+
+		List<List<DiaCalendar>> result = new ArrayList<>();
+
+		List<Tarea> aa = dataSource.getActaFiltrada(empresaId, responsableId, cuerpoColegiadoId);
+
+		List<Tarea> aux = new ArrayList<>();
+
+		for (Tarea tarea : aa) {
+			if (tarea.getFechaCreacion().contains(mes))
+				aux.add(tarea);
+		}
+
+		Comparator<Tarea> comparator = new Comparator<Tarea>() {
+
+			@Override
+			public int compare(Tarea o1, Tarea o2) {
+				try {
+					return formatoFecha.parse(o1.getFechaCreacion())
+							.compareTo(formatoFecha.parse(o2.getFechaCreacion()));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return 0;
+			}
+		};
+
+		Collections.sort(aux, comparator);
+
+		Calendar start = Calendar.getInstance();
+		start.setTime(formatoFecha.parse("01/"+mes));
+
+		int diaa = start.get(Calendar.DAY_OF_WEEK);
+
+		int pos = 1;
+
+		int dia = 1;
+
+		int semana = 0;
+		result.add(new ArrayList<>());
+
+		while (pos != diaa) {
+						
+			result.get(0).add(new DiaCalendar());
+			pos++;
+
+		}
+
+		while (start.get(Calendar.MONTH) == mesSolo) {
+
+			while (pos <= 7) {
+				DiaCalendar auz = new DiaCalendar();
+				auz.setDetalle(dia + "");
+				auz.setTareas(dataSource.getTareaDia(empresaId, responsableId, cuerpoColegiadoId, formatoFecha.format(start.getTime())));
+				
+				
+				if (start.get(Calendar.MONTH) == mesSolo) {
+					start.add(Calendar.DAY_OF_MONTH, 1);
+					result.get(semana).add(auz);
+				}
+				pos++;
+				dia++;
+
+			}
+			pos = 1;
+			if (start.get(Calendar.MONTH) == mesSolo)
+				result.add(new ArrayList<>());
+			semana++;
+		}
+
+		return result;
+
+	}
+	
+	
+	/**
+	 * Vista de consultas por temas
+	 */
+	@ApiOperation(hidden = ProjectConstants.HIDE_SWAGGER_OP, value = "")
+	@RequestMapping(value = "/acta/filtrada/temas", method = RequestMethod.GET)
+	public List<Tema> getTareaFiltradaPorTemas(
+			@RequestHeader("Acces-Token") String token,
+			@RequestParam String actaId, @RequestParam String cuerpoColegiadoId, @RequestParam String estrategiaId) {
+
+		return dataSource.getTareaFiltradaPorTemas(Auth.getEmpresaID(token), cuerpoColegiadoId, actaId, estrategiaId);
+	}
+
+	
 	
 	/**
 	 * Retorna el ultimo acta

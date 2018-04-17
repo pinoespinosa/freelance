@@ -41,7 +41,6 @@ export class MantenimientoComponent implements OnInit  {
   indice = 0;
 
   tareasMostrar: Tarea[] = [];
-  tareaActual: Tarea = new Tarea("","","",[],null);
   tareasFiltro = "Todas";
 
   indiceTAREA = 0;

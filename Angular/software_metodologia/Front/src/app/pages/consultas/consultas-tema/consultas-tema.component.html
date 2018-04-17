@@ -4,22 +4,24 @@
 
    <!-- ******************************** COMBOS *************************** -->
       <div class="col-4" >
-         <select style="width: 100%;margin-top: 10px;" #responsableSelect class="dropdown-select">
-         <option [value]="selectUndefinedOptionValue">-- Todos los responsables --</option>
-         <option *ngFor="let responsable of responsables" >{{responsable.nombre}}</option>
+         <select style="width: 100%;" #cuerpo class="dropdown-select" (change)="setCuerpo(cuerpo)">
+         <option [value]="">-- Todos los Cuerpos Colegiados --</option>
+         <option *ngFor="let cuerpoColegiado of cuerposColegiadoList" >{{cuerpoColegiado.nombre}}</option>
+         </select>
+      </div>
+      <div class="col-4" *ngIf="cuerpoColegiadoSelect">
+         <select style="width: 100%;" #act class="dropdown-select" (change)="setActa(act)">
+         <option [value]="">-- Todas las Actas --</option>
+         <option *ngFor="let acta of actaList" >Acta Nro. {{acta.numeroActa}}</option>
          </select>
       </div>
       <div class="col-4" >
-         <select style="width: 100%;margin-top: 10px;" #estrategiaSelect class="dropdown-select">
-         <option [value]="selectUndefinedOptionValue">-- Todas las estrategias --</option>
-         <option *ngFor="let estrategia of estrategias" >{{estrategia}}</option>
+         <select style="width: 100%" #estrat class="dropdown-select" (change)="setEstrat(estrat)">
+         <option [value]="">-- Todas las estrategias --</option>
+         <option *ngFor="let estrategia of estrategiaList" >{{estrategia}}</option>
          </select>
       </div>
       <div class="col-4" >
-         <select style="width: 100%;margin-top: 10px;" #temaSelect class="dropdown-select" >
-         <option [value]="selectUndefinedOptionValue">-- Todos los temas --</option>
-         <option *ngFor="let tema of temasDelActa" >Tema ID:{{tema.id}}</option>
-         </select>
       </div>
 
    </div>

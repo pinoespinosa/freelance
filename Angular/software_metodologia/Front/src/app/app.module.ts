@@ -54,13 +54,13 @@ import { AppComponent }                     from './app.component';
 import { Service }                          from './service';
 
 import { FilterPipe }                       from './pages/pipe/pipe';
-import { FilterPipe2 }                       from './pages/pipe2/pipe';
+import { FilterPipe2 }                      from './pages/pipe2/pipe';
 
-import { FileUploadModule }                   from 'ng2-file-upload/ng2-file-upload';
-
+import { FileUploadModule }                 from 'ng2-file-upload/ng2-file-upload';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -94,7 +94,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EditCuerpoColegiadoComponent,
     CreateIndicadorComponent,
     CreateEstrategiaComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -112,7 +113,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     Service,
     AuthGuard,
     PaymentAuthGuard,
-    CanDeactivateGuard
+    CanDeactivateGuard,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
